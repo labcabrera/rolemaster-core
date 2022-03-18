@@ -1,0 +1,10 @@
+[
+  {
+  	"id": "human",
+    "name": "Human"
+  },
+  {
+  	"id": "ork",
+    "name": "Ork"
+  }
+]

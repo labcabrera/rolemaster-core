@@ -1,0 +1,26 @@
+package org.labcabrera.rolemaster.core.model.character;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Document(collection = "professions")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class Profession {
+
+	@Schema(description = "Profession identifier")
+	@Id
+	private String id;
+
+	@Schema(description = "Profession name")
+	private String name;
+
+}
