@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StaticManeuverRequest {
 
+	private Integer roll;
+
 	private StaticManeuverDificulty dificulty;
 
 }
