@@ -1,0 +1,21 @@
+= Rolemaster Core API
+
+== Introducción
+
+Esta API provee de un conjunto de servicios para utilizar el sistema de juego Rolemaster (v4) diseñado por https://ironcrown.com/[Iron Crown Enterprises].
+
+Ofrece las funcionalidades:
+
+* Generación de personajes.
+* Soporte para el combate.
+* Ejecución de maniobras estáticas.
+* Ejecución de maniobras dinámicas.
+
+== Tecnologías
+
+* Spring Boot 2.x reactive.
+* MongoDB.
+
+== Instalación y configuración
+
+*TODO*

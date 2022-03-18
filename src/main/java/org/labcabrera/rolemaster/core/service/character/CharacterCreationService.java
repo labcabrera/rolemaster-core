@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
+import org.labcabrera.rolemaster.core.service.AttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class CharacterCreationService {
 
 	@Autowired
 	private AttributeCreationService attributeCreationService;
+
+	@Autowired
+	private AttributeService attributeService;
 
 	@Autowired
 	private CharacterInfoRepository repository;
@@ -40,7 +44,7 @@ public class CharacterCreationService {
 			character.getAttributes().put(e, CharacterAttribute.builder()
 				.currentValue(value)
 				.potentialValue(attributeCreationService.getPotentialStat(value))
-				.baseBonus(0)
+				.baseBonus(attributeService.getBonus(value))
 				.build());
 		});
 

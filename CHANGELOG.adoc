@@ -1,0 +1,7 @@
+= Rolemaster Core Changelog
+
+https://github.com/labcabrera/rolemaster-core
+
+== 1.0.0 (xxx-xx-xx)
+
+Initial version.
