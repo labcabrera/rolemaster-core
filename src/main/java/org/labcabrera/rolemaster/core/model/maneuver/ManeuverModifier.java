@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.smaneuver;
+package org.labcabrera.rolemaster.core.model.maneuver;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class StaticManeuverModifier {
+public class ManeuverModifier {
 
 	private Integer modifier;
 

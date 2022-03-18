@@ -1,7 +1,9 @@
-package org.labcabrera.rolemaster.core.model.smaneuver;
+package org.labcabrera.rolemaster.core.model.maneuver.s;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +16,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StaticManeuverResult {
 
+	private String description;
+
 	@Builder.Default
-	private List<StaticManeuverModifier> modifiers = new ArrayList<>();
+	private List<ManeuverModifier> modifiers = new ArrayList<>();
 
 }

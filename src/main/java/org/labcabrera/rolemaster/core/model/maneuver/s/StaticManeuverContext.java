@@ -1,8 +1,10 @@
-package org.labcabrera.rolemaster.core.model.smaneuver;
+package org.labcabrera.rolemaster.core.model.maneuver.s;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +21,7 @@ public class StaticManeuverContext {
 
 	private CharacterInfo characterInfo;
 
-	private List<StaticManeuverModifier> modifiers;
+	@Builder.Default
+	private List<ManeuverModifier> modifiers = new ArrayList<>();
 
 }

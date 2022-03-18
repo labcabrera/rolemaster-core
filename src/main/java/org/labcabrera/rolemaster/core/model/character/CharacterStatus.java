@@ -18,4 +18,8 @@ public class CharacterStatus {
 
 	private String characterId;
 
+	private Integer xp;
+
+	private Integer hp;
+
 }

@@ -1,4 +1,6 @@
-package org.labcabrera.rolemaster.core.model.smaneuver;
+package org.labcabrera.rolemaster.core.model.maneuver.s;
+
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +15,6 @@ public class StaticManeuverRequest {
 
 	private Integer roll;
 
-	private StaticManeuverDificulty dificulty;
+	private ManeuverDificulty dificulty;
 
 }

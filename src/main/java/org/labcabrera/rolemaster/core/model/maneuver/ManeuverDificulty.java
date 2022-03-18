@@ -1,8 +1,8 @@
-package org.labcabrera.rolemaster.core.model.smaneuver;
+package org.labcabrera.rolemaster.core.model.maneuver;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum StaticManeuverDificulty {
+public enum ManeuverDificulty {
 
 	ROUTINE("routine"),
 
@@ -24,7 +24,7 @@ public enum StaticManeuverDificulty {
 
 	private String name;
 
-	private StaticManeuverDificulty(String name) {
+	private ManeuverDificulty(String name) {
 		this.name = name;
 	}
 
