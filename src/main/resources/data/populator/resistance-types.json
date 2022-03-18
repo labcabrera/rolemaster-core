@@ -1,0 +1,26 @@
+[
+	{
+		"id": "channeling",
+		"name": "Channeling"
+	},
+	{
+		"id": "essence",
+		"name": "Essence"
+	},
+	{
+		"id": "mentalism",
+		"name": "Mentalism"
+	},
+	{
+		"id": "poison",
+		"name": "Poison"
+	},
+	{
+		"id": "disease",
+		"name": "Disease"
+	},
+	{
+		"id": "fear",
+		"name": "Fear"
+	}
+]

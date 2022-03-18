@@ -1,7 +1,10 @@
 package org.labcabrera.rolemaster.core.model.character.creation.impl;
 
+import java.util.Map;
+
 import javax.validation.constraints.NotEmpty;
 
+import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.validation.ExistingRaceValidator.ExistingRace;
 
@@ -25,5 +28,7 @@ public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 	@ExistingRace
 	@NotEmpty
 	private String raceId;
+
+	private Map<AttributeType, Integer> attributes;
 
 }

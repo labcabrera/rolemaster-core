@@ -1,8 +1,9 @@
 package org.labcabrera.rolemaster.core.service.character;
 
-import java.time.LocalDateTime;
+import java.util.Arrays;
 
-import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
@@ -21,10 +22,11 @@ public class CharacterCreationService {
 		CharacterInfo character = CharacterInfo.builder()
 			.name(request.getName())
 			.raceId(request.getRaceId())
-			.metadata(EntityMetadata.builder()
-				.created(LocalDateTime.now())
-				.build())
 			.build();
+
+		Arrays.asList(AttributeType.values()).stream().forEach(e -> {
+			character.getAttributes().put(e, new CharacterAttribute());
+		});
 		return repository.insert(character);
 	}
 

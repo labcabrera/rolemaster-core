@@ -1,0 +1,21 @@
+[
+	{
+		"id": "figther",
+		"name": "Figther",
+		"primeStats": [
+			"st",
+			"co"
+		]
+		"availableRealms": [
+			"channeling",
+			"essence",
+			"mentalism"
+		],
+		"professionBonuses": [
+			"armor-group": 10,
+			"body-development": 10
+			"combat-maneuvers": 10,
+			"weapon-group": 20
+		]
+	}
+]

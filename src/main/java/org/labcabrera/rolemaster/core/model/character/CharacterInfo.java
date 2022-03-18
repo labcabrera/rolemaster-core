@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,10 +29,19 @@ public class CharacterInfo {
 
 	private String raceId;
 
-	private Map<AttributeType, CharacterAttribute> attributes;
+	@Builder.Default
+	private List<String> professions = new ArrayList<>();
 
-	private EntityMetadata metadata;
+	@Builder.Default
+	private Map<String, Resistance> resistances = new LinkedHashMap<>();
 
-	private List<String> authorization;
+	@Builder.Default
+	private Map<AttributeType, CharacterAttribute> attributes = new LinkedHashMap<AttributeType, CharacterAttribute>();
+
+	@Builder.Default
+	private EntityMetadata metadata = EntityMetadata.builder().created(LocalDateTime.now()).build();
+
+	@Builder.Default
+	private List<String> authorization = new ArrayList<>();
 
 }

@@ -1,25 +1,38 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum AttributeType {
 
-	AGILITY,
+	AGILITY("ag"),
 
-	CONSTITUTION,
+	CONSTITUTION("co"),
 
-	MEMORY,
+	MEMORY("me"),
 
-	REASONING,
+	REASONING("re"),
 
-	SELF_DISCIPLINE,
+	SELF_DISCIPLINE("sd"),
 
-	EMPATHY,
+	EMPATHY("em"),
 
-	INTUTITION,
+	INTUTITION("in"),
 
-	PRESENCE,
+	PRESENCE("pr"),
 
-	QUICKNESS,
+	QUICKNESS("qu"),
 
-	STRENGTH
+	STRENGTH("st");
+
+	private String name;
+
+	AttributeType(String name) {
+		this.name = name;
+	}
+
+	@JsonValue
+	public String getName() {
+		return name;
+	}
 
 }

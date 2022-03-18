@@ -1,0 +1,26 @@
+package org.labcabrera.rolemaster.core.service.character;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+class AttributeCreationServiceTest {
+
+	private AttributeCreationService service = new AttributeCreationService();
+
+	@Test
+	void test() {
+		assertEquals(190, service.getCost(100));
+		assertEquals(171, service.getCost(99));
+		assertEquals(154, service.getCost(98));
+		assertEquals(139, service.getCost(97));
+		assertEquals(126, service.getCost(96));
+		assertEquals(115, service.getCost(95));
+		assertEquals(106, service.getCost(94));
+		assertEquals(99, service.getCost(93));
+		assertEquals(94, service.getCost(92));
+		assertEquals(91, service.getCost(91));
+		assertEquals(90, service.getCost(90));
+	}
+
+}
