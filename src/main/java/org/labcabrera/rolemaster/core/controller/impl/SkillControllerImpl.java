@@ -1,8 +1,8 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
-import org.labcabrera.rolemaster.core.controller.RealmController;
-import org.labcabrera.rolemaster.core.model.Realm;
-import org.labcabrera.rolemaster.core.repository.RealmRepository;
+import org.labcabrera.rolemaster.core.controller.SkillController;
+import org.labcabrera.rolemaster.core.model.character.Skill;
+import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,18 +10,18 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-public class RealmControllerImpl implements RealmController {
+public class SkillControllerImpl implements SkillController {
 
 	@Autowired
-	private RealmRepository repository;
+	private SkillRepository repository;
 
 	@Override
-	public Mono<Realm> findById(String id) {
+	public Mono<Skill> findById(String id) {
 		return repository.findById(id);
 	}
 
 	@Override
-	public Flux<Realm> findAll() {
+	public Flux<Skill> findAll() {
 		return repository.findAll();
 	}
 
