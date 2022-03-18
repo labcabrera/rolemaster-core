@@ -1,9 +1,17 @@
 package org.labcabrera.rolemaster.core.model.character.creation;
 
+import java.util.Map;
+
+import org.labcabrera.rolemaster.core.model.character.AttributeType;
+
 public interface CharacterCreationRequest {
 
 	String getName();
 
 	String getRaceId();
+
+	Integer getAttributesRoll();
+
+	Map<AttributeType, Integer> getBaseAttributes();
 
 }

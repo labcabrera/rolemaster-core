@@ -37,6 +37,9 @@ public class ExistingRaceValidator implements ConstraintValidator<ExistingRace, 
 
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
+		if (value == null) {
+			return true;
+		}
 		Mono<Boolean> mono = repository.existsById(value);
 		boolean exists = mono.share().block();
 		if (!exists) {

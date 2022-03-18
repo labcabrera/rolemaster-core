@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character;
 
 import org.junit.jupiter.api.Test;
+import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.creation.impl.CharacterCreationRequestImpl;
@@ -32,10 +33,22 @@ class CharacterCreationServiceTest {
 	}
 
 	private CharacterCreationRequest createRequest() {
-		return CharacterCreationRequestImpl.builder()
+		CharacterCreationRequestImpl result = CharacterCreationRequestImpl.builder()
 			.name("Set")
 			.raceId("human")
+			.attributesRoll(660)
 			.build();
+		result.getBaseAttributes().put(AttributeType.AGILITY, 96);
+		result.getBaseAttributes().put(AttributeType.CONSTITUTION, 90);
+		result.getBaseAttributes().put(AttributeType.MEMORY, 38);
+		result.getBaseAttributes().put(AttributeType.REASONING, 43);
+		result.getBaseAttributes().put(AttributeType.SELF_DISCIPLINE, 39);
+		result.getBaseAttributes().put(AttributeType.EMPATHY, 20);
+		result.getBaseAttributes().put(AttributeType.INTUTITION, 90);
+		result.getBaseAttributes().put(AttributeType.PRESENCE, 50);
+		result.getBaseAttributes().put(AttributeType.STRENGTH, 92);
+		result.getBaseAttributes().put(AttributeType.QUICKNESS, 75);
+		return result;
 	}
 
 }

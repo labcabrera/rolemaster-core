@@ -10,12 +10,16 @@ public class RandomService {
 
 	private Random random = new Random();
 
+	public int dX(int value) {
+		return 1 + random.nextInt(value);
+	}
+
 	public int d10() {
-		return 1 + random.nextInt(10);
+		return dX(10);
 	}
 
 	public int d100() {
-		return 1 + random.nextInt(100);
+		return dX(100);
 	}
 
 	public OpenRoll d100FullOpen() {

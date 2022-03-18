@@ -11,14 +11,23 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CharacterAttribute {
 
-	private Integer currentValue;
+	@Builder.Default
+	private Integer currentValue = 0;
 
-	private Integer potentialValue;
+	@Builder.Default
+	private Integer potentialValue = 0;
 
-	private Integer baseBonus;
+	@Builder.Default
+	private Integer baseBonus = 0;
 
-	private Integer racialBonus;
+	@Builder.Default
+	private Integer racialBonus = 0;
 
-	private Integer spetialBonus;
+	@Builder.Default
+	private Integer specialBonus = 0;
+
+	public Integer getTotalBonus() {
+		return baseBonus + racialBonus + specialBonus;
+	}
 
 }

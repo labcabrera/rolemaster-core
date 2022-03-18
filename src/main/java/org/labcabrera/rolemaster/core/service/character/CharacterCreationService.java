@@ -7,26 +7,47 @@ import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class CharacterCreationService {
+
+	@Autowired
+	private AttributeCreationService attributeCreationService;
 
 	@Autowired
 	private CharacterInfoRepository repository;
 
+	@Autowired
+	private RaceRepository raceRepository;
+
 	public Mono<CharacterInfo> create(CharacterCreationRequest request) {
-		CharacterInfo character = CharacterInfo.builder()
+		log.info("Processing new character {}", request.getName());
+
+		final CharacterInfo character = CharacterInfo.builder()
 			.name(request.getName())
 			.raceId(request.getRaceId())
 			.build();
 
 		Arrays.asList(AttributeType.values()).stream().forEach(e -> {
-			character.getAttributes().put(e, new CharacterAttribute());
+			int value = request.getBaseAttributes().containsKey(e) ? request.getBaseAttributes().get(e) : 1;
+			character.getAttributes().put(e, CharacterAttribute.builder()
+				.currentValue(value)
+				.potentialValue(attributeCreationService.getPotentialStat(value))
+				.baseBonus(0)
+				.build());
 		});
+
+		raceRepository.findById(request.getRaceId()).subscribe(race -> {
+			log.info("Race: {}, character: {}", race, character);
+		});
+
 		return repository.insert(character);
 	}
 

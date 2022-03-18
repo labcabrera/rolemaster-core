@@ -29,6 +29,8 @@ public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 	@NotEmpty
 	private String raceId;
 
-	private Map<AttributeType, Integer> attributes;
+	private Integer attributesRoll;
+
+	private Map<AttributeType, Integer> baseAttributes;
 
 }
