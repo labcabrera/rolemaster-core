@@ -1,6 +1,5 @@
 package org.labcabrera.rolemaster.core.service.character;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
@@ -20,12 +19,6 @@ public class AttributeCreationService {
 			cost += getCost(value);
 		}
 		return cost;
-	}
-
-	public Map<AttributeType, Integer> getPotentialStats(Map<AttributeType, Integer> values) {
-		Map<AttributeType, Integer> result = new LinkedHashMap<>();
-
-		return result;
 	}
 
 	public int getCost(int value) {
@@ -68,32 +61,32 @@ public class AttributeCreationService {
 			return 90 + randomService.dX(10);
 		}
 		else if (value > 74) {
-			return Integer.max(value, 80 + d100(2));
+			return Integer.max(value, 80 + d10Sum(2));
 		}
 		else if (value > 64) {
-			return Integer.max(value, 70 + d100(3));
+			return Integer.max(value, 70 + d10Sum(3));
 		}
 		else if (value > 54) {
-			return Integer.max(value, 60 + d100(4));
+			return Integer.max(value, 60 + d10Sum(4));
 		}
 		else if (value > 44) {
-			return Integer.max(value, 50 + d100(5));
+			return Integer.max(value, 50 + d10Sum(5));
 		}
 		else if (value > 34) {
-			return Integer.max(value, 40 + d100(6));
+			return Integer.max(value, 40 + d10Sum(6));
 		}
 		else if (value > 24) {
-			return Integer.max(value, 30 + d100(7));
+			return Integer.max(value, 30 + d10Sum(7));
 		}
 		else {
-			return Integer.max(value, 20 + d100(8));
+			return Integer.max(value, 20 + d10Sum(8));
 		}
 	}
 
-	private int d100(int count) {
+	private int d10Sum(int count) {
 		int result = 0;
 		for (int i = 0; i < count; i++) {
-			result += randomService.d100();
+			result += randomService.d10();
 		}
 		return result;
 	}
