@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.maneuver;
+package org.labcabrera.rolemaster.core.model.smaneuver;
 
 import java.util.ArrayList;
 import java.util.List;

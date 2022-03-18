@@ -1,13 +1,12 @@
-package org.labcabrera.rolemaster.core.service.maneuver.impl.modifiers;
+package org.labcabrera.rolemaster.core.service.smaneuver.impl.modifiers;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverDificulty;
-import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverModifier;
-import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverRequest;
-import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverResult;
-import org.labcabrera.rolemaster.core.service.maneuver.impl.StaticManeuverModifierProcessor;
+import org.labcabrera.rolemaster.core.model.smaneuver.StaticManeuverContext;
+import org.labcabrera.rolemaster.core.model.smaneuver.StaticManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.smaneuver.StaticManeuverModifier;
+import org.labcabrera.rolemaster.core.service.smaneuver.impl.StaticManeuverModifierProcessor;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,12 +26,13 @@ public class StaticManeuverDificultyProcessor implements StaticManeuverModifierP
 		modifiers.put(StaticManeuverDificulty.ABSURD, -70);
 	}
 
-	public void accept(StaticManeuverRequest request, StaticManeuverResult result) {
-		int mod = modifiers.get(request.getDificulty());
-		result.getModifiers().add(StaticManeuverModifier.builder()
+	public void accept(StaticManeuverContext context) {
+		int mod = modifiers.get(context.getRequest().getDificulty());
+		StaticManeuverModifier modifier = StaticManeuverModifier.builder()
 			.name("Dificulty modifier")
 			.modifier(mod)
-			.build());
+			.build();
+		context.getModifiers().add(modifier);
 	}
 
 }
