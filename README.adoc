@@ -10,6 +10,7 @@ Ofrece las funcionalidades:
 * Soporte para el combate.
 * Ejecución de maniobras estáticas.
 * Ejecución de maniobras dinámicas.
+* Base de datos de personajes y campañas.
 
 == Tecnologías
 
