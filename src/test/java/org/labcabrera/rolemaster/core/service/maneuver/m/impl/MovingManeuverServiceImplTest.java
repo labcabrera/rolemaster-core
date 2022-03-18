@@ -2,10 +2,13 @@ package org.labcabrera.rolemaster.core.service.maneuver.m.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.labcabrera.rolemaster.core.model.character.Session;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverRequest;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverResult;
+import org.labcabrera.rolemaster.core.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,6 +17,17 @@ class MovingManeuverServiceImplTest {
 
 	@Autowired
 	private MovingManeuverServiceImpl service;
+
+	@Autowired
+	private SessionRepository sessionRepository;
+
+	@BeforeEach
+	void setUp() {
+		Session session = Session.builder()
+			.name("moving-maneuver-test")
+			.build();
+		session = sessionRepository.save(session).share().block();
+	}
 
 	@Test
 	void test() {

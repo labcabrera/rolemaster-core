@@ -17,4 +17,6 @@ public class StaticManeuverRequest {
 
 	private ManeuverDificulty dificulty;
 
+	private String characterStatusId;
+
 }

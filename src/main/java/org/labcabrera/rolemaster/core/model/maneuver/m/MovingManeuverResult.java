@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.maneuver.m;
 
+import java.util.List;
+
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +17,6 @@ public class MovingManeuverResult {
 
 	private Integer requestResult;
 
-	private ManeuverModifier modifiers;
+	private List<ManeuverModifier> modifiers;
 
 }
