@@ -13,7 +13,7 @@ public class OpenApiConfig {
 
 	@Bean
 	OpenAPI openAPIInfo() {
-		OpenAPI openApi = new OpenAPI()
+		return new OpenAPI()
 			.info(new Info().title("Rolemaster core API")
 				.description("")
 				.contact(new Contact()
@@ -23,7 +23,6 @@ public class OpenApiConfig {
 				.license(new License()
 					.name("GPL"))
 				.version("1.0.0"));
-		return openApi;
 	}
 
 }

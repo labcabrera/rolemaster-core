@@ -25,7 +25,7 @@ public class AttributeCreationService {
 		if (value < 90) {
 			return value;
 		}
-		Double tmp = Math.pow(value - 90, 2);
+		Double tmp = Math.pow((double) value - 90, 2);
 		return (int) (90 + tmp);
 	}
 

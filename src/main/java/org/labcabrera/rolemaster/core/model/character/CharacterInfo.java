@@ -38,6 +38,8 @@ public class CharacterInfo {
 	@Builder.Default
 	private Map<AttributeType, CharacterAttribute> attributes = new LinkedHashMap<AttributeType, CharacterAttribute>();
 
+	private Integer maxHp;
+
 	@Builder.Default
 	private EntityMetadata metadata = EntityMetadata.builder().created(LocalDateTime.now()).build();
 

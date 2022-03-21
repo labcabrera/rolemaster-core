@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character;
+package org.labcabrera.rolemaster.core.model.character.status;
 
 import org.springframework.data.annotation.Id;
 
@@ -23,5 +23,9 @@ public class CharacterStatus {
 	private Integer xp;
 
 	private Integer hp;
+
+	private Integer stunned;
+
+	private Integer unconscious;
 
 }

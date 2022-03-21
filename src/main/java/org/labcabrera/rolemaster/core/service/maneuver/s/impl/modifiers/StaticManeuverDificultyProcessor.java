@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier.ModifierType;
 import org.labcabrera.rolemaster.core.model.maneuver.s.StaticManeuverContext;
 import org.labcabrera.rolemaster.core.service.maneuver.s.impl.StaticManeuverModifierProcessor;
 import org.springframework.stereotype.Component;
@@ -29,8 +30,9 @@ public class StaticManeuverDificultyProcessor implements StaticManeuverModifierP
 	public void accept(StaticManeuverContext context) {
 		int mod = modifiers.get(context.getRequest().getDificulty());
 		ManeuverModifier modifier = ManeuverModifier.builder()
-			.name("Dificulty modifier")
+			.description("Dificulty modifier")
 			.modifier(mod)
+			.type(ModifierType.DIFICULTY)
 			.build();
 		context.getModifiers().add(modifier);
 	}

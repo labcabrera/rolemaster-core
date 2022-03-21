@@ -54,9 +54,6 @@ public class AttributeService {
 		else if (value > 15) {
 			return -3;
 		}
-		else if (value > 15) {
-			return -3;
-		}
 		else if (value > 10) {
 			return -4;
 		}

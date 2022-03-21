@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.maneuver.m;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
@@ -15,8 +16,15 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MovingManeuverResult {
 
-	private Integer requestResult;
+	@Builder.Default
+	private List<ManeuverModifier> modifiers = new ArrayList<>();
 
-	private List<ManeuverModifier> modifiers;
+	public Integer getTotalModifiers() {
+		int result = 0;
+		for (ManeuverModifier modifier : modifiers) {
+			result += modifier.getModifier();
+		}
+		return result;
+	}
 
 }

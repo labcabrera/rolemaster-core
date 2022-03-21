@@ -6,6 +6,7 @@ public class MockCharacterConfigurer {
 
 	public static void configure(CharacterInfo characterInfo) {
 		characterInfo.setName("Kiove");
+		characterInfo.setMaxHp(100);
 	}
 
 }

@@ -13,6 +13,12 @@ public class ManeuverModifier {
 
 	private Integer modifier;
 
-	private String name;
+	private String description;
+
+	private ModifierType type;
+
+	public enum ModifierType {
+		DIFICULTY, HP
+	}
 
 }

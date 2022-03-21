@@ -25,11 +25,7 @@ public class OpenapiExamplesConfig {
 
 	@Bean
 	OpenApiCustomiser openApiCustomiser(Collection<Entry<String, Example>> examples) {
-		return openAPI -> {
-			examples.forEach(example -> {
-				openAPI.getComponents().addExamples(example.getKey(), example.getValue());
-			});
-		};
+		return openAPI -> examples.forEach(example -> openAPI.getComponents().addExamples(example.getKey(), example.getValue()));
 	}
 
 	@Bean

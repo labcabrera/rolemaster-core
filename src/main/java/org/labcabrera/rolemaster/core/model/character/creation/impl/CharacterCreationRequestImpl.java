@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.character.creation.impl;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
@@ -31,6 +32,7 @@ public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 
 	private Integer attributesRoll;
 
-	private Map<AttributeType, Integer> baseAttributes;
+	@Builder.Default
+	private Map<AttributeType, Integer> baseAttributes = new LinkedHashMap<>();
 
 }
