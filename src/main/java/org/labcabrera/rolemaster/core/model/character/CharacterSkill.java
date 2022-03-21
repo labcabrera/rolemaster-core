@@ -13,4 +13,14 @@ public class CharacterSkill {
 
 	private String skillId;
 
+	private Integer adolescenseRanks;
+
+	private Integer upgradedRanks;
+
+	@Builder.Default
+	private Integer defaultSkillBonus = 0;
+
+	@Builder.Default
+	private Integer totalBonus = 0;
+
 }
