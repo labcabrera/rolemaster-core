@@ -20,12 +20,12 @@ public class CharacterStatus {
 
 	private String characterId;
 
-	private Integer xp;
-
 	private Integer hp;
 
-	private Integer stunned;
+	@Builder.Default
+	private Integer stunned = 0;
 
-	private Integer unconscious;
+	@Builder.Default
+	private Integer unconscious = 0;
 
 }

@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.model.character.creation.impl.CharacterCreationRequestImpl;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequestImpl;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

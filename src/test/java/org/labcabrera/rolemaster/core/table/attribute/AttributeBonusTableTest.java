@@ -1,12 +1,12 @@
-package org.labcabrera.rolemaster.core.service;
+package org.labcabrera.rolemaster.core.table.attribute;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class AttributeServiceTest {
+class AttributeBonusTableTest {
 
-	private AttributeService service = new AttributeService();
+	private AttributeBonusTable service = new AttributeBonusTable();
 
 	@Test
 	void test102() {

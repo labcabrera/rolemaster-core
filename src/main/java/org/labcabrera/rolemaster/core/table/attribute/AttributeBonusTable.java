@@ -1,9 +1,9 @@
-package org.labcabrera.rolemaster.core.service;
+package org.labcabrera.rolemaster.core.table.attribute;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-public class AttributeService {
+@Component
+public class AttributeBonusTable {
 
 	public int getBonus(int value) {
 		if (value > 101) {

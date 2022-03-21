@@ -25,4 +25,9 @@ public class CharacterStatusControllerImpl implements CharacterStatusController 
 		return characterStatusService.findAll();
 	}
 
+	@Override
+	public Mono<CharacterStatus> hpModification(Integer value) {
+		return null;
+	}
+
 }

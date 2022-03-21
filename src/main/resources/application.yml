@@ -10,8 +10,7 @@ logging:
     root: WARN
     org.labcabrera: DEBUG
     org.mongodb: INFO
-    org.mongodb.driver.connection: INFO
-    org.mongodb.driver.protocol.command: DEBUG
+    org.mongodb.driver.protocol.command: INFO
     
 springdoc:
   swagger-ui:

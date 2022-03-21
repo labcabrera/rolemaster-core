@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.List;
+
+import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,5 +25,10 @@ public class Profession {
 
 	@Schema(description = "Profession name")
 	private String name;
+
+	@Schema(description = "Available realms")
+	private List<String> availableRealms;
+
+	private EntityMetadata metadata;
 
 }

@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,5 +21,9 @@ public interface CharacterStatusController {
 	@GetMapping
 	@Operation(summary = "Character status search.")
 	Flux<CharacterStatus> findAll();
+
+	@PostMapping("/{id}/hp")
+	@Operation(summary = "HP modification over an existing character status.")
+	Mono<CharacterStatus> hpModification(Integer value);
 
 }

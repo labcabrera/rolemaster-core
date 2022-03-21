@@ -10,6 +10,10 @@ group = 'org.labcabrera.rolemaster'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+ext {
+	set('springdocVersion',            '1.6.6')
+}
+
 configurations {
   compileOnly {
     extendsFrom annotationProcessor
@@ -26,7 +30,7 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-validation'
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
   
-  implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.6'
+  implementation "org.springdoc:springdoc-openapi-webflux-ui:${springdocVersion}"
 
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   compileOnly 'org.projectlombok:lombok'

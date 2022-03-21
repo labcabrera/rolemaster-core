@@ -5,7 +5,7 @@
 		"primeStats": [
 			"st",
 			"co"
-		]
+		],
 		"availableRealms": [
 			"channeling",
 			"essence",
@@ -13,7 +13,7 @@
 		],
 		"professionBonuses": [
 			"armor-group": 10,
-			"body-development": 10
+			"body-development": 10,
 			"combat-maneuvers": 10,
 			"weapon-group": 20
 		]

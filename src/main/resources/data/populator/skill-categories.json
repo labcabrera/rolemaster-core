@@ -1,0 +1,78 @@
+[
+	{
+		"id": "athletic-brawn",
+		"name": "Athletic - Brawn"
+	},
+	{
+		"id": "athletic-endurance",
+		"name": "Athletic - Endurance"
+	},
+	{
+		"id": "athletic-gymnastics",
+		"name": "Athletic - Gymnastics"
+	},
+	{
+		"id": "awareness-perceptions",
+		"name": "Awareness - Perceptions"
+	},
+	{
+		"id": "awareness-searching",
+		"name": "Awareness - Searching"
+	},
+	{
+		"id": "awareness-senses",
+		"name": "Awareness - Senses"
+	},
+	{
+		"id": "armor-heavy",
+		"name": "Armor - Heavy"
+	},
+	{
+		"id": "armor-medium",
+		"name": "Armor - Medium"
+	},
+	{
+		"id": "armor-ligth",
+		"name": "Armor Ligth"
+	},
+	{
+		"id": "weapon-1h-edged",
+		"name": "Weapon - 1H Edged"
+	},
+	{
+		"id": "weapon-1h-concussion",
+		"name": "Weapon - 1H Concussion"
+	},
+	{
+		"id": "weapon-2h",
+		"name": "Weapon - 2H"
+	},
+	{
+		"id": "weapon-missile",
+		"name": "Weapon - Misille"
+	},
+	{
+		"id": "weapon-missile-artillery",
+		"name": "Weapon - Misille Artillery"
+	},
+	{
+		"id": "weapon-pole-arms",
+		"name": "Weapon - Pole Arms"
+	},
+	{
+		"id": "weapon-thrown",
+		"name": "Weapon - Thrown"
+	},
+	{
+		"id": "subterfuge-attack",
+		"name": "Subterfuge - Attack"
+	},
+	{
+		"id": "subterfuge-mechanics",
+		"name": "Subterfuge - Mechanics"
+	},
+	{
+		"id": "subterfuge-stealth",
+		"name": "Subterfuge - Stealth"
+	}
+]

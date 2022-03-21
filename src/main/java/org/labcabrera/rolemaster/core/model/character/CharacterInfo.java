@@ -38,7 +38,17 @@ public class CharacterInfo {
 	@Builder.Default
 	private Map<AttributeType, CharacterAttribute> attributes = new LinkedHashMap<AttributeType, CharacterAttribute>();
 
+	@Builder.Default
+	private List<CharacterSkillCategory> skillCategories = new ArrayList<>();
+
+	@Builder.Default
+	private List<CharacterSkill> skills = new ArrayList<>();
+
 	private Integer maxHp;
+
+	private Integer maxExhaustionPoints;
+
+	private Integer xp;
 
 	@Builder.Default
 	private EntityMetadata metadata = EntityMetadata.builder().created(LocalDateTime.now()).build();

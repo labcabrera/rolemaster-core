@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.impl.CharacterCreationRequestImpl;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequestImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

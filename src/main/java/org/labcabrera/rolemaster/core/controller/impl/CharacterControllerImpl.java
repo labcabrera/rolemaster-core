@@ -4,9 +4,9 @@ import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.controller.CharacterController;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.impl.CharacterCreationRequestImpl;
-import org.labcabrera.rolemaster.core.service.character.CharacterCreationService;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequestImpl;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
@@ -25,8 +26,14 @@ public class Race {
 
 	private EntityMetadata metadata;
 
-	private Map<AttributeType, Integer> attributeModifiers;
+	@Builder.Default
+	private Map<AttributeType, Integer> attributeModifiers = new LinkedHashMap<>();
 
-	private Map<String, Integer> resistanceModifiers;
+	@Builder.Default
+	private Map<String, Integer> resistanceModifiers = new LinkedHashMap<>();
+
+	private Map<String, Integer> adolescenseSkillCategoryRanks;
+
+	private Map<String, Integer> adolescenseSkillRanks;
 
 }

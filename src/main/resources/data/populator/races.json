@@ -5,6 +5,13 @@
     "attributeModifiers": {
     	"sd": 2,
     	"st": 2
+    },
+    "adolescenseSkillCategoryRanks": {
+    	"armor-ligth": 1,
+    	"armor-medium": 1
+    },
+    "adolescenseSkillRanks": {
+    	"body-development": 2
     }
   },
   {

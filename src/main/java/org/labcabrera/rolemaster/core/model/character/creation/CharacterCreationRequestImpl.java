@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character.creation.impl;
+package org.labcabrera.rolemaster.core.model.character.creation;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.validation.constraints.NotEmpty;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.validation.ExistingRaceValidator.ExistingRace;
 
 import io.swagger.v3.oas.annotations.media.Schema;
