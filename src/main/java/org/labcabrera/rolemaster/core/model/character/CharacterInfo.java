@@ -29,6 +29,8 @@ public class CharacterInfo {
 
 	private String raceId;
 
+	private CharacterCreationStatus creationStatus;
+
 	@Builder.Default
 	private List<String> professions = new ArrayList<>();
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
+import org.labcabrera.rolemaster.core.model.character.CharacterCreationStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
@@ -45,6 +46,7 @@ public class CharacterCreationService {
 		final CharacterInfo character = CharacterInfo.builder()
 			.name(request.getName())
 			.raceId(request.getRaceId())
+			.creationStatus(CharacterCreationStatus.PARTIALLY_CREATED)
 			.build();
 
 		Arrays.asList(AttributeType.values()).stream().forEach(e -> {
