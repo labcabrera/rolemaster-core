@@ -66,7 +66,7 @@ class MovingManeuverServiceImplTest {
 		MovingManeuverRequest request = MovingManeuverRequest.builder()
 			.dificulty(ManeuverDificulty.EASY)
 			.build();
-		MovingManeuverResult result = service.apply(request);
+		MovingManeuverResult result = service.apply(request).share().block();
 		assertNotNull(result);
 	}
 
@@ -77,7 +77,7 @@ class MovingManeuverServiceImplTest {
 			.characterStatusId(characterStatus.getId())
 			.dificulty(ManeuverDificulty.EASY)
 			.build();
-		MovingManeuverResult result = service.apply(request);
+		MovingManeuverResult result = service.apply(request).share().block();
 		assertNotNull(result);
 
 		Optional<ManeuverModifier> modifierHP = result.getModifiers().stream().filter(e -> e.getType() == ModifierType.HP).findFirst();

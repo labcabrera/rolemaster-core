@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
+import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverContextImpl;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverRequest;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverResult;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
@@ -14,6 +15,8 @@ import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverModifierP
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import reactor.core.publisher.Mono;
 
 @Service
 public class MovingManeuverServiceImpl implements MovingManeuverService {
@@ -27,14 +30,14 @@ public class MovingManeuverServiceImpl implements MovingManeuverService {
 	@Autowired
 	private CharacterInfoRepository characterInfoRepository;
 
+	//TODO non-reactive
 	@Override
-	public MovingManeuverResult apply(MovingManeuverRequest request) {
+	public Mono<MovingManeuverResult> apply(MovingManeuverRequest request) {
 		MovingManeuverContext context = MovingManeuverContextImpl.builder()
 			.request(request)
 			.maneuverModifiers(request.getCustomModifiers())
 			.build();
 
-		//TODO non-reactive
 		if (request.getCharacterStatusId() != null) {
 			CharacterStatus status = characterStatusRepository.findById(request.getCharacterStatusId()).share().block();
 			context.setCharacterStatus(Optional.of(status));
@@ -49,7 +52,7 @@ public class MovingManeuverServiceImpl implements MovingManeuverService {
 			.modifiers(context.getManeuverModifiers())
 			.build();
 
-		return result;
+		return Mono.just(result);
 	}
 
 }

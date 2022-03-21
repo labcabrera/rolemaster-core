@@ -2,10 +2,13 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.impl.CharacterCreationRequestImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -14,6 +17,7 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Tag(name = "Characters")
@@ -24,12 +28,26 @@ public interface CharacterController {
 	@Operation(summary = "Character search by id.")
 	Mono<CharacterInfo> findById(@PathVariable String id);
 
+	@GetMapping
+	@Operation(summary = "Characters search.")
+	Flux<CharacterInfo> findAll();
+
 	@PostMapping
 	@ApiResponse(responseCode = "201", description = "Character created")
 	@Operation(summary = "Character creation.")
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
 	Mono<CharacterInfo> create(
 		@Parameter(description = "Character creation request", required = true) @RequestBody(content = @Content(examples = {
 			@ExampleObject(name = "Character creation example 01", ref = "#/components/examples/characterCreationExample01"),
 			@ExampleObject(name = "Character creation example 02", ref = "#/components/examples/characterCreationExample01")
 		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequestImpl request);
+
+	@DeleteMapping("/id")
+	@Operation(summary = "Delete all characters.")
+	Mono<Void> deleteById(@PathVariable String id);
+
+	@DeleteMapping()
+	@Operation(summary = "Delete character.")
+	Mono<Void> deleteAll();
+
 }
