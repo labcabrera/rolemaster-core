@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.controller.exception;
 
+import org.apache.commons.lang3.StringUtils;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.ApiError.Message;
 import org.springframework.core.annotation.Order;
@@ -19,8 +20,10 @@ public class InternalErrorHandler {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ApiError> serverExceptionHandler(Exception ex) {
 		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+		String message = ex.getMessage();
+
 		ApiError error = ApiError.builder()
-			.message(ex.getMessage())
+			.message(StringUtils.isNotBlank(message) ? message : "Internal server error")
 			.build();
 
 		if (ex instanceof WebExchangeBindException) {
@@ -35,7 +38,7 @@ public class InternalErrorHandler {
 			status = HttpStatus.BAD_REQUEST;
 		}
 		else {
-
+			log.error("Internal server error", ex);
 		}
 
 		return new ResponseEntity<>(error, status);

@@ -43,10 +43,12 @@ public interface CharacterController {
 		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequestImpl request);
 
 	@DeleteMapping("/id")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")
 	@Operation(summary = "Delete all characters.")
 	Mono<Void> deleteById(@PathVariable String id);
 
 	@DeleteMapping()
+	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted characters")
 	@Operation(summary = "Delete character.")
 	Mono<Void> deleteAll();
 

@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.character.Session;
+import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.labcabrera.rolemaster.core.repository.SessionRepository;
+import org.labcabrera.rolemaster.core.service.character.CharacterStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ public class SessionService {
 
 	@Autowired
 	private SessionRepository repository;
+
+	@Autowired
+	private CharacterStatusService characterStatusService;
 
 	public Mono<Session> findById(String id) {
 		return repository.findById(id);
@@ -37,6 +42,10 @@ public class SessionService {
 		return repository.save(session);
 	}
 
+	public Mono<CharacterStatus> addCharacter(String sessionId, String characterId) {
+		return characterStatusService.create(sessionId, characterId);
+	}
+
 	public Mono<Void> deleteAll() {
 		log.info("Deleting all sessions");
 		return repository.deleteAll();
@@ -44,7 +53,7 @@ public class SessionService {
 
 	public Mono<Void> deleteAll(String id) {
 		log.info("Deleting session {}", id);
-		return repository.deleteById(id);
+		return repository.deleteById(id).thenEmpty(e -> log.info("Deleted session {}", id));
 	}
 
 }

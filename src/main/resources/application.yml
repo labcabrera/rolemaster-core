@@ -4,7 +4,15 @@ spring:
       database: rolemaster
       port: 27017
       host: localhost
+
 logging:
   level:
     root: WARN
     org.labcabrera: DEBUG
+    org.mongodb: INFO
+    org.mongodb.driver.connection: INFO
+    org.mongodb.driver.protocol.command: DEBUG
+    
+springdoc:
+  swagger-ui:
+    operationsSorter: alpha

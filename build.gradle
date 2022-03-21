@@ -28,6 +28,7 @@ dependencies {
   
   implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.6'
 
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
 
