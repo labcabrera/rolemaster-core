@@ -32,7 +32,6 @@ dependencies {
   
   implementation "org.springdoc:springdoc-openapi-webflux-ui:${springdocVersion}"
 
-  developmentOnly 'org.springframework.boot:spring-boot-devtools'
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
 
