@@ -1,16 +1,21 @@
 package org.labcabrera.rolemaster.core.service.character.creation;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterCreationStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
+import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.service.character.AttributeCreationService;
-import org.labcabrera.rolemaster.core.service.character.adapter.CharacterAdapter;
+import org.labcabrera.rolemaster.core.service.character.adapter.CharacterExhaustionAdapter;
+import org.labcabrera.rolemaster.core.service.character.adapter.CharacterHpAdapter;
+import org.labcabrera.rolemaster.core.service.character.adapter.CharacterSkillAdapter;
 import org.labcabrera.rolemaster.core.table.attribute.AttributeBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +37,13 @@ public class CharacterCreationService {
 	private CharacterInfoRepository repository;
 
 	@Autowired
-	private List<CharacterAdapter> adapters;
+	private CharacterSkillAdapter skillAdapter;
+
+	@Autowired
+	private CharacterHpAdapter hpAdapter;
+
+	@Autowired
+	private CharacterExhaustionAdapter exhaustionAdapter;
 
 	@Autowired
 	private CharacterCreationSkillCategoryService skillCategoryService;
@@ -40,15 +51,53 @@ public class CharacterCreationService {
 	@Autowired
 	private CharacterCreationSkillService skillCreationService;
 
+	@Autowired
+	private RaceRepository raceRepository;
+
+	@Autowired
+	private ProfessionRepository professionRepository;
+
 	public Mono<CharacterInfo> create(CharacterCreationRequest request) {
 		log.info("Processing new character {}", request.getName());
 
 		final CharacterInfo character = CharacterInfo.builder()
 			.name(request.getName())
 			.raceId(request.getRaceId())
+			.professionId(request.getProfessionId())
 			.creationStatus(CharacterCreationStatus.PARTIALLY_CREATED)
 			.build();
 
+		loadAttributes(character, request);
+
+		final CharacterModificationContext context = CharacterModificationContextImpl.builder()
+			.character(character)
+			.build();
+
+		return Mono.just(context)
+			.zipWith(raceRepository.findById(request.getRaceId()))
+			.map(tuple -> {
+				tuple.getT1().setRace(tuple.getT2());
+				return tuple.getT1();
+			})
+			.zipWith(professionRepository.findById(request.getProfessionId()))
+			.map(tuple -> {
+				tuple.getT1().setProfession(tuple.getT2());
+				return tuple.getT1();
+			})
+			.map(ctx -> {
+				return ctx;
+			})
+			.flatMap(skillCategoryService::initialize)
+			.flatMap(skillCreationService::initialize)
+			.flatMap(skillAdapter::apply)
+			.flatMap(hpAdapter::apply)
+			.flatMap(exhaustionAdapter::apply)
+			.map(ctx -> ctx.getCharacter())
+			.flatMap(repository::save);
+
+	}
+
+	private void loadAttributes(CharacterInfo character, CharacterCreationRequest request) {
 		Arrays.asList(AttributeType.values()).stream().forEach(e -> {
 			int value = request.getBaseAttributes().containsKey(e) ? request.getBaseAttributes().get(e) : 1;
 			character.getAttributes().put(e, CharacterAttribute.builder()
@@ -57,17 +106,6 @@ public class CharacterCreationService {
 				.baseBonus(attributeBonusTable.getBonus(value))
 				.build());
 		});
-
-		Mono<CharacterInfo> monoCharacter = Mono.just(character)
-			.flatMap(skillCategoryService::initialize)
-			.flatMap(skillCreationService::initialize)
-			.map(e -> {
-				adapters.stream().forEach(adapter -> adapter.accept(e));
-				return e;
-			})
-			.flatMap(repository::save);
-
-		return monoCharacter;
 	}
 
 }

@@ -1,6 +1,7 @@
 {
 	"name": "Kiove",
 	"raceId": "common-men",
+	"professionId": "thief",
 	"attributesRoll": 660,
 	"baseAttributes": {
 		"ag": 96,

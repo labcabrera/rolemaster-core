@@ -4,12 +4,15 @@ import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.Skill;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Component
 @Order(100)
@@ -20,21 +23,27 @@ public class CharacterSkillAdapter implements CharacterAdapter {
 	private SkillRepository skillRepository;
 
 	@Override
-	public void accept(CharacterInfo character) {
+	public Mono<CharacterModificationContext> apply(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
 		log.debug("Loading skills for {}", character.getId() == null ? "new character" : "character " + character.getId());
-		character.getSkills().stream().forEach(e -> loadSkill(character, e));
+		Flux.fromIterable(character.getSkills())
+			.doOnNext(e -> log.debug("Processing skill {}", e))
+			.flatMap(e -> loadSkill(character, e))
+			.map(e -> character)
+			.subscribe();
+		return Mono.just(context);
+
 	}
 
-	private void loadSkill(CharacterInfo character, CharacterSkill characterSkill) {
-		String skillId = characterSkill.getSkillId();
-		skillRepository
-			.findById(skillId)
+	private Mono<CharacterInfo> loadSkill(CharacterInfo character, CharacterSkill characterSkill) {
+		return skillRepository
+			.findById(characterSkill.getSkillId())
 			.map(skill -> {
 				loadAttributeBonus(character, characterSkill, skill);
 				return characterSkill;
 			})
 			.doOnNext(e -> log.debug("Loaded skill {}", e))
-			.subscribe();
+			.map(e -> character);
 	}
 
 	private void loadAttributeBonus(CharacterInfo character, CharacterSkill characterSkill, Skill skill) {
@@ -43,6 +52,9 @@ public class CharacterSkillAdapter implements CharacterAdapter {
 			for (AttributeType i : skill.getAttributeBonus()) {
 				bonus += character.getAttributes().get(i).getTotalBonus();
 			}
+		}
+		else {
+			log.debug("Missing skill {} attribute bonus", skill.getId());
 		}
 		characterSkill.setAttributeBonus(bonus);
 	}

@@ -4,6 +4,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.SkillCategory;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,8 @@ public class CharacterCreationSkillCategoryService {
 	@Autowired
 	private RaceRepository raceRepository;
 
-	public Mono<CharacterInfo> initialize(CharacterInfo character) {
+	public Mono<CharacterModificationContext> initialize(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
 		repository.findAll()
 			.map(category -> addCharacterSkillCategory(character, category))
 			.doOnNext(e -> log.debug("Added skill category {}", e))
@@ -30,8 +32,9 @@ public class CharacterCreationSkillCategoryService {
 				return raceRepository.findById(character.getRaceId())
 					.map(race -> loadRaceSkillCategories(character, race));
 			})
+			.map(e -> character)
 			.subscribe();
-		return Mono.just(character);
+		return Mono.just(context);
 	}
 
 	private CharacterInfo addCharacterSkillCategory(CharacterInfo character, SkillCategory category) {

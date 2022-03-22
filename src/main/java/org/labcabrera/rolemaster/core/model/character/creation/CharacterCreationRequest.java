@@ -10,6 +10,8 @@ public interface CharacterCreationRequest {
 
 	String getRaceId();
 
+	String getProfessionId();
+
 	Integer getAttributesRoll();
 
 	Map<AttributeType, Integer> getBaseAttributes();

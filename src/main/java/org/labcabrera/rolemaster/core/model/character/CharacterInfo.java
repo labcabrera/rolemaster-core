@@ -31,8 +31,7 @@ public class CharacterInfo {
 
 	private CharacterCreationStatus creationStatus;
 
-	@Builder.Default
-	private List<String> professions = new ArrayList<>();
+	private String professionId;
 
 	@Builder.Default
 	private Map<String, Resistance> resistances = new LinkedHashMap<>();

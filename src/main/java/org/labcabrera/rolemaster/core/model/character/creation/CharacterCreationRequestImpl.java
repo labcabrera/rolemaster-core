@@ -20,17 +20,22 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 
-	@Schema(description = "Character name", example = "Kiove")
 	@NotEmpty
+	@Schema(description = "Character name.", example = "Kiove")
 	private String name;
 
-	@Schema(description = "Characted race identifier", example = "human")
 	@ExistingRace
 	@NotEmpty
+	@Schema(description = "Characted race identifier.", example = "common-men")
 	private String raceId;
+
+	@NotEmpty
+	@Schema(description = "Characted race identifier.", example = "figther")
+	private String professionId;
 
 	private Integer attributesRoll;
 
+	@NotEmpty
 	@Builder.Default
 	private Map<AttributeType, Integer> baseAttributes = new LinkedHashMap<>();
 
