@@ -46,6 +46,9 @@ public class CharacterInfo {
 	@Builder.Default
 	private List<CharacterSkill> skills = new ArrayList<>();
 
+	@Builder.Default
+	private CharacterDevelopmentPoints developmentPoints = new CharacterDevelopmentPoints();
+
 	private Integer maxHp;
 
 	private Integer maxExhaustionPoints;

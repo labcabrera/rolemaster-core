@@ -10,7 +10,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.service.character.AttributeCreationService;
-import org.labcabrera.rolemaster.core.service.character.CharacterAdapter;
+import org.labcabrera.rolemaster.core.service.character.adapter.CharacterAdapter;
 import org.labcabrera.rolemaster.core.table.attribute.AttributeBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,11 +58,13 @@ public class CharacterCreationService {
 				.build());
 		});
 
-		adapters.stream().forEach(adapter -> adapter.accept(character));
-
 		Mono<CharacterInfo> monoCharacter = Mono.just(character)
 			.flatMap(skillCategoryService::initialize)
 			.flatMap(skillCreationService::initialize)
+			.map(e -> {
+				adapters.stream().forEach(adapter -> adapter.accept(e));
+				return e;
+			})
 			.flatMap(repository::save);
 
 		return monoCharacter;
