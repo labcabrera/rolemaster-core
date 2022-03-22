@@ -7,7 +7,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Mono;
 
 @Component
 @Order(201)
@@ -15,13 +14,13 @@ import reactor.core.publisher.Mono;
 public class CharacterExhaustionAdapter implements CharacterAdapter {
 
 	@Override
-	public Mono<CharacterModificationContext> apply(CharacterModificationContext context) {
+	public CharacterModificationContext apply(CharacterModificationContext context) {
 		CharacterInfo character = context.getCharacter();
 		log.debug("Loading exhaustion points for {}", character.getId() == null ? "new character" : "character " + character.getId());
 		int bonus = character.getAttributes().get(AttributeType.CONSTITUTION).getTotalBonus();
 		int ep = 40 + bonus * 3;
 		character.setMaxExhaustionPoints(ep);
-		return Mono.just(context);
+		return context;
 	}
 
 }

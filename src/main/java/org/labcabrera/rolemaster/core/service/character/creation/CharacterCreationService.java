@@ -12,6 +12,8 @@ import org.labcabrera.rolemaster.core.model.character.creation.CharacterModifica
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
+import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
+import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.service.character.AttributeCreationService;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterExhaustionAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterHpAdapter;
@@ -57,6 +59,12 @@ public class CharacterCreationService {
 	@Autowired
 	private ProfessionRepository professionRepository;
 
+	@Autowired
+	private SkillCategoryRepository skillCategoryRepository;
+
+	@Autowired
+	private SkillRepository skillRepository;
+
 	public Mono<CharacterInfo> create(CharacterCreationRequest request) {
 		log.info("Processing new character {}", request.getName());
 
@@ -84,14 +92,23 @@ public class CharacterCreationService {
 				tuple.getT1().setProfession(tuple.getT2());
 				return tuple.getT1();
 			})
-			.map(ctx -> {
-				return ctx;
+			.flatMap(ctx -> {
+				return skillCategoryRepository.findAll()
+					.collectList()
+					.doOnNext(list -> ctx.setSkillCategories(list))
+					.map(e -> ctx);
 			})
-			.flatMap(skillCategoryService::initialize)
-			.flatMap(skillCreationService::initialize)
-			.flatMap(skillAdapter::apply)
-			.flatMap(hpAdapter::apply)
-			.flatMap(exhaustionAdapter::apply)
+			.flatMap(ctx -> {
+				return skillRepository.findSkillsOnNewCharacter()
+					.collectList()
+					.doOnNext(list -> ctx.setSkills(list))
+					.map(e -> ctx);
+			})
+			.map(skillCategoryService::initialize)
+			.map(skillCreationService::initialize)
+			.map(skillAdapter::apply)
+			.map(hpAdapter::apply)
+			.map(exhaustionAdapter::apply)
 			.map(ctx -> ctx.getCharacter())
 			.flatMap(repository::save);
 

@@ -1,13 +1,17 @@
 package org.labcabrera.rolemaster.core.reactor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.reactivestreams.Publisher;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -26,8 +30,38 @@ class ReactorTest {
 
 	@Test
 	void test03() {
-		Mono<TestContext> mono = Mono.just(TestContext.builder().name("ctx-1").build());
-		Flux<String> flux = Flux.just("skill1", "skill2", "skill3", "skill4");
+		Mono<String> mono2 = Mono.just("ctx-2");
+		Flux<String> flux = Flux.just("skill1", "skill2", "skill3", "skill4", "skill5", "skill6");
+		mono2
+			.flatMap(name -> {
+				return flux
+					.collectList()
+					.map(skills -> {
+						System.out.println("Skills: " + skills);
+						return new TestContext(name, skills);
+					});
+			});
+		mono2.subscribe(System.out::println);
+	}
+
+	@Test
+	void test04() {
+		Flux<String> flux1 = Flux.just("skill1", "skill2", "skill3", "skill4", "skill5", "skill6");
+		Mono<ArrayList<String>> flux2 = flux1
+			.buffer(1000)
+			.elementAt(0)
+			.map(values -> new ArrayList<>(values));
+		ArrayList<String> block = flux2.share().block();
+		assertEquals(6, block.size());
+	}
+
+	@Test
+	void test05() {
+		Flux<String> flux1 = Flux.just("skill1", "skill2", "skill3", "skill4", "skill5", "skill6");
+		Mono<List<String>> flux2 = flux1
+			.collectList();
+		List<String> list = flux2.share().block();
+		assertEquals(6, list.size());
 	}
 
 	@Test
@@ -62,6 +96,8 @@ class ReactorTest {
 
 	@Data
 	@Builder
+	@AllArgsConstructor
+	@NoArgsConstructor
 	static class TestContext {
 		private String name;
 		@Builder.Default

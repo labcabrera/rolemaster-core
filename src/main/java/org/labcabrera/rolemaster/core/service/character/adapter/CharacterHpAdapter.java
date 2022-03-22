@@ -7,7 +7,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Mono;
 
 @Component
 @Order(200)
@@ -15,7 +14,7 @@ import reactor.core.publisher.Mono;
 public class CharacterHpAdapter implements CharacterAdapter {
 
 	@Override
-	public Mono<CharacterModificationContext> apply(CharacterModificationContext context) {
+	public CharacterModificationContext apply(CharacterModificationContext context) {
 		CharacterInfo character = context.getCharacter();
 		log.debug("Loading max HP for {}", character.getId() == null ? "new character" : "character " + character.getId());
 
@@ -27,7 +26,7 @@ public class CharacterHpAdapter implements CharacterAdapter {
 		int professionBonus = 0;
 		int maxHp = 10 + skill.getTotalBonus() + professionBonus;
 		character.setMaxHp(maxHp);
-		return Mono.just(context);
+		return context;
 	}
 
 }
