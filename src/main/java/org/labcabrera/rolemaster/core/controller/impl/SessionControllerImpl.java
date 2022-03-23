@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
+import javax.validation.Valid;
+
 import org.labcabrera.rolemaster.core.controller.SessionController;
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
@@ -29,13 +31,13 @@ public class SessionControllerImpl implements SessionController {
 	}
 
 	@Override
-	public Mono<Session> createSession(SessionCreationRequest request) {
+	public Mono<Session> createSession(@Valid SessionCreationRequest request) {
 		return sessionService.createSession(request);
 	}
 
 	@Override
-	public Mono<Session> updateSession(String id, SessionUpdateRequest request) {
-		return sessionService.updateSession(id,request);
+	public Mono<Session> updateSession(String id, @Valid SessionUpdateRequest request) {
+		return sessionService.updateSession(id, request);
 	}
 
 	@Override
