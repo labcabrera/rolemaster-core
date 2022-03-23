@@ -70,6 +70,7 @@ public class CharacterCreationService {
 		log.info("Processing new character {}", request.getName());
 
 		final CharacterInfo character = CharacterInfo.builder()
+			.level(1)
 			.name(request.getName())
 			.raceId(request.getRaceId())
 			.professionId(request.getProfessionId())

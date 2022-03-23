@@ -24,6 +24,8 @@ public class CharacterInfo {
 
 	@Id
 	private String id;
+	
+	private Integer level;
 
 	private String name;
 
