@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.service.demo;
 
+import java.time.LocalDate;
+
+import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.Session;
@@ -51,7 +54,10 @@ public class DemoService {
 		CharacterInfo character = monoCreate.share().block();
 		String characterId = character.getId();
 
-		Session session = sessionService.createSession("Dummy session").share().block();
+		SessionCreationRequest sessionCreationRequest = SessionCreationRequest.builder()
+			.name("Demo session " + LocalDate.now().toString())
+			.build();
+		Session session = sessionService.createSession(sessionCreationRequest).share().block();
 		String sessionId = session.getId();
 
 		CharacterStatus status = sessionService.addCharacter(sessionId, characterId).share().block();

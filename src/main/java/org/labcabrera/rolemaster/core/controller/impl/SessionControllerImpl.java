@@ -1,6 +1,8 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
 import org.labcabrera.rolemaster.core.controller.SessionController;
+import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
 import org.labcabrera.rolemaster.core.model.character.Session;
 import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.labcabrera.rolemaster.core.service.session.SessionService;
@@ -27,8 +29,13 @@ public class SessionControllerImpl implements SessionController {
 	}
 
 	@Override
-	public Mono<Session> createSession(String name) {
-		return sessionService.createSession(name);
+	public Mono<Session> createSession(SessionCreationRequest request) {
+		return sessionService.createSession(request);
+	}
+
+	@Override
+	public Mono<Session> updateSession(String id, SessionUpdateRequest request) {
+		return sessionService.updateSession(id,request);
 	}
 
 	@Override

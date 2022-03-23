@@ -2,6 +2,9 @@ package org.labcabrera.rolemaster.core.service.session;
 
 import java.time.LocalDateTime;
 
+import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
+import org.labcabrera.rolemaster.core.exception.SessionNotFoundException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.character.Session;
 import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
@@ -32,9 +35,9 @@ public class SessionService {
 		return repository.findAll();
 	}
 
-	public Mono<Session> createSession(String name) {
+	public Mono<Session> createSession(SessionCreationRequest request) {
 		Session session = Session.builder()
-			.name(name)
+			.name(request.getName())
 			.metadata(EntityMetadata.builder()
 				.created(LocalDateTime.now())
 				.build())
@@ -54,6 +57,17 @@ public class SessionService {
 	public Mono<Void> deleteAll(String id) {
 		log.info("Deleting session {}", id);
 		return repository.deleteById(id).thenEmpty(e -> log.info("Deleted session {}", id));
+	}
+
+	public Mono<Session> updateSession(String id, SessionUpdateRequest request) {
+		return repository.findById(id)
+			.switchIfEmpty(Mono.error(new SessionNotFoundException(id)))
+			.map(s -> {
+				s.setName(request.getName());
+				s.getMetadata().setUpdated(LocalDateTime.now());
+				return s;
+			})
+			.flatMap(repository::save);
 	}
 
 }

@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.exception;
 
 import org.apache.commons.lang3.StringUtils;
+import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.ApiError.Message;
 import org.springframework.core.annotation.Order;
@@ -19,29 +20,34 @@ public class InternalErrorHandler {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ApiError> serverExceptionHandler(Exception ex) {
-		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-		String message = ex.getMessage();
-
-		ApiError error = ApiError.builder()
-			.message(StringUtils.isNotBlank(message) ? message : "Internal server error")
-			.build();
+		log.debug("Handling exception {}", ex.getClass().getName());
 
 		if (ex instanceof WebExchangeBindException) {
 			log.info("Invalid request: {}", ex.getMessage());
 			WebExchangeBindException bindEx = (WebExchangeBindException) ex;
-			error.setMessage("Invalid request");
+			ApiError error = ApiError.builder()
+				.message("Invalid request")
+				.build();
 			bindEx.getAllErrors().stream().forEach(e -> {
 				error.getMessages().add(Message.builder()
 					.message(e.getDefaultMessage())
 					.build());
 			});
-			status = HttpStatus.BAD_REQUEST;
+			return ResponseEntity.badRequest().body(error);
+		}
+		else if (ex instanceof NotFoundException) {
+			log.warn("Returning not found exception: {}", ex.getMessage());
+			return ResponseEntity.notFound().build();
 		}
 		else {
 			log.error("Internal server error", ex);
 		}
 
-		return new ResponseEntity<>(error, status);
+		String message = ex.getMessage();
+		ApiError error = ApiError.builder()
+			.message(StringUtils.isNotBlank(message) ? message : "Internal server error")
+			.build();
+		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }
