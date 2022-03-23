@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.service.character.creation;
 
 import java.util.Arrays;
 
+import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterCreationStatus;
@@ -83,11 +84,13 @@ public class CharacterCreationService {
 
 		return Mono.just(context)
 			.zipWith(raceRepository.findById(request.getRaceId()))
+			.switchIfEmpty(Mono.error(new NotFoundException("Race " + request.getRaceId() + " not found")))
 			.map(tuple -> {
 				tuple.getT1().setRace(tuple.getT2());
 				return tuple.getT1();
 			})
 			.zipWith(professionRepository.findById(request.getProfessionId()))
+			.switchIfEmpty(Mono.error(new NotFoundException("Profession " + request.getProfessionId() + " not found")))
 			.map(tuple -> {
 				tuple.getT1().setProfession(tuple.getT2());
 				return tuple.getT1();
@@ -110,7 +113,9 @@ public class CharacterCreationService {
 			.map(hpAdapter::apply)
 			.map(exhaustionAdapter::apply)
 			.map(ctx -> ctx.getCharacter())
-			.flatMap(repository::save);
+			.flatMap(repository::save)
+			.doOnNext(e -> log.info("Created character {}", e))
+			.map(e -> e);
 
 	}
 

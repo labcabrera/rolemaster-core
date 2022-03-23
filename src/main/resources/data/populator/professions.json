@@ -1,7 +1,7 @@
 [
 	{
-		"id": "figther",
-		"name": "Figther",
+		"id": "fighter",
+		"name": "Fighter",
 		"primeStats": [
 			"st",
 			"co"
