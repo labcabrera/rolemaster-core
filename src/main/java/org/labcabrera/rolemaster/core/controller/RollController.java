@@ -15,6 +15,9 @@ public interface RollController {
 	@GetMapping("/d/{max}")
 	Mono<Integer> randomRoll(@PathVariable Integer max);
 
+	@GetMapping("/d/{max}/{count}/sum")
+	Mono<Integer> randomRollSum(@PathVariable("max") Integer max, @PathVariable("count") Integer count);
+
 	@GetMapping("/d/100/open")
 	Mono<OpenRoll> randomOpenRoll();
 

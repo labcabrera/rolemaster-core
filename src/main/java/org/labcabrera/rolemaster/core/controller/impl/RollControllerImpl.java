@@ -24,4 +24,13 @@ public class RollControllerImpl implements RollController {
 		return Mono.just(randomService.d100FullOpen());
 	}
 
+	@Override
+	public Mono<Integer> randomRollSum(Integer max, Integer count) {
+		int result = 0;
+		for (int i = 0; i < count; i++) {
+			result += randomService.dX(max);
+		}
+		return Mono.just(result);
+	}
+
 }

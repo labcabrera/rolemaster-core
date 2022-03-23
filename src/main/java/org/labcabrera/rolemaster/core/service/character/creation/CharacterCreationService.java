@@ -15,7 +15,6 @@ import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
-import org.labcabrera.rolemaster.core.service.character.AttributeCreationService;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterExhaustionAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterHpAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterSkillAdapter;

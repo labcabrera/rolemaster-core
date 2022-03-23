@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.service.character;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.labcabrera.rolemaster.core.service.character.creation.AttributeCreationService;
 
 class AttributeCreationServiceTest {
 

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.character;
+package org.labcabrera.rolemaster.core.service.character.creation;
 
 import java.util.Map;
 
