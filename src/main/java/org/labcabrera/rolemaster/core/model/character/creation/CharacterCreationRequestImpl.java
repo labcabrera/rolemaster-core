@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.validation.ExistingRaceValidator.ExistingRace;
@@ -33,6 +34,10 @@ public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 	@Schema(description = "Characted race identifier.", example = "figther")
 	private String professionId;
 
+	@NotEmpty
+	private String realmId;
+
+	@NotNull
 	private Integer attributesRoll;
 
 	@NotEmpty

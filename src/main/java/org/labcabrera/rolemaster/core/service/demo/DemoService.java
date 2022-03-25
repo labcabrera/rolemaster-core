@@ -70,7 +70,9 @@ public class DemoService {
 	private CharacterCreationRequest createCharacterCreationRequest() {
 		CharacterCreationRequestImpl result = CharacterCreationRequestImpl.builder()
 			.name("Set (demo)")
-			.raceId("human")
+			.raceId("common-men")
+			.professionId("thief")
+			.realmId("essence")
 			.attributesRoll(660)
 			.build();
 		result.getBaseAttributes().put(AttributeType.AGILITY, 96);

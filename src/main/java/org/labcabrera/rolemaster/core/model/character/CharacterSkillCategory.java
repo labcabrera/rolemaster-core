@@ -17,6 +17,6 @@ public class CharacterSkillCategory {
 	private Integer currentRank = 0;
 
 	@Builder.Default
-	private Integer adolescenseRank = 0;
+	private Integer adolescenceRank = 0;
 
 }

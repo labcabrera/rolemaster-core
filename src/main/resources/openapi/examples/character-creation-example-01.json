@@ -2,6 +2,7 @@
 	"name": "Kiove",
 	"raceId": "common-men",
 	"professionId": "thief",
+	"realmId": "essence",
 	"attributesRoll": 660,
 	"baseAttributes": {
 		"ag": 96,

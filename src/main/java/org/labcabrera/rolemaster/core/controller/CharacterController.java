@@ -42,14 +42,14 @@ public interface CharacterController {
 			@ExampleObject(name = "Character creation example 02", ref = "#/components/examples/characterCreationExample01")
 		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequestImpl request);
 
-	@DeleteMapping("/id")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")
-	@Operation(summary = "Delete all characters.")
+	@Operation(summary = "Delete character.")
 	Mono<Void> deleteById(@PathVariable String id);
 
 	@DeleteMapping()
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted characters")
-	@Operation(summary = "Delete character.")
+	@Operation(summary = "Delete all characters.")
 	Mono<Void> deleteAll();
 
 }
