@@ -9,6 +9,8 @@ import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.SkillCategory;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
+import org.labcabrera.rolemaster.core.table.skill.SkillCategoryBonusTable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class CharacterCreationSkillCategoryService {
+
+	@Autowired
+	private SkillCategoryBonusTable skillCategoryBonusTable;
 
 	public CharacterModificationContext initialize(CharacterModificationContext context) {
 		if (context.getSkillCategories() == null || context.getSkillCategories().isEmpty()) {
@@ -31,14 +36,16 @@ public class CharacterCreationSkillCategoryService {
 
 			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
 			int professionBonus = profession.getSkillCategoryBonus().getOrDefault(categoryId, 0);
+			int totalRanks = adolescenceRank;
+
 			int attributeBonus = getAttributeBonus(category, character);
-			int rankBonus = 0;
+			int rankBonus = skillCategoryBonusTable.getBonus(totalRanks);
 			int totalBonus = professionBonus + attributeBonus + rankBonus;
 			CharacterSkillCategory characterSkillCategory = CharacterSkillCategory.builder()
 				.categoryId(category.getId())
 				.developmentCost(profession.getSkillCategoryDevelopmentCost().getOrDefault(categoryId, new ArrayList<>()))
 				.adolescenceRanks(adolescenceRank)
-				.totalRanks(adolescenceRank)
+				.totalRanks(totalRanks)
 				.rankBonus(rankBonus)
 				.attributeBonus(attributeBonus)
 				.professionBonus(professionBonus)

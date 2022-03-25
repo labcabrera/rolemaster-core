@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
+import org.labcabrera.rolemaster.core.dto.SkillUpgradeRequest;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequestImpl;
 import org.springframework.http.HttpStatus;
@@ -42,12 +43,15 @@ public interface CharacterController {
 			@ExampleObject(name = "Character creation example 02", ref = "#/components/examples/characterCreationExample01")
 		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequestImpl request);
 
+	@PostMapping("/{id}/skills/upgrade")
+	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillUpgradeRequest request);
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")
 	@Operation(summary = "Delete character.")
 	Mono<Void> deleteById(@PathVariable String id);
 
-	@DeleteMapping()
+	@DeleteMapping
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted characters")
 	@Operation(summary = "Delete all characters.")
 	Mono<Void> deleteAll();

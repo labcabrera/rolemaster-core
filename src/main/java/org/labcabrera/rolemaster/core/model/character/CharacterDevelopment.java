@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CharacterDevelopmentPoints {
+public class CharacterDevelopment {
+
+	private Integer totalPoints;
 
 	@Builder.Default
 	private Integer remainingPoints = 0;

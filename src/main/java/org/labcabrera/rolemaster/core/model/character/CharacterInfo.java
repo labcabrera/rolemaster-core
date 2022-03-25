@@ -24,7 +24,7 @@ public class CharacterInfo {
 
 	@Id
 	private String id;
-	
+
 	private Integer level;
 
 	private String name;
@@ -48,7 +48,7 @@ public class CharacterInfo {
 	private List<CharacterSkill> skills = new ArrayList<>();
 
 	@Builder.Default
-	private CharacterDevelopmentPoints developmentPoints = new CharacterDevelopmentPoints();
+	private CharacterDevelopment developmentPoints = new CharacterDevelopment();
 
 	private Integer maxHp;
 

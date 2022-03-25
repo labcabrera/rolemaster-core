@@ -16,6 +16,7 @@ import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterAttributesAdapter;
+import org.labcabrera.rolemaster.core.service.character.adapter.CharacterDevelopmentAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterExhaustionAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterHpAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterSkillAdapter;
@@ -53,6 +54,9 @@ public class CharacterCreationService {
 
 	@Autowired
 	private CharacterCreationSkillService skillCreationService;
+
+	@Autowired
+	private CharacterDevelopmentAdapter characterDevelopmentAdapter;
 
 	@Autowired
 	private RaceRepository raceRepository;
@@ -114,6 +118,7 @@ public class CharacterCreationService {
 			.map(skillAdapter::apply)
 			.map(hpAdapter::apply)
 			.map(exhaustionAdapter::apply)
+			.map(characterDevelopmentAdapter::apply)
 			.map(ctx -> ctx.getCharacter())
 			.flatMap(repository::save)
 			.doOnNext(e -> log.info("Created character {}", e))
