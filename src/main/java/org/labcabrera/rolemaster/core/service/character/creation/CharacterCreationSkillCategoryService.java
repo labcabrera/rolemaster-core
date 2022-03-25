@@ -35,7 +35,7 @@ public class CharacterCreationSkillCategoryService {
 			character.getSkillCategories().stream()
 				.filter(e -> e.getCategoryId().equals(categoryId))
 				.findFirst().orElseThrow()
-				.setAdolescenseRank(rank);
+				.setAdolescenceRank(rank);
 		});
 	}
 
