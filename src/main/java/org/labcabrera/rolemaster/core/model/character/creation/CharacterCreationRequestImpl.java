@@ -40,6 +40,9 @@ public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 	private String realmId;
 
 	@NotNull
+	private Integer age;
+
+	@NotNull
 	private Integer attributesRoll;
 
 	@NotEmpty

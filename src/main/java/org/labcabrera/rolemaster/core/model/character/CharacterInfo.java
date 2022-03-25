@@ -26,6 +26,8 @@ public class CharacterInfo {
 	private String id;
 
 	private Integer level;
+	
+	private Integer age;
 
 	private String name;
 

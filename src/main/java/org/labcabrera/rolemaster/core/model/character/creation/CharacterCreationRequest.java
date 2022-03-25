@@ -14,6 +14,8 @@ public interface CharacterCreationRequest {
 	String getProfessionId();
 
 	String getRealmId();
+	
+	Integer getAge();
 
 	Integer getAttributesRoll();
 

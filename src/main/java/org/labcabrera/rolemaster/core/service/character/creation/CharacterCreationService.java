@@ -78,6 +78,7 @@ public class CharacterCreationService {
 			.name(request.getName())
 			.raceId(request.getRaceId())
 			.professionId(request.getProfessionId())
+			.age(request.getAge())
 			.creationStatus(CharacterCreationStatus.PARTIALLY_CREATED)
 			.build();
 
