@@ -43,6 +43,12 @@ public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 	private Integer age;
 
 	@NotNull
+	private Integer height;
+
+	@NotNull
+	private Integer weight;
+
+	@NotNull
 	private Integer attributesRoll;
 
 	@NotEmpty

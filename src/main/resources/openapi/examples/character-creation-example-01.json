@@ -4,6 +4,8 @@
 	"professionId": "thief",
 	"realmId": "essence",
 	"age": 41,
+	"height": 174,
+	"weight": 72,
 	"attributesRoll": 660,
 	"baseAttributes": {
 		"ag": 96,
