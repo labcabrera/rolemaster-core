@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,6 +23,9 @@ public class SkillCategory {
 	private String id;
 
 	private String name;
+
+	@Builder.Default
+	private List<AttributeType> attributeBonus = new ArrayList<>();
 
 	private EntityMetadata metadata;
 

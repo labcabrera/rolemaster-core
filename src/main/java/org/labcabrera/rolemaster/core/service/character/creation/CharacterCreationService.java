@@ -15,11 +15,12 @@ import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
+import org.labcabrera.rolemaster.core.service.character.adapter.CharacterAttributesAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterExhaustionAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterHpAdapter;
 import org.labcabrera.rolemaster.core.service.character.adapter.CharacterSkillAdapter;
-import org.labcabrera.rolemaster.core.table.attribute.AttributeBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,13 +34,13 @@ public class CharacterCreationService {
 	private AttributeCreationService attributeCreationService;
 
 	@Autowired
-	private AttributeBonusTable attributeBonusTable;
-
-	@Autowired
 	private CharacterInfoRepository repository;
 
 	@Autowired
 	private CharacterSkillAdapter skillAdapter;
+
+	@Autowired
+	private CharacterAttributesAdapter characterAttributesAdapter;
 
 	@Autowired
 	private CharacterHpAdapter hpAdapter;
@@ -96,7 +97,7 @@ public class CharacterCreationService {
 				return tuple.getT1();
 			})
 			.flatMap(ctx -> {
-				return skillCategoryRepository.findAll()
+				return skillCategoryRepository.findAll(Sort.by("id"))
 					.collectList()
 					.doOnNext(list -> ctx.setSkillCategories(list))
 					.map(e -> ctx);
@@ -107,6 +108,7 @@ public class CharacterCreationService {
 					.doOnNext(list -> ctx.setSkills(list))
 					.map(e -> ctx);
 			})
+			.map(characterAttributesAdapter::apply)
 			.map(skillCategoryService::initialize)
 			.map(skillCreationService::initialize)
 			.map(skillAdapter::apply)
@@ -116,7 +118,6 @@ public class CharacterCreationService {
 			.flatMap(repository::save)
 			.doOnNext(e -> log.info("Created character {}", e))
 			.map(e -> e);
-
 	}
 
 	private void loadAttributes(CharacterInfo character, CharacterCreationRequest request) {
@@ -125,7 +126,6 @@ public class CharacterCreationService {
 			character.getAttributes().put(e, CharacterAttribute.builder()
 				.currentValue(value)
 				.potentialValue(attributeCreationService.getPotentialStat(value))
-				.baseBonus(attributeBonusTable.getBonus(value))
 				.build());
 		});
 	}

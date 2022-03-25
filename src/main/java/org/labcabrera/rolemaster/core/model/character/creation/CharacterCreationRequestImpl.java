@@ -1,6 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character.creation;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
@@ -43,5 +45,11 @@ public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 	@NotEmpty
 	@Builder.Default
 	private Map<AttributeType, Integer> baseAttributes = new LinkedHashMap<>();
+
+	@Builder.Default
+	private List<String> weaponCategoryOrder = new ArrayList<>();
+
+	@Builder.Default
+	private List<String> languages = new ArrayList<>();
 
 }

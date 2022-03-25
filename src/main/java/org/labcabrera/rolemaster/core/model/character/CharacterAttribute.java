@@ -26,8 +26,7 @@ public class CharacterAttribute {
 	@Builder.Default
 	private Integer specialBonus = 0;
 
-	public Integer getTotalBonus() {
-		return baseBonus + racialBonus + specialBonus;
-	}
+	@Builder.Default
+	private Integer totalBonus = 0;
 
 }

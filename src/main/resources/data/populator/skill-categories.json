@@ -1,78 +1,187 @@
 [
 	{
 		"id": "athletic-brawn",
-		"name": "Athletic - Brawn"
+		"name": "Athletic - Brawn",
+		"attributeBonus": ["st","co","ag"]
 	},
 	{
 		"id": "athletic-endurance",
-		"name": "Athletic - Endurance"
+		"name": "Athletic - Endurance",
+		"attributeBonus": ["co","ag","st"]
 	},
 	{
 		"id": "athletic-gymnastics",
-		"name": "Athletic - Gymnastics"
+		"name": "Athletic - Gymnastics",
+		"attributeBonus": ["ag","qu","ag"]
+		
+	},
+	{
+		"id": "body-development",
+		"name": "Body development",
+		"attributeBonus": ["co","sd","co"]
 	},
 	{
 		"id": "awareness-perceptions",
-		"name": "Awareness - Perceptions"
+		"name": "Awareness - Perceptions",
+		"attributeBonus": ["in","sd","in"]
 	},
 	{
 		"id": "awareness-searching",
-		"name": "Awareness - Searching"
+		"name": "Awareness - Searching",
+		"attributeBonus": ["in","re","sd"]	
 	},
 	{
 		"id": "awareness-senses",
-		"name": "Awareness - Senses"
+		"name": "Awareness - Senses",
+		"attributeBonus": ["in","sd","in"]
 	},
 	{
-		"id": "armor-heavy",
-		"name": "Armor - Heavy"
+		"id": "armor-light",
+		"name": "Armor - Light",
+		"attributeBonus": ["ag","st","ag"]
 	},
 	{
 		"id": "armor-medium",
-		"name": "Armor - Medium"
+		"name": "Armor - Medium",
+		"attributeBonus": ["st","ag","st"]
 	},
 	{
-		"id": "armor-ligth",
-		"name": "Armor Ligth"
+		"id": "armor-heavy",
+		"name": "Armor - Heavy",
+		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-1h-edged",
-		"name": "Weapon - 1H Edged"
+		"name": "Weapon - 1H Edged",
+		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-1h-concussion",
-		"name": "Weapon - 1H Concussion"
+		"name": "Weapon - 1H Concussion",
+		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-2h",
-		"name": "Weapon - 2H"
+		"name": "Weapon - 2H",
+		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-missile",
-		"name": "Weapon - Misille"
+		"name": "Weapon - Missile",
+		"attributeBonus": ["ag","st","ag"]
 	},
 	{
 		"id": "weapon-missile-artillery",
-		"name": "Weapon - Misille Artillery"
+		"name": "Weapon - Missile Artillery",
+		"attributeBonus": ["in","ag","re"]
 	},
 	{
 		"id": "weapon-pole-arms",
-		"name": "Weapon - Pole Arms"
+		"name": "Weapon - Pole Arms",
+		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-thrown",
-		"name": "Weapon - Thrown"
+		"name": "Weapon - Thrown",
+		"attributeBonus": ["ag","st","ag"]
 	},
 	{
 		"id": "subterfuge-attack",
-		"name": "Subterfuge - Attack"
+		"name": "Subterfuge - Attack",
+		"attributeBonus": ["ag","sd","in"]
 	},
 	{
 		"id": "subterfuge-mechanics",
-		"name": "Subterfuge - Mechanics"
+		"name": "Subterfuge - Mechanics",
+		"attributeBonus": ["in","ag","re"]
 	},
 	{
 		"id": "subterfuge-stealth",
-		"name": "Subterfuge - Stealth"
+		"name": "Subterfuge - Stealth",
+		"attributeBonus": ["ag","sd","in"]
+	},
+	{
+		"id": "combat-maneuvers",
+		"name": "Combat maneuvers",
+		"attributeBonus": ["ag","qu","sd"]
+	},
+	{
+		"id": "communications",
+		"name": "Communications",
+		"attributeBonus": ["re","me","em"]
+	},
+	{
+		"id": "crafts",
+		"name": "Crafts",
+		"attributeBonus": ["ag","me","sd"]
+	},
+	{
+		"id": "directed-spells",
+		"name": "Directed spells",
+		"attributeBonus": ["ag","sd","ag"]
+	},
+	{
+		"id": "influence",
+		"name": "Influence"
+	},
+	{
+		"id": "lore-general",
+		"name": "Lore - General"
+	},
+	{
+		"id": "lore-magical",
+		"name": "Lore - Magical"
+	},
+	{
+		"id": "lore-technical",
+		"name": "Lore - Technical"
+	},
+	{
+		"id": "lore-obscure",
+		"name": "Lore - Obscure"
+	},
+	{
+		"id": "martial-arts-striking",
+		"name": "Martials Arts - Striking"
+	},
+	{
+		"id": "outdoor-animal",
+		"name": "Outdoor - Animal"
+	},
+	{
+		"id": "outdoor-environmental",
+		"name": "Outdoor - Environmental"
+	},
+	{
+		"id": "power-point-development",
+		"name": "Power Point Development"
+	},
+	{
+		"id": "science-analytic-basic",
+		"name": "Science/Analytic - Basic"
+	},
+	{
+		"id": "science-analytic-specialized",
+		"name": "Science/Analytic - Specialized"
+	},
+	{
+		"id": "self-control",
+		"name": "Self Control"
+	},
+	{
+		"id": "technical-trade-general",
+		"name": "Technical/Trade - General"
+	},
+	{
+		"id": "technical-trade-professional",
+		"name": "Technical/Trade - Professional"
+	},
+	{
+		"id": "technical-trade-vocational",
+		"name": "Technical/Trade - Vocational"
+	},
+	{
+		"id": "urban",
+		"name": "Urban"
 	}
 ]

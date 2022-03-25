@@ -1,6 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
@@ -30,6 +32,12 @@ public class Profession {
 
 	@Schema(description = "Available realms")
 	private List<String> availableRealms;
+
+	@Builder.Default
+	private Map<String, Integer> skillCategoryBonus = new LinkedHashMap<>();
+
+	@Builder.Default
+	private Map<String, List<Integer>> skillCategoryDevelopmentCost = new LinkedHashMap<>();
 
 	private EntityMetadata metadata;
 

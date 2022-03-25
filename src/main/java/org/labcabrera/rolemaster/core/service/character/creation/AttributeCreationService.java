@@ -21,7 +21,7 @@ public class AttributeCreationService {
 		return cost;
 	}
 
-	public int getCost(int value) {
+	public Integer getCost(int value) {
 		if (value < 90) {
 			return value;
 		}
@@ -29,7 +29,7 @@ public class AttributeCreationService {
 		return (int) (90 + tmp);
 	}
 
-	public int getPotentialStat(int value) {
+	public Integer getPotentialStat(int value) {
 		if (value == 100) {
 			return 99 + randomService.dX(2);
 		}

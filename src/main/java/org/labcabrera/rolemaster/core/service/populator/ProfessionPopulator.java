@@ -28,7 +28,7 @@ public class ProfessionPopulator implements ApplicationRunner {
 	private ObjectMapper objectMapper;
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) throws Exception {		
 		repository.count().doOnSuccess(count -> {
 			if (count == 0L) {
 				populate();
