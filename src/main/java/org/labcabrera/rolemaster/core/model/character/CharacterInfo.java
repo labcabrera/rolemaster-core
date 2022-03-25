@@ -10,6 +10,7 @@ import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -61,6 +62,9 @@ public class CharacterInfo {
 	private Integer maxExhaustionPoints;
 
 	private Integer xp;
+
+	@Schema(description = "Value in meters.")
+	private Integer baseMovementRate;
 
 	@Builder.Default
 	private EntityMetadata metadata = EntityMetadata.builder().created(LocalDateTime.now()).build();
