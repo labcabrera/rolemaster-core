@@ -24,28 +24,32 @@ import lombok.NoArgsConstructor;
 public class CharacterCreationRequestImpl implements CharacterCreationRequest {
 
 	@NotEmpty
-	@Schema(description = "Character name.", example = "Kiove")
+	@Schema(description = "Character name.", example = "Kiove", required = true)
 	private String name;
 
 	@ExistingRace
 	@NotEmpty
-	@Schema(description = "Characted race identifier.", example = "common-men")
+	@Schema(description = "Characted race identifier.", example = "common-men", required = true)
 	private String raceId;
 
 	@NotEmpty
-	@Schema(description = "Characted race identifier.", example = "figther")
+	@Schema(description = "Characted race identifier.", example = "figther", required = true)
 	private String professionId;
 
 	@NotEmpty
+	@Schema(description = "Characted realm identifier.", example = "essence", required = true)
 	private String realmId;
 
 	@NotNull
+	@Schema(description = "Character age in years", example = "32", required = true)
 	private Integer age;
 
 	@NotNull
+	@Schema(description = "Character height in cm.", example = "184", required = true)
 	private Integer height;
 
 	@NotNull
+	@Schema(description = "Character height in kg.", example = "85", required = true)
 	private Integer weight;
 
 	@NotNull

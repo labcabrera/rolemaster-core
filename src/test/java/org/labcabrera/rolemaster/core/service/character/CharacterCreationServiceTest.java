@@ -25,8 +25,11 @@ class CharacterCreationServiceTest {
 	@Test
 	void testCreation() {
 		CharacterCreationRequest request = createRequest();
-		repository.deleteAll().thenMany(service.create(request));
-		Mono<CharacterInfo> setUp = repository.deleteAll().then(service.create(request));
+
+		Mono<CharacterInfo> setUp = repository
+			.deleteAll()
+			.then(service.create(request));
+
 		StepVerifier
 			.create(setUp)
 			.expectNextCount(1)
@@ -36,7 +39,11 @@ class CharacterCreationServiceTest {
 	private CharacterCreationRequest createRequest() {
 		CharacterCreationRequestImpl result = CharacterCreationRequestImpl.builder()
 			.name("Set")
-			.raceId("human")
+			.raceId("common-men")
+			.professionId("thief")
+			.age(41)
+			.weight(172)
+			.height(70)
 			.attributesRoll(660)
 			.build();
 		result.getBaseAttributes().put(AttributeType.AGILITY, 96);
