@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +24,13 @@ public class CharacterUpdateSkillService {
 	@Autowired
 	private CharacterInfoRepository repository;
 
+	@Autowired
+	private CharacterPostProcessorService postProcessorService;
+
 	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgradeRequest request) {
 		return repository.findById(characterId)
 			.map(e -> update(e, request))
+			.map(postProcessorService::apply)
 			.flatMap(repository::save);
 	}
 

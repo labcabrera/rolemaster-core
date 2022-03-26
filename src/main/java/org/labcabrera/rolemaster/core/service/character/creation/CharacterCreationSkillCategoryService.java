@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.service.character.creation;
 import java.util.ArrayList;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.Profession;
@@ -33,24 +34,20 @@ public class CharacterCreationSkillCategoryService {
 
 		context.getSkillCategories().stream().forEach(category -> {
 			String categoryId = category.getId();
-
 			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
-			int professionBonus = profession.getSkillCategoryBonus().getOrDefault(categoryId, 0);
-			int totalRanks = adolescenceRank;
-
-			int attributeBonus = getAttributeBonus(category, character);
-			int rankBonus = skillCategoryBonusTable.getBonus(totalRanks);
-			int totalBonus = professionBonus + attributeBonus + rankBonus;
+			int bonusProfession = profession.getSkillCategoryBonus().getOrDefault(categoryId, 0);
+			int bonusAttribute = getAttributeBonus(category, character);
+			int bonusRanks = skillCategoryBonusTable.getBonus(adolescenceRank);
 			CharacterSkillCategory characterSkillCategory = CharacterSkillCategory.builder()
 				.categoryId(category.getId())
 				.developmentCost(profession.getSkillCategoryDevelopmentCost().getOrDefault(categoryId, new ArrayList<>()))
+				.attributes(category.getAttributeBonus())
 				.adolescenceRanks(adolescenceRank)
-				.totalRanks(totalRanks)
-				.rankBonus(rankBonus)
-				.attributeBonus(attributeBonus)
-				.professionBonus(professionBonus)
-				.totalBonus(totalBonus)
 				.build();
+			characterSkillCategory.getBonus().put(BonusType.RANK, bonusRanks);
+			characterSkillCategory.getBonus().put(BonusType.PROFESSION, bonusProfession);
+			characterSkillCategory.getBonus().put(BonusType.ATTRIBUTE, bonusAttribute);
+
 			character.getSkillCategories().add(characterSkillCategory);
 		});
 		return context;

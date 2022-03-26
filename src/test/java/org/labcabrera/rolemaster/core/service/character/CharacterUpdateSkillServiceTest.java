@@ -19,6 +19,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -31,6 +32,9 @@ class CharacterUpdateSkillServiceTest {
 
 	@InjectMocks
 	private CharacterUpdateSkillService service;
+
+	@Mock
+	private CharacterPostProcessorService postProcessorService;
 
 	@Mock
 	private CharacterInfoRepository repository;
@@ -57,10 +61,12 @@ class CharacterUpdateSkillServiceTest {
 		character.setDevelopmentPoints(CharacterDevelopment.builder()
 			.remainingPoints(20)
 			.build());
+
 		request.setCategoryRanks(Collections.singletonMap("cat-01", 2));
 		request.setSkillRanks(Collections.singletonMap("s-01", 3));
 		lenient().when(repository.findById(character.getId())).thenReturn(Mono.just(character));
 		lenient().when(repository.save(character)).thenReturn(Mono.just(character));
+		lenient().when(postProcessorService.apply(character)).thenReturn(character);
 	}
 
 	@Test
@@ -75,6 +81,7 @@ class CharacterUpdateSkillServiceTest {
 			.filter(e -> e.getSkillId().equals("s-01")).findFirst().orElse(null)
 			.getUpgradedRanks());
 		verify(repository, times(1)).save(character);
+		verify(postProcessorService, times(1)).apply(character);
 	}
 
 	@Test
