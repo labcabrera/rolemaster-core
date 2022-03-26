@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Component
-@Slf4j
 public class ProfessionPopulator extends AbstractJsonPopulator<Profession> {
 
 	@Override
