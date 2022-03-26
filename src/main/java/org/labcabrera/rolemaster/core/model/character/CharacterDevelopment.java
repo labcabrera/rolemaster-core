@@ -14,6 +14,6 @@ public class CharacterDevelopment {
 	private Integer totalPoints;
 
 	@Builder.Default
-	private Integer remainingPoints = 0;
+	private Integer usedPoints = 0;
 
 }

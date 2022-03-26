@@ -1,22 +1,20 @@
-package org.labcabrera.rolemaster.core.service.character.adapter;
+package org.labcabrera.rolemaster.core.service.character.processor;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Order(200)
+@Order(CharacterPostProcessor.Orders.HP)
 @Slf4j
-public class CharacterHpAdapter implements CharacterAdapter {
+public class CharacterHpPostProcessor implements CharacterPostProcessor {
 
 	@Override
-	public CharacterModificationContext apply(CharacterModificationContext context) {
-		CharacterInfo character = context.getCharacter();
-		log.debug("Loading max HP for {}", character.getId() == null ? "new character" : "character " + character.getId());
+	public void accept(CharacterInfo character) {
+		log.debug("Processing character {}", character.getName());
 
 		CharacterSkill skill = character.getSkills().stream()
 			.filter(e -> "body-development".equals(e.getSkillId()))
@@ -26,7 +24,6 @@ public class CharacterHpAdapter implements CharacterAdapter {
 		int professionBonus = 0;
 		int maxHp = 10 + skill.getTotalBonus() + professionBonus;
 		character.setMaxHp(maxHp);
-		return context;
 	}
 
 }

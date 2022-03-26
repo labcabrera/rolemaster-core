@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,15 +21,13 @@ public class CharacterAttribute {
 	private Integer potentialValue = 0;
 
 	@Builder.Default
-	private Integer baseBonus = 0;
-
-	@Builder.Default
-	private Integer racialBonus = 0;
-
-	@Builder.Default
-	private Integer specialBonus = 0;
-
-	@Builder.Default
 	private Integer totalBonus = 0;
+
+	@Builder.Default
+	private Map<AttributeBonusType, Integer> bonus = new LinkedHashMap<>();
+
+	public Integer getTotalBonus() {
+		return bonus.values().stream().reduce(0, (a, b) -> a + b);
+	}
 
 }

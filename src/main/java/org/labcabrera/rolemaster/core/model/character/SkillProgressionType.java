@@ -2,25 +2,13 @@ package org.labcabrera.rolemaster.core.model.character;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum BonusType {
+public enum SkillProgressionType {
 
-	RANK("rank"),
-
-	CATEGORY("category"),
-
-	ATTRIBUTE("attribute"),
-
-	PROFESSION("profession"),
-
-	RACE("race"),
-
-	SPECIAL("special"),
-
-	ITEM("item");
+	STANDARD("standard");
 
 	private String name;
 
-	private BonusType(String name) {
+	SkillProgressionType(String name) {
 		this.name = name;
 	}
 

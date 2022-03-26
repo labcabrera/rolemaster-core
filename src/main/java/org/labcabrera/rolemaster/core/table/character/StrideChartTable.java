@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.table.skill.character;
+package org.labcabrera.rolemaster.core.table.character;
 
 import org.springframework.stereotype.Component;
 

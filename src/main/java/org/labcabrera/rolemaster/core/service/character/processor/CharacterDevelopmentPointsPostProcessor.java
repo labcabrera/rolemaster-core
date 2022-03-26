@@ -1,34 +1,28 @@
-package org.labcabrera.rolemaster.core.service.character.adapter;
+package org.labcabrera.rolemaster.core.service.character.processor;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
-import org.labcabrera.rolemaster.core.model.character.CharacterDevelopment;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component
-public class CharacterDevelopmentAdapter implements CharacterAdapter {
+@Order(CharacterPostProcessor.Orders.DEV_POINTS)
+@Slf4j
+public class CharacterDevelopmentPointsPostProcessor implements CharacterPostProcessor {
 
 	@Override
-	public CharacterModificationContext apply(CharacterModificationContext context) {
-		CharacterInfo character = context.getCharacter();
-
+	public void accept(CharacterInfo character) {
+		log.debug("Processing character {}", character.getName());
 		int tmp = 0;
 		tmp += character.getAttributes().get(AttributeType.AGILITY).getCurrentValue();
 		tmp += character.getAttributes().get(AttributeType.CONSTITUTION).getCurrentValue();
 		tmp += character.getAttributes().get(AttributeType.MEMORY).getCurrentValue();
 		tmp += character.getAttributes().get(AttributeType.REASONING).getCurrentValue();
 		tmp += character.getAttributes().get(AttributeType.SELF_DISCIPLINE).getCurrentValue();
-
 		int dp = tmp / 5;
-		CharacterDevelopment cd = CharacterDevelopment.builder()
-			.totalPoints(dp)
-			.remainingPoints(dp)
-			.build();
-
-		character.setDevelopmentPoints(cd);
-
-		return context;
+		character.getDevelopmentPoints().setTotalPoints(dp);
 	}
 
 }

@@ -1,7 +1,9 @@
 package org.labcabrera.rolemaster.core.model.character;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,30 +22,23 @@ public class CharacterSkill {
 	private List<Integer> developmentCost = new ArrayList<>();
 
 	@Builder.Default
+	private List<AttributeType> attributes = new ArrayList<>();
+
+	@Builder.Default
 	private Integer adolescenceRanks = 0;
 
 	@Builder.Default
 	private Integer upgradedRanks = 0;
 
 	@Builder.Default
-	private Integer totalRanks = 0;
+	private Map<BonusType, Integer> bonus = new LinkedHashMap<>();
 
-	@Builder.Default
-	private Integer attributeBonus = 0;
+	public Integer getTotalRanks() {
+		return adolescenceRanks + upgradedRanks;
+	}
 
-	@Builder.Default
-	private Integer defaultSkillBonus = 0;
-
-	@Builder.Default
-	private Integer rankBonus = 0;
-
-	@Builder.Default
-	private Integer professionBonus = 0;
-
-	@Builder.Default
-	private Integer specialBonus = 0;
-
-	@Builder.Default
-	private Integer totalBonus = 0;
+	public Integer getTotalBonus() {
+		return bonus.values().stream().reduce(0, (a, b) -> a + b);
+	}
 
 }

@@ -25,8 +25,6 @@ public class Skill {
 
 	private String name;
 
-	private String description;
-
 	private String categoryId;
 
 	@Builder.Default
@@ -34,7 +32,7 @@ public class Skill {
 
 	private List<AttributeType> attributeBonus;
 
-	private String rankBonusProgression;
+	private SkillProgressionType progressionType;
 
 	private String categoryBonusProgression;
 

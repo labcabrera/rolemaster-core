@@ -38,11 +38,11 @@ public class CharacterUpdateSkillService {
 		final MutableInt cost = new MutableInt(0);
 		upgradeSkillCategories(character, request, cost);
 		upgradeSkills(character, request, cost);
-		int remainingPoints = character.getDevelopmentPoints().getRemainingPoints() - cost.getValue();
-		if (remainingPoints < 0) {
+		int usedPoints = character.getDevelopmentPoints().getUsedPoints() + cost.getValue();
+		if (usedPoints > character.getDevelopmentPoints().getTotalPoints()) {
 			throw new BadRequestException(ERR_EXCEDED_DEV_POINTS);
 		}
-		character.getDevelopmentPoints().setRemainingPoints(remainingPoints);
+		character.getDevelopmentPoints().setUsedPoints(usedPoints);
 		return character;
 	}
 

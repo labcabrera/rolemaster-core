@@ -50,7 +50,7 @@ class CharacterUpdateSkillServiceTest {
 		character.setId("c-01");
 		character.setSkillCategories(Arrays.asList(CharacterSkillCategory.builder()
 			.categoryId("cat-01")
-			.developmentCost(Arrays.asList(2, 7))
+			.developmentCost(Arrays.asList(3, 7))
 			.upgradedRanks(1)
 			.build()));
 		character.setSkills(Arrays.asList(CharacterSkill.builder()
@@ -59,11 +59,13 @@ class CharacterUpdateSkillServiceTest {
 			.upgradedRanks(6)
 			.build()));
 		character.setDevelopmentPoints(CharacterDevelopment.builder()
-			.remainingPoints(20)
+			.usedPoints(10)
+			.totalPoints(100)
 			.build());
 
 		request.setCategoryRanks(Collections.singletonMap("cat-01", 2));
 		request.setSkillRanks(Collections.singletonMap("s-01", 3));
+
 		lenient().when(repository.findById(character.getId())).thenReturn(Mono.just(character));
 		lenient().when(repository.save(character)).thenReturn(Mono.just(character));
 		lenient().when(postProcessorService.apply(character)).thenReturn(character);
@@ -73,7 +75,7 @@ class CharacterUpdateSkillServiceTest {
 	void testSuccess() {
 		Mono<CharacterInfo> mono = service.updateRanks(character.getId(), request);
 		CharacterInfo result = mono.share().block();
-		assertEquals(5, result.getDevelopmentPoints().getRemainingPoints());
+		assertEquals(26, result.getDevelopmentPoints().getUsedPoints());
 		assertEquals(3, result.getSkillCategories().stream()
 			.filter(e -> e.getCategoryId().equals("cat-01")).findFirst().orElse(null)
 			.getUpgradedRanks());
@@ -87,7 +89,7 @@ class CharacterUpdateSkillServiceTest {
 	@Test
 	void testRemainingPointException() {
 		assertThrows(BadRequestException.class, () -> {
-			character.getDevelopmentPoints().setRemainingPoints(8);
+			character.getDevelopmentPoints().setUsedPoints(90);
 			service.updateRanks(character.getId(), request).share().block();
 		});
 		verify(repository, times(0)).save(character);

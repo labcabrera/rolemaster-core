@@ -1,40 +1,23 @@
 package org.labcabrera.rolemaster.core.service.populator;
 
-import org.labcabrera.rolemaster.core.model.Realm;
-import org.labcabrera.rolemaster.core.repository.RealmRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+import java.util.List;
 
-import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
+import org.labcabrera.rolemaster.core.model.Realm;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.core.type.TypeReference;
 
 @Component
-@Slf4j
-public class RealmPopulator implements ApplicationRunner {
-
-	@Autowired
-	private RealmRepository repository;
+public class RealmPopulator extends AbstractJsonPopulator<Realm> {
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		String[] realms = { "essence", "channeling", "mentalism" };
-
-		repository
-			.deleteAll()
-			.thenMany(Flux
-				.just(realms)
-				.map(realm -> {
-					return Realm.builder()
-						.id(realm)
-						.name(StringUtils.capitalize(realm))
-						.build();
-				})
-				.flatMap(repository::save))
-			.thenMany(repository.findAll())
-			.subscribe(realm -> log.debug("Created realm {}", realm));
+	protected String getResource() {
+		return "data/populator/realms.json";
 	}
 
+	@Override
+	protected TypeReference<List<Realm>> getTypeReference() {
+		return new TypeReference<List<Realm>>() {
+		};
+	}
 }
