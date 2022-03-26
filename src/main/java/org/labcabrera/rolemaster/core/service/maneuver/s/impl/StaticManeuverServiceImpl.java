@@ -22,10 +22,9 @@ public class StaticManeuverServiceImpl implements StaticManeuverService {
 			.build();
 		processors.stream().forEach(e -> e.accept(context));
 
-		StaticManeuverResult result = StaticManeuverResult.builder()
+		return StaticManeuverResult.builder()
 			.modifiers(context.getModifiers())
 			.build();
-		return result;
 	}
 
 }

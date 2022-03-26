@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.service.maneuver.s.impl.modifiers;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class StaticManeuverDificultyProcessor implements StaticManeuverModifierProcessor {
 
-	private final Map<ManeuverDificulty, Integer> modifiers = new HashMap<>();
+	private final Map<ManeuverDificulty, Integer> modifiers = new EnumMap<>(ManeuverDificulty.class);
 
 	public StaticManeuverDificultyProcessor() {
 		modifiers.put(ManeuverDificulty.ROUTINE, 30);

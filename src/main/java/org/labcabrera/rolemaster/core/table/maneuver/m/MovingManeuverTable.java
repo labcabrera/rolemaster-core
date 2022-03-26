@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.table.maneuver.m;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MovingManeuverTable implements Table<ManeuverDificulty, Integer, MovingManeuverEntry> {
 
-	private final Map<ManeuverDificulty, BasicTable<Integer, MovingManeuverEntry>> map = new HashMap<>();
+	private final Map<ManeuverDificulty, BasicTable<Integer, MovingManeuverEntry>> map = new EnumMap<>(ManeuverDificulty.class);
 
 	@Autowired
 	private ApplicationContext context;

@@ -1,14 +1,20 @@
 package org.labcabrera.rolemaster.core.service.character.creation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterCreationStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
+import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
+import org.labcabrera.rolemaster.core.model.character.Profession;
+import org.labcabrera.rolemaster.core.model.character.Race;
+import org.labcabrera.rolemaster.core.model.character.SkillCategory;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
@@ -18,6 +24,7 @@ import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
+import org.labcabrera.rolemaster.core.table.skill.SkillCategoryBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -39,7 +46,7 @@ public class CharacterCreationService {
 	private CharacterPostProcessorService postProcessorService;
 
 	@Autowired
-	private CharacterCreationSkillCategoryService skillCategoryService;
+	private SkillCategoryBonusTable skillCategoryBonusTable;
 
 	@Autowired
 	private RaceRepository raceRepository;
@@ -88,23 +95,23 @@ public class CharacterCreationService {
 			.flatMap(ctx -> {
 				return skillCategoryRepository.findAll(Sort.by("id"))
 					.collectList()
-					.doOnNext(list -> ctx.setSkillCategories(list))
+					.doOnNext(ctx::setSkillCategories)
 					.map(e -> ctx);
 			})
 			.flatMap(ctx -> {
 				return skillRepository.findSkillsOnNewCharacter()
 					.collectList()
-					.doOnNext(list -> ctx.setSkills(list))
+					.doOnNext(ctx::setSkills)
 					.map(e -> ctx);
 			})
 			.map(ctx -> loadAttributes(ctx, request))
-			.map(skillCategoryService::initialize)
+			.map(this::loadSkillCategories)
 			.map(this::loadSkills)
 			.map(e -> {
 				postProcessorService.apply(e.getCharacter());
 				return e;
 			})
-			.map(ctx -> ctx.getCharacter())
+			.map(CharacterModificationContext::getCharacter)
 			.flatMap(repository::save)
 			.doOnNext(e -> log.info("Created character {}", e))
 			.map(e -> e);
@@ -125,15 +132,54 @@ public class CharacterCreationService {
 		return context;
 	}
 
+	private CharacterModificationContext loadSkillCategories(CharacterModificationContext context) {
+		if (context.getSkillCategories() == null || context.getSkillCategories().isEmpty()) {
+			log.warn("Undefined categories");
+		}
+
+		CharacterInfo character = context.getCharacter();
+		Race race = context.getRace();
+		Profession profession = context.getProfession();
+
+		context.getSkillCategories().stream().forEach(category -> {
+			String categoryId = category.getId();
+			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
+			int bonusProfession = profession.getSkillCategoryBonus().getOrDefault(categoryId, 0);
+			int bonusAttribute = getAttributeBonus(category, character);
+			int bonusRanks = skillCategoryBonusTable.getBonus(adolescenceRank);
+			CharacterSkillCategory characterSkillCategory = CharacterSkillCategory.builder()
+				.categoryId(category.getId())
+				.developmentCost(profession.getSkillCategoryDevelopmentCost().getOrDefault(categoryId, new ArrayList<>()))
+				.attributes(category.getAttributeBonus())
+				.adolescenceRanks(adolescenceRank)
+				.build();
+			characterSkillCategory.getBonus().put(BonusType.RANK, bonusRanks);
+			characterSkillCategory.getBonus().put(BonusType.PROFESSION, bonusProfession);
+			characterSkillCategory.getBonus().put(BonusType.ATTRIBUTE, bonusAttribute);
+
+			character.getSkillCategories().add(characterSkillCategory);
+		});
+		return context;
+	}
+
 	private CharacterModificationContext loadSkills(CharacterModificationContext context) {
 		context.getSkills().stream().forEach(skill -> {
 			CharacterSkill cs = CharacterSkill.builder()
 				.skillId(skill.getId())
+				.categoryId(skill.getCategoryId())
 				.attributes(skill.getAttributeBonus())
 				.build();
+			cs.getBonus().put(BonusType.SKILL_SPECIAL, skill.getSkillBonus());
 			context.getCharacter().getSkills().add(cs);
 		});
 		return context;
 	}
 
+	private Integer getAttributeBonus(SkillCategory category, CharacterInfo characterInfo) {
+		int result = 0;
+		for (AttributeType at : category.getAttributeBonus()) {
+			result += characterInfo.getAttributes().get(at).getTotalBonus();
+		}
+		return result;
+	}
 }

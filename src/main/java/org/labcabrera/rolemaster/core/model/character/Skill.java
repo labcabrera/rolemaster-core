@@ -1,8 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -30,12 +30,14 @@ public class Skill {
 	@Builder.Default
 	private Boolean loadOnNewCharacters = false;
 
-	private List<AttributeType> attributeBonus;
+	@Builder.Default
+	private List<AttributeType> attributeBonus = new ArrayList<>();
 
 	private SkillProgressionType progressionType;
 
 	private String categoryBonusProgression;
 
-	private EntityMetadata metadata;
+	@Builder.Default
+	private Integer skillBonus = 0;
 
 }

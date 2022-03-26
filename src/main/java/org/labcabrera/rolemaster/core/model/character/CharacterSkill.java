@@ -18,6 +18,8 @@ public class CharacterSkill {
 
 	private String skillId;
 
+	private String categoryId;
+
 	@Builder.Default
 	private List<Integer> developmentCost = new ArrayList<>();
 

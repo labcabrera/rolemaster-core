@@ -1,14 +1,14 @@
 package org.labcabrera.rolemaster.core.service.character.processor;
 
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CharacterPostProcessorService implements Function<CharacterInfo, CharacterInfo> {
+public class CharacterPostProcessorService implements UnaryOperator<CharacterInfo> {
 
 	@Autowired
 	private List<CharacterPostProcessor> processors;

@@ -36,7 +36,7 @@ public abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
 				.thenMany(Flux.fromIterable(values))
 				.flatMap(repository::save)
 				.then(Mono.just(String.format("Inserted %s entities from %s", values.size(), resource)))
-				.subscribe(e -> log.info(e));
+				.subscribe(log::info);
 		}
 		catch (Exception ex) {
 			log.error("Error populating {}", resource, ex);

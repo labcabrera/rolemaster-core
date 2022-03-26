@@ -17,7 +17,7 @@ public class OpenRoll {
 	private int result;
 
 	@Builder.Default
-	private List<Integer> rolls = new ArrayList<Integer>();
+	private List<Integer> rolls = new ArrayList<>();
 
 	public String toString() {
 		if (rolls.size() == 1) {

@@ -12,7 +12,8 @@
         ],
         "rankBonusProgression": "special",
         "categoryBonusProgression": "special",
-        "clasification": "special"
+        "clasification": "special",
+        "skillBonus": 50
     },
     {
         "id": "armor-plate",

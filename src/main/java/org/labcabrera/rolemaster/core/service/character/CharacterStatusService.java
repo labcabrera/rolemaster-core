@@ -30,16 +30,12 @@ public class CharacterStatusService {
 	public Mono<CharacterStatus> create(String sessionId, String characterId) {
 		return characterService.findById(characterId)
 			.doOnNext(character -> log.info("Readed person {}", character))
-			.map(character -> {
-				return CharacterStatus.builder()
-					.sessionId(sessionId)
-					.characterId(characterId)
-					.hp(character.getMaxHp())
-					.build();
-			})
-			.doOnNext(status -> {
-				log.info("Created status {}", status);
-			})
+			.map(character -> CharacterStatus.builder()
+				.sessionId(sessionId)
+				.characterId(characterId)
+				.hp(character.getMaxHp())
+				.build())
+			.doOnNext(status -> log.info("Created status {}", status))
 			.flatMap(repository::save)
 			.doOnNext(status -> log.info("Saved status {}", status));
 	}

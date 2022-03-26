@@ -46,7 +46,7 @@ public class CharacterInfo {
 	private Map<String, Resistance> resistances = new LinkedHashMap<>();
 
 	@Builder.Default
-	private Map<AttributeType, CharacterAttribute> attributes = new LinkedHashMap<AttributeType, CharacterAttribute>();
+	private Map<AttributeType, CharacterAttribute> attributes = new LinkedHashMap<>();
 
 	@Builder.Default
 	private List<CharacterSkillCategory> skillCategories = new ArrayList<>();

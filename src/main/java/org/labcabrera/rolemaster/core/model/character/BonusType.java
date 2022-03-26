@@ -16,7 +16,9 @@ public enum BonusType {
 
 	SPECIAL("special"),
 
-	ITEM("item");
+	ITEM("item"),
+
+	SKILL_SPECIAL("skill-special");
 
 	private String name;
 

@@ -35,7 +35,7 @@ public class OpenapiExamplesConfig {
 
 	private Entry<String, Example> buildExample(String name, String description, Resource resource) {
 		Example example = new Example();
-		Entry<String, Example> entry = new AbstractMap.SimpleEntry<String, Example>(name, example);
+		Entry<String, Example> entry = new AbstractMap.SimpleEntry<>(name, example);
 		example.setSummary(name);
 		example.setDescription(description);
 		example.setValue(asString(resource));

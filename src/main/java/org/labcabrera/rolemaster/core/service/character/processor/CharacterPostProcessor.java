@@ -4,9 +4,9 @@ import java.util.function.Consumer;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 
-public interface CharacterPostProcessor extends Consumer<CharacterInfo> {
+interface CharacterPostProcessor extends Consumer<CharacterInfo> {
 
-	public final static class Orders {
+	static final class Orders {
 		static final int ATTRIBUTE = 200;
 
 		static final int SKILL_CATEGORY = 210;
