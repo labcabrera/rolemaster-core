@@ -1,10 +1,8 @@
 package org.labcabrera.rolemaster.core.service.populator;
 
 import java.io.InputStream;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
@@ -28,22 +28,17 @@ public class RacePopulator implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		repository.count().doOnSuccess(count -> {
-			if (count == 0L) {
-				populate();
-			}
-		}).subscribe();
-	}
-
-	private void populate() {
-		log.info("Populating races");
 		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/races.json")) {
-			List<Race> races = objectMapper.readerFor(new TypeReference<List<Race>>() {
+
+			final List<Race> values = objectMapper.readerFor(new TypeReference<List<Race>>() {
 			}).readValue(in);
-			races.stream().forEach(e -> e.setMetadata(EntityMetadata.builder()
-				.created(LocalDateTime.now())
-				.build()));
-			repository.saveAll(races).subscribe();
+
+			repository
+				.deleteAll()
+				.thenMany(Flux.fromIterable(values))
+				.flatMap(repository::save)
+				.then(Mono.just(String.format("Inserted %s races", values.size())))
+				.subscribe(e -> log.info(e));
 		}
 		catch (Exception ex) {
 			log.error("Error populating races", ex);
