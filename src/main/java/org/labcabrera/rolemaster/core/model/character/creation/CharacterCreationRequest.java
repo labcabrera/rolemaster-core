@@ -1,32 +1,69 @@
 package org.labcabrera.rolemaster.core.model.character.creation;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.validation.ExistingRaceValidator.ExistingRace;
 
-public interface CharacterCreationRequest {
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-	String getName();
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class CharacterCreationRequest {
 
-	String getRaceId();
+	@NotEmpty
+	@Schema(description = "Character name.", example = "Kiove", required = true)
+	private String name;
 
-	String getProfessionId();
+	@ExistingRace
+	@NotEmpty
+	@Schema(description = "Characted race identifier.", example = "common-men", required = true)
+	private String raceId;
 
-	String getRealmId();
+	@NotEmpty
+	@Schema(description = "Characted race identifier.", example = "figther", required = true)
+	private String professionId;
 
-	Integer getAge();
+	@NotEmpty
+	@Schema(description = "Characted realm identifier.", example = "essence", required = true)
+	private String realmId;
 
-	Integer getHeight();
+	@NotNull
+	@Schema(description = "Character age in years", example = "32", required = true)
+	private Integer age;
 
-	Integer getWeight();
+	@NotNull
+	@Schema(description = "Character height in cm.", example = "184", required = true)
+	private Integer height;
 
-	Integer getAttributesRoll();
+	@NotNull
+	@Schema(description = "Character height in kg.", example = "85", required = true)
+	private Integer weight;
 
-	Map<AttributeType, Integer> getBaseAttributes();
+	@NotNull
+	private Integer attributesRoll;
 
-	List<String> getWeaponCategoryOrder();
+	@NotEmpty
+	@Builder.Default
+	private Map<AttributeType, Integer> baseAttributes = new LinkedHashMap<>();
 
-	List<String> getLanguages();
+	@Builder.Default
+	@Schema(description = "Establishes the order of priority for the development of the weapons categories. The higher the priority, the lower the development cost.", required = true)
+	private List<String> weaponCategoryOrder = new ArrayList<>();
+
+	@Builder.Default
+	private List<String> languages = new ArrayList<>();
 
 }

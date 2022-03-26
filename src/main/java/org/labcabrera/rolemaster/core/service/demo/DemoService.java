@@ -7,7 +7,6 @@ import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.Session;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequestImpl;
 import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.CharacterStatusService;
@@ -68,7 +67,7 @@ public class DemoService {
 	}
 
 	private CharacterCreationRequest createCharacterCreationRequest() {
-		CharacterCreationRequestImpl result = CharacterCreationRequestImpl.builder()
+		CharacterCreationRequest result = CharacterCreationRequest.builder()
 			.name("Set (demo)")
 			.raceId("common-men")
 			.professionId("thief")

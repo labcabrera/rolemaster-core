@@ -1,10 +1,10 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -39,6 +39,7 @@ public class Profession {
 	@Builder.Default
 	private Map<String, List<Integer>> skillCategoryDevelopmentCost = new LinkedHashMap<>();
 
-	private EntityMetadata metadata;
+	@Builder.Default
+	private List<List<Integer>> skillCategoryWeaponDevelopmentCost = new ArrayList<>();
 
 }

@@ -18,5 +18,14 @@
 		"pr": 50,
 		"st": 92,
 		"qu": 75
-	}
+	},
+	"weaponCategoryOrder": [
+		"weapon-1h-edged",
+		"weapon-thrown",
+		"weapon-missile",
+		"weapon-1h-concussion",
+		"weapon-2h",
+		"weapon-pole-arms",
+		"weapon-missile-artillery"
+	]
 }

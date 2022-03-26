@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.SkillUpgradeRequest;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequestImpl;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +41,7 @@ public interface CharacterController {
 		@Parameter(description = "Character creation request", required = true) @RequestBody(content = @Content(examples = {
 			@ExampleObject(name = "Character creation example 01", ref = "#/components/examples/characterCreationExample01"),
 			@ExampleObject(name = "Character creation example 02", ref = "#/components/examples/characterCreationExample01")
-		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequestImpl request);
+		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequest request);
 
 	@PostMapping("/{id}/skills/upgrade")
 	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillUpgradeRequest request);

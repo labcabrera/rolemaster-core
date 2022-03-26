@@ -2,7 +2,9 @@ package org.labcabrera.rolemaster.core.service.character.creation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
@@ -106,6 +108,7 @@ public class CharacterCreationService {
 			})
 			.map(ctx -> loadAttributes(ctx, request))
 			.map(this::loadSkillCategories)
+			.map(ctx -> loadSkillCategoryWeapons(ctx, request))
 			.map(this::loadSkills)
 			.map(e -> {
 				postProcessorService.apply(e.getCharacter());
@@ -172,6 +175,23 @@ public class CharacterCreationService {
 			cs.getBonus().put(BonusType.SKILL_SPECIAL, skill.getSkillBonus());
 			context.getCharacter().getSkills().add(cs);
 		});
+		return context;
+	}
+
+	private CharacterModificationContext loadSkillCategoryWeapons(CharacterModificationContext context, CharacterCreationRequest request) {
+		CharacterInfo character = context.getCharacter();
+		Profession profession = context.getProfession();
+		if (profession.getSkillCategoryWeaponDevelopmentCost().size() != request.getWeaponCategoryOrder().size()) {
+			throw new BadRequestException("Invalid request weapon category order count");
+		}
+		for (int i = 0; i < request.getWeaponCategoryOrder().size(); i++) {
+			String categoryId = request.getWeaponCategoryOrder().get(i);
+			List<Integer> devCost = profession.getSkillCategoryWeaponDevelopmentCost().get(i);
+			CharacterSkillCategory category = character.getSkillCategories().stream()
+				.filter(e -> e.getCategoryId().equals(categoryId))
+				.findFirst().orElseThrow(() -> new BadRequestException("Invalid weapon skill category " + categoryId));
+			category.setDevelopmentCost(devCost);
+		}
 		return context;
 	}
 
