@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
@@ -66,7 +65,7 @@ public class CharacterCreationService {
 		log.info("Processing new character {}", request.getName());
 
 		final CharacterInfo character = CharacterInfo.builder()
-			.level(1)
+			.level(0)
 			.name(request.getName())
 			.raceId(request.getRaceId())
 			.professionId(request.getProfessionId())
@@ -83,13 +82,13 @@ public class CharacterCreationService {
 
 		return Mono.just(context)
 			.zipWith(raceRepository.findById(request.getRaceId()))
-			.switchIfEmpty(Mono.error(new NotFoundException("Race " + request.getRaceId() + " not found")))
+			.switchIfEmpty(Mono.error(new BadRequestException("Race " + request.getRaceId() + " not found")))
 			.map(tuple -> {
 				tuple.getT1().setRace(tuple.getT2());
 				return tuple.getT1();
 			})
 			.zipWith(professionRepository.findById(request.getProfessionId()))
-			.switchIfEmpty(Mono.error(new NotFoundException("Profession " + request.getProfessionId() + " not found")))
+			.switchIfEmpty(Mono.error(new BadRequestException("Profession " + request.getProfessionId() + " not found")))
 			.map(tuple -> {
 				tuple.getT1().setProfession(tuple.getT2());
 				return tuple.getT1();
