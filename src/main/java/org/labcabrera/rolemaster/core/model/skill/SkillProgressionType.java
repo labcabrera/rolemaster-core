@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character;
+package org.labcabrera.rolemaster.core.model.skill;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

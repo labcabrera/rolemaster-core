@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
 import org.labcabrera.rolemaster.core.controller.SkillController;
-import org.labcabrera.rolemaster.core.model.character.Skill;
+import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

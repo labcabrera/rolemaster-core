@@ -5,8 +5,8 @@ import java.util.List;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
-import org.labcabrera.rolemaster.core.model.character.Skill;
-import org.labcabrera.rolemaster.core.model.character.SkillCategory;
+import org.labcabrera.rolemaster.core.model.skill.Skill;
+import org.labcabrera.rolemaster.core.model.skill.SkillCategory;
 
 public interface CharacterModificationContext {
 

@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.populator;
 
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.model.character.Skill;
+import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.type.TypeReference;
