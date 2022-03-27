@@ -1,6 +1,7 @@
 [
     {
         "id": "adventurer",
+        "type": "lifestyle",
         "timeAcquisition": 102,
         "skillCategoryRanks": {
             "athletic-gymnastic": 1,
@@ -34,21 +35,19 @@
     },
     {
         "id": "animal-friend",
+        "type": "lifestyle",
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "amateur-mage",
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
-        "id": "city-guard",
+        "type": "lifestyle",
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "burglar",
+        "type": "vocational",
         "timeAcquisition": 33,
         "skillCategoryRanks": {
             "subterfuge-mechanics": 2,
@@ -69,67 +68,84 @@
         ]
     },
     {
+        "id": "city-guard",
+        "type": "vocational",
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
         "id": "doctor",
+        "type": "vocational",
         "timeAcquisition": 18,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "herbalist",
+        "type": "vocational",
         "timeAcquisition": 33,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "hunter",
+        "type": "lifestyle",
         "timeAcquisition": 18,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "knight",
+        "type": "lifestyle",
         "timeAcquisition": 69,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "loremaster",
+        "type": "vocational",
         "timeAcquisition": 40,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "merchant",
+        "type": "vocational",
         "timeAcquisition": 23,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "scout",
+        "type": "vocational",
         "timeAcquisition": 33,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "performer",
+        "type": "vocational",
         "timeAcquisition": 40,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "scout",
+        "type": "vocational",
         "timeAcquisition": 33,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "soldier",
+        "type": "vocational",
         "timeAcquisition": 26,
         "skillCategoryRanks": {},
         "skillRanks": {}
     },
     {
         "id": "traveler",
+        "type": "vocational",
         "timeAcquisition": 18,
         "skillCategoryRanks": {},
         "skillRanks": {}
