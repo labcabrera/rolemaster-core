@@ -9,8 +9,7 @@
             "sd",
             "co"
         ],
-        "rankBonusProgression": "special",
-        "categoryBonusProgression": "special",
+        "progressionType": "raceBodyDevelopment",
         "clasification": "special",
         "skillBonus": 50
     },
@@ -24,8 +23,7 @@
             "ag",
             "st"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -38,8 +36,7 @@
             "ag",
             "st"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -52,8 +49,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -66,8 +62,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -80,8 +75,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -94,8 +88,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -108,8 +101,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -122,8 +114,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -136,8 +127,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     },
     {
@@ -150,8 +140,7 @@
             "st",
             "ag"
         ],
-        "rankBonusProgression": "standard",
-        "categoryBonusProgression": "standard",
+        "progressionType": "standard",
         "clasification": "moving-maneuver"
     }
 ]

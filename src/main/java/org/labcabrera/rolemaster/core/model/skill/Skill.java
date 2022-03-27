@@ -36,10 +36,6 @@ public class Skill {
 
 	private SkillProgressionType progressionType;
 
-	private SkillBonusType bonusType;
-
-	private String categoryBonusProgression;
-
 	@Builder.Default
 	private Integer skillBonus = 0;
 

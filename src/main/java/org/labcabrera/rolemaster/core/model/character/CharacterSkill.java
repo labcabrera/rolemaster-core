@@ -6,6 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.skill.SkillProgressionType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +24,8 @@ public class CharacterSkill {
 	private String categoryId;
 
 	private String group;
+
+	private SkillProgressionType progressionType;
 
 	@Builder.Default
 	private List<Integer> developmentCost = new ArrayList<>();

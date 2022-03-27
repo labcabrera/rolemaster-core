@@ -142,14 +142,9 @@ public class CharacterCreationService {
 	}
 
 	private CharacterModificationContext loadSkillCategories(CharacterModificationContext context) {
-		if (context.getSkillCategories() == null || context.getSkillCategories().isEmpty()) {
-			log.warn("Undefined categories");
-		}
-
 		CharacterInfo character = context.getCharacter();
 		Race race = context.getRace();
 		Profession profession = context.getProfession();
-
 		context.getSkillCategories().stream().forEach(category -> {
 			String categoryId = category.getId();
 			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
@@ -166,13 +161,13 @@ public class CharacterCreationService {
 			characterSkillCategory.getBonus().put(BonusType.RANK, bonusRanks);
 			characterSkillCategory.getBonus().put(BonusType.PROFESSION, bonusProfession);
 			characterSkillCategory.getBonus().put(BonusType.ATTRIBUTE, bonusAttribute);
-
 			character.getSkillCategories().add(characterSkillCategory);
 		});
 		return context;
 	}
 
 	private CharacterModificationContext loadSkills(CharacterModificationContext context) {
+		Race race = context.getRace();
 		context.getSkills().stream().forEach(skill -> {
 			String categoryId = skill.getCategoryId();
 			CharacterSkillCategory category = context.getCharacter().getSkillCategory(categoryId)
@@ -183,7 +178,11 @@ public class CharacterCreationService {
 				.group(category.getGroup())
 				.developmentCost(category.getDevelopmentCost())
 				.attributes(skill.getAttributeBonus())
+				.progressionType(skill.getProgressionType())
 				.build();
+			cs.getRanks().put(RankType.ADOLESCENCE, race.getAdolescenseSkillRanks().getOrDefault(skill.getId(), 0));
+			cs.getRanks().put(RankType.CONSOLIDATED, 0);
+			cs.getRanks().put(RankType.DEVELOPMENT, 0);
 			cs.getBonus().put(BonusType.SKILL_SPECIAL, skill.getSkillBonus());
 			context.getCharacter().getSkills().add(cs);
 		});
