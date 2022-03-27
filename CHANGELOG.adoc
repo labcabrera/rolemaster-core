@@ -1,0 +1,7 @@
+= Rolemaster Core Changelog
+
+https://github.com/labcabrera/rolemaster-core
+
+== 0.1.0 (2021-03-27)
+
+- Initial model and character creation version.

@@ -1,0 +1,14 @@
+[
+	{
+		"keyId": "application-name",
+		"languageId": "en",
+		"categoryId": "general",
+		"message": "Rolemaster Engine"
+	},
+	{
+		"keyId": "ag",
+		"languageId": "en",
+		"categoryId": "attributes",
+		"message": "Aggility"
+	}
+]
