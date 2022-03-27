@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum RankType {
 
-	ADOLESCENSE("adolescence"),
+	ADOLESCENCE("adolescence"),
 
 	LIFESTYLE("lifestyle"),
 
-	CONSOLIDED("consolided"),
+	CONSOLIDATED("consolidated"),
 
 	DEVELOPMENT("development");
 

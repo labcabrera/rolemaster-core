@@ -38,6 +38,8 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class CharacterCreationService {
 
+	private static final String MSG_INVALID_WEAPON_SIZE = "Invalid request weapon category order count. Expected: %s, received: %s";
+
 	@Autowired
 	private AttributeCreationService attributeCreationService;
 
@@ -154,8 +156,9 @@ public class CharacterCreationService {
 				.categoryId(category.getId())
 				.developmentCost(profession.getSkillCategoryDevelopmentCost().getOrDefault(categoryId, new ArrayList<>()))
 				.attributes(category.getAttributeBonus())
+				.group(category.getGroup())
 				.build();
-			characterSkillCategory.getRanks().put(RankType.ADOLESCENSE, adolescenceRank);
+			characterSkillCategory.getRanks().put(RankType.ADOLESCENCE, adolescenceRank);
 			characterSkillCategory.getBonus().put(BonusType.RANK, bonusRanks);
 			characterSkillCategory.getBonus().put(BonusType.PROFESSION, bonusProfession);
 			characterSkillCategory.getBonus().put(BonusType.ATTRIBUTE, bonusAttribute);
@@ -181,11 +184,13 @@ public class CharacterCreationService {
 	private CharacterModificationContext loadSkillCategoryWeapons(CharacterModificationContext context, CharacterCreationRequest request) {
 		CharacterInfo character = context.getCharacter();
 		Profession profession = context.getProfession();
-		if (profession.getSkillCategoryWeaponDevelopmentCost().size() != request.getWeaponCategoryOrder().size()) {
-			throw new BadRequestException("Invalid request weapon category order count");
+		int sizeExpected = profession.getSkillCategoryWeaponDevelopmentCost().size();
+		int sizeReceived = request.getWeaponCategoryPriority().size();
+		if (sizeExpected != sizeReceived) {
+			throw new BadRequestException(String.format(MSG_INVALID_WEAPON_SIZE, sizeExpected, sizeReceived));
 		}
-		for (int i = 0; i < request.getWeaponCategoryOrder().size(); i++) {
-			String categoryId = request.getWeaponCategoryOrder().get(i);
+		for (int i = 0; i < request.getWeaponCategoryPriority().size(); i++) {
+			String categoryId = request.getWeaponCategoryPriority().get(i);
 			List<Integer> devCost = profession.getSkillCategoryWeaponDevelopmentCost().get(i);
 			CharacterSkillCategory category = character.getSkillCategories().stream()
 				.filter(e -> e.getCategoryId().equals(categoryId))

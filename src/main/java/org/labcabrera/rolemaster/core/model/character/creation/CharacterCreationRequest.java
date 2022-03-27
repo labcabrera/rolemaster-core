@@ -59,9 +59,10 @@ public class CharacterCreationRequest {
 	@Builder.Default
 	private Map<AttributeType, Integer> baseAttributes = new LinkedHashMap<>();
 
+	@NotEmpty
 	@Builder.Default
 	@Schema(description = "Establishes the order of priority for the development of the weapons categories. The higher the priority, the lower the development cost.", required = true)
-	private List<String> weaponCategoryOrder = new ArrayList<>();
+	private List<String> weaponCategoryPriority = new ArrayList<>();
 
 	@Builder.Default
 	private List<String> languages = new ArrayList<>();

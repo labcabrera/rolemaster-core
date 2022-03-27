@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.exception;
 
 import org.apache.commons.lang3.StringUtils;
+import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.ApiError.Message;
@@ -22,6 +23,13 @@ public class InternalErrorHandler {
 	public ResponseEntity<ApiError> serverExceptionHandler(Exception ex) {
 		log.debug("Handling exception {}", ex.getClass().getName());
 
+		if (ex instanceof BadRequestException) {
+			log.warn("Invalid request", ex);
+			ApiError error = ApiError.builder()
+				.message(ex.getMessage())
+				.build();
+			return ResponseEntity.badRequest().body(error);
+		}
 		if (ex instanceof WebExchangeBindException) {
 			log.info("Invalid request: {}", ex.getMessage());
 			WebExchangeBindException bindEx = (WebExchangeBindException) ex;

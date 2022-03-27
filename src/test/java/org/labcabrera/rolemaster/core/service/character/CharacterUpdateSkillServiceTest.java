@@ -53,7 +53,7 @@ class CharacterUpdateSkillServiceTest {
 			.categoryId("cat-01")
 			.developmentCost(Arrays.asList(3, 7))
 			.build()));
-		character.getSkillCategory("cat-01").get().getRanks().put(RankType.CONSOLIDED, 1);
+		character.getSkillCategory("cat-01").get().getRanks().put(RankType.CONSOLIDATED, 1);
 		character.setSkills(Arrays.asList(CharacterSkill.builder()
 			.skillId("s-01")
 			.developmentCost(Arrays.asList(1, 2, 3))
