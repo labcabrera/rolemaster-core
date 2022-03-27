@@ -2,8 +2,8 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
-import org.labcabrera.rolemaster.core.model.character.Session;
 import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
+import org.labcabrera.rolemaster.core.model.session.Session;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -14,12 +14,12 @@ public class SkillPopulator extends AbstractJsonPopulator<Skill> {
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
-			"data/populator/skills.json",
-			"data/populator/skills-artistic.json",
-			"data/populator/skills-athletic.json",
-			"data/populator/skills-awareness.json",
-			"data/populator/skills-combat-maneuvers.json",
-			"data/populator/skills-subterfuge.json");
+			"data/populator/skills/skills.json",
+			"data/populator/skills/skills-artistic.json",
+			"data/populator/skills/skills-athletic.json",
+			"data/populator/skills/skills-awareness.json",
+			"data/populator/skills/skills-combat-maneuvers.json",
+			"data/populator/skills/skills-subterfuge.json");
 	}
 
 	@Override

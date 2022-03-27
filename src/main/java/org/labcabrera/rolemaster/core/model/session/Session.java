@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character;
+package org.labcabrera.rolemaster.core.model.session;
 
 import java.util.ArrayList;
 import java.util.List;
