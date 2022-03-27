@@ -25,6 +25,8 @@ public class SkillCategory {
 
 	private String name;
 
+	private String group;
+
 	@Builder.Default
 	private List<AttributeType> attributeBonus = new ArrayList<>();
 

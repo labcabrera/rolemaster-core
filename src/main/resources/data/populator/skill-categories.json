@@ -2,186 +2,264 @@
 	{
 		"id": "athletic-brawn",
 		"name": "Athletic - Brawn",
+		"group": "athletic",
 		"attributeBonus": ["st","co","ag"]
 	},
 	{
 		"id": "athletic-endurance",
 		"name": "Athletic - Endurance",
+		"group": "athletic",		
 		"attributeBonus": ["co","ag","st"]
 	},
 	{
 		"id": "athletic-gymnastics",
 		"name": "Athletic - Gymnastics",
+		"group": "athletic",
 		"attributeBonus": ["ag","qu","ag"]
 		
 	},
 	{
 		"id": "body-development",
 		"name": "Body development",
+		"group": "body-development",
 		"attributeBonus": ["co","sd","co"]
 	},
 	{
 		"id": "awareness-perceptions",
+		"group": "awareness",
 		"name": "Awareness - Perceptions",
 		"attributeBonus": ["in","sd","in"]
 	},
 	{
 		"id": "awareness-searching",
+		"group": "awareness",
 		"name": "Awareness - Searching",
 		"attributeBonus": ["in","re","sd"]	
 	},
 	{
 		"id": "awareness-senses",
+		"group": "awareness",
 		"name": "Awareness - Senses",
 		"attributeBonus": ["in","sd","in"]
 	},
 	{
 		"id": "armor-light",
 		"name": "Armor - Light",
+		"group": "armor",
 		"attributeBonus": ["ag","st","ag"]
 	},
 	{
 		"id": "armor-medium",
 		"name": "Armor - Medium",
+		"group": "armor",
 		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "armor-heavy",
 		"name": "Armor - Heavy",
+		"group": "armor",
 		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-1h-edged",
 		"name": "Weapon - 1H Edged",
+		"group": "weapon",
 		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-1h-concussion",
 		"name": "Weapon - 1H Concussion",
+		"group": "weapon",
 		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-2h",
 		"name": "Weapon - 2H",
+		"group": "weapon",
 		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-missile",
 		"name": "Weapon - Missile",
+		"group": "weapon",
 		"attributeBonus": ["ag","st","ag"]
 	},
 	{
 		"id": "weapon-missile-artillery",
 		"name": "Weapon - Missile Artillery",
+		"group": "weapon",
 		"attributeBonus": ["in","ag","re"]
 	},
 	{
 		"id": "weapon-pole-arms",
 		"name": "Weapon - Pole Arms",
+		"group": "weapon",
 		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "weapon-thrown",
 		"name": "Weapon - Thrown",
+		"group": "weapon",
 		"attributeBonus": ["ag","st","ag"]
 	},
 	{
 		"id": "subterfuge-attack",
 		"name": "Subterfuge - Attack",
+		"group": "subterfuge",
 		"attributeBonus": ["ag","sd","in"]
 	},
 	{
 		"id": "subterfuge-mechanics",
 		"name": "Subterfuge - Mechanics",
+		"group": "subterfuge",
 		"attributeBonus": ["in","ag","re"]
 	},
 	{
 		"id": "subterfuge-stealth",
 		"name": "Subterfuge - Stealth",
+		"group": "subterfuge",
 		"attributeBonus": ["ag","sd","in"]
 	},
 	{
 		"id": "combat-maneuvers",
 		"name": "Combat maneuvers",
+		"group": "combat-maneuvers",
 		"attributeBonus": ["ag","qu","sd"]
 	},
 	{
 		"id": "communications",
 		"name": "Communications",
+		"group": "communications",
 		"attributeBonus": ["re","me","em"]
 	},
 	{
 		"id": "crafts",
 		"name": "Crafts",
+		"group": "crafts",
 		"attributeBonus": ["ag","me","sd"]
 	},
 	{
 		"id": "directed-spells",
 		"name": "Directed spells",
+		"group": "directed-spells",
 		"attributeBonus": ["ag","sd","ag"]
 	},
 	{
 		"id": "influence",
-		"name": "Influence"
+		"name": "Influence",
+		"group": "influence",
+		"attributeBonus": ["pr","em","in"]
 	},
 	{
 		"id": "lore-general",
-		"name": "Lore - General"
+		"name": "Lore - General",
+		"group": "lore",
+		"attributeBonus": ["me","re","me"]
 	},
 	{
 		"id": "lore-magical",
-		"name": "Lore - Magical"
+		"name": "Lore - Magical",
+		"group": "lore",
+		"attributeBonus": ["me","re","me"]
 	},
 	{
 		"id": "lore-technical",
-		"name": "Lore - Technical"
+		"name": "Lore - Technical",
+		"group": "lore",
+		"attributeBonus": ["me","re","me"]
 	},
 	{
 		"id": "lore-obscure",
-		"name": "Lore - Obscure"
+		"name": "Lore - Obscure",
+		"group": "lore",
+		"attributeBonus": ["me","re","me"]
 	},
 	{
 		"id": "martial-arts-striking",
-		"name": "Martials Arts - Striking"
+		"name": "Martials Arts - Striking",
+		"group": "martial-arts",
+		"attributeBonus": ["st","ag","st"]
 	},
 	{
 		"id": "outdoor-animal",
-		"name": "Outdoor - Animal"
+		"name": "Outdoor - Animal",
+		"group": "outdoor",
+		"attributeBonus": ["em","ag","em"]
 	},
 	{
 		"id": "outdoor-environmental",
-		"name": "Outdoor - Environmental"
+		"name": "Outdoor - Environmental",
+		"group": "outdoor",
+		"attributeBonus": ["sd","in","me"]
+	},
+	{
+		"id": "power-awareness",
+		"name": "Power Awareness",
+		"group": "power-awareness",
+		"attributeBonus": ["em","in","pr"]
 	},
 	{
 		"id": "power-point-development",
-		"name": "Power Point Development"
+		"name": "Power Point Development",
+		"group": "power-point",
+		"attributeBonus": [],
+		"TODO": "REALM DEPENDENT"
 	},
 	{
 		"id": "science-analytic-basic",
-		"name": "Science/Analytic - Basic"
+		"name": "Science/Analytic - Basic",
+		"group": "science-analytic",
+		"attributeBonus": ["re","me","re"]
 	},
 	{
 		"id": "science-analytic-specialized",
-		"name": "Science/Analytic - Specialized"
+		"name": "Science/Analytic - Specialized",
+		"group": "science-analytic",
+		"attributeBonus": ["re","me","re"]
 	},
 	{
 		"id": "self-control",
-		"name": "Self Control"
+		"name": "Self Control",
+		"group": "self-control",
+		"attributeBonus": ["sd","pr","sd"]
 	},
 	{
 		"id": "technical-trade-general",
-		"name": "Technical/Trade - General"
+		"name": "Technical/Trade - General",
+		"group": "technical-trade",
+		"attributeBonus": ["re","me","sd"]	
 	},
 	{
 		"id": "technical-trade-professional",
-		"name": "Technical/Trade - Professional"
+		"name": "Technical/Trade - Professional",
+		"group": "technical-trade",
+		"attributeBonus": ["re","me","in"]
 	},
 	{
 		"id": "technical-trade-vocational",
-		"name": "Technical/Trade - Vocational"
+		"name": "Technical/Trade - Vocational",
+		"group": "technical-trade",
+		"attributeBonus": ["me","in","re"]
 	},
 	{
 		"id": "urban",
-		"name": "Urban"
+		"name": "Urban",
+		"group": "urban",
+		"attributeBonus": ["in","pr","re"]
+	},{
+		"id": "spells-own-realm-closed-lists",
+		"name": "Spells - Own realm closed lists",
+		"group": "spells",
+		"attributeBonus": []
+	},{
+		"id": "spells-own-realm-open-lists",
+		"name": "Spells - Own realm open lists",
+		"group": "spells",
+		"attributeBonus": []
+	},{
+		"id": "spells-own-realm-base-lists",
+		"name": "Spells - Own realm base lists",
+		"group": "spells",
+		"attributeBonus": []
 	}
 ]

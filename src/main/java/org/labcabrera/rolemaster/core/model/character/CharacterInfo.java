@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
@@ -71,5 +72,13 @@ public class CharacterInfo {
 
 	@Builder.Default
 	private List<String> authorization = new ArrayList<>();
+
+	public Optional<CharacterSkillCategory> getSkillCategory(String categoryId) {
+		return skillCategories.stream().filter(e -> categoryId.equals(e.getCategoryId())).findFirst();
+	}
+
+	public Optional<CharacterSkill> getSkill(String skillId) {
+		return skills.stream().filter(e -> skillId.equals(e.getSkillId())).findFirst();
+	}
 
 }

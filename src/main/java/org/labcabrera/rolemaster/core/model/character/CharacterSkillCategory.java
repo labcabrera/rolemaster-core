@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.model.character;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +18,8 @@ public class CharacterSkillCategory {
 
 	private String categoryId;
 
+	private String group;
+
 	@Builder.Default
 	private List<AttributeType> attributes = new ArrayList<>();
 
@@ -25,16 +27,13 @@ public class CharacterSkillCategory {
 	private List<Integer> developmentCost = new ArrayList<>();
 
 	@Builder.Default
-	private Integer adolescenceRanks = 0;
+	private Map<RankType, Integer> ranks = new EnumMap<>(RankType.class);
 
 	@Builder.Default
-	private Integer upgradedRanks = 0;
-
-	@Builder.Default
-	private Map<BonusType, Integer> bonus = new LinkedHashMap<>();
+	private Map<BonusType, Integer> bonus = new EnumMap<>(BonusType.class);
 
 	public Integer getTotalRanks() {
-		return adolescenceRanks + upgradedRanks;
+		return ranks.values().stream().reduce(0, (a, b) -> a + b);
 	}
 
 	public Integer getTotalBonus() {

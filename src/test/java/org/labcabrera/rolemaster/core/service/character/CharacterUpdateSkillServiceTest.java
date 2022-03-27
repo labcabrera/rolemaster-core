@@ -18,6 +18,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterDevelopment;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
+import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.mockito.InjectMocks;
@@ -51,8 +52,8 @@ class CharacterUpdateSkillServiceTest {
 		character.setSkillCategories(Arrays.asList(CharacterSkillCategory.builder()
 			.categoryId("cat-01")
 			.developmentCost(Arrays.asList(3, 7))
-			.upgradedRanks(1)
 			.build()));
+		character.getSkillCategory("cat-01").get().getRanks().put(RankType.CONSOLIDED, 1);
 		character.setSkills(Arrays.asList(CharacterSkill.builder()
 			.skillId("s-01")
 			.developmentCost(Arrays.asList(1, 2, 3))
@@ -76,9 +77,7 @@ class CharacterUpdateSkillServiceTest {
 		Mono<CharacterInfo> mono = service.updateRanks(character.getId(), request);
 		CharacterInfo result = mono.share().block();
 		assertEquals(26, result.getDevelopmentPoints().getUsedPoints());
-		assertEquals(3, result.getSkillCategories().stream()
-			.filter(e -> e.getCategoryId().equals("cat-01")).findFirst().orElse(null)
-			.getUpgradedRanks());
+		assertEquals(3, result.getSkillCategory("cat-01").get().getTotalRanks());
 		assertEquals(9, result.getSkills().stream()
 			.filter(e -> e.getSkillId().equals("s-01")).findFirst().orElse(null)
 			.getUpgradedRanks());

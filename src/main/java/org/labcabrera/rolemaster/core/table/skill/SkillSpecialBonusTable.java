@@ -1,21 +1,28 @@
 package org.labcabrera.rolemaster.core.table.skill;
 
-import java.util.function.UnaryOperator;
+import java.util.List;
 
-public class SkillSpecialBonusTable implements UnaryOperator<Integer> {
+public class SkillSpecialBonusTable {
 
-	@Override
-	public Integer apply(Integer value) {
+	/**
+	 * @param value
+	 * @param mask Example [6,5,4,3]
+	 * @return
+	 */
+	public Integer apply(Integer value, List<Integer> mask) {
 		if (value < 11) {
-			return value * 6;
+			return value * mask.get(0);
 		}
 		else if (value < 21) {
-			return 60 + (value - 10) * 5;
+			int tmp = mask.get(0) * 10;
+			return tmp + (value - 10) * mask.get(1);
 		}
 		else if (value < 31) {
-			return 110 + (value - 20) * 4;
+			int tmp = mask.get(0) * 10 + mask.get(1) * 10;
+			return tmp + (value - 20) * mask.get(2);
 		}
-		return 150 + (value - 30) * 3;
+		int tmp = mask.get(0) * 10 + mask.get(1) * 10 + mask.get(2) * 10;
+		return tmp + (value - 30) * 3;
 	}
 
 }

@@ -1,0 +1,137 @@
+[
+    {
+        "id": "adventurer",
+        "timeAcquisition": 102,
+        "skillCategoryRanks": {
+            "athletic-gymnastic": 1,
+            "athletic-endurance": 2,
+            "awareness-searching": 2,
+            "power-awareness": 1,
+            "technical-trade": 1
+        },
+        "skillRanks": {
+            "body-development": 1,
+            "climbing": 1,
+            "swimming": 1,
+            "alertness": 2,
+            "observation": 1,
+            "attunement": 1,
+            "first-aid": 1
+        },
+        "selectionCategorySkillRanks": [
+            {
+                "category": "weapon",
+                "value": 1
+            }
+        ],
+        "selectionSkillRanks": [
+            {
+                "category": "weapon",
+                "value": 1
+            }
+        ],
+        "startingMoney": "+d10g"
+    },
+    {
+        "id": "animal-friend",
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "amateur-mage",
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "city-guard",
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "burglar",
+        "timeAcquisition": 33,
+        "skillCategoryRanks": {
+            "subterfuge-mechanics": 2,
+            "athletic-gymnastics": 2,
+            "lore-general": 2,
+            "lore-technical": 2
+        },
+        "skillRanks": {
+            "climbing": 1,
+            "heraldry": 1,
+            "lock-lore": 2
+        },
+        "selectionSkillRanks": [
+            {
+                "category": "athletic-gymnastics",
+                "value": 1
+            }
+        ]
+    },
+    {
+        "id": "doctor",
+        "timeAcquisition": 18,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "herbalist",
+        "timeAcquisition": 33,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "hunter",
+        "timeAcquisition": 18,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "knight",
+        "timeAcquisition": 69,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "loremaster",
+        "timeAcquisition": 40,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "merchant",
+        "timeAcquisition": 23,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "scout",
+        "timeAcquisition": 33,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "performer",
+        "timeAcquisition": 40,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "scout",
+        "timeAcquisition": 33,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "soldier",
+        "timeAcquisition": 26,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    },
+    {
+        "id": "traveler",
+        "timeAcquisition": 18,
+        "skillCategoryRanks": {},
+        "skillRanks": {}
+    }
+]

@@ -6,6 +6,7 @@ import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
+import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,7 @@ public class CharacterUpdateSkillService {
 				for (int i = 0; i < levels; i++) {
 					cost.add(category.getDevelopmentCost().get(i));
 				}
-				category.setUpgradedRanks(category.getUpgradedRanks() + levels);
+				category.getRanks().put(RankType.DEVELOPMENT, levels);
 			}
 		});
 	}
