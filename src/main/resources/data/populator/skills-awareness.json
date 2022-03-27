@@ -21,7 +21,7 @@
         "id": "detect-traps",
         "name": "Detect Traps",
         "type": "staticManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "awareness-searching",
         "progressionType": "standard",
         "description": "This skill provides a bonus for detecting inanimate traps or ambushes."
@@ -30,7 +30,7 @@
         "id": "lie-perception",
         "name": "Lie Perception",
         "type": "staticManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "awareness-searching",
         "progressionType": "standard",
         "description": "This skill provides a bonus for perceiving lies told by an individual under proximate observation (within 10' and within visual/hearing range) by the user of this skill."
@@ -39,7 +39,7 @@
         "id": "locate-hidden",
         "name": "Locate Hidden",
         "type": "staticManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "awareness-searching",
         "progressionType": "standard",
         "description": "This skill provides a bonus for locating secret openings or hidden objects."
@@ -57,7 +57,7 @@
         "id": "poison-perception",
         "name": "Poison Perception",
         "type": "staticManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "awareness-searching",
         "progressionType": "standard",
         "description": "This skill provides a bonus for perceiving the presence of poison in/on an item or object. Note that some poisons might be virtually undetectable (e.g., a colorless, tasteless, odorless powder that dissolves completely in water will be very difficult if not impossible to detect)."
@@ -66,7 +66,7 @@
         "id": "reading-tracks",
         "name": "Reading Tracks",
         "type": "staticManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "awareness-searching",
         "progressionType": "standard",
         "description": "This skill provides a bonus for gleaning information from a set of tracks or spoor. Detailed information about the tracks can be obtained, such as type of creatures, age of tracks, weight of creature, speed creature moving at, back tracking, etc. The skill, Tracking, is used for spotting and following the tracks."
@@ -75,7 +75,7 @@
         "id": "surveillance",
         "name": "Surveillance",
         "type": "staticManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "awareness-searching",
         "progressionType": "standard",
         "description": "This skill provides a bonus for surreptitiously keeping watch over a person, place, or object."
@@ -84,9 +84,63 @@
         "id": "tracking",
         "name": "Tracking",
         "type": "staticManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "awareness-searching",
         "progressionType": "standard",
         "description": "This skill provides a bonus for tracking maneuvers and following a trail left by someone or something such as foot prints, broken branches, crushed grass, hanging pieces of cloth, etc. The skill Reading Tracks gives the tracker the information about the tracks."
+    },
+    {
+        "id": "direction-sense",
+        "name": "Direction Sense",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "sense-awareness-hear",
+        "name": "Sense Awareness - Hear",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to the ability to discern detail and information through the use of a particular sense (i.e., sight, touch, etc.). Note that skill for each sense must be developed separately."
+    },
+    {
+        "id": "sense-awareness-sight",
+        "name": "Sense Awareness - Sight",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to the ability to discern detail and information through the use of a particular sense (i.e., sight, touch, etc.). Note that skill for each sense must be developed separately."
+    },
+    {
+        "id": "sense-awareness-smell",
+        "name": "Sense Awareness - Smell",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to the ability to discern detail and information through the use of a particular sense (i.e., sight, touch, etc.). Note that skill for each sense must be developed separately."
+    },
+    {
+        "id": "situational-awareness-primary",
+        "name": "Situational Awareness - Primary",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to the individual’s ability to notice and assimilate information from the environment in a specific type of situation. This is a combination of active and passive skills specifically trained for maximum effectiveness within a given situation. For example, Scouting Awareness is used by the point man in a squad of soldiers to be alert to possible enemy approaches, traps, Sleep Awareness might aid in sleeping lightly to prevent being taken unawares, etc. Urban Awareness might aid in staying alert for muggers, vehicles, etc. Skill with Situational Awareness must be developed for each situation, as determined by the GM."
+    },
+    {
+        "id": "time-sense",
+        "name": "Time Sense",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for determining the time of day or how much time has passed over a specific period. This is a combination of the ability to estimate internally the passage of time, as well as using external references such as the sun, stars, etc. When no external referents are available (e.g., underground, in a jail cell, etc.), it is significantly more difficult to estimate the passage of time. Also, after sleep or unconsciousness one typically requires the use of external referents to 'reset' one's internal clock; the lack of same will hinder the use of this skill. This skill may be used to attempt to wake oneself from sleep at a predetermined time."
     }
 ]

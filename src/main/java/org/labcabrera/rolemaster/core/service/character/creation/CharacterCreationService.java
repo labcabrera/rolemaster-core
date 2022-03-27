@@ -177,7 +177,7 @@ public class CharacterCreationService {
 				.categoryId(skill.getCategoryId())
 				.group(category.getGroup())
 				.developmentCost(category.getDevelopmentCost())
-				.attributes(skill.getAttributeBonus())
+				.attributes(category.getAttributes())
 				.progressionType(skill.getProgressionType())
 				.build();
 			cs.getRanks().put(RankType.ADOLESCENCE, race.getAdolescenseSkillRanks().getOrDefault(skill.getId(), 0));

@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum SkillType {
 
 	MOVING_MANEUVER("movingManeuver"),
-	
+
 	STATIC_MANEUVER("staticManeuver"),
+
+	SPECIAL("special"),
 
 	STATIC_OR_MOVING_MANEUVER("staticOrMovingManeuver");
 
