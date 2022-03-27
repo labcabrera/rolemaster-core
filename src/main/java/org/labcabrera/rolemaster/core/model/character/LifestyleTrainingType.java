@@ -2,15 +2,15 @@ package org.labcabrera.rolemaster.core.model.character;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum CharacterCreationStatus {
+public enum LifestyleTrainingType {
 
-	PARTIALLY_CREATED("partiallyCreated"),
+	LIFESTYLE("lifestyle"),
 
-	CREATED("created");
+	VOCATIONAL("vocational");
 
 	private String name;
 
-	private CharacterCreationStatus(String name) {
+	private LifestyleTrainingType(String name) {
 		this.name = name;
 	}
 

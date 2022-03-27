@@ -21,16 +21,14 @@ public class LifestyleTrainingPackage {
 	@Id
 	private String id;
 
+	private LifestyleTrainingType type;
+
 	@Schema(description = "Time to adquire in months")
 	private Integer timeAdquisition;
 
 	private Map<String, Integer> skillCategoryRanks;
 
 	private Map<String, Integer> skillRanks;
-
-	//private List<> selectionCategorySkillRanks;
-
-	//private List<Object> selectionSkillRanks;
 
 	private String startingMoney;
 }
