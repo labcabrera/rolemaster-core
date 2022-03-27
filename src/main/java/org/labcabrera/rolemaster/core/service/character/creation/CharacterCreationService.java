@@ -115,6 +115,7 @@ public class CharacterCreationService {
 			.map(this::loadSkillCategories)
 			.map(ctx -> loadSkillCategoryWeapons(ctx, request))
 			.map(this::loadSkills)
+			.map(this::loadResistances)
 			.map(e -> {
 				postProcessorService.apply(e.getCharacter());
 				return e;
@@ -212,7 +213,7 @@ public class CharacterCreationService {
 		CharacterInfo character = context.getCharacter();
 		Race race = context.getRace();
 		for (ResistanceType r : ResistanceType.values()) {
-			int raceBonus = 0;
+			int raceBonus = race.getResistanceModifiers().getOrDefault(r, 0);
 			CharacterResistance cr = CharacterResistance.builder()
 				.build();
 			cr.getBonus().put(ResistanceBonusType.RACE, raceBonus);

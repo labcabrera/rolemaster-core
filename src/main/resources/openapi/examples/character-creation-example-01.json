@@ -19,7 +19,7 @@
 		"st": 92,
 		"qu": 75
 	},
-	"weaponCategoryOrder": [
+	"weaponCategoryPriority": [
 		"weapon-1h-edged",
 		"weapon-thrown",
 		"weapon-missile",
