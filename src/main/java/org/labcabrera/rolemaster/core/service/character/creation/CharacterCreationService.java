@@ -11,11 +11,14 @@ import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterCreationStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.character.CharacterResistance;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.RankType;
+import org.labcabrera.rolemaster.core.model.character.ResistanceBonusType;
+import org.labcabrera.rolemaster.core.model.character.ResistanceType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
@@ -201,6 +204,20 @@ public class CharacterCreationService {
 				.filter(e -> e.getCategoryId().equals(categoryId))
 				.findFirst().orElseThrow(() -> new BadRequestException("Invalid weapon skill category " + categoryId));
 			category.setDevelopmentCost(devCost);
+		}
+		return context;
+	}
+
+	private CharacterModificationContext loadResistances(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
+		Race race = context.getRace();
+		for (ResistanceType r : ResistanceType.values()) {
+			int raceBonus = 0;
+			CharacterResistance cr = CharacterResistance.builder()
+				.build();
+			cr.getBonus().put(ResistanceBonusType.RACE, raceBonus);
+			character.getResistances().put(r, cr);
+
 		}
 		return context;
 	}

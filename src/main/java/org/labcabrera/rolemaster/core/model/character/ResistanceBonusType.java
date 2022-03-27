@@ -2,23 +2,17 @@ package org.labcabrera.rolemaster.core.model.character;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum ResistanceType {
+public enum ResistanceBonusType {
 
-	CHANNELING("channeling"),
+	ATTRIBUTE("attribute"),
 
-	ESSENCE("essence"),
+	RACE("race"),
 
-	MENTALISM("mentalism"),
-
-	POISON("poison"),
-
-	DISEASE("disease"),
-
-	FEAR("fear");
+	SPECIAL("special");
 
 	private String name;
 
-	private ResistanceType(String name) {
+	private ResistanceBonusType(String name) {
 		this.name = name;
 	}
 
@@ -26,5 +20,4 @@ public enum ResistanceType {
 	public String getName() {
 		return name;
 	}
-
 }

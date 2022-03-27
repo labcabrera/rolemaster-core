@@ -44,7 +44,7 @@ public class CharacterInfo {
 	private String professionId;
 
 	@Builder.Default
-	private Map<String, Resistance> resistances = new LinkedHashMap<>();
+	private Map<ResistanceType, CharacterResistance> resistances = new LinkedHashMap<>();
 
 	@Builder.Default
 	private Map<AttributeType, CharacterAttribute> attributes = new LinkedHashMap<>();

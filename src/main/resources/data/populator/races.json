@@ -23,10 +23,17 @@
     	"outdoor-environmental": 1,
     	"subterfuge-stealth": 1,
     	"technical-trade-general": 1
-    	
     },
     "adolescenseSkillRanks": {
     	"body-development": 2
+    },
+    "bodyDevelopmentProgression": [6,4,2,1],
+    "ppDevelopmentProgression": {
+    	"channeling":             [6,5,4,3],
+    	"essence":                [6,5,4,3],
+    	"mentalism":              [6,5,4,3] 
+    }, 
+    "resistanceBonus": {
     }
   },
   {
@@ -38,6 +45,41 @@
     	"pr": 4,
     	"qu": -2,
     	"st": 4
+    },
+    "bodyDevelopmentProgression": [7,5,3,1],
+    "ppDevelopmentProgression": {
+    	"channeling":             [6,5,4,3],
+    	"essence":                [6,5,4,3],
+    	"mentalism":              [7,6,5,4] 
+    }, 
+  	"resistanceBonus": {
+  		"channeling": -5,
+  		"essence": -5,
+  		"mentalism": -5
     }
+  },{
+  	"id": "wood-elves",
+  	"name": "Wood elves",
+  	"attributeModifieres": {
+  		"ag": 4,
+  		"me": 2,
+  		"sd": -5,
+  		"em": 2,
+  		"pr": 2,
+  		"qu": 2
+  	},
+  	"resistanceBonus": {
+  		"channeling": -5,
+  		"essence": -5,
+  		"mentalism": -5,
+  		"poison": 10,
+  		"disease": 100
+    }
+  },{
+  	"id": "dwarves",
+  	"name": "Dwarves"
+  },{
+  	"id": "halflings",
+  	"name": "Halflings"
   }
 ]
