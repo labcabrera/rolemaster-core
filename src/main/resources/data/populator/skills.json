@@ -2,7 +2,6 @@
     {
         "id": "body-development",
         "name": "Body development",
-        "description": "Skill rank in Body Development is one of the factors which determines how many hits (concussion hits) a character can take without passing out. A character’s total hits are is equal to his Body Development skill bonus.",
         "loadOnNewCharacters": true,
         "categoryId": "body-development",
         "attributeBonus": [
@@ -47,7 +46,7 @@
         "id": "soft-leather",
         "name": "Armor - Soft leather",
         "loadOnNewCharacters": false,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",
@@ -61,7 +60,7 @@
         "id": "rigid-leather",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": false,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",
@@ -75,7 +74,7 @@
         "id": "swimming",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": true,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",
@@ -89,7 +88,7 @@
         "id": "climbing",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": true,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",
@@ -103,7 +102,7 @@
         "id": "alertness",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": true,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",
@@ -117,7 +116,7 @@
         "id": "riding-horse",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": true,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",
@@ -131,7 +130,7 @@
         "id": "stalking",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": true,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",
@@ -145,7 +144,7 @@
         "id": "hiding",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": true,
-        "categoryId": "armor-ligth",
+        "categoryId": "armor-light",
         "attributeBonus": [
             "ag",
             "st",

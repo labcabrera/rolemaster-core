@@ -170,9 +170,14 @@ public class CharacterCreationService {
 
 	private CharacterModificationContext loadSkills(CharacterModificationContext context) {
 		context.getSkills().stream().forEach(skill -> {
+			String categoryId = skill.getCategoryId();
+			CharacterSkillCategory category = context.getCharacter().getSkillCategory(categoryId)
+				.orElseThrow(() -> new BadRequestException("Invalid skill category " + categoryId));
 			CharacterSkill cs = CharacterSkill.builder()
 				.skillId(skill.getId())
 				.categoryId(skill.getCategoryId())
+				.group(category.getGroup())
+				.developmentCost(category.getDevelopmentCost())
 				.attributes(skill.getAttributeBonus())
 				.build();
 			cs.getBonus().put(BonusType.SKILL_SPECIAL, skill.getSkillBonus());

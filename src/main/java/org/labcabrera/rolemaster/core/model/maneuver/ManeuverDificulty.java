@@ -8,7 +8,7 @@ public enum ManeuverDificulty {
 
 	EASY("easy"),
 
-	LIGTH("light"),
+	LIGHT("light"),
 
 	MEDIUM("medium"),
 

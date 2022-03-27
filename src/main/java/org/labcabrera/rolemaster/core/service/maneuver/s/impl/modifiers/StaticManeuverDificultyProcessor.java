@@ -18,7 +18,7 @@ public class StaticManeuverDificultyProcessor implements StaticManeuverModifierP
 	public StaticManeuverDificultyProcessor() {
 		modifiers.put(ManeuverDificulty.ROUTINE, 30);
 		modifiers.put(ManeuverDificulty.EASY, 20);
-		modifiers.put(ManeuverDificulty.LIGTH, 10);
+		modifiers.put(ManeuverDificulty.LIGHT, 10);
 		modifiers.put(ManeuverDificulty.MEDIUM, 0);
 		modifiers.put(ManeuverDificulty.HARD, -10);
 		modifiers.put(ManeuverDificulty.VERY_HARD, -20);

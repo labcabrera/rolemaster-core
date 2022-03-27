@@ -21,6 +21,8 @@ public class CharacterSkill {
 
 	private String categoryId;
 
+	private String group;
+
 	@Builder.Default
 	private List<Integer> developmentCost = new ArrayList<>();
 
