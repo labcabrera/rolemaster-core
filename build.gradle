@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'org.labcabrera.rolemaster'
-version = '0.0.1-SNAPSHOT'
+version = version
 sourceCompatibility = '11'
 
 ext {
