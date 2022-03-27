@@ -57,7 +57,8 @@
   		"essence": -5,
   		"mentalism": -5
     }
-  },{
+  },
+  {
   	"id": "wood-elves",
   	"name": "Wood elves",
   	"attributeModifieres": {
@@ -75,11 +76,76 @@
   		"poison": 10,
   		"disease": 100
     }
-  },{
+  },
+  {
+  	"id": "high-elves",
+  	"name": "High Elves",
+  	"attributeModifiers": {
+    	"qu": 10,
+    	"pr": 10,
+    	"em": 5,
+    	"ag": 5,
+    	"sd": -20,
+    	"me": 5
+    }
+  },
+  {
+  	"id": "fair-elves",
+  	"name": "Fair Elves"
+  },
+  {
+  	"id": "half-elves",
+  	"name": "Half Elves"
+  },
+  {
   	"id": "dwarves",
   	"name": "Dwarves"
   },{
   	"id": "halflings",
   	"name": "Halflings"
+  },
+  {
+  	"id": "orks",
+  	"name": "orks",
+  	"attributeModifiers": {
+    	"st": 5,
+    	"pr": -5,
+    	"in": -10,
+    	"em": -5,
+    	"co": 5,
+    	"sd": -10,
+    	"me": -10,
+    	"re": -5
+    }
+  },
+  {
+  	"id": "greater-orks",
+  	"name": "Greater Orks",
+  	"attributeModifiers": {
+    	"st": 5,
+    	"pr": -5,
+    	"in": -5,
+    	"em": -5,
+    	"co": 10,
+    	"sd": -5,
+    	"me": -5,
+    	"re": -5
+    }
+  },
+  {
+  	"id": "trolls",
+  	"name": "Trolls",
+  	"attributeModifiers": {
+    	"st": 15,
+    	"qu": -10,
+    	"pr": -10,
+    	"in": -10,
+    	"em": -10,
+    	"co": 15,
+    	"ag": -10,
+    	"sd": -10,
+    	"me": -10,
+    	"re": -10
+    }
   }
 ]
