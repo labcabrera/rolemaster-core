@@ -57,8 +57,8 @@ class CharacterUpdateSkillServiceTest {
 		character.setSkills(Arrays.asList(CharacterSkill.builder()
 			.skillId("s-01")
 			.developmentCost(Arrays.asList(1, 2, 3))
-			.upgradedRanks(6)
 			.build()));
+		character.getSkill("s-01").get().getRanks().put(RankType.CONSOLIDATED, 6);
 		character.setDevelopmentPoints(CharacterDevelopment.builder()
 			.usedPoints(10)
 			.totalPoints(100)
@@ -78,9 +78,7 @@ class CharacterUpdateSkillServiceTest {
 		CharacterInfo result = mono.share().block();
 		assertEquals(26, result.getDevelopmentPoints().getUsedPoints());
 		assertEquals(3, result.getSkillCategory("cat-01").get().getTotalRanks());
-		assertEquals(9, result.getSkills().stream()
-			.filter(e -> e.getSkillId().equals("s-01")).findFirst().orElse(null)
-			.getUpgradedRanks());
+		assertEquals(9, result.getSkill("s-01").get().getTotalRanks());
 		verify(repository, times(1)).save(character);
 		verify(postProcessorService, times(1)).apply(character);
 	}

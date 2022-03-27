@@ -78,7 +78,7 @@ public class CharacterUpdateSkillService {
 				for (int i = 0; i < levels; i++) {
 					cost.add(skill.getDevelopmentCost().get(i));
 				}
-				skill.setUpgradedRanks(skill.getUpgradedRanks() + levels);
+				skill.getRanks().put(RankType.DEVELOPMENT, levels);
 			}
 		});
 	}
