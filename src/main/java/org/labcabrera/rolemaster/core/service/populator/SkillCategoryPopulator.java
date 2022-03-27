@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.service.populator;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.skill.SkillCategory;
@@ -11,8 +12,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 public class SkillCategoryPopulator extends AbstractJsonPopulator<SkillCategory> {
 
 	@Override
-	protected String getResource() {
-		return "data/populator/skill-categories.json";
+	protected List<String> getResources() {
+		return Arrays.asList("data/populator/skill-categories.json");
 	}
 
 	@Override

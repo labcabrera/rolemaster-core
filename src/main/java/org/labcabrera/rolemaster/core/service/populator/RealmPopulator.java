@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.service.populator;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.Realm;
@@ -11,8 +12,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 public class RealmPopulator extends AbstractJsonPopulator<Realm> {
 
 	@Override
-	protected String getResource() {
-		return "data/populator/realms.json";
+	protected List<String> getResources() {
+		return Arrays.asList("data/populator/realms.json");
 	}
 
 	@Override

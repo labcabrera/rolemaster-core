@@ -1,0 +1,155 @@
+[
+    {
+        "id": "athletic-games-brawn-primary",
+        "name": "Athletic Games Brawn - Primary",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-brawn",
+        "progressionType": "standard",
+        "description": ""
+    },
+	{
+        "id": "jumping",
+        "name": "Jumping",
+        "type": "movingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-brawn",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for jumping, either from a running or a standing start. The base jump (running horizontal) for the average man of 5'10'' is equal to 50'' + (2 x St bonus in inches). For every 2 inches above or below this average height, add or subtract one from the base jump. The difficulties listed below assume that the character is running at a dash at the time of takeoff. For every speed category (fast sprint/sprint/run/etc.) below the dash rate, raise the difficulty of the running jump by one (e.g., hard becomes very hard, etc.). The base jump (standing horizontal) for the average man of 5'10'' is equal to the base jump (running horizontal) divided by two. The base jump (running vertical) for the average man of 5'10'' is equal to (12 + St bonus) in inches. For every 3 inches above or below this average height, add or subtract one inch from the base jump. The optimal speed for a vertical jump with a running start is a run. The base jump (standing vertical) for the average man of 5'10'' is equal to the base jump (running vertical) divided by 3."
+    },
+    {
+        "id": "weight-lifting",
+        "name": "Weight-lifting",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-brawn",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "athletic-games-endurance-primary",
+        "name": "Athletic Games - Endurance - Primary",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-endurance",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "distance-running",
+        "name": "Distance Running",
+        "type": "movingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-endurance",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "rowing",
+        "name": "Rowing",
+        "type": "movingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-endurance",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "scaling",
+        "name": "Scaling",
+        "type": "movingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-endurance",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "sprinting",
+        "name": "Sprinting",
+        "type": "movingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-endurance",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "swimming",
+        "name": "Swimming",
+        "type": "movingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-endurance",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "acrobatics",
+        "name": "Acrobatics",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "athletic-games-gymnastics-primary",
+        "name": "Athletic Games - Gymnastics - Primary",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "climbing",
+        "name": "Climbing",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "contortions",
+        "name": "Contortions",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "diving",
+        "name": "Diving",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "flying-gliding",
+        "name": "Flying / Gliding",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "juggling",
+        "name": "Juggling",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for tossing objects up and manipulating them in such a manner as to keep them up in the air."
+    },
+    {
+        "id": "tumbling",
+        "name": "Tumbling",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for horizontal dives, rolling, vaulting maneuvers, or swinging on stationary objects. Also used to decrease the damage one takes from a fall. A character could fall safely up to 2'/skill rank if a successful maneuver roll is made."
+    }
+]

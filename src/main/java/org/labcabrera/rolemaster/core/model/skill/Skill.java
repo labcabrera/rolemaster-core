@@ -28,6 +28,8 @@ public class Skill {
 
 	private String categoryId;
 
+	private SkillType type;
+
 	@Builder.Default
 	private Boolean loadOnNewCharacters = false;
 
@@ -38,5 +40,10 @@ public class Skill {
 
 	@Builder.Default
 	private Integer skillBonus = 0;
+
+	private String description;
+
+	@Builder.Default
+	private List<SkillModifier> modifiers = new ArrayList<>();
 
 }

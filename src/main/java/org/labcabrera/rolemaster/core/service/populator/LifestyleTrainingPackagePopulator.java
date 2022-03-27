@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.service.populator;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.character.LifestyleTrainingPackage;
@@ -11,8 +12,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 public class LifestyleTrainingPackagePopulator extends AbstractJsonPopulator<LifestyleTrainingPackage> {
 
 	@Override
-	protected String getResource() {
-		return "data/populator/lifestyle-training-packages.json";
+	protected List<String> getResources() {
+		return Arrays.asList("data/populator/lifestyle-training-packages.json");
 	}
 
 	@Override

@@ -1,0 +1,92 @@
+[
+    {
+        "id": "alertness",
+        "name": "Alertness",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-perceptions",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for unconscious observation and assimilation of information from the general environment. The GM should use this skill to allow characters a chance to notice objects, events, and other phenomena around them. Note that the use of this skill assumes that the character has not indicated that he is looking for such a thing. If the player is actively seeking something within the environment, the appropriate Awareness • Searching skill should be used. The existence of this as a skill indicates one’s ability to train sensitivity to such things, but more active observation should be handled by the skills of Observation and Situational Awareness."
+    },
+    {
+        "id": "sense-ambush",
+        "name": "Sense Ambush",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-perceptions",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to detect animate traps, ambushes or assassinations in progress. Note that this is a passive skill, and should not be used when the player has indicated that he is actively searching for signs of ambush or assassins. Range is 10' per skill rank. The existence of this as an acquirable skill indicates one’s abil- ity to train one’s level of sensitivity to such things, but more active observation should be handled by the skills of Observation and/or Situational Awareness. Quality of the set ambush: +30 to -70"
+    },
+    {
+        "id": "detect-traps",
+        "name": "Detect Traps",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for detecting inanimate traps or ambushes."
+    },
+    {
+        "id": "lie-perception",
+        "name": "Lie Perception",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for perceiving lies told by an individual under proximate observation (within 10' and within visual/hearing range) by the user of this skill."
+    },
+    {
+        "id": "locate-hidden",
+        "name": "Locate Hidden",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for locating secret openings or hidden objects."
+    },
+    {
+        "id": "observation",
+        "name": "Observation",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for noticing details about the environment for assimilation and analysis. This is normally only usable in an active fashion, and requires concentration. Note that this skill is different from Alertness, which represents a general and unconscious level of receptivity and awareness of events and details within one's immediate environment. This skill reflects the active observation, noting and appraisal of such details. For example, if a character were about to make camp in an unsafe location, the GM might make an Alertness static maneuver for that character to determine whether or not he notices the danger. If the character indicated that he wished to examine the location for suitability, the character would instead make an Observation static maneuver."
+    },
+    {
+        "id": "poison-perception",
+        "name": "Poison Perception",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for perceiving the presence of poison in/on an item or object. Note that some poisons might be virtually undetectable (e.g., a colorless, tasteless, odorless powder that dissolves completely in water will be very difficult if not impossible to detect)."
+    },
+    {
+        "id": "reading-tracks",
+        "name": "Reading Tracks",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for gleaning information from a set of tracks or spoor. Detailed information about the tracks can be obtained, such as type of creatures, age of tracks, weight of creature, speed creature moving at, back tracking, etc. The skill, Tracking, is used for spotting and following the tracks."
+    },
+    {
+        "id": "surveillance",
+        "name": "Surveillance",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for surreptitiously keeping watch over a person, place, or object."
+    },
+    {
+        "id": "tracking",
+        "name": "Tracking",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": true,
+        "categoryId": "awareness-searching",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for tracking maneuvers and following a trail left by someone or something such as foot prints, broken branches, crushed grass, hanging pieces of cloth, etc. The skill Reading Tracks gives the tracker the information about the tracks."
+    }
+]

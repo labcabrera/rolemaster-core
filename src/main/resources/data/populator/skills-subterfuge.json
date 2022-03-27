@@ -1,0 +1,198 @@
+[
+    {
+        "id": "ambush",
+        "name": "Ambush",
+        "loadOnNewCharacters": false,
+        "categoryId": "subterfuge-attack",
+        "progressionType": "standard",
+        "clasification": ""
+    },
+    {
+        "id": "silent-attack",
+        "name": "Silent Attack",
+        "loadOnNewCharacters": false,
+        "categoryId": "subterfuge-attack",
+        "progressionType": "standard",
+        "clasification": ""
+    },
+    {
+        "id": "camouflage",
+        "name": "Camouflage",
+        "loadOnNewCharacters": false,
+        "categoryId": "subterfuge-mechanics",
+        "progressionType": "standard",
+        "clasification": ""
+    },
+    {
+    	"id": "disarming-traps",
+    	"name": "Disarming Traps",
+    	"loadOnNewCharacters": false,
+        "categoryId": "subterfuge-mechanics",
+        "progressionType": "standard",
+        "clasification": "",
+        "modifiers": [
+        	{
+        		"key": "Sucessful Lock Lore maneuver prior to attempt",
+        		"modifier": 40	
+        	},
+        	{
+        		"key": "Each time picking lock has been unsuccesfully attempted",
+        		"modifier": -30	
+        	},
+        	{
+        		"key": "Have picked this specific lock before",
+        		"modifier": 50
+        	},
+        	{
+        		"key": "Have picked this type of lock before",
+        		"modifier": 25
+        	},
+        	{
+        		"key": "Have description of mechanism",
+        		"modifier": 10
+        	}
+        ]
+    },
+    {
+    	"id": "disguise",
+    	"name": "Disguise",
+    	"loadOnNewCharacters": false,
+        "categoryId": "subterfuge-mechanics",
+        "progressionType": "standard",
+        "clasification": ""
+    },
+    {
+    	"id": "picking-locks",
+    	"name": "Picking locks",
+    	"loadOnNewCharacters": false,
+        "categoryId": "subterfuge-mechanics",
+        "progressionType": "standard",
+        "clasification": "",
+        "modifiers": [
+        	{
+        		"key": "Sucessful Lock Lore maneuver prior to attempt",
+        		"modifier": 40	
+        	},
+        	{
+        		"key": "Each time picking lock has been unsuccesfully attempted",
+        		"modifier": -30	
+        	},
+        	{
+        		"key": "Have picked this specific lock before",
+        		"modifier": 50
+        	},
+        	{
+        		"key": "Have picked this type of lock before",
+        		"modifier": 25
+        	},
+        	{
+        		"key": "Have description of mechanism",
+        		"modifier": 10
+        	}
+        ]
+    },
+    {
+		"id": "setting-traps",
+		"name": "Setting Traps",
+		"loadOnNewCharacters": false,
+		"categoryId": "subterfuge-mechanics",
+		"progressionType": "standard",
+		"clasification": ""
+    },
+    {
+		"id": "using-removing-poison",
+		"name": "Using/Removing Poison",
+		"loadOnNewCharacters": false,
+		"categoryId": "subterfuge-mechanics",
+		"progressionType": "standard",
+		"clasification": ""
+    },
+    {
+		"id": "hiding",
+		"name": "Hiding",
+		"loadOnNewCharacters": false,
+		"categoryId": "subterfuge-stealth",
+		"progressionType": "standard",
+		"clasification": "",
+		"modifiers": [
+        	{
+        		"key": "Bad hiding place",
+        		"modifier": -30	
+        	},
+        	{
+        		"key": "Mediocre hiding place",
+        		"modifier": -10
+        	},
+        	{
+        		"key": "Fair hiding place",
+        		"modifier": 0
+        	},
+        	{
+        		"key": "Good hiding place",
+        		"modifier": 10
+        	},
+        	{
+        		"key": "Very Good hiding place",
+        		"modifier": 30
+        	},
+        	{
+        		"key": "Excellent hiding place",
+        		"modifier": 50
+        	},
+        	{
+        		"key": "Presence of hider is known to searchers",
+        		"modifier": -30
+        	}
+        ]
+    },
+    {
+		"id": "picking-pockets",
+		"name": "Picking Pockets",
+		"loadOnNewCharacters": false,
+		"categoryId": "subterfuge-stealth",
+		"progressionType": "standard",
+		"clasification": ""
+	},
+    {
+		"id": "stalking",
+		"name": "Stalking",
+		"loadOnNewCharacters": true,
+		"categoryId": "subterfuge-stealth",
+		"progressionType": "standard",
+		"clasification": "",
+		"modifiers": [
+        	{
+        		"key": "Pace Crawl (0.25 base)",
+        		"modifier": 10	
+        	},
+			{
+        		"key": "Pace Creep (0.50 base)",
+        		"modifier": 0
+        	},
+			{
+        		"key": "Pace Walk",
+        		"modifier": -10
+        	},
+			{
+        		"key": "Pace Jog",
+        		"modifier": -25
+        	},
+			{
+        		"key": "Pace Run",
+        		"modifier": -50
+        	},
+			{
+        		"key": "Pace Spring",
+        		"modifier": -75
+        	}
+        ]
+	},
+	{
+		"id": "trickery",
+		"name": "Trickery",
+		"loadOnNewCharacters": true,
+		"categoryId": "subterfuge-stealth",
+		"progressionType": "standard",
+		"clasification": ""
+	}
+]

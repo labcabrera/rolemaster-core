@@ -1,6 +1,8 @@
 package org.labcabrera.rolemaster.core.service.populator;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,24 +28,32 @@ public abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		String resource = getResource();
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(getResource())) {
-
-			final List<E> values = objectMapper.readerFor(getTypeReference()).readValue(in);
-
-			repository
-				.deleteAll()
-				.thenMany(Flux.fromIterable(values))
-				.flatMap(repository::save)
-				.then(Mono.just(String.format("Inserted %s entities from %s", values.size(), resource)))
-				.subscribe(log::info);
-		}
-		catch (Exception ex) {
-			log.error("Error populating {}", resource, ex);
-		}
+		List<String> resources = getResources();
+		List<E> values = collectValues();
+		repository
+			.deleteAll()
+			.thenMany(Flux.fromIterable(values))
+			.flatMap(repository::save)
+			.then(Mono.just(String.format("Inserted %s entities from %s", values.size(), resources)))
+			.subscribe(log::info);
 	}
 
-	protected abstract String getResource();
+	protected List<E> collectValues() {
+		List<E> list = new ArrayList<>();
+		TypeReference<List<E>> typeReference = getTypeReference();
+		getResources().stream().forEach(resource -> {
+			try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(resource)) {
+				List<E> values = objectMapper.readerFor(typeReference).readValue(in);
+				list.addAll(values);
+			}
+			catch (IOException ex) {
+				log.error("Error reading {}", resource, ex);
+			}
+		});
+		return list;
+	}
+
+	protected abstract List<String> getResources();
 
 	protected abstract TypeReference<List<E>> getTypeReference();
 }
