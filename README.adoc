@@ -14,7 +14,8 @@ Ofrece las funcionalidades:
 
 == Tecnologías
 
-* Spring Boot 2.x reactive.
+* Spring Boot 2.x.
+* Reactor.
 * MongoDB.
 
 == Instalación y configuración
