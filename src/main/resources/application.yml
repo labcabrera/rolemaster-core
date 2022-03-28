@@ -18,7 +18,6 @@ spring:
   config:
     activate:
       on-profile: local
-spring:
   data:
     mongodb:
       uri: mongodb://localhost/rolemaster?retryWrites=true&w=majority
@@ -27,7 +26,6 @@ spring:
   config:
     activate:
       on-profile: prod
-spring:
   data:
     mongodb:
       uri: mongodb+srv://${ROLEMASTER_CORE_DB_USERNAME}:${ROLEMASTER_CORE_DB_PASSWORD}@cluster0.kgfrk.mongodb.net/rolemaster?retryWrites=true&w=majority
