@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.session;
+package org.labcabrera.rolemaster.core.service.tactical;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

@@ -70,4 +70,8 @@ public class SessionService {
 			.flatMap(repository::save);
 	}
 
+	public Session addNpc(String sessionId, String npcId) {
+		return null;
+	}
+
 }
