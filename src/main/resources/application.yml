@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://rolemaster-db-user:r0l3mAst3R@cluster0.kgfrk.mongodb.net/rolemaster?retryWrites=true&w=majority
+      uri: mongodb+srv://${ROLEMASTER_CORE_DB_USERNAME}:${ROLEMASTER_CORE_DB_PASSWORD}@cluster0.kgfrk.mongodb.net/rolemaster?retryWrites=true&w=majority
       #uri: mongodb://localhost/rolemaster?retryWrites=true&w=majority
 
 logging:
