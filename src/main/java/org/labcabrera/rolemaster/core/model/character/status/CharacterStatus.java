@@ -1,5 +1,10 @@
 package org.labcabrera.rolemaster.core.model.character.status;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.labcabrera.rolemaster.core.model.combat.Bleeding;
+import org.labcabrera.rolemaster.core.model.combat.Penalty;
 import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;
@@ -21,9 +26,20 @@ public class CharacterStatus {
 	private Integer hp;
 
 	@Builder.Default
-	private Integer stunned = 0;
+	private Integer stunnedRounds = 0;
 
 	@Builder.Default
-	private Integer unconscious = 0;
+	private Integer unconsciousRounds = 0;
+
+	@Builder.Default
+	private Integer canNotParryRounds = 0;
+
+	private Integer mustParryRounds;
+
+	@Builder.Default
+	private List<Bleeding> bleding = new ArrayList<>();
+
+	@Builder.Default
+	private List<Penalty> penalty = new ArrayList<>();
 
 }

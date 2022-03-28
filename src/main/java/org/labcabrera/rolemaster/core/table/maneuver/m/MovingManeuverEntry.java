@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MovingManeuverEntry implements CharacterStatusModifier {
 
-	private String text;
-
 	private Integer result;
 
 	private Integer hp;
 
-	private Integer stunned;
+	private Integer stunnedRounds;
 
-	private Integer unconscious;
+	private Integer unconsciousRounds;
+
+	private String text;
 
 }

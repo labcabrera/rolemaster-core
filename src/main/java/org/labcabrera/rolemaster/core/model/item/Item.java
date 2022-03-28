@@ -13,18 +13,21 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Document(collection = "items")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class Item {
 
 	@Id
 	private String id;
 
 	private String name;
+
+	private ItemType type;
 
 	@Builder.Default
 	private Integer count = 1;

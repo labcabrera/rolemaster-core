@@ -2,9 +2,10 @@
 	{
 		"id": "arrows",
 		"name": "Arrows",
+		"type": "miscellaneous",
 		"count": 20,
 		"commonCost": {
-			"b": 5
+			"s": 5
 		},
 		"commonWeight": {
 			"min": 0.075,

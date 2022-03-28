@@ -1,0 +1,29 @@
+[
+	{
+		"id": "dagger",
+		"name": "Dagger",
+		"type": "weapon",
+		"count": 1,
+		"commonWeight": {
+			"min": 0.250,
+			"max": 0.075
+		},
+		"fumble": [1],
+		"roture": [1,2,3,4,5,6],
+		"resistance": [54,66],
+		"rangeModifiers": [
+			{
+				"range": 3,
+				"modifier": -10
+			},
+			{
+				"range": 8,
+				"modifier": -20
+			},
+			{
+				"range": 15,
+				"modifier": -30
+			}
+		]
+	}
+]

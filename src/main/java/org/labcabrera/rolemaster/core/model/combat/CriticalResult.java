@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.combat;
 
+import org.labcabrera.rolemaster.core.model.character.status.CharacterStatusModifier;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CriticalResult {
+public class CriticalResult implements CharacterStatusModifier {
 
 	private Integer maxRoll;
 
@@ -17,7 +19,9 @@ public class CriticalResult {
 
 	private Integer hp;
 
-	private Integer stunned;
+	private Integer stunnedRounds;
+
+	private Integer unconsciousRounds;
 
 	private Integer canNotParryRounds;
 
@@ -25,15 +29,12 @@ public class CriticalResult {
 
 	private Integer mustParryPenalty;
 
-	private Integer bleed;
+	private Bleeding bleeding;
 
-	private Integer bleedRounds;
-
-	private Integer penalty;
-
-	private Integer penaltyRounds;
+	private Penalty penalty;
 
 	private Integer bonus;
 
 	private String text;
+
 }
