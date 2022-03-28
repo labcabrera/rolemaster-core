@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
 import org.labcabrera.rolemaster.core.controller.LifestyleTrainingPackagesController;
-import org.labcabrera.rolemaster.core.model.character.LifestyleTrainingPackage;
+import org.labcabrera.rolemaster.core.model.character.TrainingPackage;
 import org.labcabrera.rolemaster.core.repository.LifestyleTrainingPackageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -19,14 +19,14 @@ public class LifestyleTrainingPackagesControllerImpl implements LifestyleTrainin
 	private LifestyleTrainingPackageRepository repository;
 
 	@Override
-	public Mono<ResponseEntity<LifestyleTrainingPackage>> findById(String id) {
+	public Mono<ResponseEntity<TrainingPackage>> findById(String id) {
 		return repository.findById(id)
 			.map(ResponseEntity::ok)
 			.defaultIfEmpty(ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
 	}
 
 	@Override
-	public Flux<LifestyleTrainingPackage> findAll(Pageable pageable) {
+	public Flux<TrainingPackage> findAll(Pageable pageable) {
 		return repository.findAll();
 	}
 

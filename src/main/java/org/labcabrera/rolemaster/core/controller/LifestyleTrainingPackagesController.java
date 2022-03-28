@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import org.labcabrera.rolemaster.core.model.character.LifestyleTrainingPackage;
+import org.labcabrera.rolemaster.core.model.character.TrainingPackage;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -21,11 +21,11 @@ public interface LifestyleTrainingPackagesController {
 
 	@GetMapping("/{id}")
 	@Operation(summary = "Lifestyle tranining package by id.")
-	Mono<ResponseEntity<LifestyleTrainingPackage>> findById(@PathVariable String id);
+	Mono<ResponseEntity<TrainingPackage>> findById(@PathVariable String id);
 
 	@GetMapping
 	@Operation(summary = "Lifestyle tranining packages search.")
-	Flux<LifestyleTrainingPackage> findAll(
+	Flux<TrainingPackage> findAll(
 		@ParameterObject @PageableDefault(sort = "id", direction = Direction.ASC, size = 10) Pageable pageable);
 
 }

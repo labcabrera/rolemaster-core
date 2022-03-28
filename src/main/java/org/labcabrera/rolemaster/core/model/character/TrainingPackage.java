@@ -11,12 +11,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document("lifestyleTrainingPackages")
+@Document("trainingPackages")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LifestyleTrainingPackage {
+public class TrainingPackage {
 
 	@Id
 	private String id;
