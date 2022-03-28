@@ -1,14 +1,19 @@
-package org.labcabrera.rolemaster.core.model.item;
+package org.labcabrera.rolemaster.core.model.character.inventory;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ItemStatus {
 
 	/** Equipment currently carried by the character (which affects its weight). */
-	EQUIPED("equiped"),
+	CARRIED("carried"),
 
-	/** Items possessed by character but not carrying it. */
-	ONWED("owned"),
+	MAIN_HAND("mainHand"),
+
+	OFF_HAND("offHand"),
+
+	ARMOR("armor"),
+
+	ARMOR_ACCESSORY("armorAccessory"),
 
 	/**
 	 * Equipment owned by the character but not directly accessible from the adventure

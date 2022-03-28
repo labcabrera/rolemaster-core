@@ -23,6 +23,12 @@ public class CharacterStatus {
 
 	private String characterId;
 
+	private String mainWeaponEquipedId;
+
+	private String secondaryWeaponEquipedId;
+
+	private String armorEquipedId;
+
 	private Integer hp;
 
 	@Builder.Default
