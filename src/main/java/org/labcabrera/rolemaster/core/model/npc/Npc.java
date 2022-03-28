@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NpcDefinition {
+public class Npc {
 
 	@Id
 	private String id;

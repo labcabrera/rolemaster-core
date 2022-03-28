@@ -9,6 +9,7 @@ import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
@@ -34,8 +35,8 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Flux<CharacterInfo> findAll() {
-		return characterService.findAll();
+	public Flux<CharacterInfo> findAll(Pageable pageable) {
+		return characterService.findAll(pageable);
 	}
 
 	@Override

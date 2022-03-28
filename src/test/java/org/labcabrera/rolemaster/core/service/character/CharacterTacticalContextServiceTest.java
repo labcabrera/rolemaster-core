@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
 import org.labcabrera.rolemaster.core.repository.CharacterStatusRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,10 +18,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 
 @ExtendWith(MockitoExtension.class)
-class CharacterStatusServiceTest {
+class CharacterTacticalContextServiceTest {
 
 	@InjectMocks
-	private CharacterStatusService service;
+	private CharacterTacticalContextService service;
 
 	@Mock
 	private CharacterStatusRepository repository;
@@ -37,15 +37,15 @@ class CharacterStatusServiceTest {
 			.name("Test")
 			.build()));
 		when(repository.save(any())).thenAnswer(request -> {
-			CharacterStatus s = request.getArgument(0);
-			return Mono.just(CharacterStatus.builder()
+			CharacterTacticalContext s = request.getArgument(0);
+			return Mono.just(CharacterTacticalContext.builder()
 				.id("character-status-01")
 				.hp(s.getHp())
 				.build());
 		});
 
-		Mono<CharacterStatus> monoStatus = service.create("session-01", "character-01");
-		CharacterStatus status = monoStatus.share().block();
+		Mono<CharacterTacticalContext> monoStatus = service.create("session-01", "character-01");
+		CharacterTacticalContext status = monoStatus.share().block();
 
 		assertNotNull(status);
 		assertEquals("character-status-01", status.getId());
@@ -56,8 +56,8 @@ class CharacterStatusServiceTest {
 	void testUserNotFound() {
 		when(characterService.findById("character-01")).thenReturn(Mono.empty());
 
-		Mono<CharacterStatus> monoStatus = service.create("session-01", "character-01");
-		CharacterStatus status = monoStatus.share().block();
+		Mono<CharacterTacticalContext> monoStatus = service.create("session-01", "character-01");
+		CharacterTacticalContext status = monoStatus.share().block();
 
 		assertNull(status);
 	}

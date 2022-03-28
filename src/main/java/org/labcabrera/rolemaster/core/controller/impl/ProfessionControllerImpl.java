@@ -4,6 +4,7 @@ import org.labcabrera.rolemaster.core.controller.ProfessionController;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
@@ -21,8 +22,8 @@ public class ProfessionControllerImpl implements ProfessionController {
 	}
 
 	@Override
-	public Flux<Profession> findAll() {
-		return repository.findAll();
+	public Flux<Profession> findAll(Pageable pageable) {
+		return repository.findAll(pageable.getSort());
 	}
 
 }

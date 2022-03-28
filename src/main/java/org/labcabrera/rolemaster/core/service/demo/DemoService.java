@@ -1,19 +1,21 @@
 package org.labcabrera.rolemaster.core.service.demo;
 
+import java.io.InputStream;
 import java.time.LocalDate;
 
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
-import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.session.Session;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
-import org.labcabrera.rolemaster.core.service.character.CharacterStatusService;
+import org.labcabrera.rolemaster.core.service.character.CharacterTacticalContextService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.labcabrera.rolemaster.core.service.session.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
@@ -22,17 +24,22 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class DemoService {
 
+	private static final String CREATION_REQUEST_RESOURCE = "openapi/examples/character-creation-example-01.json";
+
 	@Autowired
 	private CharacterService characterService;
 
 	@Autowired
-	private CharacterStatusService characterStatusService;
+	private CharacterTacticalContextService characterStatusService;
 
 	@Autowired
 	private SessionService sessionService;
 
 	@Autowired
 	private CharacterCreationService characterCreationService;
+
+	@Autowired
+	private ObjectMapper objectMapper;
 
 	public Mono<Void> cleanUp() {
 		log.info("Cleaning up data");
@@ -59,7 +66,7 @@ public class DemoService {
 		Session session = sessionService.createSession(sessionCreationRequest).share().block();
 		String sessionId = session.getId();
 
-		CharacterStatus status = sessionService.addCharacter(sessionId, characterId).share().block();
+		CharacterTacticalContext status = sessionService.addCharacter(sessionId, characterId).share().block();
 
 		log.info("Created character status {}", status.getId());
 
@@ -67,24 +74,12 @@ public class DemoService {
 	}
 
 	private CharacterCreationRequest createCharacterCreationRequest() {
-		CharacterCreationRequest result = CharacterCreationRequest.builder()
-			.name("Set (demo)")
-			.raceId("common-men")
-			.professionId("thief")
-			.realmId("essence")
-			.attributesRoll(660)
-			.build();
-		result.getBaseAttributes().put(AttributeType.AGILITY, 96);
-		result.getBaseAttributes().put(AttributeType.CONSTITUTION, 90);
-		result.getBaseAttributes().put(AttributeType.MEMORY, 38);
-		result.getBaseAttributes().put(AttributeType.REASONING, 43);
-		result.getBaseAttributes().put(AttributeType.SELF_DISCIPLINE, 39);
-		result.getBaseAttributes().put(AttributeType.EMPATHY, 20);
-		result.getBaseAttributes().put(AttributeType.INTUTITION, 90);
-		result.getBaseAttributes().put(AttributeType.PRESENCE, 50);
-		result.getBaseAttributes().put(AttributeType.STRENGTH, 92);
-		result.getBaseAttributes().put(AttributeType.QUICKNESS, 75);
-		return result;
+		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(CREATION_REQUEST_RESOURCE)) {
+			return objectMapper.readerFor(CharacterCreationRequest.class).readValue(in);
+		}
+		catch (Exception ex) {
+			throw new RuntimeException("Error reading character creation request.", ex);
+		}
 	}
 
 }

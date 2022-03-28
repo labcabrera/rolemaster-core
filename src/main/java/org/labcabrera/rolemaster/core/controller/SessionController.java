@@ -2,8 +2,8 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.session.Session;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +59,6 @@ public interface SessionController {
 	@PostMapping("/{id}/characters/{characterId}")
 	@Operation(summary = "Adds a certain character to the session.")
 	@ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
-	Mono<CharacterStatus> createStatus(@PathVariable("id") String sessionId, @PathVariable("characterId") String characterId);
+	Mono<CharacterTacticalContext> createStatus(@PathVariable("id") String sessionId, @PathVariable("characterId") String characterId);
 
 }

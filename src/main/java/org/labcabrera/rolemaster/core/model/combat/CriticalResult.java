@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.model.combat;
 
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatusModifier;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterStatusModifier;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

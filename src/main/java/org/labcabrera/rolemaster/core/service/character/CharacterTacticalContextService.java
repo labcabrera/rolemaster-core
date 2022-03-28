@@ -1,8 +1,9 @@
 package org.labcabrera.rolemaster.core.service.character;
 
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
 import org.labcabrera.rolemaster.core.repository.CharacterStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
-public class CharacterStatusService {
+public class CharacterTacticalContextService {
 
 	@Autowired
 	private CharacterStatusRepository repository;
@@ -19,18 +20,18 @@ public class CharacterStatusService {
 	@Autowired
 	private CharacterService characterService;
 
-	public Mono<CharacterStatus> findById(String id) {
+	public Mono<CharacterTacticalContext> findById(String id) {
 		return repository.findById(id);
 	}
 
-	public Flux<CharacterStatus> findAll() {
-		return repository.findAll();
+	public Flux<CharacterTacticalContext> findAll(Pageable pageable) {
+		return repository.findAll(pageable.getSort());
 	}
 
-	public Mono<CharacterStatus> create(String sessionId, String characterId) {
+	public Mono<CharacterTacticalContext> create(String sessionId, String characterId) {
 		return characterService.findById(characterId)
 			.doOnNext(character -> log.info("Readed person {}", character))
-			.map(character -> CharacterStatus.builder()
+			.map(character -> CharacterTacticalContext.builder()
 				.characterId(characterId)
 				.hp(character.getMaxHp())
 				.build())

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character.status;
+package org.labcabrera.rolemaster.core.model.tactical;
 
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.Penalty;

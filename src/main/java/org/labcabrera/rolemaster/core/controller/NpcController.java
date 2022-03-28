@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import org.labcabrera.rolemaster.core.model.character.Race;
+import org.labcabrera.rolemaster.core.model.npc.Npc;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -14,16 +14,16 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Races")
-@RequestMapping("/races")
-public interface RaceController {
+@Tag(name = "Non playable charactes")
+@RequestMapping("/npc")
+public interface NpcController {
 
 	@GetMapping("/{id}")
-	@Operation(summary = "Race search by id.")
-	Mono<Race> findById(@PathVariable String id);
+	@Operation(summary = "NPC search by id.")
+	Mono<Npc> findById(@PathVariable String id);
 
 	@GetMapping
-	@Operation(summary = "Race search.")
-	Flux<Race> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
+	@Operation(summary = "NPC search.")
+	Flux<Npc> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
 
 }

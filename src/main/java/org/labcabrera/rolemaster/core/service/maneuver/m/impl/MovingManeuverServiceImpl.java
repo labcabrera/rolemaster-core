@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverContextImpl;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverRequest;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverResult;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.CharacterStatusRepository;
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverContext;
@@ -39,7 +39,7 @@ public class MovingManeuverServiceImpl implements MovingManeuverService {
 			.build();
 
 		if (request.getCharacterStatusId() != null) {
-			CharacterStatus status = characterStatusRepository.findById(request.getCharacterStatusId()).share().block();
+			CharacterTacticalContext status = characterStatusRepository.findById(request.getCharacterStatusId()).share().block();
 			context.setCharacterStatus(Optional.of(status));
 
 			CharacterInfo characterInfo = characterInfoRepository.findById(status.getCharacterId()).share().block();
