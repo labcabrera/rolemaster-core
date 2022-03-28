@@ -55,7 +55,6 @@ class MovingManeuverServiceImplTest {
 
 		characterStatus = CharacterStatus.builder()
 			.characterId(characterInfo.getId())
-			.sessionId(session.getId())
 			.hp(50)
 			.build();
 		characterStatus = characterStatusRepository.save(characterStatus).share().block();

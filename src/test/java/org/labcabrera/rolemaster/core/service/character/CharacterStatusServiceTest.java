@@ -40,7 +40,6 @@ class CharacterStatusServiceTest {
 			CharacterStatus s = request.getArgument(0);
 			return Mono.just(CharacterStatus.builder()
 				.id("character-status-01")
-				.sessionId(s.getSessionId())
 				.hp(s.getHp())
 				.build());
 		});
@@ -50,7 +49,6 @@ class CharacterStatusServiceTest {
 
 		assertNotNull(status);
 		assertEquals("character-status-01", status.getId());
-		assertEquals("session-01", status.getSessionId());
 		assertEquals(100, status.getHp());
 	}
 

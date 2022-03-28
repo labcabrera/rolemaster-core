@@ -16,8 +16,6 @@ public class CharacterStatus {
 	@Id
 	private String id;
 
-	private String sessionId;
-
 	private String characterId;
 
 	private Integer hp;

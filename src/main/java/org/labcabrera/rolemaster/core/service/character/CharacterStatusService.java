@@ -31,7 +31,6 @@ public class CharacterStatusService {
 		return characterService.findById(characterId)
 			.doOnNext(character -> log.info("Readed person {}", character))
 			.map(character -> CharacterStatus.builder()
-				.sessionId(sessionId)
 				.characterId(characterId)
 				.hp(character.getMaxHp())
 				.build())
