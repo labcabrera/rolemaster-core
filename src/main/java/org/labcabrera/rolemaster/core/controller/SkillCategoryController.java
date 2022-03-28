@@ -1,6 +1,10 @@
 package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.model.skill.SkillCategory;
+import org.springdoc.api.annotations.ParameterObject;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +24,6 @@ public interface SkillCategoryController {
 
 	@GetMapping
 	@Operation(summary = "Skill category search.")
-	Flux<SkillCategory> findAll();
+	Flux<SkillCategory> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
 
 }

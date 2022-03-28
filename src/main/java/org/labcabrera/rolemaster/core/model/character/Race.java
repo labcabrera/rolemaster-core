@@ -1,6 +1,10 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
@@ -32,8 +36,19 @@ public class Race {
 	@Builder.Default
 	private Map<String, Integer> resistanceModifiers = new LinkedHashMap<>();
 
-	private Map<String, Integer> adolescenseSkillCategoryRanks;
+	@Builder.Default
+	private Map<String, Integer> adolescenseSkillCategoryRanks = new LinkedHashMap<>();
 
-	private Map<String, Integer> adolescenseSkillRanks;
+	@Builder.Default
+	private Map<String, Integer> adolescenseSkillRanks = new LinkedHashMap<>();
+
+	@Builder.Default
+	private List<Integer> bodyDevelopmentProgression = new ArrayList<>();
+
+	@Builder.Default
+	private Map<String, List<Integer>> ppDevelopmentProgression = new HashMap<>();
+
+	@Builder.Default
+	private Map<ResistanceType, Integer> resistanceBonus = new EnumMap<>(ResistanceType.class);
 
 }

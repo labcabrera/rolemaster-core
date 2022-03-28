@@ -1,9 +1,6 @@
 spring:
-  data:
-    mongodb:
-      database: rolemaster
-      port: 27017
-      host: localhost
+  profiles:
+    active: ${ROLEMASTER_CORE_PROFILE:local}
 
 logging:
   level:
@@ -15,3 +12,28 @@ logging:
 springdoc:
   swagger-ui:
     operationsSorter: alpha
+    tagsSorter: alpha
+
+app:
+  openapi:
+    version: 1.0-beta
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  data:
+    mongodb:
+      uri: mongodb://localhost/rolemaster?retryWrites=true&w=majority
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  data:
+    mongodb:
+      uri: mongodb+srv://${ROLEMASTER_CORE_DB_USERNAME}:${ROLEMASTER_CORE_DB_PASSWORD}@cluster0.kgfrk.mongodb.net/rolemaster?retryWrites=true&w=majority
+
+    
+

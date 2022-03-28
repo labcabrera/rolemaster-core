@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum CharacterCreationStatus {
 
-	PARTIALLY_CREATED("partially-created"),
+	PARTIALLY_CREATED("partiallyCreated"),
 
 	CREATED("created");
 

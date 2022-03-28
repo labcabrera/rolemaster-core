@@ -4,6 +4,7 @@ import org.labcabrera.rolemaster.core.controller.SkillController;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
@@ -21,8 +22,8 @@ public class SkillControllerImpl implements SkillController {
 	}
 
 	@Override
-	public Flux<Skill> findAll() {
-		return repository.findAll();
+	public Flux<Skill> findAll(Pageable pageable) {
+		return repository.findAll(pageable.getSort());
 	}
 
 }

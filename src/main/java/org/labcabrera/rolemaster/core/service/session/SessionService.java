@@ -6,10 +6,10 @@ import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
 import org.labcabrera.rolemaster.core.exception.SessionNotFoundException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
-import org.labcabrera.rolemaster.core.model.character.Session;
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
+import org.labcabrera.rolemaster.core.model.session.Session;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
 import org.labcabrera.rolemaster.core.repository.SessionRepository;
-import org.labcabrera.rolemaster.core.service.character.CharacterStatusService;
+import org.labcabrera.rolemaster.core.service.character.CharacterTacticalContextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class SessionService {
 	private SessionRepository repository;
 
 	@Autowired
-	private CharacterStatusService characterStatusService;
+	private CharacterTacticalContextService characterStatusService;
 
 	public Mono<Session> findById(String id) {
 		return repository.findById(id);
@@ -45,7 +45,7 @@ public class SessionService {
 		return repository.save(session);
 	}
 
-	public Mono<CharacterStatus> addCharacter(String sessionId, String characterId) {
+	public Mono<CharacterTacticalContext> addCharacter(String sessionId, String characterId) {
 		return characterStatusService.create(sessionId, characterId);
 	}
 
@@ -68,6 +68,10 @@ public class SessionService {
 				return s;
 			})
 			.flatMap(repository::save);
+	}
+
+	public Session addNpc(String sessionId, String npcId) {
+		return null;
 	}
 
 }

@@ -11,11 +11,14 @@ import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterCreationStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.character.CharacterResistance;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.RankType;
+import org.labcabrera.rolemaster.core.model.character.ResistanceBonusType;
+import org.labcabrera.rolemaster.core.model.character.ResistanceType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
@@ -112,6 +115,7 @@ public class CharacterCreationService {
 			.map(this::loadSkillCategories)
 			.map(ctx -> loadSkillCategoryWeapons(ctx, request))
 			.map(this::loadSkills)
+			.map(this::loadResistances)
 			.map(e -> {
 				postProcessorService.apply(e.getCharacter());
 				return e;
@@ -138,14 +142,9 @@ public class CharacterCreationService {
 	}
 
 	private CharacterModificationContext loadSkillCategories(CharacterModificationContext context) {
-		if (context.getSkillCategories() == null || context.getSkillCategories().isEmpty()) {
-			log.warn("Undefined categories");
-		}
-
 		CharacterInfo character = context.getCharacter();
 		Race race = context.getRace();
 		Profession profession = context.getProfession();
-
 		context.getSkillCategories().stream().forEach(category -> {
 			String categoryId = category.getId();
 			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
@@ -162,13 +161,13 @@ public class CharacterCreationService {
 			characterSkillCategory.getBonus().put(BonusType.RANK, bonusRanks);
 			characterSkillCategory.getBonus().put(BonusType.PROFESSION, bonusProfession);
 			characterSkillCategory.getBonus().put(BonusType.ATTRIBUTE, bonusAttribute);
-
 			character.getSkillCategories().add(characterSkillCategory);
 		});
 		return context;
 	}
 
 	private CharacterModificationContext loadSkills(CharacterModificationContext context) {
+		Race race = context.getRace();
 		context.getSkills().stream().forEach(skill -> {
 			String categoryId = skill.getCategoryId();
 			CharacterSkillCategory category = context.getCharacter().getSkillCategory(categoryId)
@@ -178,8 +177,12 @@ public class CharacterCreationService {
 				.categoryId(skill.getCategoryId())
 				.group(category.getGroup())
 				.developmentCost(category.getDevelopmentCost())
-				.attributes(skill.getAttributeBonus())
+				.attributes(category.getAttributes())
+				.progressionType(skill.getProgressionType())
 				.build();
+			cs.getRanks().put(RankType.ADOLESCENCE, race.getAdolescenseSkillRanks().getOrDefault(skill.getId(), 0));
+			cs.getRanks().put(RankType.CONSOLIDATED, 0);
+			cs.getRanks().put(RankType.DEVELOPMENT, 0);
 			cs.getBonus().put(BonusType.SKILL_SPECIAL, skill.getSkillBonus());
 			context.getCharacter().getSkills().add(cs);
 		});
@@ -201,6 +204,20 @@ public class CharacterCreationService {
 				.filter(e -> e.getCategoryId().equals(categoryId))
 				.findFirst().orElseThrow(() -> new BadRequestException("Invalid weapon skill category " + categoryId));
 			category.setDevelopmentCost(devCost);
+		}
+		return context;
+	}
+
+	private CharacterModificationContext loadResistances(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
+		Race race = context.getRace();
+		for (ResistanceType r : ResistanceType.values()) {
+			int raceBonus = race.getResistanceModifiers().getOrDefault(r, 0);
+			CharacterResistance cr = CharacterResistance.builder()
+				.build();
+			cr.getBonus().put(ResistanceBonusType.RACE, raceBonus);
+			character.getResistances().put(r, cr);
+
 		}
 		return context;
 	}

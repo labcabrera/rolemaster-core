@@ -13,6 +13,7 @@ interface CharacterPostProcessor extends Consumer<CharacterInfo> {
 
 		static final int SKILL = 220;
 
+		static final int RESISTANCE = 227;
 		static final int HP = 229;
 		static final int BASE_MOVEMENT = 230;
 		static final int DEV_POINTS = 231;

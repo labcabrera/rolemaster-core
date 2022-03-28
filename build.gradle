@@ -51,6 +51,10 @@ jacocoTestReport {
   }
 }
 
+tasks.named("jar") {
+  enabled = false
+}
+
 sonarqube {
   properties {
     property "sonar.host.url",          "http://localhost:9000"

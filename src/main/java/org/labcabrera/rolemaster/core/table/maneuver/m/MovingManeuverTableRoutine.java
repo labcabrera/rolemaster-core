@@ -20,8 +20,8 @@ public class MovingManeuverTableRoutine implements BasicTable<Integer, MovingMan
 	private void loadTableData() {
 		IntStream.of(-201).forEach(e -> map.put(e, MovingManeuverEntry.builder()
 			.text("Fall down. +2 hits. You are out 3 rounds.")
-			.hp(-2)
-			.unconscious(3)
+			.hp(2)
+			.unconsciousRounds(3)
 			.build()));
 		IntStream.of(-200, -151).forEach(e -> map.put(e, MovingManeuverEntry.builder()
 			.text("Fail to act.")
@@ -39,7 +39,7 @@ public class MovingManeuverTableRoutine implements BasicTable<Integer, MovingMan
 		IntStream.of(186, 275).forEach(e -> map.put(e, MovingManeuverEntry.builder().result(150).build()));
 		IntStream.of(276).forEach(e -> map.put(e, MovingManeuverEntry.builder()
 			.text("Incredible move. You feel great. Heal 3 hits")
-			.hp(3)
+			.hp(-3)
 			.build()));
 	}
 

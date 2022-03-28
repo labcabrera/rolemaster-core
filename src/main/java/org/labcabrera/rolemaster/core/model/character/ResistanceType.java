@@ -1,21 +1,30 @@
 package org.labcabrera.rolemaster.core.model.character;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public enum ResistanceType {
 
-@Document(collection = "resistanceTypes")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class ResistanceType {
+	CHANNELING("channeling"),
 
-	private String id;
+	ESSENCE("essence"),
+
+	MENTALISM("mentalism"),
+
+	POISON("poison"),
+
+	DISEASE("disease"),
+
+	FEAR("fear");
 
 	private String name;
+
+	private ResistanceType(String name) {
+		this.name = name;
+	}
+
+	@JsonValue
+	public String getName() {
+		return name;
+	}
 
 }

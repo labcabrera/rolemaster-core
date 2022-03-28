@@ -175,8 +175,8 @@
 		"attributeBonus": ["me","re","me"]
 	},
 	{
-		"id": "martial-arts-striking",
-		"name": "Martials Arts - Striking",
+		"id": "martial-arts",
+		"name": "Martials Arts",
 		"group": "martial-arts",
 		"attributeBonus": ["st","ag","st"]
 	},

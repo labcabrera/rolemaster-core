@@ -1,0 +1,137 @@
+[
+    {
+        "id": "acting",
+        "name": "Acting",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for simulating actions or reactions of others, as often used in drama performances, devising new identities, etc. This skill may be used to impersonate others, or hide one’s own reactions from others. It may be used anytime a character wishes to behave or appear in a manner other than that normal and natural to him under any given circumstances."
+    },
+    {
+        "id": "dancing",
+        "name": "Dancing",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for performing dances. It may also apply to any circumstances in which complex and/or precise foot work is necessary (e.g., negotiating a pattern on the floor, performing certain rituals, etc.)."
+    },
+    {
+        "id": "mimery",
+        "name": "Mimery",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "mimicry",
+        "name": "Mimicry",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "play-instrument-primary",
+        "name": "Play instrument - primary",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for using a specific instrument, such as flute, drum, lute, etc. It may also be used to recognize musical patterns or rhythms, notes, etc. Note that separate development is required for skill with each instrument."
+    },
+    {
+        "id": "poetic-improvisation",
+        "name": "Poetic improvisation",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "singing",
+        "name": "Singing",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "tale-telling",
+        "name": "Tale Telling",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "ventriloquism",
+        "name": "Ventriloquism",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-active",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "music",
+        "name": "Music",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-passive",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to writing, recognizing or performing in concert a piece of music. This skill may be used to determine the ability of the individual to play in concert with others, or to direct others in doing so. A successful maneuver roll by a conductor will give those he is conducting a bonus of +20 to their own use of this skill."
+    },
+    {
+        "id": "painting",
+        "name": "Painting",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-passive",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for creating graphic images. This may be on a flat medium such as sketching or painting with pigments, or painting on an object of some kind. Any activity that involves the creation of an image or deliberate design may benefit from this skill.",
+        "modifiers": [
+        	{
+        		"key": "Unfamiliar medium",
+        		"modifier": -30
+        	},
+        	{
+        		"key": "From posed image or person",
+        		"modifier": 10
+        	},
+        	{
+        		"key": "From memory",
+        		"modifier": -30,
+        		"attributeModifier": {
+        			"attribute": "me",
+        			"multiplier": 3
+        		}
+        	}
+        ]
+    },
+    {
+        "id": "poetry",
+        "name": "Poetry",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-passive",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
+        "id": "sculpting",
+        "name": "Sculpting",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "artistic-passive",
+        "progressionType": "standard",
+        "description": ""
+    }
+]

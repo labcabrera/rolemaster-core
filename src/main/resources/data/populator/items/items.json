@@ -1,0 +1,16 @@
+[
+	{
+		"id": "arrows",
+		"name": "Arrows",
+		"type": "miscellaneous",
+		"count": 20,
+		"commonCost": {
+			"s": 5
+		},
+		"commonWeight": {
+			"min": 0.075,
+			"max": 0.075
+		},
+		"craftDuration": 24
+	}
+]

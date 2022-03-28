@@ -9,13 +9,13 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.MockCharacterConfigurer;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.Session;
-import org.labcabrera.rolemaster.core.model.character.status.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier.ModifierType;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverRequest;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverResult;
+import org.labcabrera.rolemaster.core.model.session.Session;
+import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.CharacterStatusRepository;
 import org.labcabrera.rolemaster.core.repository.SessionRepository;
@@ -41,7 +41,7 @@ class MovingManeuverServiceImplTest {
 
 	private CharacterInfo characterInfo;
 
-	private CharacterStatus characterStatus;
+	private CharacterTacticalContext characterStatus;
 
 	void loadCharacterStatus() {
 		session = Session.builder()
@@ -53,9 +53,8 @@ class MovingManeuverServiceImplTest {
 		MockCharacterConfigurer.configure(characterInfo);
 		characterInfo = characterInfoRepository.save(characterInfo).share().block();
 
-		characterStatus = CharacterStatus.builder()
+		characterStatus = CharacterTacticalContext.builder()
 			.characterId(characterInfo.getId())
-			.sessionId(session.getId())
 			.hp(50)
 			.build();
 		characterStatus = characterStatusRepository.save(characterStatus).share().block();
