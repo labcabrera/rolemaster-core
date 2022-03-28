@@ -27,6 +27,7 @@ public class InternalErrorHandler {
 			log.warn("Invalid request", ex);
 			ApiError error = ApiError.builder()
 				.message(ex.getMessage())
+				.code("400")
 				.build();
 			return ResponseEntity.badRequest().body(error);
 		}
@@ -34,6 +35,7 @@ public class InternalErrorHandler {
 			log.info("Invalid request: {}", ex.getMessage());
 			WebExchangeBindException bindEx = (WebExchangeBindException) ex;
 			ApiError error = ApiError.builder()
+				.code("400")
 				.message("Invalid request")
 				.build();
 			bindEx.getAllErrors().stream().forEach(e -> {
@@ -53,6 +55,7 @@ public class InternalErrorHandler {
 
 		String message = ex.getMessage();
 		ApiError error = ApiError.builder()
+			.code("500")
 			.message(StringUtils.isNotBlank(message) ? message : "Internal server error")
 			.build();
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -26,6 +26,8 @@ public class TacticalSession {
 	@Schema(description = "Session identifier to which it belongs")
 	private String sessionId;
 
+	private String name;
+
 	private TacticalSessionState state;
 
 	@Builder.Default

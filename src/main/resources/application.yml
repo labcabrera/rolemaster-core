@@ -12,6 +12,7 @@ logging:
 springdoc:
   swagger-ui:
     operationsSorter: alpha
+    tagsSorter: alpha
 
 ---
 spring:

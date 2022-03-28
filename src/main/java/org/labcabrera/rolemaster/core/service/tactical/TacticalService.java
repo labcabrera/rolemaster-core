@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical;
 
 import java.time.LocalDateTime;
 
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
@@ -25,8 +26,8 @@ public class TacticalService {
 	@Autowired
 	private TacticalRoundRepository tacticalRoundRepository;
 
-	public Mono<TacticalSession> createSession(String sessionId) {
-		return tacticalSessionService.createSession(sessionId);
+	public Mono<TacticalSession> createSession(TacticalSessionCreationRequest request) {
+		return tacticalSessionService.createSession(request);
 	}
 
 	public Mono<TacticalRound> startRound(String tacticalSessionId) {

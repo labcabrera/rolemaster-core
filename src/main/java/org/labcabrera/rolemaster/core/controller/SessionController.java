@@ -28,7 +28,6 @@ public interface SessionController {
 	@Operation(summary = "Get session.")
 	@ApiResponse(responseCode = "200", description = "Success")
 	@ApiResponse(responseCode = "404", description = "Not found")
-	@ResponseStatus(code = HttpStatus.OK, reason = "Success")
 	Mono<Session> findById(@PathVariable String id);
 
 	@GetMapping
@@ -37,7 +36,7 @@ public interface SessionController {
 	Flux<Session> findAll();
 
 	@PostMapping
-	@ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Session created.")
 	@Operation(summary = "Session creation.")
 	Mono<Session> createSession(@RequestBody SessionCreationRequest sessionCreationRequest);
 

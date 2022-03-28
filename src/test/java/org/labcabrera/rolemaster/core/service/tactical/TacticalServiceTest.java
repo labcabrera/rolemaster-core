@@ -2,8 +2,11 @@ package org.labcabrera.rolemaster.core.service.tactical;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.session.Session;
 import org.labcabrera.rolemaster.core.model.tactical.ActionPriority;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -27,7 +30,7 @@ class TacticalServiceTest {
 	@Test
 	void test() {
 		Session session = sessionService.createSession(SessionCreationRequest.builder()
-			.name("Tactical service test session")
+			.name("Tactical session test " + LocalDateTime.now().toString())
 			.build()).share().block();
 
 		sessionService.addNpc(session.getId(), "character-01");
@@ -53,7 +56,12 @@ class TacticalServiceTest {
 			.phase(ActionPriority.NORMAL)
 			.build();
 
-		TacticalSession tacticalSession = tacticalService.createSession(session.getId()).share().block();
+		TacticalSessionCreationRequest tacticalSessionCreation = TacticalSessionCreationRequest.builder()
+			.sessionId(session.getId())
+			.name("Tactical session test " + LocalDateTime.now())
+			.build();
+
+		TacticalSession tacticalSession = tacticalService.createSession(tacticalSessionCreation).share().block();
 
 		TacticalRound round = tacticalService.startRound(tacticalSession.getId()).share().block();
 
