@@ -23,10 +23,10 @@ class CharacterItemServiceTest {
 
 	@Test
 	void test() {
-		characterInventoryRepository.deleteByCharacterId("c-01").share().block();
+		characterInventoryRepository.deleteById("c-01").share().block();
 
 		CharacterInventory ci = CharacterInventory.builder()
-			.characterId("c-01")
+			.id("c-01")
 			.build();
 
 		ci = characterInventoryRepository.save(ci).share().block();
