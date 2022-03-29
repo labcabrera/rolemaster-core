@@ -4,6 +4,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
@@ -47,7 +49,14 @@ public abstract class TacticalAction {
 
 	private TacticalActionState state;
 
-	@Target({ ElementType.TYPE })
+	private Map<InitiativeModifier, Integer> initiativeModifiers = new LinkedHashMap<>();
+
+	public Integer getInitiative() {
+		return initiativeModifiers.values().stream().reduce(0, (a, b) -> a + b);
+	}
+
+	@Target({
+		ElementType.TYPE })
 	@Retention(RetentionPolicy.RUNTIME)
 	@Constraint(validatedBy = TacticalActionValidator.class)
 	static @interface ValidTacticalAction {

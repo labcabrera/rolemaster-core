@@ -15,10 +15,11 @@ import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier.ModifierTy
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverRequest;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverResult;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
+import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterStatusRepository;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -35,7 +36,7 @@ class MovingManeuverServiceImplTest {
 	private CharacterInfoRepository characterInfoRepository;
 
 	@Autowired
-	private TacticalCharacterStatusRepository characterStatusRepository;
+	private TacticalCharacterContextRepository characterStatusRepository;
 
 	private StrategicSession session;
 
@@ -55,7 +56,10 @@ class MovingManeuverServiceImplTest {
 
 		characterStatus = TacticalCharacterContext.builder()
 			.characterId(characterInfo.getId())
-			.hp(50)
+			.hp(Hp.builder()
+				.max(100)
+				.current(50)
+				.build())
 			.build();
 		characterStatus = characterStatusRepository.save(characterStatus).share().block();
 	}

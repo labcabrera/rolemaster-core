@@ -8,11 +8,14 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterStatusRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import reactor.core.publisher.Mono;
@@ -24,18 +27,21 @@ class CharacterTacticalContextServiceTest {
 	private CharacterTacticalContextService service;
 
 	@Mock
-	private TacticalCharacterStatusRepository repository;
+	private TacticalCharacterContextRepository repository;
 
 	@Mock
 	private CharacterService characterService;
 
+	@Spy
+	private CharacterInfo characterInfo;
+
 	@Test
 	void test() {
-		when(characterService.findById("character-01")).thenReturn(Mono.just(CharacterInfo.builder()
-			.id("character-01")
-			.maxHp(100)
-			.name("Test")
-			.build()));
+		characterInfo.setId("character-01");
+		characterInfo.setMaxHp(100);
+		characterInfo.getAttributes().put(AttributeType.QUICKNESS, CharacterAttribute.builder().build());
+
+		when(characterService.findById("character-01")).thenReturn(Mono.just(characterInfo));
 		when(repository.save(any())).thenAnswer(request -> {
 			TacticalCharacterContext s = request.getArgument(0);
 			return Mono.just(TacticalCharacterContext.builder()
@@ -49,7 +55,7 @@ class CharacterTacticalContextServiceTest {
 
 		assertNotNull(status);
 		assertEquals("character-status-01", status.getId());
-		assertEquals(100, status.getHp());
+		assertEquals(100, status.getHp().getMax());
 	}
 
 	@Test

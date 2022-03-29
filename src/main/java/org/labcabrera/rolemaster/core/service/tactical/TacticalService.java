@@ -15,7 +15,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalNpcInstance;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterStatusRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class TacticalService {
 	private TacticalRoundRepository tacticalRoundRepository;
 
 	@Autowired
-	private TacticalCharacterStatusRepository tacticalCharacterStatusRepository;
+	private TacticalCharacterContextRepository tacticalCharacterStatusRepository;
 
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return tacticalSessionService.createSession(request);

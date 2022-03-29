@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.tactical.actions.InitiativeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -29,7 +30,11 @@ public class TacticalRound {
 
 	private Integer round;
 
-	private TacticalRoundPhase phase;
+	@Builder.Default
+	private Boolean initiativeLoaded = false;
+
+	@Builder.Default
+	private List<TacticalAction> actions = new ArrayList<>();
 
 	@Builder.Default
 	private Map<String, Integer> initiativeRollMap = new HashMap<>();
@@ -38,7 +43,7 @@ public class TacticalRound {
 	private Map<String, Integer> initiativeModifiersMap = new HashMap<>();
 
 	@Builder.Default
-	private List<TacticalAction> actions = new ArrayList<>();
+	private Map<String, Map<InitiativeModifier, Integer>> initiatives = new HashMap<>();
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();

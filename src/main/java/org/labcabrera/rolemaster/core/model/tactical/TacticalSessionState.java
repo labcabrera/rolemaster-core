@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical;
+package org.labcabrera.rolemaster.core.model.tactical;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
