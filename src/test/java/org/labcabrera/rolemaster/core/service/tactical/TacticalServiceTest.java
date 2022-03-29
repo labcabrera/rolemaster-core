@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +10,7 @@ import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.session.Session;
 import org.labcabrera.rolemaster.core.model.tactical.ActionPriority;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
@@ -59,10 +61,15 @@ class TacticalServiceTest {
 
 		TacticalSession tacticalSession = tacticalService.createSession(tacticalSessionCreation).share().block();
 
-		tacticalService.addNpc(tacticalSession.getId(), "npc-01")
-			.flatMap(e -> tacticalService.addNpc(tacticalSession.getId(), "npc-02"))
-			.flatMap(e -> tacticalService.addNpc(tacticalSession.getId(), "npc-03"))
-			.share().block();
+		String npcIdentifier = "ork-figther-mele-i";
+
+		TacticalCharacterContext tc1 = tacticalService.addNpc(tacticalSession.getId(), npcIdentifier).share().block();
+		TacticalCharacterContext tc2 = tacticalService.addNpc(tacticalSession.getId(), npcIdentifier).share().block();
+		TacticalCharacterContext tc3 = tacticalService.addNpc(tacticalSession.getId(), npcIdentifier).share().block();
+
+		assertNotNull(tc1);
+		assertNotNull(tc2);
+		assertNotNull(tc3);
 
 		TacticalRound round = tacticalService.startRound(tacticalSession.getId()).share().block();
 
