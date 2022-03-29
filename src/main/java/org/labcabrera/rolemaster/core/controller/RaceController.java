@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Races")
 @RequestMapping("/races")
+@Tag(name = "Races", description = "List of existing races.")
 public interface RaceController {
 
 	@GetMapping("/{id}")

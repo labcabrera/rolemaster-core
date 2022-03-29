@@ -1,0 +1,86 @@
+[
+	{
+		"id": "assasin",
+		"name": "Assasin"
+	},
+	{
+		"id": "berserker",
+		"name": "Berserker"
+	},
+	{
+		"id": "cloistered-academic",
+		"name": "Cloistered Academic"
+	},
+	{
+		"id": "con-man",
+		"name": "Con Man"
+	},
+	{
+		"id": "crafter",
+		"name": "Crafter"
+	},
+	{
+		"id": "crusading-academic",
+		"name": "Crusading Academic"
+	},
+	{
+		"id": "cut-purse",
+		"name": "Cut Purse"
+	},
+	{
+		"id": "detective",
+		"name": "Detective"
+	},
+	{
+		"id": "diplomat",
+		"name": "Diplomat"
+	},
+	{
+		"id": "explorer",
+		"name": "Explorer"
+	},
+	{
+		"id": "guardian",
+		"name": "Guardian"
+	},
+	{
+		"id": "highwayman",
+		"name": "Highwayman"
+	},
+	{
+		"id": "martial-artist",
+		"name": "Martial Artist"
+	},
+	{
+		"id": "mercenary",
+		"name": "Mercenary"
+	},
+	{
+		"id": "philosopher",
+		"name": "Philosopher"
+	},
+	{
+		"id": "sailor",
+		"name": "Sailor"
+	},
+	{
+		"id": "shaman-priest",
+		"name": "Shaman Priest"
+	},
+	{
+		"id": "spy",
+		"name": "Spy"
+	},
+	{
+		"id": "wanderer",
+		"name": "Wanderer"
+	},
+	{
+		"id": "weapon-master",
+		"name": "Weapon master"
+	},
+	{
+		"id": "zealot",
+		"name": "Zealot"
+	}
+]

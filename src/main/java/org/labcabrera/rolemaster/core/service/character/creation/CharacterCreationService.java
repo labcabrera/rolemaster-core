@@ -9,11 +9,11 @@ import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
-import org.labcabrera.rolemaster.core.model.character.CharacterCreationStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterResistance;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
+import org.labcabrera.rolemaster.core.model.character.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.RankType;
@@ -79,7 +79,7 @@ public class CharacterCreationService {
 			.height(request.getHeight())
 			.weight(request.getWeight())
 			.xp(0)
-			.creationStatus(CharacterCreationStatus.PARTIALLY_CREATED)
+			.status(CharacterStatus.PARTIALLY_CREATED)
 			.build();
 
 		final CharacterModificationContext context = CharacterModificationContextImpl.builder()

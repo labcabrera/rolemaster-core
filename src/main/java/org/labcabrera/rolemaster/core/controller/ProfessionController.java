@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Professions")
 @RequestMapping("/professions")
+@Tag(name = "Professions", description = "List of existing professions.")
 public interface ProfessionController {
 
 	@GetMapping("/{id}")

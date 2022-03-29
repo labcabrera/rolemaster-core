@@ -447,83 +447,27 @@
 		}
 	},
 	{
-		"id": "healer",
-		"name": "Healer",
-		"NOTA": "REVISAR <---------------- tiene 3 prime stats",
-		"primeStats": [
-			"in",
-			"pr",
-			"sd"
-		],
-		"availableRealms": [
-			"channeling"
-		],
-		"skillCategoryBonus": {
-		},
-		"skillCategoryDevelopmentCost": {
-			"armor-light":                  [4,4,4],
-			"armor-medium":                 [6,6,6],
-			"armor-heavy":                  [7,7,7],
-			"artistic-active":              [2,5],
-			"artistic-passive":             [2,5],
-			"athletic-brawn":               [6],
-			"athletic-endurance":           [3],
-			"athletic-gymnastics":          [3],
-			"awareness-perceptions":        [6],
-			"awareness-searching":          [3],
-			"awareness-senses":             [3,7],
-			"body-development":             [4,12],
-			"combat-maneuvers":             [15],
-			"communications":               [2,2,2],
-			"crafts":                       [4,10],
-			"directed-spells":              [15],
-			"influence":                    [2,6],
-			"lore-general":                 [1,3],
-			"lore-magical":                 [2,5],
-			"lore-obscure":                 [3,7],
-			"lore-technical":               [2,6],
-			"martial-arts-striking":        [6],
-			"outdoor-animal":               [3],
-			"outdoor-environmental":        [3],
-			"power-awareness":              [6],
-			"power-point-development":      [4,10],
-			"science-analytic-basic":       [1,4],
-			"science-analytic-specialized": [6,14],
-			"self-control":                 [2,7],
-			"subterfuge-attack":            [6],
-			"subterfuge-stealth":           [1,5],
-			"subterfuge-mechanics":         [4],
-			"technical-trade-general":      [3,7],
-			"technical-trade-professional": [8],
-			"technical-trade-vocational":   [6,14],
-			"urban":                        [3]
-		},
-		"skillCategoryWeaponDevelopmentCost": [
-			[9],
-			[20],
-			[20],
-			[20],
-			[20],
-			[20],
-			[20]			
-		],
-		"TODO": "completar costes <----------------------------",
-		"lifestyleCost": {
-			"adventurer": 31,
-			"amateur-mage": -1,
-			"animal-friend": -1,
-			"burglar": -1,
-			"city-guard": -1,
-			"doctor": -1,
-			"herbalist": -1,
-			"hunter": -1,
-			"knight": -1,
-			"loremaster": -1,
-			"merchant": -1,
-			"performer": -1,
-			"scout": -1,
-			"soldier": -1,
-			"traveller": -1
-		}
+		"id": "mage",
+		"name": "Mage"
+	},
+	{
+		"id": "cleric",
+		"name": "Cleric (core)"
+	},
+	{
+		"id": "mentalist",
+		"name": "Mentalist"
+	},
+	{
+		"id": "ranger",
+		"name": "Ranger"
+	},
+	{
+		"id": "dabbler",
+		"name": "Dabbler"
+	},
+	{
+		"id": "bard",
+		"name": "Bard"
 	}
 ]

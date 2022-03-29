@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
 import org.labcabrera.rolemaster.core.controller.CharacterTacticalContextController;
-import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.service.character.CharacterTacticalContextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -17,17 +17,17 @@ public class CharacterTacticalContextControllerImpl implements CharacterTactical
 	private CharacterTacticalContextService characterStatusService;
 
 	@Override
-	public Mono<CharacterTacticalContext> findById(String id) {
+	public Mono<TacticalCharacterContext> findById(String id) {
 		return characterStatusService.findById(id);
 	}
 
 	@Override
-	public Flux<CharacterTacticalContext> findAll(Pageable pageable) {
+	public Flux<TacticalCharacterContext> findAll(Pageable pageable) {
 		return characterStatusService.findAll(pageable);
 	}
 
 	@Override
-	public Mono<CharacterTacticalContext> hpModification(Integer value) {
+	public Mono<TacticalCharacterContext> hpModification(Integer value) {
 		return null;
 	}
 

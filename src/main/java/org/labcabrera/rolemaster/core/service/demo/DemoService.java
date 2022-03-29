@@ -6,12 +6,12 @@ import java.time.LocalDate;
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.model.session.Session;
-import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
+import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.CharacterTacticalContextService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
-import org.labcabrera.rolemaster.core.service.session.SessionService;
+import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +33,7 @@ public class DemoService {
 	private CharacterTacticalContextService characterStatusService;
 
 	@Autowired
-	private SessionService sessionService;
+	private StrategicSessionService sessionService;
 
 	@Autowired
 	private CharacterCreationService characterCreationService;
@@ -63,10 +63,10 @@ public class DemoService {
 		SessionCreationRequest sessionCreationRequest = SessionCreationRequest.builder()
 			.name("Demo session " + LocalDate.now().toString())
 			.build();
-		Session session = sessionService.createSession(sessionCreationRequest).share().block();
+		StrategicSession session = sessionService.createSession(sessionCreationRequest).share().block();
 		String sessionId = session.getId();
 
-		CharacterTacticalContext status = sessionService.addCharacter(sessionId, characterId).share().block();
+		TacticalCharacterContext status = sessionService.addCharacter(sessionId, characterId).share().block();
 
 		log.info("Created character status {}", status.getId());
 

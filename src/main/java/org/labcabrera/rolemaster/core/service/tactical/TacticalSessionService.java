@@ -6,7 +6,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
-import org.labcabrera.rolemaster.core.repository.SessionRepository;
+import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 public class TacticalSessionService {
 
 	@Autowired
-	private SessionRepository sessionRepository;
+	private StrategicSessionRepository sessionRepository;
 
 	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
@@ -28,7 +28,7 @@ public class TacticalSessionService {
 			.switchIfEmpty(Mono.error(new BadRequestException("Invalid sessionId")))
 			.map(session -> {
 				return TacticalSession.builder()
-					.sessionId(session.getId())
+					.strategicSessionId(session.getId())
 					.name(request.getName())
 					.entityMetadata(EntityMetadata.builder()
 						.created(LocalDateTime.now())

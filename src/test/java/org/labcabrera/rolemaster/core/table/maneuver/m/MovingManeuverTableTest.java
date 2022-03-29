@@ -19,7 +19,7 @@ class MovingManeuverTableTest {
 	void testM202() {
 		MovingManeuverEntry e = table.get(ManeuverDificulty.ROUTINE, -202);
 		assertNotNull(e);
-		assertEquals(-2, e.getHp());
+		assertEquals(2, e.getHp());
 		assertNull(e.getResult());
 	}
 
