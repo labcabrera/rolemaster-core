@@ -13,7 +13,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.labcabrera.rolemaster.core.model.tactical.ActionPriority;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction.ValidTacticalAction;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
@@ -38,7 +38,7 @@ public abstract class TacticalAction {
 	private String source;
 
 	@NotNull
-	private ActionPriority priority;
+	private TacticalActionPhase priority;
 
 	@NotNull
 	@Min(1)

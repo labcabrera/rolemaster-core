@@ -2,14 +2,10 @@ package org.labcabrera.rolemaster.core.model.tactical;
 
 public enum TacticalActionPhase {
 
-	ACTION_DECLARATION_PHASE,
+	SNAP,
 
-	INITIATIVE_DETERMINATION_PHASE,
+	NORMAL,
 
-	SNAP_ACTION_PHASE,
-
-	NORMAL_ACTION_PHASE,
-
-	DELIBERATE_ACTION_PHASE;
+	DELIBERATE;
 
 }

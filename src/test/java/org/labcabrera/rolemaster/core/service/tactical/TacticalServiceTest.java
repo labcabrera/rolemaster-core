@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
-import org.labcabrera.rolemaster.core.model.tactical.ActionPriority;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
@@ -59,7 +59,7 @@ class TacticalServiceTest {
 		runActionDeclarationValidators(tacticalService, tacticalSession);
 
 		TacticalAction action01 = TacticalActionMeleAttack.builder()
-			.priority(ActionPriority.NORMAL)
+			.priority(TacticalActionPhase.NORMAL)
 			.meleAttackType(MeleeAttackType.FULL)
 			.source(tc1.getNpcInstanceId())
 			.target(tc2.getNpcInstanceId())
@@ -67,20 +67,20 @@ class TacticalServiceTest {
 			.build();
 
 		TacticalAction action02 = TacticalActionMeleAttack.builder()
-			.priority(ActionPriority.DELIBERATE)
+			.priority(TacticalActionPhase.DELIBERATE)
 			.meleAttackType(MeleeAttackType.PRESS_AND_MELEE)
 			.source(tc1.getNpcInstanceId())
 			.actionPercent(100)
 			.build();
 
 		TacticalAction action03 = TacticalActionMovement.builder()
-			.priority(ActionPriority.SNAP)
+			.priority(TacticalActionPhase.SNAP)
 			.source(tc3.getNpcInstanceId())
 			.actionPercent(20)
 			.build();
 
 		TacticalAction action04 = TacticalActionMovement.builder()
-			.priority(ActionPriority.NORMAL)
+			.priority(TacticalActionPhase.NORMAL)
 			.source(tc3.getNpcInstanceId())
 			.actionPercent(50)
 			.build();
@@ -106,7 +106,7 @@ class TacticalServiceTest {
 	private void runActionDeclarationValidators(TacticalService tacticalService, TacticalSession tacticalSession) {
 		assertThrows(ValidationException.class, () -> {
 			TacticalAction action = TacticalActionMeleAttack.builder()
-				.priority(ActionPriority.NORMAL)
+				.priority(TacticalActionPhase.NORMAL)
 				.meleAttackType(MeleeAttackType.FULL)
 				.source("s1")
 				.target("t1")
@@ -121,7 +121,7 @@ class TacticalServiceTest {
 		assertThrows(ValidationException.class, () -> {
 			TacticalAction invalidActionMissingTarget = TacticalActionMeleAttack.builder()
 				.source("s1")
-				.priority(ActionPriority.NORMAL)
+				.priority(TacticalActionPhase.NORMAL)
 				.meleAttackType(MeleeAttackType.FULL)
 				.actionPercent(100)
 				.build();
@@ -129,7 +129,7 @@ class TacticalServiceTest {
 		});
 		assertThrows(ValidationException.class, () -> {
 			TacticalAction invalidSnapActionPercent = TacticalActionMovement.builder()
-				.priority(ActionPriority.SNAP)
+				.priority(TacticalActionPhase.SNAP)
 				.source("s1")
 				.actionPercent(21)
 				.build();
@@ -137,7 +137,7 @@ class TacticalServiceTest {
 		});
 		assertThrows(ValidationException.class, () -> {
 			TacticalAction invalidNormalActionPercent = TacticalActionMovement.builder()
-				.priority(ActionPriority.NORMAL)
+				.priority(TacticalActionPhase.NORMAL)
 				.source("s1")
 				.actionPercent(81)
 				.build();
