@@ -2,8 +2,11 @@ package org.labcabrera.rolemaster.core.service.tactical;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
+
+import javax.validation.ValidationException;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
@@ -13,8 +16,9 @@ import org.labcabrera.rolemaster.core.model.tactical.ActionPriority;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
+import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleAttack;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMovement;
 import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,29 +34,10 @@ class TacticalServiceTest {
 	private TacticalService tacticalService;
 
 	@Test
-	void test() {
+	void simulateSession() {
 		StrategicSession session = sessionService.createSession(SessionCreationRequest.builder()
 			.name("Tactical session test " + LocalDateTime.now().toString())
 			.build()).share().block();
-
-		TacticalAction action01 = TacticalActionAttack.builder()
-			.characterId("character-01")
-			.phase(ActionPriority.NORMAL)
-			.targetCharacterId("character-02")
-			.actionPercent(100)
-			.build();
-
-		TacticalAction action02 = TacticalActionAttack.builder()
-			.characterId("character-02")
-			.phase(ActionPriority.SNAP)
-			.targetCharacterId("character-01")
-			.actionPercent(100)
-			.build();
-
-		TacticalAction action03 = TacticalActionMovement.builder()
-			.characterId("character-03")
-			.phase(ActionPriority.NORMAL)
-			.build();
 
 		TacticalSessionCreationRequest tacticalSessionCreation = TacticalSessionCreationRequest.builder()
 			.sessionId(session.getId())
@@ -71,20 +56,93 @@ class TacticalServiceTest {
 		assertNotNull(tc2);
 		assertNotNull(tc3);
 
+		runActionDeclarationValidators(tacticalService, tacticalSession);
+
+		TacticalAction action01 = TacticalActionMeleAttack.builder()
+			.priority(ActionPriority.NORMAL)
+			.meleAttackType(MeleeAttackType.FULL)
+			.source(tc1.getNpcInstanceId())
+			.target(tc2.getNpcInstanceId())
+			.actionPercent(80)
+			.build();
+
+		TacticalAction action02 = TacticalActionMeleAttack.builder()
+			.priority(ActionPriority.DELIBERATE)
+			.meleAttackType(MeleeAttackType.PRESS_AND_MELEE)
+			.source(tc1.getNpcInstanceId())
+			.actionPercent(100)
+			.build();
+
+		TacticalAction action03 = TacticalActionMovement.builder()
+			.priority(ActionPriority.SNAP)
+			.source(tc3.getNpcInstanceId())
+			.actionPercent(20)
+			.build();
+
+		TacticalAction action04 = TacticalActionMovement.builder()
+			.priority(ActionPriority.NORMAL)
+			.source(tc3.getNpcInstanceId())
+			.actionPercent(50)
+			.build();
+
 		TacticalRound round = tacticalService.startRound(tacticalSession.getId()).share().block();
 
-		tacticalService.declare(tacticalSession.getId(), action01).share().block();
-		tacticalService.declare(tacticalSession.getId(), action02).share().block();
-		tacticalService.declare(tacticalSession.getId(), action03).share().block();
+		round = tacticalService.declare(tacticalSession.getId(), action01).share().block();
+		round = tacticalService.declare(tacticalSession.getId(), action02).share().block();
+		round = tacticalService.declare(tacticalSession.getId(), action03).share().block();
+		round = tacticalService.declare(tacticalSession.getId(), action04).share().block();
 
 		round = tacticalService.getCurrentRound(tacticalSession.getId()).share().block();
 
 		assertEquals(1, round.getRound());
 
+		assertEquals(4, round.getActions().size());
+
 		tacticalService.setInitiative(round.getId(), "character-01", 7);
 		tacticalService.setInitiative(round.getId(), "character-02", 16);
 		tacticalService.setInitiative(round.getId(), "character-03", 11);
+	}
 
+	private void runActionDeclarationValidators(TacticalService tacticalService, TacticalSession tacticalSession) {
+		assertThrows(ValidationException.class, () -> {
+			TacticalAction action = TacticalActionMeleAttack.builder()
+				.priority(ActionPriority.NORMAL)
+				.meleAttackType(MeleeAttackType.FULL)
+				.source("s1")
+				.target("t1")
+				.actionPercent(100)
+				.build();
+			tacticalService.declare(null, action).share().block();
+		});
+		assertThrows(ValidationException.class, () -> {
+			TacticalAction action = TacticalActionMovement.builder().build();
+			tacticalService.declare(tacticalSession.getId(), action).share().block();
+		});
+		assertThrows(ValidationException.class, () -> {
+			TacticalAction invalidActionMissingTarget = TacticalActionMeleAttack.builder()
+				.source("s1")
+				.priority(ActionPriority.NORMAL)
+				.meleAttackType(MeleeAttackType.FULL)
+				.actionPercent(100)
+				.build();
+			tacticalService.declare(tacticalSession.getId(), invalidActionMissingTarget).share().block();
+		});
+		assertThrows(ValidationException.class, () -> {
+			TacticalAction invalidSnapActionPercent = TacticalActionMovement.builder()
+				.priority(ActionPriority.SNAP)
+				.source("s1")
+				.actionPercent(21)
+				.build();
+			tacticalService.declare(tacticalSession.getId(), invalidSnapActionPercent).share().block();
+		});
+		assertThrows(ValidationException.class, () -> {
+			TacticalAction invalidNormalActionPercent = TacticalActionMovement.builder()
+				.priority(ActionPriority.NORMAL)
+				.source("s1")
+				.actionPercent(81)
+				.build();
+			tacticalService.declare(tacticalSession.getId(), invalidNormalActionPercent).share().block();
+		});
 	}
 
 }

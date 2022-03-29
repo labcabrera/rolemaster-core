@@ -11,8 +11,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class TacticalActionAttack extends TacticalAction {
+public class TacticalActionMissileAttack extends TacticalAction {
 
-	private String targetCharacterId;
+	private String target;
 
 }

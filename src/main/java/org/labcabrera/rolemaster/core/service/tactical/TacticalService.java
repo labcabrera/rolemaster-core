@@ -2,6 +2,9 @@ package org.labcabrera.rolemaster.core.service.tactical;
 
 import java.time.LocalDateTime;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
@@ -15,10 +18,12 @@ import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import reactor.core.publisher.Mono;
 
 @Service
+@Validated
 public class TacticalService {
 
 	@Autowired
@@ -91,10 +96,10 @@ public class TacticalService {
 			.flatMap(tacticalRoundRepository::save);
 	}
 
-	public Mono<TacticalRound> declare(String tacticalSessionId, TacticalAction action) {
+	@Validated
+	public Mono<TacticalRound> declare(@NotEmpty String tacticalSessionId, @Valid TacticalAction action) {
 		return getCurrentRound(tacticalSessionId)
 			.map(e -> {
-				//TODO validation
 				e.getActions().add(action);
 				return e;
 			})
