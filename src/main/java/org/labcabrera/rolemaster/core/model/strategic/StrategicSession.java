@@ -26,6 +26,9 @@ public class StrategicSession {
 	@Schema(description = "Strategic session name.", required = true, example = "Destruction of the ring Vol. 2")
 	private String name;
 
+	@Schema(description = "User description.", required = false, example = "Adventure played by Foo and Bar for the destruction of the One Ring.")
+	private String description;
+
 	@Schema(description = "Audit data.")
 	private EntityMetadata metadata;
 

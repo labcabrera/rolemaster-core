@@ -12,7 +12,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SessionUpdateRequest {
 
-	@Schema(description = "Session name.", required = true, example = "Demo session")
+	@Schema(description = "Session name.", required = false, example = "Demo session")
 	private String name;
+
+	@Schema(description = "Session description.", required = false, example = "Some user description.")
+	private String description;
 
 }

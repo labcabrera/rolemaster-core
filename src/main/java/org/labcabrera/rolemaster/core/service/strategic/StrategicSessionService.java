@@ -63,7 +63,8 @@ public class StrategicSessionService {
 		return repository.findById(id)
 			.switchIfEmpty(Mono.error(new SessionNotFoundException(id)))
 			.map(s -> {
-				s.setName(request.getName());
+				s.setName(request.getName() != null ? request.getName() : s.getName());
+				s.setDescription(request.getDescription() != null ? request.getDescription() : s.getDescription());
 				s.getMetadata().setUpdated(LocalDateTime.now());
 				return s;
 			})
