@@ -24,6 +24,6 @@ public interface SkillController {
 
 	@GetMapping
 	@Operation(summary = "Skill search.")
-	Flux<Skill> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
+	Flux<Skill> findAll(@ParameterObject @PageableDefault(sort = "spellListId,level", direction = Direction.ASC, size = 10) Pageable pageable);
 
 }

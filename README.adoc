@@ -4,7 +4,7 @@
 
 Esta API provee de un conjunto de servicios para utilizar el sistema de juego Rolemaster (v4) diseñado por https://ironcrown.com/[Iron Crown Enterprises].
 
-Una demo de la api se puede consultar en: https://rolemaster-core.herokuapp.com/
+Una demo de la api se puede consultar en: https://rolemaster-core.herokuapp.com (se paciente mientras se arranca la instancia ya que generalmente estará parada).
 
 Ofrece las funcionalidades:
 
