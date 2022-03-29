@@ -3,8 +3,8 @@ package org.labcabrera.rolemaster.core.controller.impl;
 import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.controller.StrategicSessionController;
-import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
-import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
@@ -31,12 +31,12 @@ public class StrategicSessionControllerImpl implements StrategicSessionControlle
 	}
 
 	@Override
-	public Mono<StrategicSession> createSession(@Valid SessionCreationRequest request) {
+	public Mono<StrategicSession> createSession(@Valid StrategicSessionCreation request) {
 		return sessionService.createSession(request);
 	}
 
 	@Override
-	public Mono<StrategicSession> updateSession(String id, @Valid SessionUpdateRequest request) {
+	public Mono<StrategicSession> updateSession(String id, @Valid StrategicSessionUpdate request) {
 		return sessionService.updateSession(id, request);
 	}
 

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
-import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
@@ -41,7 +41,7 @@ public class TacticalService {
 	@Autowired
 	private TacticalNpcInstanceService tacticalNpcInstanceService;
 
-	public Mono<TacticalSession> createSession(TacticalSessionCreationRequest request) {
+	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return tacticalSessionService.createSession(request);
 	}
 

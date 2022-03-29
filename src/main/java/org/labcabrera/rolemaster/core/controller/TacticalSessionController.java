@@ -9,7 +9,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalActionMovingManeuverDeclaratio
 import org.labcabrera.rolemaster.core.dto.TacticalActionSpellAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.TacticalActionSpellCastDeclaration;
 import org.labcabrera.rolemaster.core.dto.TacticalActionStaticManeuverDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
@@ -43,7 +43,7 @@ public interface TacticalSessionController {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED, reason = "Tactical session created.")
 	@Operation(summary = "Create a new tactical session.")
-	Mono<TacticalSession> createTacticalSession(@RequestBody TacticalSessionCreationRequest request);
+	Mono<TacticalSession> createTacticalSession(@RequestBody TacticalSessionCreation request);
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Tactical session deleted.")

@@ -2,8 +2,8 @@ package org.labcabrera.rolemaster.core.service.strategic;
 
 import java.time.LocalDateTime;
 
-import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
-import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
 import org.labcabrera.rolemaster.core.exception.SessionNotFoundException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
@@ -35,7 +35,7 @@ public class StrategicSessionService {
 		return repository.findAll();
 	}
 
-	public Mono<StrategicSession> createSession(SessionCreationRequest request) {
+	public Mono<StrategicSession> createSession(StrategicSessionCreation request) {
 		StrategicSession session = StrategicSession.builder()
 			.name(request.getName())
 			.metadata(EntityMetadata.builder()
@@ -59,7 +59,7 @@ public class StrategicSessionService {
 		return repository.deleteById(id).thenEmpty(e -> log.info("Deleted session {}", id));
 	}
 
-	public Mono<StrategicSession> updateSession(String id, SessionUpdateRequest request) {
+	public Mono<StrategicSession> updateSession(String id, StrategicSessionUpdate request) {
 		return repository.findById(id)
 			.switchIfEmpty(Mono.error(new SessionNotFoundException(id)))
 			.map(s -> {

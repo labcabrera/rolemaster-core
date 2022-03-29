@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TacticalSessionCreationRequest {
+public class TacticalSessionCreation {
 
 	@NotBlank
 	@Schema(description = "Session identifier.", required = true, example = "6241ee3947446c71b95d1db1")
@@ -21,5 +21,8 @@ public class TacticalSessionCreationRequest {
 	@NotBlank
 	@Schema(description = "Tactical session name.", required = true, example = "Tactical session test")
 	private String name;
+
+	@Schema(description = "Tactical session name.", required = false, example = "Example of player's comment.")
+	private String description;
 
 }

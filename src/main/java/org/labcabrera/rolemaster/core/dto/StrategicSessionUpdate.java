@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SessionUpdateRequest {
+public class StrategicSessionUpdate {
 
 	@Schema(description = "Session name.", required = false, example = "Demo session")
 	private String name;

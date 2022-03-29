@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class TacticalActionMovementDeclaration extends TacticalActionDeclarationRequest {
+public class TacticalActionMovementDeclaration extends TacticalActionDeclaration {
 
 	private MovementPace pace;
 

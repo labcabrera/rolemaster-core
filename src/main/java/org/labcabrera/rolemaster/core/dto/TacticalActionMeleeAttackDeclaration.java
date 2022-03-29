@@ -1,5 +1,5 @@
 package org.labcabrera.rolemaster.core.dto;
 
-public class TacticalActionMeleeAttackDeclaration extends TacticalActionDeclarationRequest {
+public class TacticalActionMeleeAttackDeclaration extends TacticalActionDeclaration {
 
 }

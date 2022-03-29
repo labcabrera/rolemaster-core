@@ -10,7 +10,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalActionMovingManeuverDeclaratio
 import org.labcabrera.rolemaster.core.dto.TacticalActionSpellAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.TacticalActionSpellCastDeclaration;
 import org.labcabrera.rolemaster.core.dto.TacticalActionStaticManeuverDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -36,7 +36,7 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Override
-	public Mono<TacticalSession> createTacticalSession(TacticalSessionCreationRequest request) {
+	public Mono<TacticalSession> createTacticalSession(TacticalSessionCreation request) {
 		return tacticalService.createSession(request);
 	}
 

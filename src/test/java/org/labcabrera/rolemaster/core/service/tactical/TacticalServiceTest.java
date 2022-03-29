@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 import javax.validation.ValidationException;
 
 import org.junit.jupiter.api.Test;
-import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
-import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
@@ -35,11 +35,11 @@ class TacticalServiceTest {
 
 	@Test
 	void simulateSession() {
-		StrategicSession session = sessionService.createSession(SessionCreationRequest.builder()
+		StrategicSession session = sessionService.createSession(StrategicSessionCreation.builder()
 			.name("Tactical session test " + LocalDateTime.now().toString())
 			.build()).share().block();
 
-		TacticalSessionCreationRequest tacticalSessionCreation = TacticalSessionCreationRequest.builder()
+		TacticalSessionCreation tacticalSessionCreation = TacticalSessionCreation.builder()
 			.sessionId(session.getId())
 			.name("Tactical session test " + LocalDateTime.now())
 			.build();
