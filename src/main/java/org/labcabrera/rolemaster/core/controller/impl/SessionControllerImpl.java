@@ -6,7 +6,7 @@ import org.labcabrera.rolemaster.core.controller.SessionController;
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
 import org.labcabrera.rolemaster.core.model.session.Session;
-import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.service.session.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,7 +51,7 @@ public class SessionControllerImpl implements SessionController {
 	}
 
 	@Override
-	public Mono<CharacterTacticalContext> createStatus(String sessionId, String characterId) {
+	public Mono<TacticalCharacterContext> createStatus(String sessionId, String characterId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

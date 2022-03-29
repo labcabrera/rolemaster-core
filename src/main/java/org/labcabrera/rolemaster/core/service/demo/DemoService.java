@@ -7,7 +7,7 @@ import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.session.Session;
-import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.CharacterTacticalContextService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
@@ -66,7 +66,7 @@ public class DemoService {
 		Session session = sessionService.createSession(sessionCreationRequest).share().block();
 		String sessionId = session.getId();
 
-		CharacterTacticalContext status = sessionService.addCharacter(sessionId, characterId).share().block();
+		TacticalCharacterContext status = sessionService.addCharacter(sessionId, characterId).share().block();
 
 		log.info("Created character status {}", status.getId());
 

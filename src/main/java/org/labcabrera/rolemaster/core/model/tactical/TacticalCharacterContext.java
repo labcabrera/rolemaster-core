@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.model.tactical;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.Penalty;
 import org.springframework.data.annotation.Id;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CharacterTacticalContext {
+public class TacticalCharacterContext {
 
 	@Id
 	private String id;
@@ -53,5 +54,7 @@ public class CharacterTacticalContext {
 
 	@Builder.Default
 	private List<Penalty> penalty = new ArrayList<>();
+
+	private EntityMetadata metadata;
 
 }

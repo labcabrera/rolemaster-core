@@ -3,10 +3,13 @@ package org.labcabrera.rolemaster.core.service.tactical;
 import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
+import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterStatusRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +29,39 @@ public class TacticalService {
 	@Autowired
 	private TacticalRoundRepository tacticalRoundRepository;
 
+	@Autowired
+	private TacticalCharacterStatusRepository tacticalCharacterStatusRepository;
+
 	public Mono<TacticalSession> createSession(TacticalSessionCreationRequest request) {
 		return tacticalSessionService.createSession(request);
+	}
+
+	public Mono<TacticalCharacterContext> addCharacter(String tacticalSessionId, String characterId) {
+		return tacticalSessionRepository
+			.findById(tacticalSessionId)
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
+			.map(tacticalSession -> {
+				return TacticalCharacterContext.builder()
+					.tacticalSessionId(tacticalSessionId)
+					.characterId(characterId)
+					.metadata(EntityMetadata.builder().build())
+					.build();
+			})
+			.flatMap(tacticalCharacterStatusRepository::save);
+	}
+
+	public Mono<TacticalCharacterContext> addNpc(String tacticalSessionId, String npcId) {
+		return tacticalSessionRepository
+			.findById(tacticalSessionId)
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
+			.map(tacticalSession -> {
+				return TacticalCharacterContext.builder()
+					.tacticalSessionId(tacticalSessionId)
+					.npcId(npcId)
+					.metadata(EntityMetadata.builder().build())
+					.build();
+			})
+			.flatMap(tacticalCharacterStatusRepository::save);
 	}
 
 	public Mono<TacticalRound> startRound(String tacticalSessionId) {

@@ -4,13 +4,13 @@ import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.maneuver.HasManeuverModifiers;
-import org.labcabrera.rolemaster.core.model.tactical.CharacterTacticalContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 
 public interface MovingManeuverContext extends HasManeuverModifiers {
 
-	Optional<CharacterTacticalContext> getCharacterStatus();
+	Optional<TacticalCharacterContext> getCharacterStatus();
 
-	void setCharacterStatus(Optional<CharacterTacticalContext> value);
+	void setCharacterStatus(Optional<TacticalCharacterContext> value);
 
 	Optional<CharacterInfo> getCharacterInfo();
 
