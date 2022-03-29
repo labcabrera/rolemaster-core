@@ -30,6 +30,7 @@ public class TacticalSessionService {
 				return TacticalSession.builder()
 					.strategicSessionId(session.getId())
 					.name(request.getName())
+					.description(request.getDescription())
 					.entityMetadata(EntityMetadata.builder()
 						.created(LocalDateTime.now())
 						.build())

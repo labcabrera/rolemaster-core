@@ -38,6 +38,7 @@ public class StrategicSessionService {
 	public Mono<StrategicSession> createSession(StrategicSessionCreation request) {
 		StrategicSession session = StrategicSession.builder()
 			.name(request.getName())
+			.description(request.getDescription())
 			.metadata(EntityMetadata.builder()
 				.created(LocalDateTime.now())
 				.build())
