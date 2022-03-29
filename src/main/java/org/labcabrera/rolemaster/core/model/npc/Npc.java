@@ -10,7 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "npnDefinitions")
+@Document(collection = "npcs")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,8 +21,12 @@ public class Npc {
 	private String id;
 
 	private String name;
+	
+	private Integer level;
 
 	private Integer hp;
+
+	private Boolean unique;
 
 	private List<NpcAttack> attacks;
 

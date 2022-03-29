@@ -29,7 +29,7 @@ public class TacticalNpcInstanceService {
 			.map(pair -> {
 				Npc npc = pair.getT1();
 				Long count = pair.getT2();
-				String name = npc.getName() + " " + (count + 1);
+				String name = npc.getUnique() ? npc.getName() : String.format("%s - %s", npc.getName(), count + 1);
 				return TacticalNpcInstance.builder()
 					.npcId(npcId)
 					.name(name)
