@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,10 @@ public class TacticalCharacterContext {
 
 	private Integer hp;
 
+	private Integer pp;
+
+	private BigDecimal exhaustionPoints;
+
 	@Builder.Default
 	private Integer stunnedRounds = 0;
 
@@ -47,7 +52,12 @@ public class TacticalCharacterContext {
 	@Builder.Default
 	private Integer canNotParryRounds = 0;
 
-	private Integer mustParryRounds;
+	@Builder.Default
+	private Integer mustParryRounds = 0;
+
+	@Builder.Default
+	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
+	private Integer reloadingActivityPercent = 0;
 
 	@Builder.Default
 	private List<Bleeding> bleding = new ArrayList<>();
