@@ -29,7 +29,8 @@ public class TacticalCharacterContext {
 
 	private String characterId;
 
-	private String npcInstanceId;
+	@Builder.Default
+	private Boolean isNpc = false;
 
 	private String mainWeaponEquipedId;
 

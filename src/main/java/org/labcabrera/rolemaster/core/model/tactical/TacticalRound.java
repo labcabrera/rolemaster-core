@@ -29,8 +29,13 @@ public class TacticalRound {
 
 	private Integer round;
 
+	private TacticalRoundPhase phase;
+
 	@Builder.Default
-	private Map<String, Integer> initiativeMap = new HashMap<>();
+	private Map<String, Integer> initiativeRollMap = new HashMap<>();
+
+	@Builder.Default
+	private Map<String, Integer> initiativeModifiersMap = new HashMap<>();
 
 	@Builder.Default
 	private List<TacticalAction> actions = new ArrayList<>();

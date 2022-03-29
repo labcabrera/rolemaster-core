@@ -1,6 +1,8 @@
 package org.labcabrera.rolemaster.core.service.tactical;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -30,6 +32,12 @@ public class TacticalService {
 	private TacticalSessionService tacticalSessionService;
 
 	@Autowired
+	private TacticalNpcInstanceService tacticalNpcInstanceService;
+
+	@Autowired
+	private TacticalRoundService tacticalRoundService;
+
+	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
@@ -37,9 +45,6 @@ public class TacticalService {
 
 	@Autowired
 	private TacticalCharacterStatusRepository tacticalCharacterStatusRepository;
-
-	@Autowired
-	private TacticalNpcInstanceService tacticalNpcInstanceService;
 
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return tacticalSessionService.createSession(request);
@@ -69,7 +74,8 @@ public class TacticalService {
 				TacticalNpcInstance npcInstance = pair.getT2();
 				return TacticalCharacterContext.builder()
 					.tacticalSessionId(tacticalSession.getId())
-					.npcInstanceId(npcInstance.getId())
+					.characterId(npcInstance.getId())
+					.isNpc(true)
 					.metadata(EntityMetadata.builder().build())
 					.build();
 			})
@@ -106,12 +112,31 @@ public class TacticalService {
 			.flatMap(tacticalRoundRepository::save);
 	}
 
-	public Mono<TacticalSession> setInitiative(String sessionid, String characterId, int i) {
-		return null;
-	}
-
 	public Mono<TacticalRound> getCurrentRound(String tacticalSessionId) {
 		return tacticalRoundRepository.findByTacticalSessionIdOrderByRoundDesc(tacticalSessionId);
+	}
+
+	public Mono<TacticalRound> setInitiatives(String tacticalSessionId, Map<String, Integer> initiatives) {
+		return tacticalSessionRepository
+			.findById(tacticalSessionId)
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session identifier " + tacticalSessionId + ".")))
+			.map(e -> e.getId())
+			.flatMap(this::getCurrentRound)
+			.map(tr -> {
+				tr.getInitiativeRollMap().putAll(initiatives);
+				return tr;
+			})
+			.flatMap(tacticalRoundRepository::save);
+	}
+
+	public Mono<TacticalRound> generateRandomInitiatives(String tacticalSessionId) {
+		return getCurrentRound(tacticalSessionId)
+			.map(tacticalRoundService::generateRandomInitiatives)
+			.flatMap(tacticalRoundRepository::save);
+	}
+
+	public Mono<List<TacticalAction>> getActionQueue(String tacticalSessionId) {
+		return getCurrentRound(tacticalSessionId).map(tacticalRoundService::getQueue);
 	}
 
 }
