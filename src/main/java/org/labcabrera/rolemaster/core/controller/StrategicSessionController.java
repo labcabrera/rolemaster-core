@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
-import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.springframework.http.HttpStatus;
@@ -38,23 +38,18 @@ public interface StrategicSessionController {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED, reason = "Session created.")
 	@Operation(summary = "Session creation.")
-	Mono<StrategicSession> createSession(@RequestBody SessionCreationRequest sessionCreationRequest);
+	Mono<StrategicSession> createSession(@RequestBody StrategicSessionCreation sessionCreationRequest);
 
 	@PatchMapping("/{id}")
 	@Operation(summary = "Session update.")
 	@ApiResponse(responseCode = "200", description = "Updated")
 	@ApiResponse(responseCode = "404", description = "Not found")
-	Mono<StrategicSession> updateSession(@PathVariable String id, @RequestBody SessionUpdateRequest sessionUpdateRequest);
+	Mono<StrategicSession> updateSession(@PathVariable String id, @RequestBody StrategicSessionUpdate sessionUpdateRequest);
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted session")
 	@Operation(summary = "Delete session.")
 	Mono<Void> deleteById(@PathVariable String id);
-
-	@DeleteMapping
-	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted sessions")
-	@Operation(summary = "Delete all sessions.")
-	Mono<Void> deleteAll();
 
 	@PostMapping("/{id}/characters/{characterId}")
 	@Operation(summary = "Adds a certain character to the session.")

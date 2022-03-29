@@ -3,9 +3,12 @@ package org.labcabrera.rolemaster.core.controller.impl;
 import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.controller.CharacterController;
-import org.labcabrera.rolemaster.core.dto.SkillUpgradeRequest;
+import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
+import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.inventory.CharacterInventory;
+import org.labcabrera.rolemaster.core.repository.CharacterInventoryRepository;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ public class CharacterControllerImpl implements CharacterController {
 
 	@Autowired
 	private CharacterCreationService creationService;
+
+	@Autowired
+	private CharacterInventoryRepository inventoryRepository;
 
 	@Override
 	public Mono<CharacterInfo> findById(String id) {
@@ -45,14 +51,15 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Mono<Void> deleteAll() {
-		return characterService.deleteAll();
+	public Mono<CharacterInfo> updateRanks(String characterId, SkillAndTrainingPackageUpgrade request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgradeRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+	public Mono<CharacterInventory> findCharacterInventoryById(String id) {
+		return inventoryRepository.findById(id)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character inventory not found.")));
 	}
 
 }

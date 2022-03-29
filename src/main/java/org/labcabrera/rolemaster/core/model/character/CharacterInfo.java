@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -77,7 +78,7 @@ public class CharacterInfo {
 	private Integer maxHp;
 
 	@Schema(description = "Maximum number of fatigue points of the character.", required = true, example = "66")
-	private Integer maxExhaustionPoints;
+	private BigDecimal maxExhaustionPoints;
 
 	@Schema(description = "Experience ponints", required = true, example = "7632")
 	private Integer xp;

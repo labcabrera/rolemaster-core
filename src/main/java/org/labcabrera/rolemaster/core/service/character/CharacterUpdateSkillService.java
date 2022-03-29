@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character;
 
 import org.apache.commons.lang3.mutable.MutableInt;
-import org.labcabrera.rolemaster.core.dto.SkillUpgradeRequest;
+import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
@@ -28,14 +28,14 @@ public class CharacterUpdateSkillService {
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
 
-	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgradeRequest request) {
+	public Mono<CharacterInfo> updateRanks(String characterId, SkillAndTrainingPackageUpgrade request) {
 		return repository.findById(characterId)
 			.map(e -> update(e, request))
 			.map(postProcessorService::apply)
 			.flatMap(repository::save);
 	}
 
-	private CharacterInfo update(CharacterInfo character, SkillUpgradeRequest request) {
+	private CharacterInfo update(CharacterInfo character, SkillAndTrainingPackageUpgrade request) {
 		final MutableInt cost = new MutableInt(0);
 		upgradeSkillCategories(character, request, cost);
 		upgradeSkills(character, request, cost);
@@ -47,7 +47,7 @@ public class CharacterUpdateSkillService {
 		return character;
 	}
 
-	private void upgradeSkillCategories(CharacterInfo character, SkillUpgradeRequest request, MutableInt cost) {
+	private void upgradeSkillCategories(CharacterInfo character, SkillAndTrainingPackageUpgrade request, MutableInt cost) {
 		request.getCategoryRanks().keySet().stream().forEach(categoryId -> {
 			CharacterSkillCategory category = character.getSkillCategories().stream()
 				.filter(e -> e.getCategoryId().equals(categoryId))
@@ -65,7 +65,7 @@ public class CharacterUpdateSkillService {
 		});
 	}
 
-	private void upgradeSkills(CharacterInfo character, SkillUpgradeRequest request, MutableInt cost) {
+	private void upgradeSkills(CharacterInfo character, SkillAndTrainingPackageUpgrade request, MutableInt cost) {
 		request.getSkillRanks().keySet().stream().forEach(skillId -> {
 			CharacterSkill skill = character.getSkills().stream()
 				.filter(e -> e.getSkillId().equals(skillId))

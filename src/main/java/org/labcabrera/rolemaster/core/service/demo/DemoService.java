@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.service.demo;
 import java.io.InputStream;
 import java.time.LocalDate;
 
-import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
@@ -60,7 +60,7 @@ public class DemoService {
 		CharacterInfo character = monoCreate.share().block();
 		String characterId = character.getId();
 
-		SessionCreationRequest sessionCreationRequest = SessionCreationRequest.builder()
+		StrategicSessionCreation sessionCreationRequest = StrategicSessionCreation.builder()
 			.name("Demo session " + LocalDate.now().toString())
 			.build();
 		StrategicSession session = sessionService.createSession(sessionCreationRequest).share().block();

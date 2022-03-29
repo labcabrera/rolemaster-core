@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ManeuverDificulty {
 
+	NONE("none"),
+
 	ROUTINE("routine"),
 
 	EASY("easy"),

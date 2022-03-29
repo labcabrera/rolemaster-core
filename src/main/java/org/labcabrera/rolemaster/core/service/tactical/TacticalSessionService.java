@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical;
 
 import java.time.LocalDateTime;
 
-import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
@@ -22,7 +22,7 @@ public class TacticalSessionService {
 	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
 
-	public Mono<TacticalSession> createSession(TacticalSessionCreationRequest request) {
+	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return sessionRepository
 			.findById(request.getSessionId())
 			.switchIfEmpty(Mono.error(new BadRequestException("Invalid sessionId")))
@@ -30,6 +30,7 @@ public class TacticalSessionService {
 				return TacticalSession.builder()
 					.strategicSessionId(session.getId())
 					.name(request.getName())
+					.description(request.getDescription())
 					.entityMetadata(EntityMetadata.builder()
 						.created(LocalDateTime.now())
 						.build())

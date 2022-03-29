@@ -1,31 +1,33 @@
 = Rolemaster Core API
 
-== Introducción
+== Introduction
 
-Esta API provee de un conjunto de servicios para utilizar el sistema de juego Rolemaster (v4) diseñado por https://ironcrown.com/[Iron Crown Enterprises].
+This API provides a set of services for using the Rolemaster (v4) game system designed by https://ironcrown.com/[Iron Crown Enterprises].
 
-Una demo de la api se puede consultar en: https://rolemaster-core.herokuapp.com (se paciente mientras se arranca la instancia ya que generalmente estará parada).
+A demo of the API can be consulted at: https://rolemaster-core.herokuapp.com (be patient while starting the instance as it will usually be stopped).
 
-Ofrece las funcionalidades:
+It offers the following functionalities:
 
-* Generación de personajes.
-* Soporte para el combate.
-* Ejecución de maniobras estáticas.
-* Ejecución de maniobras dinámicas.
-* Base de datos de personajes y campañas.
+* Character generation.
+* Tactical support:
+** Combat.
+** Static maneuvers.
+** Moving maneuvers.
+** Spell casting.
+* NPC and items administration.
 
-== Tecnologías
+== Technologies
 
 * Spring Boot 2.x.
 * Reactor.
 * MongoDB.
 
-== Instalación y configuración
+== Installation and configuration
 
-*TODO*
+* EVERYTHING
 
 == Next steps
 
-* Authorization model
-* Tactical & combat services
-* Initial data populator
+* Authorization model using https://www.keycloak.org/[keycloak].
+* Tactic & combat services.
+* Initial data populating.

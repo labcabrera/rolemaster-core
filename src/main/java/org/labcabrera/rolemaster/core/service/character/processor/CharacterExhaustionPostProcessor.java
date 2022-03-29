@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character.processor;
 
+import java.math.BigDecimal;
+
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.springframework.core.annotation.Order;
@@ -17,7 +19,7 @@ public class CharacterExhaustionPostProcessor implements CharacterPostProcessor 
 		log.debug("Processing character {}", character.getName());
 		int bonus = character.getAttributes().get(AttributeType.CONSTITUTION).getTotalBonus();
 		int ep = 40 + bonus * 3;
-		character.setMaxExhaustionPoints(ep);
+		character.setMaxExhaustionPoints(new BigDecimal(ep));
 
 	}
 

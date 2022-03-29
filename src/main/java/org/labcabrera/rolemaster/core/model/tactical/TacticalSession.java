@@ -29,6 +29,9 @@ public class TacticalSession {
 	@Schema(description = "Tactical session name.", required = true, example = "Combat in the meadows of Arnor")
 	private String name;
 
+	@Schema(description = "Tactical session description.", required = false, example = "Example of player's comment.")
+	private String description;
+
 	@Schema(description = "Tactical session state (open|closed).", required = true, example = "open")
 	private TacticalSessionState state;
 
