@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Tranining packages")
 @RequestMapping("/training-packages")
+@Tag(name = "Tranining packages", description = "List of both vocational and professional training package options.")
 public interface TrainingPackagesController {
 
 	@GetMapping("/{id}")

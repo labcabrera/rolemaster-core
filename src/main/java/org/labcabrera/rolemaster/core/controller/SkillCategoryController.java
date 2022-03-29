@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Skill categories")
 @RequestMapping("/skill-categories")
+@Tag(name = "Skill categories", description = "List of character skill categories.")
 public interface SkillCategoryController {
 
 	@GetMapping("/{id}")

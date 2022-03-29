@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Realms")
 @RequestMapping("/realms")
+@Tag(name = "Realms", description = "List of realms of power.")
 public interface RealmController {
 
 	@GetMapping("/{id}")

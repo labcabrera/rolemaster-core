@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Non playable charactes")
 @RequestMapping("/npc")
+@Tag(name = "Non playable charactes", description = "List of non-player characters.")
 public interface NpcController {
 
 	@GetMapping("/{id}")

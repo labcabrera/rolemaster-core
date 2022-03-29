@@ -20,8 +20,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Strategic sessions")
 @RequestMapping("/strategic-sessions")
+@Tag(name = "Strategic sessions", description = "Operations on the strategic environment.")
 public interface StrategicSessionController {
 
 	@GetMapping("/{id}")

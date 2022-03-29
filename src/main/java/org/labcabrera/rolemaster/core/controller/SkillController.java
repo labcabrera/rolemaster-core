@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Skills")
 @RequestMapping("/skills")
+@Tag(name = "Skills", description = "List of character skills.")
 public interface SkillController {
 
 	@GetMapping("/{id}")
@@ -24,6 +24,7 @@ public interface SkillController {
 
 	@GetMapping
 	@Operation(summary = "Skill search.")
-	Flux<Skill> findAll(@ParameterObject @PageableDefault(sort = "spellListId,level", direction = Direction.ASC, size = 10) Pageable pageable);
+	Flux<Skill> findAll(
+		@ParameterObject @PageableDefault(sort = "spellListId,level", direction = Direction.ASC, size = 10) Pageable pageable);
 
 }

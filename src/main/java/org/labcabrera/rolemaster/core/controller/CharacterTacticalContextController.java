@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Character tactical context")
 @RequestMapping("/character-tactical-context")
+@Tag(name = "Character tactical context", description = "Operations on the tactical environment of a character or NPC.")
 public interface CharacterTacticalContextController {
 
 	@GetMapping("/{id}")

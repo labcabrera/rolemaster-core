@@ -19,11 +19,11 @@ public class CharacterItemService {
 	private CharacterInventoryRepository repository;
 
 	public Mono<CharacterInventory> findByCharacterId(String characterId) {
-		return repository.findByCharacterId(characterId);
+		return repository.findById(characterId);
 	}
 
 	public Mono<CharacterInventory> addItem(String caracterId, CharacterItem item) {
-		return repository.findByCharacterId(caracterId)
+		return repository.findById(caracterId)
 			.map(e -> {
 				item.setId(new ObjectId().toString());
 				e.getItems().add(item);

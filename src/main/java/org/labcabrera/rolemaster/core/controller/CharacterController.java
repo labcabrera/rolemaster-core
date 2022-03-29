@@ -25,8 +25,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Characters")
 @RequestMapping("/characters")
+@Tag(name = "Characters", description = "Operations on characters such as search, creation, configuration or leveling up.")
 public interface CharacterController {
 
 	@GetMapping("/{id}")
