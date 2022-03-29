@@ -2,6 +2,7 @@ plugins {
   id 'org.springframework.boot'        version '2.6.4'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'org.sonarqube'                   version '2.8'
+  id 'com.google.cloud.tools.jib'      version '3.2.0'
   id 'java'
   id 'jacoco'
 }
@@ -11,17 +12,33 @@ version = version
 sourceCompatibility = '11'
 
 ext {
-	set('springdocVersion',            '1.6.6')
+  set('springdocVersion',            '1.6.6')
+  set('openjdkImageVersion',         '11.0.13')
+  set('testcontainersVersion',       '1.16.3')
+  set('dockerImagePrefix',           'labcabrera')
 }
 
 configurations {
   compileOnly {
     extendsFrom annotationProcessor
   }
+  integrationTestImplementation {
+    extendsFrom testImplementation
+  }
 }
 
 repositories {
   mavenCentral()
+}
+
+sourceSets {
+  integrationTest {
+    java {
+      compileClasspath += main.output + test.output
+      runtimeClasspath += main.output + test.output
+      srcDir file('src/integration-test/java')
+    }
+  }
 }
 
 dependencies {
@@ -35,8 +52,21 @@ dependencies {
   compileOnly 'org.projectlombok:lombok'
   annotationProcessor 'org.projectlombok:lombok'
 
+  implementation platform("org.testcontainers:testcontainers-bom:${testcontainersVersion}")
+
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'io.projectreactor:reactor-test'
+  testImplementation 'org.testcontainers:junit-jupiter'
+  testImplementation 'org.testcontainers:mongodb'
+  
+}
+
+task integrationTest(type: Test) {
+    group 'springboot-testing'
+    description 'Runs the integration tests'
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    useJUnitPlatform()
 }
 
 tasks.named('test') {
@@ -57,8 +87,21 @@ tasks.named("jar") {
 
 sonarqube {
   properties {
-    property "sonar.host.url",          "http://localhost:9000"
-    property "sonar.login",             "admin"
-    property "sonar.password",          "guest"
+    property "sonar.host.url",          System.getenv('SONARQUBE_URL')
+    property "sonar.login",             System.getenv('SONARQUBE_USERNAME')
+    property "sonar.password",          System.getenv('SONARQUBE_PASSWORD')
   }
+}
+
+
+jib {
+    from {
+        image = "openjdk:${openjdkImageVersion}"
+    }
+    to {
+        image = "${dockerImagePrefix}/${project.name}:${project.version}"
+    }
+    container {
+        ports = ['8080']
+    }
 }

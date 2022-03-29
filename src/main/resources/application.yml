@@ -1,6 +1,7 @@
 spring:
-  profiles:
-    active: ${ROLEMASTER_CORE_PROFILE:local}
+  data:
+    mongodb:
+      uri: ${ROLEMASTER_CORE_MONGODB_URI:mongodb://localhost/rolemaster?retryWrites=true&w=majority}
 
 logging:
   level:
@@ -17,23 +18,3 @@ springdoc:
 app:
   openapi:
     version: 1.0-beta
-
----
-spring:
-  config:
-    activate:
-      on-profile: local
-  data:
-    mongodb:
-      uri: mongodb://localhost/rolemaster?retryWrites=true&w=majority
----
-spring:
-  config:
-    activate:
-      on-profile: prod
-  data:
-    mongodb:
-      uri: mongodb+srv://${ROLEMASTER_CORE_DB_USERNAME}:${ROLEMASTER_CORE_DB_PASSWORD}@cluster0.kgfrk.mongodb.net/rolemaster?retryWrites=true&w=majority
-
-    
-
