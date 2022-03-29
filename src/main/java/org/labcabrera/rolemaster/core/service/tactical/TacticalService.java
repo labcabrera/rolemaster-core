@@ -6,6 +6,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalNpcInstance;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
@@ -32,6 +33,9 @@ public class TacticalService {
 	@Autowired
 	private TacticalCharacterStatusRepository tacticalCharacterStatusRepository;
 
+	@Autowired
+	private TacticalNpcInstanceService tacticalNpcInstanceService;
+
 	public Mono<TacticalSession> createSession(TacticalSessionCreationRequest request) {
 		return tacticalSessionService.createSession(request);
 	}
@@ -54,10 +58,13 @@ public class TacticalService {
 		return tacticalSessionRepository
 			.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
-			.map(tacticalSession -> {
+			.zipWith(tacticalNpcInstanceService.create(npcId))
+			.map(pair -> {
+				TacticalSession tacticalSession = pair.getT1();
+				TacticalNpcInstance npcInstance = pair.getT2();
 				return TacticalCharacterContext.builder()
-					.tacticalSessionId(tacticalSessionId)
-					.npcId(npcId)
+					.tacticalSessionId(tacticalSession.getId())
+					.npcInstanceId(npcInstance.getId())
 					.metadata(EntityMetadata.builder().build())
 					.build();
 			})

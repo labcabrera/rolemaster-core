@@ -28,7 +28,7 @@ public class TacticalCharacterContext {
 
 	private String characterId;
 
-	private String npcId;
+	private String npcInstanceId;
 
 	private String mainWeaponEquipedId;
 

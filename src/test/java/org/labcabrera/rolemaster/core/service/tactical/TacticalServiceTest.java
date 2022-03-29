@@ -33,10 +33,6 @@ class TacticalServiceTest {
 			.name("Tactical session test " + LocalDateTime.now().toString())
 			.build()).share().block();
 
-		sessionService.addNpc(session.getId(), "character-01");
-		sessionService.addNpc(session.getId(), "character-02");
-		sessionService.addNpc(session.getId(), "character-02");
-
 		TacticalAction action01 = TacticalActionAttack.builder()
 			.characterId("character-01")
 			.phase(ActionPriority.NORMAL)
@@ -62,6 +58,11 @@ class TacticalServiceTest {
 			.build();
 
 		TacticalSession tacticalSession = tacticalService.createSession(tacticalSessionCreation).share().block();
+
+		tacticalService.addNpc(tacticalSession.getId(), "npc-01")
+			.flatMap(e -> tacticalService.addNpc(tacticalSession.getId(), "npc-02"))
+			.flatMap(e -> tacticalService.addNpc(tacticalSession.getId(), "npc-03"))
+			.share().block();
 
 		TacticalRound round = tacticalService.startRound(tacticalSession.getId()).share().block();
 
