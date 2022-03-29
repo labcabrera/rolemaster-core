@@ -46,11 +46,6 @@ public class StrategicSessionControllerImpl implements StrategicSessionControlle
 	}
 
 	@Override
-	public Mono<Void> deleteAll() {
-		return sessionService.deleteAll();
-	}
-
-	@Override
 	public Mono<TacticalCharacterContext> createStatus(String sessionId, String characterId) {
 		// TODO Auto-generated method stub
 		return null;

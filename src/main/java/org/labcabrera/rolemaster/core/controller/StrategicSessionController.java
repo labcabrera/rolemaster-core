@@ -51,11 +51,6 @@ public interface StrategicSessionController {
 	@Operation(summary = "Delete session.")
 	Mono<Void> deleteById(@PathVariable String id);
 
-	@DeleteMapping
-	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted sessions")
-	@Operation(summary = "Delete all sessions.")
-	Mono<Void> deleteAll();
-
 	@PostMapping("/{id}/characters/{characterId}")
 	@Operation(summary = "Adds a certain character to the session.")
 	@ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
