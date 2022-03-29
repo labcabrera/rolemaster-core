@@ -12,7 +12,7 @@ import java.util.Collections;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.labcabrera.rolemaster.core.dto.SkillUpgradeRequest;
+import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterDevelopment;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -44,7 +44,7 @@ class CharacterUpdateSkillServiceTest {
 	private CharacterInfo character;
 
 	@Spy
-	private SkillUpgradeRequest request;
+	private SkillAndTrainingPackageUpgrade request;
 
 	@BeforeEach
 	void prepare() {

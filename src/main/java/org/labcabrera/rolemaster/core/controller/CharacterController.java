@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import org.labcabrera.rolemaster.core.dto.SkillUpgradeRequest;
+import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.springdoc.api.annotations.ParameterObject;
@@ -48,7 +48,7 @@ public interface CharacterController {
 		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequest request);
 
 	@PostMapping("/{id}/skills/upgrade")
-	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillUpgradeRequest request);
+	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillAndTrainingPackageUpgrade request);
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")

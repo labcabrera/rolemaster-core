@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.controller.impl;
 import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.controller.CharacterController;
-import org.labcabrera.rolemaster.core.dto.SkillUpgradeRequest;
+import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
@@ -50,7 +50,7 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgradeRequest request) {
+	public Mono<CharacterInfo> updateRanks(String characterId, SkillAndTrainingPackageUpgrade request) {
 		// TODO Auto-generated method stub
 		return null;
 	}
