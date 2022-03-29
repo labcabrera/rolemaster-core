@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
-import org.labcabrera.rolemaster.core.model.session.Session;
+import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.ActionPriority;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -16,7 +16,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMovement;
-import org.labcabrera.rolemaster.core.service.session.SessionService;
+import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -24,14 +24,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TacticalServiceTest {
 
 	@Autowired
-	private SessionService sessionService;
+	private StrategicSessionService sessionService;
 
 	@Autowired
 	private TacticalService tacticalService;
 
 	@Test
 	void test() {
-		Session session = sessionService.createSession(SessionCreationRequest.builder()
+		StrategicSession session = sessionService.createSession(SessionCreationRequest.builder()
 			.name("Tactical session test " + LocalDateTime.now().toString())
 			.build()).share().block();
 

@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.SessionCreationRequest;
 import org.labcabrera.rolemaster.core.dto.SessionUpdateRequest;
-import org.labcabrera.rolemaster.core.model.session.Session;
+import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,31 +20,31 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Sessions")
-@RequestMapping("/sessions")
-public interface SessionController {
+@Tag(name = "Strategic sessions")
+@RequestMapping("/strategic-sessions")
+public interface StrategicSessionController {
 
 	@GetMapping("/{id}")
 	@Operation(summary = "Get session.")
 	@ApiResponse(responseCode = "200", description = "Success")
 	@ApiResponse(responseCode = "404", description = "Not found")
-	Mono<Session> findById(@PathVariable String id);
+	Mono<StrategicSession> findById(@PathVariable String id);
 
 	@GetMapping
 	@Operation(summary = "Get all sessions.")
 	@ResponseStatus(code = HttpStatus.OK, reason = "Success")
-	Flux<Session> findAll();
+	Flux<StrategicSession> findAll();
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED, reason = "Session created.")
 	@Operation(summary = "Session creation.")
-	Mono<Session> createSession(@RequestBody SessionCreationRequest sessionCreationRequest);
+	Mono<StrategicSession> createSession(@RequestBody SessionCreationRequest sessionCreationRequest);
 
 	@PatchMapping("/{id}")
 	@Operation(summary = "Session update.")
 	@ApiResponse(responseCode = "200", description = "Updated")
 	@ApiResponse(responseCode = "404", description = "Not found")
-	Mono<Session> updateSession(@PathVariable String id, @RequestBody SessionUpdateRequest sessionUpdateRequest);
+	Mono<StrategicSession> updateSession(@PathVariable String id, @RequestBody SessionUpdateRequest sessionUpdateRequest);
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted session")

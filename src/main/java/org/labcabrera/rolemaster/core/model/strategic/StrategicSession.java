@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.session;
+package org.labcabrera.rolemaster.core.model.strategic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "sessions")
+@Document(collection = "strategicSessions")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Session {
+public class StrategicSession {
 
 	private String id;
 

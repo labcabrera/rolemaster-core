@@ -20,11 +20,11 @@ import lombok.NoArgsConstructor;
 public class TacticalSession {
 
 	@Id
-	@Schema(description = "Tactical session identifier")
+	@Schema(description = "Tactical session identifier.")
 	private String id;
 
-	@Schema(description = "Session identifier to which it belongs")
-	private String sessionId;
+	@Schema(description = "Strategic session identifier to which it belongs.")
+	private String strategicSessionId;
 
 	private String name;
 
