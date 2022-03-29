@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public abstract class TacticalActionRequest {
+public abstract class TacticalActionDeclarationRequest {
 
 	@NotNull
 	private String source;

@@ -2,7 +2,13 @@ package org.labcabrera.rolemaster.core.controller;
 
 import javax.validation.Valid;
 
-import org.labcabrera.rolemaster.core.dto.TacticalActionMovementRequest;
+import org.labcabrera.rolemaster.core.dto.TacticalActionMeleeAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.TacticalActionMissileAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.TacticalActionMovementDeclaration;
+import org.labcabrera.rolemaster.core.dto.TacticalActionMovingManeuverDeclaration;
+import org.labcabrera.rolemaster.core.dto.TacticalActionSpellAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.TacticalActionSpellCastDeclaration;
+import org.labcabrera.rolemaster.core.dto.TacticalActionStaticManeuverDeclaration;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreationRequest;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -60,31 +66,37 @@ public interface TacticalSessionController {
 
 	@PostMapping("/{id}/actions/declarations/movements")
 	@Operation(summary = "Declares a movement.")
-	Mono<TacticalRound> delareMovementAction(@PathVariable String id, @Valid TacticalActionMovementRequest action);
+	Mono<TacticalRound> delareMovementAction(@PathVariable String id, @Valid TacticalActionMovementDeclaration action);
 
 	//TODO create dtos
 
 	@PostMapping("/{id}/actions/declarations/melee-attacks")
 	@Operation(summary = "Declares a melee attack.")
-	Mono<TacticalRound> delareMeleeAttack(@PathVariable String id, @Valid TacticalActionMovementRequest action);
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Melee attack declared.")
+	Mono<TacticalRound> delareMeleeAttack(@PathVariable String id, @Valid TacticalActionMeleeAttackDeclaration action);
 
 	@PostMapping("/{id}/actions/declarations/missile-attacks")
 	@Operation(summary = "Declares a missile attack.")
-	Mono<TacticalRound> delareMissileAttack(@PathVariable String id, @Valid TacticalActionMovementRequest action);
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Missile attack declared.")
+	Mono<TacticalRound> delareMissileAttack(@PathVariable String id, @Valid TacticalActionMissileAttackDeclaration action);
 
 	@PostMapping("/{id}/actions/declarations/spell-attacks")
 	@Operation(summary = "Declares a spell attack.")
-	Mono<TacticalRound> delareSpellAttack(@PathVariable String id, @Valid TacticalActionMovementRequest action);
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Spell attack declared.")
+	Mono<TacticalRound> delareSpellAttack(@PathVariable String id, @Valid TacticalActionSpellAttackDeclaration action);
 
 	@PostMapping("/{id}/actions/declarations/spell-casts")
 	@Operation(summary = "Declares a spell cast.")
-	Mono<TacticalRound> delareSpellCast(@PathVariable String id, @Valid TacticalActionMovementRequest action);
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Spell cast declared.")
+	Mono<TacticalRound> delareSpellCast(@PathVariable String id, @Valid TacticalActionSpellCastDeclaration action);
 
 	@PostMapping("/{id}/actions/declarations/static-maneuvers")
 	@Operation(summary = "Declares a spell cast.")
-	Mono<TacticalRound> delareStaticManeuver(@PathVariable String id, @Valid TacticalActionMovementRequest action);
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Static maneuver declared.")
+	Mono<TacticalRound> delareStaticManeuver(@PathVariable String id, @Valid TacticalActionStaticManeuverDeclaration action);
 
 	@PostMapping("/{id}/actions/declarations/moving-maneuvers")
-	@Operation(summary = "Declares a spell cast.")
-	Mono<TacticalRound> delareMovingManeuver(@PathVariable String id, @Valid TacticalActionMovementRequest action);
+	@Operation(summary = "Declares a moving maneuver.")
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Moving maneuver declared.")
+	Mono<TacticalRound> delareMovingManeuver(@PathVariable String id, @Valid TacticalActionMovingManeuverDeclaration action);
 }
