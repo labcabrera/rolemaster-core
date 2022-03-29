@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import org.labcabrera.rolemaster.core.model.spell.Realm;
+import org.labcabrera.rolemaster.core.model.spell.SpellList;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -9,22 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Tag(name = "Realms")
-@RequestMapping("/realms")
-public interface RealmController {
-
-	@GetMapping("/{id}")
-	@Operation(summary = "Realm of power search by id.")
-	Mono<Realm> findById(@PathVariable String id);
+@Tag(name = "Spell lists")
+@RequestMapping("/spell-lists")
+public interface SpellListController {
 
 	@GetMapping
-	@Operation(summary = "Realm of power search.")
-	Flux<Realm> findAll(
-		@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
+	Flux<SpellList> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
+
+	@GetMapping("/{id}")
+	Mono<SpellList> findById(@PathVariable String id);
 
 }
