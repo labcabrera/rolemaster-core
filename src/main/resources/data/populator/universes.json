@@ -1,0 +1,14 @@
+[
+	{
+		"id": "middle-earth",
+		"name": "Middle Earth"
+	},
+	{
+		"id": "realistic",
+		"name": "Realistic"
+	},
+	{
+		"id": "generic",
+		"name": "Generic"
+	}
+]

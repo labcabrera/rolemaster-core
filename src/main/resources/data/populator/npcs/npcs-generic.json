@@ -1,0 +1,20 @@
+[
+	{
+		"id": "ork-figther-mele-i",
+		"name": "Ork - Figther mele I",
+		"level": 1,
+		"unique": false,
+		"universes": [
+			"generic", "middle-earth"
+		]
+	},
+	{
+		"id": "ork-figther-range-i",
+		"name": "Ork - Figther range I",
+		"level": 1,
+		"unique": false,
+		"universes": [
+			"generic", "middle-earth"
+		]
+	}
+]
