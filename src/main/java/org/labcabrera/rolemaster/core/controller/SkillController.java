@@ -8,8 +8,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -24,7 +26,8 @@ public interface SkillController {
 
 	@GetMapping
 	@Operation(summary = "Skill search.")
-	Flux<Skill> findAll(
+	Flux<Skill> find(
+		@Parameter(name = "categoryId", required = false) @RequestParam(required = false) String categoryId,
 		@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
 
 }
