@@ -261,5 +261,15 @@
 		"name": "Spells - Own realm base lists",
 		"group": "spells",
 		"attributeBonus": []
+	},{
+		"id": "artistic-active",
+		"name": "Artistic - Active",
+		"group": "artistic",
+		"attributeBonus": ["pr","em","ag"]
+	},{
+		"id": "artistic-passive",
+		"name": "Artistic - Pasive",
+		"group": "artistic",
+		"attributeBonus": ["em","in","pr"]
 	}
 ]

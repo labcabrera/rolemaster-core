@@ -29,6 +29,9 @@ public class StrategicSession {
 	@Schema(description = "User description.", required = false, example = "Adventure played by Foo and Bar for the destruction of the One Ring.")
 	private String description;
 
+	@Schema(description = "Universe", required = true, example = "middle-earth")
+	private String universeId;
+
 	@Schema(description = "Audit data.")
 	private EntityMetadata metadata;
 

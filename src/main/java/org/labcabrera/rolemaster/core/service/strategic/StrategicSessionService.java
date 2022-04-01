@@ -39,6 +39,7 @@ public class StrategicSessionService {
 		StrategicSession session = StrategicSession.builder()
 			.name(request.getName())
 			.description(request.getDescription())
+			.universeId(request.getUniverseId())
 			.metadata(EntityMetadata.builder()
 				.created(LocalDateTime.now())
 				.build())
