@@ -41,7 +41,7 @@ class TacticalServiceTest {
 			.build()).share().block();
 
 		TacticalSessionCreation tacticalSessionCreation = TacticalSessionCreation.builder()
-			.sessionId(session.getId())
+			.strategicSessionId(session.getId())
 			.name("Tactical session test " + LocalDateTime.now())
 			.build();
 

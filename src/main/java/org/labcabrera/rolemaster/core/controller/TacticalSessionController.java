@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@RequestMapping("/tactical/sessions")
+@RequestMapping("/tactical-sessions")
 @Tag(name = "Tactical sessions", description = "Operations on the tactical environment.")
 public interface TacticalSessionController {
 

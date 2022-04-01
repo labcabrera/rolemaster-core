@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class TacticalSessionCreation {
 
 	@NotBlank
-	@Schema(description = "Session identifier.", required = true, example = "6241ee3947446c71b95d1db1")
-	private String sessionId;
+	@Schema(description = "Strategic session identifier.", required = true, example = "6241ee3947446c71b95d1db1")
+	private String strategicSessionId;
 
 	@NotBlank
 	@Schema(description = "Tactical session name.", required = true, example = "Tactical session test")

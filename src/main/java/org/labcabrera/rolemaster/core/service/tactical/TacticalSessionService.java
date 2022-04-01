@@ -24,7 +24,7 @@ public class TacticalSessionService {
 
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return sessionRepository
-			.findById(request.getSessionId())
+			.findById(request.getStrategicSessionId())
 			.switchIfEmpty(Mono.error(new BadRequestException("Invalid sessionId")))
 			.map(session -> {
 				return TacticalSession.builder()
