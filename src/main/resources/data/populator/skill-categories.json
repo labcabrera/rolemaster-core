@@ -46,19 +46,22 @@
 		"id": "armor-light",
 		"name": "Armor - Light",
 		"group": "armor",
-		"attributeBonus": ["ag","st","ag"]
+		"attributeBonus": ["ag","st","ag"],
+		"description": "This category covers the use of leather armor, both soft and rigid, from soft leather tunics to boiled leather cuirasses and the like."
 	},
 	{
 		"id": "armor-medium",
 		"name": "Armor - Medium",
 		"group": "armor",
-		"attributeBonus": ["st","ag","st"]
+		"attributeBonus": ["st","ag","st"],
+		"description": "This category covers the use of flexible metal armors, including chain, scale and the like."
 	},
 	{
 		"id": "armor-heavy",
 		"name": "Armor - Heavy",
 		"group": "armor",
-		"attributeBonus": ["st","ag","st"]
+		"attributeBonus": ["st","ag","st"],
+		"description": "This category covers the use of rigid metal armor, from metal breastplates to full Maximilian Plate armor."
 	},
 	{
 		"id": "weapon-1h-edged",

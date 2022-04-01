@@ -26,6 +26,12 @@ public class SkillControllerImpl implements SkillController {
 	@Override
 	public Flux<Skill> find(String categoryId, Pageable pageable) {
 		Example<Skill> example = Example.of(new Skill());
+		example.getProbe().setLoadOnNewCharacters(null);
+		example.getProbe().setAttributeBonus(null);
+		example.getProbe().setModifiers(null);
+		example.getProbe().setProgressionType(null);
+		example.getProbe().setSkillBonus(null);
+		example.getProbe().setType(null);
 		if (StringUtils.isNotBlank(categoryId)) {
 			example.getProbe().setCategoryId(categoryId);
 		}

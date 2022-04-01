@@ -15,6 +15,7 @@ public class SkillPopulator extends AbstractJsonPopulator<Skill> {
 	protected List<String> getResources() {
 		return Arrays.asList(
 			"data/populator/skills/skills.json",
+			"data/populator/skills/skills-armor.json",
 			"data/populator/skills/skills-artistic.json",
 			"data/populator/skills/skills-athletic.json",
 			"data/populator/skills/skills-awareness.json",
