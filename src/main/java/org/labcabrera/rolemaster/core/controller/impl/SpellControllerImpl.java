@@ -5,6 +5,7 @@ import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.spell.Spell;
 import org.labcabrera.rolemaster.core.repository.SpellRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +25,11 @@ public class SpellControllerImpl implements SpellController {
 	}
 
 	@Override
-	public Flux<Spell> findAll(Pageable pageable) {
-		return repository.findAll(pageable.getSort());
+	public Flux<Spell> find(String spellListId, Pageable pageable) {
+		Example<Spell> example = Example.of(new Spell());
+		example.getProbe().setPpMultiplier(null);
+		example.getProbe().setSpellListId(spellListId);
+		return repository.findAll(example, pageable.getSort());
 	}
 
 }
