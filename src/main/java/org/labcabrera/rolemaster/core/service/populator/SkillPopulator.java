@@ -20,6 +20,7 @@ public class SkillPopulator extends AbstractJsonPopulator<Skill> {
 			"data/populator/skills/skills-athletic.json",
 			"data/populator/skills/skills-awareness.json",
 			"data/populator/skills/skills-combat-maneuvers.json",
+			"data/populator/skills/skills-martial-arts.json",
 			"data/populator/skills/skills-subterfuge.json");
 	}
 
