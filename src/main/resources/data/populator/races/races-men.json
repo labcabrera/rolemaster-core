@@ -34,7 +34,8 @@
     	"mentalism":              [6,5,4,3] 
     }, 
     "resistanceBonus": {
-    }
+    },
+  	"universes": [ "generic" ]
   },
   {
   	"id": "high-men",
@@ -56,6 +57,7 @@
   		"channeling": -5,
   		"essence": -5,
   		"mentalism": -5
-    }
+    },
+  	"universes": [ "generic" ]
   }
 ]

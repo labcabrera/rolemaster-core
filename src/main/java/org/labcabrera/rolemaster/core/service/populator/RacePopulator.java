@@ -14,10 +14,10 @@ public class RacePopulator extends AbstractJsonPopulator<Race> {
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
-			"data/populator/races.json",
-			"data/populator/races-men.json",
-			"data/populator/races-orks.json",
-			"data/populator/races-elves.json");
+			"data/populator/races/races.json",
+			"data/populator/races/races-men.json",
+			"data/populator/races/races-orks.json",
+			"data/populator/races/races-elves.json");
 	}
 
 	@Override

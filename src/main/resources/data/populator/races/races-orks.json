@@ -27,7 +27,8 @@
 	    	"essence":                [4,3,2,1],
 	    	"mentalism":              [4,3,2,1] 
 	    },
-	    "exhaustionPointsBonus": 20
+	    "exhaustionPointsBonus": 20,
+  		"universes": [ "generic" ]
 	  },
 	  {
 	  	"id": "greater-orks",
@@ -57,6 +58,7 @@
 	    	"essence":                [5,3,2,2],
 	    	"mentalism":              [5,3,2,2] 
 	    },
-	    "exhaustionPointsBonus": 30
+	    "exhaustionPointsBonus": 30,
+  		"universes": [ "generic" ]
 	}
 ]

@@ -16,7 +16,8 @@
   		"mentalism": -5,
   		"poison": 10,
   		"disease": 100
-    }
+    },
+  	"universes": [ "generic" ]
   },
   {
   	"id": "high-elves",
@@ -41,14 +42,17 @@
     	"channeling":             [6,5,4,3],
     	"essence":                [7,6,5,4],
     	"mentalism":              [6,5,4,3] 
-    }
+    },
+  	"universes": [ "generic" ]
   },
   {
   	"id": "fair-elves",
-  	"name": "Fair Elves"
+  	"name": "Fair Elves",
+  	"universes": [ "generic" ]
   },
   {
   	"id": "half-elves",
-  	"name": "Half Elves"
+  	"name": "Half Elves",
+  	"universes": [ "generic" ]
   }
 ]

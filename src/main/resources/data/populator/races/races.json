@@ -1,0 +1,17 @@
+[
+  {
+  	"id": "dwarves",
+  	"name": "Dwarves",
+  	"universes": [ "generic" ]
+  },
+  {
+  	"id": "halflings",
+  	"name": "Halflings",
+  	"universes": [ "generic" ]
+  },
+  {
+  	"id": "nomads",
+  	"name": "Nomads",
+  	"universes": [ "generic" ]
+  }
+]
