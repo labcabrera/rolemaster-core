@@ -10,7 +10,8 @@
             "st"
         ],
         "progressionType": "standard",
-        "clasification": "moving-maneuver"
+        "clasification": "moving-maneuver",
+        "description": "This category covers the use of rigid metal armor, from metal breastplates to full Maximilian Plate armor."
     },
     {
         "id": "armor-chain",
@@ -23,7 +24,8 @@
             "st"
         ],
         "progressionType": "standard",
-        "clasification": "moving-maneuver"
+        "clasification": "moving-maneuver",
+        "description": "This category covers the use of flexible metal armors, including chain, scale and the like."
     },
     {
         "id": "soft-leather",
@@ -36,7 +38,8 @@
             "ag"
         ],
         "progressionType": "standard",
-        "clasification": "moving-maneuver"
+        "clasification": "moving-maneuver",
+        "description": "This category covers the use of soft leather armor from soft leather tunics to boiled leather cuirasses and the like."
     },
     {
         "id": "rigid-leather",
@@ -49,6 +52,7 @@
             "ag"
         ],
         "progressionType": "standard",
-        "clasification": "moving-maneuver"
+        "clasification": "moving-maneuver",
+        "description": "This category covers the use of rigid leather armor from soft leather tunics to boiled leather cuirasses and the like."
     }
 ]

@@ -6,7 +6,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill encompasses any athletic game that primarily involves brawn (e.g., wrestling, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
 	{
         "id": "jumping",
@@ -24,7 +24,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
-        "description": ""
+        "description": "Normally, a character can lift up to half his own weight using his hands. This skill provides a bonus to attempts to lift heavier weights or objects. While it is possible to lift these weights without the use of this skill, the techniques conferred by this skill allow greater weights to be lifted, and the likelihood of injury to be lessened. Note that this skill requires a great deal of practice and exercise to develop properly, and will increase the musculature of the individual. The use of this skill requires a round of preparation, during which only 10% activity may be performed and the individual’s DB is reduced to zero."
     },
     {
         "id": "athletic-games-endurance-primary",
@@ -33,7 +33,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill encompasses any athletic game that primarily involves endurance (e.g., track events, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
         "id": "distance-running",
@@ -42,7 +42,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for maintaining one’s speed over long distances at slow to moderate paces, including pacing one’s resources (exhaustion point expenditure) and running in a safe and non-injurious manner. This skill is used when making movement maneuvers based on pace—see Section 18.17 (p. 56)."
     },
     {
         "id": "rowing",
@@ -51,7 +51,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for the propulsion of watercraft through the use of paddles, oars, or poles. It combines the skills required to control and guide the craft with the coordination to work with others in rhythm (when necessary), in addition to the marshaling and pacing of internal resources."
     },
     {
         "id": "scaling",
@@ -60,7 +60,7 @@
         "loadOnNewCharacters": true,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for climbing maneuvers of extended duration, including the climbing of mountains, long stairways, etc. It combines the skills required to climb safely and the marshaling and pacing of internal resources to last throughout the entire climb"
     },
     {
         "id": "sprinting",
@@ -69,7 +69,7 @@
         "loadOnNewCharacters": true,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for maximizing one’s speed over short distances, including marshaling and pacing one’s resources (exhaustion point expenditure) and running in a safe and non-injurious manner. This skill is used when making movement maneuvers based on pace—see Sections 16.0 (p. 51) & 18.17 (p. 56)."
     },
     {
         "id": "swimming",
@@ -78,7 +78,7 @@
         "loadOnNewCharacters": true,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus to swimming maneuvers. Skill rank 1 will prevent the character from drowning in water over his head, provided there are no applicable penalties (weight penalty, armor penalties, etc.). Further skill ranks will enable the character to make headway against a current, to stay afloat for longer periods of time without touching ground, to swim longer distances, to move faster in the water, and to make maneuvers in the water."
     },
     {
         "id": "acrobatics",
@@ -87,7 +87,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for in-air maneuvers (e.g., flying or levitation) or swinging on objects. This skill includes the use of parallel bars, uneven bars, and other gymnastic activities in which most of the activity is spent in airborne maneuvers. A successful maneuver roll can reduce the severity of a falling critical by one (i.e., an 'A' is ignored, a 'B' becomes a 'A', a 'D' becomes a 'C', etc.)."
     },
     {
         "id": "athletic-games-gymnastics-primary",
@@ -96,7 +96,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill encompasses any athletic game that primarily involves gymnastic skills (e.g., gymnastic events, soccer, basketball, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
         "id": "climbing",
@@ -105,7 +105,7 @@
         "loadOnNewCharacters": true,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for climbing maneuvers over relatively short distances through the use of hand holds, etc. This could range from the ability to climb sheer faces (absurd) to climbing a ladder (easy). The normal climbing rate for walls with adequate hand holds is 10'/round as a “Medium” moving maneuver. Poorer handholds or greater speed will increase the difficulty of the maneuver. Note that extended climbs may require the use of the Athletic Endurance: Scaling Skill."
     },
     {
         "id": "contortions",
@@ -114,7 +114,7 @@
         "loadOnNewCharacters": true,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for manipulating one’s body in order to move through small openings or absorb sudden crushing impact (other than falls). This skill also helps one escape from bonds, etc."
     },
     {
         "id": "diving",
@@ -123,7 +123,7 @@
         "loadOnNewCharacters": true,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for controlled falling maneuvers. This can range from controlling the direction of an extended fall to diving into water safely from a great height (up to 20'/skill rank if a successful maneuver roll is made)."
     },
     {
         "id": "flying-gliding",
@@ -132,7 +132,7 @@
         "loadOnNewCharacters": true,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for flying or gliding through the useof natural or artificial wings (e.g., feathered wings, parachute, hangglider, balloonist, etc.). Flying/gliding has a natural -75 for all types of maneuvers performed while trying to fly/glide if this skill is not learned or developed. Does not include powered aircraft."
     },
     {
         "id": "juggling",
