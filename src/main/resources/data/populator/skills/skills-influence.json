@@ -1,0 +1,92 @@
+[
+    {
+        "id": "bribery",
+        "name": "Bribery",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for offering a bribe to an individual in the proper and unobtrusive manner. The Gm may also allow the the use of this skill to identify bribeable individuals and to identify persons likely to have been bribed."
+    },
+    {
+        "id": "diplomacy",
+        "name": "Diplomacy",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for operating successfully in a complex, bureaucratic foreign environment, such as a foreign royal court or any other large foreign government structure. Tact, negotiation, and deceit are all facets of diplomacy. It is used for the conducting of relations between nations. It is important to note that this skill provides a bonus for using the proper protocol in an unfamiliar situation and impressing a person in authority. This applies to situations ranging from an audience with the High King to an involuntary meeting with the Prince of Thieves."
+    },
+    {
+        "id": "duping",
+        "name": "Duping",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for speaking quickly, convincingly, and confusingly in order to get a victim to do something they would not ordinarily do. This skill usually may be used on only one person at a time."
+    },
+    {
+        "id": "interrogation",
+        "name": "Interrogation",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for extracting information from an intelligent source. This may or may not include causing discomfort to the target. If a target is discomforted and the “interrogation roll” fails, the target may suffer a major injury or death. In such a case, the target should roll an RR vs. level 10, using his Co/SD/Co stat bonus total as a modifier to determine the extent of the injury. This skill not only applies to torture but also includes the ability to piece together scattered fragments of information received.",
+        "modifiers": [
+        	{
+        		"key": "Causing “discomfort” to target - I",
+        		"modifier": 10
+        	},
+        	{
+        		"key": "Causing “discomfort” to target - II",
+        		"modifier": 25
+        	}
+        ]
+    },
+    {
+        "id": "leadership",
+        "name": "Leadership",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus to inspire and command others to follow you, and to make others believe that you are competent to lead and that you know what you are doing. This includes the ability to raise the morale of those you command."
+    },
+    {
+        "id": "public-speaking",
+        "name": "Public Speaking",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for impressing, entertaining, or manipulating groups of people directly. Note that this is different from the Tale Telling skill, which is used on small groups, using stories and fables for entertainment and instruction. Public Speaking is for larger groups, is often more extemporaneous, and is used to manipulate the emotions or views of a crowd."
+    },
+    {
+        "id": "seduction",
+        "name": "Seduction",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus when attempting to emotionally, sensually, or sexually manipulate someone. Note that this is not limited to sexual seduction! Manipulation of a persons sensual sensibilities, urging a person to indulge in some fantasy or desire, and convincing a person of some tenet on emotional rather than rational grounds can all be classified as seduction."
+    },
+    {
+        "id": "trading",
+        "name": "Trading",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for transactions involving a bargained exchange of money or goods, particularly with respect to rolls on the purchase and resale price charts found in Gamemaster Law."
+    }
+]

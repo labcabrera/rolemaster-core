@@ -53,19 +53,6 @@
         "clasification": "moving-maneuver"
     },
     {
-        "id": "riding-horses",
-        "name": "Riding - Horses",
-        "loadOnNewCharacters": true,
-        "categoryId": "outdoor-environmental",
-        "attributeBonus": [
-            "ag",
-            "st",
-            "ag"
-        ],
-        "progressionType": "standard",
-        "clasification": "moving-maneuver"
-    },
-    {
         "id": "stalking",
         "name": "Armor - Rigid leather",
         "loadOnNewCharacters": true,

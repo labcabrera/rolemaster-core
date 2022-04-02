@@ -1,0 +1,62 @@
+[
+    {
+        "id": "caving-Spelunking",
+        "name": "Caving (Spelunking)",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "outdoor-environmental",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for determining natural course and lay of a cave or cavern (passage or chamber). It can also provide a bonus for certain maneuvers in caves and caverns.",
+        "modifiers": [
+        	{
+        		"key": "Dwarves",
+        		"modifier": 25
+			}
+        ]
+    },
+    {
+        "id": "foraging",
+        "name": "Foraging",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "outdoor-environmental",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for finding any local source of potable water or edible plants and animals. Includes basic food acquisition such as gathering or fishing."
+    },
+    {
+        "id": "hunting",
+        "name": "Hunting",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "outdoor-environmental",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to hunting maneuvers. Note that tracking and recognizing game is covered by other skills; this skill gives bonuses to the actual hunt, including setting up blind runs, leading and driving game, etc."
+    },
+    {
+        "id": "star-gazing",
+        "name": "Star-gazing",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "outdoor-environmental",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for determining dates, directions, and locations when the stars are visible. May provide a bonus to one's navigation skills."
+    },
+    {
+        "id": "survival-primary",
+        "name": "Survival - Primary",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "outdoor-environmental",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for living in a specific dangerous or hostile environment. Note that this skill encompasses only those methods needed to stay alive against the actively dangerous elements of an environment (e.g., blistering heat, cold, pressure, unusual animals typical of the environment, etc.). It does not include food gathering, although it does include the knowledge necessary to find water. Skill must be developed in each type of environment (e.g., desert, jungle, arctic, water, etc.). The GM may rule that unusually hostile environments may also be covered by this skill (e.g., vacuum, underwater, elemental planes of fire, etc.)."
+    },
+    {
+        "id": "weather-watching",
+        "name": "Weather Watching",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "outdoor-environmental",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for determining local weather for the next 24 hours."
+    }
+]
