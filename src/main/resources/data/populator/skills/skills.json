@@ -11,71 +11,7 @@
         ],
         "progressionType": "raceBodyDevelopment",
         "clasification": "special",
-        "skillBonus": 50
-    },
-    {
-        "id": "swimming",
-        "name": "Armor - Rigid leather",
-        "loadOnNewCharacters": true,
-        "categoryId": "armor-light",
-        "attributeBonus": [
-            "ag",
-            "st",
-            "ag"
-        ],
-        "progressionType": "standard",
-        "clasification": "moving-maneuver"
-    },
-    {
-        "id": "climbing",
-        "name": "Armor - Rigid leather",
-        "loadOnNewCharacters": true,
-        "categoryId": "armor-light",
-        "attributeBonus": [
-            "ag",
-            "st",
-            "ag"
-        ],
-        "progressionType": "standard",
-        "clasification": "moving-maneuver"
-    },
-    {
-        "id": "alertness",
-        "name": "Armor - Rigid leather",
-        "loadOnNewCharacters": true,
-        "categoryId": "armor-light",
-        "attributeBonus": [
-            "ag",
-            "st",
-            "ag"
-        ],
-        "progressionType": "standard",
-        "clasification": "moving-maneuver"
-    },
-    {
-        "id": "stalking",
-        "name": "Armor - Rigid leather",
-        "loadOnNewCharacters": true,
-        "categoryId": "armor-light",
-        "attributeBonus": [
-            "ag",
-            "st",
-            "ag"
-        ],
-        "progressionType": "standard",
-        "clasification": "moving-maneuver"
-    },
-    {
-        "id": "hiding",
-        "name": "Armor - Rigid leather",
-        "loadOnNewCharacters": true,
-        "categoryId": "armor-light",
-        "attributeBonus": [
-            "ag",
-            "st",
-            "ag"
-        ],
-        "progressionType": "standard",
-        "clasification": "moving-maneuver"
+        "skillBonus": 50,
+        "description": "Skill rank in Body Development is one of the factors which determines how many hits (concussion hits) a character can take without passing out. A character’s total hits are is equal to his Body Development skill bonus."
     }
 ]

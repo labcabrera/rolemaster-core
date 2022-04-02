@@ -15,7 +15,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill limits one’s OB against an opponent while mounted. The OB of an attack made while mounted can not exceed the attacker’s Mounted Combat skill bonus. A character's Mounted Combat skill cannot have more skill ranks developed than his Riding skill ranks."
     },
 	{
         "id": "swashbuckling",

@@ -24,7 +24,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for conveying concepts or information without verbal communication or a codified sign language. This skill is useful when trying to span a language barrier, entertain others, etc. Also used when trying to imitate a particular action (i.e., a movement not requiring a maneuver)."
     },
     {
         "id": "mimicry",
@@ -33,7 +33,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for imitating sounds. This skill is useful when trying to imitate individuals, animals or even non-animate sounds (e.g., wind, stairs creaking, etc.)."
     },
     {
         "id": "play-instrument-primary",
@@ -51,7 +51,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for improvising or reading poetry. It may also be used to recognize poetical styles, forms, etc. Note that a minimum of 4 ranks in the spoken language utilized is required to use this skill."
     },
     {
         "id": "singing",
@@ -60,7 +60,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for vocally reproducing musical tunes and/or words. Note that although one may perform a song in an unfamiliar language, this skill does not provide any understanding of that language; this skill merely allows the memorization and reproduction of a song."
     },
     {
         "id": "tale-telling",
@@ -69,7 +69,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for conveying information in the form of stories or fables in an engaging manner. This is primarily for the purpose of entertainment or subtle instruction; attempts to inform or influence large groups of people should use the Public Speaking skill (Influence skill category) instead. This skill may be used for improvisation or to relate memorized stories. This may (GM’s discretion) also be used when attempting to memorize a new story."
     },
     {
         "id": "ventriloquism",
@@ -78,7 +78,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for speaking without appearing to do so. A successful maneuver roll will make the individual’s voice seem to originate somewhere other than himself."
     },
     {
         "id": "music",
@@ -123,7 +123,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-passive",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for the writing of poetry, or any highly stylized form of writing. Note that the individual must have at least four (4) ranks in the written language to be used. Note that this form of poetry is typically of a significantly greater quality than improvisational poetry."
     },
     {
         "id": "sculpting",
@@ -132,6 +132,6 @@
         "loadOnNewCharacters": false,
         "categoryId": "artistic-passive",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for the manipulation of a malleable material or the carving of a resilient material into a desired three dimensional shape. This skill does not confer the ability to work materials normally unworkable (e.g., the individual must have the means to mold and form copper if the sculpture is to be formed of that metal). Note that this skill may also be used to identify styles of sculpture and to imitate other sculptures."
     }
 ]
