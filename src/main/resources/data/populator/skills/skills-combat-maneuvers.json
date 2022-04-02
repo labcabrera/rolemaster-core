@@ -27,8 +27,8 @@
         "description": "This skill allows an individual to perform elaborate maneuvers with his weapon, including flourishes and feats of weapon control. This skill may, at the GM’s discretion, be used to recover control of a fumbled weapon (only possible if a fumble result has indicated that the wielder has “lost control” of a weapon, not “dropped” it), and may be used to perform unusual maneuvers with one’s weapon. Note that fumbles resulting from swashbuckling attempts may not be negated by further use of this skill."
     },
 	{
-        "id": "two-weapon-combat",
-        "name": "Two-weapon Combat",
+        "id": "two-weapon-combat-primary",
+        "name": "Two-weapon Combat - Primary",
         "type": "special",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
