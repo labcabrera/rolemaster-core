@@ -20,7 +20,7 @@ public interface SpellController {
 
 	@GetMapping
 	@Operation(summary = "Spell search.")
-	Flux<Spell> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
+	Flux<Spell> findAll(@ParameterObject @PageableDefault(sort = "spellListId,level", direction = Direction.ASC, size = 10) Pageable pageable);
 
 	@GetMapping("/{id}")
 	@Operation(summary = "It obtains a certain spell from its identifier.")
