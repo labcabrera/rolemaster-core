@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
@@ -77,6 +78,16 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	@Override
 	public Flux<TacticalCharacterContext> findCharacters(String tacticalSessionId) {
 		return characterContextRepository.findByTacticalSessionId(tacticalSessionId);
+	}
+
+	@Override
+	public Mono<TacticalRound> findRound(String tacticalSessionId) {
+		return tacticalService.getCurrentRound(tacticalSessionId);
+	}
+
+	@Override
+	public Mono<TacticalRound> startRound(String tacticalSessionId) {
+		return tacticalService.startRound(tacticalSessionId);
 	}
 
 }

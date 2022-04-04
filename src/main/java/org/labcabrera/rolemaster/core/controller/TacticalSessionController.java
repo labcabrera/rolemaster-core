@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.controller;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,6 +45,14 @@ public interface TacticalSessionController {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Tactical session deleted.")
 	@Operation(summary = "Delete tactical session by id.")
 	Mono<Void> deleteById(@PathVariable String id);
+
+	@GetMapping("/{id}/round")
+	@Operation(summary = "Get current round.")
+	Mono<TacticalRound> findRound(@PathVariable("id") String tacticalSessionId);
+
+	@PostMapping("/{id}/round")
+	@Operation(summary = "Start round.")
+	Mono<TacticalRound> startRound(@PathVariable("id") String tacticalSessionId);
 
 	@GetMapping("/{id}/characters")
 	@Operation(summary = "Find tactical session character contexts.")
