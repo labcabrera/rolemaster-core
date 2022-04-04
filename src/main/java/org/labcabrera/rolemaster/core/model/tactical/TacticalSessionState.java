@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TacticalSessionState {
 
+	CREATED("created"),
+
 	OPEN("open"),
 
 	CLOSED("closed");

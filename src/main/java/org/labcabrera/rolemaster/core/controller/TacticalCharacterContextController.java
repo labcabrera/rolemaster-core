@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@RequestMapping("/tactical/character/context")
+@RequestMapping("/tactical-sessions/characters")
 @Tag(name = "Tactical character context", description = "Operations on the tactical environment of a character or NPC.")
 public interface TacticalCharacterContextController {
 
@@ -31,6 +31,6 @@ public interface TacticalCharacterContextController {
 
 	@PostMapping("/{id}")
 	@Operation(summary = "Tactical character update.")
-	Mono<TacticalCharacterContext> update(@RequestBody CharacterTacticalContextModification request);
+	Mono<TacticalCharacterContext> update(String id, @RequestBody CharacterTacticalContextModification request);
 
 }

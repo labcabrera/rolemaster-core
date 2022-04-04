@@ -6,6 +6,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalSessionState;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class TacticalSessionService {
 					.strategicSessionId(session.getId())
 					.name(request.getName())
 					.description(request.getDescription())
+					.state(TacticalSessionState.CREATED)
 					.entityMetadata(EntityMetadata.builder()
 						.created(LocalDateTime.now())
 						.build())

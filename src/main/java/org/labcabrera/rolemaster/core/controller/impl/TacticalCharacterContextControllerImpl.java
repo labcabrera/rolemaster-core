@@ -28,7 +28,7 @@ public class TacticalCharacterContextControllerImpl implements TacticalCharacter
 	}
 
 	@Override
-	public Mono<TacticalCharacterContext> update(CharacterTacticalContextModification request) {
+	public Mono<TacticalCharacterContext> update(String id, CharacterTacticalContextModification request) {
 		// TODO Auto-generated method stub
 		return null;
 	}
