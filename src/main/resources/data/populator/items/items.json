@@ -12,5 +12,175 @@
 			"max": 0.075
 		},
 		"craftDuration": 24
+	},
+	{
+		"id": "backpack",
+		"name": "backpack",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "bedroll-light",
+		"name": "Bedroll - Light",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "bedroll-heavy",
+		"name": "Bedroll - Heavy",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "boots",
+		"name": "Boots",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "boots",
+		"name": "Boots",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "brush",
+		"name": "Brush (writting)",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "bucket",
+		"name": "Bucket",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "caltrops",
+		"name": "Caltrops",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "candle",
+		"name": "Candle",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "case",
+		"name": "Case",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "cask",
+		"name": "Cask",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "chain",
+		"name": "Chain",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "chalk",
+		"name": "Chalk",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "charcoal",
+		"name": "Charcoal",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "chisel",
+		"name": "Chisel",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "cloak",
+		"name": "Cloak",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "climbing-pick",
+		"name": "Climbing Pick",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "coat",
+		"name": "Coat",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "crossbow-bolts",
+		"name": "Crossbow Bolts",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "fire-starting-bow",
+		"name": "Fire-starting bow",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "flint-and-steel",
+		"name": "Flint and steel",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "framepack",
+		"name": "Framepack",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "gloves",
+		"name": "Gloves",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "grappling-hook",
+		"name": "Grappling hook",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "hammer",
+		"name": "Hammer",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "hammock",
+		"name": "Hammock",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "harness",
+		"name": "Harness",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "hat",
+		"name": "Hat",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "hood",
+		"name": "Hood",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "ink",
+		"name": "Ink",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "ladder",
+		"name": "Ladder",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "lock-pick-kit",
+		"name": "Lock pick kit",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "mirror",
+		"name": "Mirror",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "nails",
+		"name": "Nails",
+		"type": "miscellaneous"
 	}
 ]
