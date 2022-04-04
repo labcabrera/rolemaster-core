@@ -21,6 +21,7 @@ public enum Realm {
 
 	Realm(String name, String description) {
 		this.name = name;
+		this.description = description;
 	}
 
 	@JsonValue

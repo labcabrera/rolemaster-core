@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 
@@ -12,7 +13,11 @@ import reactor.core.publisher.Flux;
 @Tag(name = "Enumerations", description = "Enumeration values.")
 public interface EnumController {
 
+	@GetMapping
+	Flux<String> getEnums();
+
 	@GetMapping("/{id}")
-	Flux<NamedKey> getEnumValues(@PathVariable("id") String enumName);
+	Flux<NamedKey> getEnumValues(
+		@Parameter(required = true, example = "realm") @PathVariable("id") String enumName);
 
 }

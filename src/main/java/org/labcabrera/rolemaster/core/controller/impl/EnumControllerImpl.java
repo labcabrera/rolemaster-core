@@ -13,6 +13,11 @@ import reactor.core.publisher.Flux;
 public class EnumControllerImpl implements EnumController {
 
 	@Override
+	public Flux<String> getEnums() {
+		return Flux.just("realm", "movement-pace");
+	}
+
+	@Override
 	public Flux<NamedKey> getEnumValues(String enumName) {
 		switch (enumName) {
 		case "realm":

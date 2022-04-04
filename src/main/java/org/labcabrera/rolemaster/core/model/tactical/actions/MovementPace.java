@@ -33,6 +33,7 @@ public enum MovementPace {
 
 	MovementPace(String name, String description, Double multiplier, ManeuverDificulty dificulty) {
 		this.name = name;
+		this.description = description;
 		this.multiplier = multiplier;
 	}
 
