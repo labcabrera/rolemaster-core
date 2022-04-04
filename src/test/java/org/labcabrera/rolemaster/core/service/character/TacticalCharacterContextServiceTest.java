@@ -13,6 +13,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterContextService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -21,10 +22,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 
 @ExtendWith(MockitoExtension.class)
-class CharacterTacticalContextServiceTest {
+class TacticalCharacterContextServiceTest {
 
 	@InjectMocks
-	private CharacterTacticalContextService service;
+	private TacticalCharacterContextService service;
 
 	@Mock
 	private TacticalCharacterContextRepository repository;

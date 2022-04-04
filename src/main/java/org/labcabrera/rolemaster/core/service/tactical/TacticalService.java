@@ -76,6 +76,7 @@ public class TacticalService {
 					.tacticalSessionId(tacticalSession.getId())
 					.characterId(npcInstance.getId())
 					.isNpc(true)
+					.name(npcInstance.getName())
 					.metadata(EntityMetadata.builder().build())
 					.build();
 			})

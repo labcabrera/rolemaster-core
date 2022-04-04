@@ -22,6 +22,8 @@ public class TacticalCharacterContext {
 
 	private String tacticalSessionId;
 
+	private String name;
+
 	private String characterId;
 
 	@Builder.Default

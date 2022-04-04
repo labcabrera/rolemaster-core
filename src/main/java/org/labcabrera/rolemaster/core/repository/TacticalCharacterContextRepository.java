@@ -11,4 +11,6 @@ public interface TacticalCharacterContextRepository extends ReactiveMongoReposit
 
 	Flux<TacticalCharacterContext> findByCharacterId(Set<String> characterIdentifiers);
 
+	Flux<TacticalCharacterContext> findByTacticalSessionId(String tacticalSessionId);
+
 }

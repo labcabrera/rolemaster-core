@@ -45,6 +45,10 @@ public interface TacticalSessionController {
 	@Operation(summary = "Delete tactical session by id.")
 	Mono<Void> deleteById(@PathVariable String id);
 
+	@GetMapping("/{id}/characters")
+	@Operation(summary = "Find tactical session character contexts.")
+	Flux<TacticalCharacterContext> findCharacters(@PathVariable("id") String id);
+
 	@PostMapping("/{id}/characters/player/{characterId}")
 	@Operation(summary = "Add a new character to current tactical session.")
 	Mono<TacticalCharacterContext> addPlayerCharacter(@PathVariable("id") String id, @PathVariable("characterId") String characterId);

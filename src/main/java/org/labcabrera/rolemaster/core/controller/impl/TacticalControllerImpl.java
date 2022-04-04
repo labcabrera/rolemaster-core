@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class TacticalControllerImpl implements TacticalSessionController {
 
 	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
+
+	@Autowired
+	private TacticalCharacterContextRepository characterContextRepository;
 
 	@Override
 	public Mono<TacticalSession> createTacticalSession(TacticalSessionCreation request) {
@@ -68,6 +72,11 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	@Override
 	public Mono<TacticalCharacterContext> addNpcCharacter(String id, String npcId) {
 		return tacticalService.addNpc(id, npcId);
+	}
+
+	@Override
+	public Flux<TacticalCharacterContext> findCharacters(String tacticalSessionId) {
+		return characterContextRepository.findByTacticalSessionId(tacticalSessionId);
 	}
 
 }
