@@ -1,0 +1,37 @@
+[
+	{
+		"id": "arcane-elementalist",
+		"name": "Arcane Elementalist",
+		"availableRealms": [
+			"arcane"
+		]
+	},
+	{
+		"id": "arcanist",
+		"name": "Arcanist",
+		"availableRealms": [
+			"arcane"
+		]
+	},
+	{
+		"id": "chaotic",
+		"name": "Chaotic",
+		"availableRealms": [
+			"arcane"
+		]
+	},
+	{
+		"id": "mage-hunter",
+		"name": "Mage Hunter",
+		"availableRealms": [
+			"arcane"
+		]
+	},
+	{
+		"id": "wizard",
+		"name": "Wizard",
+		"availableRealms": [
+			"arcane"
+		]
+	}
+]

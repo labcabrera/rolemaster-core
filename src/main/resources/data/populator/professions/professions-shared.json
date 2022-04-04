@@ -1,19 +1,19 @@
 [
 	{
-		"id": "animist",
-		"name": "Animist"
+		"id": "astrologer",
+		"name": "Astrologer",
+		"availableRealms": [
+			"channeling",
+			"mentalism"
+		]
 	},
 	{
-		"id": "cleric-channeling",
-		"name": "Cleric (Channeling companion)"
-	},
-	{
-		"id": "paladin",
-		"name": "Paladin"
-	},
-	{
-		"id": "ranger-channeling",
-		"name": "Ranger (Channeling Montaraz)"
+		"id": "enchanter",
+		"name": "Enchanter",
+		"availableRealms": [
+			"mentalism",
+			"essence"
+		]
 	},
 	{
 		"id": "healer",
@@ -25,7 +25,8 @@
 			"sd"
 		],
 		"availableRealms": [
-			"channeling"
+			"channeling",
+			"mentalism"
 		],
 		"skillCategoryBonus": {
 		},
@@ -96,7 +97,51 @@
 		}
 	},
 	{
+		"id": "mystic",
+		"name": "Mystic",
+		"availableRealms": [
+			"mentalism",
+			"essence"
+		]
+	},
+	{
+		"id": "necromancer",
+		"name": "Necromancer",
+		"availableRealms": [
+			"essence",
+			"channeling"
+		]
+	},
+	{
+		"id": "runemage",
+		"name": "Runemage",
+		"availableRealms": [
+			"essence",
+			"channeling"
+		]
+	},
+	{
 		"id": "sorcerer",
-		"name": "Sorcerer (Hechicero)"
+		"name": "Sorcerer",
+		"availableRealms": [
+			"essence",
+			"channeling"
+		]
+	},
+	{
+		"id": "summoner",
+		"name": "Summoner",
+		"availableRealms": [
+			"essence",
+			"channeling"
+		]
+	},
+	{
+		"id": "warlock",
+		"name": "Warlock",
+		"availableRealms": [
+			"channeling",
+			"mentalism"
+		]
 	}
 ]
