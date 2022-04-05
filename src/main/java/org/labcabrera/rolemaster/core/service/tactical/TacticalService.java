@@ -7,14 +7,15 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
+import org.labcabrera.rolemaster.core.controller.converter.TacticalCharacterContextConverter;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalNpcInstance;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
+import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
@@ -38,6 +39,9 @@ public class TacticalService {
 	private TacticalRoundService tacticalRoundService;
 
 	@Autowired
+	private TacticalCharacterContextConverter tacticalCharacterContextConverter;
+
+	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
@@ -45,6 +49,9 @@ public class TacticalService {
 
 	@Autowired
 	private TacticalCharacterContextRepository tacticalCharacterStatusRepository;
+
+	@Autowired
+	private CharacterInfoRepository characterInfoRepository;
 
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return tacticalSessionService.createSession(request);
@@ -54,13 +61,8 @@ public class TacticalService {
 		return tacticalSessionRepository
 			.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
-			.map(tacticalSession -> {
-				return TacticalCharacterContext.builder()
-					.tacticalSessionId(tacticalSessionId)
-					.characterId(characterId)
-					.metadata(EntityMetadata.builder().build())
-					.build();
-			})
+			.zipWith(characterInfoRepository.findById(characterId))
+			.map(pair -> tacticalCharacterContextConverter.convert(pair.getT1(), pair.getT2()))
 			.flatMap(tacticalCharacterStatusRepository::save);
 	}
 
@@ -69,17 +71,7 @@ public class TacticalService {
 			.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
 			.zipWith(tacticalNpcInstanceService.create(npcId))
-			.map(pair -> {
-				TacticalSession tacticalSession = pair.getT1();
-				TacticalNpcInstance npcInstance = pair.getT2();
-				return TacticalCharacterContext.builder()
-					.tacticalSessionId(tacticalSession.getId())
-					.characterId(npcInstance.getId())
-					.isNpc(true)
-					.name(npcInstance.getName())
-					.metadata(EntityMetadata.builder().build())
-					.build();
-			})
+			.map(pair -> tacticalCharacterContextConverter.convert(pair.getT1(), pair.getT2()))
 			.flatMap(tacticalCharacterStatusRepository::save);
 	}
 

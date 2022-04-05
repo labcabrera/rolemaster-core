@@ -29,18 +29,25 @@ public class TacticalCharacterContext {
 	@Builder.Default
 	private Boolean isNpc = false;
 
-	private Hp hp;
+	@Builder.Default
+	private Hp hp = new Hp();
 
-	private PowerPoints powerPoints;
+	@Builder.Default
+	private PowerPoints powerPoints = new PowerPoints();
 
-	private ExhaustionPoints exhaustionPoints;
+	@Builder.Default
+	private ExhaustionPoints exhaustionPoints = new ExhaustionPoints();
 
-	private CombatStatus combatStatus;
+	@Builder.Default
+	private CombatStatus combatStatus = new CombatStatus();
 
-	private ContextCharacterModifiers modifiers;
+	@Builder.Default
+	private ContextCharacterModifiers modifiers = new ContextCharacterModifiers();
 
-	private ContextCharacterItems items;
+	@Builder.Default
+	private ContextCharacterItems items = new ContextCharacterItems();
 
-	private EntityMetadata metadata;
+	@Builder.Default
+	private EntityMetadata metadata = new EntityMetadata();
 
 }

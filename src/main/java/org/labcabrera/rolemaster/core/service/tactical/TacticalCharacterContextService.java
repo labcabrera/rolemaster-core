@@ -77,6 +77,7 @@ public class TacticalCharacterContextService {
 	private TacticalCharacterContext createContext(CharacterInfo character) {
 		return TacticalCharacterContext.builder()
 			.characterId(character.getId())
+			.name(character.getName())
 			.hp(Hp.builder()
 				.max(character.getMaxHp())
 				.current(character.getMaxHp())
