@@ -25,6 +25,8 @@ public class CharacterSkill {
 
 	private String group;
 
+	private String customization;
+
 	private SkillProgressionType progressionType;
 
 	@Builder.Default
