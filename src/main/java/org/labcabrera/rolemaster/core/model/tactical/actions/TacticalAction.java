@@ -22,6 +22,7 @@ import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -49,6 +50,7 @@ public abstract class TacticalAction {
 
 	private TacticalActionState state;
 
+	@Builder.Default
 	private Map<InitiativeModifier, Integer> initiativeModifiers = new LinkedHashMap<>();
 
 	public Integer getInitiative() {
