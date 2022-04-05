@@ -9,7 +9,7 @@ plugins {
 
 group = 'org.labcabrera.rolemaster'
 version = version
-sourceCompatibility = '11'
+sourceCompatibility = '16'
 
 ext {
 	set('springdocVersion',            '1.6.6')
