@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.apache.commons.lang3.StringUtils;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.exception.MissingWeaponData;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -31,6 +33,13 @@ public class WeaponTable {
 		return list;
 	}
 
+	public Map<Integer, Map<Integer, String>> getWeaponMap(String weaponId) {
+		if (!values.containsKey(weaponId)) {
+			throw new MissingWeaponData("Missing weapon table " + weaponId);
+		}
+		return values.get(weaponId);
+	}
+
 	public String get(String weaponId, Integer roll, Integer armor) {
 		if (roll > 150 || roll < 1) {
 			throw new BadRequestException("Invalid range roll " + roll + " (1-150)");
@@ -39,14 +48,19 @@ public class WeaponTable {
 			throw new BadRequestException("Invalid armor type " + roll + " (1-20)");
 		}
 		if (!values.containsKey(weaponId)) {
-			loadFromFile(weaponId);
+			throw new MissingWeaponData("Missing weapon table " + weaponId);
 		}
+		String result;
 		try {
-			return values.get(weaponId).get(roll).get(armor);
+			result = values.get(weaponId).get(roll).get(armor);
 		}
 		catch (Exception ex) {
-			throw new RuntimeException("Missing weapon data");
+			throw new MissingWeaponData(weaponId, roll, armor);
 		}
+		if (StringUtils.isBlank(result) || "X".equals(result)) {
+			throw new MissingWeaponData(weaponId, roll, armor);
+		}
+		return result;
 	}
 
 	private void loadFromFile(String weaponId) {

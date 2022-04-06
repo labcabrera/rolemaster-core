@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.exception.MissingWeaponData;
 
 class WeaponTableTest {
 
@@ -44,6 +45,13 @@ class WeaponTableTest {
 		List<String> weapons = weaponTable.getWeapons();
 		assertNotNull(weapons);
 		assertFalse(weapons.isEmpty());
+	}
+
+	@Test
+	void testInvalidWeapon() {
+		assertThrows(MissingWeaponData.class, () -> {
+			weaponTable.get("invalid-weapon-id", 150, 20);
+		});
 	}
 
 	@Test
