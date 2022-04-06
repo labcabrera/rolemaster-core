@@ -33,7 +33,15 @@ public class SkillCategory {
 	private List<AttributeType> attributeBonus = new ArrayList<>();
 
 	@Builder.Default
+	Boolean useRealmAttributeBonus = false;
+
+	@Builder.Default
 	private List<SkillModifier> modifiers = new ArrayList<>();
+
+	//TODO Make enum
+	private String skillBonusProgression;
+
+	private String skillCategoryBonusProgression;
 
 	private EntityMetadata metadata;
 
