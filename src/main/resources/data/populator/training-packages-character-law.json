@@ -1,7 +1,52 @@
 [
 	{
 		"id": "assasin",
-		"name": "Assasin"
+		"name": "Assasin",
+		"type": "lifestyle",
+        "timeAcquisition": 30,
+        "skillCategoryRanks": {
+            "subterfuge-stealth":     2,
+            "subterfuge-mechanics":   1,
+            "awareness-senses":       1
+        },
+        "skillRanks": {
+            "body-development": 1,
+            "climbing": 1,
+            "swimming": 1,
+            "alertness": 2,
+            "observation": 1,
+            "attunement": 1,
+            "first-aid": 1
+        },
+        "selectionCategorySkillRanks": [
+            {
+                "category": "subterfuge-stealth",
+                "value": 2
+            },
+            {
+                "category": "subterfuge-mechanics",
+                "value": 1
+            },
+            {
+                "category": "subterfuge-attack",
+                "value": 3
+            },
+            {
+                "category": "awareness-senses",
+                "value": 1
+            },
+            {
+                "category": "special-attacks",
+                "value": 2
+            }
+        ],
+        "selectionSkillRanks": [
+            {
+                "category": "weapon",
+                "value": 1
+            }
+        ],
+        "startingMoney": "+d10g"
 	},
 	{
 		"id": "berserker",
