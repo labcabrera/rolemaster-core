@@ -8,19 +8,22 @@ import lombok.Getter;
 
 public enum MovementPace {
 
-	WALK("walk", 1.0, ManeuverDificulty.NONE),
+	WALK("walk", "Walk", 1.0, ManeuverDificulty.NONE),
 
-	FAST_WALK("walk", 1.5, ManeuverDificulty.NONE),
+	FAST_WALK("fastMalk", "Fast walk", 1.5, ManeuverDificulty.NONE),
 
-	RUN("walk", 1.0, ManeuverDificulty.NONE),
+	RUN("run", "Run", 1.0, ManeuverDificulty.NONE),
 
-	SPRINT("walk", 1.0, ManeuverDificulty.EASY),
+	SPRINT("sprint", "Spring", 1.0, ManeuverDificulty.EASY),
 
-	FAST_SPRINT("walk", 1.0, ManeuverDificulty.LIGHT),
+	FAST_SPRINT("fastSprint", "Fast sprint", 1.0, ManeuverDificulty.LIGHT),
 
-	DASH("walk", 1.0, ManeuverDificulty.MEDIUM);
+	DASH("dash", "Dash", 1.0, ManeuverDificulty.MEDIUM);
 
 	private String name;
+
+	@Getter
+	private String description;
 
 	@Getter
 	private Double multiplier;
@@ -28,8 +31,9 @@ public enum MovementPace {
 	@Getter
 	private ManeuverDificulty dificulty;
 
-	MovementPace(String name, Double multiplier, ManeuverDificulty dificulty) {
+	MovementPace(String name, String description, Double multiplier, ManeuverDificulty dificulty) {
 		this.name = name;
+		this.description = description;
 		this.multiplier = multiplier;
 	}
 

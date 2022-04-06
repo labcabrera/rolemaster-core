@@ -49,6 +49,9 @@ public class Race {
 	private Map<String, List<Integer>> ppDevelopmentProgression = new HashMap<>();
 
 	@Builder.Default
+	private List<String> universes = new ArrayList<>();
+
+	@Builder.Default
 	private Map<ResistanceType, Integer> resistanceBonus = new EnumMap<>(ResistanceType.class);
 
 }

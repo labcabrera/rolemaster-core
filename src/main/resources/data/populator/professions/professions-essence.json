@@ -1,0 +1,72 @@
+[
+	{
+		"id": "dabbler",
+		"name": "Dabbler",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "elemental-champion",
+		"name": "Elemental Champion",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "elementalist",
+		"name": "Elementalist",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "illusionist",
+		"name": "Illusionist",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "magician",
+		"name": "Magician",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "mana-moulder",
+		"name": "Mana Moulder",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "monk",
+		"name": "Monk",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "storm-mage",
+		"name": "Storm Mage",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "taoist-monk",
+		"name": "Taoist Monk",
+		"availableRealms": [
+			"essence"
+		]
+	},
+	{
+		"id": "warrior-mage",
+		"name": "Warrior Mage",
+		"availableRealms": [
+			"essence"
+		]
+	}
+]

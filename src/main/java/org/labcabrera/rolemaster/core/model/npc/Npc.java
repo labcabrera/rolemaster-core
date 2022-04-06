@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.npc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -21,13 +22,17 @@ public class Npc {
 	private String id;
 
 	private String name;
-	
+
 	private Integer level;
 
 	private Integer hp;
 
 	private Boolean unique;
 
-	private List<NpcAttack> attacks;
+	@Builder.Default
+	private List<String> universes = new ArrayList<>();
+
+	@Builder.Default
+	private List<NpcAttack> attacks = new ArrayList<>();
 
 }

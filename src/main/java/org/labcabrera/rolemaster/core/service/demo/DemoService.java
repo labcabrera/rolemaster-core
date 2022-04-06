@@ -9,9 +9,9 @@ import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
-import org.labcabrera.rolemaster.core.service.character.CharacterTacticalContextService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterContextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class DemoService {
 	private CharacterService characterService;
 
 	@Autowired
-	private CharacterTacticalContextService characterStatusService;
+	private TacticalCharacterContextService characterStatusService;
 
 	@Autowired
 	private StrategicSessionService sessionService;

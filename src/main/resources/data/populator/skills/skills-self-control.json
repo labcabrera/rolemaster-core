@@ -1,0 +1,70 @@
+[
+    {
+        "id": "frenzy",
+        "name": "Frenzy",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus to attempt to go into a state of single-minded, unpredictable rage which results in an additional +30 to melee OB, the ability to take twice normal concussion damage and the ability to deliver double melee concussion hit damage. While in frenzy, you have no DB other than the armor bonus, get no shield bonus, and cannot parry. The static maneuver (i.e., preparation) for frenzy takes one round. Once in a frenzied/berserk state, the berserker may make a static maneuver each round in order to resume one’s normal state. Once frenzied, the berserker will continue to fight until there is no one left standing except himself, at which time he receives a +30 modification to static maneuvers to end the frenzy. While frenzied, the berserker may attempt a Situational Awareness (Combat) static maneuver with a -30 modification to distinguish friend from foe."
+    },
+    {
+        "id": "meditation",
+        "name": "Meditation",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for an individual entering, leaving and exploiting a mental trance. Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25). A GM may allow a successful meditation maneuver to give the meditator a bonus for a maneuver related to the meditation. Such related maneuvers can include: solving a difficult problem, making a spell casting static maneuver, making an attunement static maneuver, etc. We suggest the following bonuses based upon the degree of success of the meditation static maneuver: +5 bonus for “partial success,” +10 for “near success,” +15 for “success,” and +25 for “absolute success.” The meditator must spend at least one minute (6 rounds) in meditation to get the bonus."
+    },
+    {
+        "id": "mnemonics",
+        "name": "Mnemonics",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for recalling information through the use of memory aids, techniques and tricks."
+    },
+    {
+        "id": "stun-removal",
+        "name": "Stun Removal",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill helps a character to throw off the effects of stunning blows. A successful static maneuver using this skill will remove one or more accumulated rounds of stun from the character. Failure will result in additional stun rounds. The results of such a maneuver are outlined below:\n<ul><li>Spectacular Failure: +3 rounds of stun</li><li>Absolute Failure:    +2 rounds of stun</li><li>Failure:             +1 rounds of stun</li><li>Unusual Failure:     +1 rounds of stun</li><li>Partial Success:     +0 rounds of stun</li><li>Near Success:        -1 rounds of stun</li><li>Success:             -2 rounds of stun</li><li>Absolute Success:    -3 rounds of stun</li><li>Unusual Success:     -5 rounds of stun</li></ul>",
+		"modifiers": [
+			{
+				"key": "Accumulated Stun Rounds (Medium): 1",
+				"modifier": 0
+			},
+			{
+				"key": "Accumulated Stun Rounds (Hard): 2",
+				"modifier": -10
+			},
+			{
+				"key": "Accumulated Stun Rounds (Very Hard): 3 - 4",
+				"modifier": -20
+			},
+			{
+				"key": "Accumulated Stun Rounds (Extremely Hard): 5 - 7",
+				"modifier": -30
+			},
+			{
+				"key": "Accumulated Stun Rounds (Sheer Folly): 8 - 9",
+				"modifier": -50
+			}
+			,
+			{
+				"key": "Accumulated Stun Rounds (Absurd): 10+",
+				"modifier": -70
+			}
+		]
+	         
+    }
+]

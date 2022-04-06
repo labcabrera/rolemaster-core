@@ -2,34 +2,43 @@
     {
         "id": "ambush",
         "name": "Ambush",
+        "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "subterfuge-attack",
         "progressionType": "standard",
-        "clasification": ""
+        "clasification": "",
+        "description": "This skill is the ability to make a very precise melee attack. To use his Ambush skill a character must approach his foe undetected and be able to strike before the foe can react. An attack is then made normally, and an Ambush static maneuver is made (0% activity) and modified by target’s alertness and other factors (e.g., position, lighting, etc.). If the Ambush static maneuver is successful, the character may modify his result on the resulting critical strike roll. This modification consists of being allowed to adjust the critical strike roll by any number up to the Ambush skill rank (not bonus) of the attacker. This adjustment may be either up or down. Note that to use this bonus, the attacker must first get a normal critical strike result on an attack table. If he does, however, this ability greatly increases the chance of a killing or incapacitating blow and tremendously increases the chance of a result that takes effect instantly. Since position is relatively unpredictable in a general melee situation, Ambush skill rank is halved if an ambushed foe is in a melee situation. (Note: You must still approach the foe undetected and strike before he can react.) If a “Large” or “Super-large” creature is ambushed, the Ambush skill rank is added (never subtracted) to the critical roll. If the resulting modified roll is above 95, a second roll is made and added to the modified critical as in a normal open-ended roll."
     },
     {
         "id": "silent-attack",
         "name": "Silent Attack",
+        "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "subterfuge-attack",
         "progressionType": "standard",
-        "clasification": ""
+        "clasification": "",
+        "description": "This skill is used in conjunction with an Ambush static maneuver. A successful Ambush static maneuver followed by a successful static maneuver using this skill (0% activity) results in the target being unable to make a sound during the attack. Note that this skill also requires that the attacker approach the foe undetected and strike before he can react. If an instant kill or immobilization result is obtained on a critical chart, the target does not make any noise."
     },
     {
         "id": "camouflage",
         "name": "Camouflage",
+        "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "subterfuge-mechanics",
         "progressionType": "standard",
-        "clasification": ""
+        "clasification": "",
+        "description": "This skill provides a bonus in hiding or concealing an item or another person by using the natural attributes of the surrounding environment."
     },
     {
     	"id": "disarming-traps",
     	"name": "Disarming Traps",
+    	"type": "staticManeuver",
     	"loadOnNewCharacters": false,
+    	"type": "staticManeuver",
         "categoryId": "subterfuge-mechanics",
         "progressionType": "standard",
         "clasification": "",
+        "description": "This skill provides a bonus in identifying and disarming, but not locating, an inanimate trap.",
         "modifiers": [
         	{
         		"key": "Sucessful Lock Lore maneuver prior to attempt",
@@ -56,18 +65,22 @@
     {
     	"id": "disguise",
     	"name": "Disguise",
-    	"loadOnNewCharacters": false,
-        "categoryId": "subterfuge-mechanics",
-        "progressionType": "standard",
-        "clasification": ""
-    },
-    {
-    	"id": "picking-locks",
-    	"name": "Picking locks",
+    	"type": "staticManeuver",
     	"loadOnNewCharacters": false,
         "categoryId": "subterfuge-mechanics",
         "progressionType": "standard",
         "clasification": "",
+        "description": "This skill provides a bonus to change one’s appearance (not his actual shape or weight) by application of cosmetics and other props."
+    },
+    {
+    	"id": "picking-locks",
+    	"name": "Picking locks",
+    	"type": "staticManeuver",
+    	"loadOnNewCharacters": false,
+        "categoryId": "subterfuge-mechanics",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for locking and unlocking locks and similar devices.",
         "modifiers": [
         	{
         		"key": "Sucessful Lock Lore maneuver prior to attempt",
@@ -94,26 +107,32 @@
     {
 		"id": "setting-traps",
 		"name": "Setting Traps",
+		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
 		"categoryId": "subterfuge-mechanics",
 		"progressionType": "standard",
+		"description": "This skill provides a bonus for setting traps. Traps can be lethal or non-lethal. The traps used by this skill are either very simple snares or pre-built mechanisms that are set into place.",
 		"clasification": ""
     },
     {
 		"id": "using-removing-poison",
 		"name": "Using/Removing Poison",
+		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
 		"categoryId": "subterfuge-mechanics",
 		"progressionType": "standard",
+		"description": "This skill provides a bonus for the handling, caring, and storing of poisons. Allows an individual to use poison without accidentally poisoning himself or rendering the poison useless.",
 		"clasification": ""
     },
     {
 		"id": "hiding",
 		"name": "Hiding",
+		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
 		"categoryId": "subterfuge-stealth",
 		"progressionType": "standard",
 		"clasification": "",
+		"description": "Hiding is the ability to conceal one’s presence by remaining still, using silence, shadow and camouflage.",
 		"modifiers": [
         	{
         		"key": "Bad hiding place",
@@ -148,18 +167,22 @@
     {
 		"id": "picking-pockets",
 		"name": "Picking Pockets",
+		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
 		"categoryId": "subterfuge-stealth",
 		"progressionType": "standard",
+		"description": "This skill provides a bonus for picking pockets. If successful, the contents are lifted and the skill bonus is applied against rolls made for any alertness or observation maneuvers the victim makes.",
 		"clasification": ""
 	},
     {
 		"id": "stalking",
 		"name": "Stalking",
+		"type": "staticManeuver",
 		"loadOnNewCharacters": true,
 		"categoryId": "subterfuge-stealth",
 		"progressionType": "standard",
 		"clasification": "",
+		"description": "Stalking is the ability to move using silence, camouflage, and shadows to conceal your presence.",
 		"modifiers": [
         	{
         		"key": "Pace Crawl (0.25 base)",
@@ -190,9 +213,11 @@
 	{
 		"id": "trickery",
 		"name": "Trickery",
+		"type": "staticManeuver",
 		"loadOnNewCharacters": true,
 		"categoryId": "subterfuge-stealth",
 		"progressionType": "standard",
-		"clasification": ""
+		"clasification": "",
+		"description": "This skill provides a bonus for any maneuvers involving slight of hand; confusing sight tricks and slight-of-hand diversions."
 	}
 ]

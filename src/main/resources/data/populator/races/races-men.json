@@ -1,0 +1,63 @@
+[
+{
+  	"id": "common-men",
+    "name": "Common Men",
+    "attributeModifiers": {
+    	"sd": 2,
+    	"st": 2
+    },
+    "adolescenseSkillCategoryRanks": {
+    	"armor-light": 1,
+    	"armor-medium": 1,
+    	"weapon-1h-edged": 1,
+    	"weapon-missile": 1,
+    	"weapon-pole-arms": 1,
+    	"weapon-thrown": 1,
+    	"athletic-gymnastics": 1,
+    	"athletic-brawn": 1,
+    	"athletic-endurance": 1,
+    	"body-development": 2,
+    	"communications": 1,
+    	"lore-general": 3,
+    	"outdoor-animal": 1,
+    	"outdoor-environmental": 1,
+    	"subterfuge-stealth": 1,
+    	"technical-trade-general": 1
+    },
+    "adolescenseSkillRanks": {
+    	"body-development": 2
+    },
+    "bodyDevelopmentProgression": [6,4,2,1],
+    "ppDevelopmentProgression": {
+    	"channeling":             [6,5,4,3],
+    	"essence":                [6,5,4,3],
+    	"mentalism":              [6,5,4,3] 
+    }, 
+    "resistanceBonus": {
+    },
+  	"universes": [ "generic" ]
+  },
+  {
+  	"id": "high-men",
+    "name": "High men",
+    "attributeModifiers": {
+    	"ag": -2,
+    	"co": 4,
+    	"pr": 4,
+    	"qu": -2,
+    	"st": 4
+    },
+    "bodyDevelopmentProgression": [7,5,3,1],
+    "ppDevelopmentProgression": {
+    	"channeling":             [6,5,4,3],
+    	"essence":                [6,5,4,3],
+    	"mentalism":              [7,6,5,4] 
+    }, 
+  	"resistanceBonus": {
+  		"channeling": -5,
+  		"essence": -5,
+  		"mentalism": -5
+    },
+  	"universes": [ "generic" ]
+  }
+]

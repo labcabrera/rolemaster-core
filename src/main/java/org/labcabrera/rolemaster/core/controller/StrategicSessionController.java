@@ -48,6 +48,8 @@ public interface StrategicSessionController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted session")
+	@ApiResponse(responseCode = "204", description = "Session deleted")
+	@ApiResponse(responseCode = "404", description = "Not found")
 	@Operation(summary = "Delete session.")
 	Mono<Void> deleteById(@PathVariable String id);
 

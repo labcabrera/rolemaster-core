@@ -2,7 +2,6 @@ package org.labcabrera.rolemaster.core.model.character;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +24,8 @@ public class CharacterSkill {
 
 	private String group;
 
+	private String customization;
+
 	private SkillProgressionType progressionType;
 
 	@Builder.Default
@@ -37,7 +38,7 @@ public class CharacterSkill {
 	private Map<RankType, Integer> ranks = new EnumMap<>(RankType.class);
 
 	@Builder.Default
-	private Map<BonusType, Integer> bonus = new LinkedHashMap<>();
+	private Map<BonusType, Integer> bonus = new EnumMap<>(BonusType.class);
 
 	public Integer getTotalRanks() {
 		return ranks.values().stream().reduce(0, (a, b) -> a + b);

@@ -1,0 +1,20 @@
+[
+	{
+		"id": "sauron",
+		"name": "Sauron",
+		"level": 180,
+		"unique": true,
+		"universes": [
+			"middle-earth"
+		]
+	},
+	{
+		"id": "sauron-one-ring",
+		"name": "Sauron - One Ring",
+		"level": 360,
+		"unique": true,
+		"universes": [
+			"middle-earth"
+		]
+	}
+]

@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.service.maneuver.m.impl.modifiers;
 
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier.ModifierType;
+import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverContext;
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverModifierProcessor;
 import org.springframework.stereotype.Component;
@@ -14,16 +15,8 @@ public class MovingManeuverHpProcessor implements MovingManeuverModifierProcesso
 		if (context.getCharacterInfo().isEmpty() || context.getCharacterStatus().isEmpty()) {
 			return;
 		}
-		Integer maxHp = context.getCharacterInfo().get().getMaxHp();
-		if (maxHp == null) {
-			throw new IllegalArgumentException("Undefined character max HP");
-		}
-		Integer currentHp = context.getCharacterStatus().get().getHp();
-		if (currentHp == null) {
-			throw new IllegalArgumentException("Undefined current HP");
-		}
-		double damage = maxHp - currentHp;
-		double damagePercent = 100 * (damage / (double) maxHp);
+		Hp hp = context.getCharacterStatus().get().getHp();
+		double damagePercent = 100 - hp.getPercent();
 		int result;
 		if (damagePercent > 75) {
 			result = -30;
@@ -39,8 +32,8 @@ public class MovingManeuverHpProcessor implements MovingManeuverModifierProcesso
 		}
 		ManeuverModifier modifier = ManeuverModifier.builder()
 			.description(String.format("HP maneuver modifier (max hp: %s, current hp: %s, damage percent: %s)",
-				maxHp,
-				currentHp,
+				hp.getMax(),
+				hp.getCurrent(),
 				damagePercent))
 			.modifier(result)
 			.type(ModifierType.HP)

@@ -5,8 +5,10 @@ import javax.validation.Valid;
 import org.labcabrera.rolemaster.core.controller.StrategicSessionController;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
+import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,9 @@ public class StrategicSessionControllerImpl implements StrategicSessionControlle
 
 	@Autowired
 	private StrategicSessionService sessionService;
+
+	@Autowired
+	private StrategicSessionRepository repository;
 
 	@Override
 	public Mono<StrategicSession> findById(String id) {
@@ -42,7 +47,9 @@ public class StrategicSessionControllerImpl implements StrategicSessionControlle
 
 	@Override
 	public Mono<Void> deleteById(String id) {
-		return sessionService.deleteAll(id);
+		return repository.findById(id)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Strategic session not found.")))
+			.flatMap(repository::delete);
 	}
 
 	@Override

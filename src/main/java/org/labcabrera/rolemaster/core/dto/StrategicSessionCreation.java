@@ -21,4 +21,8 @@ public class StrategicSessionCreation {
 	@Schema(description = "Session name.", required = false, example = "Example of player's comment.")
 	private String description;
 
+	@NotEmpty
+	@Schema(description = "Universe", required = true, example = "middle-earth")
+	private String universeId;
+
 }

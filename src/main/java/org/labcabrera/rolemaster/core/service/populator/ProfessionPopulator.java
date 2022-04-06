@@ -14,8 +14,12 @@ public class ProfessionPopulator extends AbstractJsonPopulator<Profession> {
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
-			"data/populator/professions.json",
-			"data/populator/professions-channeling.json");
+			"data/populator/professions/professions.json",
+			"data/populator/professions/professions-arcane.json",
+			"data/populator/professions/professions-channeling.json",
+			"data/populator/professions/professions-essence.json",
+			"data/populator/professions/professions-mentalism.json",
+			"data/populator/professions/professions-shared.json");
 	}
 
 	@Override

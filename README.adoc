@@ -24,7 +24,7 @@ It offers the following functionalities:
 
 == Installation and configuration
 
-* EVERYTHING
+* TODO
 
 == Next steps
 

@@ -1,0 +1,51 @@
+[
+	{
+		"id": "armsmaster",
+		"name": "Arms Master",
+		"availableRealms": [
+			"mentalism"
+		]
+	},
+	{
+		"id": "bard",
+		"name": "Bard",
+		"availableRealms": [
+			"mentalism"
+		]
+	},
+	{
+		"id": "lay-healer",
+		"name": "Lay Healer",
+		"availableRealms": [
+			"mentalism"
+		]
+	},
+	{
+		"id": "magent",
+		"name": "Magent",
+		"availableRealms": [
+			"mentalism"
+		]
+	},
+	{
+		"id": "mentalist",
+		"name": "Mentalist",
+		"availableRealms": [
+			"mentalism"
+		]
+	},
+	{
+		"id": "seer",
+		"name": "Seer",
+		"availableRealms": [
+			"mentalism"
+		]
+	},
+	{
+		"id": "zen-monk",
+		"name": "Zen Monk",
+		"availableRealms": [
+			"mentalism"
+		]
+	}
+]

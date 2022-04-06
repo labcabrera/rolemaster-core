@@ -96,7 +96,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "awareness-senses",
         "progressionType": "standard",
-        "description": ""
+        "description": "This skill provides a bonus for determining which way is north or any specific direction, without the aid of navigational instruments. Skill is useful determining direction while underground, during the darkest night without stars, moon, or other night lights."
     },
     {
         "id": "sense-awareness-hear",

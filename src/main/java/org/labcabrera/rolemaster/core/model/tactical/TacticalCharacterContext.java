@@ -1,12 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
-import org.labcabrera.rolemaster.core.model.combat.Bleeding;
-import org.labcabrera.rolemaster.core.model.combat.Penalty;
+import org.labcabrera.rolemaster.core.model.character.ContextCharacterModifiers;
 import org.springframework.data.annotation.Id;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -27,44 +22,32 @@ public class TacticalCharacterContext {
 
 	private String tacticalSessionId;
 
+	private String name;
+
 	private String characterId;
 
-	private String npcInstanceId;
-
-	private String mainWeaponEquipedId;
-
-	private String secondaryWeaponEquipedId;
-
-	private String armorEquipedId;
-
-	private Integer hp;
-
-	private Integer pp;
-
-	private BigDecimal exhaustionPoints;
+	@Builder.Default
+	private Boolean isNpc = false;
 
 	@Builder.Default
-	private Integer stunnedRounds = 0;
+	private Hp hp = new Hp();
 
 	@Builder.Default
-	private Integer unconsciousRounds = 0;
+	private PowerPoints powerPoints = new PowerPoints();
 
 	@Builder.Default
-	private Integer canNotParryRounds = 0;
+	private ExhaustionPoints exhaustionPoints = new ExhaustionPoints();
 
 	@Builder.Default
-	private Integer mustParryRounds = 0;
+	private CombatStatus combatStatus = new CombatStatus();
 
 	@Builder.Default
-	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
-	private Integer reloadingActivityPercent = 0;
+	private ContextCharacterModifiers modifiers = new ContextCharacterModifiers();
 
 	@Builder.Default
-	private List<Bleeding> bleding = new ArrayList<>();
+	private ContextCharacterItems items = new ContextCharacterItems();
 
 	@Builder.Default
-	private List<Penalty> penalty = new ArrayList<>();
-
-	private EntityMetadata metadata;
+	private EntityMetadata metadata = new EntityMetadata();
 
 }

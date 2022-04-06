@@ -1,0 +1,47 @@
+[
+    {
+        "id": "basic-math",
+        "name": "Basic Math",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "science-analytic-basic",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for everyday math. This includes simple counting up through proficiency at basic mathematical manipulations. Generally, the major mathematical functions (multiplication, division, addition, subtraction, etc.) may be acquired through the use of this skill. At much higher levels, skill in geometry and even algebra is possible. Calculus, trigonometry, tensor math, etc. all require the acquisition of Advanced Math (see below)."
+    },
+    {
+        "id": "research",
+        "name": "Research",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "science-analytic-basic",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for using multiple sources of reference to assimilate the knowledge and information necessary to solve a problem, support a creative effort, or otherwise answer questions important to the individual. It includes the skills necessary to organize and effect a search through reference material, and collate the results. If appropriate materials are available, a successful maneuver roll using such materials will give up to a +40 modification to a related Lore maneuver roll."
+    },
+    {
+        "id": "advanced-math",
+        "name": "Advanced Math",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "science-analytic-specialized",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for using higher levels of mathematics (e.g., calculus, differential equations, basic relativity, etc.). You must develop a higher skill rank in Basic Mathematics (e.g., if your rank in Basic Math is 12 you may only develop this skill to 11 skill ranks)."
+    },
+    {
+        "id": "anthropology",
+        "name": "Anthropology",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "science-analytic-specialized",
+        "progressionType": "standard",
+        "description": "This skill provides knowledge of linguistic trends, customs, habits and cultural trends of any known races and cultures. Skill may be developed in-depth of a specific race or culture from your home world. Several different races or cultures may be developed simultaneously, assuming research materials are available."
+    },
+    {
+        "id": "alchemy",
+        "name": "Alchemy",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "science-analytic-specialized",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for identifying and mixing various non-magical substances with relatively predictable results. Acids, itching powders, toxins, etc. are just a few of the possible results. Some combinations the GM may deem inappropriate for his world (e.g., he might disallow gunpowder or petroleum products). Allows user to know elemental composition, reactions, compounds, etc. Skill is modified from -30 to -70 for lack of laboratory equipment, supplies, etc."
+    }
+]

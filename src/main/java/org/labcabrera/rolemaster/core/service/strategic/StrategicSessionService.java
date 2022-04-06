@@ -9,7 +9,7 @@ import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
-import org.labcabrera.rolemaster.core.service.character.CharacterTacticalContextService;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterContextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class StrategicSessionService {
 	private StrategicSessionRepository repository;
 
 	@Autowired
-	private CharacterTacticalContextService characterStatusService;
+	private TacticalCharacterContextService characterStatusService;
 
 	public Mono<StrategicSession> findById(String id) {
 		return repository.findById(id);
@@ -39,6 +39,7 @@ public class StrategicSessionService {
 		StrategicSession session = StrategicSession.builder()
 			.name(request.getName())
 			.description(request.getDescription())
+			.universeId(request.getUniverseId())
 			.metadata(EntityMetadata.builder()
 				.created(LocalDateTime.now())
 				.build())

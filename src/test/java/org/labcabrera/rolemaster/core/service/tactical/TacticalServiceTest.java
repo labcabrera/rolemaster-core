@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 import javax.validation.ValidationException;
 
@@ -40,11 +41,12 @@ class TacticalServiceTest {
 			.build()).share().block();
 
 		TacticalSessionCreation tacticalSessionCreation = TacticalSessionCreation.builder()
-			.sessionId(session.getId())
+			.strategicSessionId(session.getId())
 			.name("Tactical session test " + LocalDateTime.now())
 			.build();
 
 		TacticalSession tacticalSession = tacticalService.createSession(tacticalSessionCreation).share().block();
+		String tacticalSessionId = tacticalSession.getId();
 
 		String npcIdentifier = "ork-figther-mele-i";
 
@@ -61,27 +63,27 @@ class TacticalServiceTest {
 		TacticalAction action01 = TacticalActionMeleAttack.builder()
 			.priority(TacticalActionPhase.NORMAL)
 			.meleAttackType(MeleeAttackType.FULL)
-			.source(tc1.getNpcInstanceId())
-			.target(tc2.getNpcInstanceId())
+			.source(tc1.getCharacterId())
+			.target(tc2.getCharacterId())
 			.actionPercent(80)
 			.build();
 
 		TacticalAction action02 = TacticalActionMeleAttack.builder()
 			.priority(TacticalActionPhase.DELIBERATE)
 			.meleAttackType(MeleeAttackType.PRESS_AND_MELEE)
-			.source(tc1.getNpcInstanceId())
+			.source(tc1.getCharacterId())
 			.actionPercent(100)
 			.build();
 
 		TacticalAction action03 = TacticalActionMovement.builder()
 			.priority(TacticalActionPhase.SNAP)
-			.source(tc3.getNpcInstanceId())
+			.source(tc3.getCharacterId())
 			.actionPercent(20)
 			.build();
 
 		TacticalAction action04 = TacticalActionMovement.builder()
 			.priority(TacticalActionPhase.NORMAL)
-			.source(tc3.getNpcInstanceId())
+			.source(tc3.getCharacterId())
 			.actionPercent(50)
 			.build();
 
@@ -98,9 +100,9 @@ class TacticalServiceTest {
 
 		assertEquals(4, round.getActions().size());
 
-		tacticalService.setInitiative(round.getId(), "character-01", 7);
-		tacticalService.setInitiative(round.getId(), "character-02", 16);
-		tacticalService.setInitiative(round.getId(), "character-03", 11);
+		tacticalService.setInitiatives(tacticalSessionId, Collections.singletonMap("character-01", 7)).share().block();
+		tacticalService.setInitiatives(tacticalSessionId, Collections.singletonMap("character-02", 16)).share().block();
+		tacticalService.setInitiatives(tacticalSessionId, Collections.singletonMap("character-03", 11)).share().block();
 	}
 
 	private void runActionDeclarationValidators(TacticalService tacticalService, TacticalSession tacticalSession) {

@@ -1,0 +1,20 @@
+[
+	{
+		"id": "ork-fighter-melee-i",
+		"name": "Ork - Fighter melee I",
+		"level": 1,
+		"unique": false,
+		"universes": [
+			"generic", "middle-earth"
+		]
+	},
+	{
+		"id": "ork-fighter-range-i",
+		"name": "Ork - Fighter range I",
+		"level": 1,
+		"unique": false,
+		"universes": [
+			"generic", "middle-earth"
+		]
+	}
+]

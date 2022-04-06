@@ -25,10 +25,15 @@ public class SkillCategory {
 
 	private String name;
 
+	private String description;
+
 	private String group;
 
 	@Builder.Default
 	private List<AttributeType> attributeBonus = new ArrayList<>();
+
+	@Builder.Default
+	private List<SkillModifier> modifiers = new ArrayList<>();
 
 	private EntityMetadata metadata;
 

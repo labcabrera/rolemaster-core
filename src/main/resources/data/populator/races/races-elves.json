@@ -1,0 +1,58 @@
+[
+{
+  	"id": "wood-elves",
+  	"name": "Wood elves",
+  	"attributeModifieres": {
+  		"ag": 4,
+  		"me": 2,
+  		"sd": -5,
+  		"em": 2,
+  		"pr": 2,
+  		"qu": 2
+  	},
+  	"resistanceBonus": {
+  		"channeling": -5,
+  		"essence": -5,
+  		"mentalism": -5,
+  		"poison": 10,
+  		"disease": 100
+    },
+  	"universes": [ "generic" ]
+  },
+  {
+  	"id": "high-elves",
+  	"name": "High Elves",
+  	"attributeModifiers": {
+    	"ag": 2,
+    	"me": 2,
+    	"sd": -5,
+    	"em": 2,
+    	"pr": 6,
+    	"qu": 6 
+    },
+    "resistanceBonus": {
+  		"channeling": -5,
+  		"essence": -5,
+  		"mentalism": -5,
+  		"poison": 10,
+  		"disease": 100
+    },
+    "bodyDevelopmentProgression": [7,3,2,1],
+    "ppDevelopmentProgression": {
+    	"channeling":             [6,5,4,3],
+    	"essence":                [7,6,5,4],
+    	"mentalism":              [6,5,4,3] 
+    },
+  	"universes": [ "generic" ]
+  },
+  {
+  	"id": "fair-elves",
+  	"name": "Fair Elves",
+  	"universes": [ "generic" ]
+  },
+  {
+  	"id": "half-elves",
+  	"name": "Half Elves",
+  	"universes": [ "generic" ]
+  }
+]

@@ -31,6 +31,9 @@ public class Skill {
 	private SkillType type;
 
 	@Builder.Default
+	private Boolean customizable = false;
+
+	@Builder.Default
 	private Boolean loadOnNewCharacters = false;
 
 	@Builder.Default

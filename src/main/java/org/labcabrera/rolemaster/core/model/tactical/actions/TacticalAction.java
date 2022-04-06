@@ -4,6 +4,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
@@ -19,12 +21,28 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction.Vali
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @ValidTacticalAction
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
+@JsonSubTypes({
+	@Type(value = TacticalActionCustom.class, name = "custom"),
+	@Type(value = TacticalActionMeleAttack.class, name = "melee-attack"),
+	@Type(value = TacticalActionMissileAttack.class, name = "missile-attack"),
+	@Type(value = TacticalActionMovement.class, name = "movement"),
+	@Type(value = TacticalActionMovingManeuver.class, name = "moving-maneuver"),
+	@Type(value = TacticalActionSpellAttack.class, name = "spell-attack"),
+	@Type(value = TacticalActionSpellCast.class, name = "spell-cast"),
+	@Type(value = TacticalActionStaticManeuver.class, name = "static-maneuver")
+})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -47,7 +65,17 @@ public abstract class TacticalAction {
 
 	private TacticalActionState state;
 
-	@Target({ ElementType.TYPE })
+	private String notes;
+
+	@Builder.Default
+	private Map<InitiativeModifier, Integer> initiativeModifiers = new LinkedHashMap<>();
+
+	public Integer getInitiative() {
+		return initiativeModifiers.values().stream().reduce(0, (a, b) -> a + b);
+	}
+
+	@Target({
+		ElementType.TYPE })
 	@Retention(RetentionPolicy.RUNTIME)
 	@Constraint(validatedBy = TacticalActionValidator.class)
 	static @interface ValidTacticalAction {

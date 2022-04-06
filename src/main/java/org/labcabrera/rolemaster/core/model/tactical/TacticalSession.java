@@ -1,7 +1,6 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalSessionState;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

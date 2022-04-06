@@ -14,7 +14,8 @@ public class NpcPopulator extends AbstractJsonPopulator<Npc> {
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
-			"data/populator/npcs.json");
+			"data/populator/npcs/npcs-generic.json",
+			"data/populator/npcs/npcs-middle-earth.json");
 	}
 
 	@Override
