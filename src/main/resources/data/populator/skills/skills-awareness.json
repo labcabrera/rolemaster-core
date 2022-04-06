@@ -142,5 +142,23 @@
         "categoryId": "awareness-senses",
         "progressionType": "standard",
         "description": "This skill provides a bonus for determining the time of day or how much time has passed over a specific period. This is a combination of the ability to estimate internally the passage of time, as well as using external references such as the sun, stars, etc. When no external referents are available (e.g., underground, in a jail cell, etc.), it is significantly more difficult to estimate the passage of time. Also, after sleep or unconsciousness one typically requires the use of external referents to 'reset' one's internal clock; the lack of same will hinder the use of this skill. This skill may be used to attempt to wake oneself from sleep at a predetermined time."
+    },
+    {
+        "id": "reality-awareness",
+        "name": "Reality Awareness",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to determine if the natural order or reality has or is going through turmoil, (e.g., Demonic Gate opening or closing, power fluctuation which is disturbing or causing the fabric of this dimension to shift, holes in the space-time continuum, residual powerful magic, etc.). Note that this skill may be severely limited in its availability."
+    },
+    {
+        "id": "spatial-location-awareness",
+        "name": "Spatial Location Awareness",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "awareness-senses",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to determine if the natural order or reality has or is going through turmoil, (e.g., Demonic Gate opening or closing, power fluctuation which is disturbing or causing the fabric of this dimension to shift, holes in the space-time continuum, residual powerful magic, etc.). Note that this skill may be severely limited in its availability."
     }
 ]

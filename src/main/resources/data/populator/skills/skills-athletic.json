@@ -27,6 +27,24 @@
         "description": "Normally, a character can lift up to half his own weight using his hands. This skill provides a bonus to attempts to lift heavier weights or objects. While it is possible to lift these weights without the use of this skill, the techniques conferred by this skill allow greater weights to be lifted, and the likelihood of injury to be lessened. Note that this skill requires a great deal of practice and exercise to develop properly, and will increase the musculature of the individual. The use of this skill requires a round of preparation, during which only 10% activity may be performed and the individual’s DB is reduced to zero."
     },
     {
+        "id": "power-striking",
+        "name": "Power-striking",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-brawn",
+        "progressionType": "standard",
+        "description": "This skill allows the use of a controlled burst of strength to increase the force of a blow, such as with a sword, hammer, or fist. The use of this skill requires a 40% activity action the round before the “strike” takes place. The round of the strike, the character receives a bonus to his OB according to how much force he placed into the blow, which in turn affects the difficulty of the maneuver."
+    },
+    {
+        "id": "power-throwing",
+        "name": "Power-throwing",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-brawn",
+        "progressionType": "standard",
+        "description": "This skill allows the use of a controlled burst of strength to increase the range of a thrown object, such as a javelin, hammer, stone, etc. The use of this skill requires a 40% activity action the round before the “throw” takes place. The round of the strike, the character receives a bonus to his weapon range according to how much force he placed into the throw, which in turn affects the difficulty of the maneuver."
+    },
+    {
         "id": "athletic-games-endurance-primary",
         "name": "Athletic Games - Endurance - Primary",
         "type": "staticManeuver",
@@ -151,5 +169,68 @@
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for horizontal dives, rolling, vaulting maneuvers, or swinging on stationary objects. Also used to decrease the damage one takes from a fall. A character could fall safely up to 2'/skill rank if a successful maneuver roll is made."
+    },
+    {
+        "id": "pole-vaulting",
+        "name": "Pole-vaulting",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for handling a pole to surmount or cross over an obstacle."
+    },
+    {
+        "id": "rappelling",
+        "name": "Rappelling",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for rapidly descending from a height, using ropes and other equipment. If the rappelling roll is unsuccessful, the individual has a chance of falling. Rappelling rate is equal to the individual’s normal movement rate, with modifiers due to speed."
+    },
+    {
+        "id": "skating",
+        "name": "Skating",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for skating maneuvers. This may also (at GM’s discretion) be used to help one stay upright on slippery or icy surfaces without skating equipment."
+    },
+    {
+        "id": "skiing",
+        "name": "Skiing",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for skiing maneuvers. This may also (at GM’s discretion) be used to help one stay on one’s feet when sliding down an incline without skiing equipment."
+    },
+    {
+        "id": "stilt-walking",
+        "name": "Stilt-walking",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for maneuvering on stilts or other extensions to one’s height."
+    },
+    {
+        "id": "surfing",
+        "name": "Surfing",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to surfing maneuvers. This includes body surfing, board surfing, and channel surfing."
+    },
+    {
+        "id": "tightrope-walking",
+        "name": "Tightrope-walking",
+        "type": "staticOrMovingManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "athletic-gymnastics",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for maneuvering along narrow surfaces."
     }
 ]
