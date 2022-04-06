@@ -1,0 +1,8 @@
+type Query {
+  races: [Race]
+}
+
+type Race {
+  id: ID
+  name: String
+}
