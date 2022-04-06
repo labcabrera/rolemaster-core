@@ -21,6 +21,10 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction.Vali
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +32,17 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @ValidTacticalAction
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
+@JsonSubTypes({
+	@Type(value = TacticalActionCustom.class, name = "custom"),
+	@Type(value = TacticalActionMeleAttack.class, name = "melee-attack"),
+	@Type(value = TacticalActionMissileAttack.class, name = "missile-attack"),
+	@Type(value = TacticalActionMovement.class, name = "movement"),
+	@Type(value = TacticalActionMovingManeuver.class, name = "moving-maneuver"),
+	@Type(value = TacticalActionSpellAttack.class, name = "spell-attack"),
+	@Type(value = TacticalActionSpellCast.class, name = "spell-cast"),
+	@Type(value = TacticalActionStaticManeuver.class, name = "static-maneuver")
+})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,6 +64,8 @@ public abstract class TacticalAction {
 	private Integer actionPercent;
 
 	private TacticalActionState state;
+
+	private String notes;
 
 	@Builder.Default
 	private Map<InitiativeModifier, Integer> initiativeModifiers = new LinkedHashMap<>();

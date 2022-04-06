@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.dto;
+package org.labcabrera.rolemaster.core.dto.actions;
 
 import org.labcabrera.rolemaster.core.model.tactical.actions.MovementPace;
 

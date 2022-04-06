@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleAttack.ValidTacticalActionMeleAttack;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +24,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @ValidTacticalActionMeleAttack
+@JsonPropertyOrder({ "id", "type", "state", "priority", "actionPercent", "initiativeModifiers", "initiative", "source", "target",
+	"meleAttackType", "parry", "notes" })
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

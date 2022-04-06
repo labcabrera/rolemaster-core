@@ -2,13 +2,13 @@ package org.labcabrera.rolemaster.core.controller;
 
 import javax.validation.Valid;
 
-import org.labcabrera.rolemaster.core.dto.TacticalActionMeleeAttackDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalActionMissileAttackDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalActionMovementDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalActionMovingManeuverDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalActionSpellAttackDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalActionSpellCastDeclaration;
-import org.labcabrera.rolemaster.core.dto.TacticalActionStaticManeuverDeclaration;
+import org.labcabrera.rolemaster.core.dto.actions.TacticalActionMeleeAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.actions.TacticalActionMissileAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.actions.TacticalActionMovementDeclaration;
+import org.labcabrera.rolemaster.core.dto.actions.TacticalActionMovingManeuverDeclaration;
+import org.labcabrera.rolemaster.core.dto.actions.TacticalActionSpellAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.actions.TacticalActionSpellCastDeclaration;
+import org.labcabrera.rolemaster.core.dto.actions.TacticalActionStaticManeuverDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.springframework.http.HttpStatus;
