@@ -1,7 +1,11 @@
 package org.labcabrera.rolemaster.core.table.weapon;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
@@ -33,6 +37,13 @@ class WeaponTableTest {
 	@Test
 	void test001() {
 		assertEquals("0", weaponTable.get("dagger", 1, 20));
+	}
+
+	@Test
+	void testKeys() {
+		List<String> weapons = weaponTable.getWeapons();
+		assertNotNull(weapons);
+		assertFalse(weapons.isEmpty());
 	}
 
 	@Test

@@ -1,17 +1,35 @@
 package org.labcabrera.rolemaster.core.table.weapon;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WeaponTable {
 
-	// weaponId - roll - armor - result
-	private Map<String, Map<Integer, Map<Integer, String>>> values = new HashMap<>();
+	private static final String[] weapons = { "dagger" };
+
+	private final Map<String, Map<Integer, Map<Integer, String>>> values = new HashMap<>();
+
+	public WeaponTable() {
+		for (String weaponId : weapons) {
+			loadFromFile(weaponId);
+		}
+	}
+
+	public List<String> getWeapons() {
+		List<String> list = new ArrayList<>(values.keySet());
+		Collections.sort(list);
+		return list;
+	}
 
 	public String get(String weaponId, Integer roll, Integer armor) {
 		if (roll > 150 || roll < 1) {
