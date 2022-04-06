@@ -1,7 +1,7 @@
 [
 	{
-		"id": "ork-figther-mele-i",
-		"name": "Ork - Figther mele I",
+		"id": "ork-fighter-melee-i",
+		"name": "Ork - Fighter melee I",
 		"level": 1,
 		"unique": false,
 		"universes": [
@@ -9,8 +9,8 @@
 		]
 	},
 	{
-		"id": "ork-figther-range-i",
-		"name": "Ork - Figther range I",
+		"id": "ork-fighter-range-i",
+		"name": "Ork - Fighter range I",
 		"level": 1,
 		"unique": false,
 		"universes": [
