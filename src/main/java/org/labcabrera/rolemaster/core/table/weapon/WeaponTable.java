@@ -40,7 +40,7 @@ public class WeaponTable {
 		return values.get(weaponId);
 	}
 
-	public String get(String weaponId, Integer roll, Integer armor) {
+	public String get(String weaponId, Integer armor, Integer roll) {
 		if (roll > 150 || roll < 1) {
 			throw new BadRequestException("Invalid range roll " + roll + " (1-150)");
 		}

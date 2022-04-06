@@ -17,27 +17,27 @@ class WeaponTableTest {
 
 	@Test
 	void test150() {
-		assertEquals("3CP", weaponTable.get("dagger", 150, 20));
+		assertEquals("3CP", weaponTable.get("dagger", 20, 150));
 	}
 
 	@Test
 	void test114() {
-		assertEquals("3", weaponTable.get("dagger", 114, 20));
+		assertEquals("3", weaponTable.get("dagger", 20, 114));
 	}
 
 	@Test
 	void test113() {
-		assertEquals("2", weaponTable.get("dagger", 113, 20));
+		assertEquals("2", weaponTable.get("dagger", 20, 113));
 	}
 
 	@Test
 	void test100() {
-		assertEquals("2", weaponTable.get("dagger", 100, 20));
+		assertEquals("2", weaponTable.get("dagger", 20, 100));
 	}
 
 	@Test
 	void test001() {
-		assertEquals("0", weaponTable.get("dagger", 1, 20));
+		assertEquals("0", weaponTable.get("dagger", 20, 1));
 	}
 
 	@Test
@@ -50,35 +50,35 @@ class WeaponTableTest {
 	@Test
 	void testInvalidWeapon() {
 		assertThrows(MissingWeaponData.class, () -> {
-			weaponTable.get("invalid-weapon-id", 150, 20);
+			weaponTable.get("invalid-weapon-id", 20, 150);
 		});
 	}
 
 	@Test
 	void testInvalidRangeRoll01() {
 		assertThrows(BadRequestException.class, () -> {
-			weaponTable.get("dagger", 0, 20);
+			weaponTable.get("dagger", 20, 0);
 		});
 	}
 
 	@Test
 	void testInvalidRangeRoll02() {
 		assertThrows(BadRequestException.class, () -> {
-			weaponTable.get("dagger", 151, 20);
+			weaponTable.get("dagger", 20, 151);
 		});
 	}
 
 	@Test
 	void testInvalidRangeArmor01() {
 		assertThrows(BadRequestException.class, () -> {
-			weaponTable.get("dagger", 100, 21);
+			weaponTable.get("dagger", 21, 100);
 		});
 	}
 
 	@Test
 	void testInvalidRangeArmor02() {
 		assertThrows(BadRequestException.class, () -> {
-			weaponTable.get("dagger", 100, 0);
+			weaponTable.get("dagger", 0, 100);
 		});
 	}
 
