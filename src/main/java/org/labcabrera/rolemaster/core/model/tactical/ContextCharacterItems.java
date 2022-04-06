@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ContextCharacterItems {
 
-	private String mainWeaponEquipedId;
+	private String mainWeaponEquippedId;
 
-	private String secondaryWeaponEquipedId;
+	private String secondaryWeaponEquippedId;
 
-	private String armorEquipedId;
+	private String armorEquippedId;
 
 }
