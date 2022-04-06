@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
+import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -53,9 +54,6 @@ public interface CharacterController {
 			@ExampleObject(name = "Character creation example 02", ref = "#/components/examples/characterCreationExample01")
 		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequest request);
 
-	@PostMapping("/{id}/skills/upgrade")
-	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillAndTrainingPackageUpgrade request);
-
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")
 	@Operation(summary = "Delete character.")
@@ -66,5 +64,11 @@ public interface CharacterController {
 	@ApiResponse(responseCode = "200", description = "Success")
 	@ApiResponse(responseCode = "404", description = "Character inventory not found", content = @Content(schema = @Schema(implementation = Void.class)))
 	Mono<CharacterInventory> findCharacterInventoryById(@PathVariable String id);
+
+	@PostMapping("/{id}/skills")
+	Mono<CharacterInfo> addSkill(@PathVariable String characterId, AddSkill request);
+
+	@PostMapping("/{id}/skills/upgrade")
+	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillAndTrainingPackageUpgrade request);
 
 }
