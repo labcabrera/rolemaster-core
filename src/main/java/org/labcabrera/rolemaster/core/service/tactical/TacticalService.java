@@ -85,7 +85,6 @@ public class TacticalService {
 			.map(e -> {
 				TacticalRound round = TacticalRound.builder()
 					.tacticalSessionId(tacticalSessionId)
-					.round(e.getCurrentRound())
 					.metadata(EntityMetadata.builder()
 						.created(LocalDateTime.now())
 						.build())

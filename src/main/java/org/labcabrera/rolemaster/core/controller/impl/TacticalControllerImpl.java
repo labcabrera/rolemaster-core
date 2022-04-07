@@ -13,8 +13,11 @@ import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextReposit
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.micrometer.core.instrument.util.StringUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -36,8 +39,13 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	}
 
 	@Override
-	public Flux<TacticalSession> findAllTacticalSessions() {
-		return tacticalSessionRepository.findAll();
+	public Flux<TacticalSession> find(String strategicSessionId, Pageable pageable) {
+		Example<TacticalSession> example = Example.of(new TacticalSession());
+		example.getProbe().setCurrentRound(null);
+		if (StringUtils.isNotBlank(strategicSessionId)) {
+			example.getProbe().setStrategicSessionId(strategicSessionId);
+		}
+		return tacticalSessionRepository.findAll(example, pageable.getSort());
 	}
 
 	@Override
