@@ -22,7 +22,6 @@ class TacticalActionMeleAttackTest {
 	@Test
 	void test() throws JsonProcessingException {
 		TacticalActionMeleAttack action = TacticalActionMeleAttack.builder()
-			.id("action-01")
 			.actionPercent(42)
 			.meleAttackType(MeleeAttackType.PRESS_AND_MELEE)
 			.parry(55)
@@ -39,7 +38,6 @@ class TacticalActionMeleAttackTest {
 		String check = """
 			{
 			  "type" : "melee-attack",
-			  "id" : "action-01",
 			  "state" : "queued",
 			  "priority" : "normal",
 			  "actionPercent" : 42,

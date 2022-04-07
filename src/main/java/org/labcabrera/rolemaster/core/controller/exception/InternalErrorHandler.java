@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.exception;
 
+import javax.validation.ConstraintViolationException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
@@ -31,7 +33,15 @@ public class InternalErrorHandler {
 				.build();
 			return ResponseEntity.badRequest().body(error);
 		}
-		if (ex instanceof WebExchangeBindException) {
+		else if (ex instanceof ConstraintViolationException) {
+			log.warn("Invalid request", ex.getMessage());
+			ApiError error = ApiError.builder()
+				.message(ex.getMessage())
+				.code("400")
+				.build();
+			return ResponseEntity.badRequest().body(error);
+		}
+		else if (ex instanceof WebExchangeBindException) {
 			log.info("Invalid request: {}", ex.getMessage());
 			WebExchangeBindException bindEx = (WebExchangeBindException) ex;
 			ApiError error = ApiError.builder()

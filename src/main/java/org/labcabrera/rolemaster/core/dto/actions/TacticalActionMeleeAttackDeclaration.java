@@ -18,9 +18,9 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class TacticalActionMeleeAttackDeclaration extends TacticalActionDeclaration {
 
-	private MeleeAttackType meleeAttackType;
-
 	private String target;
+
+	private MeleeAttackType meleeAttackType;
 
 	private Integer parry;
 

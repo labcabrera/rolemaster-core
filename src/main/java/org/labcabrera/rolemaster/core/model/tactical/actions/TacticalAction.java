@@ -19,7 +19,6 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction.ValidTacticalAction;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
-import org.springframework.data.annotation.Id;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -48,9 +47,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public abstract class TacticalAction {
-
-	@Id
-	private String id;
 
 	@NotNull
 	private String source;

@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @ValidTacticalActionMeleAttack
-@JsonPropertyOrder({ "id", "type", "state", "priority", "actionPercent", "initiativeModifiers", "initiative", "source", "target",
+@JsonPropertyOrder({ "type", "state", "priority", "actionPercent", "initiativeModifiers", "initiative", "source", "target",
 	"meleAttackType", "parry", "notes" })
 @Data
 @AllArgsConstructor

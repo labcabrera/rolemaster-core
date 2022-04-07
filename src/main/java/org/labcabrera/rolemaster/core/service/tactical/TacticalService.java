@@ -105,7 +105,7 @@ public class TacticalService {
 	}
 
 	public Mono<TacticalRound> getCurrentRound(String tacticalSessionId) {
-		return tacticalRoundRepository.findByTacticalSessionIdOrderByRoundDesc(tacticalSessionId);
+		return tacticalRoundRepository.findFirstByTacticalSessionIdOrderByRoundDesc(tacticalSessionId);
 	}
 
 	public Mono<TacticalRound> setInitiatives(String tacticalSessionId, Map<String, Integer> initiatives) {

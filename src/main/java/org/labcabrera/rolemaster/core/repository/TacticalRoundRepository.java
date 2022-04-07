@@ -7,6 +7,6 @@ import reactor.core.publisher.Mono;
 
 public interface TacticalRoundRepository extends ReactiveMongoRepository<TacticalRound, String> {
 
-	Mono<TacticalRound> findByTacticalSessionIdOrderByRoundDesc(String tacticalSessionId);
+	Mono<TacticalRound> findFirstByTacticalSessionIdOrderByRoundDesc(String tacticalSessionId);
 
 }

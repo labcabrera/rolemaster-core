@@ -3,13 +3,13 @@ package org.labcabrera.rolemaster.core.controller;
 import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.dto.actions.TacticalActionDeclaration;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -22,23 +22,25 @@ import reactor.core.publisher.Mono;
 @Tag(name = "Tactical session actions", description = "Tactical session actions.")
 public interface TacticalSessionActionController {
 
-	@GetMapping("/{id}/actions/declarations/{source}/{phase}")
+	@GetMapping("/{id}/actions/{source}/{priority}")
 	@Operation(summary = "Get a declared action from a given character and phase.")
 	Mono<TacticalRound> getDeclaredAction(
 		@Parameter(description = "Tactical session identifier.", required = true) @PathVariable("id") String sessionId,
-		@Parameter(description = "Character performing the action.", required = true) @PathVariable String source,
-		@Parameter(description = "Tactical phase.", required = true) @PathVariable TacticalActionPhase phase);
+		@Parameter(description = "Character performing the action.", required = true) @PathVariable("source") String source,
+		@Parameter(description = "Tactical phase.", required = true) @PathVariable("priority") String phase);
 
-	@DeleteMapping("/{id}/actions/declarations/{source}/{phase}")
+	@PostMapping("/{id}/actions")
+	@Operation(summary = "Declares a tactical action.")
+	@ResponseStatus(code = HttpStatus.CREATED, reason = "Action declared.")
+	Mono<TacticalRound> delare(
+		@Parameter(description = "Tactical session identifier.", required = true) @PathVariable("id") String id,
+		@Valid @RequestBody TacticalActionDeclaration action);
+
+	@DeleteMapping("/{id}/actions/{source}/{priority}")
 	@Operation(summary = "Eliminates a previously declared action.")
 	Mono<TacticalRound> removeDeclaredAction(
 		@Parameter(description = "Tactical session identifier.", required = true) @PathVariable("id") String sessionId,
-		@Parameter(description = "Character performing the action.", required = true) @PathVariable String source,
-		@Parameter(description = "Tactical phase.", required = true) @PathVariable TacticalActionPhase phase);
-
-	@PostMapping("/{id}/actions/declarations")
-	@Operation(summary = "Declares a tactical action.")
-	@ResponseStatus(code = HttpStatus.CREATED, reason = "Action declared.")
-	Mono<TacticalRound> delare(@PathVariable String id, @Valid TacticalActionDeclaration action);
+		@Parameter(description = "Character performing the action.", required = true) @PathVariable("source") String source,
+		@Parameter(description = "Tactical phase.", required = true) @PathVariable("priority") String priority);
 
 }

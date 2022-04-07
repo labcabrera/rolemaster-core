@@ -10,7 +10,7 @@ public enum MovementPace {
 
 	WALK("walk", "Walk", 1.0, ManeuverDificulty.NONE),
 
-	FAST_WALK("fastMalk", "Fast walk", 1.5, ManeuverDificulty.NONE),
+	FAST_WALK("fastWalk", "Fast walk", 1.5, ManeuverDificulty.NONE),
 
 	RUN("run", "Run", 1.0, ManeuverDificulty.NONE),
 

@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 import org.labcabrera.rolemaster.core.controller.TacticalSessionActionController;
 import org.labcabrera.rolemaster.core.controller.converter.TacticalActionConverter;
@@ -30,30 +31,32 @@ public class TacticalSessionActionControllerImpl implements TacticalSessionActio
 	private TacticalRoundRepository roundRepository;
 
 	@Override
-	public Mono<TacticalRound> getDeclaredAction(String tacticalSessionId, String source, TacticalActionPhase phase) {
+	public Mono<TacticalRound> getDeclaredAction(String tacticalSessionId, String source, String priority) {
+		TacticalActionPhase priorityConverted = parse(priority);
 		return tacticalService.getCurrentRound(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session " + tacticalSessionId + " not found")))
 			.map(round -> {
 				TacticalAction action = round.getActions().stream()
-					.filter(e -> source.equals(e.getSource()) && phase.equals(e.getPriority()))
+					.filter(e -> source.equals(e.getSource()) && priorityConverted.equals(e.getPriority()))
 					.findFirst().orElse(null);
 				if (action == null) {
-					throw new BadRequestException("Round has not any action for " + source + " and priority " + phase);
+					throw new BadRequestException("Round has not any action for " + source + " and priority " + priority);
 				}
 				return round;
 			});
 	}
 
 	@Override
-	public Mono<TacticalRound> removeDeclaredAction(String tacticalSessionId, String source, TacticalActionPhase phase) {
+	public Mono<TacticalRound> removeDeclaredAction(String tacticalSessionId, String source, String priority) {
+		TacticalActionPhase priorityConverted = parse(priority);
 		return tacticalService.getCurrentRound(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session " + tacticalSessionId + " not found")))
 			.map(round -> {
 				TacticalAction action = round.getActions().stream()
-					.filter(e -> source.equals(e.getSource()) && phase.equals(e.getPriority()))
+					.filter(e -> source.equals(e.getSource()) && priorityConverted.equals(e.getPriority()))
 					.findFirst().orElse(null);
 				if (action == null) {
-					throw new BadRequestException("Round has not any action for " + source + " and priority " + phase);
+					throw new BadRequestException("Missing action for " + source + " and priority " + priority);
 				}
 				round.getActions().remove(action);
 				return round;
@@ -62,9 +65,13 @@ public class TacticalSessionActionControllerImpl implements TacticalSessionActio
 	}
 
 	@Override
-	public Mono<TacticalRound> delare(String id, @Valid TacticalActionDeclaration actionDeclaration) {
+	public Mono<TacticalRound> delare(@NotEmpty String tacticalSessionId, @Valid TacticalActionDeclaration actionDeclaration) {
 		TacticalAction tacticalAction = actionConverter.convert(actionDeclaration);
-		return tacticalService.declare(id, tacticalAction);
+		return tacticalService.declare(tacticalSessionId, tacticalAction);
+	}
+	
+	private TacticalActionPhase parse(String value) {
+		return TacticalActionPhase.valueOf(value.toUpperCase());
 	}
 
 }
