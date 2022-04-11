@@ -14,11 +14,11 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.InitiativeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.repository.NpcRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalNpcInstanceService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalRoundService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSessionService;
@@ -37,7 +37,7 @@ public class TacticalServiceImpl implements TacticalService {
 	private TacticalSessionService tacticalSessionService;
 
 	@Autowired
-	private TacticalNpcInstanceService tacticalNpcInstanceService;
+	private TacticalNpcCharacterService npcCharacterService;
 
 	@Autowired
 	private TacticalRoundService tacticalRoundService;
@@ -60,6 +60,9 @@ public class TacticalServiceImpl implements TacticalService {
 	@Autowired
 	private CharacterInfoRepository characterInfoRepository;
 
+	@Autowired
+	private NpcRepository npcRepository;
+
 	@Override
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return tacticalSessionService.createSession(request);
@@ -80,8 +83,11 @@ public class TacticalServiceImpl implements TacticalService {
 		return tacticalSessionRepository
 			.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
-			.zipWith(tacticalNpcInstanceService.create(npcId))
-			.map(pair -> tacticalCharacterContextConverter.convert(pair.getT1(), pair.getT2()))
+			.zipWith(npcRepository.findById(npcId))
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid NPC id.")))
+			.map(pair -> {
+				return npcCharacterService.create(tacticalSessionId, pair.getT2());
+			})
 			.flatMap(tacticalCharacterStatusRepository::save);
 	}
 

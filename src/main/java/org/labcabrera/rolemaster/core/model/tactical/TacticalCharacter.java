@@ -28,6 +28,8 @@ public class TacticalCharacter {
 
 	private String characterId;
 
+	private Integer level;
+
 	@Builder.Default
 	private Boolean isNpc = false;
 
@@ -50,6 +52,8 @@ public class TacticalCharacter {
 	private ContextCharacterItems items = new ContextCharacterItems();
 
 	private Integer armorType;
+
+	private Integer baseDefensiveBonus;
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();

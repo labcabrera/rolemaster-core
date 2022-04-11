@@ -3,8 +3,10 @@
 		"id": "ork-fighter-ii-scimitar-at8",
 		"name": "Ork - Fighter II - Scimitar AT8",
 		"level": 2,
+		"levelBaseModifier": "B",
 		"unique": false,
 		"hp": 50,
+		"hpBaseModifier": "D",
 		"armorType": 8,
 		"attacks": [
 			{
@@ -15,6 +17,11 @@
 			}
 		],
 		"defensiveBonus": 30,
+		"baseMove": 50,
+		"mmBonus": 0,
+		"maxPace": "fastSprint",
+		"movementSpeed": "SL",
+		"attackQuickness": "MD",
 		"universes": [
 			"generic", "middle-earth"
 		]
@@ -23,8 +30,10 @@
 		"id": "ork-fighter-ii-bow-at8",
 		"name": "Ork - Fighter II - Bow AT8",
 		"level": 2,
+		"levelBaseModifier": "B",
 		"unique": false,
 		"hp": 50,
+		"hpBaseModifier": "D",
 		"armorType": 8,
 		"attacks": [
 			{
@@ -41,6 +50,11 @@
 			}
 		],
 		"defensiveBonus": 30,
+		"baseMove": 50,
+		"mmBonus": 0,
+		"maxPace": "fastSprint",
+		"movementSpeed": "SL",
+		"attackQuickness": "MD",
 		"universes": [
 			"generic", "middle-earth"
 		]
@@ -49,8 +63,10 @@
 		"id": "ork-fighter-iv-scimitar-at17",
 		"name": "Ork - Fighter IV - Scimitar AT17",
 		"level": 4,
+		"levelBaseModifier": "D",
 		"unique": false,
 		"hp": 70,
+		"hpBaseModifier": "D",
 		"armorType": 17,
 		"attacks": [
 			{
@@ -61,6 +77,11 @@
 			}
 		],
 		"defensiveBonus": 40,
+		"baseMove": 60,
+		"mmBonus": 10,
+		"maxPace": "sprint",
+		"movementSpeed": "MD",
+		"attackQuickness": "MD",
 		"universes": [
 			"generic", "middle-earth"
 		]
