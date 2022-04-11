@@ -19,7 +19,9 @@ public enum DebufStatus {
 
 	CANT_PARRY("cantParry"),
 
-	MUST_PARRY("mustParry");
+	MUST_PARRY("mustParry"),
+
+	SHOCK("shock");
 
 	String name;
 

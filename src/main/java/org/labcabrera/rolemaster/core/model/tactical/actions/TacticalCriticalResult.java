@@ -1,8 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical.actions;
 
-import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.combat.CriticalResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
+import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 
 import lombok.AllArgsConstructor;
@@ -20,8 +19,8 @@ public class TacticalCriticalResult {
 
 	private CriticalType type;
 
-	private OpenRoll roll;
+	private Integer roll;
 
-	private CriticalResult criticalResult;
+	private CriticalTableResult criticalTableResult;
 
 }

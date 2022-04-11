@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.controller.converter.TacticalActionConverter;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
@@ -13,6 +14,7 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 
 	@Autowired
 	private MeleeAttackExecutionService meleeExecutionService;
+
+	@Autowired
+	private CriticalAttackExecutionService criticalAttackExecutionService;
 
 	@Override
 	public Mono<TacticalAction> getDeclaredAction(String actionId) {
@@ -74,6 +79,14 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 				}
 				throw new RuntimeException("Not implemented");
 			});
+	}
+
+	@Override
+	public Mono<TacticalAction> executeCritical(MeleeAttackCriticalExecution request) {
+		return actionRepository.findById(request.getActionId())
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
+			.map(e -> criticalAttackExecutionService.processCritical(e, request))
+			.flatMap(actionRepository::save);
 	}
 
 }

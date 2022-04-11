@@ -1,6 +1,5 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
-import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.Penalty;
 
 public interface CharacterStatusModifier {
@@ -30,7 +29,7 @@ public interface CharacterStatusModifier {
 		return null;
 	}
 
-	default Bleeding getBleeding() {
+	default Integer getBleeding() {
 		return null;
 	}
 

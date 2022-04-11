@@ -7,6 +7,6 @@ public class AttackResult {
 
 	private Integer hp;
 
-	private CriticalResult criticalResult;
+	private CriticalTableResult criticalResult;
 
 }
