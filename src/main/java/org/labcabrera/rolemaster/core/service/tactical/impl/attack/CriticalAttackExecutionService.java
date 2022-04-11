@@ -7,7 +7,7 @@ import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.table.critical.CriticalTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,15 +22,18 @@ public class CriticalAttackExecutionService {
 		if (action.getState() != TacticalActionState.PENDING_CRITICAL_RESOLUTION) {
 			throw new BadRequestException("Invalid action state");
 		}
+		if (!(action instanceof TacticalActionAttack)) {
+			throw new BadRequestException("Invalid action type");
+		}
 		//TODO ranged/spell attack
-		TacticalActionMeleeAttack meleeAttack = (TacticalActionMeleeAttack) action;
+		TacticalActionAttack tacticalAttack = (TacticalActionAttack) action;
 
-		CriticalType type = meleeAttack.getCriticalResult().getType();
-		CriticalSeverity severity = meleeAttack.getCriticalResult().getSeverity();
+		CriticalType type = tacticalAttack.getCriticalResult().getType();
+		CriticalSeverity severity = tacticalAttack.getCriticalResult().getSeverity();
 		CriticalTableResult result = criticalTable.getResult(type, severity, execution.getRoll());
 
-		meleeAttack.getCriticalResult().setRoll(execution.getRoll());
-		meleeAttack.getCriticalResult().setCriticalTableResult(result);
+		tacticalAttack.getCriticalResult().setRoll(execution.getRoll());
+		tacticalAttack.getCriticalResult().setCriticalTableResult(result);
 
 		action.setState(TacticalActionState.PENDING_RESOLUTION);
 		return action;

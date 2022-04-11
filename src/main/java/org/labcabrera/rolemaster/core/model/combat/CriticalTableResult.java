@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.tactical.AttackBonus;
 import org.labcabrera.rolemaster.core.model.tactical.CharacterStatusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
 
@@ -21,22 +22,20 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CriticalTableResult implements CharacterStatusModifier {
 
-	private Integer maxRoll;
+	//private Integer maxRoll;
 
-	private CriticalSeverity severity;
+	//private CriticalSeverity severity;
 
 	private Integer hp;
 
 	@Builder.Default
 	private Map<DebufStatus, Integer> debufMap = new LinkedHashMap<>();
 
-	private Integer mustParryPenalty;
+	private Penalty penalty;
 
 	private Integer bleeding;
 
-	private Penalty penalty;
-
-	private Integer bonus;
+	private AttackBonus bonus;
 
 	@Builder.Default
 	private Boolean specialEffect = false;
@@ -58,7 +57,7 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	// llevar/no llevar yelmo
 	// llevar/no grebas
 	// llevar/no armadura pectoral
-	
+
 	// TODO
 	// posibilidades de arma atrapada en el cuerpo X turnos
 
@@ -72,14 +71,19 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	}
 
 	public CriticalTableResult addPenalty(Integer penalty) {
-		return addPenalty(penalty, 1);
+		return addPenalty(penalty, null, "Wound: " + text);
 	}
 
-	public CriticalTableResult addPenalty(Integer penalty, Integer rounds) {
+	public CriticalTableResult addPenalty(Integer penalty, Integer rounds, String description) {
 		if (penalty > 0) {
 			throw new RuntimeException("Invalid penalty");
 		}
-		this.penalty = Penalty.builder().penalty(penalty).rounds(rounds).build();
+		this.penalty = Penalty.builder().penalty(penalty).rounds(rounds).description(description).build();
+		return this;
+	}
+
+	public CriticalTableResult addBonus(Integer bonus) {
+		this.bonus = AttackBonus.builder().bonus(bonus).rounds(1).build();
 		return this;
 	}
 

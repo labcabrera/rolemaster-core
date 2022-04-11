@@ -56,9 +56,9 @@ public class CriticalTableS {
 			return CriticalTableResult.builder()
 				.text("El intento de esquiva de tu enemigo evita que adopte una posición agresiva.")
 				.hp(2)
-				.bonus(10)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY);
+				.addDebuf(DebufStatus.MUST_PARRY)
+				.addBonus(10);
 		}
 		else if (roll >= 36 && roll <= 45) {
 			return CriticalTableResult.builder()
@@ -106,9 +106,9 @@ public class CriticalTableS {
 					"Tu enemigo bloquea el ataque con su brazo del escudo. Se rompe el hombro y deja inútil el brazo. Tienes la iniciativa.")
 				.hp(9)
 				.bleeding(2)
-				.bonus(10)
 				.build()
 				.addDebuf(DebufStatus.STUNNED, 3)
+				.addBonus(10)
 				.addEfect("Hombro del escudo roto y brazo inútil.");
 		}
 		else if (roll >= 67 && roll <= 70) {
@@ -144,9 +144,9 @@ public class CriticalTableS {
 				.text("Tu enemigo se aparta a la derecha ante tu ataque. Le haces una herida grave.")
 				.hp(6)
 				.bleeding(6)
-				.bonus(20)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 5);
+				.addDebuf(DebufStatus.STUNNED, 5)
+				.addBonus(20);
 		}
 		else if (roll >= 86 && roll <= 90) {
 			return CriticalTableResult.builder()
@@ -324,11 +324,11 @@ public class CriticalTableS {
 				.text(
 					"Golpe en la cadera con mucha fuerza. Tu enemigo se tambalea. Su recuperación es lenta.")
 				.hp(7)
-				.bonus(10)
 				.build()
 				.addDebuf(DebufStatus.STUNNED, 3)
 				.addDebuf(DebufStatus.CANT_PARRY)
-				.addPenalty(-20);
+				.addPenalty(-20)
+				.addBonus(10);
 		}
 		else if (roll >= 96 && roll <= 99) {
 			return CriticalTableResult.builder()
@@ -445,10 +445,10 @@ public class CriticalTableS {
 			return CriticalTableResult.builder()
 				.text("Tajo en el cuello que corta cualquier ropaje y armadura que tuviese.")
 				.hp(8)
-				.bonus(10)
 				.build()
 				.addDebuf(DebufStatus.STUNNED, 4)
-				.addDebuf(DebufStatus.CANT_PARRY, 2);
+				.addDebuf(DebufStatus.CANT_PARRY, 2)
+				.addBonus(10);
 		}
 		else if (roll >= 71 && roll <= 75) {
 			return CriticalTableResult.builder()
@@ -620,10 +620,10 @@ public class CriticalTableS {
 			return CriticalTableResult.builder()
 				.text("Golpeas a tu enemigo en el hombro, sajando músculos.")
 				.hp(5)
-				.bonus(10)
 				.build()
 				.addDebuf(DebufStatus.STUNNED, 3)
-				.addPenalty(-20);
+				.addPenalty(-20)
+				.addBonus(10);
 		}
 		else if (roll >= 71 && roll <= 75) {
 			return CriticalTableResult.builder()
@@ -725,10 +725,10 @@ public class CriticalTableS {
 		else if (roll >= 16 && roll <= 20) {
 			return CriticalTableResult.builder()
 				.text("Fuerte golpe en las costillas. Tu enemigo baja la guardia y casi deja caer el arma.")
-				.bonus(10)
 				.build()
 				.addDebuf(DebufStatus.STUNNED, 1)
-				.addDebuf(DebufStatus.CANT_PARRY, 1);
+				.addDebuf(DebufStatus.CANT_PARRY, 1)
+				.addBonus(10);
 		}
 		else if (roll >= 21 && roll <= 35) {
 			return CriticalTableResult.builder()
@@ -789,9 +789,9 @@ public class CriticalTableS {
 					"Bloqueas el brazo del arma de tu enemigo y después lo seccionas. El enemigo cae inmediatamente y expira en 12 asaltos. ¡Buen golpe!")
 				.hp(12)
 				.deathAfterRounds(12)
-				.bonus(10)
 				.build()
-				.addDebuf(DebufStatus.SHOCK, 12);
+				.addDebuf(DebufStatus.SHOCK, 12)
+				.addBonus(10);
 		}
 		else if (roll >= 67 && roll <= 70) {
 			return CriticalTableResult.builder()

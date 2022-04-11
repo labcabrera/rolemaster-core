@@ -20,4 +20,8 @@ public class ExhaustionPoints {
 	public Integer getPercent() {
 		return current.multiply(new BigDecimal(100)).divide(max).intValue();
 	}
+
+	public void substract(BigDecimal exhaustionPoints) {
+		this.current = this.current.subtract(exhaustionPoints);
+	}
 }

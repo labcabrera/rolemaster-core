@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.tactical.actions;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -37,6 +38,8 @@ public abstract class TacticalActionAttack extends TacticalAction {
 
 	@Schema(description = "In case the attack provokes a critical (or more than one) define the information related to the result of the critical.")
 	private TacticalCriticalResult criticalResult;
+
+	private BigDecimal exhaustionPoints;
 
 	public Integer getOffensiveBonus() {
 		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);

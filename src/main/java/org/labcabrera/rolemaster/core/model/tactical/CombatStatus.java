@@ -33,4 +33,21 @@ public class CombatStatus {
 	@Builder.Default
 	private List<Penalty> penalty = new ArrayList<>();
 
+	@Builder.Default
+	private List<AttackBonus> bonus = new ArrayList<>();
+
+	@Builder.Default
+	private List<String> otherEfects = new ArrayList<>();
+
+	public CombatStatus addDebufStatus(DebufStatus key, Integer value) {
+		if (debufStatusMap.containsKey(key)) {
+			int rounds = debufStatusMap.get(key) + value;
+			debufStatusMap.put(key, rounds);
+		}
+		else {
+			debufStatusMap.put(key, value);
+		}
+		return this;
+	}
+
 }

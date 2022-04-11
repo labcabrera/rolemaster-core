@@ -96,9 +96,9 @@ class BasicCombatCriticalTest extends AbstractCombatTest {
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
-		assertEquals(16, meleeResolved01.getHpResult());
+		assertEquals(10, meleeResolved01.getHpResult());
 		assertNotNull(meleeResolved01.getCriticalResult());
-		assertEquals(CriticalSeverity.C, meleeResolved01.getCriticalResult().getSeverity());
+		assertEquals(CriticalSeverity.A, meleeResolved01.getCriticalResult().getSeverity());
 		assertEquals(CriticalType.S, meleeResolved01.getCriticalResult().getType());
 
 		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, meleeResolved01.getState());

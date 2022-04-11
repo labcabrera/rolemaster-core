@@ -11,9 +11,11 @@ import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 
 	@Autowired
 	private CriticalAttackExecutionService criticalAttackExecutionService;
+
+	@Autowired
+	private AttackResultProcessor attackResultProcessor;
 
 	@Override
 	public Mono<TacticalAction> getDeclaredAction(String actionId) {
@@ -86,7 +91,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 		return actionRepository.findById(request.getActionId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
 			.map(e -> criticalAttackExecutionService.processCritical(e, request))
-			.flatMap(actionRepository::save);
+			.flatMap(actionRepository::save)
+			.map(e -> (TacticalActionAttack) e)
+			.flatMap(e -> attackResultProcessor.apply(e));
 	}
 
 }
