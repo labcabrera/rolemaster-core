@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.dto.action.execution;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeFlankType;
+import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackPosition;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +22,10 @@ public class MeleeAttackExecution extends TacticalActionExecution {
 	private String target;
 
 	@Builder.Default
-	private MeleeFlankType flankType = MeleeFlankType.NONE;
+	private MeleeAttackPosition position = MeleeAttackPosition.NORMAL;
+
+	//TODO translate
+	@Builder.Default
+	private Boolean desenvainado = false;
 
 }

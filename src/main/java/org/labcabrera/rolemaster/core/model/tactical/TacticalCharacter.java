@@ -49,7 +49,7 @@ public class TacticalCharacter {
 	private ContextCharacterModifiers modifiers = new ContextCharacterModifiers();
 
 	@Builder.Default
-	private ContextCharacterItems items = new ContextCharacterItems();
+	private ContextCharacterAttack attack = new ContextCharacterAttack();
 
 	private Integer armorType;
 

@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.model.tactical;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.Penalty;
@@ -18,24 +19,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CombatStatus {
 
-	@Builder.Default
-	private Integer stunnedRounds = 0;
-
-	@Builder.Default
-	private Integer unconsciousRounds = 0;
-
-	@Builder.Default
-	private Integer canNotParryRounds = 0;
-
-	@Builder.Default
-	private Integer mustParryRounds = 0;
+	private Map<DebufStatus, Integer> debufStatusMap;
 
 	@Builder.Default
 	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
 	private Integer reloadingActivityPercent = 0;
-
-	@Builder.Default
-	private Integer surprised = 0;
 
 	@Builder.Default
 	private List<Bleeding> bleding = new ArrayList<>();

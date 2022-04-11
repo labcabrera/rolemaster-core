@@ -20,6 +20,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackPosition;
 import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
@@ -115,6 +116,7 @@ class Combat01Test {
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.actionId(a01.getId())
 			.target(cc02.getId())
+			.position(MeleeAttackPosition.NORMAL)
 			.roll(OpenRoll.builder()
 				.result(56)
 				.rolls(Arrays.asList(56))

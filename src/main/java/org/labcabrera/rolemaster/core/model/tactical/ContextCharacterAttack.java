@@ -9,12 +9,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ContextCharacterItems {
+public class ContextCharacterAttack {
 
 	private String mainWeaponEquippedId;
 
+	private Integer mainWeaponBonus;
+
 	private String secondaryWeaponEquippedId;
 
-	private String armorEquippedId;
+	private Integer secondaryWeaponBonus;
 
 }

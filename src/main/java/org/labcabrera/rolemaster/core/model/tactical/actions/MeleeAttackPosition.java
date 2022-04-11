@@ -2,17 +2,17 @@ package org.labcabrera.rolemaster.core.model.tactical.actions;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum MeleeFlankType {
+public enum MeleeAttackPosition {
 
-	NONE("none"),
+	NORMAL("normal"),
 
 	FLANK("flank"),
 
-	BACK("back");
+	REAR("rear");
 
 	String name;
 
-	private MeleeFlankType(String name) {
+	private MeleeAttackPosition(String name) {
 		this.name = name;
 	}
 
