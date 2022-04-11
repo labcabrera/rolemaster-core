@@ -37,14 +37,11 @@ public class CriticalTableResult implements CharacterStatusModifier {
 
 	private AttackBonus bonus;
 
-	@Builder.Default
-	private Boolean specialEffect = false;
+	private Boolean specialEffect;
 
-	@Builder.Default
-	private Boolean hasInitiative = false;
+	private Boolean hasInitiative;
 
-	@Builder.Default
-	private Boolean instantDeath = false;
+	private Boolean instantDeath;
 
 	private Integer deathAfterRounds;
 
@@ -71,7 +68,7 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	}
 
 	public CriticalTableResult addPenalty(Integer penalty) {
-		return addPenalty(penalty, null, "Wound: " + text);
+		return addPenalty(penalty, null, null);
 	}
 
 	public CriticalTableResult addPenalty(Integer penalty, Integer rounds, String description) {

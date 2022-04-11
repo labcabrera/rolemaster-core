@@ -18,6 +18,7 @@ import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
+import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
@@ -61,6 +62,9 @@ class BasicCombatCriticalTest extends AbstractCombatTest {
 		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
 		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();
 
+		assertEquals(50, cc02.getHp().getMax());
+		assertEquals(50, cc02.getHp().getCurrent());
+
 		TacticalRound round01 = tacticalService.startRound(tsId).share().block();
 		String r01Id = round01.getId();
 
@@ -74,7 +78,7 @@ class BasicCombatCriticalTest extends AbstractCombatTest {
 			.build()).share().block();
 		assertNotNull(a01);
 		assertNotNull(a01.getState());
-		assertEquals(TacticalActionState.QUEUED, a01.getState());
+		assertEquals(TacticalActionState.PENDING, a01.getState());
 
 		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
 
@@ -110,9 +114,17 @@ class BasicCombatCriticalTest extends AbstractCombatTest {
 
 		TacticalAction taResolved02 = tacticalActionService.executeCritical(criticalExecution).share().block();
 		assertTrue(taResolved02 instanceof TacticalActionMeleeAttack);
-		TacticalActionMeleeAttack meleeResolved02 = (TacticalActionMeleeAttack) taResolved01;
+		TacticalActionMeleeAttack meleeResolved02 = (TacticalActionMeleeAttack) taResolved02;
 
 		assertEquals(TacticalActionState.RESOLVED, meleeResolved02.getState());
+		assertEquals(2, meleeResolved02.getCriticalResult().getCriticalTableResult().getHp());
+		assertEquals(55, meleeResolved02.getCriticalResult().getRoll());
+
+		cc02 = this.tacticalCharacterRepository.findById(cc02.getId()).share().block();
+		assertEquals(38, cc02.getHp().getCurrent());
+		assertEquals(1, cc02.getCombatStatus().getDebufStatusMap().size());
+		assertEquals(1, cc02.getCombatStatus().getDebufStatusMap().get(DebufStatus.MUST_PARRY));
+
 	}
 
 }

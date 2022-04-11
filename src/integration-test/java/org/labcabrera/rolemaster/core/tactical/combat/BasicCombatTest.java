@@ -71,7 +71,7 @@ class BasicCombatTest extends AbstractCombatTest {
 			.build()).share().block();
 		assertNotNull(a01);
 		assertNotNull(a01.getState());
-		assertEquals(TacticalActionState.QUEUED, a01.getState());
+		assertEquals(TacticalActionState.PENDING, a01.getState());
 
 		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
 

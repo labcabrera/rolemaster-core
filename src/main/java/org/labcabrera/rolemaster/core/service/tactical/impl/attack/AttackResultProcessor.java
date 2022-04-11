@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
 import java.util.Map.Entry;
 
+import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
@@ -14,12 +15,14 @@ import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextReposit
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 /**
  * Service that updates character data based on the outcome of an attack
  */
 @Component
+@Slf4j
 public class AttackResultProcessor {
 
 	@Autowired
@@ -29,8 +32,16 @@ public class AttackResultProcessor {
 	private TacticalCharacterContextRepository tacticalCharacterRepository;
 
 	public Mono<TacticalActionAttack> apply(TacticalActionAttack attack) {
-		if (attack.getState() != TacticalActionState.PENDING_RESOLUTION) {
-			Mono.just(attack);
+		log.info("Processing attack result for action {} ({})", attack.getId(), attack.getState());
+		switch (attack.getState()) {
+		case PENDING_RESOLUTION:
+			break;
+		case PENDING_CRITICAL_RESOLUTION:
+			return Mono.just(attack);
+		case PENDING:
+		case RESOLVED:
+		default:
+			throw new BadRequestException("Invalid state " + attack.getState());
 		}
 		return Mono.just(attack)
 			.flatMap(this::updateTarget)
@@ -88,6 +99,7 @@ public class AttackResultProcessor {
 	}
 
 	private Mono<TacticalActionAttack> updateAttack(TacticalActionAttack attack) {
+		log.info("Updating attack result for action {} ({})", attack.getId(), attack.getState());
 		return tacticalActionRepository.findById(attack.getId())
 			.map(e -> {
 				e.setState(TacticalActionState.RESOLVED);

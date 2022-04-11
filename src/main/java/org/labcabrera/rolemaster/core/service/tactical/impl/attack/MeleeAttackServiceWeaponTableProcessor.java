@@ -36,7 +36,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 		String stringResult = weaponTable.get(weaponId, targetArmor, attackRoll);
 
 		int hp;
-		TacticalActionState state = TacticalActionState.RESOLVED;
+		TacticalActionState state = TacticalActionState.PENDING_RESOLUTION;
 		Pattern patternHp = Pattern.compile(PATTERN_HP);
 		Matcher matcherHp = patternHp.matcher(stringResult);
 		if (matcherHp.matches()) {

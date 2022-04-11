@@ -65,7 +65,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 					throw new BadRequestException("Duplicate action declaration");
 				}
 				TacticalAction action = pair.getT1();
-				action.setState(TacticalActionState.QUEUED);
+				action.setState(TacticalActionState.PENDING);
 				return action;
 			})
 			.flatMap(actionRepository::save);
@@ -90,7 +90,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	public Mono<TacticalAction> executeCritical(MeleeAttackCriticalExecution request) {
 		return actionRepository.findById(request.getActionId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
-			.map(e -> criticalAttackExecutionService.processCritical(e, request))
+			.map(e -> criticalAttackExecutionService.apply(e, request))
 			.flatMap(actionRepository::save)
 			.map(e -> (TacticalActionAttack) e)
 			.flatMap(e -> attackResultProcessor.apply(e));

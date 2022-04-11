@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TacticalActionState {
 
-	QUEUED("queued"),
+	PENDING("pending"),
 
 	PENDING_CRITICAL_RESOLUTION("pendingCriticalResolution"),
 

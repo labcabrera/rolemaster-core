@@ -28,7 +28,7 @@ class TacticalActionMeleeAttackTest {
 			.priority(TacticalActionPhase.NORMAL)
 			.source("source-01")
 			.target("target-01")
-			.state(TacticalActionState.QUEUED)
+			.state(TacticalActionState.PENDING)
 			.notes("foo")
 			.build();
 		action.getInitiativeModifiers().put(InitiativeModifier.CUSTOM, 10);

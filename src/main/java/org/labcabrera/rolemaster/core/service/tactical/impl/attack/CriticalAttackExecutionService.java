@@ -12,20 +12,22 @@ import org.labcabrera.rolemaster.core.table.critical.CriticalTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * This service updates the data of a critical attack from the (closed) critical roll.
+ */
 @Service
 public class CriticalAttackExecutionService {
 
 	@Autowired
 	private CriticalTable criticalTable;
 
-	public TacticalAction processCritical(TacticalAction action, MeleeAttackCriticalExecution execution) {
+	public TacticalAction apply(TacticalAction action, MeleeAttackCriticalExecution execution) {
 		if (action.getState() != TacticalActionState.PENDING_CRITICAL_RESOLUTION) {
-			throw new BadRequestException("Invalid action state");
+			throw new BadRequestException("Invalid action state " + action.getState());
 		}
-		if (!(action instanceof TacticalActionAttack)) {
-			throw new BadRequestException("Invalid action type");
+		else if (!(action instanceof TacticalActionAttack)) {
+			throw new BadRequestException("Invalid action type " + action.getClass().getSimpleName());
 		}
-		//TODO ranged/spell attack
 		TacticalActionAttack tacticalAttack = (TacticalActionAttack) action;
 
 		CriticalType type = tacticalAttack.getCriticalResult().getType();
