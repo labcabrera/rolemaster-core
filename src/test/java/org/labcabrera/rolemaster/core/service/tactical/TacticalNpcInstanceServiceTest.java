@@ -18,7 +18,7 @@ class TacticalNpcInstanceServiceTest {
 
 	@Test
 	void testSuccess() {
-		String npcId = "ork-figther-mele-i";
+		String npcId = "ork-fighter-melee-i";
 		TacticalNpcInstance npcInstance = service.create(npcId).share().block();
 		assertNotNull(npcInstance);
 		assertEquals(npcId, npcInstance.getNpcId());

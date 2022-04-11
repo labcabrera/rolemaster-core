@@ -1,14 +1,14 @@
 package org.labcabrera.rolemaster.core.service.tactical;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.actions.InitiativeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
@@ -29,13 +29,14 @@ public class TacticalRoundService {
 	private TacticalRoundRepository repository;
 
 	@Autowired
-	private TacticalCharacterContextService contextService;
+	private TacticalCharacterService contextService;
 
 	public List<TacticalAction> getQueue(TacticalRound round) {
-		if (!round.getInitiativeLoaded()) {
-			throw new BadRequestException("Initiatives have not been loaded");
-		}
-		return round.getActions();
+		throw new NotImplementedException();
+		//		if (!round.getInitiativeLoaded()) {
+		//			throw new BadRequestException("Initiatives have not been loaded");
+		//		}
+		//		return round.getActions();
 	}
 
 	public TacticalRound generateRandomInitiatives(TacticalRound round) {
@@ -49,11 +50,12 @@ public class TacticalRoundService {
 	}
 
 	public Set<String> getCharacters(TacticalRound round) {
-		Set<String> set = new HashSet<>();
-		for (TacticalAction action : round.getActions()) {
-			set.add(action.getSource());
-		}
-		return set;
+		throw new NotImplementedException();
+		//		Set<String> set = new HashSet<>();
+		//		for (TacticalAction action : round.getActions()) {
+		//			set.add(action.getSource());
+		//		}
+		//		return set;
 	}
 
 	public Mono<TacticalRound> loadInitiatives(TacticalRound round) {
@@ -68,11 +70,11 @@ public class TacticalRoundService {
 			}).flatMap(repository::save);
 	}
 
-	private TacticalRound loadInitiatives(TacticalRound round, List<TacticalCharacterContext> characters) {
+	private TacticalRound loadInitiatives(TacticalRound round, List<TacticalCharacter> characters) {
 		characters.stream().forEach(c -> {
 			String characterIdentifier = c.getCharacterId();
 			Map<InitiativeModifier, Integer> map = new LinkedHashMap<>();
-			map.put(InitiativeModifier.RANDOM_ROLL, round.getInitiativeRollMap().get(characterIdentifier));
+			map.put(InitiativeModifier.ROLL, round.getInitiativeRollMap().get(characterIdentifier));
 			map.put(InitiativeModifier.DECLARED_MOVEMENT, 0);
 			map.put(InitiativeModifier.HP, 0);
 			map.put(InitiativeModifier.SURPRISED, 0);

@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.model.tactical;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.character.ContextCharacterModifiers;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -11,11 +12,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Schema(description = "Represents a certain state of a player or NPC (e.g. life points) associated with a tactical game session.")
+@Document(collection = "tacticalCharacters")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TacticalCharacterContext {
+public class TacticalCharacter {
 
 	@Id
 	private String id;
@@ -46,6 +48,8 @@ public class TacticalCharacterContext {
 
 	@Builder.Default
 	private ContextCharacterItems items = new ContextCharacterItems();
+
+	private Integer armorType;
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();

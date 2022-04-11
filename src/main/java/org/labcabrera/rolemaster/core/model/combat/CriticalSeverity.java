@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.model.combat;
 
-public enum CritSeverity {
+public enum CriticalSeverity {
 
 	A,
 

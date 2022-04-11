@@ -1,19 +1,18 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 
 import org.labcabrera.rolemaster.core.controller.converter.TacticalActionConverter;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
+import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,66 +22,55 @@ import reactor.core.publisher.Mono;
 public class TacticalActionServiceImpl implements TacticalActionService {
 
 	@Autowired
-	private TacticalService tacticalService;
-
-	@Autowired
 	private TacticalActionConverter actionConverter;
 
 	@Autowired
-	private TacticalRoundRepository roundRepository;
+	private TacticalActionRepository actionRepository;
+
+	@Autowired
+	private MeleeAttackExecutionService meleeExecutionService;
 
 	@Override
-	public Mono<TacticalRound> getDeclaredAction(String tacticalSessionId, String source, TacticalActionPhase priority) {
-		return tacticalService.getCurrentRound(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session " + tacticalSessionId + " not found")))
-			.map(round -> {
-				TacticalAction action = round.getActions().stream()
-					.filter(e -> source.equals(e.getSource()) && priority.equals(e.getPriority()))
-					.findFirst().orElse(null);
-				if (action == null) {
-					throw new BadRequestException("Round has not any action for " + source + " and priority " + priority);
+	public Mono<TacticalAction> getDeclaredAction(String actionId) {
+		return actionRepository.findById(actionId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")));
+	}
+
+	@Override
+	public Mono<Void> removeDeclaredAction(String actionId) {
+		return actionRepository.findById(actionId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
+			//TODO check round state
+			.flatMap(actionRepository::delete);
+	}
+
+	@Override
+	public Mono<TacticalAction> delare(@Valid TacticalActionDeclaration actionDeclaration) {
+		TacticalAction ta = actionConverter.convert(actionDeclaration);
+		return Mono.just(ta)
+			.zipWith(actionRepository.existsByRoundIdAndSourceAndPriority(ta.getRoundId(), ta.getSource(), ta.getPriority()))
+			.map(pair -> {
+				if (pair.getT2()) {
+					throw new BadRequestException("Duplicate action declaration");
 				}
-				return round;
+				return pair.getT1();
+			})
+			.flatMap(actionRepository::save);
+	}
+
+	@Override
+	public Mono<TacticalAction> execute(TacticalActionExecution request) {
+		return actionRepository.findById(request.getActionId())
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
+			.flatMap(action -> {
+				if (action instanceof TacticalActionMeleeAttack) {
+					if (!(request instanceof MeleeAttackExecution)) {
+						throw new BadRequestException("Expected melee attack execution");
+					}
+					return meleeExecutionService.execute((TacticalActionMeleeAttack) action, (MeleeAttackExecution) request);
+				}
+				throw new RuntimeException("Not implemented");
 			});
 	}
 
-	@Override
-	public Mono<TacticalRound> removeDeclaredAction(String tacticalSessionId, String source, TacticalActionPhase priority) {
-		return tacticalService.getCurrentRound(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session " + tacticalSessionId + " not found")))
-			.map(round -> {
-				TacticalAction action = round.getActions().stream()
-					.filter(e -> source.equals(e.getSource()) && priority.equals(e.getPriority()))
-					.findFirst().orElse(null);
-				if (action == null) {
-					throw new BadRequestException("Missing action for " + source + " and priority " + priority);
-				}
-				round.getActions().remove(action);
-				return round;
-			})
-			.flatMap(roundRepository::save);
-	}
-
-	@Override
-	public Mono<TacticalRound> delare(@NotEmpty String tacticalSessionId, @Valid TacticalActionDeclaration actionDeclaration) {
-		TacticalAction tacticalAction = actionConverter.convert(actionDeclaration);
-		return tacticalService.declare(tacticalSessionId, tacticalAction);
-	}
-
-	@Override
-	public void setInitiative(String tacticalSessionId, String tctx, int initiativeRoll) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Mono<TacticalRound> execute(String tsId, String id, TacticalActionPhase normal, TacticalActionExecution execution) {
-		return null;
-	}
-
-	@Override
-	public void startExecutionPhase(String tsId) {
-		// TODO Auto-generated method stub
-
-	}
 }

@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
-class TacticalActionMeleAttackTest {
+class TacticalActionMeleeAttackTest {
 
 	@Autowired
 	private ObjectMapper objectMapper;
 
 	@Test
 	void test() throws JsonProcessingException {
-		TacticalActionMeleAttack action = TacticalActionMeleAttack.builder()
+		TacticalActionMeleeAttack action = TacticalActionMeleeAttack.builder()
 			.actionPercent(42)
-			.meleAttackType(MeleeAttackType.PRESS_AND_MELEE)
+			.meleeAttackType(MeleeAttackType.PRESS_AND_MELEE)
 			.parry(55)
 			.priority(TacticalActionPhase.NORMAL)
 			.source("source-01")
@@ -32,7 +32,7 @@ class TacticalActionMeleAttackTest {
 			.notes("foo")
 			.build();
 		action.getInitiativeModifiers().put(InitiativeModifier.CUSTOM, 10);
-		action.getInitiativeModifiers().put(InitiativeModifier.RANDOM_ROLL, 11);
+		action.getInitiativeModifiers().put(InitiativeModifier.ROLL, 11);
 
 		String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(action);
 		String check = """
@@ -55,7 +55,7 @@ class TacticalActionMeleAttackTest {
 
 		assertEquals(check, json);
 		TacticalAction actionReaded = objectMapper.readerFor(TacticalAction.class).readValue(json);
-		assertTrue(actionReaded instanceof TacticalActionMeleAttack);
+		assertTrue(actionReaded instanceof TacticalActionMeleeAttack);
 
 		assertEquals(action, actionReaded);
 

@@ -27,6 +27,9 @@ import lombok.experimental.SuperBuilder;
 public abstract class TacticalActionDeclaration {
 
 	@NotNull
+	private String roundId;
+
+	@NotNull
 	private String source;
 
 	@NotNull

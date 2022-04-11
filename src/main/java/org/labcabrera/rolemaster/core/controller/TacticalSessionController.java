@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.springdoc.api.annotations.ParameterObject;
@@ -64,14 +64,14 @@ public interface TacticalSessionController {
 
 	@GetMapping("/{id}/characters")
 	@Operation(summary = "Find tactical session character contexts.")
-	Flux<TacticalCharacterContext> findCharacters(@PathVariable("id") String id);
+	Flux<TacticalCharacter> findCharacters(@PathVariable("id") String id);
 
 	@PostMapping("/{id}/characters/player/{characterId}")
 	@Operation(summary = "Add a new character to current tactical session.")
-	Mono<TacticalCharacterContext> addPlayerCharacter(@PathVariable("id") String id, @PathVariable("characterId") String characterId);
+	Mono<TacticalCharacter> addPlayerCharacter(@PathVariable("id") String id, @PathVariable("characterId") String characterId);
 
 	@PostMapping("/{id}/characters/npc/{npcId}")
 	@Operation(summary = "Add a new character to current tactical session.")
-	Mono<TacticalCharacterContext> addNpcCharacter(@PathVariable("id") String id, @PathVariable("npcId") String npcId);
+	Mono<TacticalCharacter> addNpcCharacter(@PathVariable("id") String id, @PathVariable("npcId") String npcId);
 
 }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum InitiativeModifier {
 
-	RANDOM_ROLL("randomRoll"),
+	ROLL("roll"),
 
 	ATTRIBUTE("attribute"),
 

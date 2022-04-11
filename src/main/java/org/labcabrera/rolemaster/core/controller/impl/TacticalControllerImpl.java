@@ -6,7 +6,7 @@ import org.labcabrera.rolemaster.core.controller.TacticalSessionController;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
@@ -41,7 +41,7 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	@Override
 	public Flux<TacticalSession> find(String strategicSessionId, Pageable pageable) {
 		Example<TacticalSession> example = Example.of(new TacticalSession());
-		example.getProbe().setCurrentRound(null);
+		//example.getProbe().setCurrentRound(null);
 		if (StringUtils.isNotBlank(strategicSessionId)) {
 			example.getProbe().setStrategicSessionId(strategicSessionId);
 		}
@@ -74,17 +74,17 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	}
 
 	@Override
-	public Mono<TacticalCharacterContext> addPlayerCharacter(String id, String characterId) {
+	public Mono<TacticalCharacter> addPlayerCharacter(String id, String characterId) {
 		return tacticalService.addCharacter(id, characterId);
 	}
 
 	@Override
-	public Mono<TacticalCharacterContext> addNpcCharacter(String id, String npcId) {
+	public Mono<TacticalCharacter> addNpcCharacter(String id, String npcId) {
 		return tacticalService.addNpc(id, npcId);
 	}
 
 	@Override
-	public Flux<TacticalCharacterContext> findCharacters(String tacticalSessionId) {
+	public Flux<TacticalCharacter> findCharacters(String tacticalSessionId) {
 		return characterContextRepository.findByTacticalSessionId(tacticalSessionId);
 	}
 

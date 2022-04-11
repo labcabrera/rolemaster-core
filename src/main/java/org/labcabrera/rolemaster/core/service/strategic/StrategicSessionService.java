@@ -7,9 +7,9 @@ import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
 import org.labcabrera.rolemaster.core.exception.SessionNotFoundException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterContextService;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class StrategicSessionService {
 	private StrategicSessionRepository repository;
 
 	@Autowired
-	private TacticalCharacterContextService characterStatusService;
+	private TacticalCharacterService characterStatusService;
 
 	public Mono<StrategicSession> findById(String id) {
 		return repository.findById(id);
@@ -47,7 +47,7 @@ public class StrategicSessionService {
 		return repository.save(session);
 	}
 
-	public Mono<TacticalCharacterContext> addCharacter(String sessionId, String characterId) {
+	public Mono<TacticalCharacter> addCharacter(String sessionId, String characterId) {
 		return characterStatusService.create(sessionId, characterId);
 	}
 

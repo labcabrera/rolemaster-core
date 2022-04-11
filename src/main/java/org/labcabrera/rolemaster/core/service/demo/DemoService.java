@@ -7,11 +7,11 @@ import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterContextService;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class DemoService {
 	private CharacterService characterService;
 
 	@Autowired
-	private TacticalCharacterContextService characterStatusService;
+	private TacticalCharacterService characterStatusService;
 
 	@Autowired
 	private StrategicSessionService sessionService;
@@ -66,7 +66,7 @@ public class DemoService {
 		StrategicSession session = sessionService.createSession(sessionCreationRequest).share().block();
 		String sessionId = session.getId();
 
-		TacticalCharacterContext status = sessionService.addCharacter(sessionId, characterId).share().block();
+		TacticalCharacter status = sessionService.addCharacter(sessionId, characterId).share().block();
 
 		log.info("Created character status {}", status.getId());
 

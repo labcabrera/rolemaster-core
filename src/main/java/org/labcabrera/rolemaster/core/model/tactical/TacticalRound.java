@@ -1,13 +1,10 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.actions.InitiativeModifier;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -30,11 +27,10 @@ public class TacticalRound {
 
 	private Integer round;
 
-	@Builder.Default
-	private Boolean initiativeLoaded = false;
+	private TacticalRoundState state;
 
 	@Builder.Default
-	private List<TacticalAction> actions = new ArrayList<>();
+	private Boolean initiativeLoaded = false;
 
 	@Builder.Default
 	private Map<String, Integer> initiativeRollMap = new HashMap<>();

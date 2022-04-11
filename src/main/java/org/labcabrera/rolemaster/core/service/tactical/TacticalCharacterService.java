@@ -10,7 +10,7 @@ import org.labcabrera.rolemaster.core.model.character.ContextCharacterModifiers;
 import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
 import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.PowerPoints;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalNpcInstanceRepository;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
-public class TacticalCharacterContextService {
+public class TacticalCharacterService {
 
 	@Autowired
 	private TacticalCharacterContextRepository repository;
@@ -35,15 +35,15 @@ public class TacticalCharacterContextService {
 	@Autowired
 	private CharacterService characterService;
 
-	public Mono<TacticalCharacterContext> findById(String id) {
+	public Mono<TacticalCharacter> findById(String id) {
 		return repository.findById(id);
 	}
 
-	public Flux<TacticalCharacterContext> findAll(Pageable pageable) {
+	public Flux<TacticalCharacter> findAll(Pageable pageable) {
 		return repository.findAll(pageable.getSort());
 	}
 
-	public Mono<TacticalCharacterContext> create(String sessionId, String characterId) {
+	public Mono<TacticalCharacter> create(String sessionId, String characterId) {
 		return characterService.findById(characterId)
 			.doOnNext(character -> log.info("Readed person {}", character))
 			.map(character -> createContext(character))
@@ -66,7 +66,7 @@ public class TacticalCharacterContextService {
 			.flatMap(repository::delete);
 	}
 
-	public Mono<List<TacticalCharacterContext>> getStatusAsList(Set<String> characterIdentifiers) {
+	public Mono<List<TacticalCharacter>> getStatusAsList(Set<String> characterIdentifiers) {
 		return repository.findByCharacterId(characterIdentifiers).collectList();
 	}
 
@@ -74,8 +74,8 @@ public class TacticalCharacterContextService {
 		return repository.deleteAll();
 	}
 
-	private TacticalCharacterContext createContext(CharacterInfo character) {
-		return TacticalCharacterContext.builder()
+	private TacticalCharacter createContext(CharacterInfo character) {
+		return TacticalCharacter.builder()
 			.characterId(character.getId())
 			.name(character.getName())
 			.hp(Hp.builder()

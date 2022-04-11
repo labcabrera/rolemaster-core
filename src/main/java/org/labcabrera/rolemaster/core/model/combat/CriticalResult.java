@@ -15,7 +15,7 @@ public class CriticalResult implements CharacterStatusModifier {
 
 	private Integer maxRoll;
 
-	private CritSeverity severity;
+	private CriticalSeverity severity;
 
 	private Integer hp;
 

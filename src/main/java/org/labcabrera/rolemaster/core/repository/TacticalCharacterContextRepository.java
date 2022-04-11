@@ -2,15 +2,15 @@ package org.labcabrera.rolemaster.core.repository;
 
 import java.util.Set;
 
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import reactor.core.publisher.Flux;
 
-public interface TacticalCharacterContextRepository extends ReactiveMongoRepository<TacticalCharacterContext, String> {
+public interface TacticalCharacterContextRepository extends ReactiveMongoRepository<TacticalCharacter, String> {
 
-	Flux<TacticalCharacterContext> findByCharacterId(Set<String> characterIdentifiers);
+	Flux<TacticalCharacter> findByCharacterId(Set<String> characterIdentifiers);
 
-	Flux<TacticalCharacterContext> findByTacticalSessionId(String tacticalSessionId);
+	Flux<TacticalCharacter> findByTacticalSessionId(String tacticalSessionId);
 
 }

@@ -19,6 +19,8 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction.ValidTacticalAction;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -34,7 +36,7 @@ import lombok.experimental.SuperBuilder;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
 @JsonSubTypes({
 	@Type(value = TacticalActionCustom.class, name = "custom"),
-	@Type(value = TacticalActionMeleAttack.class, name = "melee-attack"),
+	@Type(value = TacticalActionMeleeAttack.class, name = "melee-attack"),
 	@Type(value = TacticalActionMissileAttack.class, name = "missile-attack"),
 	@Type(value = TacticalActionMovement.class, name = "movement"),
 	@Type(value = TacticalActionMovingManeuver.class, name = "moving-maneuver"),
@@ -42,11 +44,17 @@ import lombok.experimental.SuperBuilder;
 	@Type(value = TacticalActionSpellCast.class, name = "spell-cast"),
 	@Type(value = TacticalActionStaticManeuver.class, name = "static-maneuver")
 })
+@Document(collection = "tacticalActions")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public abstract class TacticalAction {
+
+	@Id
+	private String id;
+
+	private String roundId;
 
 	@NotNull
 	private String source;
@@ -62,6 +70,8 @@ public abstract class TacticalAction {
 	private TacticalActionState state;
 
 	private String notes;
+
+	private Integer effectiveInitiative;
 
 	@Builder.Default
 	private Map<InitiativeModifier, Integer> initiativeModifiers = new LinkedHashMap<>();
