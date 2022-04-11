@@ -20,6 +20,7 @@ public class CriticalTableS {
 		case D:
 			return getResultD(roll);
 		case E:
+			return getResultE(roll);
 		default:
 			throw new NotImplementedException();
 		}
@@ -41,7 +42,7 @@ public class CriticalTableS {
 			return CriticalTableResult.builder()
 				.text("La hoja falla la cara de tu enemigo por centímetros. Tienes la iniciativa el asalto siguiente.")
 				.hp(1)
-				.specialEffect(true)
+				.hasInitiative(true)
 				.build();
 		}
 		else if (roll >= 16 && roll <= 20) {
@@ -366,7 +367,7 @@ public class CriticalTableS {
 			return CriticalTableResult.builder()
 				.text("Un golpe en el costado del enemigo que te proporciona la iniciativa del siguiente asalto.")
 				.hp(6)
-				.specialEffect(true)
+				.hasInitiative(true)
 				.build();
 		}
 		else if (roll >= 16 && roll <= 20) {
@@ -696,6 +697,176 @@ public class CriticalTableS {
 				.specialEffect(true)
 				.build()
 				.addEfect("Corazón destruido");
+		}
+		throw new NotImplementedException();
+	}
+
+	private CriticalTableResult getResultE(Integer roll) {
+		if (roll >= 1 && roll <= 5) {
+			return CriticalTableResult.builder()
+				.text("Tu ataque es débil.")
+				.hp(3)
+				.build();
+		}
+		else if (roll >= 6 && roll <= 10) {
+			return CriticalTableResult.builder()
+				.text("Desequilibras a tu enemigo. Obtienes la iniciativa del siguiente asalto.")
+				.hp(5)
+				.hasInitiative(true)
+				.build();
+		}
+		else if (roll >= 11 && roll <= 15) {
+			return CriticalTableResult.builder()
+				.text("Desvías el arma de tu enemigo, obligándole a retroceder.")
+				.hp(4)
+				.build()
+				.addDebuf(DebufStatus.MUST_PARRY, 1);
+		}
+		else if (roll >= 16 && roll <= 20) {
+			return CriticalTableResult.builder()
+				.text("Fuerte golpe en las costillas. Tu enemigo baja la guardia y casi deja caer el arma.")
+				.bonus(10)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 1)
+				.addDebuf(DebufStatus.CANT_PARRY, 1);
+		}
+		else if (roll >= 21 && roll <= 35) {
+			return CriticalTableResult.builder()
+				.text(
+					"Tu enemigo evita tu esfuerzo, pero le haces una muesca en cuanto te recuperas. Recibe una herida leve en el costado y retrocede 3 metros.")
+				.hp(3)
+				.bleeding(1)
+				.build()
+				.addPenalty(-10);
+		}
+		else if (roll >= 36 && roll <= 45) {
+			return CriticalTableResult.builder()
+				.text("Golpe en la parte superior de la pierna. La armadura ayuda a parar el impacto.")
+				//TODO con grebas
+				.specialEffect(true)
+				.build();
+		}
+		else if (roll >= 46 && roll <= 50) {
+			return CriticalTableResult.builder()
+				.text("Golpe en el estómago. Se dobla de dolor por lo que tiras de tu espada haciéndole otro tajo.")
+				.hp(4)
+				.bleeding(3)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 1)
+				.addDebuf(DebufStatus.CANT_PARRY, 1);
+		}
+		else if (roll >= 51 && roll <= 55) {
+			return CriticalTableResult.builder()
+				.text("Abres un tajo en tu enemigo con poca gracia. Estás inseguro del eéxito hasta que ves la sangre que mana del pecho.")
+				.hp(6)
+				.bleeding(4)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 2)
+				.addPenalty(-10);
+
+		}
+		else if (roll >= 56 && roll <= 60) {
+			return CriticalTableResult.builder()
+				.text("Herida en el muslo. Tu ataque penetra bastante, seccionando una vena.")
+				.hp(6)
+				.bleeding(4)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 2)
+				.addPenalty(-10);
+		}
+		else if (roll >= 61 && roll <= 65) {
+			return CriticalTableResult.builder()
+				.text("Tu enemigo intenta desarmarte, pagando con una fea herida en su antebrazo.")
+				.hp(6)
+				.bleeding(3)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 2)
+				.addPenalty(-15);
+		}
+		else if (roll == 66) {
+			return CriticalTableResult.builder()
+				.text(
+					"Bloqueas el brazo del arma de tu enemigo y después lo seccionas. El enemigo cae inmediatamente y expira en 12 asaltos. ¡Buen golpe!")
+				.hp(12)
+				.deathAfterRounds(12)
+				.bonus(10)
+				.build()
+				.addDebuf(DebufStatus.SHOCK, 12);
+		}
+		else if (roll >= 67 && roll <= 70) {
+			return CriticalTableResult.builder()
+				.text(
+					"Cortas los tendones y machacas los huesos del hombro de tu enemigo. El brazo queda inutil.")
+				.bleeding(2)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 4)
+				.addEfect("Tendones seccionados y huesos del hombro rotos. Brazo inútil.");
+		}
+		else if (roll >= 71 && roll <= 75) {
+			return CriticalTableResult.builder()
+				.text(
+					"Cortas músculos y tendones de la parte baja de la pierna de tu enemigo. Tu enemigo caerá si no tiene donde apoyarse.")
+				.hp(8)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 6)
+				.addPenalty(-70);
+		}
+		else if (roll >= 76 && roll <= 80) {
+			return CriticalTableResult.builder()
+				.text(
+					"Tu enemigo se acerca a tu para parar tu golpe. Le amputas dos dedos y rompes el brazo del escudo, dejándolo inútil.")
+				.hp(12)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 3)
+				.addDebuf(DebufStatus.CANT_PARRY, 3);
+		}
+		else if (roll >= 81 && roll <= 85) {
+			return CriticalTableResult.builder()
+				.text("Amputas la mano de tu oponente. Cae en shock durante 12 asaltos, momento en el que muere.")
+				.hp(5)
+				.deathAfterRounds(12)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 12)
+				.addDebuf(DebufStatus.CANT_PARRY, 12)
+				.addDebuf(DebufStatus.SHOCK, 12);
+
+		}
+		else if (roll >= 86 && roll <= 90) {
+			return CriticalTableResult.builder()
+				.text(
+					"Tajo de carnicero que amputa una pierna de tu enemigo. Cae inconsciente. Muere después de 9 asaltos.")
+				.hp(12)
+				.deathAfterRounds(9)
+				.build()
+				.addDebuf(DebufStatus.UNCONSCIOUS, 9);
+		}
+		else if (roll >= 91 && roll <= 95) {
+			return CriticalTableResult.builder()
+				.text("Seccionas la espina dorsal de tu enemigo. Cae paralítico de cuello para abajo permanentemente.")
+				.specialEffect(true)
+				.hp(20)
+				.build()
+				.addDebuf(DebufStatus.PRONE, 1000)
+				.addEfect("Espina dorsal seccionada. Paralitico de cuello para abajo.");
+		}
+		else if (roll >= 96 && roll <= 99) {
+			return CriticalTableResult.builder()
+				.text("Golpe en la cabeza que destruye el cerebro y hace dificil vivir al pobre diablo. Expira en el acto.")
+				.instantDeath(true)
+				.build()
+				.addEfect("Cerebro destruido");
+		}
+		else if (roll == 100) {
+			return CriticalTableResult.builder()
+				.text(
+					"¡Inmejorable! Golpe en la ingle. Todos los órganos vitales quedan destruídos inmediatamente. El enemigo muere después de 24 asaltos de pura agonía.")
+				.hp(10)
+				.deathAfterRounds(12)
+				.build()
+				.addDebuf(DebufStatus.STUNNED, 12)
+				.addDebuf(DebufStatus.CANT_PARRY, 12)
+				.addDebuf(DebufStatus.SHOCK, 24)
+				.addEfect("Todos los órganos internos destruídos después de un golpe en la ingle.");
 		}
 		throw new NotImplementedException();
 	}
