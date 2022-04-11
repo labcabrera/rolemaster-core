@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import java.util.function.UnaryOperator;
 import java.util.regex.Matcher;
@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalCriticalResult;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackContext;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,9 +32,9 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 
 		//TODO Check pifia / rotura
 
-		int attackRoll = Integer.min(150, Integer.max(1, offensiveBonus - defensiveBonus + roll));
+		int attackResult = Integer.min(150, Integer.max(1, offensiveBonus - defensiveBonus + roll));
 
-		String stringResult = weaponTable.get(weaponId, targetArmor, attackRoll);
+		String stringResult = weaponTable.get(weaponId, targetArmor, attackResult);
 
 		int hp;
 		TacticalActionState state = TacticalActionState.PENDING_RESOLUTION;
@@ -60,6 +61,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 			}
 		}
 		context.getAction().setHpResult(hp);
+		context.getAction().setAttackResult(attackResult);
 		context.getAction().setState(state);
 		return context;
 	}

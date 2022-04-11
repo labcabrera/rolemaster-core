@@ -33,6 +33,9 @@ public abstract class TacticalActionAttack extends TacticalAction {
 
 	private String weaponId;
 
+	@Schema(description = "Result of the attack plus all modifiers.")
+	private Integer attackResult;
+
 	@Schema(description = "Number of hit points caused by the attack.")
 	private Integer hpResult;
 

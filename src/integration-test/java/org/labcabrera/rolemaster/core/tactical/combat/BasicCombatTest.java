@@ -86,7 +86,7 @@ class BasicCombatTest extends AbstractCombatTest {
 			.actionId(a01.getId())
 			.target(cc02.getId())
 			.position(MeleeAttackPosition.NORMAL)
-			.roll(OpenRoll.of(40))
+			.roll(OpenRoll.of(60))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(meleeAttackExecution).share().block();
@@ -94,6 +94,8 @@ class BasicCombatTest extends AbstractCombatTest {
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
 		assertNotNull(meleeResolved01);
+		assertEquals(TacticalActionState.RESOLVED, meleeResolved01.getState());
+		assertEquals(6, meleeResolved01.getHpResult());
 
 	}
 

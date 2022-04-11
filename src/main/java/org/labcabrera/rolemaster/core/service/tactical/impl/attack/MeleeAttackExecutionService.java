@@ -5,6 +5,10 @@ import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackDefensiveBonusProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackOffensiveBonusProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackServiceWeaponTableProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +31,9 @@ public class MeleeAttackExecutionService {
 
 	@Autowired
 	private MeleeAttackServiceWeaponTableProcessor weaponTableProcessor;
+
+	@Autowired
+	private AttackResultProcessor attackResultProcessor;
 
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		loadTarget(action, execution);
@@ -53,9 +60,9 @@ public class MeleeAttackExecutionService {
 			.map(offensiveBonusProcessor)
 			.map(defensiveBonusProcessor)
 			.map(weaponTableProcessor)
-			.flatMap(ctx -> {
-				return actionRepository.save(ctx.getAction());
-			});
+			.flatMap(ctx -> attackResultProcessor.apply(ctx.getAction()))
+			.flatMap(actionRepository::save)
+			.map(e -> (TacticalActionMeleeAttack) e);
 	}
 
 	private void loadTarget(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {

@@ -1,10 +1,11 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import java.util.function.UnaryOperator;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackContext;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import java.util.Map.Entry;
 
@@ -100,7 +100,7 @@ public class AttackResultProcessor {
 
 	private Mono<TacticalActionAttack> updateAttack(TacticalActionAttack attack) {
 		log.info("Updating attack result for action {} ({})", attack.getId(), attack.getState());
-		return tacticalActionRepository.findById(attack.getId())
+		return Mono.just(attack)
 			.map(e -> {
 				e.setState(TacticalActionState.RESOLVED);
 				return e;

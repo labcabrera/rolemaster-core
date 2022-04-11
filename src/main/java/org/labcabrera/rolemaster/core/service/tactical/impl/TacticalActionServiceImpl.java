@@ -15,9 +15,9 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttac
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackExecutionService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
