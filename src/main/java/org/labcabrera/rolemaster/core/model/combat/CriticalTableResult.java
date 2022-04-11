@@ -1,6 +1,8 @@
 package org.labcabrera.rolemaster.core.model.combat;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.tactical.CharacterStatusModifier;
@@ -43,6 +45,9 @@ public class CriticalTableResult implements CharacterStatusModifier {
 
 	private Integer deathAfterRounds;
 
+	@Builder.Default
+	private List<String> otherEfects = new ArrayList<>();
+
 	public CriticalTableResult addDebuf(DebufStatus debufStatus) {
 		return addDebuf(debufStatus, 1);
 	}
@@ -61,6 +66,11 @@ public class CriticalTableResult implements CharacterStatusModifier {
 			throw new RuntimeException("Invalid penalty");
 		}
 		this.penalty = Penalty.builder().penalty(penalty).rounds(rounds).build();
+		return this;
+	}
+
+	public CriticalTableResult addEfect(String description) {
+		this.otherEfects.add(description);
 		return this;
 	}
 

@@ -57,7 +57,8 @@ public class CriticalTableS {
 					"Rompes una costilla de tu enemigo con un ataque rapidísimo dirigido a su pecho. Se recupera rápidamente. Su escudo aún está encarado hacia ti.")
 				.hp(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED);
+				.addDebuf(DebufStatus.STUNNED)
+				.addEfect("Costilla rota");
 		}
 		else if (roll >= 36 && roll <= 45) {
 			return CriticalTableResult.builder()
@@ -109,7 +110,8 @@ public class CriticalTableS {
 				.build()
 				.addDebuf(DebufStatus.CANT_PARRY, 3)
 				.addDebuf(DebufStatus.DOWNED)
-				.addPenalty(-90);
+				.addPenalty(-90)
+				.addEfect("Rodilla rota");
 		}
 		else if (roll >= 67 && roll <= 70) {
 			return CriticalTableResult.builder()
@@ -128,7 +130,8 @@ public class CriticalTableS {
 				.build()
 				.addDebuf(DebufStatus.STUNNED, 2)
 				.addDebuf(DebufStatus.CANT_PARRY, 2)
-				.addPenalty(-45);
+				.addPenalty(-45)
+				.addEfect("Músculos y tendones de la parte baja de la pierna seccionados.");
 		}
 		else if (roll >= 76 && roll <= 80) {
 			return CriticalTableResult.builder()
@@ -137,7 +140,8 @@ public class CriticalTableS {
 				.hp(9)
 				.bleeding(4)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 6);
+				.addDebuf(DebufStatus.STUNNED, 6)
+				.addEfect("Músculos y tendones del brazo del escudo seccionados.");
 		}
 		else if (roll >= 81 && roll <= 85) {
 			return CriticalTableResult.builder()
@@ -159,7 +163,8 @@ public class CriticalTableS {
 				.addDebuf(DebufStatus.STUNNED, 4)
 				.addDebuf(DebufStatus.CANT_PARRY, 4)
 				.addDebuf(DebufStatus.DOWNED, 1)
-				.addPenalty(-10);
+				.addPenalty(-10)
+				.addEfect("Huesos de la espalda rotos.");
 		}
 		else if (roll >= 91 && roll <= 95) {
 			return CriticalTableResult.builder()
@@ -168,7 +173,8 @@ public class CriticalTableS {
 				.hp(20)
 				.deathAfterRounds(6)
 				.build()
-				.addDebuf(DebufStatus.SHOCK, 6);
+				.addDebuf(DebufStatus.SHOCK, 6)
+				.addEfect("Pierna amputada y muerte por shock y hemorragia.");
 		}
 		else if (roll >= 96 && roll <= 99) {
 			return CriticalTableResult.builder()
@@ -178,7 +184,8 @@ public class CriticalTableS {
 				.deathAfterRounds(12)
 				.build()
 				.addDebuf(DebufStatus.CANT_PARRY, 6)
-				.addDebuf(DebufStatus.STUNNED, 6);
+				.addDebuf(DebufStatus.STUNNED, 6)
+				.addEfect("Brazo del escudo amputado y muerte por shock y hemorragia.");
 		}
 		else if (roll == 100) {
 			return CriticalTableResult.builder()
@@ -187,7 +194,8 @@ public class CriticalTableS {
 				.hp(5)
 				.build()
 				.addDebuf(DebufStatus.CANT_PARRY, 30)
-				.addDebuf(DebufStatus.STUNNED, 30);
+				.addDebuf(DebufStatus.STUNNED, 30)
+				.addEfect("Ojos destrozados.");
 
 		}
 		throw new NotImplementedException();
