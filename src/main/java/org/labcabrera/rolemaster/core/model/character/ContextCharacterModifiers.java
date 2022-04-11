@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ContextCharacterModifiers {
 
-	private Integer initiative;
+	@Builder.Default
+	private Integer initiative = 0;
 
 }

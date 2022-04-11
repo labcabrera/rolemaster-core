@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
+import org.labcabrera.rolemaster.core.model.tactical.ContextCharacterAttack;
 import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
 import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.PowerPoints;
@@ -36,6 +37,10 @@ public class TacticalNpcCharacterService {
 			.exhaustionPoints(ExhaustionPoints.builder()
 				.max(exhaustionPoints)
 				.current(exhaustionPoints)
+				.build())
+			.attack(ContextCharacterAttack.builder()
+				.mainWeaponId(npc.getAttacks().iterator().next().getWeaponId())
+				.mainWeaponBonus(npc.getAttacks().iterator().next().getBonus())
 				.build())
 			.armorType(npc.getArmorType())
 			.baseDefensiveBonus(npc.getDefensiveBonus())

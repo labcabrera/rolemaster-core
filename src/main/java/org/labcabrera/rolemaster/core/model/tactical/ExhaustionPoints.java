@@ -16,4 +16,8 @@ public class ExhaustionPoints {
 	private BigDecimal max;
 
 	private BigDecimal current;
+
+	public Integer getPercent() {
+		return current.multiply(new BigDecimal(100)).divide(max).intValue();
+	}
 }

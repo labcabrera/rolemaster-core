@@ -1,7 +1,7 @@
 [
 	{
-		"id": "ork-fighter-ii-scimitar-at8",
-		"name": "Ork - Fighter II - Scimitar AT8",
+		"id": "ork-fighter-melee-ii",
+		"name": "Ork - Fighter II - Melee",
 		"level": 2,
 		"levelBaseModifier": "B",
 		"unique": false,
@@ -27,8 +27,8 @@
 		]
 	},
 	{
-		"id": "ork-fighter-ii-bow-at8",
-		"name": "Ork - Fighter II - Bow AT8",
+		"id": "ork-fighter-ranged-ii",
+		"name": "Ork - Fighter II - Ranged",
 		"level": 2,
 		"levelBaseModifier": "B",
 		"unique": false,
@@ -60,8 +60,8 @@
 		]
 	},
 	{
-		"id": "ork-fighter-iv-scimitar-at17",
-		"name": "Ork - Fighter IV - Scimitar AT17",
+		"id": "ork-fighter-melee-iv",
+		"name": "Ork - Fighter IV - Melee",
 		"level": 4,
 		"levelBaseModifier": "D",
 		"unique": false,

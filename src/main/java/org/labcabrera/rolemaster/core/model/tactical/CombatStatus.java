@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CombatStatus {
 
-	private Map<DebufStatus, Integer> debufStatusMap;
+	@Builder.Default
+	private Map<DebufStatus, Integer> debufStatusMap = new HashMap<>();
 
 	@Builder.Default
 	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")

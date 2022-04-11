@@ -85,9 +85,7 @@ public class TacticalServiceImpl implements TacticalService {
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
 			.zipWith(npcRepository.findById(npcId))
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid NPC id.")))
-			.map(pair -> {
-				return npcCharacterService.create(tacticalSessionId, pair.getT2());
-			})
+			.map(pair -> npcCharacterService.create(tacticalSessionId, pair.getT2()))
 			.flatMap(tacticalCharacterStatusRepository::save);
 	}
 

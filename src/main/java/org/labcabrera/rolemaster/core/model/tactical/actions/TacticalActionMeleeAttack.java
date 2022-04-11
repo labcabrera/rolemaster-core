@@ -41,6 +41,8 @@ public class TacticalActionMeleeAttack extends TacticalAction {
 
 	private String target;
 
+	private String shieldParryTarget;
+
 	@Builder.Default
 	private Integer parry = 0;
 

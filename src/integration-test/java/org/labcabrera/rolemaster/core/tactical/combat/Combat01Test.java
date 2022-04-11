@@ -85,11 +85,10 @@ class Combat01Test {
 			.build()).share().block();
 
 		String tsId = ts.getId();
-		String npcId01 = "ork-fighter-melee-i";
-		String npcId02 = "ork-fighter-range-i";
+		String npcId = "ork-fighter-melee-ii";
 
-		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId01).share().block();
-		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId02).share().block();
+		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
+		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();
 
 		TacticalRound round01 = tacticalService.startRound(tsId).share().block();
 		String r01Id = round01.getId();
