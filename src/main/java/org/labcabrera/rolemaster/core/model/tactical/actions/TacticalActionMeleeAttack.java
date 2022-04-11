@@ -19,6 +19,7 @@ import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -56,8 +57,11 @@ public class TacticalActionMeleeAttack extends TacticalAction {
 
 	private String weaponId;
 
-	@Builder.Default
-	private Boolean requiresCriticalResolution = false;
+	@Schema(description = "Number of hit points caused by the attack.")
+	private Integer hpResult;
+
+	@Schema(description = "In case the attack provokes a critical (or more than one) define the information related to the result of the critical.")
+	private TacticalCriticalResult criticalResult;
 
 	public Integer getOffensiveBonus() {
 		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);

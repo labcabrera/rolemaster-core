@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
@@ -53,7 +54,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 				if (pair.getT2()) {
 					throw new BadRequestException("Duplicate action declaration");
 				}
-				return pair.getT1();
+				TacticalAction action = pair.getT1();
+				action.setState(TacticalActionState.QUEUED);
+				return action;
 			})
 			.flatMap(actionRepository::save);
 	}

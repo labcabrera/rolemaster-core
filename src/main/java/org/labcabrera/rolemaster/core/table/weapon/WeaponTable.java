@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WeaponTable {
 
-	private static final String[] weapons = { "dagger" };
+	private static final String[] weapons = { "dagger", "scimitar" };
 
 	private final Map<String, Map<Integer, Map<Integer, String>>> values = new HashMap<>();
 

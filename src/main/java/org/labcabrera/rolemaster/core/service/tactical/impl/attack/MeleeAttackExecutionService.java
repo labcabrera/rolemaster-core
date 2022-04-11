@@ -25,6 +25,9 @@ public class MeleeAttackExecutionService {
 	@Autowired
 	private MeleeAttackDefensiveBonusProcessor defensiveBonusProcessor;
 
+	@Autowired
+	private MeleeAttackServiceWeaponTableProcessor weaponTableProcessor;
+
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		loadTarget(action, execution);
 		MeleeAttackContext context = MeleeAttackContext.builder()
@@ -49,6 +52,7 @@ public class MeleeAttackExecutionService {
 			})
 			.map(offensiveBonusProcessor)
 			.map(defensiveBonusProcessor)
+			.map(weaponTableProcessor)
 			.flatMap(ctx -> {
 				return actionRepository.save(ctx.getAction());
 			});

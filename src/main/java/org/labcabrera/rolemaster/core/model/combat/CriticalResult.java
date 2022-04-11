@@ -1,6 +1,9 @@
 package org.labcabrera.rolemaster.core.model.combat;
 
+import java.util.Map;
+
 import org.labcabrera.rolemaster.core.model.tactical.CharacterStatusModifier;
+import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,13 +22,7 @@ public class CriticalResult implements CharacterStatusModifier {
 
 	private Integer hp;
 
-	private Integer stunnedRounds;
-
-	private Integer unconsciousRounds;
-
-	private Integer canNotParryRounds;
-
-	private Integer mustParryRounds;
+	private Map<DebufStatus, Integer> debufMap;
 
 	private Integer mustParryPenalty;
 

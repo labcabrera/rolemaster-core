@@ -6,6 +6,8 @@ public enum TacticalActionState {
 
 	QUEUED("queued"),
 
+	PENDING_CRITICAL_RESOLUTION("pendingCriticalResolution"),
+
 	RESOLVED("resolved");
 
 	@JsonValue

@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
+import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalCriticalResult;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,12 +22,16 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 	private WeaponTable weaponTable;
 
 	public MeleeAttackContext apply(MeleeAttackContext context) {
-		String weaponId = context.getAction().getWeaponId();
-		Integer targetArmor = context.getTarget().getArmorType();
+		String weaponId = context.getSource().getAttack().getMainWeaponId();
+		int targetArmor = context.getTarget().getArmorType();
 
 		int offensiveBonus = context.getAction().getOffensiveBonus();
 		int defensiveBonus = context.getAction().getDefensiveBonus();
-		int attackRoll = offensiveBonus - defensiveBonus + context.getAction().getRoll().getResult();
+		int roll = context.getExecution().getRoll().getResult();
+
+		//TODO Check pifia / rotura
+
+		int attackRoll = offensiveBonus - defensiveBonus + roll;
 
 		if (attackRoll > 150) {
 			attackRoll = 150;
@@ -36,10 +42,8 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 
 		String stringResult = weaponTable.get(weaponId, targetArmor, attackRoll);
 
-		Integer hp = 0;
-		CriticalSeverity criticalSeverity = null;
-		CriticalType criticalType = null;
-
+		int hp;
+		TacticalActionState state = TacticalActionState.RESOLVED;
 		Pattern patternHp = Pattern.compile(PATTERN_HP);
 		Matcher matcherHp = patternHp.matcher(stringResult);
 		if (matcherHp.matches()) {
@@ -50,17 +54,20 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 			Matcher matcherCrit = patternCrit.matcher(stringResult);
 			if (matcherCrit.matches()) {
 				hp = Integer.parseInt(matcherCrit.group(1));
-				criticalSeverity = CriticalSeverity.valueOf(matcherCrit.group(2));
-				criticalType = CriticalType.valueOf(matcherCrit.group(3));
+				CriticalSeverity severity = CriticalSeverity.valueOf(matcherCrit.group(2));
+				CriticalType type = CriticalType.valueOf(matcherCrit.group(3));
+				state = TacticalActionState.PENDING_CRITICAL_RESOLUTION;
+				context.getAction().setCriticalResult(TacticalCriticalResult.builder()
+					.severity(severity)
+					.type(type)
+					.build());
 			}
 			else {
 				throw new RuntimeException("Invalid result");
 			}
 		}
-
-		context.setHp(hp);
-		context.setCriticalSeverity(criticalSeverity);
-		context.setCriticalType(criticalType);
+		context.getAction().setHpResult(hp);
+		context.getAction().setState(state);
 		return context;
 	}
 

@@ -2,12 +2,12 @@ package org.labcabrera.rolemaster.core.tactical.combat;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
@@ -15,14 +15,18 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
+import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
+import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackPosition;
 import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
@@ -102,6 +106,8 @@ class Combat01Test {
 			.meleeAttackType(MeleeAttackType.PRESS_AND_MELEE)
 			.build()).share().block();
 		assertNotNull(a01);
+		assertNotNull(a01.getState());
+		assertEquals(TacticalActionState.QUEUED, a01.getState());
 
 		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
 
@@ -117,15 +123,21 @@ class Combat01Test {
 			.target(cc02.getId())
 			.position(MeleeAttackPosition.NORMAL)
 			.roll(OpenRoll.builder()
-				.result(56)
-				.rolls(Arrays.asList(56))
+				.result(85)
+				.rolls(Arrays.asList(85))
 				.build())
 			.build();
 
-		tacticalActionService.execute(meleeAttackExecution).share().block();
+		TacticalAction taResolved01 = tacticalActionService.execute(meleeAttackExecution).share().block();
+		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
+		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
-		Assertions.assertNotNull(round01);
+		assertEquals(16, meleeResolved01.getHpResult());
+		assertNotNull(meleeResolved01.getCriticalResult());
+		assertEquals(CriticalSeverity.C, meleeResolved01.getCriticalResult().getSeverity());
+		assertEquals(CriticalType.S, meleeResolved01.getCriticalResult().getType());
 
+		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, a01.getState());
 	}
 
 }
