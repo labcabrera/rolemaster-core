@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.controller;
 
 import javax.validation.Valid;
 
-import org.labcabrera.rolemaster.core.dto.actions.TacticalActionDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;

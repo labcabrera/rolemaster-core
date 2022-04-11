@@ -1,9 +1,9 @@
 package org.labcabrera.rolemaster.core.controller.converter;
 
 import org.apache.commons.lang3.NotImplementedException;
-import org.labcabrera.rolemaster.core.dto.actions.TacticalActionDeclaration;
-import org.labcabrera.rolemaster.core.dto.actions.TacticalActionMeleeAttackDeclaration;
-import org.labcabrera.rolemaster.core.dto.actions.TacticalActionMovementDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleAttack;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMovement;
