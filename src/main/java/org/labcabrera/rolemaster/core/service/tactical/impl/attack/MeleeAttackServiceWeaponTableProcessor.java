@@ -31,14 +31,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 
 		//TODO Check pifia / rotura
 
-		int attackRoll = offensiveBonus - defensiveBonus + roll;
-
-		if (attackRoll > 150) {
-			attackRoll = 150;
-		}
-		else if (attackRoll < 1) {
-			attackRoll = 1;
-		}
+		int attackRoll = Integer.min(150, Integer.max(1, offensiveBonus - defensiveBonus + roll));
 
 		String stringResult = weaponTable.get(weaponId, targetArmor, attackRoll);
 

@@ -41,12 +41,26 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	@Builder.Default
 	private Boolean specialEffect = false;
 
-	private String text;
+	@Builder.Default
+	private Boolean hasInitiative = false;
+
+	@Builder.Default
+	private Boolean instantDeath = false;
 
 	private Integer deathAfterRounds;
 
+	private String text;
+
 	@Builder.Default
 	private List<String> otherEfects = new ArrayList<>();
+
+	// TODO incluir resultados condicionales:
+	// llevar/no llevar yelmo
+	// llevar/no grebas
+	// llevar/no armadura pectoral
+	
+	// TODO
+	// posibilidades de arma atrapada en el cuerpo X turnos
 
 	public CriticalTableResult addDebuf(DebufStatus debufStatus) {
 		return addDebuf(debufStatus, 1);

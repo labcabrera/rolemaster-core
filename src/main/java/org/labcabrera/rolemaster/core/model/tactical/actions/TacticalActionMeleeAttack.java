@@ -4,8 +4,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
@@ -13,13 +11,11 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 import javax.validation.constraints.NotNull;
 
-import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack.ValidTacticalActionMeleAttack;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,41 +31,15 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class TacticalActionMeleeAttack extends TacticalAction {
+public class TacticalActionMeleeAttack extends TacticalActionAttack {
 
 	@NotNull
 	private MeleeAttackType meleeAttackType;
-
-	private String target;
 
 	private String shieldParryTarget;
 
 	@Builder.Default
 	private Integer parry = 0;
-
-	private OpenRoll roll;
-
-	@Builder.Default
-	private Map<String, Integer> offensiveBonusMap = new LinkedHashMap<>();
-
-	@Builder.Default
-	private Map<String, Integer> defensiveBonusMap = new LinkedHashMap<>();
-
-	private String weaponId;
-
-	@Schema(description = "Number of hit points caused by the attack.")
-	private Integer hpResult;
-
-	@Schema(description = "In case the attack provokes a critical (or more than one) define the information related to the result of the critical.")
-	private TacticalCriticalResult criticalResult;
-
-	public Integer getOffensiveBonus() {
-		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
-	}
-
-	public Integer getDefensiveBonus() {
-		return defensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
-	}
 
 	@Target({ ElementType.TYPE })
 	@Retention(RetentionPolicy.RUNTIME)
