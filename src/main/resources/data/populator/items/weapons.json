@@ -25,5 +25,33 @@
 				"modifier": -30
 			}
 		]
+	},
+	{
+		"id": "scimitar",
+		"name": "Scimitar",
+		"type": "weapon",
+		"count": 1,
+		"commonWeight": {
+			"min": 1.500,
+			"max": 2.500
+		},
+		"fumble": [1,2,3,4],
+		"roture": [1,2,3,4,5],
+		"resistance": [56,64],
+		"rangeModifiers": [
+			{
+				"range": 3,
+				"modifier": -10
+			},
+			{
+				"range": 8,
+				"modifier": -20
+			},
+			{
+				"range": 15,
+				"modifier": -30
+			}
+		]
+		
 	}
 ]

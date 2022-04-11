@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MeleeAttackContext {
+public class TacticalAttackContext {
 
 	private TacticalActionMeleeAttack action;
 

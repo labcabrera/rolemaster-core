@@ -4,7 +4,8 @@ import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.controller.converter.TacticalActionConverter;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
-import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackCriticalExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
@@ -16,6 +17,7 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMelee
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.FumbleAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 
 	@Autowired
 	private CriticalAttackExecutionService criticalAttackExecutionService;
+
+	@Autowired
+	private FumbleAttackExecutionService fumbleAttackExecutionService;
 
 	@Autowired
 	private AttackResultProcessor attackResultProcessor;
@@ -87,13 +92,23 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> executeCritical(MeleeAttackCriticalExecution request) {
+	public Mono<TacticalAction> executeCritical(AttackCriticalExecution request) {
 		return actionRepository.findById(request.getActionId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
 			.map(e -> criticalAttackExecutionService.apply(e, request))
 			.flatMap(actionRepository::save)
 			.map(e -> (TacticalActionAttack) e)
 			.flatMap(e -> attackResultProcessor.apply(e));
+	}
+
+	@Override
+	public Mono<TacticalAction> executeFumble(FumbleExecution execution) {
+		return actionRepository.findById(execution.getActionId())
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
+			.map(e -> (TacticalActionAttack) e)
+			.map(e -> fumbleAttackExecutionService.apply(e, execution))
+			//TODO Process fumble result
+			.flatMap(actionRepository::save);
 	}
 
 }

@@ -11,7 +11,7 @@ import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
 import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.PowerPoints;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalNpcInstanceRepository;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ import reactor.core.publisher.Mono;
 public class TacticalCharacterService {
 
 	@Autowired
-	private TacticalCharacterContextRepository repository;
+	private TacticalCharacterRepository repository;
 
 	@Autowired
 	private TacticalNpcInstanceRepository npcInstanceRepository;

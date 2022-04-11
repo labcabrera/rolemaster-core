@@ -11,7 +11,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,15 +29,16 @@ public class AttackResultProcessor {
 	private TacticalActionRepository tacticalActionRepository;
 
 	@Autowired
-	private TacticalCharacterContextRepository tacticalCharacterRepository;
+	private TacticalCharacterRepository tacticalCharacterRepository;
 
 	public Mono<TacticalActionAttack> apply(TacticalActionAttack attack) {
 		log.info("Processing attack result for action {} ({})", attack.getId(), attack.getState());
 		switch (attack.getState()) {
+		case PENDING_CRITICAL_RESOLUTION:
+		case PENDING_FUMBLE_RESOLUTION:
+			return Mono.just(attack);
 		case PENDING_RESOLUTION:
 			break;
-		case PENDING_CRITICAL_RESOLUTION:
-			return Mono.just(attack);
 		case PENDING:
 		case RESOLVED:
 		default:

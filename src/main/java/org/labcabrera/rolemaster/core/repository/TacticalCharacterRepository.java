@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import reactor.core.publisher.Flux;
 
-public interface TacticalCharacterContextRepository extends ReactiveMongoRepository<TacticalCharacter, String> {
+public interface TacticalCharacterRepository extends ReactiveMongoRepository<TacticalCharacter, String> {
 
 	Flux<TacticalCharacter> findByCharacterId(Set<String> characterIdentifiers);
 

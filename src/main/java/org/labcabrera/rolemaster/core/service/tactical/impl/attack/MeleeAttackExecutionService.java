@@ -4,7 +4,8 @@ import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackDefensiveBonusProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackOffensiveBonusProcessor;
@@ -18,7 +19,7 @@ import reactor.core.publisher.Mono;
 public class MeleeAttackExecutionService {
 
 	@Autowired
-	private TacticalCharacterContextRepository tacticalCharacterRepository;
+	private TacticalCharacterRepository tacticalCharacterRepository;
 
 	@Autowired
 	private TacticalActionRepository actionRepository;
@@ -33,11 +34,15 @@ public class MeleeAttackExecutionService {
 	private MeleeAttackServiceWeaponTableProcessor weaponTableProcessor;
 
 	@Autowired
+	private AttackFumbleProcessor fumbleProcessor;
+
+	@Autowired
 	private AttackResultProcessor attackResultProcessor;
 
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		loadTarget(action, execution);
-		MeleeAttackContext context = MeleeAttackContext.builder()
+		action.setRoll(execution.getRoll());
+		TacticalAttackContext context = TacticalAttackContext.builder()
 			.action(action)
 			.execution(execution)
 			.build();
@@ -57,6 +62,7 @@ public class MeleeAttackExecutionService {
 				pair.getT1().setActions(pair.getT2());
 				return pair.getT1();
 			})
+			.flatMap(fumbleProcessor::apply)
 			.map(offensiveBonusProcessor)
 			.map(defensiveBonusProcessor)
 			.map(weaponTableProcessor)

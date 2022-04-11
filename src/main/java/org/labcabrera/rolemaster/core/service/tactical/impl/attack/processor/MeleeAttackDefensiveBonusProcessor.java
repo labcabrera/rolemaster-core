@@ -7,14 +7,17 @@ import java.util.stream.Collectors;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
 import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackContext;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<MeleeAttackContext> {
+public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<TacticalAttackContext> {
 
 	@Override
-	public MeleeAttackContext apply(MeleeAttackContext context) {
+	public TacticalAttackContext apply(TacticalAttackContext context) {
+		if (context.getAction().getFumbleResult() != null) {
+			return context;
+		}
 		int defensiveBonus = getDefensiveBonus(context);
 		int parryBonus = getParryBonus(context);
 		int shieldBonus = getShieldBonus(context);
@@ -26,11 +29,11 @@ public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<MeleeAt
 		return context;
 	}
 
-	private int getDefensiveBonus(MeleeAttackContext context) {
+	private int getDefensiveBonus(TacticalAttackContext context) {
 		return context.getTarget().getBaseDefensiveBonus();
 	}
 
-	private int getParryBonus(MeleeAttackContext context) {
+	private int getParryBonus(TacticalAttackContext context) {
 		if (!canParry(context)) {
 			return 0;
 		}
@@ -53,11 +56,11 @@ public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<MeleeAt
 		return 0;
 	}
 
-	private int getShieldBonus(MeleeAttackContext context) {
+	private int getShieldBonus(TacticalAttackContext context) {
 		return 0;
 	}
 
-	private boolean canParry(MeleeAttackContext context) {
+	private boolean canParry(TacticalAttackContext context) {
 		CombatStatus cs = context.getTarget().getCombatStatus();
 		if (cs.getDebufStatusMap().containsKey(DebufStatus.CANT_PARRY)) {
 			return false;

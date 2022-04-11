@@ -5,14 +5,17 @@ import java.util.function.UnaryOperator;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackContext;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MeleeAttackOffensiveBonusProcessor implements UnaryOperator<MeleeAttackContext> {
+public class MeleeAttackOffensiveBonusProcessor implements UnaryOperator<TacticalAttackContext> {
 
 	@Override
-	public MeleeAttackContext apply(MeleeAttackContext context) {
+	public TacticalAttackContext apply(TacticalAttackContext context) {
+		if (context.getAction().getFumbleResult() != null) {
+			return context;
+		}
 		TacticalCharacter source = context.getSource();
 		TacticalCharacter target = context.getSource();
 

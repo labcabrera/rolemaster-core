@@ -9,7 +9,7 @@ import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
-	private TacticalCharacterContextRepository characterContextRepository;
+	private TacticalCharacterRepository characterContextRepository;
 
 	@Override
 	public Mono<TacticalSession> createTacticalSession(TacticalSessionCreation request) {

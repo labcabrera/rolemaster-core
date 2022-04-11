@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
-import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackCriticalExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
@@ -21,7 +21,7 @@ public class CriticalAttackExecutionService {
 	@Autowired
 	private CriticalTable criticalTable;
 
-	public TacticalAction apply(TacticalAction action, MeleeAttackCriticalExecution execution) {
+	public TacticalAction apply(TacticalAction action, AttackCriticalExecution execution) {
 		if (action.getState() != TacticalActionState.PENDING_CRITICAL_RESOLUTION) {
 			throw new BadRequestException("Invalid action state " + action.getState());
 		}

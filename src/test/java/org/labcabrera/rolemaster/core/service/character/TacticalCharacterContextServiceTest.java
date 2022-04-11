@@ -12,7 +12,7 @@ import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,7 +28,7 @@ class TacticalCharacterContextServiceTest {
 	private TacticalCharacterService service;
 
 	@Mock
-	private TacticalCharacterContextRepository repository;
+	private TacticalCharacterRepository repository;
 
 	@Mock
 	private CharacterService characterService;

@@ -19,7 +19,7 @@ import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -36,7 +36,7 @@ class MovingManeuverServiceImplTest {
 	private CharacterInfoRepository characterInfoRepository;
 
 	@Autowired
-	private TacticalCharacterContextRepository characterStatusRepository;
+	private TacticalCharacterRepository characterStatusRepository;
 
 	private StrategicSession session;
 

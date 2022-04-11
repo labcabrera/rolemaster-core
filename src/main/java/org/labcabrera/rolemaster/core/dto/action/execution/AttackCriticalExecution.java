@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MeleeAttackCriticalExecution {
+public class AttackCriticalExecution {
 
 	private String actionId;
 

@@ -39,6 +39,8 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	@Schema(description = "Number of hit points caused by the attack.")
 	private Integer hpResult;
 
+	private AttackFumbleResult fumbleResult;
+
 	@Schema(description = "In case the attack provokes a critical (or more than one) define the information related to the result of the critical.")
 	private TacticalCriticalResult criticalResult;
 

@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.tactical.combat;
 
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
@@ -30,7 +30,7 @@ public abstract class AbstractCombatTest {
 	protected TacticalActionRepository tacticalActionRepository;
 
 	@Autowired
-	protected TacticalCharacterContextRepository tacticalCharacterRepository;
+	protected TacticalCharacterRepository tacticalCharacterRepository;
 
 	protected void clearData() {
 		strategicSessionRepository.deleteAll()

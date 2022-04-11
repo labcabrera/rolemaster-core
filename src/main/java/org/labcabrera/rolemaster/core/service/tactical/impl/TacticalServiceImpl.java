@@ -16,7 +16,7 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.NpcRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalRoundService;
@@ -55,7 +55,7 @@ public class TacticalServiceImpl implements TacticalService {
 	private TacticalActionRepository actionRepository;
 
 	@Autowired
-	private TacticalCharacterContextRepository tacticalCharacterStatusRepository;
+	private TacticalCharacterRepository tacticalCharacterStatusRepository;
 
 	@Autowired
 	private CharacterInfoRepository characterInfoRepository;

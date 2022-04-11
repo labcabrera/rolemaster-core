@@ -8,6 +8,8 @@ public enum TacticalActionState {
 
 	PENDING_CRITICAL_RESOLUTION("pendingCriticalResolution"),
 
+	PENDING_FUMBLE_RESOLUTION("pendingFumbleResolution"),
+
 	PENDING_RESOLUTION("pendingResolution"),
 
 	RESOLVED("resolved");

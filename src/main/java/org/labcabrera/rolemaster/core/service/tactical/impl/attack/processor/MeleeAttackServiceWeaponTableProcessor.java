@@ -8,13 +8,13 @@ import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalCriticalResult;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackContext;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<MeleeAttackContext> {
+public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<TacticalAttackContext> {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
 	private static final String PATTERN_CRIT = "^([0-9]+)(\\w)(\\w)$";
@@ -22,7 +22,10 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 	@Autowired
 	private WeaponTable weaponTable;
 
-	public MeleeAttackContext apply(MeleeAttackContext context) {
+	public TacticalAttackContext apply(TacticalAttackContext context) {
+		if (context.getAction().getFumbleResult() != null) {
+			return context;
+		}
 		String weaponId = context.getSource().getAttack().getMainWeaponId();
 		int targetArmor = context.getTarget().getArmorType();
 

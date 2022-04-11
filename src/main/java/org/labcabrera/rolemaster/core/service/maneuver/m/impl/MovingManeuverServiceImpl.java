@@ -9,7 +9,7 @@ import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverRequest;
 import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverResult;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverContext;
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverModifierProcessor;
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverService;
@@ -25,7 +25,7 @@ public class MovingManeuverServiceImpl implements MovingManeuverService {
 	private List<MovingManeuverModifierProcessor> modifierProcessors;
 
 	@Autowired
-	private TacticalCharacterContextRepository characterStatusRepository;
+	private TacticalCharacterRepository characterStatusRepository;
 
 	@Autowired
 	private CharacterInfoRepository characterInfoRepository;

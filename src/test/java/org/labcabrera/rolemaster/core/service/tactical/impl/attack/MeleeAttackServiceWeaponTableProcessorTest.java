@@ -25,7 +25,7 @@ class MeleeAttackServiceWeaponTableProcessorTest {
 	private WeaponTable weaponTable;
 
 	@Mock
-	private MeleeAttackContext ctx;
+	private TacticalAttackContext ctx;
 
 	@Mock
 	private TacticalActionMeleeAttack tacticalActionMeleeAttack;
