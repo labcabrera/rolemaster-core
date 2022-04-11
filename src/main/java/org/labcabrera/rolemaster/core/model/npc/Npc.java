@@ -27,12 +27,16 @@ public class Npc {
 
 	private Integer hp;
 
+	@Builder.Default
+	private List<NpcAttack> attacks = new ArrayList<>();
+
+	private Integer armorType;
+
+	private Integer defensiveBonus;
+
 	private Boolean unique;
 
 	@Builder.Default
 	private List<String> universes = new ArrayList<>();
-
-	@Builder.Default
-	private List<NpcAttack> attacks = new ArrayList<>();
 
 }

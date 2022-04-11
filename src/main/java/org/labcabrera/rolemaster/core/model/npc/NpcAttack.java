@@ -11,10 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class NpcAttack {
 
-	private String name;
+	private String weaponId;
 
 	private Integer bonus;
 
 	private String type;
+
+	private Boolean primary;
 
 }
