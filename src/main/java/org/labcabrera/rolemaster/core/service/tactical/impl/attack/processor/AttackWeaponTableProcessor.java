@@ -1,6 +1,5 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import java.util.function.UnaryOperator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<MeleeAttackContext> {
+public class AttackWeaponTableProcessor {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
 	private static final String PATTERN_CRIT = "^([0-9]+)(\\w)(\\w)$";
@@ -28,7 +27,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 	@Autowired
 	private WeaponTable weaponTable;
 
-	public MeleeAttackContext apply(MeleeAttackContext context) {
+	public <T extends AttackContext<?>> T apply(T context) {
 		if (context.getAction().isFlumbe()) {
 			return context;
 		}

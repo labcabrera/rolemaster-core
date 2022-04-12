@@ -4,11 +4,10 @@ import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecutio
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveBonusProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackContext;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackDefensiveProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackResultProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackWeaponTableProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,17 +26,15 @@ public class MissileAttackExecutionService {
 	private OffensiveBonusProcessor offensiveBonusProcessor;
 
 	@Autowired
-	private MissileAttackDefensiveProcessor missileAttackDefensiveProcessor;
+	private AttackWeaponTableProcessor attackWeaponTableProcessor;
 
 	@Autowired
-	private MissileAttackWeaponTableProcessor missileAttackWeaponTableProcessor;
-
-	@Autowired
-	private MissileAttackResultProcessor missileAttackResultProcessor;
+	private AttackResultProcessor attackResultProcessor;
 
 	public Mono<TacticalActionMissileAttack> execute(TacticalActionMissileAttack action, MissileAttackExecution execution) {
 		action.setDistance(execution.getDistance());
 		action.setCover(execution.getCover());
+		action.setRoll(execution.getRoll());
 
 		MissileAttackContext context = new MissileAttackContext();
 		context.setAction(action);
@@ -46,11 +43,11 @@ public class MissileAttackExecutionService {
 			.zipWith(characterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MissileAttackContext>setSource(b))
 			.zipWith(characterRepository.findById(context.getAction().getTarget()), (a, b) -> a.<MissileAttackContext>setTarget(b))
 			.flatMap(offensiveBonusProcessor::apply)
-			.flatMap(missileAttackDefensiveProcessor)
-			.flatMap(missileAttackWeaponTableProcessor)
-			.flatMap(missileAttackResultProcessor)
+			.map(attackWeaponTableProcessor::apply)
 			.map(ctx -> ctx.getAction())
-			.flatMap(actionRepository::save);
+			.flatMap(act -> attackResultProcessor.apply(action))
+			.flatMap(actionRepository::save)
+			.map(e -> (TacticalActionMissileAttack) e);
 	}
 
 }

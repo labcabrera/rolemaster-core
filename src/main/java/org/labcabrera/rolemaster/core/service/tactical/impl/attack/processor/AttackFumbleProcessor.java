@@ -1,9 +1,6 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
-
-import java.util.function.Function;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
@@ -14,10 +11,9 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class AttackFumbleProcessor implements Function<MeleeAttackContext, Mono<MeleeAttackContext>> {
+public class AttackFumbleProcessor {
 
-	@Override
-	public Mono<MeleeAttackContext> apply(MeleeAttackContext context) {
+	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		log.debug("Checking fumble for attack {}", context.getAction().getId());
 
 		TacticalCharacter source = context.getSource();
@@ -29,13 +25,7 @@ public class AttackFumbleProcessor implements Function<MeleeAttackContext, Mono<
 		if (primaryFumbleResult != null) {
 			context.getAction().getAttackResult().setFumbleResult(primaryFumbleResult);
 		}
-
-		if (context.getAction().isFlumbe()) {
-			context.getAction().setState(TacticalActionState.PENDING_FUMBLE_RESOLUTION);
-		}
-
 		// TODO Secondary attack
-
 		return Mono.just(context);
 	}
 

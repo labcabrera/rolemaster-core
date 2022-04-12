@@ -1,8 +1,7 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import java.util.Map.Entry;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
@@ -34,16 +33,13 @@ public class AttackResultProcessor {
 
 	public Mono<TacticalActionAttack> apply(TacticalActionAttack attack) {
 		log.info("Processing attack result for action {} ({})", attack.getId(), attack.getState());
-		switch (attack.getState()) {
-		case PENDING_CRITICAL_RESOLUTION:
-		case PENDING_FUMBLE_RESOLUTION:
+		if (attack.isFlumbe()) {
+			attack.setState(TacticalActionState.PENDING_FUMBLE_RESOLUTION);
 			return Mono.just(attack);
-		case PENDING_RESOLUTION:
-			break;
-		case PENDING:
-		case RESOLVED:
-		default:
-			throw new BadRequestException("Invalid state " + attack.getState());
+		}
+		if (attack.hasPendingCriticalResolution()) {
+			attack.setState(TacticalActionState.PENDING_CRITICAL_RESOLUTION);
+			return Mono.just(attack);
 		}
 		return Mono.just(attack)
 			.flatMap(this::updateTarget)

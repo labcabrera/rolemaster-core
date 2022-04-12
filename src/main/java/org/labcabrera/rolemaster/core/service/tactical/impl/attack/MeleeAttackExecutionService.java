@@ -6,12 +6,12 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveBonusProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.AttackFumbleProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackDefensiveBonusProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackServiceWeaponTableProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +33,7 @@ public class MeleeAttackExecutionService {
 	private MeleeAttackDefensiveBonusProcessor defensiveBonusProcessor;
 
 	@Autowired
-	private MeleeAttackServiceWeaponTableProcessor weaponTableProcessor;
+	private AttackWeaponTableProcessor weaponTableProcessor;
 
 	@Autowired
 	private AttackFumbleProcessor fumbleProcessor;
@@ -53,10 +53,10 @@ public class MeleeAttackExecutionService {
 		return Mono.just(context)
 			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MeleeAttackContext>setSource(b))
 			.zipWith(tacticalCharacterRepository.findById(context.getAction().getTarget()), (a, b) -> a.<MeleeAttackContext>setTarget(b))
-			.flatMap(fumbleProcessor)
+			.flatMap(fumbleProcessor::apply)
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(defensiveBonusProcessor)
-			.map(weaponTableProcessor)
+			.map(weaponTableProcessor::apply)
 			.flatMap(ctx -> attackResultProcessor.apply(ctx.getAction()))
 			.flatMap(actionRepository::save)
 			.map(e -> (TacticalActionMeleeAttack) e);

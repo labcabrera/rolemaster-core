@@ -25,6 +25,9 @@ public class OffensiveBonusProcessor {
 	private WeaponRepository weaponRepository;
 
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
+		if (context.getAction().isFlumbe()) {
+			return Mono.just(context);
+		}
 		return Mono.just(context)
 			.flatMap(this::loadSkillBonus)
 			.map(this::loadBonusHp)
