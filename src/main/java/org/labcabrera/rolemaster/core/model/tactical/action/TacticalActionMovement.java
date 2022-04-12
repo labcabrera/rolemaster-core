@@ -1,6 +1,7 @@
-package org.labcabrera.rolemaster.core.model.tactical.actions;
+package org.labcabrera.rolemaster.core.model.tactical.action;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class TacticalActionMovingManeuver extends TacticalAction {
+public class TacticalActionMovement extends TacticalAction {
 
-	private String skillId;
+	@Builder.Default
+	private MovementPace pace = MovementPace.WALK;
 
 }

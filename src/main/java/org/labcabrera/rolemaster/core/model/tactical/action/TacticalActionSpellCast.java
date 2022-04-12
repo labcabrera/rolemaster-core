@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.tactical.actions;
+package org.labcabrera.rolemaster.core.model.tactical.action;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,10 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class TacticalActionCustom extends TacticalAction {
+public class TacticalActionSpellCast extends TacticalAction {
 
-	private String userDescription;
+	private String spellId;
+
+	private String target;
 
 }

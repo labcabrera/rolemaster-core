@@ -10,7 +10,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.validation.ValidTacticalActionMeleAttack.TacticalActionMeleAttackValidator;
 
 @Target({ ElementType.TYPE })

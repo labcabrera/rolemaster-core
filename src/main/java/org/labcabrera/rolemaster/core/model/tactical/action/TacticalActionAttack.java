@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.tactical.actions;
+package org.labcabrera.rolemaster.core.model.tactical.action;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;

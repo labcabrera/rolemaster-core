@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
-import org.labcabrera.rolemaster.core.model.tactical.actions.MovementPace;
+import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.table.fumble;
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.combat.FumbleTableResult;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
-import org.labcabrera.rolemaster.core.model.tactical.actions.FumbleType;
+import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.springframework.stereotype.Component;
 
 @Component

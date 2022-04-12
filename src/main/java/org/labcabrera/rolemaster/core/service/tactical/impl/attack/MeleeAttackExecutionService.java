@@ -2,8 +2,8 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.model.tactical.actions.AttackResult;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.AttackFumbleProcessor;

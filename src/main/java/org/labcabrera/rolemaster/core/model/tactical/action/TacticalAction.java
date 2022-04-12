@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.tactical.actions;
+package org.labcabrera.rolemaster.core.model.tactical.action;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction.ValidTacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction.ValidTacticalAction;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

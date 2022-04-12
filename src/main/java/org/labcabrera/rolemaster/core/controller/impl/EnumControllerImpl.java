@@ -7,8 +7,8 @@ import org.labcabrera.rolemaster.core.controller.EnumController;
 import org.labcabrera.rolemaster.core.dto.NamedKey;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
-import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackType;
-import org.labcabrera.rolemaster.core.model.tactical.actions.MovementPace;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
+import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;

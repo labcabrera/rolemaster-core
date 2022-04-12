@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.dto.action.declaration;
 
-import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackType;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

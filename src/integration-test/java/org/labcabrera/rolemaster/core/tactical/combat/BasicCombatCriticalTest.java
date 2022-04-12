@@ -18,10 +18,10 @@ import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
-import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackPosition;
-import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackType;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackPosition;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

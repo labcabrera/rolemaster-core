@@ -5,8 +5,8 @@ import java.util.function.Function;
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.model.tactical.actions.AttackFumbleResult;
-import org.labcabrera.rolemaster.core.model.tactical.actions.FumbleType;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
+import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;

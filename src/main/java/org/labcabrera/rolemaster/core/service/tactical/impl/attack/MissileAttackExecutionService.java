@@ -1,8 +1,9 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecution;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMissileAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackDefensiveProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackOffensiveProcessor;
@@ -20,6 +21,9 @@ public class MissileAttackExecutionService {
 	private TacticalActionRepository actionRepository;
 
 	@Autowired
+	private TacticalCharacterRepository characterRepository;
+
+	@Autowired
 	private MissileAttackOffensiveProcessor missileAttackOffensiveProcessor;
 
 	@Autowired
@@ -32,11 +36,16 @@ public class MissileAttackExecutionService {
 	private MissileAttackResultProcessor missileAttackResultProcessor;
 
 	public Mono<TacticalActionMissileAttack> execute(TacticalActionMissileAttack action, MissileAttackExecution execution) {
+		action.setDistance(execution.getDistance());
+		action.setCover(execution.getCover());
+
 		MissileAttackContext context = MissileAttackContext.builder()
 			.action(action)
 			.execution(execution)
 			.build();
 		return Mono.just(context)
+			.zipWith(characterRepository.findById(context.getAction().getSource()), (a, b) -> a.setSource(b))
+			.zipWith(characterRepository.findById(context.getAction().getTarget()), (a, b) -> a.setTarget(b))
 			.flatMap(missileAttackOffensiveProcessor)
 			.flatMap(missileAttackDefensiveProcessor)
 			.flatMap(missileAttackWeaponTableProcessor)

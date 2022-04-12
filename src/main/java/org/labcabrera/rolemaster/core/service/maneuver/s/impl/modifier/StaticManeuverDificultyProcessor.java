@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.maneuver.s.impl.modifiers;
+package org.labcabrera.rolemaster.core.service.maneuver.s.impl.modifier;
 
 import java.util.EnumMap;
 import java.util.Map;

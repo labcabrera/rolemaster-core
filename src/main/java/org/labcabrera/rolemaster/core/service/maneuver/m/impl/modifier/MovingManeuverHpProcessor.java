@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.maneuver.m.impl.modifiers;
+package org.labcabrera.rolemaster.core.service.maneuver.m.impl.modifier;
 
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier.ModifierType;

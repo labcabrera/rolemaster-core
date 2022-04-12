@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.repository;
 
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import reactor.core.publisher.Flux;

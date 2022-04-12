@@ -5,7 +5,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

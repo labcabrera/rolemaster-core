@@ -4,7 +4,7 @@ import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDecla
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 
 import reactor.core.publisher.Mono;
 

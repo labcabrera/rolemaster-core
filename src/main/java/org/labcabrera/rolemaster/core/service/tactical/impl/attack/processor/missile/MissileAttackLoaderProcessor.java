@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.mi
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMissileAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

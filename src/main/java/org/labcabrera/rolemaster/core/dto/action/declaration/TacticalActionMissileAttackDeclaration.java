@@ -15,6 +15,4 @@ public class TacticalActionMissileAttackDeclaration extends TacticalActionDeclar
 
 	private String target;
 
-	private Integer range;
-
 }

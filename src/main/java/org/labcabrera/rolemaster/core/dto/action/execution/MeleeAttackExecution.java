@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.dto.action.execution;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackPosition;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackPosition;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

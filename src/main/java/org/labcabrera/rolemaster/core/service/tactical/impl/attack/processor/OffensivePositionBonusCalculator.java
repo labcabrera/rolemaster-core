@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackPosition;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackPosition;
 import org.springframework.stereotype.Component;
 
 /**

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
-import org.labcabrera.rolemaster.core.model.tactical.actions.InitiativeModifier;
+import org.labcabrera.rolemaster.core.model.tactical.action.InitiativeModifier;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

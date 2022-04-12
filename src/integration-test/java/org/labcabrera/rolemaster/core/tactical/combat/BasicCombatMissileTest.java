@@ -15,8 +15,8 @@ import org.labcabrera.rolemaster.core.model.combat.MissileCover;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -38,7 +38,6 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 			.actionPercent(80)
 			.source(taRanged01.getId())
 			.target(taMelee02.getId())
-			.range(10)
 			.build()).share().block();
 
 		assertNotNull(a01);
@@ -56,6 +55,7 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 
 		MissileAttackExecution missileAttackExecution = MissileAttackExecution.builder()
 			.actionId(a01.getId())
+			.distance(18)
 			.cover(MissileCover.NONE)
 			.roll(OpenRoll.of(80))
 			.build();

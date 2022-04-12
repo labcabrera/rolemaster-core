@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.dto.action.declaration;
 
-import org.labcabrera.rolemaster.core.model.tactical.actions.MovementPace;
+import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

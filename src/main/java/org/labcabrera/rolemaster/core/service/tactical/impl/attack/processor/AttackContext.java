@@ -1,6 +1,7 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
+import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MeleeAttackContext {
+public class AttackContext {
 
 	private TacticalActionMeleeAttack action;
 
@@ -23,14 +24,17 @@ public class MeleeAttackContext {
 
 	private TacticalCharacter target;
 
-	public MeleeAttackContext setSource(TacticalCharacter value) {
+	private Weapon weapon;
+
+	@SuppressWarnings("unchecked")
+	public <E> E setSource(TacticalCharacter value) {
 		this.source = value;
-		return this;
+		return (E) this;
 	}
 
-	public MeleeAttackContext setTarget(TacticalCharacter value) {
+	@SuppressWarnings("unchecked")
+	public <E> E setTarget(TacticalCharacter value) {
 		this.target = value;
-		return this;
+		return (E) this;
 	}
-
 }

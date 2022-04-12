@@ -3,10 +3,12 @@ package org.labcabrera.rolemaster.core.controller.converter;
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMissileAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMovement;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovement;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +30,12 @@ public class TacticalActionConverter implements Converter<TacticalActionDeclarat
 				.target(tmp.getTarget())
 				.meleeAttackType(tmp.getMeleeAttackType())
 				.parry(tmp.getParry())
+				.build();
+		}
+		else if (source instanceof TacticalActionMissileAttackDeclaration) {
+			TacticalActionMissileAttackDeclaration tmp = (TacticalActionMissileAttackDeclaration) source;
+			result = TacticalActionMissileAttack.builder()
+				.target(tmp.getTarget())
 				.build();
 		}
 		else {

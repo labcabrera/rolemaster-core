@@ -10,8 +10,8 @@ import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecuti
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
