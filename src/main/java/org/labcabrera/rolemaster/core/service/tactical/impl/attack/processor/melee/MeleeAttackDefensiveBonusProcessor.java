@@ -15,7 +15,6 @@ import reactor.core.publisher.Mono;
 @Component
 public class MeleeAttackDefensiveBonusProcessor {
 
-	private static final List<Debuff> NO_DEFENSIVE_BONUS_DEBUFS = Arrays.asList(Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS);
 	private static final List<Debuff> CANT_PARRY_DEBUFS = Arrays.asList(Debuff.CANT_PARRY, Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS);
 
 	@Autowired
@@ -27,7 +26,6 @@ public class MeleeAttackDefensiveBonusProcessor {
 		}
 		return Mono.just(context)
 			.map(ctx -> {
-				context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.DEFENSIVE_BONUS, getDefensiveBonus(context));
 				context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.SHIELD_BONUS, getShieldBonus(context));
 				return ctx;
 			})
@@ -35,15 +33,6 @@ public class MeleeAttackDefensiveBonusProcessor {
 				a.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MELEE_PARRY, b);
 				return a;
 			});
-	}
-
-	private int getDefensiveBonus(MeleeAttackContext context) {
-		for (Debuff debuff : NO_DEFENSIVE_BONUS_DEBUFS) {
-			if (context.getTarget().getCombatStatus().getDebuffs().containsKey(debuff)) {
-				return 0;
-			}
-		}
-		return -context.getTarget().getBaseDefensiveBonus();
 	}
 
 	private Mono<Integer> getParryBonus(MeleeAttackContext context) {

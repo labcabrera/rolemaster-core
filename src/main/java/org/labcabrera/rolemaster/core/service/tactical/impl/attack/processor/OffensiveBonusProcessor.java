@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
@@ -20,6 +22,8 @@ import reactor.core.publisher.Mono;
 @Component
 public class OffensiveBonusProcessor {
 
+	private static final List<Debuff> NO_DEFENSIVE_BONUS_DEBUFS = Arrays.asList(Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS);
+
 	@Autowired
 	private TacticalSkillService skillService;
 
@@ -32,6 +36,7 @@ public class OffensiveBonusProcessor {
 		}
 		return Mono.just(context)
 			.flatMap(this::loadSkillBonus)
+			.map(this::loadBonusDefensive)
 			.map(this::loadBonusHp)
 			.map(this::loadBonusTargetStatus)
 			.map(this::loadBonusExhaustion)
@@ -49,6 +54,11 @@ public class OffensiveBonusProcessor {
 				a.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.SKILL, b);
 				return a;
 			});
+	}
+
+	private <T extends AttackContext<?>> T loadBonusDefensive(T context) {
+		context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.DEFENSIVE_BONUS, getBonusDefensive(context.getTarget()));
+		return context;
 	}
 
 	private <T extends AttackContext<?>> T loadBonusHp(T context) {
@@ -88,6 +98,15 @@ public class OffensiveBonusProcessor {
 				}
 				return pair.getT1();
 			});
+	}
+
+	private int getBonusDefensive(TacticalCharacter target) {
+		for (Debuff debuff : NO_DEFENSIVE_BONUS_DEBUFS) {
+			if (target.getCombatStatus().getDebuffs().containsKey(debuff)) {
+				return 0;
+			}
+		}
+		return -target.getBaseDefensiveBonus();
 	}
 
 	private int getBonusHp(TacticalCharacter source) {
@@ -170,7 +189,7 @@ public class OffensiveBonusProcessor {
 			return percent - 100;
 		}
 		if (action instanceof TacticalActionMissileAttack) {
-			return Integer.max(0, percent - 60);
+			return Integer.min(0, percent - 60);
 		}
 		return 0;
 	}

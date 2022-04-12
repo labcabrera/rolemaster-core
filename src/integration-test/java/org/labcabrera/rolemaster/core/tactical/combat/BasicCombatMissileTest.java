@@ -15,6 +15,7 @@ import org.labcabrera.rolemaster.core.model.combat.MissileCover;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
+import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -57,16 +58,20 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 			.actionId(a01.getId())
 			.distance(36)
 			.cover(MissileCover.NONE)
-			.roll(OpenRoll.of(80))
+			.roll(OpenRoll.of(110))
 			.build();
 
 		TacticalAction actionResolved = tacticalActionService.execute(missileAttackExecution).share().block();
 		assertTrue(actionResolved instanceof TacticalActionAttack);
-		TacticalActionAttack meleeResolved01 = (TacticalActionAttack) actionResolved;
+		TacticalActionAttack missileResolved01 = (TacticalActionAttack) actionResolved;
 
-		assertNotNull(meleeResolved01);
-		assertEquals(TacticalActionState.RESOLVED, meleeResolved01.getState());
-		assertEquals(5, meleeResolved01.getAttackResult().getHpResult());
+		assertNotNull(missileResolved01);
+		assertEquals(-30, missileResolved01.getOffensiveBonus());
+		assertEquals(40, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.SKILL));
+		assertEquals(-30, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.DEFENSIVE_BONUS));
+		assertEquals(-40, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.MISSILE_DISTANCE));
+		assertEquals(TacticalActionState.RESOLVED, missileResolved01.getState());
+		assertEquals(5, missileResolved01.getAttackResult().getHpResult());
 	}
 
 }
