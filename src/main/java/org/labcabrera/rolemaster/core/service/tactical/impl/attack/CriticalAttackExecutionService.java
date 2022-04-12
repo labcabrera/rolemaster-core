@@ -1,11 +1,13 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
+import org.labcabrera.rolemaster.core.model.tactical.actions.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.table.critical.CriticalTable;
@@ -30,15 +32,26 @@ public class CriticalAttackExecutionService {
 		}
 		TacticalActionAttack tacticalAttack = (TacticalActionAttack) action;
 
-		CriticalType type = tacticalAttack.getCriticalResult().getType();
-		CriticalSeverity severity = tacticalAttack.getCriticalResult().getSeverity();
+		AttackResult attackResult = getUnresolvedCriticalAttack(tacticalAttack);
+
+		CriticalType type = attackResult.getCriticalResult().getType();
+		CriticalSeverity severity = attackResult.getCriticalResult().getSeverity();
 		CriticalTableResult result = criticalTable.getResult(type, severity, execution.getRoll());
 
-		tacticalAttack.getCriticalResult().setRoll(execution.getRoll());
-		tacticalAttack.getCriticalResult().setCriticalTableResult(result);
+		attackResult.getCriticalResult().setRoll(execution.getRoll());
+		attackResult.getCriticalResult().setCriticalTableResult(result);
 
-		action.setState(TacticalActionState.PENDING_RESOLUTION);
+		if (!tacticalAttack.hasPendingCriticalResolution()) {
+			action.setState(TacticalActionState.PENDING_RESOLUTION);
+		}
 		return action;
+	}
+
+	private AttackResult getUnresolvedCriticalAttack(TacticalActionAttack attack) {
+		if (attack.getPrimaryAttackResult().requiresCriticalResolution()) {
+			return attack.getPrimaryAttackResult();
+		}
+		throw new NotImplementedException();
 	}
 
 }

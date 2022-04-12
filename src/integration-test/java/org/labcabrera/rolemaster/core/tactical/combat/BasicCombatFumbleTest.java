@@ -85,9 +85,9 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.actionId(a01.getId())
-			.target(cc02.getId())
+			.primaryTarget(cc02.getId())
 			.position(MeleeAttackPosition.NORMAL)
-			.roll(OpenRoll.of(4))
+			.primaryRoll(OpenRoll.of(4))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(meleeAttackExecution).share().block();

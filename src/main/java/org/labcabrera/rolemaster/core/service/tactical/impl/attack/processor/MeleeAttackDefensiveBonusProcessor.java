@@ -1,22 +1,18 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import java.util.List;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.springframework.stereotype.Component;
 
-@Component
-public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<TacticalAttackContext> {
+import reactor.core.publisher.Mono;
 
-	@Override
-	public TacticalAttackContext apply(TacticalAttackContext context) {
-		if (context.getAction().getFumbleResult() != null) {
-			return context;
+@Component
+public class MeleeAttackDefensiveBonusProcessor {
+
+	public Mono<TacticalAttackContext> apply(TacticalAttackContext context) {
+		if (context.getAction().isFlumbe()) {
+			return Mono.just(context);
 		}
 		int defensiveBonus = getDefensiveBonus(context);
 		int parryBonus = getParryBonus(context);
@@ -26,7 +22,7 @@ public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<Tactica
 		context.getAction().getDefensiveBonusMap().put("parryBonus", parryBonus);
 		context.getAction().getDefensiveBonusMap().put("shieldBonus", shieldBonus);
 
-		return context;
+		return Mono.just(context);
 	}
 
 	private int getDefensiveBonus(TacticalAttackContext context) {
@@ -40,19 +36,21 @@ public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<Tactica
 		String source = context.getAction().getSource();
 		String target = context.getAction().getTarget();
 
-		// We look for any attack action directed against the attacker
-		List<TacticalActionMeleeAttack> checkList = context.getActions().stream()
-			.filter(e -> e.getSource().equals(target))
-			.filter(e -> e instanceof TacticalActionMeleeAttack)
-			.map(e -> (TacticalActionMeleeAttack) e)
-			.filter(e -> e.getParry() > 0)
-			.filter(e -> e.getTarget().equals(source) || e.getTarget() == null)
-			.collect(Collectors.toList());
+		//TODO
 
-		if (!checkList.isEmpty()) {
-			//TODO prevent multiple parries against diferent attackers
-			return checkList.iterator().next().getParry();
-		}
+		// We look for any attack action directed against the attacker
+		//		List<TacticalActionMeleeAttack> checkList = context.getActions().stream()
+		//			.filter(e -> e.getSource().equals(target))
+		//			.filter(e -> e instanceof TacticalActionMeleeAttack)
+		//			.map(e -> (TacticalActionMeleeAttack) e)
+		//			.filter(e -> e.getParry() > 0)
+		//			.filter(e -> e.getTarget().equals(source) || e.getTarget() == null)
+		//			.collect(Collectors.toList());
+		//
+		//		if (!checkList.isEmpty()) {
+		//			//TODO prevent multiple parries against diferent attackers
+		//			return checkList.iterator().next().getParry();
+		//		}
 		return 0;
 	}
 

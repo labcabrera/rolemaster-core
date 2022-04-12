@@ -1,11 +1,8 @@
 package org.labcabrera.rolemaster.core.model.character.inventory;
 
-import java.math.BigDecimal;
-
-import org.springframework.data.annotation.Id;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -13,15 +10,13 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class CharacterItem {
+@EqualsAndHashCode(callSuper = true)
+public class CharacterWeapon extends CharacterItem {
 
-	@Id
-	private String id;
+	private String skillId;
 
-	private String itemId;
+	private String weaponTableId;
 
-	private ItemStatus status;
-
-	private BigDecimal weigth;
+	private Integer fumble;
 
 }

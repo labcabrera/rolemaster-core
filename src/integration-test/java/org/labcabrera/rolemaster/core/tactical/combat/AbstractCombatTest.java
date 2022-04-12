@@ -5,11 +5,15 @@ import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class AbstractCombatTest {
+
+	@Autowired
+	protected StrategicSessionService strategicSessionService;
 
 	@Autowired
 	protected TacticalService tacticalService;

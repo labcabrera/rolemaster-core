@@ -1,25 +1,34 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import java.util.function.UnaryOperator;
-
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
-public class MeleeAttackOffensiveBonusProcessor implements UnaryOperator<TacticalAttackContext> {
+import reactor.core.publisher.Mono;
 
-	@Override
-	public TacticalAttackContext apply(TacticalAttackContext context) {
-		if (context.getAction().getFumbleResult() != null) {
-			return context;
+@Component
+public class MeleeAttackOffensiveBonusProcessor {
+
+	@Autowired
+	private TacticalSkillService skillService;
+
+	public Mono<TacticalAttackContext> apply(TacticalAttackContext context) {
+		if (context.getAction().isFlumbe()) {
+			return Mono.just(context);
 		}
 		TacticalCharacter source = context.getSource();
 		TacticalCharacter target = context.getSource();
+		String skillId = source.getInventory().getMainHandWeapon().getSkillId();
 
-		int skillBonus = source.getItems().getMainWeaponBonus();
+		Mono
+			.just(context)
+			.zipWith(skillService.getSkill(target, skillId));
+
+		int skillBonus = 40; //source.getItems().getMainWeaponBonus();
 		int flankBonus = getFlankBonus(context.getExecution());
 		int hpBonus = getHpBonus(source);
 		int exhaustionBonus = getExhaustionBonus(source);
@@ -31,7 +40,7 @@ public class MeleeAttackOffensiveBonusProcessor implements UnaryOperator<Tactica
 		context.getAction().getOffensiveBonusMap().put("exhaustion", exhaustionBonus);
 		context.getAction().getOffensiveBonusMap().put("targetStatus", targetStatus);
 
-		return context;
+		return Mono.just(context);
 	}
 
 	private int getFlankBonus(MeleeAttackExecution execution) {

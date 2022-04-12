@@ -4,68 +4,41 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
-import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
-import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackPosition;
 import org.labcabrera.rolemaster.core.model.tactical.actions.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
-import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BasicCombatCriticalTest extends AbstractCombatTest {
-
-	@Autowired
-	private StrategicSessionService strategicSessionService;
+class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 	@BeforeEach
 	void cleanUp() {
 		clearData();
+		prepare();
 	}
 
 	@Test
 	void test() {
-		StrategicSession sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
-			.name("Test strategic session " + LocalDateTime.now())
-			.description("Testing")
-			.build()).share().block();
-
-		TacticalSession ts = tacticalService.createSession(TacticalSessionCreation.builder()
-			.strategicSessionId(sts.getId())
-			.name("Test tactical session " + LocalDateTime.now())
-			.description("Testing")
-			.build()).share().block();
-
-		String tsId = ts.getId();
-		String npcId = "ork-fighter-melee-ii";
-
-		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
-		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();
-
 		assertEquals(50, cc02.getHp().getMax());
 		assertEquals(50, cc02.getHp().getCurrent());
 
-		TacticalRound round01 = tacticalService.startRound(tsId).share().block();
+		TacticalRound round01 = tacticalService.startRound(ts.getId()).share().block();
 		String r01Id = round01.getId();
 
 		TacticalAction a01 = tacticalActionService.delare(TacticalActionMeleeAttackDeclaration.builder()
@@ -91,19 +64,19 @@ class BasicCombatCriticalTest extends AbstractCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.actionId(a01.getId())
-			.target(cc02.getId())
+			.primaryTarget(cc02.getId())
 			.position(MeleeAttackPosition.NORMAL)
-			.roll(OpenRoll.of(85))
+			.primaryRoll(OpenRoll.of(85))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(meleeAttackExecution).share().block();
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
-		assertEquals(10, meleeResolved01.getHpResult());
-		assertNotNull(meleeResolved01.getCriticalResult());
-		assertEquals(CriticalSeverity.A, meleeResolved01.getCriticalResult().getSeverity());
-		assertEquals(CriticalType.S, meleeResolved01.getCriticalResult().getType());
+		assertEquals(10, meleeResolved01.getPrimaryAttackResult().getHpResult());
+		assertNotNull(meleeResolved01.getPrimaryAttackResult().getCriticalResult());
+		assertEquals(CriticalSeverity.A, meleeResolved01.getPrimaryAttackResult().getCriticalResult().getSeverity());
+		assertEquals(CriticalType.S, meleeResolved01.getPrimaryAttackResult().getCriticalResult().getType());
 
 		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, meleeResolved01.getState());
 
@@ -117,8 +90,8 @@ class BasicCombatCriticalTest extends AbstractCombatTest {
 		TacticalActionMeleeAttack meleeResolved02 = (TacticalActionMeleeAttack) taResolved02;
 
 		assertEquals(TacticalActionState.RESOLVED, meleeResolved02.getState());
-		assertEquals(2, meleeResolved02.getCriticalResult().getCriticalTableResult().getHp());
-		assertEquals(55, meleeResolved02.getCriticalResult().getRoll());
+		assertEquals(2, meleeResolved02.getPrimaryAttackResult().getCriticalResult().getCriticalTableResult().getHp());
+		assertEquals(55, meleeResolved02.getPrimaryAttackResult().getCriticalResult().getRoll());
 
 		cc02 = this.tacticalCharacterRepository.findById(cc02.getId()).share().block();
 		assertEquals(38, cc02.getHp().getCurrent());

@@ -21,30 +21,26 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public abstract class TacticalActionAttack extends TacticalAction {
 
-	private String target;
+	protected String target;
 
-	private OpenRoll roll;
+	@Schema(description = "In the case of a two-weapon attack, the target of the secondary weapon can be set.")
+	protected String secondaryTarget;
+
+	protected OpenRoll primaryRoll;
+
+	protected OpenRoll secondaryRoll;
 
 	@Builder.Default
-	private Map<String, Integer> offensiveBonusMap = new LinkedHashMap<>();
+	protected Map<String, Integer> offensiveBonusMap = new LinkedHashMap<>();
 
 	@Builder.Default
-	private Map<String, Integer> defensiveBonusMap = new LinkedHashMap<>();
+	protected Map<String, Integer> defensiveBonusMap = new LinkedHashMap<>();
 
-	private String weaponId;
+	protected AttackResult primaryAttackResult;
 
-	@Schema(description = "Result of the attack plus all modifiers.")
-	private Integer attackResult;
+	protected AttackResult secondaryAttackResult;
 
-	@Schema(description = "Number of hit points caused by the attack.")
-	private Integer hpResult;
-
-	private AttackFumbleResult fumbleResult;
-
-	@Schema(description = "In case the attack provokes a critical (or more than one) define the information related to the result of the critical.")
-	private TacticalCriticalResult criticalResult;
-
-	private BigDecimal exhaustionPoints;
+	protected BigDecimal exhaustionPoints;
 
 	public Integer getOffensiveBonus() {
 		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
@@ -52,5 +48,22 @@ public abstract class TacticalActionAttack extends TacticalAction {
 
 	public Integer getDefensiveBonus() {
 		return defensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
+	}
+
+	public boolean isFlumbe() {
+		if (primaryAttackResult != null && primaryAttackResult.getFumbleResult() != null) {
+			return true;
+		}
+		else if (secondaryAttackResult != null && secondaryAttackResult.getCriticalResult() != null) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean hasPendingCriticalResolution() {
+		if (primaryAttackResult != null && primaryAttackResult.requiresCriticalResolution()) {
+			return true;
+		}
+		return false;
 	}
 }

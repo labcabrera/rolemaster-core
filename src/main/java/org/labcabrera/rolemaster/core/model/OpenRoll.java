@@ -34,6 +34,10 @@ public class OpenRoll {
 	@Builder.Default
 	private List<Integer> rolls = new ArrayList<>();
 
+	public Integer getFirstRoll() {
+		return rolls.iterator().next();
+	}
+
 	public String toString() {
 		if (rolls.size() == 1) {
 			return String.valueOf(result);

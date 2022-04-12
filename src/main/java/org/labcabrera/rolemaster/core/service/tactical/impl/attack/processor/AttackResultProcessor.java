@@ -9,6 +9,7 @@ import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.actions.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -53,13 +54,17 @@ public class AttackResultProcessor {
 	}
 
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack) {
+		return updateTarget(attack, attack.getPrimaryAttackResult());
+	}
+
+	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackResult attackResult) {
 		return tacticalCharacterRepository.findById(attack.getTarget())
 			.map(tc -> {
-				if (attack.getHpResult() != null) {
-					tc.getHp().subtract(attack.getHpResult());
+				if (attackResult.getHpResult() != null) {
+					tc.getHp().subtract(attackResult.getHpResult());
 				}
-				if (attack.getCriticalResult() != null && attack.getCriticalResult().getCriticalTableResult() != null) {
-					CriticalTableResult ctr = attack.getCriticalResult().getCriticalTableResult();
+				if (attackResult.getCriticalResult() != null && attackResult.getCriticalResult().getCriticalTableResult() != null) {
+					CriticalTableResult ctr = attackResult.getCriticalResult().getCriticalTableResult();
 					CombatStatus cs = tc.getCombatStatus();
 
 					if (ctr.getHp() != null) {
@@ -83,13 +88,17 @@ public class AttackResultProcessor {
 	}
 
 	private Mono<TacticalCharacter> updateSource(TacticalActionAttack attack) {
+		return updateSource(attack, attack.getPrimaryAttackResult());
+	}
+
+	private Mono<TacticalCharacter> updateSource(TacticalActionAttack attack, AttackResult attackResult) {
 		return tacticalCharacterRepository.findById(attack.getTarget())
 			.map(tc -> {
 				if (attack.getExhaustionPoints() != null) {
 					tc.getExhaustionPoints().substract(attack.getExhaustionPoints());
 				}
-				if (attack.getCriticalResult() != null && attack.getCriticalResult().getCriticalTableResult() != null) {
-					CriticalTableResult ctr = attack.getCriticalResult().getCriticalTableResult();
+				if (attackResult.getCriticalResult() != null && attackResult.getCriticalResult().getCriticalTableResult() != null) {
+					CriticalTableResult ctr = attackResult.getCriticalResult().getCriticalTableResult();
 					if (ctr.getBonus() != null) {
 						tc.getCombatStatus().getBonus().add(ctr.getBonus());
 					}

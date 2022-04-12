@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
+import java.util.Map;
+
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.character.ContextCharacterModifiers;
 import org.springframework.data.annotation.Id;
@@ -49,7 +51,9 @@ public class TacticalCharacter {
 	private ContextCharacterModifiers modifiers = new ContextCharacterModifiers();
 
 	@Builder.Default
-	private TacticalCharacterItems items = new TacticalCharacterItems();
+	private TacticalCharacterInventory inventory = new TacticalCharacterInventory();
+
+	private Map<String, Integer> npcSkills;
 
 	private Integer armorType;
 

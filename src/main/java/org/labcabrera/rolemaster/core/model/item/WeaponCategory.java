@@ -17,7 +17,7 @@ public class WeaponCategory extends ItemCategory {
 
 	private String weaponType;
 
-	private List<Integer> fumble;
+	private Integer fumble;
 
 	private List<Integer> roture;
 

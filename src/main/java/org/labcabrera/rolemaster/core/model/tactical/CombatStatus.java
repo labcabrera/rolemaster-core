@@ -24,10 +24,6 @@ public class CombatStatus {
 	private Map<Debuff, Integer> debuffs = new HashMap<>();
 
 	@Builder.Default
-	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
-	private Integer reloadingActivityPercent = 0;
-
-	@Builder.Default
 	private List<Bleeding> bleding = new ArrayList<>();
 
 	@Builder.Default
@@ -38,6 +34,10 @@ public class CombatStatus {
 
 	@Builder.Default
 	private List<String> otherEfects = new ArrayList<>();
+
+	@Builder.Default
+	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
+	private Integer reloadingActivityPercent = 0;
 
 	public CombatStatus addDebuff(Debuff key, Integer value) {
 		if (debuffs.containsKey(key)) {
