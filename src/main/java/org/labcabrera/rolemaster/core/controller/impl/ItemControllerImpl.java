@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
 import org.labcabrera.rolemaster.core.controller.ItemController;
-import org.labcabrera.rolemaster.core.model.item.ItemCategory;
+import org.labcabrera.rolemaster.core.model.item.Item;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -17,12 +17,12 @@ public class ItemControllerImpl implements ItemController {
 	private ItemRepository repository;
 
 	@Override
-	public Flux<ItemCategory> findAll(Pageable pageable) {
+	public Flux<Item> findAll(Pageable pageable) {
 		return repository.findAll(pageable.getSort());
 	}
 
 	@Override
-	public Mono<ItemCategory> findById(String id) {
+	public Mono<Item> findById(String id) {
 		return repository.findById(id);
 	}
 

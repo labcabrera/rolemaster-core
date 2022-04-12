@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.model.item.ItemCategory;
-import org.labcabrera.rolemaster.core.model.item.WeaponCategory;
+import org.labcabrera.rolemaster.core.model.item.Item;
+import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -35,7 +35,7 @@ public class ItemPopulator implements ApplicationRunner {
 	private ObjectMapper objectMapper;
 
 	public void run(ApplicationArguments args) throws Exception {
-		List<ItemCategory> values = collectValues();
+		List<Item> values = collectValues();
 		repository
 			.deleteAll()
 			.thenMany(Flux.fromIterable(values))
@@ -46,17 +46,17 @@ public class ItemPopulator implements ApplicationRunner {
 			.subscribe(log::info);
 	}
 
-	protected List<ItemCategory> collectValues() throws IOException {
-		List<ItemCategory> list = new ArrayList<>();
+	protected List<Item> collectValues() throws IOException {
+		List<Item> list = new ArrayList<>();
 
 		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(RESOURCE_ITEMS)) {
-			List<ItemCategory> values = objectMapper.readerFor(new TypeReference<List<ItemCategory>>() {
+			List<Item> values = objectMapper.readerFor(new TypeReference<List<Item>>() {
 			}).readValue(in);
 			list.addAll(values);
 		}
 
 		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(RESOURCE_WEAPONS)) {
-			List<WeaponCategory> values = objectMapper.readerFor(new TypeReference<List<WeaponCategory>>() {
+			List<Weapon> values = objectMapper.readerFor(new TypeReference<List<Weapon>>() {
 			}).readValue(in);
 			list.addAll(values);
 		}

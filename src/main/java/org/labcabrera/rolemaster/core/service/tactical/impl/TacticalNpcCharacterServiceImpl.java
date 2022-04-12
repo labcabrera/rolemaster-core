@@ -3,35 +3,39 @@ package org.labcabrera.rolemaster.core.service.tactical.impl;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 
+import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.character.inventory.ItemStatus;
-import org.labcabrera.rolemaster.core.model.item.WeaponCategory;
+import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
-import org.labcabrera.rolemaster.core.model.npc.NpcAttack;
 import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
 import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.PowerPoints;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterInventory;
 import org.labcabrera.rolemaster.core.repository.WeaponRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalNpcCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
 
 @Service
-public class TacticalNpcCharacterService {
+public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterService {
 
 	@Autowired
 	private WeaponRepository weaponRepository;
 
+	@Override
 	public Mono<TacticalCharacter> create(String tacticalSessionId, Npc npc) {
 		return create(tacticalSessionId, npc, null);
 	}
 
-	public Mono<TacticalCharacter> create(String tacticalSessionId, Npc npc, Object npcCustomization) {
+	@Override
+	public Mono<TacticalCharacter> create(String tacticalSessionId, Npc npc, NpcCustomization npcCustomization) {
 		Integer level = npc.getLevel();
 		Integer maxHp = npc.getHp();
 
@@ -75,40 +79,35 @@ public class TacticalNpcCharacterService {
 	}
 
 	private Mono<TacticalCharacter> loadWeapons(TacticalCharacter tacticalCharacter, Npc npc) {
-		return Mono
-			.just(tacticalCharacter)
-			.flatMap(ta -> {
-				//TODO read all attacks
-				return loadWeapon(ta, npc.getAttacks().iterator().next());
-			})
-			.map(e -> e);
+		return Mono.just(tacticalCharacter)
+			.zipWith(readWeapons(npc))
+			.map(pair -> loadWeapons(pair.getT1(), npc, pair.getT2()));
 	}
 
-	private Mono<TacticalCharacter> loadWeapon(TacticalCharacter tacticalCharacter, NpcAttack attack) {
-		String weaponId = attack.getWeaponId();
-		if (tacticalCharacter.getNpcSkills() == null) {
-			tacticalCharacter.setNpcSkills(new HashMap<>());
-		}
-		return Mono
-			.just(tacticalCharacter)
-			.zipWith(weaponRepository.findById(weaponId))
-			.switchIfEmpty(Mono.error(() -> new RuntimeException("Missing weapon " + weaponId)))
-			.map(pair -> {
-				TacticalCharacter ta = pair.getT1();
-				WeaponCategory weapon = pair.getT2();
-				String skillId = weaponId;
-				ItemStatus status = attack.getPrimary() ? ItemStatus.MAIN_HAND : ItemStatus.CARRIED;
-				CharacterWeapon characterWeapon = CharacterWeapon.builder()
-					.fumble(weapon.getFumble())
-					.itemId(weaponId)
-					.skillId(skillId)
-					.weaponTableId(weaponId)
-					.status(status)
-					.build();
-				ta.getInventory().getItems().add(characterWeapon);
-				ta.getNpcSkills().put(skillId, attack.getBonus());
-				return ta;
-			});
+	private TacticalCharacter loadWeapons(TacticalCharacter tacticalCharacter, Npc npc, List<Weapon> weapons) {
+		npc.getAttacks().stream().forEach(attack -> {
+			String weaponId = attack.getWeaponId();
+			if (tacticalCharacter.getNpcSkills() == null) {
+				tacticalCharacter.setNpcSkills(new HashMap<>());
+			}
+			Weapon weapon = weapons.stream().filter(e -> e.getId().equals(weaponId)).findFirst().orElseThrow();
+			String skillId = weaponId;
+			ItemStatus status = attack.getPrimary() ? ItemStatus.MAIN_HAND : ItemStatus.CARRIED;
+			CharacterWeapon characterWeapon = CharacterWeapon.builder()
+				.fumble(weapon.getFumble())
+				.itemId(weaponId)
+				.skillId(skillId)
+				.weaponTableId(weaponId)
+				.status(status)
+				.build();
+			tacticalCharacter.getInventory().getItems().add(characterWeapon);
+			tacticalCharacter.getNpcSkills().put(skillId, attack.getBonus());
+		});
+		return tacticalCharacter;
+	}
+
+	private Mono<List<Weapon>> readWeapons(Npc npc) {
+		return weaponRepository.findAll().collectList();
 	}
 
 }

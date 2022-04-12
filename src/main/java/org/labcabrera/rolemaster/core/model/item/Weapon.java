@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class WeaponCategory extends ItemCategory {
+public class Weapon extends Item {
 
 	private String weaponType;
 

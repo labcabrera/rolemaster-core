@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.controller.converter.TacticalCharacterContextConverter;
+import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
@@ -19,6 +20,7 @@ import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalNpcCharacterService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalRoundService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSessionService;
@@ -80,12 +82,17 @@ public class TacticalServiceImpl implements TacticalService {
 
 	@Override
 	public Mono<TacticalCharacter> addNpc(String tacticalSessionId, String npcId) {
+		return addNpc(tacticalSessionId, npcId, null);
+	}
+
+	@Override
+	public Mono<TacticalCharacter> addNpc(String tacticalSessionId, String npcId, NpcCustomization npcCustomization) {
 		return tacticalSessionRepository
 			.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
 			.zipWith(npcRepository.findById(npcId))
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid NPC id.")))
-			.flatMap(pair -> npcCharacterService.create(tacticalSessionId, pair.getT2()))
+			.flatMap(pair -> npcCharacterService.create(tacticalSessionId, pair.getT2(), npcCustomization))
 			.flatMap(tacticalCharacterStatusRepository::save);
 	}
 

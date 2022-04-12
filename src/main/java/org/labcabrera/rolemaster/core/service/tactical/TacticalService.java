@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.service.tactical;
 
+import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -16,6 +17,8 @@ public interface TacticalService {
 	Mono<TacticalCharacter> addCharacter(String tacticalSessionId, String characterId);
 
 	Mono<TacticalCharacter> addNpc(String tacticalSessionId, String npcId);
+
+	Mono<TacticalCharacter> addNpc(String tacticalSessionId, String npcId, NpcCustomization npcCustomization);
 
 	Mono<TacticalRound> startRound(String tacticalSessionId);
 
