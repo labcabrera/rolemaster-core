@@ -6,15 +6,18 @@ import org.labcabrera.rolemaster.core.controller.TacticalSessionController;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterContextRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.micrometer.core.instrument.util.StringUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -28,7 +31,7 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
-	private TacticalCharacterContextRepository characterContextRepository;
+	private TacticalCharacterRepository characterContextRepository;
 
 	@Override
 	public Mono<TacticalSession> createTacticalSession(TacticalSessionCreation request) {
@@ -36,8 +39,13 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	}
 
 	@Override
-	public Flux<TacticalSession> findAllTacticalSessions() {
-		return tacticalSessionRepository.findAll();
+	public Flux<TacticalSession> find(String strategicSessionId, Pageable pageable) {
+		Example<TacticalSession> example = Example.of(new TacticalSession());
+		//example.getProbe().setCurrentRound(null);
+		if (StringUtils.isNotBlank(strategicSessionId)) {
+			example.getProbe().setStrategicSessionId(strategicSessionId);
+		}
+		return tacticalSessionRepository.findAll(example, pageable.getSort());
 	}
 
 	@Override
@@ -66,17 +74,17 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	}
 
 	@Override
-	public Mono<TacticalCharacterContext> addPlayerCharacter(String id, String characterId) {
+	public Mono<TacticalCharacter> addPlayerCharacter(String id, String characterId) {
 		return tacticalService.addCharacter(id, characterId);
 	}
 
 	@Override
-	public Mono<TacticalCharacterContext> addNpcCharacter(String id, String npcId) {
+	public Mono<TacticalCharacter> addNpcCharacter(String id, String npcId) {
 		return tacticalService.addNpc(id, npcId);
 	}
 
 	@Override
-	public Flux<TacticalCharacterContext> findCharacters(String tacticalSessionId) {
+	public Flux<TacticalCharacter> findCharacters(String tacticalSessionId) {
 		return characterContextRepository.findByTacticalSessionId(tacticalSessionId);
 	}
 

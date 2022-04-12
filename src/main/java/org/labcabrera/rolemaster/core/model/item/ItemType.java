@@ -8,6 +8,8 @@ public enum ItemType {
 
 	WEAPON("weapon"),
 
+	SHIELD("shield"),
+
 	ARMOR("armor"),
 
 	ARMOR_ACCESSORY("armorAccessory");

@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverModifier;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.service.maneuver.m.MovingManeuverContext;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -34,7 +34,7 @@ public class MovingManeuverContextImpl implements MovingManeuverContext {
 
 	@Transient
 	@Builder.Default
-	private Optional<TacticalCharacterContext> characterStatus = Optional.empty();
+	private Optional<TacticalCharacter> characterStatus = Optional.empty();
 
 	@Transient
 	@Builder.Default

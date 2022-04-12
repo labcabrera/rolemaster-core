@@ -20,6 +20,8 @@ public class TrainingPackage {
 
 	@Id
 	private String id;
+	
+	private String name;
 
 	private LifestyleTrainingType type;
 

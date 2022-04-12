@@ -35,10 +35,6 @@ public class TacticalSession {
 	private TacticalSessionState state;
 
 	@Builder.Default
-	@Schema(description = "Current round. Zero if not initialized.", required = true, example = "42")
-	private Integer currentRound = 0;
-
-	@Builder.Default
 	@Schema(description = "Audit data.", required = true)
 	private EntityMetadata entityMetadata = new EntityMetadata();
 

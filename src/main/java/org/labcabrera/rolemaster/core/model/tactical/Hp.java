@@ -18,4 +18,12 @@ public class Hp {
 	public Integer getPercent() {
 		return (100 * current) / max;
 	}
+
+	public void add(int value) {
+		this.current += value;
+	}
+
+	public void subtract(Integer value) {
+		this.current -= value;
+	}
 }

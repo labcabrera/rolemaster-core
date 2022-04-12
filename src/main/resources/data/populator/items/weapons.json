@@ -8,7 +8,7 @@
 			"min": 0.250,
 			"max": 0.075
 		},
-		"fumble": [1],
+		"fumble": 1,
 		"roture": [1,2,3,4,5,6],
 		"resistance": [54,66],
 		"rangeModifiers": [
@@ -23,6 +23,51 @@
 			{
 				"range": 15,
 				"modifier": -30
+			}
+		]
+	},
+	{
+		"id": "scimitar",
+		"name": "Scimitar",
+		"type": "weapon",
+		"count": 1,
+		"commonWeight": {
+			"min": 1.500,
+			"max": 2.500
+		},
+		"fumble": 4,
+		"roture": [1,2,3,4,5],
+		"resistance": [56,64]
+	},
+	{
+		"id": "short-bow",
+		"name": "Short Bow",
+		"type": "weapon",
+		"count": 1,
+		"commonWeight": {
+			"min": 0.250,
+			"max": 0.075
+		},
+		"fumble": 4,
+		"autoRoture": true,
+		"resistance": [54,66],
+		"minRange": 0.3,
+		"rangeModifiers": [
+			{
+				"range": 3,
+				"modifier": 10
+			},
+			{
+				"range": 30,
+				"modifier": 0
+			},
+			{
+				"range": 50,
+				"modifier": -40
+			},
+			{
+				"range": 100,
+				"modifier": -70
 			}
 		]
 	}

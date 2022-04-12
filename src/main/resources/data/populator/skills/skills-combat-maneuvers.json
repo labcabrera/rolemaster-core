@@ -34,5 +34,44 @@
         "categoryId": "combat-maneuvers",
         "progressionType": "standard",
         "description": "This skill allows a combatant to fight with two weapons simultaneously. He is allowed to make 2 weapon attacks for each melee attack action, and may engage two opponents providing neither opponent is receiving any positional combat modifiers for their OB (e.g., If either opponent is receiving +15 for Flank Attack or +20 for Rear Attack the individual cannot attack both opponents in the same round). Two Weapon Combat skill must be developed for each individual two-weapon combination (e.g., shortsword/handaxe, rapier/dagger, etc.). A character's skill rank with a two-weapon combination may not exceed his skill rank of either of the individual weapons (e.g., if a Fighter has 5 skill ranks with a dagger and 9 skill ranks with a short sword, he may only have 5 skill ranks with his short sword/dagger two weapon combination). The OB for each weapon attack is equal to the skill bonus for the Two-weapon Combat skill for the combination of those two weapons."
+    },
+	{
+        "id": "adrenal-deflecting",
+        "name": "Adrenal Deflecting",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "combat-maneuvers",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for using the body (hands, etc.) or a weapon or a shield to deflect or even catch a thrown weapon or missile directed at the user (this is treated as an action requiring at least 50% activity; with a -1 modification for each 1% activity less than 50%). To determine the effect of such an attempt roll (open-ended) add the Adrenal Deflection skill bonus. Then refer to the Moving Maneuver Table T-4.1 (RMFRP, p. 49), using the “Extremely Hard” column against thrown weapons and the “Sheer Folly” column against missile weapons. If the result is a number, it is subtracted from the weapon’s attack roll (in addition to the normal DB). If the missile or thrown object misses, the character has a chance of catching the item. Roll d100 (open-ended) and add the modification received earlier from the Moving Maneuver Table; if the result is over 100, the item has been caught, if desired."
+    },
+	{
+        "id": "reverse-stroke",
+        "name": "Reverse Stroke †",
+        "type": "special",
+        "customizable": true,
+        "loadOnNewCharacters": false,
+        "categoryId": "combat-maneuvers",
+        "progressionType": "standard",
+        "description": "This skill provides a limit for applying one’s melee OB against an opponent to one’s flank or rear without turning or changing position. The OB of an attack made in this fashion can not exceed the attacker’s Reverse Stroke skill bonus. Note that this skill must be developed separately for each weapon category."
+    },
+	{
+        "id": "subdual",
+        "name": "Subdual",
+        "type": "special",
+        "customizable": true,
+        "loadOnNewCharacters": false,
+        "categoryId": "combat-maneuvers",
+        "progressionType": "standard",
+        "description": "This skill allows an individual to immobilize or render uncon- scious a target by applying a sharp blow to a precise point on the victim’s upper body. The foe is assumed to be “of kind” (usually humanoid) and not “Large” or “Super-large.” The OB of a subduing attack can not exceed the attacker’s Subdual skill bonus (e.g., a Fighter with an OB of +120 and a Subdual bonus of +70 would only be able to apply a +70 OB to his attack). Instead of rolling criticals on the Critical Table indicated by the Weapon Attack Table, the AL Subdual Critical Table 4.9 should be used."
+    },
+	{
+        "id": "tumbling-evasion",
+        "name": "Tumbling Evasion",
+        "type": "special",
+        "customizable": true,
+        "loadOnNewCharacters": false,
+        "categoryId": "combat-maneuvers",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for evading a attack by using a tumbling maneuver. The skill rank (not the skill rank bonus) is added to the DB. This skill is rolled for during the round that the skill is actively used. Individual may not parry, use a shield, or attack while using this skill."
     }
 ]

@@ -65,6 +65,135 @@
 				"modifier": -70
 			}
 		]
-	         
-    }
+    },
+    {
+        "id": "adrenal-balance",
+        "name": "Adrenal Balance",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill enhances the ability of the character to maintain his balance in one maneuver action (requiring balance). The skill rank bonus is added to any maneuver roll required for the action (even if it takes several rounds). This skill requires taking a 20% activity action in a “preparation round” immediately prior to the use of this skill."
+    },
+    {
+        "id": "adrenal-concentration",
+        "name": "Adrenal Concentration",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for achieving a special +25 bonus on any activity attempted using concentration and the focusing of internal reserves. If the user makes a successful static maneuver, +25 is added to any such activity the next round. However, this static maneuver requires 75% of the user’s activity the round it is attempted."
+    },
+    {
+        "id": "adrenal-landing",
+        "name": "Adrenal Landing",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "With a successful static maneuver, a character may decrease the severity of a fall by his skill rank bonus times one foot. For example, if a character’s skill rank bonus was +60, a 100' fall would be treated as a 40' fall. The severity of a fall can never be reduced below that of a 1' fall (requiring a roll on the Fall/Crush Attack Table with a +1 modification). A 20% activity action is required the round after the fall (assuming he’s alive and conscious). This is the “recuperation” round."
+    },
+    {
+        "id": "adrenal-leaping",
+        "name": "Adrenal Leaping",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This allows the character to automatically increase the dis- tance he can successfully leap from either a standing or a running start. The Moving Maneuver Table T–4.1 (RMFRP, p. 49) can be used, with the skill bonus being added. A 100% would indicate a normal leap and results above that a longer jump. This skill requires taking a 20% activity action in a “preparation round” immediately prior to the use of this skill."
+    },
+    {
+        "id": "adrenal-quickdraw",
+        "name": "Adrenal Quickdraw",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "Bonus for drawing your weapon with 0% activity. Success indicates you have your weapon ready and failure indicates you take the normal 20% activity action for drawing your weapon. This skill does count against the one adrenal move every other round limit. It must be developed separately for each type of weapon (1-handed edge, 1-handed crushing, 2-handed, thrown, etc.)."
+    },
+    {
+        "id": "adrenal-speed",
+        "name": "Adrenal Speed",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This allows a character to move at twice normal speed (as if Hasted) and thus increase his activity for one round. This skill requires taking a 20% activity action in a “preparation round” immediately prior to the use of this skill."
+    },
+    {
+        "id": "adrenal-stabilization",
+        "name": "Adrenal Stabilization",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for keeping oneself alive after being injured. This skill puts your body into a near death condition (coma) for 1 day/round before death. (Rounds before death is obtained from the description of the critical strike taken). Due to the slowing down of your body’s metabolic rate, you will appear to be dead to all but the closest of scrutiny (-75 from other’s perception). If you fail to make a successful static maneuver, you immediately go into a coma but you still die at the appointed time. You may be awakened from this state by one or more of the following: Within 1 hour of the preset time or an Awaken spell or vigorous physical disturbance lasting more than 3 minutes. If you receive a critical that kills instantly, this skill will have no effect. Certain types of damage may make it impossible to use this skill (e.g., massive brain damage, head being completely ripped off or destroyed, body dissolving in acid, heart being ripped out of chest, etc.). Note: This skill should only be available under unusual circumstances (e.g.,"
+    },
+    {
+        "id": "adrenal-strength",
+        "name": "Adrenal Strength",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill gives a character a +10 modification on his OB and doubles the number of concussion hits that he delivers. This skill requires taking a 20% activity action in a “preparation round” immediately prior to the use of this skill."
+    },
+    {
+        "id": "adrenal-strength",
+        "name": "Adrenal Strength",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill gives a character a +10 modification on his OB and doubles the number of concussion hits that he delivers. This skill requires taking a 20% activity action in a “preparation round” immediately prior to the use of this skill."
+    },
+    {
+        "id": "cleansing-trance",
+        "name": "Cleansing Trance",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for purification ritual to help remove outside energies and influences that linger on a object, item, person, etc. The use of this skill enables the user to rid himself of the touch of curses and hexes. Skill must be used within 5 minutes/rank of Cleansing skill in order to benefit the user at all. Otherwise the only way to be cleansed is from a spell or a person with a higher skill rank in cleansing. Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25)."
+    },
+    {
+        "id": "healing-trance",
+        "name": "Healing Trance",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for increasing one’s healing rate. The individual using this skill goes into a coma. Healing rate is increased/decreased by the amount the static maneuver roll is over 100 as a percentage times the racial healing rate (see RMFRP, p. 78). Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25)."
+    },
+    {
+        "id": "sleep-trance",
+        "name": "Sleep Trance",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for decreasing the amount of time one needs to fully recover. The sleep time is increased/decreased by the amount of the static maneuver roll is over 100 as a percentage times racial sleep requirement. Physical prodding allows one to make a static maneuver to leave the trance, as does a painful strike (modify by +25)."
+    },
+    {
+        "id": "stunned-maneuvering",
+        "name": "Stunned Maneuvering",
+        "loadOnNewCharacters": false,
+        "type": "staticManeuver",
+        "categoryId": "self-control",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for maneuvers attempted while stunned. If this bonus is used to modify a stunned maneuver, the normal modifier of triple SD stat bonus is not used. See RMFRP (p. 54) for more information on stunned maneuvers."
+    }  
 ]

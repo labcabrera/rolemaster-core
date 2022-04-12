@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.controller;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,6 +56,6 @@ public interface StrategicSessionController {
 	@PostMapping("/{id}/characters/{characterId}")
 	@Operation(summary = "Adds a certain character to the session.")
 	@ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
-	Mono<TacticalCharacterContext> createStatus(@PathVariable("id") String sessionId, @PathVariable("characterId") String characterId);
+	Mono<TacticalCharacter> createStatus(@PathVariable("id") String sessionId, @PathVariable("characterId") String characterId);
 
 }

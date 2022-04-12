@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.CharacterTacticalContextModification;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterContext;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -25,16 +25,16 @@ public interface TacticalCharacterContextController {
 
 	@GetMapping("/{id}")
 	@Operation(summary = "Tactical character find by id.")
-	Mono<TacticalCharacterContext> findById(String id);
+	Mono<TacticalCharacter> findById(String id);
 
 	@GetMapping
 	@Operation(summary = "Tactical character search.")
-	Flux<TacticalCharacterContext> findAll(
+	Flux<TacticalCharacter> findAll(
 		@ParameterObject @PageableDefault(sort = "metadata.created", direction = Direction.DESC, size = 10) Pageable pageable);
 
 	@PostMapping("/{id}")
 	@Operation(summary = "Tactical character update.")
-	Mono<TacticalCharacterContext> update(@PathVariable("id") String id, @RequestBody CharacterTacticalContextModification request);
+	Mono<TacticalCharacter> update(@PathVariable("id") String id, @RequestBody CharacterTacticalContextModification request);
 
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Tactical character deletion.")

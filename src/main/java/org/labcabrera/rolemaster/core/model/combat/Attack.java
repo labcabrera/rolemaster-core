@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Deprecated
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

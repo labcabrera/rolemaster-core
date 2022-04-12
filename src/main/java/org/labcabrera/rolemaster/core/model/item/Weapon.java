@@ -15,7 +15,9 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class Weapon extends Item {
 
-	private List<Integer> fumble;
+	private String weaponType;
+
+	private Integer fumble;
 
 	private List<Integer> roture;
 

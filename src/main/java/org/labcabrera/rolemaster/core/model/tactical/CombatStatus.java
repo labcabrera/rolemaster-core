@@ -1,7 +1,9 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.Penalty;
@@ -19,28 +21,33 @@ import lombok.NoArgsConstructor;
 public class CombatStatus {
 
 	@Builder.Default
-	private Integer stunnedRounds = 0;
-
-	@Builder.Default
-	private Integer unconsciousRounds = 0;
-
-	@Builder.Default
-	private Integer canNotParryRounds = 0;
-
-	@Builder.Default
-	private Integer mustParryRounds = 0;
-
-	@Builder.Default
-	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
-	private Integer reloadingActivityPercent = 0;
-
-	@Builder.Default
-	private Integer surprised = 0;
+	private Map<Debuff, Integer> debuffs = new HashMap<>();
 
 	@Builder.Default
 	private List<Bleeding> bleding = new ArrayList<>();
 
 	@Builder.Default
 	private List<Penalty> penalty = new ArrayList<>();
+
+	@Builder.Default
+	private List<AttackBonus> bonus = new ArrayList<>();
+
+	@Builder.Default
+	private List<String> otherEfects = new ArrayList<>();
+
+	@Builder.Default
+	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
+	private Integer reloadingActivityPercent = 0;
+
+	public CombatStatus addDebuff(Debuff key, Integer value) {
+		if (debuffs.containsKey(key)) {
+			int rounds = debuffs.get(key) + value;
+			debuffs.put(key, rounds);
+		}
+		else {
+			debuffs.put(key, value);
+		}
+		return this;
+	}
 
 }

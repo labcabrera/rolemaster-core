@@ -4,6 +4,8 @@
 		"name": "Artistic - Active",
 		"group": "artistic",
 		"attributeBonus": ["pr","em","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"modifiers": [
 			{
 				"key": "Extensively Practiced piece - I",
@@ -49,6 +51,8 @@
 		"name": "Artistic - Pasive",
 		"group": "artistic",
 		"attributeBonus": ["em","in","pr"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"modifiers": [
 		],
 		"description": "This category includes skills which involve creative expression through the means of non-physical means or activity. It also includes those activities which are considered and crafted, involving the application of creative effort in a structured and extended fashion. The nature of this category often indicates a non-interactive, even solitary activity."
@@ -58,6 +62,8 @@
 		"name": "Athletic - Brawn",
 		"group": "athletic",
 		"attributeBonus": ["st","co","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"modifiers": [
 		],
 		"description": "This category includes those skills which involve the application of strength in a structured fashion, as opposed to a spontaneous or unstructured application (e.g., a frantic effort to break one’s bonds would not be an application of an Athletic • Brawn skill, but a considered effort to use one’s knowledge of leverage and one’s own strength to exert maximum force against a heavy weight would be)."
@@ -67,6 +73,8 @@
 		"name": "Athletic - Endurance",
 		"group": "athletic",		
 		"attributeBonus": ["co","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"modifiers": [
 		],
 		"description": "This category includes those skills which involve the application of endurance in a structured fashion, as opposed to a spontaneous or unstructured application (e.g., resisting the effects of torture would not be an application of an Athletic • Endurance skill, but a considered effort to conserve one’s energy over a run of many miles would be)."
@@ -76,6 +84,8 @@
 		"name": "Athletic - Gymnastics",
 		"group": "athletic",
 		"attributeBonus": ["ag","qu","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category includes those skills which involve the application of agility and coordination in a structured fashion, as opposed to a spontaneous or unstructured application (e.g., the frantic pinwheeling of arms one makes to maintain balance after an unexpected shove would not be an application of an Athletic • Gymnastic skill, but a considered effort to use one’s knowledge of balance and one’s own flexibility and agility to successfully walk a narrow ledge would be). Additional skills in this category include: pole-vaulting, rappelling, skating, skiing, stilt-walking, surfing, and tightrope-walking."		
 	},
 	{
@@ -83,6 +93,8 @@
 		"group": "awareness",
 		"name": "Awareness - Perceptions",
 		"attributeBonus": ["in","sd","in"],
+		"skillBonusProgression": "limited",
+		"skillCategoryBonusProgression": "none",
 		"description": "This category includes those skills which involve unconscious awareness of one’s environment. These skills are passive skills, and may only be trained to a limited extent. Any active observation of the environment falls instead into one of the other Awareness categories. For example, a “danger sense” would fall into this category; a skill in locating traps in a room would not."
 	},
 	{
@@ -90,6 +102,8 @@
 		"group": "awareness",
 		"name": "Awareness - Searching",
 		"attributeBonus": ["in","re","sd"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category includes those skills which involve the organized use of one’s ability to recognize and assimilate clues and information in the pursuit of some specific goal, in a structured fashion, as opposed to a spontaneous or unstructured application of such abilities (e.g., an attempt to orient oneself to a combat situation after taking a stunning blow would not be an application of an Awareness • Searching skill, but trying to read the signs of a battle afterwards in order to perceive the course it had taken would be)."
 	},
 	{
@@ -97,6 +111,8 @@
 		"group": "awareness",
 		"name": "Awareness - Senses",
 		"attributeBonus": ["in","sd","in"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category includes those skills which involve the applied ability to assimilate unconscious clues and internal consultation to derive information about the environment, as opposed to a spontaneous or unstructured application of such abilities (e.g., jerking one’s hand away from a hot stove is not an example of using an Awareness • Senses skill, but sensing the direction of a heat source by the feel of it in the air would be). Additional skills in this category include: reality awareness and spatial location awareness."
 	},
 	{
@@ -104,6 +120,8 @@
 		"name": "Body development",
 		"group": "body-development",
 		"attributeBonus": ["co","sd","co"],
+		"skillBonusProgression": "race-body-development",
+		"skillCategoryBonusProgression": "none",
 		"description": "Skill rank in Body Development is one of the factors which determines how many hits (concussion hits) a character can take without passing out. A character’s total hits are is equal to his Body Development skill bonus."
 	},
 	{
@@ -111,6 +129,8 @@
 		"name": "Armor - Light",
 		"group": "armor",
 		"attributeBonus": ["ag","st","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category covers the use of leather armor, both soft and rigid, from soft leather tunics to boiled leather cuirasses and the like."
 	},
 	{
@@ -118,6 +138,8 @@
 		"name": "Armor - Medium",
 		"group": "armor",
 		"attributeBonus": ["st","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category covers the use of flexible metal armors, including chain, scale and the like."
 	},
 	{
@@ -125,6 +147,8 @@
 		"name": "Armor - Heavy",
 		"group": "armor",
 		"attributeBonus": ["st","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category covers the use of rigid metal armor, from metal breastplates to full Maximilian Plate armor."
 	},
 	{
@@ -132,6 +156,8 @@
 		"name": "Combat maneuvers",
 		"group": "combat-maneuvers",
 		"attributeBonus": ["ag","qu","sd"],
+		"skillBonusProgression": "combined",
+		"skillCategoryBonusProgression": "none",
 		"description": "This category deals with the use of specialized maneuvers used in combat to achieve specific results. This may include fighting styles, special strokes, or defensive maneuvers used in conjunction with a particular mode of combat."
 	},
 	{
@@ -139,6 +165,8 @@
 		"name": "Communications",
 		"group": "communications",
 		"attributeBonus": ["re","me","em"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses those skills involving the coordinated transfer of information from one being to another by whatever means available or preferred. Whether this is in the form of language or smoke signals, it covers only the actual process of transfer and understanding of the communication medium, not the analysis or use of such information (e.g., understanding the words spoken by a Sphinx involves the use of these skills; figuring out the riddle does not)."
 	},
 	{
@@ -146,6 +174,8 @@
 		"name": "Crafts",
 		"group": "crafts",
 		"attributeBonus": ["ag","me","sd"],
+		"skillBonusProgression": "combined",
+		"skillCategoryBonusProgression": "none",
 		"description": "This category encompasses the use of particular craftsman skills, such as making jewelry, copper etching, cloth work, etc. Note that these skills are all physical applications of skill to produce a desired object or product. Skills dealing with the abstract analysis or theory of these objects should fall instead under the Technical/Trade group."
 	},
 	{
@@ -153,6 +183,8 @@
 		"name": "Directed spells",
 		"group": "directed-spells",
 		"attributeBonus": ["ag","sd","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "Certain spells make provision for attack rolls for “directed elemental” spells (see Appendix A-10.7, p. 219). Skill must be developed separately for each such spell. A character wishing to develop skill with such a spell must be able to cast it at least once a day (either intrinsically or from an item)."
 	},
 	{
@@ -160,6 +192,8 @@
 		"name": "Influence",
 		"group": "influence",
 		"attributeBonus": ["pr","em","in"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses those skills which deal with an intentional and applied effort at influencing, manipulating, or deceiving others."
 	},
 	{
@@ -167,6 +201,8 @@
 		"name": "Lore - General",
 		"group": "lore",
 		"attributeBonus": ["me","re","me"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of informational and academic skills which are available to most people with the determination to learn them."
 	},
 	{
@@ -174,6 +210,8 @@
 		"name": "Lore - Magical",
 		"group": "lore",
 		"attributeBonus": ["me","re","me"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of informational and academic skills dealing with magic and magical things. They are usually available only to those with access to magical resources and/or instructors. Additional skills in this category include: circle lore, planar lore, symbol lore, and warding lore."
 	},
 	{
@@ -181,6 +219,8 @@
 		"name": "Lore - Obscure",
 		"group": "lore",
 		"attributeBonus": ["me","re","me"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of informational and academic skills dealing with extremely unusual or obscure topics. Note that the availability of these skills should be limited to those with unusual magical or academic resources."
 	},
 	{
@@ -195,20 +235,26 @@
 		"name": "Martials Arts - Strikes",
 		"group": "martial-arts",
 		"attributeBonus": ["st","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of unarmed combat skills involving blows dealt with the hands, feet, elbows, and the like."
 	},
 	{
 		"id": "martial-arts-sweeps",
 		"name": "Martials Arts - Sweeps",
 		"group": "martial-arts",
-		"_attributeBonus": ["st","ag","st"],
-		"TODO": "CARGAR"
+		"attributeBonus": ["ag","st","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
+		"description": "This category encompasses the use of Martial Arts involving the so-called “soft” martial arts, typified by throws, grappling, sweeps and powerful controlling techniques. Blocking and Wrestling can also be found in this category."
 	},
 	{
 		"id": "outdoor-animal",
 		"name": "Outdoor - Animal",
 		"group": "outdoor",
 		"attributeBonus": ["em","ag","em"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of skills involving the raising, handling, training, and care of animals. Additional skills in this category include: animal mastery, animal healing, and herding."
 	},
 	{
@@ -216,6 +262,8 @@
 		"name": "Outdoor - Environmental",
 		"group": "outdoor",
 		"attributeBonus": ["sd","in","me"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of skills involving information-gathering and surviving in the outdoors and other unusual environments. These skills may range from gathering food to understanding how best to resist extreme heat or cold."
 	},
 	{
@@ -223,6 +271,8 @@
 		"name": "Power Awareness",
 		"group": "power-awareness",
 		"attributeBonus": ["em","in","pr"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of skills involving the perception and interpretation of magical power, information, and writings. Additional skills in this category include: Divination and Power Perception."
 	},
 	{
@@ -230,6 +280,8 @@
 		"name": "Power Point Development",
 		"group": "power-point",
 		"attributeBonus": [],
+		"skillBonusProgression": "race-based-power-point-development",
+		"skillCategoryBonusProgression": "none",
 		"description": "Skill rank in Power Point Development is one of the factors which determines how many spells a character can cast within a given time period. A character’s power point total is equal to his Power Point Development skill bonus.",
 		"TODO": "REALM DEPENDENT"
 	},
@@ -238,6 +290,8 @@
 		"name": "Science/Analytic - Basic",
 		"group": "science-analytic",
 		"attributeBonus": ["re","me","re"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of scientific and analytical skills which are available to most people with the determination to find and learn them."
 	},
 	{
@@ -245,6 +299,8 @@
 		"name": "Science/Analytic - Specialized",
 		"group": "science-analytic",
 		"attributeBonus": ["re","me","re"],
+		"skillBonusProgression": "combined",
+		"skillCategoryBonusProgression": "none",
 		"description": "This category encompasses the use of scientific and analytical skills dealing with unusual or obscure topics (in a fantasy adventuring setting). Note that the availability of these skills should be limited to those with unusual academic resources. Additional skills in this category might include: astronomy, biochemistry, psychology, etc."
 	},
 	{
@@ -252,13 +308,35 @@
 		"name": "Self Control",
 		"group": "self-control",
 		"attributeBonus": ["sd","pr","sd"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of skills involving the exercise of self-control and willpower, ranging from body control to advanced mental techniques. Additional skills in this category include: control lycanthropy, various “trance” skills, stunned maneuvering, and various “adrenal” skills."
+	},
+	{
+		"id": "special-attacks",
+		"name": "Special Attacks",
+		"group": "special-attacks",
+		"attributeBonus": ["st","ag","sd"],
+		"skillBonusProgression": "combined",
+		"skillCategoryBonusProgression": "none",
+		"description": "This category encompasses the use of skills involving specialized attacks (as opposed to specialized maneuvers during combat, which is handled under Combat Maneuvers)."
+	},
+	{
+		"id": "special-defenses",
+		"name": "Special Defenses",
+		"group": "special-defenses",
+		"attributeBonus": [],
+		"skillBonusProgression": "combined",
+		"skillCategoryBonusProgression": "none",
+		"description": "This category encompasses the use of unusual defensive skills which are typically available only through special training."
 	},
 	{
 		"id": "subterfuge-attack",
 		"name": "Subterfuge - Attack",
 		"group": "subterfuge",
 		"attributeBonus": ["ag","sd","in"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of attack skills performed by stealth or misdirection."
 	},
 	{
@@ -266,6 +344,8 @@
 		"name": "Subterfuge - Mechanics",
 		"group": "subterfuge",
 		"attributeBonus": ["in","ag","re"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of skills involving the creation and manipulation of physical objects and substances pertaining to subterfuge. Additional skills in this category include: counterfeiting, forgery, hiding items, and trap building."
 	},
 	{
@@ -273,6 +353,8 @@
 		"name": "Subterfuge - Stealth",
 		"group": "subterfuge",
 		"attributeBonus": ["ag","sd","in"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of subterfuge skills involving physical stealth, misdirection and manipulation."
 	},
 	{
@@ -280,6 +362,8 @@
 		"name": "Technical/Trade - General",
 		"group": "technical-trade",
 		"attributeBonus": ["re","me","sd"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of technical and trade skills which are available to most people with the determination to find and learn them."
 	},
 	{
@@ -287,6 +371,8 @@
 		"name": "Technical/Trade - Professional",
 		"group": "technical-trade",
 		"attributeBonus": ["re","me","in"],
+		"skillBonusProgression": "combined",
+		"skillCategoryBonusProgression": "none",
 		"description": "This category encompasses the use of skills which are typically available only to specific professions, and require specialized training. The GM should limit the availability of these skills to those that would logically be available to the character according to his resources and heritage. Additional skills in this category might include: advertising, architecture, dowsing, military organization, and surgery."
 	},
 	{
@@ -294,6 +380,8 @@
 		"name": "Technical/Trade - Vocational",
 		"group": "technical-trade",
 		"attributeBonus": ["me","in","re"],
+		"skillBonusProgression": "combined",
+		"skillCategoryBonusProgression": "none",
 		"description": "This category encompasses the use of trade and technical skills which may be acquired through observation and understudy. They do not require extensive or specialized training; skill may be developed even without instruction. Additional skills in this category might include: cartography, gimmickry, hypnosis, midwifery, prepare herbs, prepare poisons, and siege engineering."
 	},
 	{
@@ -301,6 +389,8 @@
 		"name": "Urban",
 		"group": "urban",
 		"attributeBonus": ["in","pr","re"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category involves the use of skills pertaining to an urban environment. They range from urban social skills to foraging for food in a town or city."
 	},
 	{
@@ -308,6 +398,7 @@
 		"name": "Spells - Own realm closed lists",
 		"group": "spells",
 		"attributeBonus": [],
+		"useRealmAttributeBonus": true,
 		"description": "This category encompasses the acquisition and use of spells from the closed lists of the spell user’s own realm."
 	},
 	{
@@ -315,6 +406,7 @@
 		"name": "Spells - Own realm open lists",
 		"group": "spells",
 		"attributeBonus": [],
+		"useRealmAttributeBonus": true,
 		"description": "This category encompasses the acquisition and use of spells from the open lists of the spell user’s own realm."
 	},
 	{
@@ -322,13 +414,26 @@
 		"name": "Spells - Own realm base lists",
 		"group": "spells",
 		"attributeBonus": [],
+		"useRealmAttributeBonus": true,
 		"description": "This category encompasses the acquisition and use of spells from the spell user’s own base lists."
+	},
+	{
+		"id": "spells-arcane",
+		"name": "Spells - Arcane",
+		"group": "spells",
+		"attributeBonus": [],
+		"useRealmAttributeBonus": true,
+		"skillBonusProgression": "limited",
+		"skillCategoryBonusProgression": "none",
+		"description": "This category encompasses the acquisition and use of spells that manipulate Arcane magic, the oldest form of magic. Note that Arcane magic does not conform to the three realms of magic. Note also that the costs given here are for the Open Arcane Lists; full guide lines for the use of Arcane magic will be provided in the Arcane Companion."
 	},
 	{
 		"id": "weapon-1h-concussion",
 		"name": "Weapon - 1H Concussion",
 		"group": "weapon",
 		"attributeBonus": ["st","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of weapon skills utilizing one-handed crushing weapons (maces, clubs, morning stars, etc.)."
 	},
 	{
@@ -336,6 +441,8 @@
 		"name": "Weapon - 1H Edged",
 		"group": "weapon",
 		"attributeBonus": ["st","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of weapon skills utilizing one-handed slashing weapons (most swords, daggers, etc.)."
 	},
 	{
@@ -343,6 +450,8 @@
 		"name": "Weapon - 2H",
 		"group": "weapon",
 		"attributeBonus": ["st","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of all weapons which require two hands to wield (quarterstaves, flails, two-handed swords, etc.)."
 	},
 	{
@@ -350,6 +459,8 @@
 		"name": "Weapon - Missile",
 		"group": "weapon",
 		"attributeBonus": ["ag","st","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of all hand weapons that are designed to project a missile of some kind. This includes bows and crossbows, as well as slings."
 	},
 	{
@@ -357,6 +468,8 @@
 		"name": "Weapon - Missile Artillery",
 		"group": "weapon",
 		"attributeBonus": ["in","ag","re"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of all heavy missile weaponry, from catapults to trebuchets."
 	},
 	{
@@ -364,6 +477,8 @@
 		"name": "Weapon - Pole Arms",
 		"group": "weapon",
 		"attributeBonus": ["st","ag","st"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of all polearms, from halberds to pikes and the ever-popular glaive-guisarme."
 	},
 	{
@@ -371,6 +486,8 @@
 		"name": "Weapon - Thrown",
 		"group": "weapon",
 		"attributeBonus": ["ag","st","ag"],
+		"skillBonusProgression": "standard",
+		"skillCategoryBonusProgression": "standard",
 		"description": "This category encompasses the use of all thrown weapons, including knives, darts and javelins."
 	}
 ]

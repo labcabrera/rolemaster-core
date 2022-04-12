@@ -10,7 +10,9 @@ public enum SkillType {
 
 	SPECIAL("special"),
 
-	STATIC_OR_MOVING_MANEUVER("staticOrMovingManeuver");
+	STATIC_OR_MOVING_MANEUVER("staticOrMovingManeuver"),
+
+	WEAPON("weapon");
 
 	private String name;
 

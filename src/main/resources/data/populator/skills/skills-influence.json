@@ -88,5 +88,15 @@
         "progressionType": "standard",
         "clasification": "",
         "description": "This skill provides a bonus for transactions involving a bargained exchange of money or goods, particularly with respect to rolls on the purchase and resale price charts found in Gamemaster Law."
+    },
+    {
+        "id": "propaganda",
+        "name": "Propaganda",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "influence",
+        "progressionType": "standard",
+        "clasification": "",
+        "description": "This skill provides a bonus for influencing others through indirect means, rather than direct speech. Includes such ideas as starting rumors, as well as designing large advertising campaigns."
     }
 ]

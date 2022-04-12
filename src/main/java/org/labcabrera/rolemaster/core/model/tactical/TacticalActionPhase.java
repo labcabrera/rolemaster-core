@@ -10,11 +10,15 @@ public enum TacticalActionPhase {
 
 	DELIBERATE("deliberate");
 
-	@JsonValue
 	private String name;
 
 	private TacticalActionPhase(String name) {
 		this.name = name;
+	}
+
+	@JsonValue
+	public String getName() {
+		return name;
 	}
 
 }
