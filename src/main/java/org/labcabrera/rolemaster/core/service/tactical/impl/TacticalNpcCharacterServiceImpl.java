@@ -90,7 +90,8 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 			if (tacticalCharacter.getNpcSkills() == null) {
 				tacticalCharacter.setNpcSkills(new HashMap<>());
 			}
-			Weapon weapon = weapons.stream().filter(e -> e.getId().equals(weaponId)).findFirst().orElseThrow();
+			Weapon weapon = weapons.stream().filter(e -> e.getId().equals(weaponId)).findFirst()
+				.orElseThrow(() -> new RuntimeException("Weapon " + weaponId + " not found"));
 			String skillId = weaponId;
 			ItemStatus status = attack.getPrimary() ? ItemStatus.MAIN_HAND : ItemStatus.CARRIED;
 			CharacterWeapon characterWeapon = CharacterWeapon.builder()

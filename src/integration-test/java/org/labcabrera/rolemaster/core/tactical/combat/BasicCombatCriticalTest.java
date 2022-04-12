@@ -35,8 +35,8 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 	@Test
 	void test() {
-		assertEquals(50, cc02.getHp().getMax());
-		assertEquals(50, cc02.getHp().getCurrent());
+		assertEquals(50, taMelee02.getHp().getMax());
+		assertEquals(50, taMelee02.getHp().getCurrent());
 
 		TacticalRound round01 = tacticalService.startRound(ts.getId()).share().block();
 		String r01Id = round01.getId();
@@ -45,7 +45,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 			.roundId(r01Id)
 			.priority(TacticalActionPhase.NORMAL)
 			.actionPercent(80)
-			.source(cc01.getId())
+			.source(taMelee01.getId())
 			.parry(0)
 			.meleeAttackType(MeleeAttackType.PRESS_AND_MELEE)
 			.build()).share().block();
@@ -55,7 +55,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
 
-		round01 = tacticalService.setInitiative(r01Id, cc01.getId(), 11).share().block();
+		round01 = tacticalService.setInitiative(r01Id, taMelee01.getId(), 11).share().block();
 
 		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
 
@@ -64,7 +64,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.actionId(a01.getId())
-			.primaryTarget(cc02.getId())
+			.primaryTarget(taMelee02.getId())
 			.position(MeleeAttackPosition.NORMAL)
 			.primaryRoll(OpenRoll.of(85))
 			.build();
@@ -93,10 +93,10 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertEquals(2, meleeResolved02.getPrimaryAttackResult().getCriticalResult().getCriticalTableResult().getHp());
 		assertEquals(55, meleeResolved02.getPrimaryAttackResult().getCriticalResult().getRoll());
 
-		cc02 = this.tacticalCharacterRepository.findById(cc02.getId()).share().block();
-		assertEquals(38, cc02.getHp().getCurrent());
-		assertEquals(1, cc02.getCombatStatus().getDebuffs().size());
-		assertEquals(1, cc02.getCombatStatus().getDebuffs().get(Debuff.MUST_PARRY));
+		taMelee02 = this.tacticalCharacterRepository.findById(taMelee02.getId()).share().block();
+		assertEquals(38, taMelee02.getHp().getCurrent());
+		assertEquals(1, taMelee02.getCombatStatus().getDebuffs().size());
+		assertEquals(1, taMelee02.getCombatStatus().getDebuffs().get(Debuff.MUST_PARRY));
 
 	}
 

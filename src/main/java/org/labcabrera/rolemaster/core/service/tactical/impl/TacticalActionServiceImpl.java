@@ -6,20 +6,17 @@ import org.labcabrera.rolemaster.core.controller.converter.TacticalActionConvert
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
-import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.FumbleAttackExecutionService;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +34,6 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	private TacticalActionRepository actionRepository;
 
 	@Autowired
-	private MeleeAttackExecutionService meleeExecutionService;
-
-	@Autowired
 	private CriticalAttackExecutionService criticalAttackExecutionService;
 
 	@Autowired
@@ -50,6 +44,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 
 	@Autowired
 	private TacticalCharacterRepository tacticalCharacterRepository;
+
+	@Autowired
+	private TacticalActionExecutionRouter tacticalActionExecutionRouter;
 
 	@Override
 	public Mono<TacticalAction> getDeclaredAction(String actionId) {
@@ -88,15 +85,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	public Mono<TacticalAction> execute(TacticalActionExecution request) {
 		return actionRepository.findById(request.getActionId())
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
-			.flatMap(action -> {
-				if (action instanceof TacticalActionMeleeAttack) {
-					if (!(request instanceof MeleeAttackExecution)) {
-						throw new BadRequestException("Expected melee attack execution");
-					}
-					return meleeExecutionService.execute((TacticalActionMeleeAttack) action, (MeleeAttackExecution) request);
-				}
-				throw new RuntimeException("Not implemented");
-			});
+			.flatMap(action -> this.tacticalActionExecutionRouter.execute(action, request));
 	}
 
 	@Override

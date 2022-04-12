@@ -37,7 +37,7 @@
 		"armorType": 8,
 		"attacks": [
 			{
-				"weaponId": "bowXX",
+				"weaponId": "short-bow",
 				"bonus": 40,
 				"type": "ranged",
 				"primary": true

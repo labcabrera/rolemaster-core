@@ -14,9 +14,11 @@ public abstract class AbstractBasicCombatTest extends AbstractCombatTest {
 
 	protected TacticalSession ts;
 
-	protected TacticalCharacter cc01;
+	protected TacticalCharacter taMelee01;
 
-	protected TacticalCharacter cc02;
+	protected TacticalCharacter taMelee02;
+
+	protected TacticalCharacter taRanged01;
 
 	protected void prepare() {
 		sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
@@ -30,9 +32,8 @@ public abstract class AbstractBasicCombatTest extends AbstractCombatTest {
 			.description("Testing")
 			.build()).share().block();
 
-		String npcId = "ork-fighter-melee-ii";
-
-		cc01 = tacticalService.addNpc(ts.getId(), npcId).share().block();
-		cc02 = tacticalService.addNpc(ts.getId(), npcId).share().block();
+		taMelee01 = tacticalService.addNpc(ts.getId(), "ork-fighter-melee-ii").share().block();
+		taMelee02 = tacticalService.addNpc(ts.getId(), "ork-fighter-melee-ii").share().block();
+		taRanged01 = tacticalService.addNpc(ts.getId(), "ork-fighter-ranged-ii").share().block();
 	}
 }

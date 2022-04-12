@@ -38,7 +38,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 			.roundId(r01Id)
 			.priority(TacticalActionPhase.NORMAL)
 			.actionPercent(80)
-			.source(cc01.getId())
+			.source(taMelee01.getId())
 			.parry(0)
 			.meleeAttackType(MeleeAttackType.PRESS_AND_MELEE)
 			.build()).share().block();
@@ -48,7 +48,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 
 		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
 
-		round01 = tacticalService.setInitiative(r01Id, cc01.getId(), 11).share().block();
+		round01 = tacticalService.setInitiative(r01Id, taMelee01.getId(), 11).share().block();
 
 		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
 
@@ -57,7 +57,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.actionId(a01.getId())
-			.primaryTarget(cc02.getId())
+			.primaryTarget(taMelee02.getId())
 			.position(MeleeAttackPosition.NORMAL)
 			.primaryRoll(OpenRoll.of(60))
 			.build();
