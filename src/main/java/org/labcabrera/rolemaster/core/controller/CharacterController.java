@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.AddSkill;
-import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
+import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
@@ -69,6 +69,6 @@ public interface CharacterController {
 	Mono<CharacterInfo> addSkill(@PathVariable String characterId, AddSkill request);
 
 	@PostMapping("/{id}/skills/upgrade")
-	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillAndTrainingPackageUpgrade request);
+	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillUpgrade request);
 
 }

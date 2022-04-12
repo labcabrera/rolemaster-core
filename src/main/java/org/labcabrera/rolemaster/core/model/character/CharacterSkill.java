@@ -24,7 +24,7 @@ public class CharacterSkill {
 
 	private String group;
 
-	private String customization;
+	private List<String> customization;
 
 	private SkillProgressionType progressionType;
 
