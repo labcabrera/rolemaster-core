@@ -26,7 +26,8 @@ public class SkillPopulator extends AbstractJsonPopulator<Skill> {
 			"data/populator/skills/skills-outdoor-environmental.json",
 			"data/populator/skills/skills-science.json",
 			"data/populator/skills/skills-self-control.json",
-			"data/populator/skills/skills-subterfuge.json");
+			"data/populator/skills/skills-subterfuge.json",
+			"data/populator/skills/skills-weapons.json");
 	}
 
 	@Override
