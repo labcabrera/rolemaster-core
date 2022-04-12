@@ -6,6 +6,7 @@ import org.labcabrera.rolemaster.core.validation.ValidTacticalActionMeleAttack;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,5 +34,9 @@ public class TacticalActionMeleeAttack extends TacticalActionAttack {
 
 	@Builder.Default
 	private Integer parry = 0;
+
+	@Schema(description = "Indicates whether the action has been used to stop the attack of a given attacker.")
+	@Builder.Default
+	private Boolean parried = false;
 
 }

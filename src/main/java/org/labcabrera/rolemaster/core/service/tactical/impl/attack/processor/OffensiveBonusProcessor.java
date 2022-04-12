@@ -6,6 +6,8 @@ import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.item.RangeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.WeaponRepository;
@@ -33,6 +35,7 @@ public class OffensiveBonusProcessor {
 			.map(this::loadBonusHp)
 			.map(this::loadBonusTargetStatus)
 			.map(this::loadBonusExhaustion)
+			.map(this::loadBonusActionPercent)
 			.map(this::loadBonusMeleePosition)
 			.flatMap(this::loadBonusDistance);
 	}
@@ -43,30 +46,35 @@ public class OffensiveBonusProcessor {
 		String skillId = weapon.getSkillId();
 		return Mono.just(context)
 			.zipWith(skillService.getSkill(source, skillId), (a, b) -> {
-				a.getAction().getOffensiveBonusMap().put("skill", b);
+				a.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.SKILL, b);
 				return a;
 			});
 	}
 
 	private <T extends AttackContext<?>> T loadBonusHp(T context) {
-		context.getAction().getOffensiveBonusMap().put("hp", getBonusHp(context.getSource()));
+		context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.HP, getBonusHp(context.getSource()));
 		return context;
 	}
 
 	private <T extends AttackContext<?>> T loadBonusTargetStatus(T context) {
-		context.getAction().getOffensiveBonusMap().put("targetStatus", getBonusTargetStatus(context.getTarget()));
+		context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.TARGET_STATUS, getBonusTargetStatus(context.getTarget()));
 		return context;
 	}
 
 	private <T extends AttackContext<?>> T loadBonusExhaustion(T context) {
-		context.getAction().getOffensiveBonusMap().put("exhaustion", getBonusExhaustion(context.getTarget()));
+		context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.EXHAUSTION, getBonusExhaustion(context.getTarget()));
+		return context;
+	}
+
+	private <T extends AttackContext<?>> T loadBonusActionPercent(T context) {
+		context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.ACTION_PERCENT, getBonusActionPercent(context.getAction()));
 		return context;
 	}
 
 	private <T extends AttackContext<?>> T loadBonusMeleePosition(T context) {
 		Optional<Integer> bonus = getBonusMeleePosition(context);
 		if (bonus.isPresent()) {
-			context.getAction().getOffensiveBonusMap().put("meleePosition", bonus.get());
+			context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MELEE_POSITION, bonus.get());
 		}
 		return context;
 	}
@@ -76,7 +84,7 @@ public class OffensiveBonusProcessor {
 			.zipWith(getBonusDistance(context))
 			.map(pair -> {
 				if (pair.getT2().isPresent()) {
-					context.getAction().getOffensiveBonusMap().put("distance", pair.getT2().get());
+					context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MISSILE_DISTANCE, pair.getT2().get());
 				}
 				return pair.getT1();
 			});
@@ -154,6 +162,17 @@ public class OffensiveBonusProcessor {
 			return Optional.of(result);
 		}
 		return Optional.empty();
+	}
+
+	private int getBonusActionPercent(TacticalActionAttack action) {
+		int percent = action.getActionPercent();
+		if (action instanceof TacticalActionMeleeAttack) {
+			return percent - 100;
+		}
+		if (action instanceof TacticalActionMissileAttack) {
+			return Integer.max(0, percent - 60);
+		}
+		return 0;
 	}
 
 	private Mono<Optional<Integer>> getBonusDistance(AttackContext<?> context) {

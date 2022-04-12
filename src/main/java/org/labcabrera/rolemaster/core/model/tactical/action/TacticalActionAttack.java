@@ -31,10 +31,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	protected OpenRoll secondaryRoll;
 
 	@Builder.Default
-	protected Map<String, Integer> offensiveBonusMap = new LinkedHashMap<>();
-
-	@Builder.Default
-	protected Map<String, Integer> defensiveBonusMap = new LinkedHashMap<>();
+	protected Map<OffensiveBonusModifier, Integer> offensiveBonusMap = new LinkedHashMap<>();
 
 	protected AttackResult attackResult;
 
@@ -44,10 +41,6 @@ public abstract class TacticalActionAttack extends TacticalAction {
 
 	public Integer getOffensiveBonus() {
 		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
-	}
-
-	public Integer getDefensiveBonus() {
-		return defensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
 	}
 
 	public boolean isFlumbe() {

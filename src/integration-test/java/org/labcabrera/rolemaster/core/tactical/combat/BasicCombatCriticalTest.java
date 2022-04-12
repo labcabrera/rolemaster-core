@@ -82,7 +82,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 		AttackCriticalExecution criticalExecution = AttackCriticalExecution.builder()
 			.actionId(taResolved01.getId())
-			.roll(55)
+			.roll(75)
 			.build();
 
 		TacticalAction taResolved02 = tacticalActionService.executeCritical(criticalExecution).share().block();

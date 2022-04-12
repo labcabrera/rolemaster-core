@@ -38,19 +38,18 @@ public class AttackWeaponTableProcessor {
 
 		int targetArmor = getTargetArmor(context.getTarget());
 		int offensiveBonus = context.getAction().getOffensiveBonus();
-		int defensiveBonus = context.getAction().getDefensiveBonus();
 		int primaryRoll = context.getAction().getRoll().getFirstRoll();
 
 		// Primary attack
-		AttackResult primaryAttack = getAttackResult(weaponTableId, offensiveBonus, defensiveBonus, targetArmor, primaryRoll);
+		AttackResult primaryAttack = getAttackResult(weaponTableId, offensiveBonus, targetArmor, primaryRoll);
 		action.setAttackResult(primaryAttack);
 
 		updateState(action);
 		return context;
 	}
 
-	private AttackResult getAttackResult(String weaponTableId, int offensiveBonus, int defensiveBonus, int armor, int roll) {
-		int attackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, offensiveBonus - defensiveBonus + roll));
+	private AttackResult getAttackResult(String weaponTableId, int offensiveBonus, int armor, int roll) {
+		int attackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, offensiveBonus + roll));
 		String stringResult = weaponTable.get(weaponTableId, armor, attackResult);
 
 		AttackResult result = AttackResult.builder().build();

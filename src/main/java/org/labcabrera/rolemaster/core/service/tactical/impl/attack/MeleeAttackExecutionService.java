@@ -55,7 +55,7 @@ public class MeleeAttackExecutionService {
 			.zipWith(tacticalCharacterRepository.findById(context.getAction().getTarget()), (a, b) -> a.<MeleeAttackContext>setTarget(b))
 			.flatMap(fumbleProcessor::apply)
 			.flatMap(offensiveBonusProcessor::apply)
-			.flatMap(defensiveBonusProcessor)
+			.flatMap(defensiveBonusProcessor::apply)
 			.map(weaponTableProcessor::apply)
 			.flatMap(ctx -> attackResultProcessor.apply(ctx.getAction()))
 			.flatMap(actionRepository::save)
