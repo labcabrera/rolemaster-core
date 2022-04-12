@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.tactical;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +11,7 @@ import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
+import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
@@ -48,7 +50,7 @@ class TacticalServiceImplTest {
 
 		TacticalSession tacticalSession = tacticalService.createSession(tacticalSessionCreation).share().block();
 
-		String npcIdentifier = "ork-fighter-melee-i";
+		String npcIdentifier = "ork-fighter-melee-ii";
 
 		TacticalCharacter tc1 = tacticalService.addNpc(tacticalSession.getId(), npcIdentifier).share().block();
 		TacticalCharacter tc2 = tacticalService.addNpc(tacticalSession.getId(), npcIdentifier).share().block();
@@ -64,8 +66,8 @@ class TacticalServiceImplTest {
 			.roundId(round.getId())
 			.priority(TacticalActionPhase.NORMAL)
 			.meleeAttackType(MeleeAttackType.FULL)
-			.source(tc1.getCharacterId())
-			.target(tc2.getCharacterId())
+			.source(tc1.getId())
+			.target(tc2.getId())
 			.actionPercent(80)
 			.build();
 
@@ -73,21 +75,21 @@ class TacticalServiceImplTest {
 			.roundId(round.getId())
 			.priority(TacticalActionPhase.DELIBERATE)
 			.meleeAttackType(MeleeAttackType.PRESS_AND_MELEE)
-			.source(tc1.getCharacterId())
+			.source(tc1.getId())
 			.actionPercent(100)
 			.build();
 
 		TacticalActionDeclaration actionDeclaration03 = TacticalActionMovementDeclaration.builder()
 			.roundId(round.getId())
 			.priority(TacticalActionPhase.SNAP)
-			.source(tc3.getCharacterId())
+			.source(tc3.getId())
 			.actionPercent(20)
 			.build();
 
 		TacticalActionDeclaration actionDeclaration04 = TacticalActionMovementDeclaration.builder()
 			.roundId(round.getId())
 			.priority(TacticalActionPhase.NORMAL)
-			.source(tc3.getCharacterId())
+			.source(tc3.getId())
 			.actionPercent(50)
 			.build();
 
@@ -108,6 +110,16 @@ class TacticalServiceImplTest {
 		tacticalService.setInitiative(round.getId(), tc3.getId(), 13);
 
 		tacticalService.startExecutionPhase(round.getId());
+
+		assertThrows(BadRequestException.class, () -> {
+			TacticalActionDeclaration invalidSource = TacticalActionMovementDeclaration.builder()
+				.roundId(round.getId())
+				.priority(TacticalActionPhase.NORMAL)
+				.source("invalid source")
+				.actionPercent(50)
+				.build();
+			tacticalActionService.delare(invalidSource).share().block();
+		});
 	}
 
 }

@@ -15,11 +15,13 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.FumbleAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.MeleeAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
+import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	@Autowired
 	private AttackResultProcessor attackResultProcessor;
 
+	@Autowired
+	private TacticalCharacterRepository tacticalCharacterRepository;
+
 	@Override
 	public Mono<TacticalAction> getDeclaredAction(String actionId) {
 		return actionRepository.findById(actionId)
@@ -63,7 +68,10 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	@Override
 	public Mono<TacticalAction> delare(@Valid TacticalActionDeclaration actionDeclaration) {
 		TacticalAction ta = actionConverter.convert(actionDeclaration);
-		return Mono.just(ta)
+
+		return tacticalCharacterRepository.findById(actionDeclaration.getSource())
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(ValidationConstants.INVALID_ACTION_SOURCE_NOT_FOUND)))
+			.then(Mono.just(ta))
 			.zipWith(actionRepository.existsByRoundIdAndSourceAndPriority(ta.getRoundId(), ta.getSource(), ta.getPriority()))
 			.map(pair -> {
 				if (pair.getT2()) {

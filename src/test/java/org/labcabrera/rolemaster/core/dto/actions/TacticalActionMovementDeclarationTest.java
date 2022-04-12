@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.dto.actions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Disabled("Pending model refactor")
 @SpringBootTest
 class TacticalActionMovementDeclarationTest {
 
