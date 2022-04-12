@@ -14,44 +14,33 @@ public class MeleeAttackDefensiveBonusProcessor {
 		if (context.getAction().isFlumbe()) {
 			return Mono.just(context);
 		}
-		int defensiveBonus = getDefensiveBonus(context);
-		int parryBonus = getParryBonus(context);
-		int shieldBonus = getShieldBonus(context);
-
-		context.getAction().getDefensiveBonusMap().put("defensiveBonus", defensiveBonus);
-		context.getAction().getDefensiveBonusMap().put("parryBonus", parryBonus);
-		context.getAction().getDefensiveBonusMap().put("shieldBonus", shieldBonus);
-
-		return Mono.just(context);
+		return Mono.just(context)
+			.map(ctx -> {
+				int defensiveBonus = getDefensiveBonus(context);
+				int shieldBonus = getShieldBonus(context);
+				context.getAction().getDefensiveBonusMap().put("defensiveBonus", defensiveBonus);
+				context.getAction().getDefensiveBonusMap().put("shieldBonus", shieldBonus);
+				return ctx;
+			})
+			.zipWith(getParryBonus(context))
+			.map(pair -> {
+				TacticalAttackContext ctx = pair.getT1();
+				int parryBonus = pair.getT2();
+				context.getAction().getDefensiveBonusMap().put("parryBonus", parryBonus);
+				return ctx;
+			});
 	}
 
 	private int getDefensiveBonus(TacticalAttackContext context) {
 		return context.getTarget().getBaseDefensiveBonus();
 	}
 
-	private int getParryBonus(TacticalAttackContext context) {
+	private Mono<Integer> getParryBonus(TacticalAttackContext context) {
 		if (!canParry(context)) {
-			return 0;
+			return Mono.just(0);
 		}
-		String source = context.getAction().getSource();
-		String target = context.getAction().getTarget();
-
-		//TODO
-
-		// We look for any attack action directed against the attacker
-		//		List<TacticalActionMeleeAttack> checkList = context.getActions().stream()
-		//			.filter(e -> e.getSource().equals(target))
-		//			.filter(e -> e instanceof TacticalActionMeleeAttack)
-		//			.map(e -> (TacticalActionMeleeAttack) e)
-		//			.filter(e -> e.getParry() > 0)
-		//			.filter(e -> e.getTarget().equals(source) || e.getTarget() == null)
-		//			.collect(Collectors.toList());
-		//
-		//		if (!checkList.isEmpty()) {
-		//			//TODO prevent multiple parries against diferent attackers
-		//			return checkList.iterator().next().getParry();
-		//		}
-		return 0;
+		//TODO read from actions
+		return Mono.just(0);
 	}
 
 	private int getShieldBonus(TacticalAttackContext context) {
