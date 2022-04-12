@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character;
 
-import java.util.Optional;
+import java.util.Iterator;
+import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
@@ -20,6 +21,8 @@ import reactor.core.publisher.Mono;
 @Service
 public class CharacterAddSkillService {
 
+	private static final String CUSTOMIZATION_SEPARATOR = ":";
+
 	@Autowired
 	private CharacterInfoRepository characterRepository;
 
@@ -29,20 +32,19 @@ public class CharacterAddSkillService {
 	public Mono<CharacterInfo> addSkill(String characterId, AddSkill request) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
-			.map(character -> {
-				Optional<CharacterSkill> check = character.getSkill(request.getSkillId());
-				if (check == null) {
-					throw new BadRequestException("Skill " + request.getSkillId() + " already added");
-				}
-				return character;
-			})
 			.zipWith(skillRepository.findById(request.getSkillId()))
 			.map(pair -> {
 				CharacterInfo character = pair.getT1();
 				Skill skill = pair.getT2();
+
+				String skillId = getSkillId(skill.getId(), request.getCustomizations());
+				if (character.getSkill(skillId).isPresent()) {
+					throw new BadRequestException("Duplicate skill " + skillId);
+				}
+
 				CharacterSkillCategory skillCategory = character.getSkillCategory(skill.getCategoryId()).get();
 				CharacterSkill characterSkill = CharacterSkill.builder()
-					.skillId(skill.getId())
+					.skillId(skillId)
 					.categoryId(skill.getCategoryId())
 					.group(skillCategory.getGroup())
 					.progressionType(skill.getProgressionType())
@@ -63,6 +65,20 @@ public class CharacterAddSkillService {
 				return character;
 			})
 			.flatMap(characterRepository::save);
+	}
+
+	private String getSkillId(String skillId, List<String> customizations) {
+		if (customizations == null || customizations.isEmpty()) {
+			return skillId;
+		}
+		StringBuilder sb = new StringBuilder(skillId).append(CUSTOMIZATION_SEPARATOR);
+		for (Iterator<String> iterator = customizations.iterator(); iterator.hasNext();) {
+			sb.append(iterator.next());
+			if (iterator.hasNext()) {
+				sb.append(CUSTOMIZATION_SEPARATOR);
+			}
+		}
+		return sb.toString();
 	}
 
 }
