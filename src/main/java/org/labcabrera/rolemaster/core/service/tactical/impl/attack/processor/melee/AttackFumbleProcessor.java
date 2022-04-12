@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
 
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;

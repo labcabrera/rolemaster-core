@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
 
 import java.util.Map.Entry;
 

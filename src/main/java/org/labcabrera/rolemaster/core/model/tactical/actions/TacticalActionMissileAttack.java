@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical.actions;
 
+import org.labcabrera.rolemaster.core.model.combat.MissileCover;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,5 +16,7 @@ import lombok.experimental.SuperBuilder;
 public class TacticalActionMissileAttack extends TacticalActionAttack {
 
 	private Integer distance;
+
+	private MissileCover cover;
 
 }

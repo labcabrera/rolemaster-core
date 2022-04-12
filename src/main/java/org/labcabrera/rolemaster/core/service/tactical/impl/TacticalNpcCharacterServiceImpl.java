@@ -45,6 +45,7 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 			.tacticalSessionId(tacticalSessionId)
 			.name("")
 			.level(level)
+			.isNpc(true)
 			.characterId(npc.getId())
 			.hp(Hp.builder()
 				.max(maxHp)

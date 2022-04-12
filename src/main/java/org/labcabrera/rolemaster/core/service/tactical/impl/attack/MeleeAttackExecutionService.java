@@ -6,11 +6,11 @@ import org.labcabrera.rolemaster.core.model.tactical.actions.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackDefensiveBonusProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackOffensiveBonusProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackServiceWeaponTableProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.AttackFumbleProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.AttackResultProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackDefensiveBonusProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackOffensiveBonusProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackServiceWeaponTableProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

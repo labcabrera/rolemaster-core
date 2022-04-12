@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.dto.action.execution;
 
+import javax.validation.constraints.NotNull;
+
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.MissileCover;
 
@@ -16,8 +18,13 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class MissileAttackExecution extends TacticalActionExecution {
 
+	@NotNull
 	private OpenRoll roll;
 
+	@NotNull
+	private Integer distance;
+
+	@NotNull
 	private MissileCover cover;
 
 }
