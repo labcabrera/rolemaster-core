@@ -35,7 +35,7 @@ public class MissileAttackLoaderProcessor {
 
 	private TacticalActionMissileAttack loadExecutionData(TacticalActionMissileAttack action, MissileAttackExecution execution) {
 		action.setDistance(execution.getDistance());
-		action.setPrimaryRoll(execution.getRoll());
+		action.setRoll(execution.getRoll());
 		action.setCover(execution.getCover());
 		return action;
 	}

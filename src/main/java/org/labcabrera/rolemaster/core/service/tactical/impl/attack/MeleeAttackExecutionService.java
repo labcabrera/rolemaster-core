@@ -43,7 +43,7 @@ public class MeleeAttackExecutionService {
 
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		loadTarget(action, execution);
-		action.setPrimaryAttackResult(new AttackResult());
+		action.setAttackResult(new AttackResult());
 
 		MeleeAttackContext context = MeleeAttackContext.builder()
 			.action(action)

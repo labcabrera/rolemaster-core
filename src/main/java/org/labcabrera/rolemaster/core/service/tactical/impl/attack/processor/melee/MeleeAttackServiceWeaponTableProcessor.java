@@ -44,7 +44,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 
 		// Primary attack
 		AttackResult primaryAttack = getAttackResult(weaponTableId, offensiveBonus, defensiveBonus, targetArmor, primaryRoll);
-		action.setPrimaryAttackResult(primaryAttack);
+		action.setAttackResult(primaryAttack);
 
 		updateState(action);
 		return context;
@@ -84,7 +84,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 
 	private void updateState(TacticalActionAttack action) {
 		boolean resolved = true;
-		if (action.getPrimaryAttackResult().requiresCriticalResolution()) {
+		if (action.getAttackResult().requiresCriticalResolution()) {
 			resolved = false;
 		}
 		if (resolved) {

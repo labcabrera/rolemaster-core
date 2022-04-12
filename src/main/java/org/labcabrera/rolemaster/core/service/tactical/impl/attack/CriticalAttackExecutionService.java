@@ -48,8 +48,8 @@ public class CriticalAttackExecutionService {
 	}
 
 	private AttackResult getUnresolvedCriticalAttack(TacticalActionAttack attack) {
-		if (attack.getPrimaryAttackResult().requiresCriticalResolution()) {
-			return attack.getPrimaryAttackResult();
+		if (attack.getAttackResult().requiresCriticalResolution()) {
+			return attack.getAttackResult();
 		}
 		throw new NotImplementedException();
 	}

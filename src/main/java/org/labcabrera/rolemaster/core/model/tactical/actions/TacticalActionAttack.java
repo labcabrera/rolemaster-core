@@ -26,7 +26,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	@Schema(description = "In the case of a two-weapon attack, the target of the secondary weapon can be set.")
 	protected String secondaryTarget;
 
-	protected OpenRoll primaryRoll;
+	protected OpenRoll roll;
 
 	protected OpenRoll secondaryRoll;
 
@@ -36,7 +36,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	@Builder.Default
 	protected Map<String, Integer> defensiveBonusMap = new LinkedHashMap<>();
 
-	protected AttackResult primaryAttackResult;
+	protected AttackResult attackResult;
 
 	protected AttackResult secondaryAttackResult;
 
@@ -51,7 +51,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	}
 
 	public boolean isFlumbe() {
-		if (primaryAttackResult != null && primaryAttackResult.getFumbleResult() != null) {
+		if (attackResult != null && attackResult.getFumbleResult() != null) {
 			return true;
 		}
 		else if (secondaryAttackResult != null && secondaryAttackResult.getCriticalResult() != null) {
@@ -61,7 +61,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	}
 
 	public boolean hasPendingCriticalResolution() {
-		if (primaryAttackResult != null && primaryAttackResult.requiresCriticalResolution()) {
+		if (attackResult != null && attackResult.requiresCriticalResolution()) {
 			return true;
 		}
 		return false;

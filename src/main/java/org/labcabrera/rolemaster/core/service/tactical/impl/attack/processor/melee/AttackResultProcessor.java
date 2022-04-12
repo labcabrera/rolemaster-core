@@ -54,7 +54,7 @@ public class AttackResultProcessor {
 	}
 
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack) {
-		return updateTarget(attack, attack.getPrimaryAttackResult());
+		return updateTarget(attack, attack.getAttackResult());
 	}
 
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackResult attackResult) {
@@ -88,7 +88,7 @@ public class AttackResultProcessor {
 	}
 
 	private Mono<TacticalCharacter> updateSource(TacticalActionAttack attack) {
-		return updateSource(attack, attack.getPrimaryAttackResult());
+		return updateSource(attack, attack.getAttackResult());
 	}
 
 	private Mono<TacticalCharacter> updateSource(TacticalActionAttack attack, AttackResult attackResult) {

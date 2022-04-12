@@ -17,7 +17,7 @@ public class FumbleAttackExecutionService {
 
 	public TacticalActionAttack apply(TacticalActionAttack action, FumbleExecution execution) {
 		//TODO 2 weapon combat
-		AttackFumbleResult fumbleResult = action.getPrimaryAttackResult().getFumbleResult();
+		AttackFumbleResult fumbleResult = action.getAttackResult().getFumbleResult();
 
 		FumbleType fumbleType = fumbleResult.getType();
 		FumbleTableResult fumbleTableResult = fumbleTable.get(fumbleType, execution.getRoll());
