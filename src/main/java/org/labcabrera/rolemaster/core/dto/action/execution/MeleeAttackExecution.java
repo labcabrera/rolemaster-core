@@ -18,12 +18,12 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class MeleeAttackExecution extends TacticalActionExecution {
 
-	private OpenRoll primaryRoll;
+	private OpenRoll roll;
 
 	@Schema(description = "Secondary roll when using two weapons.")
 	private OpenRoll secondaryRoll;
 
-	private String primaryTarget;
+	private String target;
 
 	private String secondaryTarget;
 
@@ -33,7 +33,5 @@ public class MeleeAttackExecution extends TacticalActionExecution {
 	//TODO translate
 	@Builder.Default
 	private Boolean desenvainado = false;
-	
-	
 
 }

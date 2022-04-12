@@ -41,7 +41,6 @@ public class MissileAttackExecutionService {
 
 		MissileAttackContext context = new MissileAttackContext();
 		context.setAction(action);
-		context.setExecution(execution);
 
 		return Mono.just(context)
 			.zipWith(characterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MissileAttackContext>setSource(b))

@@ -23,7 +23,7 @@ public class AttackFumbleProcessor implements Function<MeleeAttackContext, Mono<
 		TacticalCharacter source = context.getSource();
 
 		// Primary attack
-		Integer primaryRoll = context.getExecution().getPrimaryRoll().getFirstRoll();
+		Integer primaryRoll = context.getAction().getRoll().getFirstRoll();
 		CharacterWeapon primaryWeapon = source.getInventory().getMainHandWeapon();
 		AttackFumbleResult primaryFumbleResult = processFumble(primaryWeapon, primaryRoll);
 		if (primaryFumbleResult != null) {

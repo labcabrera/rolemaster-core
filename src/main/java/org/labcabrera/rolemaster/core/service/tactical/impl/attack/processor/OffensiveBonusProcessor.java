@@ -24,7 +24,7 @@ public class OffensiveBonusProcessor {
 	@Autowired
 	private WeaponRepository weaponRepository;
 
-	public <T extends AttackContext<?, ?>> Mono<T> apply(T context) {
+	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		return Mono.just(context)
 			.flatMap(this::loadSkillBonus)
 			.map(this::loadBonusHp)
@@ -34,7 +34,7 @@ public class OffensiveBonusProcessor {
 			.flatMap(this::loadBonusDistance);
 	}
 
-	private <T extends AttackContext<?, ?>> Mono<T> loadSkillBonus(T context) {
+	private <T extends AttackContext<?>> Mono<T> loadSkillBonus(T context) {
 		TacticalCharacter source = context.getSource();
 		CharacterWeapon weapon = source.getInventory().getMainHandWeapon();
 		String skillId = weapon.getSkillId();
@@ -45,22 +45,22 @@ public class OffensiveBonusProcessor {
 			});
 	}
 
-	private <T extends AttackContext<?, ?>> T loadBonusHp(T context) {
+	private <T extends AttackContext<?>> T loadBonusHp(T context) {
 		context.getAction().getOffensiveBonusMap().put("hp", getBonusHp(context.getSource()));
 		return context;
 	}
 
-	private <T extends AttackContext<?, ?>> T loadBonusTargetStatus(T context) {
+	private <T extends AttackContext<?>> T loadBonusTargetStatus(T context) {
 		context.getAction().getOffensiveBonusMap().put("targetStatus", getBonusTargetStatus(context.getTarget()));
 		return context;
 	}
 
-	private <T extends AttackContext<?, ?>> T loadBonusExhaustion(T context) {
+	private <T extends AttackContext<?>> T loadBonusExhaustion(T context) {
 		context.getAction().getOffensiveBonusMap().put("exhaustion", getBonusExhaustion(context.getTarget()));
 		return context;
 	}
 
-	private <T extends AttackContext<?, ?>> T loadBonusMeleePosition(T context) {
+	private <T extends AttackContext<?>> T loadBonusMeleePosition(T context) {
 		Optional<Integer> bonus = getBonusMeleePosition(context);
 		if (bonus.isPresent()) {
 			context.getAction().getOffensiveBonusMap().put("meleePosition", bonus.get());
@@ -68,7 +68,7 @@ public class OffensiveBonusProcessor {
 		return context;
 	}
 
-	private <T extends AttackContext<?, ?>> Mono<T> loadBonusDistance(T context) {
+	private <T extends AttackContext<?>> Mono<T> loadBonusDistance(T context) {
 		return Mono.just(context)
 			.zipWith(getBonusDistance(context))
 			.map(pair -> {
@@ -133,7 +133,7 @@ public class OffensiveBonusProcessor {
 		return 0;
 	}
 
-	private Optional<Integer> getBonusMeleePosition(AttackContext<?, ?> context) {
+	private Optional<Integer> getBonusMeleePosition(AttackContext<?> context) {
 		if (context.getAction() instanceof TacticalActionMeleeAttack) {
 			TacticalActionMeleeAttack action = (TacticalActionMeleeAttack) context.getAction();
 			int result = 0;
@@ -153,7 +153,7 @@ public class OffensiveBonusProcessor {
 		return Optional.empty();
 	}
 
-	private Mono<Optional<Integer>> getBonusDistance(AttackContext<?, ?> context) {
+	private Mono<Optional<Integer>> getBonusDistance(AttackContext<?> context) {
 		if (context.getAction() instanceof TacticalActionMissileAttack) {
 			TacticalActionMissileAttack action = (TacticalActionMissileAttack) context.getAction();
 			CharacterWeapon mainHandWeapon = context.getSource().getInventory().getMainHandWeapon();

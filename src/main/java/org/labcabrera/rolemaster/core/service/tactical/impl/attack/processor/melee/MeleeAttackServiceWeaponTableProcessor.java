@@ -40,7 +40,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Mel
 		int targetArmor = getTargetArmor(context.getTarget());
 		int offensiveBonus = context.getAction().getOffensiveBonus();
 		int defensiveBonus = context.getAction().getDefensiveBonus();
-		int primaryRoll = context.getExecution().getPrimaryRoll().getResult();
+		int primaryRoll = context.getAction().getRoll().getFirstRoll();
 
 		// Primary attack
 		AttackResult primaryAttack = getAttackResult(weaponTableId, offensiveBonus, defensiveBonus, targetArmor, primaryRoll);

@@ -64,9 +64,9 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.actionId(a01.getId())
-			.primaryTarget(taMelee02.getId())
+			.target(taMelee02.getId())
 			.position(MeleeAttackPosition.NORMAL)
-			.primaryRoll(OpenRoll.of(85))
+			.roll(OpenRoll.of(85))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(meleeAttackExecution).share().block();
