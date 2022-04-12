@@ -55,7 +55,7 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 
 		MissileAttackExecution missileAttackExecution = MissileAttackExecution.builder()
 			.actionId(a01.getId())
-			.distance(18)
+			.distance(36)
 			.cover(MissileCover.NONE)
 			.roll(OpenRoll.of(80))
 			.build();

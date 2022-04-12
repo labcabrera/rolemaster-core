@@ -26,6 +26,8 @@ public class TacticalActionMeleeAttack extends TacticalActionAttack {
 	@NotNull
 	private MeleeAttackType meleeAttackType;
 
+	private MeleeAttackPosition position;
+
 	@Builder.Default
 	private OffHandUsage offHandUsage = OffHandUsage.NONE;
 

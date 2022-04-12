@@ -45,14 +45,13 @@ public class MeleeAttackExecutionService {
 		loadTarget(action, execution);
 		action.setAttackResult(new AttackResult());
 
-		MeleeAttackContext context = MeleeAttackContext.builder()
-			.action(action)
-			.execution(execution)
-			.build();
+		MeleeAttackContext context = new MeleeAttackContext();
+		context.setAction(action);
+		context.setExecution(execution);
 
 		return Mono.just(context)
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.setSource(b))
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getTarget()), (a, b) -> a.setTarget(b))
+			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MeleeAttackContext>setSource(b))
+			.zipWith(tacticalCharacterRepository.findById(context.getAction().getTarget()), (a, b) -> a.<MeleeAttackContext>setTarget(b))
 			.flatMap(fumbleProcessor)
 			.flatMap(offensiveBonusProcessor)
 			.flatMap(defensiveBonusProcessor)

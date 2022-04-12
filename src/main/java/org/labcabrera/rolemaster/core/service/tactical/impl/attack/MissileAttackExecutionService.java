@@ -4,9 +4,9 @@ import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecutio
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveBonusProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackDefensiveProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackOffensiveProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile.MissileAttackWeaponTableProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class MissileAttackExecutionService {
 	private TacticalCharacterRepository characterRepository;
 
 	@Autowired
-	private MissileAttackOffensiveProcessor missileAttackOffensiveProcessor;
+	private OffensiveBonusProcessor offensiveBonusProcessor;
 
 	@Autowired
 	private MissileAttackDefensiveProcessor missileAttackDefensiveProcessor;
@@ -39,14 +39,14 @@ public class MissileAttackExecutionService {
 		action.setDistance(execution.getDistance());
 		action.setCover(execution.getCover());
 
-		MissileAttackContext context = MissileAttackContext.builder()
-			.action(action)
-			.execution(execution)
-			.build();
+		MissileAttackContext context = new MissileAttackContext();
+		context.setAction(action);
+		context.setExecution(execution);
+
 		return Mono.just(context)
-			.zipWith(characterRepository.findById(context.getAction().getSource()), (a, b) -> a.setSource(b))
-			.zipWith(characterRepository.findById(context.getAction().getTarget()), (a, b) -> a.setTarget(b))
-			.flatMap(missileAttackOffensiveProcessor)
+			.zipWith(characterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MissileAttackContext>setSource(b))
+			.zipWith(characterRepository.findById(context.getAction().getTarget()), (a, b) -> a.<MissileAttackContext>setTarget(b))
+			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(missileAttackDefensiveProcessor)
 			.flatMap(missileAttackWeaponTableProcessor)
 			.flatMap(missileAttackResultProcessor)
