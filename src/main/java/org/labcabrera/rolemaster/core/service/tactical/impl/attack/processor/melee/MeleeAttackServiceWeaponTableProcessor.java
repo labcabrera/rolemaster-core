@@ -13,13 +13,12 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.actions.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalCriticalResult;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<TacticalAttackContext> {
+public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<MeleeAttackContext> {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
 	private static final String PATTERN_CRIT = "^([0-9]+)(\\w)(\\w)$";
@@ -29,7 +28,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Tac
 	@Autowired
 	private WeaponTable weaponTable;
 
-	public TacticalAttackContext apply(TacticalAttackContext context) {
+	public MeleeAttackContext apply(MeleeAttackContext context) {
 		if (context.getAction().isFlumbe()) {
 			return context;
 		}

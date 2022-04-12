@@ -1,9 +1,10 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
 
+import java.util.function.Function;
+
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveExhaustionBonusCalculator;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveHpBonusCalculator;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensivePositionBonusCalculator;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class MeleeAttackOffensiveBonusProcessor {
+public class MeleeAttackOffensiveBonusProcessor implements Function<MeleeAttackContext, Mono<MeleeAttackContext>> {
 
 	@Autowired
 	private TacticalSkillService skillService;
@@ -31,7 +32,8 @@ public class MeleeAttackOffensiveBonusProcessor {
 	@Autowired
 	private OffensivePositionBonusCalculator offensivePositionBonusCalculator;
 
-	public Mono<TacticalAttackContext> apply(TacticalAttackContext context) {
+	@Override
+	public Mono<MeleeAttackContext> apply(MeleeAttackContext context) {
 		if (context.getAction().isFlumbe()) {
 			return Mono.just(context);
 		}
@@ -41,7 +43,7 @@ public class MeleeAttackOffensiveBonusProcessor {
 			.flatMap(this::loadSkillBonus);
 	}
 
-	private TacticalAttackContext loadBonus(TacticalAttackContext context) {
+	private MeleeAttackContext loadBonus(MeleeAttackContext context) {
 		int flankBonus = offensivePositionBonusCalculator.getFlankBonus(context.getExecution().getPosition());
 		int hpBonus = offensiveHpBonusCalculator.getBonus(context.getSource());
 		int exhaustionBonus = offensiveExhaustionBonusCalculator.getBonus(context.getSource());
@@ -53,7 +55,7 @@ public class MeleeAttackOffensiveBonusProcessor {
 		return context;
 	}
 
-	private Mono<TacticalAttackContext> loadSkillBonus(TacticalAttackContext context) {
+	private Mono<MeleeAttackContext> loadSkillBonus(MeleeAttackContext context) {
 		TacticalCharacter source = context.getSource();
 		CharacterWeapon weapon = source.getInventory().getMainHandWeapon();
 		String skillId = weapon.getSkillId();

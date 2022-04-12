@@ -1,11 +1,12 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
 
+import java.util.function.Function;
+
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.actions.AttackFumbleResult;
 import org.labcabrera.rolemaster.core.model.tactical.actions.FumbleType;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +14,10 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class AttackFumbleProcessor {
+public class AttackFumbleProcessor implements Function<MeleeAttackContext, Mono<MeleeAttackContext>> {
 
-	public Mono<TacticalAttackContext> apply(TacticalAttackContext context) {
+	@Override
+	public Mono<MeleeAttackContext> apply(MeleeAttackContext context) {
 		log.debug("Checking fumble for attack {}", context.getAction().getId());
 
 		TacticalCharacter source = context.getSource();

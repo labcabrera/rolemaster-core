@@ -2,16 +2,15 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.mi
 
 import java.util.function.Function;
 
-import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMissileAttack;
 import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Mono;
 
 @Component
-public class MissileAttackDefensiveProcessor implements Function<TacticalActionMissileAttack, Mono<TacticalActionMissileAttack>> {
+public class MissileAttackDefensiveProcessor implements Function<MissileAttackContext, Mono<MissileAttackContext>> {
 
 	@Override
-	public Mono<TacticalActionMissileAttack> apply(TacticalActionMissileAttack action) {
+	public Mono<MissileAttackContext> apply(MissileAttackContext action) {
 		return Mono.just(action);
 	}
 

@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.AttackFumbleProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.AttackResultProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackDefensiveBonusProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackOffensiveBonusProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee.MeleeAttackServiceWeaponTableProcessor;
@@ -44,24 +45,17 @@ public class MeleeAttackExecutionService {
 		loadTarget(action, execution);
 		action.setPrimaryAttackResult(new AttackResult());
 
-		TacticalAttackContext context = TacticalAttackContext.builder()
+		MeleeAttackContext context = MeleeAttackContext.builder()
 			.action(action)
 			.execution(execution)
 			.build();
+
 		return Mono.just(context)
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()))
-			.map(pair -> {
-				pair.getT1().setSource(pair.getT2());
-				return pair.getT1();
-			})
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getTarget()))
-			.map(pair -> {
-				pair.getT1().setTarget(pair.getT2());
-				return pair.getT1();
-			})
-			.flatMap(fumbleProcessor::apply)
-			.flatMap(offensiveBonusProcessor::apply)
-			.flatMap(defensiveBonusProcessor::apply)
+			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.setSource(b))
+			.zipWith(tacticalCharacterRepository.findById(context.getAction().getTarget()), (a, b) -> a.setTarget(b))
+			.flatMap(fumbleProcessor)
+			.flatMap(offensiveBonusProcessor)
+			.flatMap(defensiveBonusProcessor)
 			.map(weaponTableProcessor)
 			.flatMap(ctx -> attackResultProcessor.apply(ctx.getAction()))
 			.flatMap(actionRepository::save)

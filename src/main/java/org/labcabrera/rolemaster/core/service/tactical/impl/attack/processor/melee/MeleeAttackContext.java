@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TacticalAttackContext {
+public class MeleeAttackContext {
 
 	private TacticalActionMeleeAttack action;
 
@@ -22,5 +22,15 @@ public class TacticalAttackContext {
 	private TacticalCharacter source;
 
 	private TacticalCharacter target;
+
+	public MeleeAttackContext setSource(TacticalCharacter value) {
+		this.source = value;
+		return this;
+	}
+
+	public MeleeAttackContext setTarget(TacticalCharacter value) {
+		this.target = value;
+		return this;
+	}
 
 }
