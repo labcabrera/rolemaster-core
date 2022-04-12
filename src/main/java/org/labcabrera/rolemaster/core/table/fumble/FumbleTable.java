@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.table.fumble;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.combat.FumbleTableResult;
-import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
+import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.actions.FumbleType;
 import org.springframework.stereotype.Component;
 
@@ -46,14 +46,14 @@ public class FumbleTable {
 				.text(
 					"Intentas sorprender a tu enemigo con una maniobra envolvente. Eres malo. Pierdes 2 asaltos mientras intentas recuperarte.")
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 2);
+				.addDebuf(Debuff.MUST_PARRY, 2);
 		}
 		else if (roll >= 61 && roll <= 65) {
 			return FumbleTableResult.builder()
 				.text(
 					"Enganchas el arma en tus propias ropas, haciendo que salga disparada de tu mano. Pasas 2 asaltos intentando que no caiga al suelo.")
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 2);
+				.addDebuf(Debuff.MUST_PARRY, 2);
 		}
 		else if (roll == 66) {
 			return FumbleTableResult.builder()
@@ -71,7 +71,7 @@ public class FumbleTable {
 			return FumbleTableResult.builder()
 				.text("Te ha distraído ese maldito duende de la esquina. Pierdes los 2 asaltos de ataque siguientes.")
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 2);
+				.addDebuf(Debuff.MUST_PARRY, 2);
 		}
 		else if (roll >= 81 && roll <= 85) {
 			return FumbleTableResult.builder()
@@ -82,20 +82,20 @@ public class FumbleTable {
 			return FumbleTableResult.builder()
 				.text("Por suerte aprenderás que ese bailoteo no es apropiado en combate. Aturdido 2 asaltos por tu falta de capacidad.")
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2);
+				.addDebuf(Debuff.STUNNED, 2);
 		}
 		else if (roll >= 91 && roll <= 95) {
 			return FumbleTableResult.builder()
 				.text("Caes al ir tu ataque demasiado lejos. Aturdido durante 3 asaltos.")
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3);
+				.addDebuf(Debuff.STUNNED, 3);
 		}
 		else if (roll >= 96 && roll <= 99) {
 			return FumbleTableResult.builder()
 				.text("¡La excitación es demasiado para ti! Tu frenesí momentáneo te deja aturdido y sin poder parar durante 3 asaltos.")
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
-				.addDebuf(DebufStatus.CANT_PARRY, 3);
+				.addDebuf(Debuff.STUNNED, 3)
+				.addDebuf(Debuff.CANT_PARRY, 3);
 		}
 		else if (roll == 100) {
 			return FumbleTableResult.builder()

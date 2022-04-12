@@ -26,7 +26,7 @@ public class MeleeAttackServiceWeaponTableProcessor implements UnaryOperator<Tac
 		if (context.getAction().getFumbleResult() != null) {
 			return context;
 		}
-		String weaponId = context.getSource().getAttack().getMainWeaponId();
+		String weaponId = context.getSource().getItems().getMainWeaponId();
 		int targetArmor = context.getTarget().getArmorType();
 
 		int offensiveBonus = context.getAction().getOffensiveBonus();

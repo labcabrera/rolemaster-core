@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class CombatStatus {
 
 	@Builder.Default
-	private Map<DebufStatus, Integer> debufStatusMap = new HashMap<>();
+	private Map<Debuff, Integer> debuffs = new HashMap<>();
 
 	@Builder.Default
 	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
@@ -39,13 +39,13 @@ public class CombatStatus {
 	@Builder.Default
 	private List<String> otherEfects = new ArrayList<>();
 
-	public CombatStatus addDebufStatus(DebufStatus key, Integer value) {
-		if (debufStatusMap.containsKey(key)) {
-			int rounds = debufStatusMap.get(key) + value;
-			debufStatusMap.put(key, rounds);
+	public CombatStatus addDebuff(Debuff key, Integer value) {
+		if (debuffs.containsKey(key)) {
+			int rounds = debuffs.get(key) + value;
+			debuffs.put(key, rounds);
 		}
 		else {
-			debufStatusMap.put(key, value);
+			debuffs.put(key, value);
 		}
 		return this;
 	}

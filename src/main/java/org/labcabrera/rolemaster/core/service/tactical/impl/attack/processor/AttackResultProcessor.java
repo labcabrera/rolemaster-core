@@ -6,7 +6,7 @@ import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
-import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
+import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionAttack;
@@ -72,8 +72,8 @@ public class AttackResultProcessor {
 							.build();
 						cs.getBleding().add(bleeding);
 					}
-					for (Entry<DebufStatus, Integer> dse : ctr.getDebufMap().entrySet()) {
-						tc.getCombatStatus().addDebufStatus(dse.getKey(), dse.getValue());
+					for (Entry<Debuff, Integer> dse : ctr.getDebuffs().entrySet()) {
+						tc.getCombatStatus().addDebuff(dse.getKey(), dse.getValue());
 					}
 					tc.getCombatStatus().getOtherEfects().addAll(ctr.getOtherEfects());
 				}

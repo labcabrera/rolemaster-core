@@ -5,7 +5,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
-import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
+import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.actions.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.TacticalAttackContext;
 import org.springframework.stereotype.Component;
@@ -62,10 +62,10 @@ public class MeleeAttackDefensiveBonusProcessor implements UnaryOperator<Tactica
 
 	private boolean canParry(TacticalAttackContext context) {
 		CombatStatus cs = context.getTarget().getCombatStatus();
-		if (cs.getDebufStatusMap().containsKey(DebufStatus.CANT_PARRY)) {
+		if (cs.getDebuffs().containsKey(Debuff.CANT_PARRY)) {
 			return false;
 		}
-		else if (cs.getDebufStatusMap().containsKey(DebufStatus.PRONE)) {
+		else if (cs.getDebuffs().containsKey(Debuff.PRONE)) {
 			return false;
 		}
 		return true;

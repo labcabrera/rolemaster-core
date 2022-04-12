@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.table.critical;
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
-import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
+import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -50,14 +50,14 @@ public class CriticalTableS {
 				.text("El golpe pasa por debajo del brazo de tu enemigo por lo que no acierta de pleno. Retrocede.")
 				.hp(1)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY);
+				.addDebuf(Debuff.MUST_PARRY);
 		}
 		else if (roll >= 21 && roll <= 35) {
 			return CriticalTableResult.builder()
 				.text("El intento de esquiva de tu enemigo evita que adopte una posición agresiva.")
 				.hp(2)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY)
+				.addDebuf(Debuff.MUST_PARRY)
 				.addBonus(10);
 		}
 		else if (roll >= 36 && roll <= 45) {
@@ -71,7 +71,7 @@ public class CriticalTableS {
 				.text("Golpe en la espalda. Tu enemigo intenta protegerse con un mandoble al aire.")
 				.hp(2)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY)
+				.addDebuf(Debuff.MUST_PARRY)
 				.addPenalty(-30);
 		}
 		else if (roll >= 51 && roll <= 55) {
@@ -80,7 +80,7 @@ public class CriticalTableS {
 				.hp(2)
 				.bleeding(1)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY)
+				.addDebuf(Debuff.MUST_PARRY)
 				.addPenalty(-25);
 		}
 		else if (roll >= 56 && roll <= 60) {
@@ -89,7 +89,7 @@ public class CriticalTableS {
 				.hp(3)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY);
+				.addDebuf(Debuff.MUST_PARRY);
 		}
 		else if (roll >= 61 && roll <= 65) {
 			return CriticalTableResult.builder()
@@ -107,7 +107,7 @@ public class CriticalTableS {
 				.hp(9)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
+				.addDebuf(Debuff.STUNNED, 3)
 				.addBonus(10)
 				.addEfect("Hombro del escudo roto y brazo inútil.");
 		}
@@ -116,8 +116,8 @@ public class CriticalTableS {
 				.text("El golpe impacta cerca del cuello. Tu enemigo está horrorizado.")
 				.hp(6)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
-				.addDebuf(DebufStatus.CANT_PARRY, 1);
+				.addDebuf(Debuff.STUNNED, 3)
+				.addDebuf(Debuff.CANT_PARRY, 1);
 		}
 		else if (roll >= 71 && roll <= 75) {
 			return CriticalTableResult.builder()
@@ -125,7 +125,7 @@ public class CriticalTableS {
 				.hp(4)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
+				.addDebuf(Debuff.STUNNED, 2)
 				.addPenalty(-30)
 				.addEfect("Tendones de la parte baja de la pierna seccionados");
 		}
@@ -135,8 +135,8 @@ public class CriticalTableS {
 				.hp(5)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
-				.addDebuf(DebufStatus.CANT_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 2)
+				.addDebuf(Debuff.CANT_PARRY, 2)
 				.addPenalty(-25);
 		}
 		else if (roll >= 81 && roll <= 85) {
@@ -145,7 +145,7 @@ public class CriticalTableS {
 				.hp(6)
 				.bleeding(6)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 5)
+				.addDebuf(Debuff.STUNNED, 5)
 				.addBonus(20);
 		}
 		else if (roll >= 86 && roll <= 90) {
@@ -154,8 +154,8 @@ public class CriticalTableS {
 				.hp(8)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED)
-				.addDebuf(DebufStatus.CANT_PARRY)
+				.addDebuf(Debuff.STUNNED)
+				.addDebuf(Debuff.CANT_PARRY)
 				.addPenalty(-10);
 		}
 		else if (roll >= 91 && roll <= 95) {
@@ -172,7 +172,7 @@ public class CriticalTableS {
 				.hp(2)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 6)
+				.addDebuf(Debuff.STUNNED, 6)
 				.addPenalty(-30)
 				.addEfect("Corte en la nariz con cicatriz permanente");
 		}
@@ -181,7 +181,7 @@ public class CriticalTableS {
 				.text("El golpe secciona la arteria carotida y la vena yugular, rompiendo el cuello. Muere después de 6 asaltos de agonia.")
 				.deathAfterRounds(6)
 				.build()
-				.addDebuf(DebufStatus.SHOCK, 6)
+				.addDebuf(Debuff.SHOCK, 6)
 				.addEfect("Arteria y vena del cuello seccionada");
 		}
 		throw new NotImplementedException();
@@ -211,7 +211,7 @@ public class CriticalTableS {
 				.text("Impacto en el costado. El enemigo se defiende con energía.")
 				.hp(2)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 1)
+				.addDebuf(Debuff.MUST_PARRY, 1)
 				.addPenalty(-10);
 		}
 		else if (roll >= 21 && roll <= 35) {
@@ -219,7 +219,7 @@ public class CriticalTableS {
 				.text("Tu enemigo se tambalea cuando tu ataque golpea su costado. Su posición defensiva parece bastante torpe.")
 				.hp(2)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 1)
+				.addDebuf(Debuff.MUST_PARRY, 1)
 				.addPenalty(-20);
 		}
 		else if (roll >= 36 && roll <= 45) {
@@ -235,7 +235,7 @@ public class CriticalTableS {
 				.text("Tu enemigo gira de forma extraña para evitar tu ataque. Le golpeas en la espalda.")
 				.hp(4)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY)
+				.addDebuf(Debuff.MUST_PARRY)
 				.addPenalty(-30);
 		}
 		else if (roll >= 51 && roll <= 55) {
@@ -250,7 +250,7 @@ public class CriticalTableS {
 				.hp(4)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 2);
+				.addDebuf(Debuff.MUST_PARRY, 2);
 		}
 		else if (roll >= 61 && roll <= 65) {
 			return CriticalTableResult.builder()
@@ -258,7 +258,7 @@ public class CriticalTableS {
 				.hp(4)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 1)
+				.addDebuf(Debuff.STUNNED, 1)
 				.addPenalty(-10);
 		}
 		else if (roll == 66) {
@@ -266,8 +266,8 @@ public class CriticalTableS {
 				.text("Tu golpe falla en el torso, rompiendo el codo de tu enemigo. Deja caer el arma y tiene el brazo inútil.")
 				.hp(8)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 4)
-				.addDebuf(DebufStatus.CANT_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 4)
+				.addDebuf(Debuff.CANT_PARRY, 2)
 				.addEfect("Brazo roto");
 		}
 		else if (roll >= 67 && roll <= 70) {
@@ -276,7 +276,7 @@ public class CriticalTableS {
 				.hp(7)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
+				.addDebuf(Debuff.STUNNED, 2)
 				.addPenalty(-5);
 		}
 		else if (roll >= 71 && roll <= 75) {
@@ -284,8 +284,8 @@ public class CriticalTableS {
 				.text("Cortas los músculos de la pantorrilla. Tu enemigo está demasiado dolorido como para mantenerse en pie.")
 				.hp(6)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 1)
-				.addDebuf(DebufStatus.CANT_PARRY, 1)
+				.addDebuf(Debuff.STUNNED, 1)
+				.addDebuf(Debuff.CANT_PARRY, 1)
 				.addPenalty(-30)
 				.addEfect("Corte en los músculos de la pantorilla");
 		}
@@ -295,8 +295,8 @@ public class CriticalTableS {
 				.hp(6)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
-				.addDebuf(DebufStatus.CANT_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 2)
+				.addDebuf(Debuff.CANT_PARRY, 2)
 				.addPenalty(-30);
 		}
 		else if (roll >= 81 && roll <= 85) {
@@ -306,8 +306,8 @@ public class CriticalTableS {
 				.hp(7)
 				.bleeding(6)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
-				.addDebuf(DebufStatus.CANT_PARRY, 2);
+				.addDebuf(Debuff.STUNNED, 2)
+				.addDebuf(Debuff.CANT_PARRY, 2);
 		}
 		else if (roll >= 86 && roll <= 90) {
 			return CriticalTableResult.builder()
@@ -316,8 +316,8 @@ public class CriticalTableS {
 				.hp(10)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
-				.addDebuf(DebufStatus.CANT_PARRY, 3);
+				.addDebuf(Debuff.STUNNED, 3)
+				.addDebuf(Debuff.CANT_PARRY, 3);
 		}
 		else if (roll >= 91 && roll <= 95) {
 			return CriticalTableResult.builder()
@@ -325,8 +325,8 @@ public class CriticalTableS {
 					"Golpe en la cadera con mucha fuerza. Tu enemigo se tambalea. Su recuperación es lenta.")
 				.hp(7)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
-				.addDebuf(DebufStatus.CANT_PARRY)
+				.addDebuf(Debuff.STUNNED, 3)
+				.addDebuf(Debuff.CANT_PARRY)
 				.addPenalty(-20)
 				.addBonus(10);
 		}
@@ -337,7 +337,7 @@ public class CriticalTableS {
 				.hp(20)
 				.deathAfterRounds(6)
 				.build()
-				.addDebuf(DebufStatus.SHOCK, 6);
+				.addDebuf(Debuff.SHOCK, 6);
 		}
 		else if (roll == 100) {
 			return CriticalTableResult.builder()
@@ -376,7 +376,7 @@ public class CriticalTableS {
 				.hp(4)
 				.specialEffect(true)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY)
+				.addDebuf(Debuff.MUST_PARRY)
 				.addPenalty(-20);
 		}
 		else if (roll >= 21 && roll <= 35) {
@@ -385,7 +385,7 @@ public class CriticalTableS {
 					"Rompes una costilla de tu enemigo con un ataque rapidísimo dirigido a su pecho. Se recupera rápidamente. Su escudo aún está encarado hacia ti.")
 				.hp(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED)
+				.addDebuf(Debuff.STUNNED)
 				.addEfect("Costilla rota");
 		}
 		else if (roll >= 36 && roll <= 45) {
@@ -402,8 +402,8 @@ public class CriticalTableS {
 				.hp(3)
 				.bleeding(1)
 				.build()
-				.addDebuf(DebufStatus.STUNNED)
-				.addDebuf(DebufStatus.CANT_PARRY);
+				.addDebuf(Debuff.STUNNED)
+				.addDebuf(Debuff.CANT_PARRY);
 		}
 		else if (roll >= 51 && roll <= 55) {
 			return CriticalTableResult.builder()
@@ -411,7 +411,7 @@ public class CriticalTableS {
 				.hp(4)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY)
+				.addDebuf(Debuff.MUST_PARRY)
 				.addPenalty(-10);
 		}
 		else if (roll >= 56 && roll <= 60) {
@@ -420,7 +420,7 @@ public class CriticalTableS {
 				.hp(5)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED);
+				.addDebuf(Debuff.STUNNED);
 		}
 		else if (roll >= 61 && roll <= 65) {
 			return CriticalTableResult.builder()
@@ -428,7 +428,7 @@ public class CriticalTableS {
 				.hp(4)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED)
+				.addDebuf(Debuff.STUNNED)
 				.addPenalty(-10);
 		}
 		else if (roll == 66) {
@@ -436,8 +436,8 @@ public class CriticalTableS {
 				.text("Tu estocada se queda corta ya que tu enemigo retrocede. Rompes la rodilla de tu enemigo. Cae.")
 				.hp(6)
 				.build()
-				.addDebuf(DebufStatus.CANT_PARRY, 3)
-				.addDebuf(DebufStatus.DOWNED)
+				.addDebuf(Debuff.CANT_PARRY, 3)
+				.addDebuf(Debuff.DOWNED)
 				.addPenalty(-90)
 				.addEfect("Rodilla rota");
 		}
@@ -446,8 +446,8 @@ public class CriticalTableS {
 				.text("Tajo en el cuello que corta cualquier ropaje y armadura que tuviese.")
 				.hp(8)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 4)
-				.addDebuf(DebufStatus.CANT_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 4)
+				.addDebuf(Debuff.CANT_PARRY, 2)
 				.addBonus(10);
 		}
 		else if (roll >= 71 && roll <= 75) {
@@ -456,8 +456,8 @@ public class CriticalTableS {
 					"Cortas los músculos y tendones de la parte baja de la pierna de tu enemigo. Tu enemigo se tambalea hacia tu con la guardia baja.")
 				.hp(7)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
-				.addDebuf(DebufStatus.CANT_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 2)
+				.addDebuf(Debuff.CANT_PARRY, 2)
 				.addPenalty(-45)
 				.addEfect("Músculos y tendones de la parte baja de la pierna seccionados.");
 		}
@@ -468,7 +468,7 @@ public class CriticalTableS {
 				.hp(9)
 				.bleeding(4)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 6)
+				.addDebuf(Debuff.STUNNED, 6)
 				.addEfect("Músculos y tendones del brazo del escudo seccionados.");
 		}
 		else if (roll >= 81 && roll <= 85) {
@@ -478,8 +478,8 @@ public class CriticalTableS {
 				.hp(8)
 				.bleeding(4)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
-				.addDebuf(DebufStatus.CANT_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 2)
+				.addDebuf(Debuff.CANT_PARRY, 2)
 				.addPenalty(-20);
 		}
 		else if (roll >= 86 && roll <= 90) {
@@ -488,9 +488,9 @@ public class CriticalTableS {
 					"Impacto en la espalda que rompe algunos huesos. Tu enemigo se tambalea hacia adelante antes de caer. Tiene graves problemas para ponerse de pie.")
 				.hp(9)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 4)
-				.addDebuf(DebufStatus.CANT_PARRY, 4)
-				.addDebuf(DebufStatus.DOWNED, 1)
+				.addDebuf(Debuff.STUNNED, 4)
+				.addDebuf(Debuff.CANT_PARRY, 4)
+				.addDebuf(Debuff.DOWNED, 1)
 				.addPenalty(-10)
 				.addEfect("Huesos de la espalda rotos.");
 		}
@@ -501,7 +501,7 @@ public class CriticalTableS {
 				.hp(20)
 				.deathAfterRounds(6)
 				.build()
-				.addDebuf(DebufStatus.SHOCK, 6)
+				.addDebuf(Debuff.SHOCK, 6)
 				.addEfect("Pierna amputada y muerte por shock y hemorragia.");
 		}
 		else if (roll >= 96 && roll <= 99) {
@@ -511,8 +511,8 @@ public class CriticalTableS {
 				.hp(18)
 				.deathAfterRounds(12)
 				.build()
-				.addDebuf(DebufStatus.CANT_PARRY, 6)
-				.addDebuf(DebufStatus.STUNNED, 6)
+				.addDebuf(Debuff.CANT_PARRY, 6)
+				.addDebuf(Debuff.STUNNED, 6)
 				.addEfect("Brazo del escudo amputado y muerte por shock y hemorragia.");
 		}
 		else if (roll == 100) {
@@ -521,8 +521,8 @@ public class CriticalTableS {
 					"Golpe en plena cabeza que destruye los ojos de tu enemigo. Se revuelva sobre su espalda de dolor.")
 				.hp(5)
 				.build()
-				.addDebuf(DebufStatus.CANT_PARRY, 30)
-				.addDebuf(DebufStatus.STUNNED, 30)
+				.addDebuf(Debuff.CANT_PARRY, 30)
+				.addDebuf(Debuff.STUNNED, 30)
 				.addEfect("Ojos destrozados.");
 
 		}
@@ -547,7 +547,7 @@ public class CriticalTableS {
 				.text("Fuerzas a tu enemigo a retroceder. Te mantiene a raya con mandobles desesperados al aire.")
 				.hp(3)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY);
+				.addDebuf(Debuff.MUST_PARRY);
 		}
 		else if (roll >= 16 && roll <= 20) {
 			return CriticalTableResult.builder()
@@ -562,8 +562,8 @@ public class CriticalTableS {
 				.text("Golpe al brazo y pecho. Tu enemigo no puede defenderse durante un momento. Te colocas en su lado del escudo.")
 				.hp(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 1)
-				.addDebuf(DebufStatus.CANT_PARRY, 1);
+				.addDebuf(Debuff.STUNNED, 1)
+				.addDebuf(Debuff.CANT_PARRY, 1);
 		}
 		else if (roll >= 36 && roll <= 45) {
 			return CriticalTableResult.builder()
@@ -578,8 +578,8 @@ public class CriticalTableS {
 				.hp(3)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 1)
-				.addDebuf(DebufStatus.CANT_PARRY, 1);
+				.addDebuf(Debuff.STUNNED, 1)
+				.addDebuf(Debuff.CANT_PARRY, 1);
 
 		}
 		else if (roll >= 51 && roll <= 55) {
@@ -588,7 +588,7 @@ public class CriticalTableS {
 				.hp(5)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 1)
+				.addDebuf(Debuff.MUST_PARRY, 1)
 				.addPenalty(-15);
 		}
 		else if (roll >= 56 && roll <= 60) {
@@ -597,7 +597,7 @@ public class CriticalTableS {
 				.hp(6)
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2);
+				.addDebuf(Debuff.STUNNED, 2);
 		}
 		else if (roll >= 61 && roll <= 65) {
 			return CriticalTableResult.builder()
@@ -605,7 +605,7 @@ public class CriticalTableS {
 				.hp(4)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
+				.addDebuf(Debuff.STUNNED, 2)
 				.addPenalty(-10);
 		}
 		else if (roll == 66) {
@@ -621,7 +621,7 @@ public class CriticalTableS {
 				.text("Golpeas a tu enemigo en el hombro, sajando músculos.")
 				.hp(5)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
+				.addDebuf(Debuff.STUNNED, 3)
 				.addPenalty(-20)
 				.addBonus(10);
 		}
@@ -630,8 +630,8 @@ public class CriticalTableS {
 				.text(
 					"Cortas los músculos y tendones de la parte baja de la pierna de tu enemigo. No podrá seguir mucho más en pue. Su guardia es débil.")
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
-				.addDebuf(DebufStatus.MUST_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 3)
+				.addDebuf(Debuff.MUST_PARRY, 2)
 				.addPenalty(-50);
 		}
 		else if (roll >= 76 && roll <= 80) {
@@ -640,8 +640,8 @@ public class CriticalTableS {
 					"Equivocándose, tu enemigo coloca su brazo del arma en el camino de tu espada. Seccionas tendones. El brazo queda colgando e inútil.")
 				.hp(10)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 4)
-				.addDebuf(DebufStatus.MUST_PARRY, 2);
+				.addDebuf(Debuff.STUNNED, 4)
+				.addDebuf(Debuff.MUST_PARRY, 2);
 		}
 		else if (roll >= 81 && roll <= 85) {
 			return CriticalTableResult.builder()
@@ -650,8 +650,8 @@ public class CriticalTableS {
 				.hp(10)
 				.bleeding(8)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 4)
-				.addDebuf(DebufStatus.MUST_PARRY, 2)
+				.addDebuf(Debuff.STUNNED, 4)
+				.addDebuf(Debuff.MUST_PARRY, 2)
 				.addPenalty(-10);
 		}
 		else if (roll >= 86 && roll <= 90) {
@@ -661,9 +661,9 @@ public class CriticalTableS {
 				.hp(6)
 				.deathAfterRounds(6)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 6)
-				.addDebuf(DebufStatus.CANT_PARRY, 6)
-				.addDebuf(DebufStatus.SHOCK, 6)
+				.addDebuf(Debuff.STUNNED, 6)
+				.addDebuf(Debuff.CANT_PARRY, 6)
+				.addDebuf(Debuff.SHOCK, 6)
 				.addEfect("Mano amputada");
 		}
 		else if (roll >= 91 && roll <= 95) {
@@ -673,9 +673,9 @@ public class CriticalTableS {
 				.hp(15)
 				.deathAfterRounds(12)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 9)
-				.addDebuf(DebufStatus.CANT_PARRY, 9)
-				.addDebuf(DebufStatus.SHOCK, 12)
+				.addDebuf(Debuff.STUNNED, 9)
+				.addDebuf(Debuff.CANT_PARRY, 9)
+				.addDebuf(Debuff.SHOCK, 12)
 				.addEfect("Brazo amputado");
 		}
 		else if (roll >= 96 && roll <= 99) {
@@ -685,7 +685,7 @@ public class CriticalTableS {
 				.hp(20)
 				.deathAfterRounds(3)
 				.build()
-				.addDebuf(DebufStatus.UNCONSCIOUS, 3)
+				.addDebuf(Debuff.UNCONSCIOUS, 3)
 				.addEfect("Corte mortal en el costado");
 		}
 		else if (roll == 100) {
@@ -720,14 +720,14 @@ public class CriticalTableS {
 				.text("Desvías el arma de tu enemigo, obligándole a retroceder.")
 				.hp(4)
 				.build()
-				.addDebuf(DebufStatus.MUST_PARRY, 1);
+				.addDebuf(Debuff.MUST_PARRY, 1);
 		}
 		else if (roll >= 16 && roll <= 20) {
 			return CriticalTableResult.builder()
 				.text("Fuerte golpe en las costillas. Tu enemigo baja la guardia y casi deja caer el arma.")
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 1)
-				.addDebuf(DebufStatus.CANT_PARRY, 1)
+				.addDebuf(Debuff.STUNNED, 1)
+				.addDebuf(Debuff.CANT_PARRY, 1)
 				.addBonus(10);
 		}
 		else if (roll >= 21 && roll <= 35) {
@@ -752,8 +752,8 @@ public class CriticalTableS {
 				.hp(4)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 1)
-				.addDebuf(DebufStatus.CANT_PARRY, 1);
+				.addDebuf(Debuff.STUNNED, 1)
+				.addDebuf(Debuff.CANT_PARRY, 1);
 		}
 		else if (roll >= 51 && roll <= 55) {
 			return CriticalTableResult.builder()
@@ -761,7 +761,7 @@ public class CriticalTableS {
 				.hp(6)
 				.bleeding(4)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
+				.addDebuf(Debuff.STUNNED, 2)
 				.addPenalty(-10);
 
 		}
@@ -771,7 +771,7 @@ public class CriticalTableS {
 				.hp(6)
 				.bleeding(4)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
+				.addDebuf(Debuff.STUNNED, 2)
 				.addPenalty(-10);
 		}
 		else if (roll >= 61 && roll <= 65) {
@@ -780,7 +780,7 @@ public class CriticalTableS {
 				.hp(6)
 				.bleeding(3)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 2)
+				.addDebuf(Debuff.STUNNED, 2)
 				.addPenalty(-15);
 		}
 		else if (roll == 66) {
@@ -790,7 +790,7 @@ public class CriticalTableS {
 				.hp(12)
 				.deathAfterRounds(12)
 				.build()
-				.addDebuf(DebufStatus.SHOCK, 12)
+				.addDebuf(Debuff.SHOCK, 12)
 				.addBonus(10);
 		}
 		else if (roll >= 67 && roll <= 70) {
@@ -799,7 +799,7 @@ public class CriticalTableS {
 					"Cortas los tendones y machacas los huesos del hombro de tu enemigo. El brazo queda inutil.")
 				.bleeding(2)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 4)
+				.addDebuf(Debuff.STUNNED, 4)
 				.addEfect("Tendones seccionados y huesos del hombro rotos. Brazo inútil.");
 		}
 		else if (roll >= 71 && roll <= 75) {
@@ -808,7 +808,7 @@ public class CriticalTableS {
 					"Cortas músculos y tendones de la parte baja de la pierna de tu enemigo. Tu enemigo caerá si no tiene donde apoyarse.")
 				.hp(8)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 6)
+				.addDebuf(Debuff.STUNNED, 6)
 				.addPenalty(-70);
 		}
 		else if (roll >= 76 && roll <= 80) {
@@ -817,8 +817,8 @@ public class CriticalTableS {
 					"Tu enemigo se acerca a tu para parar tu golpe. Le amputas dos dedos y rompes el brazo del escudo, dejándolo inútil.")
 				.hp(12)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 3)
-				.addDebuf(DebufStatus.CANT_PARRY, 3);
+				.addDebuf(Debuff.STUNNED, 3)
+				.addDebuf(Debuff.CANT_PARRY, 3);
 		}
 		else if (roll >= 81 && roll <= 85) {
 			return CriticalTableResult.builder()
@@ -826,9 +826,9 @@ public class CriticalTableS {
 				.hp(5)
 				.deathAfterRounds(12)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 12)
-				.addDebuf(DebufStatus.CANT_PARRY, 12)
-				.addDebuf(DebufStatus.SHOCK, 12);
+				.addDebuf(Debuff.STUNNED, 12)
+				.addDebuf(Debuff.CANT_PARRY, 12)
+				.addDebuf(Debuff.SHOCK, 12);
 
 		}
 		else if (roll >= 86 && roll <= 90) {
@@ -838,7 +838,7 @@ public class CriticalTableS {
 				.hp(12)
 				.deathAfterRounds(9)
 				.build()
-				.addDebuf(DebufStatus.UNCONSCIOUS, 9);
+				.addDebuf(Debuff.UNCONSCIOUS, 9);
 		}
 		else if (roll >= 91 && roll <= 95) {
 			return CriticalTableResult.builder()
@@ -846,7 +846,7 @@ public class CriticalTableS {
 				.specialEffect(true)
 				.hp(20)
 				.build()
-				.addDebuf(DebufStatus.PRONE, 1000)
+				.addDebuf(Debuff.PRONE, 1000)
 				.addEfect("Espina dorsal seccionada. Paralitico de cuello para abajo.");
 		}
 		else if (roll >= 96 && roll <= 99) {
@@ -863,9 +863,9 @@ public class CriticalTableS {
 				.hp(10)
 				.deathAfterRounds(12)
 				.build()
-				.addDebuf(DebufStatus.STUNNED, 12)
-				.addDebuf(DebufStatus.CANT_PARRY, 12)
-				.addDebuf(DebufStatus.SHOCK, 24)
+				.addDebuf(Debuff.STUNNED, 12)
+				.addDebuf(Debuff.CANT_PARRY, 12)
+				.addDebuf(Debuff.SHOCK, 24)
 				.addEfect("Todos los órganos internos destruídos después de un golpe en la ingle.");
 		}
 		throw new NotImplementedException();

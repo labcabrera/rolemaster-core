@@ -5,11 +5,11 @@ import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
-import org.labcabrera.rolemaster.core.model.tactical.ContextCharacterAttack;
 import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
 import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.PowerPoints;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterItems;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,7 +38,7 @@ public class TacticalNpcCharacterService {
 				.max(exhaustionPoints)
 				.current(exhaustionPoints)
 				.build())
-			.attack(ContextCharacterAttack.builder()
+			.items(TacticalCharacterItems.builder()
 				.mainWeaponId(npc.getAttacks().iterator().next().getWeaponId())
 				.mainWeaponBonus(npc.getAttacks().iterator().next().getBonus())
 				.build())

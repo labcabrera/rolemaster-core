@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.item.Weapon;
+import org.labcabrera.rolemaster.core.model.item.WeaponCategory;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.actions.AttackFumbleResult;
 import org.labcabrera.rolemaster.core.model.tactical.actions.FumbleType;
@@ -27,12 +27,12 @@ public class AttackFumbleProcessor {
 		if (context.getAction().getRoll() == null) {
 			throw new RuntimeException("Expected roll");
 		}
-		String weaponId = context.getSource().getAttack().getMainWeaponId();
+		String weaponId = context.getSource().getItems().getMainWeaponId();
 		return Mono.just(context)
 			.zipWith(weaponRepository.findById(weaponId))
 			.map(pair -> {
 				TacticalAttackContext ctx = pair.getT1();
-				Weapon weapon = pair.getT2();
+				WeaponCategory weapon = pair.getT2();
 				OpenRoll roll = context.getAction().getRoll();
 				List<Integer> values = weapon.getFumble();
 				if (values.contains(roll.getRolls().iterator().next())) {

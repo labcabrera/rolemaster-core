@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import org.labcabrera.rolemaster.core.model.item.Item;
+import org.labcabrera.rolemaster.core.model.item.ItemCategory;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -20,10 +20,10 @@ public interface ItemController {
 
 	@GetMapping
 	@Operation(summary = "Seach all items.")
-	Flux<Item> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
+	Flux<ItemCategory> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
 
 	@GetMapping("/{id}")
 	@Operation(summary = "Gets a given item from its identifier.")
-	Mono<Item> findById(@PathVariable String id);
+	Mono<ItemCategory> findById(@PathVariable String id);
 
 }

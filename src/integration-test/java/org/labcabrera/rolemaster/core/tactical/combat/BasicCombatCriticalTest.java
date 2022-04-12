@@ -18,7 +18,7 @@ import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
-import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
+import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
@@ -122,8 +122,8 @@ class BasicCombatCriticalTest extends AbstractCombatTest {
 
 		cc02 = this.tacticalCharacterRepository.findById(cc02.getId()).share().block();
 		assertEquals(38, cc02.getHp().getCurrent());
-		assertEquals(1, cc02.getCombatStatus().getDebufStatusMap().size());
-		assertEquals(1, cc02.getCombatStatus().getDebufStatusMap().get(DebufStatus.MUST_PARRY));
+		assertEquals(1, cc02.getCombatStatus().getDebuffs().size());
+		assertEquals(1, cc02.getCombatStatus().getDebuffs().get(Debuff.MUST_PARRY));
 
 	}
 

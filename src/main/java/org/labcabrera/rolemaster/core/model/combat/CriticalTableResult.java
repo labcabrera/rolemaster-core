@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.tactical.AttackBonus;
 import org.labcabrera.rolemaster.core.model.tactical.CharacterStatusModifier;
-import org.labcabrera.rolemaster.core.model.tactical.DebufStatus;
+import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -29,7 +29,7 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	private Integer hp;
 
 	@Builder.Default
-	private Map<DebufStatus, Integer> debufMap = new LinkedHashMap<>();
+	private Map<Debuff, Integer> debuffs = new LinkedHashMap<>();
 
 	private Penalty penalty;
 
@@ -58,12 +58,12 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	// TODO
 	// posibilidades de arma atrapada en el cuerpo X turnos
 
-	public CriticalTableResult addDebuf(DebufStatus debufStatus) {
+	public CriticalTableResult addDebuf(Debuff debufStatus) {
 		return addDebuf(debufStatus, 1);
 	}
 
-	public CriticalTableResult addDebuf(DebufStatus debufStatus, Integer rounds) {
-		debufMap.put(debufStatus, rounds);
+	public CriticalTableResult addDebuf(Debuff debufStatus, Integer rounds) {
+		debuffs.put(debufStatus, rounds);
 		return this;
 	}
 
