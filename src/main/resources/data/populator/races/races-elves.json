@@ -2,13 +2,17 @@
 {
   	"id": "wood-elves",
   	"name": "Wood elves",
-  	"attributeModifieres": {
+  	"attributeModifiers": {
   		"ag": 4,
+  		"co": 0,
   		"me": 2,
+  		"re": 0,
   		"sd": -5,
   		"em": 2,
+  		"in": 0,
   		"pr": 2,
-  		"qu": 2
+  		"qu": 2,
+  		"st": 0
   	},
   	"resistanceBonus": {
   		"channeling": -5,
@@ -16,6 +20,12 @@
   		"mentalism": -5,
   		"poison": 10,
   		"disease": 100
+    },
+    "bodyDevelopmentProgression": [6,3,2,1],
+    "ppDevelopmentProgression": {
+    	"channeling":             [6,5,4,3],
+    	"essence":                [7,6,5,4],
+    	"mentalism":              [6,5,4,3] 
     },
   	"universes": [ "generic" ]
   },
