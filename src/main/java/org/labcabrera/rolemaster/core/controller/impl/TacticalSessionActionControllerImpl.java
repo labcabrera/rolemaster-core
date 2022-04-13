@@ -5,10 +5,12 @@ import javax.validation.Valid;
 import org.labcabrera.rolemaster.core.controller.TacticalSessionActionController;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
+import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -16,6 +18,9 @@ public class TacticalSessionActionControllerImpl implements TacticalSessionActio
 
 	@Autowired
 	private TacticalActionService tacticalActionService;
+
+	@Autowired
+	private TacticalActionRepository tacticalActionsRepository;
 
 	@Override
 	public Mono<TacticalAction> getDeclaredAction(String actionId) {
@@ -30,6 +35,11 @@ public class TacticalSessionActionControllerImpl implements TacticalSessionActio
 	@Override
 	public Mono<TacticalAction> declare(@Valid TacticalActionDeclaration actionDeclaration) {
 		return tacticalActionService.delare(actionDeclaration);
+	}
+
+	@Override
+	public Flux<TacticalAction> findActionsByRound(String roundId) {
+		return tacticalActionsRepository.findByRoundId(roundId);
 	}
 
 }

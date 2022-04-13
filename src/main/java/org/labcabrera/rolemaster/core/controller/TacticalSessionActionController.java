@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RequestMapping("/tactical-actions")
@@ -26,6 +27,11 @@ public interface TacticalSessionActionController {
 	@Operation(summary = "Get a declared action from a given character and phase.")
 	Mono<TacticalAction> getDeclaredAction(
 		@Parameter(description = "Tactical action identifier.", required = true) @PathVariable("id") String actionId);
+
+	@GetMapping("/rounds/{id}")
+	@Operation(summary = "Get all actions from a given round.")
+	Flux<TacticalAction> findActionsByRound(
+		@Parameter(description = "Round identifier.", required = true) @PathVariable("id") String roundId);
 
 	@PostMapping
 	@Operation(summary = "Declares a tactical action.")
