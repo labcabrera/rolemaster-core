@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.ResistanceBonusType;
 import org.labcabrera.rolemaster.core.model.character.ResistanceType;
@@ -70,6 +71,19 @@ class CharacterCreationServiceOrkFighterTest extends AbstractCharacterCreationTe
 		assertEquals(0, character.getResistances().get(ResistanceType.POISON).getBonus().get(ResistanceBonusType.RACE));
 		assertEquals(5, character.getResistances().get(ResistanceType.DISEASE).getBonus().get(ResistanceBonusType.RACE));
 
+		assertEquals(10, character.getSkillCategory("armor-heavy").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(10, character.getSkillCategory("armor-medium").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(10, character.getSkillCategory("armor-light").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(10, character.getSkillCategory("body-development").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(10, character.getSkillCategory("combat-maneuvers").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(20, character.getSkillCategory("weapon-1h-edged").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(20, character.getSkillCategory("weapon-thrown").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(20, character.getSkillCategory("weapon-missile").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(20, character.getSkillCategory("weapon-1h-concussion").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(20, character.getSkillCategory("weapon-2h").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(20, character.getSkillCategory("weapon-pole-arms").get().getBonus().get(BonusType.PROFESSION));
+		assertEquals(20, character.getSkillCategory("weapon-missile-artillery").get().getBonus().get(BonusType.PROFESSION));
+		
 		assertEquals(Arrays.asList(2, 5), character.getSkillCategory("body-development").get().getDevelopmentCost());
 		assertEquals(Arrays.asList(20), character.getSkillCategory("power-point-development").get().getDevelopmentCost());
 

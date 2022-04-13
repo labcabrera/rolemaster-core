@@ -67,61 +67,6 @@ class CharacterCreationServiceNomadsMixedClericTest extends AbstractCharacterCre
 		assertEquals(0, character.getResistances().get(ResistanceType.MENTALISM).getBonus().get(ResistanceBonusType.RACE));
 		assertEquals(0, character.getResistances().get(ResistanceType.POISON).getBonus().get(ResistanceBonusType.RACE));
 		assertEquals(0, character.getResistances().get(ResistanceType.DISEASE).getBonus().get(ResistanceBonusType.RACE));
-
-		/*
-		 * assertEquals(Arrays.asList(2, 6),
-		 * character.getSkillCategory("body-development").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(6),
-		 * character.getSkillCategory("power-point-development").get().getDevelopmentCost(
-		 * ));
-		 * 
-		 * assertEquals(Arrays.asList(9),
-		 * character.getSkillCategory("weapon-1h-edged").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(20),
-		 * character.getSkillCategory("weapon-thrown").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(20),
-		 * character.getSkillCategory("weapon-missile").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(20),
-		 * character.getSkillCategory("weapon-1h-concussion").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(20),
-		 * character.getSkillCategory("weapon-2h").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(20),
-		 * character.getSkillCategory("weapon-pole-arms").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(20),
-		 * character.getSkillCategory("weapon-missile-artillery").get().getDevelopmentCost
-		 * ());
-		 * 
-		 * assertEquals(Arrays.asList(7, 7, 7),
-		 * character.getSkillCategory("armor-heavy").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(6, 6, 6),
-		 * character.getSkillCategory("armor-medium").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(4, 4, 4),
-		 * character.getSkillCategory("armor-light").get().getDevelopmentCost());
-		 * 
-		 * assertEquals(Arrays.asList(6),
-		 * character.getSkillCategory("athletic-brawn").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(3),
-		 * character.getSkillCategory("athletic-endurance").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(3),
-		 * character.getSkillCategory("athletic-gymnastics").get().getDevelopmentCost());
-		 * 
-		 * assertEquals(Arrays.asList(6),
-		 * character.getSkillCategory("awareness-perceptions").get().getDevelopmentCost())
-		 * ; assertEquals(Arrays.asList(3),
-		 * character.getSkillCategory("awareness-searching").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(3, 7),
-		 * character.getSkillCategory("awareness-senses").get().getDevelopmentCost());
-		 * 
-		 * assertEquals(Arrays.asList(15),
-		 * character.getSkillCategory("subterfuge-attack").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(6),
-		 * character.getSkillCategory("subterfuge-stealth").get().getDevelopmentCost());
-		 * assertEquals(Arrays.asList(8),
-		 * character.getSkillCategory("subterfuge-mechanics").get().getDevelopmentCost());
-		 * 
-		 * assertEquals(Arrays.asList(18),
-		 * character.getSkillCategory("combat-maneuvers").get().getDevelopmentCost());
-		 */
 	}
 
 }
