@@ -2,7 +2,33 @@
   {
   	"id": "dwarves",
   	"name": "Dwarves",
-  	"universes": [ "generic" ]
+	"attributeModifiers": {
+		    "ag": -2,
+		    "co": 6,
+		    "me": 0,
+		    "re": 0,
+		    "sd": 2,
+		    "em": -4,
+		    "in": 0,
+		    "pr": -4,
+		    "qu": -2,
+		    "st": 2
+	    },
+	    "resistanceBonus": {
+	  		"channeling": 0,
+	  		"essence":    40,
+	  		"mentalism":  40,
+	  		"poison":     20,
+	  		"disease":    15
+	    },
+	    "bodyDevelopmentProgression": [7,4,2,1],
+	    "ppDevelopmentProgression": {
+	    	"channeling":             [6,5,4,3],
+	    	"essence":                [3,2,1,1],
+	    	"mentalism":              [3,2,1,1] 
+	    },
+	    "exhaustionPointsBonus": 20,
+  		"universes": [ "generic" ]
   },
   {
   	"id": "halflings",
