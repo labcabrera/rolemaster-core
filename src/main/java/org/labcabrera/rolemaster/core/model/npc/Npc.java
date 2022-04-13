@@ -51,7 +51,8 @@ public class Npc {
 
 	private MovementPace maxPace;
 
-	@Builder.Default
-	private List<String> universes = new ArrayList<>();
+	private String universeId;
+
+	private String npcNameGeneratorGroup;
 
 }
