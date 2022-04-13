@@ -32,6 +32,7 @@
 			"stalking":					10,
 			"hiding":					10
 		},
+		"backgroundOptions": 4,
 		"specialAbilities": [
 			"The Wood Elf folk are superb musicians and have tremendous hearing, even for Elves (they get a special +10 bonus to Base Spell attacks from Bard spell lists)."
 		],
@@ -60,6 +61,8 @@
 		"essence":                [7,6,5,4],
 		"mentalism":              [6,5,4,3] 
 		},
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
@@ -90,16 +93,22 @@
 			"essence":					[7,6,5,4],
 			"mentalism":				[6,5,4,3] 
 		},
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
 		"id": "fair-elves",
 		"name": "Fair Elves",
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
 		"id": "half-elves",
 		"name": "Half Elves",
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	}
 ]

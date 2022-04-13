@@ -39,6 +39,8 @@
 		"startingLanguageSelection": [
 			"common-speech:s8:w6"
 		],
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
@@ -69,6 +71,8 @@
 			"high-elvish:s2:w2"
 		],
 		"backgroundOptions": 4,
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
@@ -143,6 +147,8 @@
 		"skillBonus": {
 			"mounted-combat":         20
 		},
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
@@ -181,6 +187,8 @@
 			"public-speaking":			20,
 			"acting":					20
 		},
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
@@ -219,6 +227,8 @@
 			"public-speaking":			20,
 			"acting":					20
 		},
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	}
 ]

@@ -90,6 +90,9 @@ public class CharacterInfo {
 	private Integer baseMovementRate;
 
 	@Builder.Default
+	private List<String> notes = new ArrayList<>();
+
+	@Builder.Default
 	@Schema(description = "Audit data.", required = true)
 	private EntityMetadata metadata = EntityMetadata.builder().created(LocalDateTime.now()).build();
 

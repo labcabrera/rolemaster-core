@@ -18,4 +18,6 @@ public class CharacterDevelopment {
 	@Builder.Default
 	private Integer usedPoints = 0;
 
+	private Integer backgroundOptions;
+
 }

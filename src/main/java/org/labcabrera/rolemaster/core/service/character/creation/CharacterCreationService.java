@@ -100,8 +100,12 @@ public class CharacterCreationService {
 			.zipWith(raceRepository.findById(request.getRaceId()))
 			.switchIfEmpty(Mono.error(new BadRequestException("Race " + request.getRaceId() + " not found")))
 			.map(tuple -> {
-				tuple.getT1().setRace(tuple.getT2());
-				return tuple.getT1();
+				CharacterModificationContext ctx = tuple.getT1();
+				Race race = tuple.getT2();
+				ctx.setRace(race);
+				ctx.getCharacter().getDevelopmentPoints().setBackgroundOptions(race.getBackgroundOptions());
+				ctx.getCharacter().getNotes().addAll(race.getSpecialAbilities());
+				return ctx;
 			})
 			.zipWith(professionRepository.findById(request.getProfessionId()))
 			.switchIfEmpty(Mono.error(new BadRequestException("Profession " + request.getProfessionId() + " not found")))
