@@ -7,7 +7,33 @@
   {
   	"id": "halflings",
   	"name": "Halflings",
-  	"universes": [ "generic" ]
+	"attributeModifiers": {
+		    "ag": 6,
+		    "co": 6,
+		    "me": 0,
+		    "re": 0,
+		    "sd": -4,
+		    "em": -2,
+		    "in": 0,
+		    "pr": -6,
+		    "qu": 4,
+		    "st": -8
+	    },
+	    "resistanceBonus": {
+	  		"channeling": 0,
+	  		"essence":    50,
+	  		"mentalism":  40,
+	  		"poison":     30,
+	  		"disease":    15
+	    },
+	    "bodyDevelopmentProgression": [6,2,2,1],
+	    "ppDevelopmentProgression": {
+	    	"channeling":             [6,5,4,3],
+	    	"essence":                [2,1,1,1],
+	    	"mentalism":              [2,1,1,1] 
+	    },
+	    "exhaustionPointsBonus": 20,
+  		"universes": [ "generic" ]
   },
   {
   	"id": "nomads",

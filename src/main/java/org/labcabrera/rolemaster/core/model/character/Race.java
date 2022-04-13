@@ -34,9 +34,6 @@ public class Race {
 	private Map<AttributeType, Integer> attributeModifiers = new LinkedHashMap<>();
 
 	@Builder.Default
-	private Map<String, Integer> resistanceModifiers = new LinkedHashMap<>();
-
-	@Builder.Default
 	private Map<String, Integer> adolescenseSkillCategoryRanks = new LinkedHashMap<>();
 
 	@Builder.Default

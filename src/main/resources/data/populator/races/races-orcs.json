@@ -40,7 +40,7 @@
 		    "re": -2,
 		    "sd": -2,
 		    "em": -2,
-		    "in": -4,
+		    "in": -2,
 		    "pr": -2,
 		    "st": 4,
 		    "qu": 0
@@ -49,7 +49,7 @@
 	  		"channeling": 0,
 	  		"essence":    0,
 	  		"mentalism":  0,
-	  		"poison":     0,
+	  		"poison":     5,
 	  		"disease":    10
 	    },
 	    "bodyDevelopmentProgression": [7,3,2,1],

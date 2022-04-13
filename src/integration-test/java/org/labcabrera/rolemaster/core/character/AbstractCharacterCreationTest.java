@@ -36,7 +36,12 @@ public abstract class AbstractCharacterCreationTest {
 		for (CharacterSkill skill : characterInfo.getSkills()) {
 			assertNotNull(skill.getDevelopmentCost(), "Missing dev points for skill " + skill.getCategoryId());
 		}
+		verify(characterInfo);
 	}
 
 	protected abstract String getRequestAsJson();
+
+	protected void verify(CharacterInfo character) {
+		// Override for additional validations
+	}
 }

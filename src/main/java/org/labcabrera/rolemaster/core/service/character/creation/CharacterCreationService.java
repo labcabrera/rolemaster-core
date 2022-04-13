@@ -222,7 +222,7 @@ public class CharacterCreationService {
 		CharacterInfo character = context.getCharacter();
 		Race race = context.getRace();
 		for (ResistanceType r : ResistanceType.values()) {
-			int raceBonus = race.getResistanceModifiers().getOrDefault(r, 0);
+			int raceBonus = race.getResistanceBonus().getOrDefault(r, 0);
 			CharacterResistance cr = CharacterResistance.builder()
 				.build();
 			cr.getBonus().put(ResistanceBonusType.RACE, raceBonus);
