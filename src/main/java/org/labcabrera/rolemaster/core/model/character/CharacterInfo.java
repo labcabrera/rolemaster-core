@@ -33,8 +33,11 @@ public class CharacterInfo {
 	@Schema(description = "Character name.", required = true, example = "Bilbo Baggins")
 	private String name;
 
-	@Schema(description = "Character current level. Zero if character is under creation.", required = true, example = "7")
+	@Schema(description = "Character current level. Zero if character is under creation.", required = true, example = "3")
 	private Integer level;
+
+	@Schema(description = "The maximum level up to which the character can be raised from experience or generation options.", required = true, example = "7")
+	private Integer maxLevel;
 
 	@Schema(description = "Character age in years.", required = true, example = "42")
 	private Integer age;
@@ -81,7 +84,7 @@ public class CharacterInfo {
 	private BigDecimal maxExhaustionPoints;
 
 	@Schema(description = "Experience ponints", required = true, example = "7632")
-	private Integer xp;
+	private Long xp;
 
 	@Schema(description = "Value in meters.", required = true, example = "15")
 	private Integer baseMovementRate;

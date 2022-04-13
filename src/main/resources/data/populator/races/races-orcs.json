@@ -1,7 +1,7 @@
 [
 	{
-	  	"id": "orks",
-	  	"name": "orks",
+	  	"id": "orcs",
+	  	"name": "Orcs",
 	  	"attributeModifiers": {
 		    "ag": 0,
 		    "co": 2,
@@ -31,8 +31,8 @@
   		"universes": [ "generic" ]
 	  },
 	  {
-	  	"id": "greater-orks",
-	  	"name": "Greater Orks",
+	  	"id": "greater-orcs",
+	  	"name": "Greater Orcs",
 	  	"attributeModifiers": {
 		    "ag": 0,
 		    "co": 4,

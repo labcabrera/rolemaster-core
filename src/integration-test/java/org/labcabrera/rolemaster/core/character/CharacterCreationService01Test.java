@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
@@ -41,11 +40,6 @@ class CharacterCreationService01Test {
 
 	@Autowired
 	private CharacterInfoRepository characterRepository;
-
-	@BeforeEach
-	void test() {
-		characterRepository.deleteAll().share().block();
-	}
 
 	@Test
 	void testCreation() throws IOException {
@@ -117,7 +111,6 @@ class CharacterCreationService01Test {
 			.build();
 
 		String checkSkill = "two-weapon-combat:short-sword:short-sword";
-		                     
 
 		characterInfo = addSkillService.addSkill(characterInfo.getId(), addSkill).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
