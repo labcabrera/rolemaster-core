@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.dto.action.execution;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackPosition;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class MeleeAttackExecution extends TacticalActionExecution {
 	private String secondaryTarget;
 
 	@Builder.Default
-	private MeleeAttackPosition position = MeleeAttackPosition.NORMAL;
+	private MeleeAttackFacing position = MeleeAttackFacing.NORMAL;
 
 	//TODO translate
 	@Builder.Default

@@ -171,6 +171,9 @@ public class OffensiveBonusProcessor {
 			case FLANK:
 				result = 15;
 				break;
+			case REAR_FLANK:
+				result = 25;
+				break;
 			case REAR:
 				result = 35;
 				break;
