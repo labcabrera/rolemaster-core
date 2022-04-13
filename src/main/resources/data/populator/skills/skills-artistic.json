@@ -36,12 +36,13 @@
         "description": "This skill provides a bonus for imitating sounds. This skill is useful when trying to imitate individuals, animals or even non-animate sounds (e.g., wind, stairs creaking, etc.)."
     },
     {
-        "id": "play-instrument-primary",
-        "name": "Play instrument - primary",
+        "id": "play-instrument",
+        "name": "Play instrument †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill provides a bonus for using a specific instrument, such as flute, drum, lute, etc. It may also be used to recognize musical patterns or rhythms, notes, etc. Note that separate development is required for skill with each instrument."
     },
     {

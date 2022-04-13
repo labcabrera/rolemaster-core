@@ -1,11 +1,12 @@
 [
     {
-        "id": "athletic-games-brawn-primary",
-        "name": "Athletic Games Brawn - Primary",
+        "id": "athletic-games-brawn",
+        "name": "Athletic Games Brawn †",
         "type": "staticOrMovingManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill encompasses any athletic game that primarily involves brawn (e.g., wrestling, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
 	{
@@ -45,12 +46,13 @@
         "description": "This skill allows the use of a controlled burst of strength to increase the range of a thrown object, such as a javelin, hammer, stone, etc. The use of this skill requires a 40% activity action the round before the “throw” takes place. The round of the strike, the character receives a bonus to his weapon range according to how much force he placed into the throw, which in turn affects the difficulty of the maneuver."
     },
     {
-        "id": "athletic-games-endurance-primary",
-        "name": "Athletic Games - Endurance - Primary",
+        "id": "athletic-games-endurance",
+        "name": "Athletic Games - Endurance †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill encompasses any athletic game that primarily involves endurance (e.g., track events, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
@@ -108,12 +110,13 @@
         "description": "This skill provides a bonus for in-air maneuvers (e.g., flying or levitation) or swinging on objects. This skill includes the use of parallel bars, uneven bars, and other gymnastic activities in which most of the activity is spent in airborne maneuvers. A successful maneuver roll can reduce the severity of a falling critical by one (i.e., an 'A' is ignored, a 'B' becomes a 'A', a 'D' becomes a 'C', etc.)."
     },
     {
-        "id": "athletic-games-gymnastics-primary",
-        "name": "Athletic Games - Gymnastics - Primary",
+        "id": "athletic-games-gymnastics",
+        "name": "Athletic Games - Gymnastics †",
         "type": "staticOrMovingManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill encompasses any athletic game that primarily involves gymnastic skills (e.g., gymnastic events, soccer, basketball, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
