@@ -18,7 +18,7 @@ class CharacterCreationServiceHalflingsThiefTest extends AbstractCharacterCreati
 	protected String getRequestAsJson() {
 		return """
 				{
-				"name": "Test Common Men Ranger",
+				"name": "Test Halflings Thief",
 				"level": 1,
 				"raceId": "halflings",
 				"professionId": "thief",

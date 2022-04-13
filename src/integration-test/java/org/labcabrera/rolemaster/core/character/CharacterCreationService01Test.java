@@ -60,8 +60,8 @@ class CharacterCreationService01Test {
 		assertTrue(characterInfo.getSkill("short-sword").isPresent());
 		assertEquals(0, characterInfo.getSkill("short-sword").get().getTotalRanks());
 		assertEquals(2, characterInfo.getSkill("body-development").get().getTotalRanks());
-		assertEquals(Arrays.asList(2, 2, 2), characterInfo.getSkillCategory("armor-medium").get().getDevelopmentCost());
-		assertEquals(Arrays.asList(2, 5), characterInfo.getSkill("body-development").get().getDevelopmentCost());
+		assertEquals(Arrays.asList(3, 3, 3), characterInfo.getSkillCategory("armor-medium").get().getDevelopmentCost());
+		assertEquals(Arrays.asList(5, 12), characterInfo.getSkill("body-development").get().getDevelopmentCost());
 		assertEquals(Arrays.asList(2, 7), characterInfo.getSkill("short-sword").get().getDevelopmentCost());
 
 		String json = """
@@ -76,13 +76,13 @@ class CharacterCreationService01Test {
 				}
 			}""";
 
-		// Cost: (2 + 2) + (2) + (2) + (2 + 7)
+		// Cost: 22 = (3 + 3) + (2) + (5) + (2 + 7)
 
 		SkillUpgrade updateSkillRequest = objectMapper.readerFor(SkillUpgrade.class).readValue(json);
 
 		characterInfo = skillUpdateService.updateRanks(characterInfo.getId(), updateSkillRequest).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
-		assertEquals(17, characterInfo.getDevelopmentPoints().getUsedPoints());
+		assertEquals(22, characterInfo.getDevelopmentPoints().getUsedPoints());
 		assertEquals(2, characterInfo.getSkill("short-sword").get().getTotalRanks());
 		assertEquals(2, characterInfo.getSkill("short-sword").get().getRanks().get(RankType.DEVELOPMENT));
 		assertEquals(0, characterInfo.getSkill("short-sword").get().getRanks().get(RankType.CONSOLIDATED));
@@ -96,14 +96,14 @@ class CharacterCreationService01Test {
 				}
 			}""";
 
-		// Cost: 5
+		// Cost: 12
 
 		updateSkillRequest = objectMapper.readerFor(SkillUpgrade.class).readValue(json);
 
 		characterInfo = skillUpdateService.updateRanks(characterInfo.getId(), updateSkillRequest).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertEquals(4, characterInfo.getSkill("body-development").get().getTotalRanks());
-		assertEquals(22, characterInfo.getDevelopmentPoints().getUsedPoints());
+		assertEquals(34, characterInfo.getDevelopmentPoints().getUsedPoints());
 
 		addSkill = AddSkill.builder()
 			.skillId("two-weapon-combat")
@@ -116,7 +116,7 @@ class CharacterCreationService01Test {
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertTrue(characterInfo.getSkill(checkSkill).isPresent());
 		assertEquals(Arrays.asList("short-sword", "short-sword"), characterInfo.getSkill(checkSkill).get().getCustomization());
-		assertEquals(Arrays.asList(3, 9), characterInfo.getSkill(checkSkill).get().getDevelopmentCost());
+		assertEquals(Arrays.asList(4, 12), characterInfo.getSkill(checkSkill).get().getDevelopmentCost());
 	}
 
 	private CharacterCreationRequest readRequest() throws IOException {

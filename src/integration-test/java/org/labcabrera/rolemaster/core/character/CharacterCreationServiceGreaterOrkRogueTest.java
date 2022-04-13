@@ -97,7 +97,7 @@ class CharacterCreationServiceGreaterOrkRogueTest extends AbstractCharacterCreat
 		assertEquals(Arrays.asList(1, 3), character.getSkillCategory("subterfuge-stealth").get().getDevelopmentCost());
 		assertEquals(Arrays.asList(2, 5), character.getSkillCategory("subterfuge-mechanics").get().getDevelopmentCost());
 
-		assertEquals(Arrays.asList(4, 12), character.getSkillCategory("combat-maneuvers").get().getDevelopmentCost());
+		assertEquals(Arrays.asList(4, 10), character.getSkillCategory("combat-maneuvers").get().getDevelopmentCost());
 	}
 
 }

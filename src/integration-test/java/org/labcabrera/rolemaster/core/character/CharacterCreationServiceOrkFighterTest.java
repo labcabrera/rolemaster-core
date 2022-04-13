@@ -18,7 +18,7 @@ class CharacterCreationServiceOrkFighterTest extends AbstractCharacterCreationTe
 	protected String getRequestAsJson() {
 		return """
 				{
-				"name": "Test Common Men Ranger",
+				"name": "Test Orcs Fighter",
 				"level": 1,
 				"raceId": "orcs",
 				"professionId": "fighter",

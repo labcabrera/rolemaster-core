@@ -18,7 +18,7 @@ class CharacterCreationServiceDwarfLaymanTest extends AbstractCharacterCreationT
 	protected String getRequestAsJson() {
 		return """
 				{
-				"name": "Test Dwarves Layer",
+				"name": "Test Dwarves Layman",
 				"level": 1,
 				"raceId": "dwarves",
 				"professionId": "layman",
