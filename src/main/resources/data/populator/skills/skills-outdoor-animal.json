@@ -1,39 +1,42 @@
 [
     {
-        "id": "animal-handling-primary",
-        "name": "Animal Handling - Primary",
+        "id": "animal-handling",
+        "name": "Animal Handling †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill provides a bonus for the care and feeding of animals including bedding, hobbling, etc. This skill must be developed separately for each different type of animal. This skill is normally used in the handling of one animal at a time."
     },
     {
-        "id": "animal-training-primary",
-        "name": "Animal Training - Primary",
+        "id": "animal-training",
+        "name": "Animal Training †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill provides a bonus for training a particular type of animal, such as birds of prey, dogs, bears, big cats, etc. Skill normally results in the taming of the animal. This skill must be developed separately for each different type of animal."
     },
     {
-        "id": "driving-primary",
-        "name": "Driving - Primary",
+        "id": "driving",
+        "name": "Driving †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "As in Riding, skill ranks in driving must be developed separately for different types of vehicles. Vehicles are defined as animals pulling such objects as wagons, carts, sleighs, etc. One skill rank allows basic understanding of the controls; subsequent ranks reflect increased ability and some quickness in maneuvers."
     },
     {
-        "id": "riding-primary",
-        "name": "Riding - Primary",
+        "id": "riding",
+        "name": "Riding †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
-        "description": "A single skill rank is necessary to keep from constantly falling off the animal being ridden. Higher skill ranks enhance the chance of controlling of the animal, or gaining control of an unfamiliar animal (of the type you have skill with). This skill must be developed separately for each different type of animal.",
+        "customizableOptions": 1,
         "modifiers": [
         	{
         		"key": "Activity used for Riding: 5%",
@@ -43,16 +46,7 @@
         		"key": "Activity used for Riding: 100%",
         		"modifier": 50
         	}
-        ]
-        
-    },
-    {
-        "id": "riding-horses",
-        "name": "Riding - Horses",
-        "type": "staticManeuver",
-        "loadOnNewCharacters": true,
-        "categoryId": "outdoor-animal",
-        "progressionType": "standard",
-        "description": "A single skill rank is necessary to keep from constantly falling off the animal being ridden. Higher skill ranks enhance the chance of controlling of the animal, or gaining control of an unfamiliar animal (of the type you have skill with). This skill must be developed separately for each different type of animal."
+        ],
+        "description": "A single skill rank is necessary to keep from constantly falling off the animal being ridden. Higher skill ranks enhance the chance of controlling of the animal, or gaining control of an unfamiliar animal (of the type you have skill with). This skill must be developed separately for each different type of animal."        
     }
 ]

@@ -42,12 +42,13 @@
         "description": "This skill provides a bonus for determining dates, directions, and locations when the stars are visible. May provide a bonus to one's navigation skills."
     },
     {
-        "id": "survival-primary",
-        "name": "Survival - Primary",
+        "id": "survival",
+        "name": "Survival †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-environmental",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill provides a bonus for living in a specific dangerous or hostile environment. Note that this skill encompasses only those methods needed to stay alive against the actively dangerous elements of an environment (e.g., blistering heat, cold, pressure, unusual animals typical of the environment, etc.). It does not include food gathering, although it does include the knowledge necessary to find water. Skill must be developed in each type of environment (e.g., desert, jungle, arctic, water, etc.). The GM may rule that unusually hostile environments may also be covered by this skill (e.g., vacuum, underwater, elemental planes of fire, etc.)."
     },
     {

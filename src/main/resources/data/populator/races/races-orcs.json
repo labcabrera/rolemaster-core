@@ -1,33 +1,45 @@
 [
 	{
-	  	"id": "orcs",
-	  	"name": "Orcs",
-	  	"attributeModifiers": {
-		    "ag": 0,
-		    "co": 2,
-		    "me": -4,
-		    "re": -2,
-		    "sd": -4,
-		    "em": -2,
-		    "in": -4,
-		    "pr": -2,
-		    "st": 2,
-		    "qu": 0
-	    },
-	    "resistanceBonus": {
-	  		"channeling": 0,
-	  		"essence":    0,
-	  		"mentalism":  0,
-	  		"poison":     0,
-	  		"disease":    5
-	    },
-	    "bodyDevelopmentProgression": [6,3,2,1],
-	    "ppDevelopmentProgression": {
-	    	"channeling":             [6,5,4,3],
-	    	"essence":                [4,3,2,1],
-	    	"mentalism":              [4,3,2,1] 
-	    },
-	    "exhaustionPointsBonus": 20,
+		"id": "orcs",
+		"name": "Orcs",
+		"attributeModifiers": {
+			"ag": 0,
+			"co": 2,
+			"me": -4,
+			"re": -2,
+			"sd": -4,
+			"em": -2,
+			"in": -4,
+			"pr": -2,
+			"st": 2,
+			"qu": 0
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     0,
+			"disease":    5
+		},
+		"bodyDevelopmentProgression": [6,3,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [4,3,2,1],
+			"mentalism":              [4,3,2,1] 
+		},
+		"exhaustionPointsBonus": 20,
+		"specialAbilities": [
+			"Can travel for 2 days without sleep.",
+			"+30 DB & RR versys heat/cold attacks.",
+			"Common Orcs sleep during daylight hours, although they need sleep only once every 3 days (more often to restore Power Points)",
+			"Common Orcish vision in most darkness is as good as a Man’s during the height of day",
+			"When there is barely any light (cloudy, moonless nights; upper caverns, dungeons), Common Orcs can see at least 50' perfectly and fairly well up to 100'. In absolute darkness, they can see 10’."
+		],
+		"backgroundOptions": 5,
+		"startingLanguageSelection": [
+			"orcish:s8:w2",
+			"common-speech:s4:w0"
+		],
   		"universes": [ "generic" ]
 	  },
 	  {

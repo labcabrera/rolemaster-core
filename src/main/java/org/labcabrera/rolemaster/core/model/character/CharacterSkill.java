@@ -7,11 +7,15 @@ import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.skill.SkillProgressionType;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@JsonPropertyOrder({ "skillId", "categoryId", "group", "customization", "progressionType", "developmentCost", "attributes", "ranks",
+	"bonus", "totalRanks", "totalBonus" })
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

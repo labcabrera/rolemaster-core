@@ -35,6 +35,10 @@
 		}, 
 		"resistanceBonus": {
 		},
+		"backgroundOptions": 6,
+		"startingLanguageSelection": [
+			"common-speech:s8:w6"
+		],
 		"universes": [ "generic" ]
 	},
 	{
@@ -58,6 +62,13 @@
 			"essence": -5,
 			"mentalism": -5
 		},
+		"startingLanguageSelection": [
+			"high-speech:s8:w6",
+			"common-speech:s8:w6",
+			"grey-elvish:s6:w6",
+			"high-elvish:s2:w2"
+		],
+		"backgroundOptions": 4,
 		"universes": [ "generic" ]
 	},
 	{
@@ -82,18 +93,20 @@
 			"poison":     0,
 			"disease":    0
 		},
-		"bodyDevelopmentProgression": [6,4,2,1],
+		"bodyDevelopmentProgression":	[6,4,2,1],
 		"ppDevelopmentProgression": {
-			"channeling":             [6,5,4,3],
-			"essence":                [6,5,4,3],
-			"mentalism":              [7,6,5,4] 
+			"channeling":				[6,5,4,3],
+			"essence":					[6,5,4,3],
+			"mentalism":				[7,6,5,4] 
 		},
 		"skillCategoryBonus": {
-			"outdoor-animal":         20
+			"outdoor-animal":			20
 		},
 		"skillBonus": {
-			"mounted-combat":         20
+			"mounted-combat":			20
 		},
+		"specialAbilities": [
+		],
 		"universes": [ "generic" ]
 	},
 	{
@@ -154,19 +167,19 @@
 			"poison":     0,
 			"disease":    0
 		},
-		"bodyDevelopmentProgression": [6,4,2,1],
+		"bodyDevelopmentProgression":	[6,4,2,1],
 		"ppDevelopmentProgression": {
-			"channeling":             [6,5,4,3],
-			"essence":                [6,5,4,3],
-			"mentalism":              [7,6,5,4] 
+			"channeling":				[6,5,4,3],
+			"essence":					[6,5,4,3],
+			"mentalism":				[7,6,5,4] 
 		},
 		"skillCategoryBonus": {
 		},
 		"skillBonus": {
-			"scaling":				20,
-			"acrobatics":			20,
-			"public-speaking":		20,
-			"acting":				20
+			"scaling":					20,
+			"acrobatics":				20,
+			"public-speaking":			20,
+			"acting":					20
 		},
 		"universes": [ "generic" ]
 	},
@@ -186,25 +199,25 @@
 			"st": 2
 		},
 		"resistanceBonus": {
-			"channeling": 0,
-			"essence":    0,
-			"mentalism":  0,
-			"poison":     0,
-			"disease":    0
+			"channeling":				0,
+			"essence":					0,
+			"mentalism":				0,
+			"poison":					0,
+			"disease":					0
 		},
-		"bodyDevelopmentProgression": [6,5,2,1],
+		"bodyDevelopmentProgression":	[6,5,2,1],
 		"ppDevelopmentProgression": {
-			"channeling":             [6,5,4,3],
-			"essence":                [6,5,4,3],
-			"mentalism":              [7,6,5,4] 
+			"channeling":				[6,5,4,3],
+			"essence":					[6,5,4,3],
+			"mentalism":				[7,6,5,4] 
 		},
 		"skillCategoryBonus": {
 		},
 		"skillBonus": {
-			"scaling":				20,
-			"acrobatics":			20,
-			"public-speaking":		20,
-			"acting":				20
+			"scaling":					20,
+			"acrobatics":				20,
+			"public-speaking":			20,
+			"acting":					20
 		},
 		"universes": [ "generic" ]
 	}

@@ -2,6 +2,8 @@ spring:
   data:
     mongodb:
       uri: ${ROLEMASTER_CORE_MONGODB_URI:mongodb://localhost/rolemaster?retryWrites=true&w=majority}
+  jackson:
+    default-property-inclusion: non_null
 
 logging:
   level:

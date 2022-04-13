@@ -55,6 +55,16 @@ public class Race {
 	private Map<String, Integer> skillBonus = new LinkedHashMap<>();
 
 	@Builder.Default
+	private Integer exhaustionPointsBonus = 0;
+
+	@Builder.Default
+	private List<String> startingLanguageSelection = new ArrayList<>();
+
+	private Integer backgroundOptions;
+
+	private List<String> specialAbilities;
+
+	@Builder.Default
 	private List<String> universes = new ArrayList<>();
 
 }

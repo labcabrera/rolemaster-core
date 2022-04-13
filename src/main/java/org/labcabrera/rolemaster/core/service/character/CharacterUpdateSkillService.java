@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.service.character;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
@@ -20,7 +21,7 @@ public class CharacterUpdateSkillService {
 	private static final String ERR_MISSING_CATEGORY_ID = "Missing skill category %s";
 	private static final String ERR_MISSING_SKILL_ID = "Missing skill %s";
 	private static final String ERR_INVALID_LEVEL_COUNT = "Upgraded levels exceds the development value";
-	private static final String ERR_EXCEDED_DEV_POINTS = "Request development points exceds the remaining value";
+	private static final String ERR_EXCEDED_DEV_POINTS = "Request development (%s) points exceds the remaining value (%s)";
 
 	@Autowired
 	private CharacterInfoRepository repository;
@@ -30,6 +31,7 @@ public class CharacterUpdateSkillService {
 
 	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgrade request) {
 		return repository.findById(characterId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
 			.map(e -> update(e, request))
 			.map(postProcessorService::apply)
 			.flatMap(repository::save);
@@ -40,8 +42,9 @@ public class CharacterUpdateSkillService {
 		upgradeSkillCategories(character, request, cost);
 		upgradeSkills(character, request, cost);
 		int usedPoints = character.getDevelopmentPoints().getUsedPoints() + cost.getValue();
-		if (usedPoints > character.getDevelopmentPoints().getTotalPoints()) {
-			throw new BadRequestException(ERR_EXCEDED_DEV_POINTS);
+		int availablePoints = character.getDevelopmentPoints().getTotalPoints();
+		if (usedPoints > availablePoints) {
+			throw new BadRequestException(String.format(ERR_EXCEDED_DEV_POINTS, usedPoints, availablePoints));
 		}
 		character.getDevelopmentPoints().setUsedPoints(usedPoints);
 		return character;
