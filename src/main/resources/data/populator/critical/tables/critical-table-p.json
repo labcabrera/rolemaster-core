@@ -1,28 +1,28 @@
 {
-	"type" : "P",
-	"map" : {
-		"A" : {
-			"1-5" : {
-				"text" : "Tu enemigo evita el ataque."
+	"type": "P",
+	"map": {
+		"A": {
+			"1-5": {
+				"text": "Foe avoids most of the attack."
 			},
-			"6-10" : {
-				"text" : "El ataque no golpea bien.",
-				"hp" : 1
+			"6-10": {
+				"text": "Strike failed to connect well.",
+				"hp": 1
 			},
-			"11-15" : {
-				"text" : "El impacto hace respingar a tu enemigo. Ganas la iniciativa del siguiente salto.",
-				"hp" : 1
+			"11-15": {
+				"text": "Strike causes foe to flinch. You gain initiative next round.",
+				"hp": 1,
+				"hasInitiative": true
 			},
 			"16-20": {
-				"text": "Tu enemigo retrocede defendiéndose.",
+				"text": "Foe steps back defensively.",
 				"hp": 1,
-				"test": "test",
 				"debuffs": {
 					"must-parry": 1
 				}
 			},
 			"21-35": {
-				"text": "Convences a tu enemigo del peligro al no quedarse sin abodmen por poco.",
+				"text": "Convince foe of his peril by just missing his abdomen.",
 				"hp": 2,
 				"debuffs": {
 					"must-parry": 1
@@ -33,17 +33,22 @@
 				}
 			},
 			"36-45": {
-				"text": "Haces un orificio de entrada en la pantorilla de tu enemigo",
-				"bledding": 1
+				"text": "Nick foe's calf with long follow through.",
+				"bleeding": 1
 			},
 			"46-50": {
+				"text": "Foe's evasion exposes his back to your strike.",
+				"hp": 2,
+				"debuffs": {
+					"must-parry": 1
+				},
 				"penalty": {
 					"penalty": -30,
 					"rounds": 1
-				}				
+				}
 			},
 			"51-55": {
-				"text": "Golpe en el pecho del enemigo que queda impresionado.",
+				"text": "Strike to foe's chest and he looks impressed.",
 				"bleeding": 2,
 				"debuffs": {
 					"must-parry": 1
@@ -54,7 +59,7 @@
 				}
 			},
 			"56-60": {
-				"text": "Herida leve en el muslo. Podía haber sido mejor.",
+				"text": "Minor thigh wound. It could have been better.",
 				"hp": 2,
 				"bleeding": 2,
 				"debuffs": {
@@ -62,7 +67,7 @@
 				}
 			},
 			"61-65": {
-				"text": "Herida leve en el antebrazo que debilita el agarre del enemigo.",
+				"text": "Minor forearm wound numbs foe's grip.",
 				"hp": 2,
 				"bleeding": 2,
 				"penalty": {
@@ -70,17 +75,20 @@
 				}
 			},
 			"66-66": {
-				"text": "Golpe en el hombro del escudo. El brazo queda inútil. Eso debe doler de verdad.",
+				"text": "Strike to foe's shield shoulder. Arm is useless. That must really hurt!",
 				"debuffs": {
 					"stunned": 3
 				},
 				"bonus": {
 					"bonus": 10,
 					"rounds": 1
-				}
+				},
+				"otherEffects": [
+					"Arm useless"
+				]
 			},
 			"67-70": {
-				"text": "Golpe en el cuello",
+				"text": "Strike along foe's neck.",
 				"hp": 5,
 				"debuffs": {
 					"stunned": 3,
@@ -88,42 +96,293 @@
 				}
 			},
 			"71-75": {
-				"text": "Golpe en la parte baja de la pierna. (TODO grebas)"
+				"text": "Strike to lower leg.",
+				"conditionalEffects": {
+					"with-leg-greave": {
+						"hp": 5,
+						"debuffs": {
+							"must-parry": 3
+						},
+						"penalty": {
+							"penalty": -10
+						}
+					},
+					"without-leg-greave": {
+						"hp": 3,
+						"debuffs": {
+							"stunned": 1,
+							"must-parry": 1
+						},
+						"penalty": {
+							"penalty": -25
+						}
+					}
+				}
 			},
 			"76-80": {
-				"text": "Golpe en la parte superior del brazo. Desgarras sus preciosas ropas.",
+				"text": "Strike foe in upper arm. You tear his pretty clothes.",
 				"hp": 3,
 				"bleeding": 3,
 				"debuffs": {
 					"stunned": 2
 				},
 				"penalty": {
-					"penalty": -25 
+					"penalty": -25
 				}
 			},
 			"81-85": {
+				"text": "Deep wound in foe's side. Well, it looked like a killing blow",
+				"bleeding": 5,
+				"debuffs": {
+					"stunned": 6
+				},
+				"bonus": {
+					"bonus": 20,
+					"rounds": 1 
+				}
 			},
 			"86-90": {
+				"text": "Catch foe in the back. He drops his guard and stumbles foward",
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -20
+				}
 			},
 			"91-95": {
+				"text": "Strike to foe's ear. Foe hears at -50.",
+				"conditionalEffects": {
+					"with-helmet": {
+						"hp": 5,
+						"debuffs": {
+							"stunned": 4,
+							"cant-parry": 1
+						},
+						"penalty": {
+							"penalty": -10
+						}
+					},
+					"without-helmet": {
+						"hp": 3,
+						"bleeding": 2,
+						"debuffs": {
+							"stunned": 2,
+							"cant-parry": 2 
+						}
+					}
+				}
+				
 			},
 			"96-99": {
-				"text": "Impacto en la nariz que dejará una cicatriz permanente. Tu enemigo bizquea durante un instante.",
+				"text": "Strike to nose. There is a permanent scar. Foe's eyes are crossed for a moment",
 				"bleeding": 3,
-				"defuffs": {
+				"debuffs": {
 					"stunned": 3,
 					"cant-parry": 3
-					
 				}
 			},
 			"100-100": {
-				"text": "Golpe que atraviesa el cuello y secciona venas y arterias. Tu enemigo no puede respirar. Cae y muere de un ataque al corazón",
+				"text": "Strike through neck. Sever vein and artery. Foe cannot breath. Foe drops and dies of heart failure.",
 				"instantDeath": true
 			}
-		}
-	},
-	"B" : { },
-	"D" : { },
-	"E" : { }
+		},
+		"B": {
+			"1-5": {
+				"text": "Glancing blow. Nothing extra."
+			},
+			"6-10": {
+				"text": "Panck!",
+				"hp": 2
+			},
+			"11-15": {
+				"text": "Foe questions his resolve. You gain initiative next round.",
+				"hasInitiative": true
+			},
+			"16-20": {
+				"text": "For steps back and avoids the worst.",
+				"hp": 2,
+				"debuffs": {
+					"must-parry": 1
+				},
+				"penalty": {
+					"penalty": -10,
+					"rounds": 1
+				}
+			},
+			"21-35": {
+				"text": "Foe is uncertain about your next attack. He choses to let you make the first move (you gain the initiative).",
+				"hp": 2,
+				"debuffs": {
+					"must-parry": 2
+				},
+				"hasInitiative": true
+			},
+			"36-45": {
+				"text": "Cheap shot to foe's shin.",
+				"conditionalEffects": {
+					"with-leg-greave": {
+						"hp": 5,
+						"debuffs": {
+							"must-parry": 1
+						}
+					},
+					"without-leg-greave": {
+						"hp": 2,
+						"bleeding": 1
+					}
+				}
+			},
+			"46-50": {
+				"text": "Blow to back damages any equipment worn there.",
+				"bleeding": 1,
+				"debuffs": {
+					"stunned": 1
+				}
+			},
+			"51-55": {
+				"text": "Solid strike to foe's chest. Blood from wound ruins any heraldry",
+				"hp": 3,
+				"bleeding": 2,
+				"debuffs": {
+					"must-parry": 2
+				}
+			},
+			"56-60": {
+				"text": "Thigh wound does some damage.",
+				"hp": 3,
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				}
+			},
+			"61-65": {
+				"text": "Forearm strike shakes foe up. Foe attempts a recovery.",
+				"hp": 2,
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 1
+				},
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"66-66": {
+				"text": "Foe blocks your attack with his elbow. Elbow is shattered. Shield arm is useless.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 4,
+					"must-parry": 2
+				},
+				"otherEffects": [
+					"Arm is useless"
+				]
+			},
+			"67-70": {
+				"text": "Strike to foe's neck. It's not enough for a kill.",
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -5
+				}
+			},
+			"71-75": {
+				"text": "Strike to foe's calf. Slash muscle. Foe almost falls down.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -40
+				}
+			},
+			"76-80": {
+				"text": "Strike to shield side. If foe has shield, your weapon is stuck in it for a round.",
+				"bleeding": 3,
+				"debuffs": {
+					"stunned": 3
+				},
+				"penalty": {
+					"penalty": -30
+				}
+			},
+			"81-85": {
+				"text": "Tear open foe's side in a graphic display of violence.",
+				"hp": 6,
+				"bleeding": 5,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+				},
+				"penalty": {
+					"penalty": -25
+				}
+			},
+			"86-90": {
+				"text": "Strike to foe's head. If foe has no helm he dies. If foe has helm, he falls to his knees.",
+				"hp": 2,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"conditionalEffects": {
+					"with-helmet": {
+						"debuffs": {
+							"downed": 1
+						}
+					},
+					"without-helmet": {
+						"instantDeath": true
+					}
+				}
+			},
+			"91-95": {
+				"text": "Strike to foe's hip.",
+				"conditionalEffects": {
+					"with-waist-armor": {
+						"hp": 7,
+						"debuffs": {
+							"stunned": 1
+						},
+						"penalty": {
+							"penalty": -10
+						}
+					},
+					"without-waist-armor": {
+						"hp": 5,
+						"bleeding": 3,
+						"debuffs": {
+							"stunned": 1
+						},
+						"penalty": {
+							"penalty": -25
+						}
+					}
+				}
+			},
+			"96-99": {
+				"text": "Strike through foe's cheek and throat. Foe drops and dies after 9 rounds of incapacity",
+				"deathAfterRounds": 9,
+				"debuffs": {
+					"shock": 9
+				},
+				"bonus": {
+					"bonus": 20
+				}
+			},
+			"100-100": {
+				"text": "Strike plunges into foe's eye. Foe dies instantly. Foe remains standing for a moment until he realizes this. All allies get +10 for 1 round.",
+				"instantDeath": true,
+				"specialEffect": true
+			}
+		},
+		"D": {},
+		"E": {}
 	}
 }

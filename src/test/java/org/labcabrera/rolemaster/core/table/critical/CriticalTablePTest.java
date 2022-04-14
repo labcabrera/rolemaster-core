@@ -12,6 +12,7 @@ import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -22,6 +23,8 @@ class CriticalTablePTest {
 
 	@Test
 	void test() throws IOException {
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+
 		CriticalTable table = readTable();
 
 		assertNotNull(table);

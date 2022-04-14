@@ -45,10 +45,12 @@ public class CriticalTableResult implements CharacterStatusModifier {
 
 	private Integer deathAfterRounds;
 
+	private Map<ConditionalCriticalEffect, CriticalTableResult> conditionalEffects;
+
 	private String text;
 
 	@Builder.Default
-	private List<String> otherEfects = new ArrayList<>();
+	private List<String> otherEffects = new ArrayList<>();
 
 	// TODO incluir resultados condicionales:
 	// llevar/no llevar yelmo
@@ -85,7 +87,7 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	}
 
 	public CriticalTableResult addEfect(String description) {
-		this.otherEfects.add(description);
+		this.otherEffects.add(description);
 		return this;
 	}
 
