@@ -29,8 +29,8 @@
 				},
 				"bonus": {
 					"bonus": 10,
-					"rounds": 1,
-				},
+					"rounds": 1
+				}
 			},
 			"36-45": {
 				"text": "Haces un orificio de entrada en la pantorilla de tu enemigo",
