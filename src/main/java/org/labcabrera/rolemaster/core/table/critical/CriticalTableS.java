@@ -3,12 +3,19 @@ package org.labcabrera.rolemaster.core.table.critical;
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
+import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CriticalTableS {
+public class CriticalTableS implements CriticalTableResolver {
 
+	@Override
+	public CriticalType getType() {
+		return CriticalType.S;
+	}
+
+	@Override
 	public CriticalTableResult getResult(CriticalSeverity severity, Integer roll) {
 		switch (severity) {
 		case A:
@@ -870,4 +877,5 @@ public class CriticalTableS {
 		}
 		throw new NotImplementedException();
 	}
+
 }

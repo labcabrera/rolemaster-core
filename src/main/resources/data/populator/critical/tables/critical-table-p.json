@@ -1,0 +1,51 @@
+{
+	"type" : "P",
+	"map" : {
+		"A" : {
+			"1-5" : {
+				"text" : "Tu enemigo evita el ataque."
+			},
+			"6-10" : {
+				"text" : "El ataque no golpea bien.",
+				"hp" : 1
+			},
+			"11-15" : {
+				"text" : "El impacto hace respingar a tu enemigo. Ganas la iniciativa del siguiente salto.",
+				"hp" : 1
+			},
+			"16-20": {
+				"text": "Tu enemigo retrocede defendiéndose.",
+				"hp": 1,
+				"test": "test",
+				"debuffs": {
+					"must-parry": 1
+				}
+			},
+			"21-35": {
+				"text": "Convences a tu enemigo del peligro al no quedarse sin abodmen por poco.",
+				"hp": 2,
+				"debuffs": {
+					"must-parry": 1
+				},
+				"bonus": {
+					"bonus": 10,
+					"rounds": 1,
+				},
+			},
+			"36-45": {
+				"text": "Haces un orificio de entrada en la pantorilla de tu enemigo",
+				"bledding": 1
+			},
+			"46-50": {
+				"penalty": {
+					"penalty": -30,
+					"rounds": 1
+				}				
+			}
+		}
+	},
+	"B" : { },
+	"D" : { },
+	"E" : { }
+	}
+}

@@ -95,7 +95,7 @@
         "id": "swimming",
         "name": "Swimming",
         "type": "movingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
         "description": "This skill provides a bonus to swimming maneuvers. Skill rank 1 will prevent the character from drowning in water over his head, provided there are no applicable penalties (weight penalty, armor penalties, etc.). Further skill ranks will enable the character to make headway against a current, to stay afloat for longer periods of time without touching ground, to swim longer distances, to move faster in the water, and to make maneuvers in the water."
@@ -123,7 +123,7 @@
         "id": "climbing",
         "name": "Climbing",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for climbing maneuvers over relatively short distances through the use of hand holds, etc. This could range from the ability to climb sheer faces (absurd) to climbing a ladder (easy). The normal climbing rate for walls with adequate hand holds is 10'/round as a “Medium” moving maneuver. Poorer handholds or greater speed will increase the difficulty of the maneuver. Note that extended climbs may require the use of the Athletic Endurance: Scaling Skill."
@@ -132,7 +132,7 @@
         "id": "contortions",
         "name": "Contortions",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for manipulating one’s body in order to move through small openings or absorb sudden crushing impact (other than falls). This skill also helps one escape from bonds, etc."
@@ -141,7 +141,7 @@
         "id": "diving",
         "name": "Diving",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for controlled falling maneuvers. This can range from controlling the direction of an extended fall to diving into water safely from a great height (up to 20'/skill rank if a successful maneuver roll is made)."
@@ -150,7 +150,7 @@
         "id": "flying-gliding",
         "name": "Flying / Gliding",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for flying or gliding through the useof natural or artificial wings (e.g., feathered wings, parachute, hangglider, balloonist, etc.). Flying/gliding has a natural -75 for all types of maneuvers performed while trying to fly/glide if this skill is not learned or developed. Does not include powered aircraft."
@@ -159,7 +159,7 @@
         "id": "juggling",
         "name": "Juggling",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for tossing objects up and manipulating them in such a manner as to keep them up in the air."
@@ -168,7 +168,7 @@
         "id": "tumbling",
         "name": "Tumbling",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for horizontal dives, rolling, vaulting maneuvers, or swinging on stationary objects. Also used to decrease the damage one takes from a fall. A character could fall safely up to 2'/skill rank if a successful maneuver roll is made."

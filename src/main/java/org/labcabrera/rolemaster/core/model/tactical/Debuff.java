@@ -28,9 +28,9 @@ public enum Debuff {
 
 	UNCONSCIOUS("unconscious"),
 
-	CANT_PARRY("cantParry"),
+	CANT_PARRY("cant-parry"),
 
-	MUST_PARRY("mustParry"),
+	MUST_PARRY("must-parry"),
 
 	SHOCK("shock");
 

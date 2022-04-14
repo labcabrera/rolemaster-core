@@ -101,10 +101,11 @@ class CharacterCreationService02Test {
 		json = """
 			{
 				"categoryRanks": {
-					"armor-light": 2,
+					"armor-light": 1,
 					"weapon-1h-edged": 1,
 					"artistic-active": 1,
-					"artistic-passive": 1
+					"artistic-passive": 1,
+					"influence": 1
 				},
 				"skillRanks": {
 					"short-sword": 2,
