@@ -41,6 +41,84 @@
 					"penalty": -30,
 					"rounds": 1
 				}				
+			},
+			"51-55": {
+				"text": "Golpe en el pecho del enemigo que queda impresionado.",
+				"bleeding": 2,
+				"debuffs": {
+					"must-parry": 1
+				},
+				"penalty": {
+					"penalty": -25,
+					"rounds": 1
+				}
+			},
+			"56-60": {
+				"text": "Herida leve en el muslo. Podía haber sido mejor.",
+				"hp": 2,
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 1
+				}
+			},
+			"61-65": {
+				"text": "Herida leve en el antebrazo que debilita el agarre del enemigo.",
+				"hp": 2,
+				"bleeding": 2,
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"66-66": {
+				"text": "Golpe en el hombro del escudo. El brazo queda inútil. Eso debe doler de verdad.",
+				"debuffs": {
+					"stunned": 3
+				},
+				"bonus": {
+					"bonus": 10,
+					"rounds": 1
+				}
+			},
+			"67-70": {
+				"text": "Golpe en el cuello",
+				"hp": 5,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 1
+				}
+			},
+			"71-75": {
+				"text": "Golpe en la parte baja de la pierna. (TODO grebas)"
+			},
+			"76-80": {
+				"text": "Golpe en la parte superior del brazo. Desgarras sus preciosas ropas.",
+				"hp": 3,
+				"bleeding": 3,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -25 
+				}
+			},
+			"81-85": {
+			},
+			"86-90": {
+			},
+			"91-95": {
+			},
+			"96-99": {
+				"text": "Impacto en la nariz que dejará una cicatriz permanente. Tu enemigo bizquea durante un instante.",
+				"bleeding": 3,
+				"defuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+					
+				}
+			},
+			"100-100": {
+				"text": "Golpe que atraviesa el cuello y secciona venas y arterias. Tu enemigo no puede respirar. Cae y muere de un ataque al corazón",
+				"instantDeath": true
 			}
 		}
 	},
