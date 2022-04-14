@@ -382,7 +382,285 @@
 				"specialEffect": true
 			}
 		},
-		"D": {},
-		"E": {}
+		"C": {
+			"01-05": {
+				"text": "Foe dances clear of the worst.",
+				"hp": 1
+			},
+			"06-10": {
+				"text": "Nick your weapon and your foe.",
+				"hp": 3
+			},
+			"11-15": {
+				"text": "Foe's evasion puts him out of position. You gain initiative next round.",
+				"hp": 5,
+				"hasInitiative": true
+			},
+			"16-20": {
+				"text": "Blow to foe's side. If foe has a belt it is severed.",
+				"hp": 3,
+				"debuffs": {
+					"must-parry": 1 
+				},
+				"penalty": {
+					"penalty": -20,
+					"rounds": 1
+				}
+			},
+			"21-35": {
+				"text": "Strike crosses foe's head. If he has a helm it is knocked off and dented. (TODO not conditional effects)",
+				"bleeding": 1,
+				"debuffs": {
+					"stunned": 1
+				}
+			},
+			"36-45": {
+				"text": "Strike along foe's calf. The damage takes a moment to show.",
+				"bleeding": 2
+			},
+			"46-50": {
+				"text": "Lower back strike sends foe reeling. His guard is still up.",
+				"bleeding": 1,
+				"debuffs": {
+					"stunned": 2
+				}
+			},
+			"51-55": {
+				"text": "Strike toward chest. If foe has a shield, is out of position for the rest of the round.",
+				"hp": 3,
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 2
+				}
+			},
+			"56-60": {
+				"text": "Strike to foe's thigh.",
+				"conditionalEffects": {
+					"with-leg-armor": {
+						"hp": 8,
+						"bleeding": 1,
+						"debuffs": {
+							"stunned": 1,
+							"cant-parry": 1
+						}
+					},
+					"without-leg-armor": {
+						"hp": 5,
+						"bleeding": 2,
+						"debuffs": {
+							"stunned": 2
+						},
+						"penalty": {
+							"penalty": -10
+						}
+					}
+				}
+			},
+			"61-65": {
+				"text": "Solid strike to foe's right forearm.",
+				"conditionalEffects": {
+					"with-arm-greave": {
+						"hp": 5,
+						"debuffs": {
+							"stunned": 2,
+							"cant-parry": 2
+						}
+					},
+					"without-arm-greave": {
+						"hp": 3,
+						"bleeding": 2,
+						"debuffs": {
+							"stunned": 2
+						},
+						"penalty": {
+							"penalty": -10
+						}
+					}
+				}
+			},
+			"66-66": {
+				"text": "Strike shatters foe's knee. Foe crumbles to the ground. He is down for 3 rounds.",
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -90
+				}
+			},
+			"67-70": {
+				"text": "Strike along foe's neck. Foe is frantic to evade death.",
+				"debuffs": {
+					"stunned": 4,
+					"cant-parry": 2
+				},
+				"bonus": {
+					"bonus": -15,
+					"rounds": 1
+				}
+			},
+			"71-75": {
+				"text": "Destructive strike to lower leg. If foe leg armor, it is torn free.",
+				"hp": 5,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -50
+				}
+			},
+			"76-80": {
+				"text": "Strike through muscle in shield arm. If foe has a shield, he drops it.",
+				"bleeding": 3,
+				"debuffs": {
+					"stunned": 6
+				},
+				"penalty": {
+					"penalty": -25
+				}
+			},
+			"81-85": {
+				"text": "Strike bites into foe's ribs. The impact sounds truly terrible.",
+				"hp": 6,
+				"bleeding": 3,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+				},
+				"penalty": {
+					"penalty": -25
+				}
+			},
+			"86-90": {
+				"text": "Strike impacts on foe's head. If he has no helm, he dies. Helm is destroyed.",
+				"hp": 6,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"conditionalEffects": {
+					"with-helmet": {
+						"otherEffects": [
+							"Helm is destroyed"
+						]
+					},
+					"without-helmet": {
+						"instantDeath": true
+					}
+				}
+			},
+			"91-95": {
+				"text": "Strike to chest. If foe has plate chest armor, he drops and dies in 9 rounds. If not, he dies instantly.",
+				"conditionalEffects": {
+					"with-plate-chest": {
+						"deathAfterRounds": 9,
+						"debuffs": {
+							"shock": 9
+						}
+					},
+					"without-plate-chest": {
+						"instantDeath": true
+					}
+				}
+			},
+			"95-99": {
+				"text": "Strike through foe's neck breaks backbone and severs spine. Foe is paralyzed from the neck down.",
+				"debuffs": {
+					"shock": 100
+				},
+				"otherEffects": [
+					"Foe is paralyzed from the neck down."
+				]
+			},
+			"100-100": {
+				"text": "Shot through both ears proves effective. Foe dies instantly. Pretty shot.",
+				"instantDeath": true,
+				"bonus": {
+					"bonus": 20,
+					"rounds": 6
+				}
+			}
+		},
+		"D": {
+			"01-05": {
+			},
+			"06-10": {
+			},
+			"11-15": {
+			},
+			"16-20": {
+			},
+			"21-35": {
+			},
+			"36-45": {
+			},
+			"46-50": {
+			},
+			"51-55": {
+			},
+			"56-60": {
+			},
+			"61-65": {
+			},
+			"66-66": {
+			},
+			"67-70": {
+			},
+			"71-75": {
+			},
+			"76-80": {
+			},
+			"81-85": {
+			},
+			"86-90": {
+			},
+			"91-95": {
+			},
+			"95-99": {
+			},
+			"100-100": {
+			}
+		},
+		"E": {
+			"01-05": {
+			},
+			"06-10": {
+			},
+			"11-15": {
+			},
+			"16-20": {
+			},
+			"21-35": {
+			},
+			"36-45": {
+			},
+			"46-50": {
+			},
+			"51-55": {
+			},
+			"56-60": {
+			},
+			"61-65": {
+			},
+			"66-66": {
+			},
+			"67-70": {
+			},
+			"71-75": {
+			},
+			"76-80": {
+			},
+			"81-85": {
+			},
+			"86-90": {
+			},
+			"91-95": {
+			},
+			"95-99": {
+			},
+			"100-100": {
+			}
+		}
 	}
 }
