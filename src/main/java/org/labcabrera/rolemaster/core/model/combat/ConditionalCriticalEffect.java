@@ -23,10 +23,14 @@ public enum ConditionalCriticalEffect {
 	WITH_LEG_ARMOR("with-leg-armor"),
 
 	WITHOUT_LEG_ARMOR("without-leg-armor"),
-	
+
 	WITH_PLATE_CHEST("with-plate-chest"),
-	
-	WITHOUT_PLATE_CHEST("without-plate-chest");
+
+	WITHOUT_PLATE_CHEST("without-plate-chest"),
+
+	WITH_ABDOMEN_ARMOR("with-abdomen-armor"),
+
+	WITHOUT_ABDOMEN_ARMOR("without-abdomen-armor");
 
 	private String name;
 

@@ -584,42 +584,181 @@
 		},
 		"D": {
 			"01-05": {
+                "text": "Strike bounces off.",
+                "hp": 2
 			},
 			"06-10": {
+                "text": "Strike lands without energy.",
+                "hp": 4
 			},
 			"11-15": {
+                "text": "Foe evades and maneuvers for a better position.",
+                "hp": 2,
+                "debuffs": {
+                    "must-parry": 1
+                }
 			},
 			"16-20": {
+                "text": "Precise strike to foe's side. You have the initiative for 1 round.",
+                "hasInitiative": true,
+                "penalty": {
+                    "penalty": -10
+                }
 			},
 			"21-35": {
+                "text": "You wound foe in hip. Strike strips equipment from right side of waist.",
+                "bleeding": 2,
+                "debuffs": {
+                    "stunned": 1
+                }
 			},
 			"36-45": {
+                "text": "Close call for foe's groin.",
+                "conditionalEffects": {
+                    "with-waist-armor": {
+                        "hp": 4,
+                        "debuffs": {
+                            "stunned": 1
+                        }
+                    },
+                    "without-waist-armor": {
+                        "bleeding": 3
+                    }
+                }
 			},
 			"46-50": {
+                "text": "Light strike pins foe's weapon arm to his Strike to side. If foe has armor, the blow side.",
+                "hp": 6,
+                "debuffs": {
+                    "stunned": 1,
+                    "cant-parry": 1
+                }
 			},
 			"51-55": {
+                "text": "Solid chest strike leaves bruises and blood.",
+                "hp": 5,
+                "bleeding": 3,
+                "debuffs": {
+                    "must-parry": 1
+                },
+                "penalty": {
+                    "penalty": -15
+                }
 			},
 			"56-60": {
+                "text": "Strike foe in abdomen.",
+                "conditionalEffects": {
+                    "with-abdomen-armor": {
+                        "hp": 5,
+                        "debuffs": {
+                            "cant-parry": 2
+                        }
+                    },
+                    "without-abdomen-armor": {
+                        "hp": 3,
+                        "bleeding": 3,
+                        "debuffs": {
+                            "stunned": 1,
+                            "cant-parry": 1
+                        }
+                    }
+                }
 			},
 			"61-65": {
+                "text": "Blow to foe's weapon arm. Arm is numb.",
+                "hp": 3,
+                "bleeding": 2,
+                "debuffs": {
+                    "stunned": 2
+                },
+                "penalty": {
+                    "penalty": -10
+                }
 			},
 			"66-66": {
+                "text": "Strike to head kills foe, if he has no helm. If he has a helm he in knocked for 6 hours. TODO: revisar bonus",
+                "hp": 10,
+                "conditionalEffects": {
+                    "with-helmet": {
+                        "debuffs": {
+                            "shock": 10000
+                        }
+                    },
+                    "without-helmet": {
+                        "instantDeath": true
+                    }
+                }
 			},
 			"67-70": {
+                "text": "Strike down foe's defenses with a blow to both arms.",
+                "hp": 3,
+                "debuffs": {
+                    "stunned": 2,
+                    "cant-parry": 2
+                },
+                "penalty": {
+                    "penalty": -20
+                }
 			},
 			"71-75": {
+                "text": "Excellent blow to lower leg slashes muscles and cartilage. Foe falls prone.",
+                "hp": 6,
+                "debuffs":{
+                    "stunned": 2,
+                    "cant-parry": 2
+                },
+                "penalty": {
+                    "penalty": -50
+                }
 			},
 			"76-80": {
+                "text": "Strike to foe's shield arm. Arm is useless.",
+                "hp": 12,
+                "bleeding": 3,
+                "debuffs":{
+                    "stunned": 5
+                },
+                "otherEffects": [
+                    "Arm is useless."
+                ]
 			},
 			"81-85": {
+                "text": "Major abdomenal wound. Blood pours out in frightening quantities.",
+                "hp": 10,
+                "bleeding": 6,
+                "debuffs":{
+                    "stunned": 3,
+                    "cant-parry": 3
+                },
+                "penalty": {
+                    "penalty": -20
+                }
 			},
 			"86-90": {
+                "text": "Strike through foes kidneys. Foe is down and immobile for 2 hours, then he dies.",
+                "deathAfterRounds": 720,
+                "debuffs": {
+                    "unconscious": 720
+                },
+                "otherEffects": [
+                    "Die after 2 hours."
+                ]
 			},
 			"91-95": {
+                "text": "Strike through foe's side spills his guts on the floor. Foe fights on normally for 6 and sticks out the other side. Foe dies in rounds, then dies.",
+                "deathAfterRounds": 6
 			},
-			"95-99": {
+			"96-99": {
+                "text": "Strike plunges into doomed foe's chest and emerges from the other side. Foe drops and dies in 6 rounds.",
+                "deathAfterRounds": 6,
+                "debuffs": {
+                    "shock": 6
+                }
 			},
 			"100-100": {
+                "text": "Strike through brain makes life difficult for foe. You have a half round left to act.",
+                "instantDeath": true,
+                "specialEffect": true
 			}
 		},
 		"E": {
@@ -657,7 +796,7 @@
 			},
 			"91-95": {
 			},
-			"95-99": {
+			"96-99": {
 			},
 			"100-100": {
 			}
