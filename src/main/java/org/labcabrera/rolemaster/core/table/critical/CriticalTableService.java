@@ -28,6 +28,7 @@ public class CriticalTableService {
 	@PostConstruct
 	public void loadTables() {
 		tables.put(CriticalType.P, loadTable("data/populator/critical/tables/critical-table-p.json"));
+		tables.put(CriticalType.K, loadTable("data/populator/critical/tables/critical-table-k.json"));
 	}
 
 	public CriticalTableResult getResult(CriticalType type, CriticalSeverity severity, Integer roll) {

@@ -30,7 +30,15 @@ public enum ConditionalCriticalEffect {
 
 	WITH_ABDOMEN_ARMOR("with-abdomen-armor"),
 
-	WITHOUT_ABDOMEN_ARMOR("without-abdomen-armor");
+	WITHOUT_ABDOMEN_ARMOR("without-abdomen-armor"),
+
+	WITH_SHIELD("with-shield"),
+
+	WITHOUT_SHIELD("without-shield"),
+
+	WITH_NOSE_GUARD("with-nose-guard"),
+
+	WITHOUT_NOSE_GUARD("without-nose-guard");
 
 	private String name;
 
