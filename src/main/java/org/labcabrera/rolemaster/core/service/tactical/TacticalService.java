@@ -14,6 +14,8 @@ public interface TacticalService {
 
 	Mono<TacticalSession> createSession(TacticalSessionCreation request);
 
+	Mono<Void> deleteSession(String tacticalSessionId);
+
 	Mono<TacticalCharacter> addCharacter(String tacticalSessionId, String characterId);
 
 	Mono<TacticalCharacter> addNpc(String tacticalSessionId, String npcId);

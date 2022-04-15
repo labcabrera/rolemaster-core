@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotEmpty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,7 +20,7 @@ public class AddSkill {
 	@Schema(description = "Skill identifier.", required = true, example = "painting")
 	private String skillId;
 
-	@Schema(description = "Skill customization.")
-	private String customization;
+	@Schema(description = "Skill customizations.")
+	private List<String> customizations;
 
 }

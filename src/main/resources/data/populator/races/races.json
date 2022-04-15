@@ -1,17 +1,83 @@
 [
-  {
-  	"id": "dwarves",
-  	"name": "Dwarves",
-  	"universes": [ "generic" ]
-  },
-  {
-  	"id": "halflings",
-  	"name": "Halflings",
-  	"universes": [ "generic" ]
-  },
-  {
-  	"id": "nomads",
-  	"name": "Nomads",
-  	"universes": [ "generic" ]
-  }
+	{
+		"id": "dwarves",
+		"name": "Dwarves",
+		"attributeModifiers": {
+			"ag": -2,
+			"co": 6,
+			"me": 0,
+			"re": 0,
+			"sd": 2,
+			"em": -4,
+			"in": 0,
+			"pr": -4,
+			"qu": -2,
+			"st": 2
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    40,
+			"mentalism":  40,
+			"poison":     20,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [7,4,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [3,2,1,1],
+			"mentalism":              [3,2,1,1] 
+		},
+		"exhaustionPointsBonus": 21,
+		"specialAbilities": [
+			"Resistance against flame and ice: +30 DB and RR bonuses versus heat and cold attacks.",
+			"warves see well in extreme darkness. In the dimmest light, they can see 50' perfectly, and fairly well up to 100'. They can see 10' in total darkness (non-magical).",
+			"Open water; they do not normally swim (-50 to Swimming maneuvers)."
+		],
+		"backgroundOptions": 5,
+		"startingLanguageSelection": [
+			"small-speech:s8:w6",
+			"common-speech:s8:w6"
+		],
+		"universes": [ "generic" ]
+	},
+	{
+		"id": "halflings",
+		"name": "Halflings",
+		"attributeModifiers": {
+			"ag": 6,
+			"co": 6,
+			"me": 0,
+			"re": 0,
+			"sd": -4,
+			"em": -2,
+			"in": 0,
+			"pr": -6,
+			"qu": 4,
+			"st": -8
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    50,
+			"mentalism":  40,
+			"poison":     30,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [6,2,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [2,1,1,1],
+			"mentalism":              [2,1,1,1] 
+		},
+		"specialAbilities": [
+			"Their feet and hands are almost immune to heat and cold. Accordingly, they are almost always barefoot. +30 DB and RR bonuses versus heat and cold attacks.",
+			"Their innate simplicity and innocence gives them heightened resistance to magical attacks (this is reflected in their high racial RR modification).",
+			"Dexterous, they move nimbly and quietly. Their long, strangely slender fingers allow them to craft fine handiwork and help explain their fine reputation as thieves (this is reflected in their high racial Agility statbonus)."
+		],
+		"startingLanguageSelection": [
+			"dwarvish:s8:w6",
+			"common-speech:s5:w5",
+			"elvish:s4:w4"
+		],
+		"universes": [ "generic" ]
+	}
 ]

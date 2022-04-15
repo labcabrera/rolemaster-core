@@ -82,8 +82,8 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> execute(TacticalActionExecution request) {
-		return actionRepository.findById(request.getActionId())
+	public Mono<TacticalAction> execute(String actionId, TacticalActionExecution request) {
+		return actionRepository.findById(actionId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
 			.flatMap(action -> this.tacticalActionExecutionRouter.execute(action, request));
 	}

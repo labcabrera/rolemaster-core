@@ -16,7 +16,7 @@ public class RacePopulator extends AbstractJsonPopulator<Race> {
 		return Arrays.asList(
 			"data/populator/races/races.json",
 			"data/populator/races/races-men.json",
-			"data/populator/races/races-orks.json",
+			"data/populator/races/races-orcs.json",
 			"data/populator/races/races-elves.json");
 	}
 

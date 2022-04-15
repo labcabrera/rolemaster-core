@@ -52,7 +52,7 @@ public interface TacticalSessionController {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Tactical session deleted.")
 	@Operation(summary = "Delete tactical session by id.")
-	Mono<Void> deleteById(@PathVariable String id);
+	Mono<Void> deleteById(@PathVariable("id") String id);
 
 	@GetMapping("/{id}/round")
 	@Operation(summary = "Get current round.")
@@ -61,6 +61,21 @@ public interface TacticalSessionController {
 	@PostMapping("/{id}/round")
 	@Operation(summary = "Start round.")
 	Mono<TacticalRound> startRound(@PathVariable("id") String tacticalSessionId);
+
+	@PostMapping("/{id}/round/initiative-declaration")
+	@Operation(summary = "Start initiative declaration phase.")
+	Mono<TacticalRound> startInitiativeDeclaration(@PathVariable("id") String tacticalSessionId);
+
+	@PostMapping("/{id}/round/initiative-declaration/{characterId}/{roll}")
+	@Operation(summary = "Start initiative declaration phase.")
+	Mono<TacticalRound> declareInitiative(
+		@PathVariable("id") String tacticalSessionId,
+		@PathVariable("characterId") String characterId,
+		@PathVariable("roll") Integer roll);
+
+	@PostMapping("/{id}/round/start-execution")
+	@Operation(summary = "Start execution phase.")
+	Mono<TacticalRound> startExecutionPhase(@PathVariable("id") String tacticalSessionId);
 
 	@GetMapping("/{id}/characters")
 	@Operation(summary = "Find tactical session character contexts.")

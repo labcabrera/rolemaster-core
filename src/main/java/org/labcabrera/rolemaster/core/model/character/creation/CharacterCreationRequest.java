@@ -27,6 +27,10 @@ public class CharacterCreationRequest {
 	@Schema(description = "Character name.", example = "Kiove", required = true)
 	private String name;
 
+	@NotNull
+	@Schema(description = "Character max level.", example = "1", required = true)
+	private Integer level;
+
 	@ExistingRace
 	@NotEmpty
 	@Schema(description = "Characted race identifier.", example = "common-men", required = true)

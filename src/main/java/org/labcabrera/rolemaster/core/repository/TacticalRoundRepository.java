@@ -9,4 +9,6 @@ public interface TacticalRoundRepository extends ReactiveMongoRepository<Tactica
 
 	Mono<TacticalRound> findFirstByTacticalSessionIdOrderByRoundDesc(String tacticalSessionId);
 
+	Mono<Void> deleteByTacticalSessionId(String tacticalSessionId);
+
 }

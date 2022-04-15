@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class NpcCustomization {
 
+	private String name;
+
 	private String primaryWeaponId;
 
 }

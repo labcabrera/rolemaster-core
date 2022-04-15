@@ -23,17 +23,22 @@ public class CharacterSkillProcessor implements CharacterPostProcessor {
 	public void accept(CharacterInfo character) {
 		log.debug("Processing character {}", character.getName());
 		character.getSkills().stream().forEach(characterSkill -> {
-
-			int bonusAttribute = 0;
-			for (AttributeType i : characterSkill.getAttributes()) {
-				bonusAttribute += character.getAttributes().get(i).getTotalBonus();
-			}
-
-			int bonusRank = getBonusRank(characterSkill);
-
-			characterSkill.getBonus().put(BonusType.RANK, bonusAttribute);
-			characterSkill.getBonus().put(BonusType.ATTRIBUTE, bonusRank);
+			characterSkill.getBonus().put(BonusType.ATTRIBUTE, getBonusAttribute(characterSkill, character));
+			characterSkill.getBonus().put(BonusType.CATEGORY, getBonusCategory(characterSkill, character));
+			characterSkill.getBonus().put(BonusType.RANK, getBonusRank(characterSkill));
 		});
+	}
+
+	private int getBonusAttribute(CharacterSkill characterSkill, CharacterInfo character) {
+		int bonusAttribute = 0;
+		for (AttributeType i : characterSkill.getAttributes()) {
+			bonusAttribute += character.getAttributes().get(i).getTotalBonus();
+		}
+		return bonusAttribute;
+	}
+
+	private int getBonusCategory(CharacterSkill characterSkill, CharacterInfo character) {
+		return character.getSkillCategory(characterSkill.getCategoryId()).get().getTotalBonus();
 	}
 
 	private int getBonusRank(CharacterSkill skill) {

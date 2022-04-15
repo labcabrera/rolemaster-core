@@ -126,8 +126,8 @@
         "description": "This skill provides a bonus to the ability to discern detail and information through the use of a particular sense (i.e., sight, touch, etc.). Note that skill for each sense must be developed separately."
     },
     {
-        "id": "situational-awareness-primary",
-        "name": "Situational Awareness - Primary",
+        "id": "situational-awareness",
+        "name": "Situational Awareness †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "awareness-senses",

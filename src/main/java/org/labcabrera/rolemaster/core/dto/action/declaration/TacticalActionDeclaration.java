@@ -18,7 +18,11 @@ import lombok.experimental.SuperBuilder;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
 @JsonSubTypes({
 	@Type(value = TacticalActionMovementDeclaration.class, name = "movement"),
-	@Type(value = TacticalActionMeleeAttackDeclaration.class, name = "melee-attack")
+	@Type(value = TacticalActionMeleeAttackDeclaration.class, name = "melee-attack"),
+	@Type(value = TacticalActionMissileAttackDeclaration.class, name = "missile-attack"),
+	@Type(value = TacticalActionSpellAttackDeclaration.class, name = "spell-attack"),
+	@Type(value = TacticalActionStaticManeuverDeclaration.class, name = "static-manevuer"),
+	@Type(value = TacticalActionMovingManeuverDeclaration.class, name = "moving-manevuer")
 })
 @Data
 @AllArgsConstructor

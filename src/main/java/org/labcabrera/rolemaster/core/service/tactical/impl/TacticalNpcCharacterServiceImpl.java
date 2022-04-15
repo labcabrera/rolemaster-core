@@ -29,6 +29,9 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 	@Autowired
 	private WeaponRepository weaponRepository;
 
+	@Autowired
+	private NpcNameGenerator npcNameGenerator;
+
 	@Override
 	public Mono<TacticalCharacter> create(String tacticalSessionId, Npc npc) {
 		return create(tacticalSessionId, npc, null);
@@ -42,8 +45,9 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 		BigDecimal exhaustionPoints = new BigDecimal(100);
 
 		TacticalCharacter result = TacticalCharacter.builder()
+			.name(npcCustomization != null ? npcCustomization.getName() : null)
+			.shortDescription(npc.getShortDescription())
 			.tacticalSessionId(tacticalSessionId)
-			.name("")
 			.level(level)
 			.isNpc(true)
 			.characterId(npc.getId())
@@ -76,7 +80,13 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 		}
 
 		return Mono.just(result)
-			.flatMap(ta -> loadWeapons(ta, npc));
+			.flatMap(ta -> loadWeapons(ta, npc))
+			.zipWith(npcNameGenerator.generateName(tacticalSessionId, npc), (a, b) -> {
+				if (a.getName() == null) {
+					a.setName(b);
+				}
+				return a;
+			});
 	}
 
 	private Mono<TacticalCharacter> loadWeapons(TacticalCharacter tacticalCharacter, Npc npc) {

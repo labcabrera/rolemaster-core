@@ -1,0 +1,317 @@
+[
+	{
+		"id": "cooking-baking",
+		"name": "Cooking Baking",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Turning of flour into breads, cakes, pies, etc."
+	},
+	{
+		"id": "cooking-baking",
+		"name": "Cooking Brewing",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Making ale, beer, cider, malt or mead beverages."
+	},
+	{
+		"id": "cooking-curing",
+		"name": "Cooking Curing",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Salting or preserving of food."
+	},
+	{
+		"id": "cooking-distilling",
+		"name": "Cooking Distilling",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Making alcohol."
+	},
+	{
+		"id": "cooking-winery",
+		"name": "Cooking Winery",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Making wines."
+	},
+	{
+		"id": "leather-crafts-cobbler",
+		"name": "Leather-crafts Cobbler",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of shoes and boots."
+	},
+	{
+		"id": "leather-crafts-saddler",
+		"name": "Leather-crafts Saddler",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of saddles and other horse trappings."
+	},
+	{
+		"id": "leather-crafts-tanner",
+		"name": "Leather-crafts Tanner",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Turning hides into leather."
+	},
+	{
+		"id": "leather-crafts-tooler",
+		"name": "Leather-crafts Tooler",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Decorating leather with imprinted designs & coloring them."
+	},
+	{
+		"id": "metal-crafts-armorer",
+		"name": "Metal-crafts Armorer",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of iron or steel armor."
+	},
+	{
+		"id": "metal-crafts-blacksmith",
+		"name": "Metal-crafts Blacksmith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of small iron wares, horse shoes, etc."
+	},
+	{
+		"id": "metal-crafts-bronze-smith",
+		"name": "Metal-crafts Bronze Smith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Working and casting of bronze."
+	},
+	{
+		"id": "metal-crafts-copper-smith",
+		"name": "Metal-crafts Copper Smith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Working and casting of copper."
+	},
+	{
+		"id": "metal-crafts-copper-etcher",
+		"name": "Metal-crafts Copper Etcher",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Decorating of metals."
+	},
+	{
+		"id": "metal-crafts-fire-starting",
+		"name": "Metal-crafts Fire Starting",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Starting of fires."
+	},
+	{
+		"id": "metal-crafts-foundry",
+		"name": "Metal-crafts Fire Foundry",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Casting, rolling, cutting and spinning of iron."
+	},
+	{
+		"id": "metal-crafts-gold-smith",
+		"name": "Metal-crafts Gold Smith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Working of gold into ornamental and functional items."
+	},
+	{
+		"id": "metal-crafts-iron-smith",
+		"name": "Metal-crafts Iron Smith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of iron wares."
+	},
+	{
+		"id": "metal-crafts-silver-smith",
+		"name": "Metal-crafts Silver Smith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Working of silver into ornamental and functional items."
+	},
+	{
+		"id": "metal-crafts-tin-smith",
+		"name": "Metal-crafts Tin Smith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Working of tin into ornamental and functional items."
+	},
+	{
+		"id": "metal-crafts-tooler",
+		"name": "Metal-crafts Tooler",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of metal tools."
+	},
+	{
+		"id": "metal-crafts-weapon-smith",
+		"name": "Metal-crafts Weapon Smith",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of iron or steel weapons."
+	},
+	{
+		"id": "rope-mastery",
+		"name": "Rope Mastery",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "This skill provides a bonus for knot recognition, knot-tying, braiding, rope splicing, making a maneuver while suspended from a rope (or analogous flexible line), or when throwing a line."
+	},
+	{
+		"id": "stone-crafts-brick-maker",
+		"name": "Stone-crafts Brick Maker",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of bricks."
+	},
+	{
+		"id": "stone-crafts-gem-cutter",
+		"name": "Stone-crafts Gem Cutter",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Cutting and setting of stones and gems."
+	},
+	{
+		"id": "stone-crafts-masonry",
+		"name": "Stone-crafts Masonry",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Construction of buildings, bridges, etc. from bricks and stone."
+	},
+	{
+		"id": "stone-crafts-stone-carving",
+		"name": "Stone-crafts Stone Carving",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Carving of stone."
+	},
+	{
+		"id": "stone-crafts-stone-cutter",
+		"name": "Stone-crafts Stone Cutter",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Cutting and shaping large stones from a quarry."
+	},
+	{
+		"id": "wood-crafts-carpentry",
+		"name": "Wood-crafts Carpentry",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Cabinet maker."
+	},
+	{
+		"id": "wood-crafts-cartwright",
+		"name": "Wood-crafts Cartwright",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of carts, wagons and other similar vehicles."
+	},
+	{
+		"id": "wood-crafts-building",
+		"name": "Wood-crafts Building",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Construction of buildings from wood."
+	},
+	{
+		"id": "wood-crafts-lumbering",
+		"name": "Wood-crafts Lumbering",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Felling of trees."
+	},
+	{
+		"id": "wood-crafts-shipwright",
+		"name": "Wood-crafts Shipwright",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Building of sea going vessels."
+	},
+	{
+		"id": "wood-crafts-wheelwright",
+		"name": "Wood-crafts Wheelwright",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Manufacture of wheels."
+	},
+	{
+		"id": "wood-crafts-wood-carving",
+		"name": "Wood-crafts Wood Carving",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "standard",
+		"description": "Carving of wood."
+	}
+]

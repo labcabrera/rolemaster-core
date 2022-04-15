@@ -16,7 +16,7 @@ public interface TacticalActionService {
 
 	Mono<Void> removeDeclaredAction(String actionId);
 
-	Mono<TacticalAction> execute(TacticalActionExecution request);
+	Mono<TacticalAction> execute(String actionId, TacticalActionExecution request);
 
 	Mono<TacticalAction> executeCritical(AttackCriticalExecution execution);
 

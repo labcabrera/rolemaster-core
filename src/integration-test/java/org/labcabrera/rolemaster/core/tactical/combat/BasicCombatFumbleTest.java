@@ -21,7 +21,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
-import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackPosition;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
@@ -84,13 +84,12 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 		assertEquals(1, actionQueue.size());
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
-			.actionId(a01.getId())
 			.target(cc02.getId())
-			.position(MeleeAttackPosition.NORMAL)
+			.position(MeleeAttackFacing.NORMAL)
 			.roll(OpenRoll.of(4))
 			.build();
 
-		TacticalAction taResolved01 = tacticalActionService.execute(meleeAttackExecution).share().block();
+		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 

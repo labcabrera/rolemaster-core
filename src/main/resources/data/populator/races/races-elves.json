@@ -1,58 +1,114 @@
 [
-{
-  	"id": "wood-elves",
-  	"name": "Wood elves",
-  	"attributeModifieres": {
-  		"ag": 4,
-  		"me": 2,
-  		"sd": -5,
-  		"em": 2,
-  		"pr": 2,
-  		"qu": 2
-  	},
-  	"resistanceBonus": {
-  		"channeling": -5,
-  		"essence": -5,
-  		"mentalism": -5,
-  		"poison": 10,
-  		"disease": 100
-    },
-  	"universes": [ "generic" ]
-  },
-  {
-  	"id": "high-elves",
-  	"name": "High Elves",
-  	"attributeModifiers": {
-    	"ag": 2,
-    	"me": 2,
-    	"sd": -5,
-    	"em": 2,
-    	"pr": 6,
-    	"qu": 6 
-    },
-    "resistanceBonus": {
-  		"channeling": -5,
-  		"essence": -5,
-  		"mentalism": -5,
-  		"poison": 10,
-  		"disease": 100
-    },
-    "bodyDevelopmentProgression": [7,3,2,1],
-    "ppDevelopmentProgression": {
-    	"channeling":             [6,5,4,3],
-    	"essence":                [7,6,5,4],
-    	"mentalism":              [6,5,4,3] 
-    },
-  	"universes": [ "generic" ]
-  },
-  {
-  	"id": "fair-elves",
-  	"name": "Fair Elves",
-  	"universes": [ "generic" ]
-  },
-  {
-  	"id": "half-elves",
-  	"name": "Half Elves",
-  	"universes": [ "generic" ]
-  }
+	{
+		"id": "wood-elves",
+		"name": "Wood elves",
+		"attributeModifiers": {
+			"ag": 4,
+			"co": 0,
+			"me": 2,
+			"re": 0,
+			"sd": -5,
+			"em": 2,
+			"in": 0,
+			"pr": 2,
+			"qu": 2,
+			"st": 0
+		},
+		"resistanceBonus": {
+			"channeling": -5,
+			"essence": -5,
+			"mentalism": -5,
+			"poison": 10,
+			"disease": 100
+		},
+		"bodyDevelopmentProgression": [6,3,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [7,6,5,4],
+			"mentalism":              [6,5,4,3] 
+		},
+		"skillBonus": {
+			"trickery":					10,
+			"stalking":					10,
+			"hiding":					10
+		},
+		"backgroundOptions": 4,
+		"specialAbilities": [
+			"The Wood Elf folk are superb musicians and have tremendous hearing, even for Elves (they get a special +10 bonus to Base Spell attacks from Bard spell lists)."
+		],
+		"universes": [ "generic" ]
+	},
+	{
+		"id": "high-elves",
+		"name": "High Elves",
+		"attributeModifiers": {
+		"ag": 2,
+		"me": 2,
+		"sd": -5,
+		"em": 2,
+		"pr": 6,
+		"qu": 6 
+		},
+		"resistanceBonus": {
+			"channeling": -5,
+			"essence": -5,
+			"mentalism": -5,
+			"poison": 10,		"disease": 100
+		},
+		"bodyDevelopmentProgression": [7,3,2,1],
+		"ppDevelopmentProgression": {
+		"channeling":             [6,5,4,3],
+		"essence":                [7,6,5,4],
+		"mentalism":              [6,5,4,3] 
+		},
+		"specialAbilities": [
+		],
+		"universes": [ "generic" ]
+	},
+	{
+		"id": "grey-elves",
+		"name": "Grey Elves",
+		"attributeModifiers": {
+			"ag": 2,
+			"co": 0,
+			"me": 2,
+			"re": 0,
+			"sd": -5,
+			"em": 2,
+			"in": 0,
+			"pr": 4,
+			"qu": 4,
+			"st": 0
+		},
+		"resistanceBonus": {
+			"channeling":		-5,
+			"essence":			-5,
+			"mentalism":		-5,
+			"poison":			10,
+			"disease":			100
+		},
+		"bodyDevelopmentProgression":	[6,3,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":				[6,5,4,3],
+			"essence":					[7,6,5,4],
+			"mentalism":				[6,5,4,3] 
+		},
+		"specialAbilities": [
+		],
+		"universes": [ "generic" ]
+	},
+	{
+		"id": "fair-elves",
+		"name": "Fair Elves",
+		"specialAbilities": [
+		],
+		"universes": [ "generic" ]
+	},
+	{
+		"id": "half-elves",
+		"name": "Half Elves",
+		"specialAbilities": [
+		],
+		"universes": [ "generic" ]
+	}
 ]

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.character.inventory.ItemStatus;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -49,8 +50,9 @@ public class TacticalCharacterInventory {
 		return 8;
 	}
 
+	@JsonIgnore
 	private CharacterWeapon getNoWeaponTemplate() {
-		throw new NotImplementedException();
-		//return CharacterWeapon.builder().build();
+		//TODO
+		return null;
 	}
 }

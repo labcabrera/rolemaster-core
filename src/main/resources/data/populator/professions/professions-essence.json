@@ -27,13 +27,7 @@
 			"essence"
 		]
 	},
-	{
-		"id": "magician",
-		"name": "Magician",
-		"availableRealms": [
-			"essence"
-		]
-	},
+	,
 	{
 		"id": "mana-moulder",
 		"name": "Mana Moulder",

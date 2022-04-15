@@ -34,7 +34,13 @@ public class Race {
 	private Map<AttributeType, Integer> attributeModifiers = new LinkedHashMap<>();
 
 	@Builder.Default
-	private Map<String, Integer> resistanceModifiers = new LinkedHashMap<>();
+	private List<Integer> bodyDevelopmentProgression = new ArrayList<>();
+
+	@Builder.Default
+	private Map<String, List<Integer>> ppDevelopmentProgression = new HashMap<>();
+
+	@Builder.Default
+	private Map<ResistanceType, Integer> resistanceBonus = new EnumMap<>(ResistanceType.class);
 
 	@Builder.Default
 	private Map<String, Integer> adolescenseSkillCategoryRanks = new LinkedHashMap<>();
@@ -43,15 +49,22 @@ public class Race {
 	private Map<String, Integer> adolescenseSkillRanks = new LinkedHashMap<>();
 
 	@Builder.Default
-	private List<Integer> bodyDevelopmentProgression = new ArrayList<>();
+	private Map<String, Integer> skillCategoryBonus = new LinkedHashMap<>();
 
 	@Builder.Default
-	private Map<String, List<Integer>> ppDevelopmentProgression = new HashMap<>();
+	private Map<String, Integer> skillBonus = new LinkedHashMap<>();
+
+	@Builder.Default
+	private Integer exhaustionPointsBonus = 0;
+
+	@Builder.Default
+	private List<String> startingLanguageSelection = new ArrayList<>();
+
+	private Integer backgroundOptions;
+
+	private List<String> specialAbilities;
 
 	@Builder.Default
 	private List<String> universes = new ArrayList<>();
-
-	@Builder.Default
-	private Map<ResistanceType, Integer> resistanceBonus = new EnumMap<>(ResistanceType.class);
 
 }

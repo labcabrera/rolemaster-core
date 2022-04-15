@@ -1,0 +1,93 @@
+[
+	{
+		"id": "healer",
+		"name": "Healer",
+		"primeStats": [
+			"in",
+			"pr",
+			"sd"
+		],
+		"availableRealms": [
+			"channeling",
+			"mentalism"
+		],
+		"skillCategoryBonus": {
+			"directed-spells":                5,
+			"lore-magical":                   10,
+			"power-awareness":                10,
+			"power-manipulation":             15,
+			"power-point-development":        5,
+			"spells-own-realm-base-lists":    5,
+			"spells-own-realm-closed-lists":  5,
+			"spells-own-realm-open-lists":    5
+		},
+		"skillCategoryDevelopmentCost": {
+			"armor-heavy":                  [7,7,7],
+			"armor-medium":                 [6,6,6],
+			"armor-light":                  [4,4,4],
+			"artistic-active":              [2,5],
+			"artistic-passive":             [2,5],
+			"athletic-brawn":               [6],
+			"athletic-endurance":           [3],
+			"athletic-gymnastics":          [3],
+			"awareness-perceptions":        [6],
+			"awareness-searching":          [3],
+			"awareness-senses":             [3,7],
+			"body-development":             [2,6],
+			"combat-maneuvers":             [18],
+			"communications":               [2,2,2],
+			"crafts":                       [4,10],
+			"directed-spells":              [3],
+			"influence":                    [2,6],
+			"lore-general":                 [1,3],
+			"lore-magical":                 [2,5],
+			"lore-obscure":                 [3,7],
+			"lore-technical":               [2,6],
+			"martial-arts-striking":        [6],
+			"martial-arts-sweeps":          [6],
+			"outdoor-animal":               [3],
+			"outdoor-environmental":        [3],
+			"power-awareness":              [2,6],
+			"power-point-development":      [6],
+			"science-analytic-basic":       [1,4],
+			"science-analytic-specialized": [6,14],
+			"self-control":                 [2,7],
+			"special-attacks":              [15],
+			"special-defenses":             [25],
+			"subterfuge-attack":            [15],
+			"subterfuge-stealth":           [6],
+			"subterfuge-mechanics":         [8],
+			"technical-trade-general":      [3,7],
+			"technical-trade-professional": [8],
+			"technical-trade-vocational":   [5,12]
+		},
+		"skillCategoryWeaponDevelopmentCost": [
+			[9],
+			[20],
+			[20],
+			[20],
+			[20],
+			[20],
+			[20]			
+		],
+		"lifestyleCost": {
+			"adventurer": 34,
+			"amateur-mage": 26,
+			"animal-friend": 33,
+			"assasin": 41,
+			"berserker": 44,
+			"burglar": 31,
+			"city-guard": 31,
+			"doctor": -1,
+			"herbalist": -1,
+			"hunter": -1,
+			"knight": -1,
+			"loremaster": -1,
+			"merchant": -1,
+			"performer": -1,
+			"scout": -1,
+			"soldier": -1,
+			"traveller": -1
+		}
+	}
+]

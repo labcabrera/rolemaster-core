@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
@@ -29,16 +31,19 @@ import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
+import org.labcabrera.rolemaster.core.table.character.ExperienceLevelTable;
 import org.labcabrera.rolemaster.core.table.skill.SkillCategoryBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
+@Validated
 public class CharacterCreationService {
 
 	private static final String MSG_INVALID_WEAPON_SIZE = "Invalid request weapon category order count. Expected: %s, received: %s";
@@ -67,18 +72,23 @@ public class CharacterCreationService {
 	@Autowired
 	private SkillRepository skillRepository;
 
-	public Mono<CharacterInfo> create(CharacterCreationRequest request) {
+	@Autowired
+	private ExperienceLevelTable experienceLevelTable;
+
+	public Mono<CharacterInfo> create(@Valid CharacterCreationRequest request) {
 		log.info("Processing new character {}", request.getName());
 
 		final CharacterInfo character = CharacterInfo.builder()
 			.level(0)
+			.maxLevel(request.getLevel())
+			.xp(null)
+			.xp(experienceLevelTable.getRequiredExperience(request.getLevel()))
 			.name(request.getName())
 			.raceId(request.getRaceId())
 			.professionId(request.getProfessionId())
 			.age(request.getAge())
 			.height(request.getHeight())
 			.weight(request.getWeight())
-			.xp(0)
 			.status(CharacterStatus.PARTIALLY_CREATED)
 			.build();
 
@@ -90,8 +100,12 @@ public class CharacterCreationService {
 			.zipWith(raceRepository.findById(request.getRaceId()))
 			.switchIfEmpty(Mono.error(new BadRequestException("Race " + request.getRaceId() + " not found")))
 			.map(tuple -> {
-				tuple.getT1().setRace(tuple.getT2());
-				return tuple.getT1();
+				CharacterModificationContext ctx = tuple.getT1();
+				Race race = tuple.getT2();
+				ctx.setRace(race);
+				ctx.getCharacter().getDevelopmentPoints().setBackgroundOptions(race.getBackgroundOptions());
+				ctx.getCharacter().getNotes().addAll(race.getSpecialAbilities());
+				return ctx;
 			})
 			.zipWith(professionRepository.findById(request.getProfessionId()))
 			.switchIfEmpty(Mono.error(new BadRequestException("Profession " + request.getProfessionId() + " not found")))
@@ -212,7 +226,7 @@ public class CharacterCreationService {
 		CharacterInfo character = context.getCharacter();
 		Race race = context.getRace();
 		for (ResistanceType r : ResistanceType.values()) {
-			int raceBonus = race.getResistanceModifiers().getOrDefault(r, 0);
+			int raceBonus = race.getResistanceBonus().getOrDefault(r, 0);
 			CharacterResistance cr = CharacterResistance.builder()
 				.build();
 			cr.getBonus().put(ResistanceBonusType.RACE, raceBonus);

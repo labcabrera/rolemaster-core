@@ -10,7 +10,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
-import org.labcabrera.rolemaster.core.table.critical.CriticalTable;
+import org.labcabrera.rolemaster.core.table.critical.CriticalTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class CriticalAttackExecutionService {
 
 	@Autowired
-	private CriticalTable criticalTable;
+	private CriticalTableService criticalTable;
 
 	public TacticalAction apply(TacticalAction action, AttackCriticalExecution execution) {
 		if (action.getState() != TacticalActionState.PENDING_CRITICAL_RESOLUTION) {

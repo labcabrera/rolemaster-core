@@ -76,7 +76,7 @@ public class AttackResultProcessor {
 					for (Entry<Debuff, Integer> dse : ctr.getDebuffs().entrySet()) {
 						tc.getCombatStatus().addDebuff(dse.getKey(), dse.getValue());
 					}
-					tc.getCombatStatus().getOtherEfects().addAll(ctr.getOtherEfects());
+					tc.getCombatStatus().getOtherEfects().addAll(ctr.getOtherEffects());
 				}
 				return tc;
 			})

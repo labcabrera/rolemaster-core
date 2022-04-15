@@ -1,8 +1,9 @@
 package org.labcabrera.rolemaster.core.service.character;
 
 import org.apache.commons.lang3.mutable.MutableInt;
-import org.labcabrera.rolemaster.core.dto.SkillAndTrainingPackageUpgrade;
+import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
@@ -20,7 +21,7 @@ public class CharacterUpdateSkillService {
 	private static final String ERR_MISSING_CATEGORY_ID = "Missing skill category %s";
 	private static final String ERR_MISSING_SKILL_ID = "Missing skill %s";
 	private static final String ERR_INVALID_LEVEL_COUNT = "Upgraded levels exceds the development value";
-	private static final String ERR_EXCEDED_DEV_POINTS = "Request development points exceds the remaining value";
+	private static final String ERR_EXCEDED_DEV_POINTS = "Request development (%s) points exceds the remaining value (%s)";
 
 	@Autowired
 	private CharacterInfoRepository repository;
@@ -28,26 +29,28 @@ public class CharacterUpdateSkillService {
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
 
-	public Mono<CharacterInfo> updateRanks(String characterId, SkillAndTrainingPackageUpgrade request) {
+	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgrade request) {
 		return repository.findById(characterId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
 			.map(e -> update(e, request))
 			.map(postProcessorService::apply)
 			.flatMap(repository::save);
 	}
 
-	private CharacterInfo update(CharacterInfo character, SkillAndTrainingPackageUpgrade request) {
+	private CharacterInfo update(CharacterInfo character, SkillUpgrade request) {
 		final MutableInt cost = new MutableInt(0);
 		upgradeSkillCategories(character, request, cost);
 		upgradeSkills(character, request, cost);
 		int usedPoints = character.getDevelopmentPoints().getUsedPoints() + cost.getValue();
-		if (usedPoints > character.getDevelopmentPoints().getTotalPoints()) {
-			throw new BadRequestException(ERR_EXCEDED_DEV_POINTS);
+		int availablePoints = character.getDevelopmentPoints().getTotalPoints();
+		if (usedPoints > availablePoints) {
+			throw new BadRequestException(String.format(ERR_EXCEDED_DEV_POINTS, usedPoints, availablePoints));
 		}
 		character.getDevelopmentPoints().setUsedPoints(usedPoints);
 		return character;
 	}
 
-	private void upgradeSkillCategories(CharacterInfo character, SkillAndTrainingPackageUpgrade request, MutableInt cost) {
+	private void upgradeSkillCategories(CharacterInfo character, SkillUpgrade request, MutableInt cost) {
 		request.getCategoryRanks().keySet().stream().forEach(categoryId -> {
 			CharacterSkillCategory category = character.getSkillCategories().stream()
 				.filter(e -> e.getCategoryId().equals(categoryId))
@@ -65,20 +68,22 @@ public class CharacterUpdateSkillService {
 		});
 	}
 
-	private void upgradeSkills(CharacterInfo character, SkillAndTrainingPackageUpgrade request, MutableInt cost) {
+	private void upgradeSkills(CharacterInfo character, SkillUpgrade request, MutableInt cost) {
 		request.getSkillRanks().keySet().stream().forEach(skillId -> {
 			CharacterSkill skill = character.getSkills().stream()
 				.filter(e -> e.getSkillId().equals(skillId))
 				.findFirst().orElseThrow(() -> new BadRequestException(String.format(ERR_MISSING_SKILL_ID, skillId)));
 			int levels = request.getSkillRanks().get(skillId);
 			if (levels > 0) {
+				int currentDev = skill.getRanks().get(RankType.DEVELOPMENT);
 				if (levels > skill.getDevelopmentCost().size()) {
 					throw new BadRequestException(ERR_INVALID_LEVEL_COUNT);
 				}
 				for (int i = 0; i < levels; i++) {
-					cost.add(skill.getDevelopmentCost().get(i));
+					int tmp = skill.getDevelopmentCost().get(i + currentDev);
+					cost.add(tmp);
 				}
-				skill.getRanks().put(RankType.DEVELOPMENT, levels);
+				skill.getRanks().put(RankType.DEVELOPMENT, levels + currentDev);
 			}
 		});
 	}

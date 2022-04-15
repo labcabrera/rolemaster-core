@@ -1,6 +1,5 @@
 package org.labcabrera.rolemaster.core.service.populator;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ public abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
 				List<E> values = objectMapper.readerFor(typeReference).readValue(in);
 				list.addAll(values);
 			}
-			catch (IOException ex) {
+			catch (Exception ex) {
 				log.error("Error reading {}", resource, ex);
 			}
 		});

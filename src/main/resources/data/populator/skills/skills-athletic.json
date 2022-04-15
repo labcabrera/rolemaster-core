@@ -1,11 +1,12 @@
 [
     {
-        "id": "athletic-games-brawn-primary",
-        "name": "Athletic Games Brawn - Primary",
+        "id": "athletic-games-brawn",
+        "name": "Athletic Games Brawn †",
         "type": "staticOrMovingManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill encompasses any athletic game that primarily involves brawn (e.g., wrestling, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
 	{
@@ -45,12 +46,13 @@
         "description": "This skill allows the use of a controlled burst of strength to increase the range of a thrown object, such as a javelin, hammer, stone, etc. The use of this skill requires a 40% activity action the round before the “throw” takes place. The round of the strike, the character receives a bonus to his weapon range according to how much force he placed into the throw, which in turn affects the difficulty of the maneuver."
     },
     {
-        "id": "athletic-games-endurance-primary",
-        "name": "Athletic Games - Endurance - Primary",
+        "id": "athletic-games-endurance",
+        "name": "Athletic Games - Endurance †",
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill encompasses any athletic game that primarily involves endurance (e.g., track events, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
@@ -93,7 +95,7 @@
         "id": "swimming",
         "name": "Swimming",
         "type": "movingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
         "description": "This skill provides a bonus to swimming maneuvers. Skill rank 1 will prevent the character from drowning in water over his head, provided there are no applicable penalties (weight penalty, armor penalties, etc.). Further skill ranks will enable the character to make headway against a current, to stay afloat for longer periods of time without touching ground, to swim longer distances, to move faster in the water, and to make maneuvers in the water."
@@ -108,19 +110,20 @@
         "description": "This skill provides a bonus for in-air maneuvers (e.g., flying or levitation) or swinging on objects. This skill includes the use of parallel bars, uneven bars, and other gymnastic activities in which most of the activity is spent in airborne maneuvers. A successful maneuver roll can reduce the severity of a falling critical by one (i.e., an 'A' is ignored, a 'B' becomes a 'A', a 'D' becomes a 'C', etc.)."
     },
     {
-        "id": "athletic-games-gymnastics-primary",
-        "name": "Athletic Games - Gymnastics - Primary",
+        "id": "athletic-games-gymnastics",
+        "name": "Athletic Games - Gymnastics †",
         "type": "staticOrMovingManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
+        "customizableOptions": 1,
         "description": "This skill encompasses any athletic game that primarily involves gymnastic skills (e.g., gymnastic events, soccer, basketball, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
         "id": "climbing",
         "name": "Climbing",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for climbing maneuvers over relatively short distances through the use of hand holds, etc. This could range from the ability to climb sheer faces (absurd) to climbing a ladder (easy). The normal climbing rate for walls with adequate hand holds is 10'/round as a “Medium” moving maneuver. Poorer handholds or greater speed will increase the difficulty of the maneuver. Note that extended climbs may require the use of the Athletic Endurance: Scaling Skill."
@@ -129,7 +132,7 @@
         "id": "contortions",
         "name": "Contortions",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for manipulating one’s body in order to move through small openings or absorb sudden crushing impact (other than falls). This skill also helps one escape from bonds, etc."
@@ -138,7 +141,7 @@
         "id": "diving",
         "name": "Diving",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for controlled falling maneuvers. This can range from controlling the direction of an extended fall to diving into water safely from a great height (up to 20'/skill rank if a successful maneuver roll is made)."
@@ -147,7 +150,7 @@
         "id": "flying-gliding",
         "name": "Flying / Gliding",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for flying or gliding through the useof natural or artificial wings (e.g., feathered wings, parachute, hangglider, balloonist, etc.). Flying/gliding has a natural -75 for all types of maneuvers performed while trying to fly/glide if this skill is not learned or developed. Does not include powered aircraft."
@@ -156,7 +159,7 @@
         "id": "juggling",
         "name": "Juggling",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for tossing objects up and manipulating them in such a manner as to keep them up in the air."
@@ -165,7 +168,7 @@
         "id": "tumbling",
         "name": "Tumbling",
         "type": "staticOrMovingManeuver",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "description": "This skill provides a bonus for horizontal dives, rolling, vaulting maneuvers, or swinging on stationary objects. Also used to decrease the damage one takes from a fall. A character could fall safely up to 2'/skill rank if a successful maneuver roll is made."

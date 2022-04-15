@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -33,6 +36,10 @@ public class TacticalSession {
 
 	@Schema(description = "Tactical session state (open|closed).", required = true, example = "open")
 	private TacticalSessionState state;
+
+	@Builder.Default
+	@Schema(description = "Tactical session log.")
+	private List<String> log = new ArrayList<>();
 
 	@Builder.Default
 	@Schema(description = "Audit data.", required = true)

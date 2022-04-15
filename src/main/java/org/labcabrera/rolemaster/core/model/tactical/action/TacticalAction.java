@@ -1,24 +1,15 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.Payload;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
-import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction.ValidTacticalAction;
-import org.labcabrera.rolemaster.core.validation.ValidationConstants;
+import org.labcabrera.rolemaster.core.validation.ValidTacticalAction;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -80,48 +71,4 @@ public abstract class TacticalAction {
 		return initiativeModifiers.values().stream().reduce(0, (a, b) -> a + b);
 	}
 
-	//	public <T> T as(Class<T extends TacticalAction> actionClass) {
-	//		return (T) this;
-	//	}
-
-	@Target({ElementType.TYPE })
-	@Retention(RetentionPolicy.RUNTIME)
-	@Constraint(validatedBy = TacticalActionValidator.class)
-	static @interface ValidTacticalAction {
-
-		String message() default ValidationConstants.INVALID_TACTICAL_ACTION;
-
-		Class<?>[] groups() default {};
-
-	Class<? extends Payload>[] payload()default{};
 }
-
-private static class TacticalActionValidator implements ConstraintValidator<ValidTacticalAction, TacticalAction> {
-
-	@Override
-	public boolean isValid(TacticalAction value, ConstraintValidatorContext context) {
-		boolean result = true;
-		if (value.getPriority() != null && value.getActionPercent() != null) {
-			switch (value.getPriority()) {
-			case SNAP:
-				if (value.getActionPercent() > 20) {
-					context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_TACTICAL_ACTION_SNAP_PERCENT)
-						.addConstraintViolation();
-					result = false;
-				}
-				break;
-			case NORMAL:
-				if (value.getActionPercent() > 80) {
-					context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_TACTICAL_ACTION_NORMAL_PERCENT)
-						.addConstraintViolation();
-					result = false;
-				}
-				break;
-			case DELIBERATE:
-			default:
-				break;
-			}
-		}
-		return result;
-	}
-}}
