@@ -89,9 +89,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> executeCritical(AttackCriticalExecution request) {
-		return actionRepository.findById(request.getActionId())
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
+	public Mono<TacticalAction> executeCritical(String actionId, AttackCriticalExecution request) {
+		return actionRepository.findById(actionId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
 			.map(e -> criticalAttackExecutionService.apply(e, request))
 			.flatMap(actionRepository::save)
 			.map(e -> (TacticalActionAttack) e)

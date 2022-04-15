@@ -24,7 +24,7 @@ public class CombatStatus {
 	private Map<Debuff, Integer> debuffs = new HashMap<>();
 
 	@Builder.Default
-	private List<Bleeding> bleding = new ArrayList<>();
+	private List<Bleeding> bleeding = new ArrayList<>();
 
 	@Builder.Default
 	private List<Penalty> penalty = new ArrayList<>();
@@ -38,6 +38,10 @@ public class CombatStatus {
 	@Builder.Default
 	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
 	private Integer reloadingActivityPercent = 0;
+
+	public Integer bleedingTotal() {
+		return bleeding.stream().map(e -> e.getHp()).reduce(0, (a, b) -> a + b);
+	}
 
 	public CombatStatus addDebuff(Debuff key, Integer value) {
 		if (debuffs.containsKey(key)) {

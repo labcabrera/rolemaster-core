@@ -15,8 +15,12 @@ public class AttackResult {
 	@Schema(description = "Result of the attack plus all modifiers.")
 	private Integer attackResult;
 
+	private String weaponTableId;
+
+	private Integer targetArmor;
+
 	@Schema(description = "Number of hit points caused by the attack.")
-	private Integer hpResult;
+	private Integer hp;
 
 	private AttackFumbleResult fumbleResult;
 

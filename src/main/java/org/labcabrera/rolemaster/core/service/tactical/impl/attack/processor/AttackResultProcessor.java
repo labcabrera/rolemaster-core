@@ -56,8 +56,8 @@ public class AttackResultProcessor {
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackResult attackResult) {
 		return tacticalCharacterRepository.findById(attack.getTarget())
 			.map(tc -> {
-				if (attackResult.getHpResult() != null) {
-					tc.getHp().subtract(attackResult.getHpResult());
+				if (attackResult.getHp() != null) {
+					tc.getHp().subtract(attackResult.getHp());
 				}
 				if (attackResult.getCriticalResult() != null && attackResult.getCriticalResult().getCriticalTableResult() != null) {
 					CriticalTableResult ctr = attackResult.getCriticalResult().getCriticalTableResult();
@@ -71,7 +71,7 @@ public class AttackResultProcessor {
 							.hp(ctr.getBleeding())
 							.description("Bleeding for critical: " + ctr.getText())
 							.build();
-						cs.getBleding().add(bleeding);
+						cs.getBleeding().add(bleeding);
 					}
 					for (Entry<Debuff, Integer> dse : ctr.getDebuffs().entrySet()) {
 						tc.getCombatStatus().addDebuff(dse.getKey(), dse.getValue());

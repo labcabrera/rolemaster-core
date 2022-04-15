@@ -166,22 +166,7 @@ public class OffensiveBonusProcessor {
 	private Optional<Integer> getBonusMeleePosition(AttackContext<?> context) {
 		if (context.getAction() instanceof TacticalActionMeleeAttack) {
 			TacticalActionMeleeAttack action = (TacticalActionMeleeAttack) context.getAction();
-			int result = 0;
-			switch (action.getPosition()) {
-			case FLANK:
-				result = 15;
-				break;
-			case REAR_FLANK:
-				result = 25;
-				break;
-			case REAR:
-				result = 35;
-				break;
-			case NORMAL:
-			default:
-				break;
-			}
-			return Optional.of(result);
+			return Optional.of(action.getFacing().getModifier());
 		}
 		return Optional.empty();
 	}

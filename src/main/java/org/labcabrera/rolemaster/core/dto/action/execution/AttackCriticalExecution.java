@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AttackCriticalExecution {
 
-	private String actionId;
-
 	private Integer roll;
 
 }

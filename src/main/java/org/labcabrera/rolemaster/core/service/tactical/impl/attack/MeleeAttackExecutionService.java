@@ -45,7 +45,7 @@ public class MeleeAttackExecutionService {
 		loadTarget(action, execution);
 		action.setAttackResult(new AttackResult());
 		action.setRoll(execution.getRoll());
-		action.setPosition(execution.getPosition());
+		action.setFacing(execution.getFacing());
 
 		MeleeAttackContext context = new MeleeAttackContext();
 		context.setAction(action);

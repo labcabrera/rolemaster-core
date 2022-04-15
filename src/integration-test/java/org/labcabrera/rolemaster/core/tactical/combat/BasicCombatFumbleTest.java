@@ -85,7 +85,7 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.target(cc02.getId())
-			.position(MeleeAttackFacing.NORMAL)
+			.facing(MeleeAttackFacing.NORMAL)
 			.roll(OpenRoll.of(4))
 			.build();
 
