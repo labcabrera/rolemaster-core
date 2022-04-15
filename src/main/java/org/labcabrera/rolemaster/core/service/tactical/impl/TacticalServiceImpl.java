@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.controller.converter.TacticalCharacterContextConverter;
+import org.labcabrera.rolemaster.core.converter.TacticalCharacterContextConverter;
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.controller.converter;
+package org.labcabrera.rolemaster.core.converter;
 
 import java.time.LocalDateTime;
 

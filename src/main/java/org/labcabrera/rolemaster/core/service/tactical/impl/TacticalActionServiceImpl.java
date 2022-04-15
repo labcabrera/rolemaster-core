@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl;
 
 import javax.validation.Valid;
 
-import org.labcabrera.rolemaster.core.controller.converter.TacticalActionConverter;
+import org.labcabrera.rolemaster.core.converter.TacticalActionConverter;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
