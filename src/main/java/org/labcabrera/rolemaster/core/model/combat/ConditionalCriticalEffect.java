@@ -38,7 +38,15 @@ public enum ConditionalCriticalEffect {
 
 	WITH_NOSE_GUARD("with-nose-guard"),
 
-	WITHOUT_NOSE_GUARD("without-nose-guard");
+	WITHOUT_NOSE_GUARD("without-nose-guard"),
+
+	WITH_SHOULDER_ARMOR("with-shoulder-armor"),
+
+	WITHOUT_SHOULDER_ARMOR("without-shoulder-armor"),
+
+	WITH_THROAT_PROTECTOR("with-throat-protector"),
+
+	WITHOUT_THROAT_PROTECTOR("without-throat-protector");
 
 	private String name;
 
