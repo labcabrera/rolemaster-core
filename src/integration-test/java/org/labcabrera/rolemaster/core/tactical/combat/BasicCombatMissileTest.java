@@ -55,13 +55,12 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 		assertEquals(1, actionQueue.size());
 
 		MissileAttackExecution missileAttackExecution = MissileAttackExecution.builder()
-			.actionId(a01.getId())
 			.distance(36)
 			.cover(MissileCover.NONE)
 			.roll(OpenRoll.of(110))
 			.build();
 
-		TacticalAction actionResolved = tacticalActionService.execute(missileAttackExecution).share().block();
+		TacticalAction actionResolved = tacticalActionService.execute(a01.getId(), missileAttackExecution).share().block();
 		assertTrue(actionResolved instanceof TacticalActionAttack);
 		TacticalActionAttack missileResolved01 = (TacticalActionAttack) actionResolved;
 

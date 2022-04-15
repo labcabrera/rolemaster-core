@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.controller.TacticalSessionActionController;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
@@ -40,6 +41,11 @@ public class TacticalSessionActionControllerImpl implements TacticalSessionActio
 	@Override
 	public Flux<TacticalAction> findActionsByRound(String roundId) {
 		return tacticalActionsRepository.findByRoundId(roundId);
+	}
+
+	@Override
+	public Mono<TacticalAction> declare(String actionId, @Valid TacticalActionExecution actionDeclaration) {
+		return tacticalActionService.execute(actionId, actionDeclaration);
 	}
 
 }

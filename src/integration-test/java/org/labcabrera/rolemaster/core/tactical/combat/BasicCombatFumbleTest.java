@@ -84,13 +84,12 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 		assertEquals(1, actionQueue.size());
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
-			.actionId(a01.getId())
 			.target(cc02.getId())
 			.position(MeleeAttackFacing.NORMAL)
 			.roll(OpenRoll.of(4))
 			.build();
 
-		TacticalAction taResolved01 = tacticalActionService.execute(meleeAttackExecution).share().block();
+		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 

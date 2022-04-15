@@ -67,10 +67,8 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	}
 
 	@Override
-	public Mono<Void> deleteById(String id) {
-		return tacticalSessionRepository.findById(id)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session not found.")))
-			.flatMap(tacticalSessionRepository::delete);
+	public Mono<Void> deleteById(String tacticalSessionId) {
+		return tacticalService.deleteSession(tacticalSessionId);
 	}
 
 	@Override
@@ -96,6 +94,21 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	@Override
 	public Mono<TacticalRound> startRound(String tacticalSessionId) {
 		return tacticalService.startRound(tacticalSessionId);
+	}
+
+	@Override
+	public Mono<TacticalRound> startInitiativeDeclaration(String tacticalSessionId) {
+		return this.findRound(tacticalSessionId).flatMap(e -> tacticalService.startInitiativeDeclaration(e.getId()));
+	}
+
+	@Override
+	public Mono<TacticalRound> declareInitiative(String tacticalSessionId, String characterId, Integer roll) {
+		return this.findRound(tacticalSessionId).flatMap(e -> tacticalService.setInitiative(e.getId(), characterId, roll));
+	}
+
+	@Override
+	public Mono<TacticalRound> startExecutionPhase(String tacticalSessionId) {
+		return this.findRound(tacticalSessionId).flatMap(e -> tacticalService.startExecutionPhase(e.getId()));
 	}
 
 }

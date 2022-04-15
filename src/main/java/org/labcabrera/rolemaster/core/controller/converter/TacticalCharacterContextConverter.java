@@ -16,6 +16,7 @@ public class TacticalCharacterContextConverter {
 		return TacticalCharacter.builder()
 			.tacticalSessionId(tacticalSession.getId())
 			.characterId(character.getId())
+			.shortDescription(character.getProfessionId() + " " + character.getLevel())
 			.isNpc(false)
 			.name(character.getName())
 			.hp(getHp(character.getMaxHp()))

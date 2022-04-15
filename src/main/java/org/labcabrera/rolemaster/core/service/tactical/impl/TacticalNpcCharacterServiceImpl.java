@@ -46,6 +46,7 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 
 		TacticalCharacter result = TacticalCharacter.builder()
 			.name(npcCustomization != null ? npcCustomization.getName() : null)
+			.shortDescription(npc.getShortDescription())
 			.tacticalSessionId(tacticalSessionId)
 			.level(level)
 			.isNpc(true)

@@ -1,7 +1,8 @@
 [
 	{
-		"id": "ork-fighter-melee-ii",
-		"name": "Ork - Fighter II - Melee",
+		"id": "orc-fighter-ii",
+		"name": "Orc - Fighter II",
+		"shortDescription": "Orc Fighter II",
 		"level": 2,
 		"levelBaseModifier": "B",
 		"unique": false,
@@ -26,8 +27,9 @@
 		"npcNameGeneratorGroup": "orc"
 	},
 	{
-		"id": "ork-fighter-ranged-ii",
-		"name": "Ork - Fighter II - Ranged",
+		"id": "orc-ranged-ii",
+		"name": "Orc - Ranged II",
+		"shortDescription": "Orc Ranged II",
 		"level": 2,
 		"levelBaseModifier": "B",
 		"unique": false,
@@ -58,8 +60,9 @@
 		"npcNameGeneratorGroup": "orc"
 	},
 	{
-		"id": "ork-fighter-melee-iv",
-		"name": "Ork - Fighter IV - Melee",
+		"id": "orc-fighter-iv",
+		"shortDescription": "Orc Fighter IV",
+		"name": "Orc - Fighter IV",
 		"level": 4,
 		"levelBaseModifier": "D",
 		"unique": false,
@@ -86,6 +89,7 @@
 	{
 		"id": "sauron",
 		"name": "Sauron",
+		"shortDescription": "Sauron",
 		"level": 180,
 		"unique": true,
 		"universeId": "middle-earth"
@@ -93,6 +97,7 @@
 	{
 		"id": "sauron-one-ring",
 		"name": "Sauron - One Ring",
+		"shortDescription": "Sauron",
 		"level": 360,
 		"unique": true,
 		"universeId": "middle-earth"

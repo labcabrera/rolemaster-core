@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TacticalRoundState {
 
-	ACTION_DECLARATION("actionDeclaration"),
+	ACTION_DECLARATION("action-declaration"),
 
-	INITIATIVE_DECLARATION("actionInitiativeDeclaration"),
+	INITIATIVE_DECLARATION("initiative-declaration"),
 
-	ACTION_RESOLUTION("actionResolution"),
+	ACTION_RESOLUTION("action-resolution"),
 
 	CLOSED("closed");
 

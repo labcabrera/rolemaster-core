@@ -28,6 +28,8 @@ public class TacticalCharacter {
 
 	private String name;
 
+	private String shortDescription;
+
 	private String characterId;
 
 	private Integer level;
