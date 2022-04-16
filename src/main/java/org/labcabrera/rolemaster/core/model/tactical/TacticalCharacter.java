@@ -57,9 +57,9 @@ public class TacticalCharacter {
 
 	private Map<String, Integer> npcSkills;
 
-	private Integer armorType;
+	private Integer armor;
 
-	private Integer baseDefensiveBonus;
+	private Integer defensiveBonus;
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();

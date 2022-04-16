@@ -106,7 +106,7 @@ public class OffensiveBonusProcessor {
 				return 0;
 			}
 		}
-		return -target.getBaseDefensiveBonus();
+		return -target.getDefensiveBonus();
 	}
 
 	private int getBonusHp(TacticalCharacter source) {
