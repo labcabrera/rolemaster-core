@@ -31,6 +31,10 @@ public enum Debuff {
 	CANT_PARRY("cant-parry"),
 
 	MUST_PARRY("must-parry"),
+	
+	INSTANT_DEATH("instant-death"),
+	
+	MORTAL_DAMAGE("mortal-damage"),
 
 	SHOCK("shock");
 
