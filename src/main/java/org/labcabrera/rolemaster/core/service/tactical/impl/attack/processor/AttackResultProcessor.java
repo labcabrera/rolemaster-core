@@ -12,6 +12,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +32,9 @@ public class AttackResultProcessor {
 	@Autowired
 	private TacticalCharacterRepository tacticalCharacterRepository;
 
+	@Autowired
+	private TacticalLogService logService;
+
 	public Mono<TacticalActionAttack> apply(TacticalActionAttack attack) {
 		log.info("Processing attack result for action {} ({})", attack.getId(), attack.getState());
 		if (attack.isFlumbe()) {
@@ -46,7 +50,8 @@ public class AttackResultProcessor {
 			.map(e -> attack)
 			.flatMap(this::updateSource)
 			.map(e -> attack)
-			.flatMap(this::updateAttack);
+			.flatMap(this::updateAttack)
+			.flatMap(logService::logAttackResult);
 	}
 
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack) {

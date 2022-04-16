@@ -13,8 +13,6 @@ public interface TacticalActionRepository extends ReactiveMongoRepository<Tactic
 
 	Flux<TacticalAction> findByRoundId(String roundId);
 
-	Flux<TacticalAction> findByRoundIdOrderByEffectiveInitiativeDesc(String roundId);
-
 	Flux<TacticalAction> findByRoundIdAndSource(String roundId, String targetId);
 
 }

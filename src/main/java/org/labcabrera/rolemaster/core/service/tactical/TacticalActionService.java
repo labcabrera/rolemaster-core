@@ -20,6 +20,6 @@ public interface TacticalActionService {
 
 	Mono<TacticalAction> executeCritical(String actionId, AttackCriticalExecution execution);
 
-	Mono<TacticalAction> executeFumble(FumbleExecution execution);
+	Mono<TacticalAction> executeFumble(String actionId, FumbleExecution execution);
 
 }

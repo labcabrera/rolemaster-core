@@ -62,8 +62,6 @@ public abstract class TacticalAction {
 
 	private String notes;
 
-	private Integer effectiveInitiative;
-
 	@Builder.Default
 	private Map<InitiativeModifier, Integer> initiativeModifiers = new LinkedHashMap<>();
 

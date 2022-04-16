@@ -1,6 +1,5 @@
 package org.labcabrera.rolemaster.core.dto.action.execution;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -13,9 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class FumbleExecution {
-
-	@NotBlank
-	private String actionId;
 
 	@NotNull
 	private Integer roll;

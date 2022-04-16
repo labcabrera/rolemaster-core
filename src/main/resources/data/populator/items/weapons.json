@@ -70,5 +70,18 @@
 				"modifier": -70
 			}
 		]
+	},
+	{
+		"id": "short-sword",
+		"name": "Short Sword",
+		"type": "weapon",
+		"count": 1,
+		"_commonWeight": {
+			"min": 1.500,
+			"max": 2.500
+		},
+		"fumble": 2,
+		"roture": [1,2,3,4,5,6],
+		"resistance": [74,86]
 	}
 ]

@@ -1,20 +1,18 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.labcabrera.rolemaster.core.converter.TacticalCharacterContextConverter;
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.message.Message.Errors;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRoundState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalSessionLog;
-import org.labcabrera.rolemaster.core.model.tactical.action.InitiativeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.NpcRepository;
@@ -23,6 +21,8 @@ import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionLogRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalInitiativeService;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalNpcCharacterService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalRoundService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
@@ -72,7 +72,10 @@ public class TacticalServiceImpl implements TacticalService {
 	private NpcRepository npcRepository;
 
 	@Autowired
-	private TacticalSessionLogRepository logRepository;
+	private TacticalLogService logService;
+
+	@Autowired
+	private TacticalInitiativeService initiativeService;
 
 	@Override
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
@@ -83,7 +86,7 @@ public class TacticalServiceImpl implements TacticalService {
 	public Mono<TacticalCharacter> addCharacter(String tacticalSessionId, String characterId) {
 		return tacticalSessionRepository
 			.findById(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
 			.zipWith(characterInfoRepository.findById(characterId))
 			.map(pair -> tacticalCharacterContextConverter.convert(pair.getT1(), pair.getT2()))
 			.flatMap(tacticalCharacterRepository::save);
@@ -98,9 +101,9 @@ public class TacticalServiceImpl implements TacticalService {
 	public Mono<TacticalCharacter> addNpc(String tacticalSessionId, String npcId, NpcCustomization npcCustomization) {
 		return tacticalSessionRepository
 			.findById(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
 			.zipWith(npcRepository.findById(npcId))
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid NPC identifier " + npcId)))
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.invalidNpcId(npcId))))
 			.flatMap(pair -> npcCharacterService.create(tacticalSessionId, pair.getT2(), npcCustomization))
 			.flatMap(tacticalCharacterRepository::save);
 	}
@@ -108,7 +111,7 @@ public class TacticalServiceImpl implements TacticalService {
 	@Override
 	public Mono<TacticalRound> startRound(String tacticalSessionId) {
 		return tacticalSessionRepository.findById(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Invalid tactical session id.")))
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
 			.map(e -> {
 				TacticalRound round = TacticalRound.builder()
 					.state(TacticalRoundState.ACTION_DECLARATION)
@@ -125,14 +128,15 @@ public class TacticalServiceImpl implements TacticalService {
 					a.setRound(b.getRound() + 1);
 					return a;
 				})
-			.flatMap(tacticalRoundRepository::save);
+			.flatMap(tacticalRoundRepository::save)
+			.flatMap(e -> logService.startRound(e, tacticalSessionId, e.getRound()));
 	}
 
 	@Override
 	public Mono<TacticalRound> getCurrentRound(String tacticalSessionId) {
 		return tacticalRoundRepository
 			.findFirstByTacticalSessionIdOrderByRoundDesc(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical round not found for session " + tacticalSessionId)));
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.tacticalSessionHasNoRound(tacticalSessionId))));
 	}
 
 	@Override
@@ -145,99 +149,43 @@ public class TacticalServiceImpl implements TacticalService {
 	@Override
 	public Flux<TacticalAction> getActionQueue(String roundId) {
 		return tacticalRoundRepository.findById(roundId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Missing round")))
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.roundNotFound(roundId))))
 			.map(round -> {
 				if (round.getState() != TacticalRoundState.ACTION_RESOLUTION) {
-					throw new BadRequestException("Invalid round state");
+					throw new BadRequestException(Errors.INVALID_ROUND_STATE);
 				}
 				return round;
 			})
-			.thenMany(actionRepository.findByRoundIdOrderByEffectiveInitiativeDesc(roundId));
+			.thenMany(actionRepository.findByRoundId(roundId));
 	}
 
 	@Override
 	public Mono<TacticalRound> startInitiativeDeclaration(String roundId) {
-		return tacticalRoundRepository.findById(roundId)
-			.map(round -> {
-				if (round.getState() != TacticalRoundState.ACTION_DECLARATION) {
-					throw new BadRequestException("Invalid round state");
-				}
-				round.setState(TacticalRoundState.INITIATIVE_DECLARATION);
-				round.getMetadata().setUpdated(LocalDateTime.now());
-				return round;
-			})
-			.flatMap(tacticalRoundRepository::save)
-			.flatMap(e -> this.<TacticalRound>log(e, e.getTacticalSessionId(), e.getRound(), "Starting initiative declaration"));
+		return initiativeService.startInitiativeDeclaration(roundId);
 	}
 
 	@Override
 	public Mono<TacticalRound> setInitiative(String roundId, String character, Integer initiativeRoll) {
-		return tacticalRoundRepository.findById(roundId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Round not found")))
-			.map(action -> {
-				action.getInitiativeRollMap().put(character, initiativeRoll);
-				return action;
-			})
-			.flatMap(tacticalRoundRepository::save);
+		return initiativeService.setInitiative(roundId, character, initiativeRoll);
 	}
 
 	@Override
 	public Mono<TacticalRound> startExecutionPhase(String roundId) {
 		return tacticalRoundRepository.findById(roundId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Round not found")))
-			.zipWith(actionRepository.findByRoundId(roundId).collectList())
-			.map(pair -> {
-				List<TacticalAction> actions = pair.getT2();
-				TacticalRound round = pair.getT1();
-				for (TacticalAction action : actions) {
-					if (!round.getInitiativeRollMap().containsKey(action.getSource())) {
-						throw new BadRequestException("Missing initiative declaration for character " + action.getSource());
-					}
-				}
-				return pair;
-			})
-			.map(pair -> {
-				TacticalRound round = pair.getT1();
-				List<TacticalAction> actions = pair.getT2();
-				for (TacticalAction action : actions) {
-					if (!round.getInitiativeRollMap().containsKey(action.getSource())) {
-						throw new BadRequestException("Missing initiative for action " + action.getId());
-					}
-					Integer roll = round.getInitiativeRollMap().get(action.getSource());
-					action.getInitiativeModifiers().put(InitiativeModifier.ROLL, roll);
-					//TODO load all initiatives
-					Integer effectiveInitiative = 11;
-					action.setEffectiveInitiative(effectiveInitiative);
-				}
-				round.setState(TacticalRoundState.ACTION_RESOLUTION);
-				round.getMetadata().setUpdated(LocalDateTime.now());
-				return pair;
-			})
-			.flatMap(pair -> {
-				return actionRepository.saveAll(pair.getT2())
-					.then(tacticalRoundRepository.save(pair.getT1()));
-			});
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.ROUND_NOT_FOUND_T)))
+			.flatMap(initiativeService::loadActionInitiatives);
 	}
 
 	//TODO delete actions
 	@Override
 	public Mono<Void> deleteSession(String tacticalSessionId) {
 		return tacticalSessionRepository.findById(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session not found.")))
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.tacticalSessionNotFound(tacticalSessionId))))
 			.then(tacticalRoundRepository.deleteByTacticalSessionId(tacticalSessionId))
 			.then(tacticalCharacterRepository.deleteByTacticalSessionId(tacticalSessionId))
 			.then(tacticalSessionLogRepository.deleteByTacticalSessionId(tacticalSessionId))
-			.then(tacticalSessionRepository.deleteById(tacticalSessionId));
-	}
-
-	private <E> Mono<E> log(E e, String tacticalSessionId, Integer round, String message) {
-		TacticalSessionLog logEntry = TacticalSessionLog.builder()
-			.tacticalSessionId(tacticalSessionId)
-			.message(message)
-			.round(round)
-			.created(LocalDateTime.now())
-			.build();
-		return logRepository.insert(logEntry).map(entry -> e);
+			.then(tacticalSessionRepository.deleteById(tacticalSessionId))
+			.then(logService.deleteByTacticalSessionId(tacticalSessionId));
 	}
 
 }

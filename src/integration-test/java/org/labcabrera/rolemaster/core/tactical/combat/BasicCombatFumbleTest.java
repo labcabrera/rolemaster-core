@@ -97,11 +97,10 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 		assertEquals(TacticalActionState.PENDING_FUMBLE_RESOLUTION, meleeResolved01.getState());
 
 		FumbleExecution fumbleExecution = FumbleExecution.builder()
-			.actionId(taResolved01.getId())
 			.roll(55)
 			.build();
 
-		TacticalAction taResolved02 = tacticalActionService.executeFumble(fumbleExecution).share().block();
+		TacticalAction taResolved02 = tacticalActionService.executeFumble(taResolved01.getId(), fumbleExecution).share().block();
 
 		assertNotNull(taResolved02);
 	}

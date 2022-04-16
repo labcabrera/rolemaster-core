@@ -99,8 +99,8 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> executeFumble(FumbleExecution execution) {
-		return actionRepository.findById(execution.getActionId())
+	public Mono<TacticalAction> executeFumble(String actionId, FumbleExecution execution) {
+		return actionRepository.findById(actionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
 			.map(e -> (TacticalActionAttack) e)
 			.map(e -> fumbleAttackExecutionService.apply(e, execution))

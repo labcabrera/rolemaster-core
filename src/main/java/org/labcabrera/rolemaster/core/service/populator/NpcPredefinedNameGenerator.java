@@ -29,6 +29,7 @@ public class NpcPredefinedNameGenerator implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		Map<String, String> groups = new LinkedHashMap<>();
 		groups.put("orc", "data/populator/npcs/names/names-orcs.txt");
+		groups.put("norse", "data/populator/npcs/names/names-norse-gods.txt");
 
 		List<NpcPredefinedName> entities = new ArrayList<>();
 
