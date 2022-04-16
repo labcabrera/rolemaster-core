@@ -5,6 +5,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.HasRanks;
 import org.labcabrera.rolemaster.core.model.skill.SkillProgressionType;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -20,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CharacterSkill {
+public class CharacterSkill implements HasRanks {
 
 	private String skillId;
 

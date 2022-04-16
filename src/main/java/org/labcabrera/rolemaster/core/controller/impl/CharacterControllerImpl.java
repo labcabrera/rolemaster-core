@@ -12,6 +12,7 @@ import org.labcabrera.rolemaster.core.model.character.inventory.CharacterInvento
 import org.labcabrera.rolemaster.core.repository.CharacterInventoryRepository;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
+import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -34,6 +35,9 @@ public class CharacterControllerImpl implements CharacterController {
 
 	@Autowired
 	private CharacterAddSkillService addSkillService;
+
+	@Autowired
+	private CharacterUpdateSkillService characterUpdateSkillService;
 
 	@Override
 	public Mono<CharacterInfo> findById(String id) {
@@ -63,8 +67,7 @@ public class CharacterControllerImpl implements CharacterController {
 
 	@Override
 	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgrade request) {
-		// TODO Auto-generated method stub
-		return null;
+		return characterUpdateSkillService.updateRanks(characterId, request);
 	}
 
 	@Override
