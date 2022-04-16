@@ -1,0 +1,30 @@
+{
+	"results": {
+		"routine": {
+			"-201": {
+				"result": 0,
+				"hp": -3,
+				"debuffs": {
+					"downed": 3
+				},
+				"text": "Fall down. +2 hits. You are out 3 dounds."
+			}
+		},
+		"easy": {
+		},
+		"light": {
+		},
+		"medium": {
+		},
+		"hard": {
+		},
+		"very-hard": {
+		},
+		"extremely-hard": {
+		},
+		"sheer-folly": {
+		},
+		"absurd": {
+		}
+	}
+}
