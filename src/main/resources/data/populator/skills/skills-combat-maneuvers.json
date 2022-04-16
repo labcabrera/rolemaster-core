@@ -34,6 +34,7 @@
         "categoryId": "combat-maneuvers",
         "progressionType": "standard",
         "customizableOptions": 2,
+        "customizationRestriction": "weapon-skill",
         "description": "This skill allows a combatant to fight with two weapons simultaneously. He is allowed to make 2 weapon attacks for each melee attack action, and may engage two opponents providing neither opponent is receiving any positional combat modifiers for their OB (e.g., If either opponent is receiving +15 for Flank Attack or +20 for Rear Attack the individual cannot attack both opponents in the same round). Two Weapon Combat skill must be developed for each individual two-weapon combination (e.g., shortsword/handaxe, rapier/dagger, etc.). A character's skill rank with a two-weapon combination may not exceed his skill rank of either of the individual weapons (e.g., if a Fighter has 5 skill ranks with a dagger and 9 skill ranks with a short sword, he may only have 5 skill ranks with his short sword/dagger two weapon combination). The OB for each weapon attack is equal to the skill bonus for the Two-weapon Combat skill for the combination of those two weapons."
     },
 	{
@@ -54,6 +55,7 @@
         "categoryId": "combat-maneuvers",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "weapon-skill",
         "description": "This skill provides a limit for applying one’s melee OB against an opponent to one’s flank or rear without turning or changing position. The OB of an attack made in this fashion can not exceed the attacker’s Reverse Stroke skill bonus. Note that this skill must be developed separately for each weapon category."
     },
 	{

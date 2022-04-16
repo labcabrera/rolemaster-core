@@ -7,6 +7,7 @@
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for the care and feeding of animals including bedding, hobbling, etc. This skill must be developed separately for each different type of animal. This skill is normally used in the handling of one animal at a time."
     },
     {
@@ -17,6 +18,7 @@
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for training a particular type of animal, such as birds of prey, dogs, bears, big cats, etc. Skill normally results in the taming of the animal. This skill must be developed separately for each different type of animal."
     },
     {
@@ -27,6 +29,7 @@
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "As in Riding, skill ranks in driving must be developed separately for different types of vehicles. Vehicles are defined as animals pulling such objects as wagons, carts, sleighs, etc. One skill rank allows basic understanding of the controls; subsequent ranks reflect increased ability and some quickness in maneuvers."
     },
     {
@@ -37,6 +40,7 @@
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "modifiers": [
         	{
         		"key": "Activity used for Riding: 5%",

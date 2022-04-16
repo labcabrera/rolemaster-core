@@ -3,6 +3,9 @@ package org.labcabrera.rolemaster.core.service.character;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
@@ -29,7 +32,7 @@ public class CharacterAddSkillService {
 	@Autowired
 	private SkillRepository skillRepository;
 
-	public Mono<CharacterInfo> addSkill(String characterId, AddSkill request) {
+	public Mono<CharacterInfo> addSkill(@NotEmpty String characterId, @Valid AddSkill request) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
 			.zipWith(skillRepository.findById(request.getSkillId()))

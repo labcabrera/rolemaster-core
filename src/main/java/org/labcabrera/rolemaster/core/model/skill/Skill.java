@@ -33,6 +33,8 @@ public class Skill {
 	@Builder.Default
 	private Integer customizableOptions = 0;
 
+	private SkillCustomizationRestriction customizationRestriction;
+
 	@Builder.Default
 	private Boolean loadOnNewCharacters = false;
 

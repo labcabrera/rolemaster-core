@@ -6,6 +6,8 @@
 		"loadOnNewCharacters": false,
 		"categoryId": "communication",
 		"progressionType": "standard",
+		"customizableOptions": 1,
+        "customizationRestriction": "language",
 		"description": "Language spoken."
 	},
 	{
@@ -15,6 +17,8 @@
 		"loadOnNewCharacters": false,
 		"categoryId": "communication",
 		"progressionType": "standard",
+		"customizableOptions": 1,
+        "customizationRestriction": "language",
 		"description": "Language spoken."
 	},
 	{

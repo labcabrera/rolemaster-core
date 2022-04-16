@@ -43,6 +43,7 @@
         "categoryId": "artistic-active",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for using a specific instrument, such as flute, drum, lute, etc. It may also be used to recognize musical patterns or rhythms, notes, etc. Note that separate development is required for skill with each instrument."
     },
     {
