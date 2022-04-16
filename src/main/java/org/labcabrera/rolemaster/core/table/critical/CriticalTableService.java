@@ -23,9 +23,6 @@ public class CriticalTableService {
 
 	private Map<CriticalType, CriticalTable> tables = new HashMap<>();
 
-	@Autowired
-	private CriticalTableS criticalTableS;
-
 	@PostConstruct
 	public void loadTables() {
 		tables.put(CriticalType.P, loadTable("data/populator/critical/tables/critical-table-p.json"));
@@ -33,10 +30,6 @@ public class CriticalTableService {
 	}
 
 	public CriticalTableResult getResult(CriticalType type, CriticalSeverity severity, Integer roll) {
-		//TODO
-		if (type == CriticalType.S) {
-			return criticalTableS.getResult(severity, roll);
-		}
 		if (!tables.containsKey(type)) {
 			throw new NotImplementedException("Not implemented critical type " + type);
 		}

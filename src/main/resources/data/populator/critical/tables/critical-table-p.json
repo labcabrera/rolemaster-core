@@ -12,7 +12,9 @@
 			"11-15": {
 				"text": "Strike causes foe to flinch. You gain initiative next round.",
 				"hp": 1,
-				"hasInitiative": true
+				"buffs": {
+                	"has-initiative": 1
+                }
 			},
 			"16-20": {
 				"text": "Foe steps back defensively.",
@@ -83,9 +85,9 @@
 					"bonus": 10,
 					"rounds": 1
 				},
-				"otherEffects": [
-					"Arm useless"
-				]
+				"injuries": {
+					"arm-useless": "Critical effect."
+				}
 			},
 			"67-70": {
 				"text": "Strike along foe's neck.",
@@ -186,7 +188,9 @@
 			},
 			"100-100": {
 				"text": "Strike through neck. Sever vein and artery. Foe cannot breath. Foe drops and dies of heart failure.",
-				"instantDeath": true
+				"debuffs": {
+					"instant-death": 1
+				}
 			}
 		},
 		"B": {
@@ -199,7 +203,9 @@
 			},
 			"11-15": {
 				"text": "Foe questions his resolve. You gain initiative next round.",
-				"hasInitiative": true
+				"buffs": {
+                	"has-initiative": 1
+                }
 			},
 			"16-20": {
 				"text": "For steps back and avoids the worst.",
@@ -218,7 +224,9 @@
 				"debuffs": {
 					"must-parry": 2
 				},
-				"hasInitiative": true
+				"buffs": {
+                	"has-initiative": 1
+                }
 			},
 			"36-45": {
 				"text": "Cheap shot to foe's shin.",
@@ -277,9 +285,9 @@
 					"stunned": 4,
 					"must-parry": 2
 				},
-				"otherEffects": [
-					"Arm is useless"
-				]
+				"injuries": {
+					"arm-useless": "Critical effect."
+				}
 			},
 			"67-70": {
 				"text": "Strike to foe's neck. It's not enough for a kill.",
@@ -338,7 +346,9 @@
 						}
 					},
 					"without-helmet": {
-						"instantDeath": true
+						"debuffs": {
+							"instant-death": 1
+						}
 					}
 				}
 			},
@@ -368,8 +378,8 @@
 			},
 			"96-99": {
 				"text": "Strike through foe's cheek and throat. Foe drops and dies after 9 rounds of incapacity",
-				"deathAfterRounds": 9,
 				"debuffs": {
+					"mortal-damage": 9,
 					"shock": 9
 				},
 				"bonus": {
@@ -378,8 +388,13 @@
 			},
 			"100-100": {
 				"text": "Strike plunges into foe's eye. Foe dies instantly. Foe remains standing for a moment until he realizes this. All allies get +10 for 1 round.",
-				"instantDeath": true,
-				"specialEffect": true
+				"bonus": {
+					"bonus": 10,
+					"rounds": 1
+				},
+				"debuffs": {
+					"instant-death": 1
+				}
 			}
 		},
 		"C": {
@@ -394,7 +409,9 @@
 			"11-15": {
 				"text": "Foe's evasion puts him out of position. You gain initiative next round.",
 				"hp": 5,
-				"hasInitiative": true
+				"buffs": {
+                	"has-initiative": 1
+                }
 			},
 			"16-20": {
 				"text": "Blow to foe's side. If foe has a belt it is severed.",
@@ -546,7 +563,9 @@
 						]
 					},
 					"without-helmet": {
-						"instantDeath": true
+						"debuffs": {
+							"instant-death": 1
+						}
 					}
 				}
 			},
@@ -554,13 +573,15 @@
 				"text": "Strike to chest. If foe has plate chest armor, he drops and dies in 9 rounds. If not, he dies instantly.",
 				"conditionalEffects": {
 					"with-plate-chest": {
-						"deathAfterRounds": 9,
 						"debuffs": {
+							"mortal-damage": 9,
 							"shock": 9
 						}
 					},
 					"without-plate-chest": {
-						"instantDeath": true
+						"debuffs": {
+							"instant-death": 1
+						}
 					}
 				}
 			},
@@ -569,13 +590,15 @@
 				"debuffs": {
 					"shock": 100
 				},
-				"otherEffects": [
-					"Foe is paralyzed from the neck down."
-				]
+				"injuries": {
+					"paralyzed-neck-down": "Critical effect."
+				}
 			},
 			"100-100": {
 				"text": "Shot through both ears proves effective. Foe dies instantly. Pretty shot.",
-				"instantDeath": true,
+				"debuffs": {
+					"instant-death": 1
+				},
 				"bonus": {
 					"bonus": 20,
 					"rounds": 6
@@ -600,7 +623,9 @@
 			},
 			"16-20": {
                 "text": "Precise strike to foe's side. You have the initiative for 1 round.",
-                "hasInitiative": true,
+                "buffs": {
+                	"has-initiative": 1
+                },
                 "penalty": {
                     "penalty": -10
                 }
@@ -685,7 +710,9 @@
                         }
                     },
                     "without-helmet": {
-                        "instantDeath": true
+						"debuffs": {
+							"instant-death": 1
+						}
                     }
                 }
 			},
@@ -718,9 +745,9 @@
                 "debuffs":{
                     "stunned": 5
                 },
-                "otherEffects": [
-                    "Arm is useless."
-                ]
+				"injuries": {
+					"arm-useless": "Critical effect."
+				}
 			},
 			"81-85": {
                 "text": "Major abdomenal wound. Blood pours out in frightening quantities.",
@@ -736,29 +763,29 @@
 			},
 			"86-90": {
                 "text": "Strike through foes kidneys. Foe is down and immobile for 2 hours, then he dies.",
-                "deathAfterRounds": 720,
                 "debuffs": {
+					"mortal-damage": 720,
                     "unconscious": 720
-                },
-                "otherEffects": [
-                    "Die after 2 hours."
-                ]
+                }
 			},
 			"91-95": {
                 "text": "Strike through foe's side spills his guts on the floor. Foe fights on normally for 6 and sticks out the other side. Foe dies in rounds, then dies.",
-                "deathAfterRounds": 6
+				"debuffs": {
+					"mortal-damage": 6
+				}
 			},
 			"96-99": {
                 "text": "Strike plunges into doomed foe's chest and emerges from the other side. Foe drops and dies in 6 rounds.",
-                "deathAfterRounds": 6,
                 "debuffs": {
+					"mortal-damage": 6,
                     "shock": 6
                 }
 			},
 			"100-100": {
                 "text": "Strike through brain makes life difficult for foe. You have a half round left to act.",
-                "instantDeath": true,
-                "specialEffect": true
+				"debuffs": {
+					"instant-death": 1
+				}
 			}
 		},
 		"E": {
@@ -769,7 +796,9 @@
 			"06-10": {
                 "text": "Shot unbalances foe. You have initiative.",
                 "hp": 5,
-                "hasInitiative": true
+                "buffs": {
+                	"has-initiative": 1
+                }
 			},
 			"11-15": {
                 "text": "Foe is fearful of your skill and steps back from your mighty onslaught.",
@@ -863,8 +892,8 @@
 			},
 			"66-66": {
                 "text": "Strike through both of foe's lungs. Foe drops and passes out. He dies 6 rounds later.",
-                "deathAfterRounds": 6,
                 "debuffs": {
+					"mortal-damage": 6,
                     "shock": 6
                 },
                 "bonus": {
@@ -877,9 +906,9 @@
                 "debuffs": {
                     "stunned": 6
                 },
-                "otherEffects": [
-                    "Arm is useless."
-                ]
+				"injuries": {
+					"arm-useless": "Critical effect."
+				}
 			},
 			"71-75": {
                 "text": "Strike plunges into leg with deadly effect. Foe drops, gripping his leg in pain.",
@@ -898,41 +927,43 @@
                     "stunned": 3,
                     "cant-parry": 3
                 },
-                "otherEffects": [
-                    "Arm is useless."
-                ]
+				"injuries": {
+					"arm-useless": "Arm broken. Critical effect."
+				}
 			},
 			"81-85": {
                 "text": "Strike to foe's back severs a vein. Foe goes to his knees and dies in 12 rounds.",
-                "deathAfterRounds": 12,
                 "debuffs": {
+					"mortal-damage": 12,
                     "shock": 12
                 }
 			},
 			"86-90": {
                 "text": "Strike plunges in just below foe's collarbone Foe drops and dies in 12 rounds.",
-                "deathAfterRounds": 12,
                 "debuffs": {
+					"mortal-damage": 12,
                     "shock": 12
                 }
 			},
 			"91-95": {
                 "text": "Your weapon passes through the arm and sticks out the other side. Foe dies in 12 rounds.",
-                "deathAfterRounds": 12,
                 "debuffs": {
+					"mortal-damage": 12,
                     "shock": 12
                 }
 			},
 			"96-99": {
                 "text": "Shot through heart sends foe reeling back 10 feet to a place suitable for death. Your weapon is stuck in reeling foe.",
-                "deathAfterRounds": 12,
                 "debuffs": {
-                    "stunned": 12
+                	"mortal-damage": 12,
+                    "shock": 12
                 }
 			},
 			"100-100": {
                 "text": "Strike to foe's eye. Foe dies instantly. Carry on soldier.",
-                "instantDeath": true,
+				"debuffs": {
+					"instant-death": 1
+				},
                 "bonus": {
                     "bonus": 25
                 }

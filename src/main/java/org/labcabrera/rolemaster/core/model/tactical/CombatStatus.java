@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.model.tactical;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,9 @@ import lombok.NoArgsConstructor;
 public class CombatStatus {
 
 	@Builder.Default
+	private Map<Buff, Integer> buffs = new HashMap<>();
+
+	@Builder.Default
 	private Map<Debuff, Integer> debuffs = new HashMap<>();
 
 	@Builder.Default
@@ -32,6 +36,10 @@ public class CombatStatus {
 	@Builder.Default
 	private List<AttackBonus> bonus = new ArrayList<>();
 
+	@Builder.Default
+	private Map<InjuryType, String> injuries = new LinkedHashMap<>();
+
+	@Deprecated
 	@Builder.Default
 	private List<String> otherEfects = new ArrayList<>();
 

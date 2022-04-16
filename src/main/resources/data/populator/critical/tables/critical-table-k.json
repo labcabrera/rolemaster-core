@@ -11,7 +11,9 @@
 			"11-15": {
 				"text": "Foe evades your much of your swing. You have initiative.",
 				"hp": 3,
-				"hasInitiative": true
+				"buffs": {
+					"has-initiative": 1
+				}
 			},
 			"16-20": {
 				"text": "Foe steps back 5 feet. He is out of position.",
@@ -33,6 +35,9 @@
 			},
 			"36-45": {
 				"text": "Bust foe's shin. You have initiative.",
+				"buffs": {
+					"has-initiative": 1
+				},
 				"conditionalEffects": {
 					"with-leg-greave": {
 						"hp": 9
@@ -102,9 +107,9 @@
 					"stunned": 2,
 					"cant-parry": 2
 				},
-				"otherEffects": [
-					"Arm is useless."
-				]
+				"injuries": {
+					"arm-useless": "Critical effect."
+				}
 			},
 			"67-70": {
 				"text": "Solid strike to foe's chest. Knocks the breath out of foe.",
@@ -134,9 +139,9 @@
 						]
 					},
 					"without-shield": {
-						"otherEffects": [
-							"Arm is broken."
-						]
+						"injuries": {
+							"arm-useless": "Arm Broken. Critical effect."
+						}
 					}
 				}
 			},
@@ -152,7 +157,7 @@
 				}
 			},
 			"86-90": {
-				"text": "Strike foe in lower back. Muscles and cartilege are damaged.",
+				"text": "Strike foe in lower back. Muscles and cartilage are damaged.",
 				"hp": 12,
 				"debuffs": {
 					"stunned": 3,
@@ -160,6 +165,9 @@
 				},
 				"penalty": {
 					"penalty": -25
+				},
+				"injuries": {
+					"back-muscle-and-cartilage-damaged": "Critical effect."
 				}
 			},
 			"91-95": {
@@ -180,6 +188,9 @@
 							"cant-parry": 3
 						}
 					}
+				},
+				"injuries": {
+					"break-nose": "Critical effect."
 				}
 			},
 			"96-99": {
@@ -195,14 +206,18 @@
 						}
 					},
 					"without-helmet": {
-						"instantDeath": true
+						"debuffs": {
+							"instant-death": 1
+						}
 					}
 				}
 			},
 			"100-100": {
 				"text": "Crush foe's jaw. Drive bone through brain. Foe dies instantly.",
 				"hp": 50,
-				"instantDeath": true,
+				"debuffs": {
+					"instant-death": 1
+				},
 				"bonus": {
 					"bonus": 20,
 					"rounds": 1
@@ -220,7 +235,9 @@
 			"11-15": {
 				"text": "Foe evades frantically. You have the initiative next round.",
 				"hp": 3,
-				"hasInitiative": true
+				"buffs": {
+					"has-initiative": 1
+				}
 			},
 			"16-20": {
 				"text": "Foe is concerned with his own preservation. He steps back 5 feet.",
@@ -246,7 +263,9 @@
 			},
 			"36-45": {
 				"text": "Blow to foe's left calf. You gain initiative.",
-				"hasInitiative": true,
+				"buffs": {
+					"has-initiative": 1
+				},
 				"conditionalEffects": {
 					"with-leg-greave": {
 						"hp": 9,
@@ -308,9 +327,9 @@
 					"stunned": 3,
 					"cant-parry": 3
 				},
-				"otherEffects": [
-					"Arm is useless."
-				]
+				"injuries": {
+					"arm-useless": "Arm broken. Critical effect."
+				}
 			},
 			"67-70": {
 				"text": "Bloom! Shot strikes foe's upper chest. Foe stumbles.",
@@ -340,9 +359,9 @@
 				"debuffs": {
 					"stunned": 1
 				},
-				"otherEffects": [
-					"Hand is useless."
-				]
+				"injuries": {
+					"hand-broken": "Critical effect."
+				}
 			},
 			"81-85": {
 				"text": "Blow thunders as it connects. Foe's ribs crackle in response. It hurts.",
@@ -373,16 +392,16 @@
 				},
 				"conditionalEffects": {
 					"without-helmet": {
-						"otherEffects": [
-							"Falls into a coma for 3 weeks."
-						]
+						"injuries": {
+							"coma": "3 weeks. Critical effect."
+						}
 					}
 				}
 			},
 			"96-99": {
 				"text": "Blast foe's chest. Send ribcage into heart. Foe drops and dies in 6 rounds.",
-				"deathAfterRounds": 6,
 				"debuffs": {
+					"mortal-damage": 6,
 					"shock": 6
 				},
 				"bonus": {
@@ -392,13 +411,12 @@
 			"100-100": {
 				"text": "Blow snaps neck. Foe is paralyzed from the shoulders down.",
 				"hp": 25,
-				"specialEffect": true,
 				"debuffs": {
 					"stunned": 15
 				},
-				"otherEffects": [
-					"Paralyzed from the shoulders down."
-				]
+				"injuries": {
+					"paralyzed-neck-down": "Critical effect."
+				}
 			}
 		},
 		"C": {
@@ -412,8 +430,10 @@
 			},
 			"11-15": {
 				"text": "Really solid strike to foe's shield side. You have initiative.",
-				"hp": 7,
-				"hasInitiative": true
+				"buffs": {
+					"has-initiative": 1
+				},
+				"hp": 7
 			},
 			"16-20": {
 				"text": "Blow to foe's waist. He spins sideways.",
@@ -435,8 +455,10 @@
 			},
 			"36-45": {
 				"text": "Catch foe in lower leg. You gain initiative, while foe regains footing.",
-				"hasInitiative": true,
 				"hp": 9,
+				"buffs": {
+					"has-initiative": 1
+				},
 				"penalty": {
 					"penalty": -25,
 					"rounds": 2
@@ -444,8 +466,10 @@
 			},
 			"46-50": {
 				"text": "He leans to your shield side and you hit him in the back. You have the initiative for 2 rounds.",
-				"hasInitiative": true,
 				"hp": 5,
+				"buffs": {
+					"has-initiative": 2
+				},
 				"debuffs": {
 					"stunned": 1,
 					"cant-parry": 1
@@ -534,6 +558,9 @@
 				},
 				"penalty": {
 					"penalty": -40
+				},
+				"injuries": {
+					"arm-useless": "A metal armguard is bent and the arm is useless until until the armor is removed."
 				}
 			},
 			"86-90": {
@@ -544,20 +571,23 @@
 				},
 				"penalty": {
 					"penalty": -50
+				},
+				"injuries": {
+					"back-bones-broken": "Bones break and muscles tear. Critical effect."
 				}
 			},
 			"91-95": {
 				"text": "Blow to thigh. Compound fracture severs an artery. Foe goes down hard and dies in 12 rounds.",
 				"hp": 9,
-				"deathAfterRounds": 12,
 				"debuffs": {
+					"mortal-damage": 12,
 					"shock": 12
 				}
 			},
 			"96-99": {
 				"text": "Blow to foe's abdomen. Strike destroys a variety of organs. Poor fool expires after 6 rounds of inactivity.",
-				"deathAfterRounds": 6,
 				"debuffs": {
+					"mortal-damage": 6,
 					"shock": 6
 				}
 			},
@@ -568,9 +598,9 @@
 					"shock": 24,
 					"cant-parry": 24
 				},
-				"otherEffects": [
-					"Eyes destroyed."
-				]
+				"injuries": {
+					"eyes-destroyed": "Critical effect."
+				}
 			}
 		},
 		"D": {
@@ -595,7 +625,9 @@
 			},
 			"16-20": {
                 "text": "Glancing blow takes skin with it. You have initiative next round.",
-                "hasInitiative": true,
+				"buffs": {
+					"has-initiative": 1
+				},
 				"hp": 5,
 				"penalty": {
 					"penalty": -5
@@ -612,6 +644,9 @@
 			"36-45": {
                 "text": "Light swing to foe's leg. Foe's calf is bruised. You have the initiative.",
 				"hp": 10,
+				"buffs": {
+					"has-initiative": 1
+				},
 				"penalty": {
 					"penalty": -10
 				}
@@ -662,7 +697,9 @@
                         }
                     },
                     "without-helmet": {
-                        "instantDeath": true
+						"debuffs": {
+							"instant-death": 1
+						}
                     }
                 }
 			},
@@ -734,8 +771,8 @@
 						]
 					},
 					"without-throat-protector": {
-						"deathAfterRounds": 2,
 						"debuffs": {
+							"mortal-damage": 2,
 							"shock": 2
 						}
 					}
@@ -743,21 +780,23 @@
 			},
 			"91-95": {
                 "text": "Strike comes down on the shield shoulder of foe. Arm shatters. Foe dies from shock and blood loss in 9 rounds.",
-                "deathAfterRounds": 9,
 				"debuffs": {
+					"mortal-damage": 9,
 					"shock": 9
 				}
 			},
 			"96-99": {
                 "text": "Crush foe's chest cavity. He grips your arm, looks into your eyes, then drops and dies in 3 rounds.",
-                "deathAfterRounds": 3,
 				"debuffs": {
+					"mortal-damage": 3,
 					"shock": 3
 				}
 			},
 			"100-100": {
                 "text": "Blast to foe's heart. It stops. He dies. You consider yourself to be deadly. Fine work. You are ready to slay.",
-                "instantDeath": true,
+				"debuffs": {
+					"instant-death": 1
+				},
 				"hp": 25
 			}
 		},
@@ -769,7 +808,9 @@
 			"06-10": {
                 "text": "Blow is forceful, not hard. Foe is unbalanced. You have initiative.",
                 "hp": 6,
-                "hasInitiative": true
+                "buffs": {
+                	"has-initiative": 1
+                }
 			},
 			"11-15": {
                 "text": "Foe raises an arm to block your strike. He does himself harm. You profit.",
@@ -795,7 +836,9 @@
 			},
 			"21-35": {
                 "text": "Solid shot breaks foe's ribs. You have initiative next round.",
-				"hasInitiative": true,
+                "buffs": {
+                	"has-initiative": 1
+                },
 				"hp": 6,
                 "penalty": {
                     "penalty": -10
@@ -803,7 +846,9 @@
 			},
 			"36-45": {
                 "text": "Blow to upper leg. Minor fracture. You have initiative.",
-				"hasInitiative": true,
+				"buffs": {
+                	"has-initiative": 1
+                },
 				"hp": 12,
 				"penalty": {
 					"penalty": -10
@@ -853,7 +898,9 @@
 				"hp": 15,
 				"conditionalEffects": {
 					"with-helmet": {
-						"instantDeath": true
+						"debuffs": {
+							"instant-death": 1
+						}
 					},
 					"without-helmet": {
 						"otherEffects": [
@@ -902,20 +949,22 @@
 			"81-85": {
                 "text": "Blow to foe's armpit. Crush ribs and destroy organs. Foe dies in 3 rounds.",
 				"hp": 30,
-                "deathAfterRounds": 3
+				"debuffs": {
+					"mortal-damage": 3
+				}
 			},
 			"86-90": {
                 "text": "Neck strike shatters bone and severs an artery. Foe cannot breath. Foe is inactive and suffocates in 12 rounds.",
-                "deathAfterRounds": 12,
                 "debuffs": {
+					"mortal-damage": 12,
                     "shock": 12
                 }
 			},
 			"91-95": {
                 "text": "Blast to foe's back. A bone is driven into vital organs. Foe is down and dies in six rounds.",
 				"hp": 25,
-				"deathAfterRounds": 6,
                 "debuffs": {
+					"mortal-damage": 6,
                     "shock": 6
                 }
 			},
@@ -926,16 +975,16 @@
 					"bonus": 20,
 					"rounds": 1
 				},
-                "deathAfterRounds": 10,
                 "debuffs": {
+					"mortal-damage": 10,
                     "stunned": 10
                 }
 			},
 			"100-100": {
                 "text": "Blow turns hip to dust. Foe falls down. Attempts to stand. Falls again and dies in 6 rounds.",
-                "deathAfterRounds": 6,
 				"hp": 35,
 				"debuffs": {
+					"mortal-damage": 6,
 					"stunned": 2
 				},
 				"penalty": {
