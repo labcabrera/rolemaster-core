@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,12 @@ public interface TacticalSessionActionController {
 	Mono<TacticalAction> executeCritical(
 		@PathVariable("id") String actionId,
 		@RequestBody AttackCriticalExecution request);
+
+	@PostMapping("/{id}/execution/fumble")
+	@Operation(summary = "Executes a critical result.")
+	Mono<TacticalAction> executeFumble(
+		@PathVariable("id") String actionId,
+		@RequestBody FumbleExecution request);
 
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Eliminates a previously declared action.")

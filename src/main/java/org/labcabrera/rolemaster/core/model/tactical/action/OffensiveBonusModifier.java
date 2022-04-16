@@ -6,23 +6,23 @@ public enum OffensiveBonusModifier {
 
 	SKILL("skill"),
 
-	DEFENSIVE_BONUS("defensiveBonus"),
+	DEFENSIVE_BONUS("defensive-bonus"),
 
-	SHIELD_BONUS("shieldBonus"),
+	SHIELD("shield"),
 
-	TARGET_STATUS("targetStatus"),
+	TARGET_STATUS("target-status"),
 
 	HP("hp"),
 
 	EXHAUSTION("exhaustion"),
 
-	ACTION_PERCENT("actionPercent"),
+	ACTION_PERCENT("action-percent"),
 
-	MELEE_POSITION("meleePosition"),
+	MELEE_FACING("melee-facing"),
 
-	MELEE_PARRY("meleeParry"),
+	PARRY("parry"),
 
-	MISSILE_DISTANCE("missileDistance");
+	DISTANCE("missile-distance");
 
 	private String name;
 

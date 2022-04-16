@@ -84,7 +84,7 @@ public class OffensiveBonusProcessor {
 	private <T extends AttackContext<?>> T loadBonusMeleePosition(T context) {
 		Optional<Integer> bonus = getBonusMeleePosition(context);
 		if (bonus.isPresent()) {
-			context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MELEE_POSITION, bonus.get());
+			context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MELEE_FACING, bonus.get());
 		}
 		return context;
 	}
@@ -94,7 +94,7 @@ public class OffensiveBonusProcessor {
 			.zipWith(getBonusDistance(context))
 			.map(pair -> {
 				if (pair.getT2().isPresent()) {
-					context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MISSILE_DISTANCE, pair.getT2().get());
+					context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.DISTANCE, pair.getT2().get());
 				}
 				return pair.getT1();
 			});

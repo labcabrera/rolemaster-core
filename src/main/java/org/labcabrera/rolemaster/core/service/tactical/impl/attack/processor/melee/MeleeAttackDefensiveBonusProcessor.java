@@ -26,11 +26,11 @@ public class MeleeAttackDefensiveBonusProcessor {
 		}
 		return Mono.just(context)
 			.map(ctx -> {
-				context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.SHIELD_BONUS, getShieldBonus(context));
+				context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.SHIELD, getShieldBonus(context));
 				return ctx;
 			})
 			.zipWith(getParryBonus(context), (a, b) -> {
-				a.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MELEE_PARRY, b);
+				a.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.PARRY, b);
 				return a;
 			});
 	}

@@ -3,8 +3,12 @@ package org.labcabrera.rolemaster.core.service.tactical;
 import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.message.Message.TacticalLogs;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSessionLog;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +20,12 @@ public class TacticalLogService {
 
 	@Autowired
 	private TacticalSessionLogRepository logRepository;
+
+	@Autowired
+	private TacticalCharacterRepository characterRepository;
+
+	@Autowired
+	private TacticalRoundRepository roundRepository;
 
 	public <E> Mono<E> log(E e, String tacticalSessionId, Integer round, String message) {
 		TacticalSessionLog logEntry = TacticalSessionLog.builder()
@@ -40,11 +50,37 @@ public class TacticalLogService {
 	}
 
 	public Mono<TacticalActionAttack> logAttackResult(TacticalActionAttack attack) {
+		return Mono.zip(
+			Mono.just(attack),
+			roundRepository.findById(attack.getId()),
+			characterRepository.findById(attack.getSource()),
+			characterRepository.findById(attack.getTarget()))
+			.map(tuple -> {
+				TacticalRound round = tuple.getT2();
+				TacticalCharacter source = tuple.getT3();
+				TacticalCharacter target = tuple.getT3();
+				String message = getAttackMessage(attack, source, target);
+				return TacticalSessionLog.builder()
+					.tacticalSessionId(round.getTacticalSessionId())
+					.round(round.getRound())
+					.message(message)
+					.created(LocalDateTime.now())
+					.build();
+			})
+			.flatMap(logRepository::save)
+			.thenReturn(attack);
+	}
+
+	private String getAttackMessage(TacticalActionAttack attack, TacticalCharacter source, TacticalCharacter target) {
 		StringBuilder sb = new StringBuilder();
-		if (attack.getAttackResult() != null) {
-			sb.append("Character ").append(attack.getSource()).append(" attacks ").append(attack.getTarget());
-			sb.append(" for ").append(attack.getAttackResult().getAttackResult());
-			sb.append(" (").append(attack.getAttackResult().getWeaponTableId()).append(") ");
+		sb.append("Character ").append(source.getName()).append(" attacks ").append(target.getName());
+		sb.append(" for ").append(attack.getAttackResult().getAttackResult());
+		sb.append(" (").append(attack.getAttackResult().getWeaponTableId()).append(")");
+
+		if (attack.getAttackResult().getFumbleResult() != null) {
+			sb.append(" getting a fumble.");
+		}
+		else {
 			if (attack.getAttackResult().getHp() > 0) {
 				sb.append(" causing ").append(attack.getAttackResult().getHp()).append(" hit points");
 			}
@@ -60,13 +96,8 @@ public class TacticalLogService {
 				sb.append(" extra hitpoints");
 				//TODO critical detail
 			}
-			sb.append(".");
 		}
-		else {
-			//TODO
-			sb.append("Not implemented: other attack result type");
-		}
-		return this.log(attack, null, null, sb.toString());
+		return sb.append(".").toString();
 	}
 
 }
