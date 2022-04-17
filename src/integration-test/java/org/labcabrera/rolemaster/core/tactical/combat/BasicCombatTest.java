@@ -57,7 +57,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.target(taMelee02.getId())
-			.position(MeleeAttackFacing.NORMAL)
+			.facing(MeleeAttackFacing.NORMAL)
 			.roll(OpenRoll.of(80))
 			.build();
 
@@ -68,7 +68,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 		assertNotNull(meleeResolved01);
 		assertEquals(TacticalActionState.RESOLVED, meleeResolved01.getState());
 		assertEquals(-10, meleeResolved01.getOffensiveBonus());
-		assertEquals(6, meleeResolved01.getAttackResult().getHpResult());
+		assertEquals(6, meleeResolved01.getAttackResult().getHp());
 	}
 
 }

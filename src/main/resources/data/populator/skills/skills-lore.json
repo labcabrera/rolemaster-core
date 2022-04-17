@@ -25,6 +25,7 @@
 		"categoryId": "lore-general",
 		"progressionType": "standard",
 		"customizableOptions": 1,
+		"customizationRestriction": "free-text",
 		"description": "This skill provides a bonus for designing or recognizing the particular heraldic crests (coats-of-arms) specific to a given culture. Separate cultures must be developed separately."
 	},
 	{
@@ -35,6 +36,7 @@
 		"categoryId": "lore-general",
 		"progressionType": "standard",
 		"customizableOptions": 1,
+		"customizationRestriction": "free-text",
 		"description": "This skill provides knowledge about the past. One may develop this skill in general World History (subject to the available learning materials—i.e., if knowledge about the other side of the world is not available, it may not be learned) although the information will be far less specific, focusing instead on the broad strokes of history. If this skill is developed in the history of a particular region or subject, the information will be far more specific. In essence, the smaller the focus of the skill, the greater the level of detail and accuracy. Developing skill in the history of the Kingdom of Harran, for instance, might provide information about the rulers and the great events in the Kingdom's past; skill in the history of the Guild of Architects in the city of Jeppod would likely include all of the names of the Guild’s officers, the bylaws memorized by heart, etc. This skill encompasses military history as well."
 	},
 	{
@@ -45,6 +47,7 @@
 		"categoryId": "lore-general",
 		"progressionType": "standard",
 		"customizableOptions": 1,
+		"customizationRestriction": "free-text",
 		"description": "This skill provides a bonus for recognizing and identifying major aspects of philosophic doctrines. Each philosophy doctrine may be concentrated in and learned separately for in-depth knowledge and understanding."
 	},
 	{
@@ -55,6 +58,7 @@
 		"categoryId": "lore-general",
 		"progressionType": "standard",
 		"customizableOptions": 1,
+		"customizationRestriction": "free-text",
 		"description": "This skill provides information about the beliefs, rituals, or other information about a specific race. Note that skill for each race must be developed separately. Each character begins with ranks in Race Lore for his own race."
 	},
 	{
@@ -65,6 +69,7 @@
 		"categoryId": "lore-general",
 		"progressionType": "standard",
 		"customizableOptions": 1,
+		"customizationRestriction": "free-text",
 		"description": "This skill provides knowledge about the beliefs, rituals, or other information about a specific region. Note that skill for each region must be developed separately. All characters begin with ranks in Region Lore for their own region."
 	},
 	{
@@ -75,6 +80,7 @@
 		"categoryId": "lore-general",
 		"progressionType": "standard",
 		"customizableOptions": 1,
+		"customizationRestriction": "free-text",
 		"description": "This skill provides a bonus for recognizing and identifying major aspects of religious doctrines. Each religion may be concentrated in and learned separately for in-depth knowledge and understanding."
 	},
 	{
@@ -139,6 +145,7 @@
 		"categoryId": "lore-obscure",
 		"progressionType": "standard",
 		"customizableOptions": 1,
+		"customizationRestriction": "free-text",
 		"description": "This skill should be used by the GM to insert Lores dealing with unusual or rare races not listed here. This skill may also be used to simulate esoteric Lores developed by those races."
 	},
 	{

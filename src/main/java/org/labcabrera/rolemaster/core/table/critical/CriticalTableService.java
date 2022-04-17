@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
@@ -22,21 +23,18 @@ public class CriticalTableService {
 
 	private Map<CriticalType, CriticalTable> tables = new HashMap<>();
 
-	@Autowired
-	private CriticalTableS criticalTableS;
-
 	@PostConstruct
 	public void loadTables() {
+		tables.put(CriticalType.S, loadTable("data/populator/critical/tables/critical-table-s.json"));
 		tables.put(CriticalType.P, loadTable("data/populator/critical/tables/critical-table-p.json"));
+		tables.put(CriticalType.K, loadTable("data/populator/critical/tables/critical-table-k.json"));
 	}
 
 	public CriticalTableResult getResult(CriticalType type, CriticalSeverity severity, Integer roll) {
-		switch (type) {
-		case S:
-			return criticalTableS.getResult(severity, roll);
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + type);
+		if (!tables.containsKey(type)) {
+			throw new NotImplementedException("Not implemented critical type " + type);
 		}
+		return tables.get(type).get(severity, roll);
 	}
 
 	private CriticalTable loadTable(String resource) {

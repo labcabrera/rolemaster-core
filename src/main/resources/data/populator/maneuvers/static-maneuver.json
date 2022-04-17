@@ -1,0 +1,59 @@
+{
+	"results": {
+		"<-25": {
+			"name": "Spectacular Failure",
+			"successPercent": 0,
+			"text": "You make a thorough mess of your attempt as you forget even the most basic principles of this maneuver. You are at -20 modification to your next two actions while you recover from your stunning failure."
+		},
+		"-25:04": {
+			"name": "Absolute Failure",
+			"successPercent": 0,
+			"text": "Your remarkable failure marks you for ridicule. Hope your parents weren’t watching…"
+		},
+		"5:65": {
+			"name": "Failure",
+			"successPercent": 0,
+			"text": "You fail. Your skill is not up to the task. Maybe next time."
+		},
+		"66:66": {
+			"name": "Unusual Event",
+			"successPercent": 0,
+			"text": "Your maneuver is beset by an unusual event. It may or may not be a beneficial occurrence (GM should choose or determine randomly)."
+		},
+		"67:75": {
+			"name": "Failure",
+			"successPercent": 0,
+			"text": "You fail. Your skill is not up to the task. Maybe next time."
+		},
+		"76:90": {
+			"name": "Partial Success",
+			"successPercent": 20,
+			"text": "You fail. Your skill is not up to the task. Maybe next time."
+		},
+		"91:99": {
+			"name": "Near Success",
+			"successPercent": 80,
+			"text": "You are within sight of your goal! If appropriate, you may attempt to complete your maneuver with another roll with a modification of +10."
+		},
+		"100:100": {
+			"name": "Unusual Success",
+			"successPercent": 125,
+			"text": "You fail. Your skill is not up to the task. Maybe next time."
+		},
+		"101:110": {
+			"name": "Near Success",
+			"successPercent": 80,
+			"text": "You are within sight of your goal! If appropriate, you may attempt to complete your maneuver with another roll with a modification of +10."
+		},
+		"111:175": {
+			"name": "Success",
+			"successPercent": 100,
+			"text": "Congratulations! You are completely successful in your attempt. Carry on."
+		},
+		">175": {
+			"name": "Absolute Success",
+			"successPercent": 120,
+			"text": "Zounds! Your masterful performance has stretched the boundaries of your own abilities! You operate at +10 (non-cumulative) to all future attempts to use this skill, until you receive a result of Absolute Failure or Spectacular Failure."
+		}
+	}
+}

@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,5 +25,7 @@ public class TacticalSessionLog {
 	private Integer round;
 
 	private String message;
+
+	private LocalDateTime created;
 
 }

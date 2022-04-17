@@ -1,0 +1,941 @@
+{
+	"results": {
+		"routine": {
+			"<-200": {
+				"result": 0,
+				"hp": -3,
+				"debuffs": {
+					"downed": 3
+				},
+				"text": "Fall down. +2 hits. You are out 3 dounds."
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"-150:-101": {
+				"result": 10
+			},
+			"-100:-51": {
+				"result": 30
+			},
+			"-50:-26": {
+				"result": 50
+			},
+			"-25:-0": {
+				"result": 70
+			},
+			"1:20": {
+				"result": 80
+			},
+			"21:40": {
+				"result": 90
+			},
+			"41:95": {
+				"result": 100
+			},
+			"96:115": {
+				"result": 110
+			},
+			"116:135": {
+				"result": 120
+			},
+			"136:155": {
+				"result": 130
+			},
+			"156:185": {
+				"result": 140
+			},
+			"186:275": {
+				"result": 150
+			},
+			">275": {
+				"result": 150,
+				"text": "Incredible move. You feel great. Heal 3 hits",
+				"hp": 3
+			}
+		},
+		"easy": {
+			"<-200": {
+				"result": 0,
+				"hp": -9,
+				"debuffs": {
+					"downed": 12
+				},
+				"text": "Fall. Knock self out. You are out for 12 rounds. +9 hits."
+			},
+			"-200:-151": {
+				"result": 0,
+				"hp": -2,
+				"debuffs": {
+					"downed": 2
+				},
+				"text": "Fall down. Lose 2 rounds. +2 hits."
+			},
+			"-150:-101": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"-100:-51": {
+				"result": 10
+			},
+			"-50:-26": {
+				"result": 30
+			},
+			"-25:0": {
+				"result": 50
+			},
+			"1:20": {
+				"result": 60
+			},
+			"21:40": {
+				"result": 70
+			},
+			"41:55": {
+				"result": 80
+			},
+			"56:65": {
+				"result": 90
+			},
+			"66:105": {
+				"result": 100
+			},
+			"106:125": {
+				"result": 110
+			},
+			"126:145": {
+				"result": 120
+			},
+			"146:165": {
+				"result": 130
+			},
+			"166:225": {
+				"result": 140
+			},
+			"226:275": {
+				"result": 140,
+				"text": "Incredible move. You feel great. Heal 3 hits.",
+				"hp": 3
+			},
+			">275": {
+				"result": 140,
+				"text": "Brilliant move inspires all. Allies are at +10 for 2 rounds."
+			}
+		},
+		"light": {
+			"<-200": {
+				"result": 0,
+				"text": "Fall. Break arms. You are out for 6 rounds. +10 hits",
+				"debuffs": {
+					"downed": 6
+				},
+				"injuries": {
+					"right-arm-useless": "Moving maneuver effect.",
+					"left-arm-useless": "Moving maneuver effect."
+				},
+				"hp": -10
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fall down. You are out for 4 rounds. +3 hits.",
+				"debuffs": {
+					"downed": 4
+				},
+				"hp": -3
+			},
+			"-150:-51": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"-50:-26": {
+				"result": 10
+			},
+			"-25:0": {
+				"result": 30
+			},
+			"1:20": {
+				"result": 50
+			},
+			"21:40": {
+				"result": 60
+			},
+			"41:55": {
+				"result": 70
+			},
+			"56:65": {
+				"result": 80
+			},
+			"66:75": {
+				"result": 90
+			},
+			"76:115": {
+				"result": 100
+			},
+			"116:145": {
+				"result": 110
+			},
+			"146:165": {
+				"result": 120
+			},
+			"166:185": {
+				"result": 130
+			},
+			"186:225": {
+				"result": 130,
+				"text": "Great move. You feel better. Heal 4 hits.",
+				"hp": 4
+			},
+			"226:275": {
+				"result": 130,
+				"text": "Move inspires all. You and unstunned. Allies are at +10 for 2 rounds."
+			},
+			">275": {
+				"result": 130,
+				"text": "Move inspires your allies. +20 to friendly rolls for 3 rounds."
+			}
+		},
+		"medium": {
+			"<-200": {
+				"result": 0,
+				"text": "Fall. Break arm. You are out for 9 rounds. +15 hits.",
+				"debuffs": {
+					"downed": 9
+				},
+				"injuries": {
+					"right-arm-useless": "Break arm. Moving maneuver effect."
+				},
+				"hp": -15
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fall. Break wrist. You are out for 6 rounds. +10 hits.",
+				"debuffs": {
+					"downed": 6
+				},
+				"injuries": {
+					"wrist-broken": "Moving maneuver effect."
+				},
+				"hp": -10
+			},
+			"-150:-101": {
+				"result": 0,
+				"text": "Fall down. Sprain ankle. You are at -25- +5 hits.",
+				"penalty": {
+					"penalty": -25
+				},
+				"injuries": {
+					"sprain-ankle": "Moving maneuver effect."
+				},
+				"hp": -5
+			},
+			"-100:-51": {
+				"result": 0,
+				"text": "Fall down. Lose 2 rounds. +3 hits",
+				"debuffs": {
+					"downed": 2
+				},
+				"hp": -3
+			},
+			"-50:-26": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"-25:0": {
+				"result": 5
+			},
+			"1:20": {
+				"result": 10
+			},
+			"21:40": {
+				"result": 20
+			},
+			"41:55": {
+				"result": 30
+			},
+			"56:65": {
+				"result": 40
+			},
+			"66:75": {
+				"result": 50
+			},
+			"76:85": {
+				"result": 60
+			},
+			"86:95": {
+				"result": 70
+			},
+			"96:105": {
+				"result": 80
+			},
+			"106:115": {
+				"result": 90
+			},
+			"116:135": {
+				"result": 100
+			},
+			"136:145": {
+				"result": 110
+			},
+			"146:165": {
+				"result": 120
+			},
+			"166:185": {
+				"result": 120,
+				"text": "Super move. You feel great. Heal 4 hits.",
+				"hp": 4
+			},
+			"186:225": {
+				"result": 120,
+				"text": "Move inspires all. You are unstunned. Allies are at +10 for 2 rounds."
+			},
+			"226:275": {
+				"result": 120,
+				"text": "Move inspires your allies. +20 to friendly rolls for 3 rounds."
+			},
+			">275": {
+				"result": 120,
+				"text": "Move inspires your allies. +25 for friendly rolls for 3 rounds."
+			}
+		},
+		"hard": {
+			"<-200": {
+				"result": 0,
+				"text": "Fall. Break arms. Your arms are useless. Out for 18 rounds. +20 hits.",
+				"debuffs": {
+					"downed": 18
+				},
+				"injuries": {
+					"right-arm-useless": "Break arms. Moving maneuver effect.",
+					"left-arm-useless": "Break arms. Moving maneuver effect."
+				},
+				"hp": -20
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fall. Break leg. You are out for 9 rounds. +15 hits.",
+				"debuffs": {
+					"downed": 9
+				},
+				"injuries": {
+					"leg-useless": "Break leg. Moving maneuver effect."
+				},
+				"hp": -15
+			},
+			"-150:-101": {
+				"result": 0,
+				"text": "Fall. Break arm. Out for 6 rounds. Stunned for 3 rounds. +10 hits.",
+				"debuffs": {
+					"downed": 6,
+					"stunned": 3
+				},
+				"injuries": {
+					"right-arm-useless": "Break arm. Moving maneuver effect."
+				},
+				"hp": -10
+			},
+			"-100:-51": {
+				"result": 0,
+				"text": "Fall down. Sprain ankle. You are at -25. +5 hits.",
+				"penalty": {
+					"penalty": -25
+				},
+				"injuries": {
+					"sprain-ankle": "Moving maneuver effect."
+				},
+				"hp": -5
+			},
+			"-50:-26": {
+				"result": 0,
+				"text": "Fall down. You are out for 3 rounds. +5 hits.",
+				"debuffs": {
+					"downed": 3
+				},
+				"hp": -5
+			},
+			"-25:0": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"1:20": {
+				"result": 5
+			},
+			"21:40": {
+				"result": 10
+			},
+			"41:55": {
+				"result": 20
+			},
+			"56:65": {
+				"result": 30
+			},
+			"66:75": {
+				"result": 40
+			},
+			"76:85": {
+				"result": 50
+			},
+			"86:95": {
+				"result": 60
+			},
+			"96:105": {
+				"result": 70
+			},
+			"106:115": {
+				"result": 80
+			},
+			"116:125": {
+				"result": 90
+			},
+			"126:145": {
+				"result": 100
+			},
+			"146:155": {
+				"result": 110
+			},
+			"156:165": {
+				"result": 120
+			},
+			"166:185": {
+				"result": 120,
+				"text": "Excellent move. You are unstunned. +10 to allies rolls for 2 rounds."
+			},
+			"186:225": {
+				"result": 120,
+				"text": "Move inspires your allies. +20 to friendly rolls for 3 rounds."
+			},
+			"226:275": {
+				"result": 120,
+				"text": "Move inspires your allies. +25 to friendly rolls for 3 rounds."
+			},
+			">275": {
+				"result": 120,
+				"text": "Move inspires your allies. +30 to friendly rolls for 3 rounds."
+			}
+		},
+		"very-hard": {
+			"<-200": {
+				"result": 0,
+				"text": "Fall. Break both arms and neck. You are out for 60 rounds. +30 hits.",
+				"debuffs": {
+					"downed": 60
+				},
+				"injuries": {
+					"right-arm-useless": "Moving maneuver effect.",
+					"left-arm-useless": "Moving maneuver effect.",
+					"neck-broken": "Moving maneuver effect."
+				},
+				"hp": -30
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fall. Break arms. You arms are useless. Out for 18 rounds. +20 hits.",
+				"debuffs": {
+					"downed": 18
+				},
+				"injuries": {
+					"right-arm-useless": "Moving maneuver effect.",
+					"left-arm-useless": "Moving maneuver effect."
+				},
+				"hp": -20
+			},
+			"-150:-101": {
+				"result": 0,
+				"text": "Fall. Break leg. You are out for 6 rounds. +15 hits.",
+				"debuffs": {
+					"downed": 6
+				},
+				"injuries": {
+					"leg-useless": "Moving maneuver effect."
+				},
+				"hp": -15
+			},
+			"-100:-51": {
+				"result": 0,
+				"text": "Fall. Break your wrist. Out for 6 rounds. +20 hits. Not very smooth.",
+				"debuffs": {
+					"downed": 6
+				},
+				"injuries": {
+					"wrist-broken": "Moving maneuver effect."
+				},
+				"hp": -20
+			},
+			"-50:-26": {
+				"result": 0,
+				"text": "Fall down. Sprain ankle and tear ligament. You are at -30. +15 hits.",
+				"penalty": {
+					"penalty": -30
+				},
+				"injuries": {
+					"sprain-ankle": "Moving maneuver effect.",
+					"knee-tear-ligament": "Moving maneuver effect."
+				},
+				"hp": -15
+			},
+			"-25:0": {
+				"result": 0,
+				"text": "Fall down. You are out for 3 rounds. +5 hits.",
+				"debuffs": {
+					"downed": 3
+				},
+				"hp": -5
+			},
+			"1:20": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"21:40": {
+				"result": 5
+			},
+			"41:55": {
+				"result": 10
+			},
+			"56:65": {
+				"result": 20
+			},
+			"66:75": {
+				"result": 30
+			},
+			"76:85": {
+				"result": 40
+			},
+			"86:95": {
+				"result": 50
+			},
+			"96:105": {
+				"result": 60
+			},
+			"106:115": {
+				"result": 70
+			},
+			"116:125": {
+				"result": 80
+			},
+			"126:135": {
+				"result": 90
+			},
+			"136:155": {
+				"result": 100
+			},
+			"156:165": {
+				"result": 110
+			},
+			"166:185": {
+				"result": 120
+			},
+			"186:225": {
+				"result": 120,
+				"text": "Move inspires your allies. +30 to friendly rolls for 2 rounds."
+			},
+			"226:275": {
+				"result": 120,
+				"text": "Move inspires your allies. +30 to friendly rolls for 3 rounds."
+			},
+			">275": {
+				"result": 120,
+				"text": "Move inspires your allies. +30 to friendly rolls for 4 rounds."
+			}
+		},
+		"extremely-hard": {
+			"<-200": {
+				"result": 0,
+				"text": "Fall sends you into a coma for 3 years. Broken spine. +30 hits",
+				"debuffs": {
+					"unconscious": 1000
+				},
+				"injuries": {
+					"coma": "3 years. Moving maneuver effect.",
+					"spine-broken": "Moving maneuver effect."
+				},
+				"hp": -30
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fall. Break back and legs. Paralysis of lower body. +25 hits.",
+				"debuffs": {
+					"unconscious": 1000
+				},
+				"injuries": {
+					"back-bones-broken": "Moving maneuver effect.",
+					"leg-useless": "Both legs broken. Moving maneuver effect."
+				},
+				"hp": -25
+			},
+			"-150:-101": {
+				"result": 0,
+				"text": "Fall. Shatter knee. You are at -80, out for 6 rounds. +30 hins.",
+				"debuffs": {
+					"downed": 6
+				},
+				"penalty": {
+					"penalty": -80
+				},
+				"injuries": {
+					"knee-tear-ligament": "Moving maneuver effect."
+				},
+				"hp": -30
+			},
+			"-100:-51": {
+				"result": 0,
+				"text": "Fall. Break arm. Out for 6 rounds. +12 hits.",
+				"debuffs": {
+					"downed": 6
+				},
+				"injuries": {
+					"right-arm-useless": "Broken arm. Moving maneuver effect."
+				},
+				"hp": -12
+			},
+			"-50:-26": {
+				"result": 0,
+				"text": "Fall. Knock yourself out for 18 rounds. +10 hits. You lose, pal.",
+				"debuffs": {
+					"downed": 18
+				},
+				"hp": -10
+			},
+			"-25:0": {
+				"result": 0,
+				"text": "Fall down. Sprain ankle and tear ligament. You are at -30. +10 hits.",
+				"penalty": {
+					"penalty": -30
+				},
+				"injuries": {
+					"sprain-ankle": "Moving maneuver effect.",
+					"knee-tear-ligament": "Moving maneuver effect."
+				},
+				"hp": -10
+			},
+			"1:20": {
+				"result": 0,
+				"text": "Fall down. You are out for 3 rounds. +5 hits.",
+				"debuffs": {
+					"downed": 3
+				},
+				"hp": -5
+			},
+			"21:40": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"41:55": {
+				"result": 5
+			},
+			"56:65": {
+				"result": 10
+			},
+			"66:75": {
+				"result": 20
+			},
+			"76:85": {
+				"result": 30
+			},
+			"86:95": {
+				"result": 40
+			},
+			"96:105": {
+				"result": 50
+			},
+			"106:115": {
+				"result": 60
+			},
+			"116:125": {
+				"result": 70
+			},
+			"126:135": {
+				"result": 80
+			},
+			"136:145": {
+				"result": 90
+			},
+			"146:165": {
+				"result": 100
+			},
+			"166:185": {
+				"result": 110
+			},
+			"186:225": {
+				"result": 120
+			},
+			"226:275": {
+				"result": 120,
+				"text": "You have half the round to act."
+			},
+			">275": {
+				"result": 120,
+				"text": "Move inspires your allies. +30 to friendly rolls for 4 rounds."
+			}
+		},
+		"sheer-folly": {
+			"<-200": {
+				"result": 0,
+				"text": "Fall breaks beck. Die in 3 rounds.",
+				"debuffs": {
+					"mortal-damage": 3
+				}
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fall. You smash your backbone and are in a come for 1 year.",
+				"injuries": {
+					"coma": "1 year. Moving maneuver effect."
+				}
+			},
+			"-150:-101": {
+				"result": 0,
+				"text": "Fall. Break both arms and neck. You are out for 60 rounds. +30 hits.",
+				"debuffs": {
+					"downed": 60
+				},
+				"injuries": {
+					"right-arm-useless": "Moving maneuver effect.",
+					"left-arm-useless": "Moving maneuver effect.",
+					"neck-broken": "Moving maneuver effect."
+				},
+				"hp": -30
+			},
+			"-100:-51": {
+				"result": 0,
+				"text": "Fall. Shatter knee. You are at -80, out for 9 rounds. +30 hins.",
+				"debuffs": {
+					"downed": 9
+				},
+				"penalty": {
+					"penalty": -80
+				},
+				"injuries": {
+					"knee-tear-ligament": "Moving maneuver effect."
+				},
+				"hp": -30
+			},
+			"-50:-26": {
+				"result": 0,
+				"text": "Fall. Break arm. Out for 6 rounds. +12 hits.",
+				"debuffs": {
+					"downed": 6
+				},
+				"injuries": {
+					"right-arm-useless": "Moving maneuver effect."
+				},
+				"hp": -12
+			},
+			"-25:0": {
+				"result": 0,
+				"text": "Fall. Break your wrist. Out for 2 rounds. +20 hits. Not very smooth.",
+				"debuffs": {
+					"downed": 2
+				},
+				"injuries": {
+					"wrist-broken": "Moving maneuver effect."
+				},
+				"hp": -20
+			},
+			"1:20": {
+				"result": 0,
+				"text": "Fall. Pull a leg muscle. You are at -25, out for 2 rounds. +5 hits.",
+				"debuffs": {
+					"downed": 2
+				},
+				"penalty": {
+					"penalty": -25
+				},
+				"hp": -5
+			},
+			"21:40": {
+				"result": 0,
+				"text": "Fall down. You take 3 hits per round for 2 rounds. +7 hits.",
+				"bleeding": {
+					"hp": 3,
+					"rounds": 2
+				},
+				"hp": -7
+			},
+			"41:55": {
+				"result": 0,
+				"text": "Fall down. You are out for 3 rounds. +5 hits.",
+				"debuffs": {
+					"downed": 3
+				},
+				"hp": -5
+			},
+			"56:65": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"66:75": {
+				"result": 5
+			},
+			"76:85": {
+				"result": 10
+			},
+			"86:95": {
+				"result": 20
+			},
+			"96:105": {
+				"result": 25
+			},
+			"106:115": {
+				"result": 30
+			},
+			"116:125": {
+				"result": 40
+			},
+			"126:135": {
+				"result": 50
+			},
+			"136:145": {
+				"result": 60
+			},
+			"146:155": {
+				"result": 70
+			},
+			"156:165": {
+				"result": 80
+			},
+			"166:185": {
+				"result": 90
+			},
+			"186:275": {
+				"result": 100
+			},
+			">275": {
+				"result": 100,
+				"text": "Move stun foes within 30' for 1 round. You still have half a round."
+			}
+		},
+		"absurd": {
+			"<-200": {
+				"result": 0,
+				"text": "Fall crushes skull",
+				"debuffs": {
+					"instant-death": 1
+				}
+			},
+			"-200:-151": {
+				"result": 0,
+				"text": "Fall paralyzes you from the neck down.",
+				"debuffs": {
+					"unconscious": 1000
+				}
+			},
+			"-150:-101": {
+				"result": 0,
+				"text": "Fall. You smash your backbone and are in a coma for 1 year.",
+				"debuffs": {
+					"unconscious": 1000
+				}
+			},
+			"-100:-51": {
+				"result": 0,
+				"text": "Fall. Break back and legs. Paralysis or lower body. +25 hits",
+				"debuffs": {
+					"downed": 1000
+				},
+				"hp": -25
+			},
+			"-50:-26": {
+				"result": 0,
+				"text": "Fall. Break both arms. You are out for 18 rounds. +25 hits",
+				"debuffs": {
+					"downed": 18
+				},
+				"hp": -25
+			},
+			"-25:0": {
+				"result": 0,
+				"text": "Fall. Break leg. You are at -75, out for 6 rounds. +10 hits.",
+				"debuffs": {
+					"downed": 6
+				},
+				"penalty": {
+					"penalty": -75
+				},
+				"hp": -10
+			},
+			"1:20": {
+				"result": 0,
+				"text": "Fall. Break arm. You are out for 6 rounds. +15 hits",
+				"debuffs": {
+					"downed": 6
+				},
+				"hp": -15
+			},
+			"21:40": {
+				"result": 0,
+				"text": "Fall. Knock yourself out. You are out for 3 rounds. +10 hits.",
+				"debuffs": {
+					"downed": 3
+				},
+				"hp": -10
+			},
+			"41:55": {
+				"result": 0,
+				"text": "Fall. Sprain ankle. You are at -30. +15 hits.",
+				"penalty": {
+					"penalty": -30
+				},
+				"hp": -15
+			},
+			"56:65": {
+				"result": 0,
+				"text": "Fall. 3 hits per round for 2 rounds. +7 hits.",
+				"debuffs": {
+					"downed": 2
+				},
+				"bleeding": {
+					"hp": 3,
+					"rounds": 2
+				},
+				"hp": -7
+			},
+			"66:75": {
+				"result": 0,
+				"text": "Freeze for 2 rounds.",
+				"debuffs": {
+					"stunned": 2
+				}
+			},
+			"76:85": {
+				"result": 0,
+				"text": "Fail to act."
+			},
+			"86:95": {
+				"result": 5
+			},
+			"96:105": {
+				"result": 10
+			},
+			"106:115": {
+				"result": 20
+			},
+			"116:125": {
+				"result": 30
+			},
+			"126:135": {
+				"result": 40
+			},
+			"136:145": {
+				"result": 50
+			},
+			"146:155": {
+				"result": 60
+			},
+			"156:165": {
+				"result": 70
+			},
+			"166:185": {
+				"result": 80
+			},
+			"186:225": {
+				"result": 90
+			},
+			"226:275": {
+				"result": 100
+			},
+			">275": {
+				"result": 100,
+				"text": "Move stun foes within 50' for 1 round."
+			}
+		}
+	}
+}

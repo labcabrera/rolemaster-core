@@ -54,7 +54,7 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 			.build()).share().block();
 
 		String tsId = ts.getId();
-		String npcId = "ork-fighter-melee-ii";
+		String npcId = "orc-fighter-ii";
 
 		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
 		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();
@@ -85,7 +85,7 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.target(cc02.getId())
-			.position(MeleeAttackFacing.NORMAL)
+			.facing(MeleeAttackFacing.NORMAL)
 			.roll(OpenRoll.of(4))
 			.build();
 
@@ -97,11 +97,10 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 		assertEquals(TacticalActionState.PENDING_FUMBLE_RESOLUTION, meleeResolved01.getState());
 
 		FumbleExecution fumbleExecution = FumbleExecution.builder()
-			.actionId(taResolved01.getId())
 			.roll(55)
 			.build();
 
-		TacticalAction taResolved02 = tacticalActionService.executeFumble(fumbleExecution).share().block();
+		TacticalAction taResolved02 = tacticalActionService.executeFumble(taResolved01.getId(), fumbleExecution).share().block();
 
 		assertNotNull(taResolved02);
 	}

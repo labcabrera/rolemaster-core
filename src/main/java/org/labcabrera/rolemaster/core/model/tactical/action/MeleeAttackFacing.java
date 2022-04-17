@@ -1,25 +1,30 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 
-public enum MeleeAttackFacing {
+import lombok.Getter;
 
-	NORMAL("normal"),
+@Getter
+public enum MeleeAttackFacing implements CodeNameEnum {
 
-	FLANK("flank"),
+	NORMAL("normal", "Normal", 0),
 
-	REAR_FLANK("rearFlank"),
+	FLANK("flank", "Flank (+15)", 15),
 
-	REAR("rear");
+	REAR_FLANK("rear-flank", "Read Flank (+25)", 25),
 
-	String name;
+	REAR("rear", "Rear (+35)", 35);
 
-	private MeleeAttackFacing(String name) {
+	private String code;
+
+	private Integer modifier;
+
+	private String name;
+
+	private MeleeAttackFacing(String code, String name, Integer modifier) {
+		this.code = code;
 		this.name = name;
+		this.modifier = modifier;
 	}
 
-	@JsonValue
-	public String getName() {
-		return name;
-	}
 }

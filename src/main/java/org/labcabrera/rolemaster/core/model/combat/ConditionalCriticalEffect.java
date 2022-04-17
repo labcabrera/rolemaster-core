@@ -25,12 +25,32 @@ public enum ConditionalCriticalEffect {
 	WITHOUT_LEG_ARMOR("without-leg-armor"),
 
 	WITH_PLATE_CHEST("with-plate-chest"),
+	
+	WITH_CHEST_ARMOR("with-chest-armor"),
+	
+	WITHOUT_CHEST_ARMOR("without-chest-armor"),
 
 	WITHOUT_PLATE_CHEST("without-plate-chest"),
 
 	WITH_ABDOMEN_ARMOR("with-abdomen-armor"),
 
-	WITHOUT_ABDOMEN_ARMOR("without-abdomen-armor");
+	WITHOUT_ABDOMEN_ARMOR("without-abdomen-armor"),
+
+	WITH_SHIELD("with-shield"),
+
+	WITHOUT_SHIELD("without-shield"),
+
+	WITH_NOSE_GUARD("with-nose-guard"),
+
+	WITHOUT_NOSE_GUARD("without-nose-guard"),
+
+	WITH_SHOULDER_ARMOR("with-shoulder-armor"),
+
+	WITHOUT_SHOULDER_ARMOR("without-shoulder-armor"),
+
+	WITH_THROAT_PROTECTOR("with-throat-protector"),
+
+	WITHOUT_THROAT_PROTECTOR("without-throat-protector");
 
 	private String name;
 

@@ -66,9 +66,11 @@ public interface CharacterController {
 	Mono<CharacterInventory> findCharacterInventoryById(@PathVariable String id);
 
 	@PostMapping("/{id}/skills")
-	Mono<CharacterInfo> addSkill(@PathVariable String characterId, AddSkill request);
+	Mono<CharacterInfo> addSkill(@PathVariable("id") String characterId,
+		@org.springframework.web.bind.annotation.RequestBody AddSkill request);
 
 	@PostMapping("/{id}/skills/upgrade")
-	Mono<CharacterInfo> updateRanks(@PathVariable String characterId, SkillUpgrade request);
+	Mono<CharacterInfo> updateRanks(@PathVariable("id") String characterId,
+		@org.springframework.web.bind.annotation.RequestBody SkillUpgrade request);
 
 }

@@ -1,38 +1,47 @@
 package org.labcabrera.rolemaster.core.model.maneuver;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum ManeuverDificulty {
+import lombok.Getter;
 
-	NONE("none"),
+public enum ManeuverDificulty implements CodeNameEnum {
 
-	ROUTINE("routine"),
+	NONE("none", "NONE"),
 
-	EASY("easy"),
+	ROUTINE("routine", "Routine"),
 
-	LIGHT("light"),
+	EASY("easy", "Easy"),
 
-	MEDIUM("medium"),
+	LIGHT("light", "Light"),
 
-	HARD("hard"),
+	MEDIUM("medium", "Medium"),
 
-	VERY_HARD("very-hard"),
+	HARD("hard", "Hard"),
 
-	EXTREMELY_HARD("extremely-hard"),
+	VERY_HARD("very-hard", "Very Hard"),
 
-	SHEER_FOLLY("sheer-folly"),
+	EXTREMELY_HARD("extremely-hard", "Extremely Hard"),
 
-	ABSURD("absurd");
+	SHEER_FOLLY("sheer-folly", "Sheer-folly"),
 
+	ABSURD("absurd", "Absurd");
+
+	private String code;
+
+	@Getter
 	private String name;
 
-	private ManeuverDificulty(String name) {
+	private ManeuverDificulty(String code, String name) {
+		this.code = code;
 		this.name = name;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	@Override
+	public String getCode() {
+		return code;
 	}
 
 }

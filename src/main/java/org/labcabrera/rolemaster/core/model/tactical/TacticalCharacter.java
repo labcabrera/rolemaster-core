@@ -37,6 +37,8 @@ public class TacticalCharacter {
 	@Builder.Default
 	private Boolean isNpc = false;
 
+	private Boolean dead;
+
 	@Builder.Default
 	private Hp hp = new Hp();
 
@@ -57,9 +59,9 @@ public class TacticalCharacter {
 
 	private Map<String, Integer> npcSkills;
 
-	private Integer armorType;
+	private Integer armor;
 
-	private Integer baseDefensiveBonus;
+	private Integer defensiveBonus;
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();

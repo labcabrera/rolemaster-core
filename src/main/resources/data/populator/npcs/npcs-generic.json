@@ -1,2 +1,29 @@
 [
+	{
+		"id": "human-fighter-i",
+		"name": "Human - Fighter I",
+		"shortDescription": "Human Figther I",
+		"level": 1,
+		"_levelBaseModifier": "B",
+		"unique": false,
+		"hp": 56,
+		"_hpBaseModifier": "D",
+		"armorType": 8,
+		"attacks": [
+			{
+				"weaponId": "short-sword",
+				"bonus": 50,
+				"type": "melee",
+				"primary": true
+			}
+		],
+		"defensiveBonus": 30,
+		"_baseMove": 50,
+		"_mmBonus": 0,
+		"_maxPace": "fastSprint",
+		"_movementSpeed": "SL",
+		"_attackQuickness": "MD",
+		"universeId": "generic",
+		"npcNameGeneratorGroup": "norse"
+	}
 ]

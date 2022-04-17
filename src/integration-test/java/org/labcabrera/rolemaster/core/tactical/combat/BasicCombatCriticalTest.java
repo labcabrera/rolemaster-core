@@ -64,7 +64,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.target(taMelee02.getId())
-			.position(MeleeAttackFacing.NORMAL)
+			.facing(MeleeAttackFacing.NORMAL)
 			.roll(OpenRoll.of(105))
 			.build();
 
@@ -72,7 +72,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
-		assertEquals(10, meleeResolved01.getAttackResult().getHpResult());
+		assertEquals(10, meleeResolved01.getAttackResult().getHp());
 		assertEquals(-10, meleeResolved01.getOffensiveBonus());
 		assertNotNull(meleeResolved01.getAttackResult().getCriticalResult());
 		assertEquals(CriticalSeverity.A, meleeResolved01.getAttackResult().getCriticalResult().getSeverity());
@@ -81,11 +81,10 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, meleeResolved01.getState());
 
 		AttackCriticalExecution criticalExecution = AttackCriticalExecution.builder()
-			.actionId(taResolved01.getId())
 			.roll(55)
 			.build();
 
-		TacticalAction taResolved02 = tacticalActionService.executeCritical(criticalExecution).share().block();
+		TacticalAction taResolved02 = tacticalActionService.executeCritical(taResolved01.getId(), criticalExecution).share().block();
 		assertTrue(taResolved02 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved02 = (TacticalActionMeleeAttack) taResolved02;
 

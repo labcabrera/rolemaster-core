@@ -32,8 +32,8 @@ public abstract class AbstractBasicCombatTest extends AbstractCombatTest {
 			.description("Testing")
 			.build()).share().block();
 
-		taMelee01 = tacticalService.addNpc(ts.getId(), "ork-fighter-melee-ii").share().block();
-		taMelee02 = tacticalService.addNpc(ts.getId(), "ork-fighter-melee-ii").share().block();
-		taRanged01 = tacticalService.addNpc(ts.getId(), "ork-fighter-ranged-ii").share().block();
+		taMelee01 = tacticalService.addNpc(ts.getId(), "orc-fighter-ii").share().block();
+		taMelee02 = tacticalService.addNpc(ts.getId(), "orc-fighter-ii").share().block();
+		taRanged01 = tacticalService.addNpc(ts.getId(), "orc-ranged-ii").share().block();
 	}
 }

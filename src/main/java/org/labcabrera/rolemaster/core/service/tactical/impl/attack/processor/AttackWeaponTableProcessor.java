@@ -52,13 +52,18 @@ public class AttackWeaponTableProcessor {
 		int attackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, offensiveBonus + roll));
 		String stringResult = weaponTable.get(weaponTableId, armor, attackResult);
 
-		AttackResult result = AttackResult.builder().build();
+		AttackResult result = AttackResult.builder()
+			.weaponTableId(weaponTableId)
+			.attackResult(attackResult)
+			.targetArmor(armor)
+			.hp(0)
+			.build();
 
 		Pattern patternHp = Pattern.compile(PATTERN_HP);
 		Matcher matcherHp = patternHp.matcher(stringResult);
 		if (matcherHp.matches()) {
 			int hp = Integer.parseInt(matcherHp.group(1));
-			result.setHpResult(hp);
+			result.setHp(hp);
 		}
 		else {
 			Pattern patternCrit = Pattern.compile(PATTERN_CRIT);
@@ -67,7 +72,7 @@ public class AttackWeaponTableProcessor {
 				int hp = Integer.parseInt(matcherCrit.group(1));
 				CriticalSeverity severity = CriticalSeverity.valueOf(matcherCrit.group(2));
 				CriticalType type = CriticalType.valueOf(matcherCrit.group(3));
-				result.setHpResult(hp);
+				result.setHp(hp);
 				result.setCriticalResult(TacticalCriticalResult.builder()
 					.severity(severity)
 					.type(type)

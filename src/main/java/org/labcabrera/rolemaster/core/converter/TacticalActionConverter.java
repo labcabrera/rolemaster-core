@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.controller.converter;
+package org.labcabrera.rolemaster.core.converter;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;

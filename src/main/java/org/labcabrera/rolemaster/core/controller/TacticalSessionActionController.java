@@ -3,6 +3,8 @@ package org.labcabrera.rolemaster.core.controller;
 import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.springframework.http.HttpStatus;
@@ -42,9 +44,21 @@ public interface TacticalSessionActionController {
 
 	@PostMapping("/{id}/execution")
 	@Operation(summary = "Executes a tactical action.")
-	Mono<TacticalAction> declare(
+	Mono<TacticalAction> execute(
 		@PathVariable("id") String actionId,
 		@Valid @RequestBody TacticalActionExecution actionDeclaration);
+
+	@PostMapping("/{id}/execution/critical")
+	@Operation(summary = "Executes a critical result.")
+	Mono<TacticalAction> executeCritical(
+		@PathVariable("id") String actionId,
+		@RequestBody AttackCriticalExecution request);
+
+	@PostMapping("/{id}/execution/fumble")
+	@Operation(summary = "Executes a critical result.")
+	Mono<TacticalAction> executeFumble(
+		@PathVariable("id") String actionId,
+		@RequestBody FumbleExecution request);
 
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Eliminates a previously declared action.")

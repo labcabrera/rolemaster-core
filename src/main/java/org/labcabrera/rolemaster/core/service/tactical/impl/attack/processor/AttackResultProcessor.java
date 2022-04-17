@@ -12,6 +12,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +32,9 @@ public class AttackResultProcessor {
 	@Autowired
 	private TacticalCharacterRepository tacticalCharacterRepository;
 
+	@Autowired
+	private TacticalLogService logService;
+
 	public Mono<TacticalActionAttack> apply(TacticalActionAttack attack) {
 		log.info("Processing attack result for action {} ({})", attack.getId(), attack.getState());
 		if (attack.isFlumbe()) {
@@ -46,7 +50,8 @@ public class AttackResultProcessor {
 			.map(e -> attack)
 			.flatMap(this::updateSource)
 			.map(e -> attack)
-			.flatMap(this::updateAttack);
+			.flatMap(this::updateAttack)
+			.flatMap(logService::logAttackResult);
 	}
 
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack) {
@@ -56,8 +61,8 @@ public class AttackResultProcessor {
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackResult attackResult) {
 		return tacticalCharacterRepository.findById(attack.getTarget())
 			.map(tc -> {
-				if (attackResult.getHpResult() != null) {
-					tc.getHp().subtract(attackResult.getHpResult());
+				if (attackResult.getHp() != null) {
+					tc.getHp().subtract(attackResult.getHp());
 				}
 				if (attackResult.getCriticalResult() != null && attackResult.getCriticalResult().getCriticalTableResult() != null) {
 					CriticalTableResult ctr = attackResult.getCriticalResult().getCriticalTableResult();
@@ -71,12 +76,12 @@ public class AttackResultProcessor {
 							.hp(ctr.getBleeding())
 							.description("Bleeding for critical: " + ctr.getText())
 							.build();
-						cs.getBleding().add(bleeding);
+						cs.getBleeding().add(bleeding);
 					}
 					for (Entry<Debuff, Integer> dse : ctr.getDebuffs().entrySet()) {
 						tc.getCombatStatus().addDebuff(dse.getKey(), dse.getValue());
 					}
-					tc.getCombatStatus().getOtherEfects().addAll(ctr.getOtherEffects());
+					tc.getCombatStatus().getInjuries().putAll(ctr.getInjuries());
 				}
 				return tc;
 			})

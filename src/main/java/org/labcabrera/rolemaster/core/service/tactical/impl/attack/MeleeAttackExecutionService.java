@@ -45,7 +45,7 @@ public class MeleeAttackExecutionService {
 		loadTarget(action, execution);
 		action.setAttackResult(new AttackResult());
 		action.setRoll(execution.getRoll());
-		action.setPosition(execution.getPosition());
+		action.setFacing(execution.getFacing());
 
 		MeleeAttackContext context = new MeleeAttackContext();
 		context.setAction(action);
@@ -68,6 +68,7 @@ public class MeleeAttackExecutionService {
 			if (execution.getTarget() != null) {
 				throw new BadRequestException("Can not declare target in full melee attack type");
 			}
+			break;
 		case PRESS_AND_MELEE:
 		case REACT_AND_MELEE:
 			if (execution.getTarget() == null) {

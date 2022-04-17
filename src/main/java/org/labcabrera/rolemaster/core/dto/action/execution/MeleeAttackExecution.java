@@ -28,7 +28,7 @@ public class MeleeAttackExecution extends TacticalActionExecution {
 	private String secondaryTarget;
 
 	@Builder.Default
-	private MeleeAttackFacing position = MeleeAttackFacing.NORMAL;
+	private MeleeAttackFacing facing = MeleeAttackFacing.NORMAL;
 
 	//TODO translate
 	@Builder.Default

@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.tactical.AttackBonus;
+import org.labcabrera.rolemaster.core.model.tactical.Buff;
 import org.labcabrera.rolemaster.core.model.tactical.CharacterStatusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
+import org.labcabrera.rolemaster.core.model.tactical.InjuryType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -22,14 +24,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CriticalTableResult implements CharacterStatusModifier {
 
-	//private Integer maxRoll;
-
-	//private CriticalSeverity severity;
-
 	private Integer hp;
-
-	@Builder.Default
-	private Map<Debuff, Integer> debuffs = new LinkedHashMap<>();
 
 	private Penalty penalty;
 
@@ -37,58 +32,21 @@ public class CriticalTableResult implements CharacterStatusModifier {
 
 	private AttackBonus bonus;
 
-	private Boolean specialEffect;
+	@Builder.Default
+	private Map<Buff, Integer> buffs = new LinkedHashMap<>();
 
-	private Boolean hasInitiative;
+	@Builder.Default
+	private Map<Debuff, Integer> debuffs = new LinkedHashMap<>();
 
-	private Boolean instantDeath;
+	@Builder.Default
+	private Map<ConditionalCriticalEffect, CriticalTableResult> conditionalEffects = new LinkedHashMap<>();
 
-	private Integer deathAfterRounds;
-
-	private Map<ConditionalCriticalEffect, CriticalTableResult> conditionalEffects;
-
-	private String text;
+	@Builder.Default
+	private Map<InjuryType, String> injuries = new LinkedHashMap<>();
 
 	@Builder.Default
 	private List<String> otherEffects = new ArrayList<>();
 
-	// TODO incluir resultados condicionales:
-	// llevar/no llevar yelmo
-	// llevar/no grebas
-	// llevar/no armadura pectoral
-
-	// TODO
-	// posibilidades de arma atrapada en el cuerpo X turnos
-
-	public CriticalTableResult addDebuf(Debuff debufStatus) {
-		return addDebuf(debufStatus, 1);
-	}
-
-	public CriticalTableResult addDebuf(Debuff debufStatus, Integer rounds) {
-		debuffs.put(debufStatus, rounds);
-		return this;
-	}
-
-	public CriticalTableResult addPenalty(Integer penalty) {
-		return addPenalty(penalty, null, null);
-	}
-
-	public CriticalTableResult addPenalty(Integer penalty, Integer rounds, String description) {
-		if (penalty > 0) {
-			throw new RuntimeException("Invalid penalty");
-		}
-		this.penalty = Penalty.builder().penalty(penalty).rounds(rounds).description(description).build();
-		return this;
-	}
-
-	public CriticalTableResult addBonus(Integer bonus) {
-		this.bonus = AttackBonus.builder().bonus(bonus).rounds(1).build();
-		return this;
-	}
-
-	public CriticalTableResult addEfect(String description) {
-		this.otherEffects.add(description);
-		return this;
-	}
+	private String text;
 
 }

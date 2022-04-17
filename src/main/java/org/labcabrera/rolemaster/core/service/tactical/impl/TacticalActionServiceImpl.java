@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl;
 
 import javax.validation.Valid;
 
-import org.labcabrera.rolemaster.core.controller.converter.TacticalActionConverter;
+import org.labcabrera.rolemaster.core.converter.TacticalActionConverter;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
@@ -89,9 +89,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> executeCritical(AttackCriticalExecution request) {
-		return actionRepository.findById(request.getActionId())
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
+	public Mono<TacticalAction> executeCritical(String actionId, AttackCriticalExecution request) {
+		return actionRepository.findById(actionId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
 			.map(e -> criticalAttackExecutionService.apply(e, request))
 			.flatMap(actionRepository::save)
 			.map(e -> (TacticalActionAttack) e)
@@ -99,8 +99,8 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> executeFumble(FumbleExecution execution) {
-		return actionRepository.findById(execution.getActionId())
+	public Mono<TacticalAction> executeFumble(String actionId, FumbleExecution execution) {
+		return actionRepository.findById(actionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
 			.map(e -> (TacticalActionAttack) e)
 			.map(e -> fumbleAttackExecutionService.apply(e, execution))

@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.controller.EnumController;
 import org.labcabrera.rolemaster.core.dto.NamedKey;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,8 @@ public class EnumControllerImpl implements EnumController {
 			return Flux.just(MovementPace.values()).map(e -> NamedKey.builder().key(e.getName()).name(e.getDescription()).build());
 		case "melee-attack-type":
 			return Flux.just(MeleeAttackType.values()).map(e -> NamedKey.builder().key(e.getName()).name(e.getDescription()).build());
+		case "melee-attack-facing":
+			return Flux.just(MeleeAttackFacing.values()).map(e -> NamedKey.builder().key(e.getCode()).name(e.getName()).build());
 		default:
 			throw new BadRequestException("Invalid enum name");
 		}

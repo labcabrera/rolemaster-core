@@ -84,7 +84,7 @@ public class OffensiveBonusProcessor {
 	private <T extends AttackContext<?>> T loadBonusMeleePosition(T context) {
 		Optional<Integer> bonus = getBonusMeleePosition(context);
 		if (bonus.isPresent()) {
-			context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MELEE_POSITION, bonus.get());
+			context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MELEE_FACING, bonus.get());
 		}
 		return context;
 	}
@@ -94,7 +94,7 @@ public class OffensiveBonusProcessor {
 			.zipWith(getBonusDistance(context))
 			.map(pair -> {
 				if (pair.getT2().isPresent()) {
-					context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.MISSILE_DISTANCE, pair.getT2().get());
+					context.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.DISTANCE, pair.getT2().get());
 				}
 				return pair.getT1();
 			});
@@ -106,7 +106,7 @@ public class OffensiveBonusProcessor {
 				return 0;
 			}
 		}
-		return -target.getBaseDefensiveBonus();
+		return -target.getDefensiveBonus();
 	}
 
 	private int getBonusHp(TacticalCharacter source) {
@@ -166,22 +166,7 @@ public class OffensiveBonusProcessor {
 	private Optional<Integer> getBonusMeleePosition(AttackContext<?> context) {
 		if (context.getAction() instanceof TacticalActionMeleeAttack) {
 			TacticalActionMeleeAttack action = (TacticalActionMeleeAttack) context.getAction();
-			int result = 0;
-			switch (action.getPosition()) {
-			case FLANK:
-				result = 15;
-				break;
-			case REAR_FLANK:
-				result = 25;
-				break;
-			case REAR:
-				result = 35;
-				break;
-			case NORMAL:
-			default:
-				break;
-			}
-			return Optional.of(result);
+			return Optional.of(action.getFacing().getModifier());
 		}
 		return Optional.empty();
 	}

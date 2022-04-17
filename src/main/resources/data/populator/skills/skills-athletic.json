@@ -7,6 +7,7 @@
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill encompasses any athletic game that primarily involves brawn (e.g., wrestling, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
 	{
@@ -53,6 +54,7 @@
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill encompasses any athletic game that primarily involves endurance (e.g., track events, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
@@ -117,6 +119,7 @@
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
         "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill encompasses any athletic game that primarily involves gymnastic skills (e.g., gymnastic events, soccer, basketball, etc.). Skill in each game must be developed separately, and includes rules, techniques, etc."
     },
     {
