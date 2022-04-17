@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
-class ManeuverTableTest {
+class StaticManeuverTableTest {
 
 	@Autowired
 	private ObjectMapper objectMapper;

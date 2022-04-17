@@ -86,7 +86,7 @@
 					"rounds": 1
 				},
 				"injuries": {
-					"arm-useless": "Critical effect."
+					"left-arm-useless": "Critical effect."
 				}
 			},
 			"67-70": {
@@ -286,7 +286,7 @@
 					"must-parry": 2
 				},
 				"injuries": {
-					"arm-useless": "Critical effect."
+					"left-arm-useless": "Critical effect."
 				}
 			},
 			"67-70": {
@@ -746,7 +746,7 @@
                     "stunned": 5
                 },
 				"injuries": {
-					"arm-useless": "Critical effect."
+					"left-arm-useless": "Critical effect."
 				}
 			},
 			"81-85": {
@@ -907,7 +907,7 @@
                     "stunned": 6
                 },
 				"injuries": {
-					"arm-useless": "Critical effect."
+					"right-arm-useless": "Critical effect."
 				}
 			},
 			"71-75": {
@@ -928,7 +928,7 @@
                     "cant-parry": 3
                 },
 				"injuries": {
-					"arm-useless": "Arm broken. Critical effect."
+					"right-arm-useless": "Arm broken. Critical effect."
 				}
 			},
 			"81-85": {

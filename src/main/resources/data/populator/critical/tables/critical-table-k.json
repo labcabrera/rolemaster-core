@@ -108,7 +108,7 @@
 					"cant-parry": 2
 				},
 				"injuries": {
-					"arm-useless": "Critical effect."
+					"left-arm-useless": "Critical effect."
 				}
 			},
 			"67-70": {
@@ -140,7 +140,7 @@
 					},
 					"without-shield": {
 						"injuries": {
-							"arm-useless": "Arm Broken. Critical effect."
+							"left-arm-useless": "Arm Broken. Critical effect."
 						}
 					}
 				}
@@ -328,7 +328,7 @@
 					"cant-parry": 3
 				},
 				"injuries": {
-					"arm-useless": "Arm broken. Critical effect."
+					"right-arm-useless": "Arm broken. Critical effect."
 				}
 			},
 			"67-70": {
@@ -360,7 +360,7 @@
 					"stunned": 1
 				},
 				"injuries": {
-					"hand-broken": "Critical effect."
+					"left-hand-useless": "Critical effect."
 				}
 			},
 			"81-85": {
@@ -560,7 +560,7 @@
 					"penalty": -40
 				},
 				"injuries": {
-					"arm-useless": "A metal armguard is bent and the arm is useless until until the armor is removed."
+					"right-arm-useless": "A metal armguard is bent and the arm is useless until until the armor is removed."
 				}
 			},
 			"86-90": {

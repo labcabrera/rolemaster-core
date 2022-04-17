@@ -5,6 +5,7 @@ import java.util.Map;
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.Penalty;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
+import org.labcabrera.rolemaster.core.model.tactical.InjuryType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +23,8 @@ public class MovingManeuverResult {
 	private Integer hp;
 
 	private Map<Debuff, Integer> debuffs;
+
+	private Map<InjuryType, String> injuries;
 
 	private Penalty penalty;
 
