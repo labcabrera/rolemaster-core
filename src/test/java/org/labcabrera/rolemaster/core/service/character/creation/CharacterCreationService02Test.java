@@ -134,7 +134,7 @@ class CharacterCreationService02Test {
 		SkillUpgrade updateSkillRequest = objectMapper.readerFor(SkillUpgrade.class).readValue(json);
 		character = skillUpdateService.updateRanks(character.getId(), updateSkillRequest).share().block();
 
-		assertEquals(2, character.getSkill("shord-sword").get().getRanks().get(RankType.DEVELOPMENT));
+		assertEquals(2, character.getSkill("short-sword").get().getRanks().get(RankType.DEVELOPMENT));
 
 		File folder = new File("build/characters");
 		if (!folder.exists()) {
