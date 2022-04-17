@@ -39,8 +39,7 @@ public @interface ValidTacticalActionMeleAttack {
 						result = false;
 					}
 					break;
-				case PRESS_AND_MELEE:
-				case REACT_AND_MELEE:
+				case PRESS_AND_MELEE, REACT_AND_MELEE:
 					if (value.getTarget() != null) {
 						context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_ATTACK_MELEE_NOT_REQUIRED_TARGET)
 							.addConstraintViolation();

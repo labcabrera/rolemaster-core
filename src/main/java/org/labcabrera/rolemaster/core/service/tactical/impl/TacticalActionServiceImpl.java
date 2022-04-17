@@ -9,6 +9,7 @@ import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.message.Messages.Errors;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
@@ -51,13 +52,13 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	@Override
 	public Mono<TacticalAction> getDeclaredAction(String actionId) {
 		return actionRepository.findById(actionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")));
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))));
 	}
 
 	@Override
 	public Mono<Void> removeDeclaredAction(String actionId) {
 		return actionRepository.findById(actionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
 			//TODO check round state
 			.flatMap(actionRepository::delete);
 	}
@@ -71,7 +72,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 			.then(Mono.just(ta))
 			.zipWith(actionRepository.existsByRoundIdAndSourceAndPriority(ta.getRoundId(), ta.getSource(), ta.getPriority()))
 			.map(pair -> {
-				if (pair.getT2()) {
+				if (Boolean.TRUE.equals(pair.getT2())) {
 					throw new BadRequestException("Duplicate action declaration");
 				}
 				TacticalAction action = pair.getT1();
@@ -84,25 +85,25 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	@Override
 	public Mono<TacticalAction> execute(String actionId, TacticalActionExecution request) {
 		return actionRepository.findById(actionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
 			.flatMap(action -> this.tacticalActionExecutionRouter.execute(action, request));
 	}
 
 	@Override
 	public Mono<TacticalAction> executeCritical(String actionId, AttackCriticalExecution request) {
 		return actionRepository.findById(actionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Action not found")))
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
 			.map(e -> criticalAttackExecutionService.apply(e, request))
 			.flatMap(actionRepository::save)
-			.map(e -> (TacticalActionAttack) e)
+			.map(TacticalActionAttack.class::cast)
 			.flatMap(e -> attackResultProcessor.apply(e));
 	}
 
 	@Override
 	public Mono<TacticalAction> executeFumble(String actionId, FumbleExecution execution) {
 		return actionRepository.findById(actionId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Action not found")))
-			.map(e -> (TacticalActionAttack) e)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
+			.map(TacticalActionAttack.class::cast)
 			.map(e -> fumbleAttackExecutionService.apply(e, execution))
 			//TODO Process fumble result
 			.flatMap(actionRepository::save);

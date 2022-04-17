@@ -1,34 +1,42 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum BonusType {
+import lombok.Getter;
 
-	RANK("rank"),
+public enum BonusType implements CodeNameEnum {
 
-	CATEGORY("category"),
+	RANK("rank", "Rank"),
 
-	ATTRIBUTE("attribute"),
+	CATEGORY("category", "Category"),
 
-	PROFESSION("profession"),
+	ATTRIBUTE("attribute", "Attribute"),
 
-	RACE("race"),
+	PROFESSION("profession", "Profession"),
 
-	SPECIAL("special"),
+	RACE("race", "Race"),
 
-	ITEM("item"),
+	SPECIAL("special", "Special"),
 
-	SKILL_SPECIAL("skillSpecial");
+	ITEM("item", "Item"),
 
+	SKILL_SPECIAL("skillSpecial", "Skill special");
+
+	private String code;
+
+	@Getter
 	private String name;
 
-	private BonusType(String name) {
+	private BonusType(String code, String name) {
+		this.code = code;
 		this.name = name;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }

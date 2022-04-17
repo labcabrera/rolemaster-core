@@ -17,7 +17,7 @@ public class TacticalSkillService {
 	private CharacterInfoRepository characterInfoRepository;
 
 	public Mono<Integer> getSkill(TacticalCharacter character, String skill) {
-		if (character.getIsNpc()) {
+		if (character.isNpc()) {
 			return getNpcSkill(character, skill);
 		}
 		else {

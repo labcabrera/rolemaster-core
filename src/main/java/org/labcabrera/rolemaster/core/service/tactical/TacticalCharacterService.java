@@ -46,7 +46,7 @@ public class TacticalCharacterService {
 	public Mono<TacticalCharacter> create(String sessionId, String characterId) {
 		return characterService.findById(characterId)
 			.doOnNext(character -> log.info("Readed person {}", character))
-			.map(character -> createContext(character))
+			.map(this::createContext)
 			.doOnNext(status -> log.info("Created status {}", status))
 			.flatMap(repository::save)
 			.doOnNext(status -> log.info("Saved status {}", status));
@@ -56,7 +56,7 @@ public class TacticalCharacterService {
 		return repository.findById(id)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical character context not found")))
 			.flatMap(ctx -> {
-				if (ctx.getIsNpc()) {
+				if (ctx.isNpc()) {
 					return npcInstanceRepository.deleteById(ctx.getCharacterId()).then(Mono.just(ctx));
 				}
 				else {

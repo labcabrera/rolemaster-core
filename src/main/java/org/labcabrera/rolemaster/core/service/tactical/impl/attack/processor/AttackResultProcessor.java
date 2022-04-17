@@ -116,8 +116,7 @@ public class AttackResultProcessor {
 				e.setState(TacticalActionState.RESOLVED);
 				return e;
 			})
-			.flatMap(tacticalActionRepository::save)
-			.map(e -> (TacticalActionAttack) e);
+			.flatMap(tacticalActionRepository::save);
 	}
 
 }

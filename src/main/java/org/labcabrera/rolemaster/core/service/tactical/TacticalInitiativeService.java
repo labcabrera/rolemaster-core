@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.message.Message.Errors;
-import org.labcabrera.rolemaster.core.message.Message.TacticalLogs;
+import org.labcabrera.rolemaster.core.message.Messages.Errors;
+import org.labcabrera.rolemaster.core.message.Messages.TacticalLogs;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRoundState;
 import org.labcabrera.rolemaster.core.model.tactical.action.InitiativeModifier;

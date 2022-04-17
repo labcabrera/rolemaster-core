@@ -30,20 +30,15 @@ public class NpcPredefinedNameGenerator implements ApplicationRunner {
 		Map<String, String> groups = new LinkedHashMap<>();
 		groups.put("orc", "data/populator/npcs/names/names-orcs.txt");
 		groups.put("norse", "data/populator/npcs/names/names-norse-gods.txt");
-
 		List<NpcPredefinedName> entities = new ArrayList<>();
-
 		for (Entry<String, String> entry : groups.entrySet()) {
 			String group = entry.getKey();
 			String resource = entry.getValue();
-			readResource(resource).stream().map(e -> {
-				return NpcPredefinedName.builder()
-					.group(group)
-					.name(e)
-					.build();
-			}).forEach(e -> entities.add(e));
+			readResource(resource).stream().map(e -> NpcPredefinedName.builder()
+				.group(group)
+				.name(e)
+				.build()).forEach(entities::add);
 		}
-
 		repository.deleteAll()
 			.thenMany(repository.saveAll(entities))
 			.then(Mono.just(String.format("Inserted %s entities from %s", entities.size(), groups.values())))

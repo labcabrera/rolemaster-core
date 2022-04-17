@@ -1,10 +1,12 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.Getter;
 
-public enum MeleeAttackType {
+public enum MeleeAttackType implements CodeNameEnum {
 
 	FULL("full", "Full", "The attacker’s OB receives a +10 modification, but the target of the attack must be declared during "
 		+ "the Action Declaration Phase. Any movement must be declared as a separate action."),
@@ -22,23 +24,23 @@ public enum MeleeAttackType {
 			+ "he may move up to 50% of his normal movement. Apply the normal OB modifications for less than 100% activity "
 			+ "used to attack.");
 
-	private String name;
+	private String code;
 
 	@Getter
-	private String description;
+	private String name;
 
 	@Getter
 	private String detail;
 
-	private MeleeAttackType(String name, String description, String detail) {
+	private MeleeAttackType(String code, String name, String detail) {
+		this.code = code;
 		this.name = name;
-		this.description = description;
 		this.detail = detail;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }

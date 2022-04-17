@@ -6,7 +6,7 @@ public enum RankType {
 
 	ADOLESCENCE("adolescence"),
 
-	LIFESTYLE("lifestyle"),
+	TRAINING_PACKAGE("training-package"),
 
 	CONSOLIDATED("consolidated"),
 

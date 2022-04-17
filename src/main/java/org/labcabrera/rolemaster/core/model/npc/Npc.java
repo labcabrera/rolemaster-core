@@ -23,7 +23,7 @@ public class Npc {
 	private String id;
 
 	private String name;
-	
+
 	private String shortDescription;
 
 	private Integer level;
@@ -41,7 +41,7 @@ public class Npc {
 
 	private Integer defensiveBonus;
 
-	private Boolean unique;
+	private boolean unique;
 
 	private Integer baseMove;
 

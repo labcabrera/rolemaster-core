@@ -4,49 +4,88 @@
 		"name": "Assasin",
 		"type": "lifestyle",
         "timeAcquisition": 30,
-        "skillCategoryRanks": {
+        "fixedSkillCategories": {
             "subterfuge-stealth":     2,
             "subterfuge-mechanics":   1,
             "awareness-senses":       1
         },
-        "skillRanks": {
-            "body-development": 1,
-            "climbing": 1,
-            "swimming": 1,
-            "alertness": 2,
-            "observation": 1,
-            "attunement": 1,
-            "first-aid": 1
+        "fixedSkills": {
         },
-        "selectionCategorySkillRanks": [
+        "selectableSkillCategoryList": [
+        	{
+	        	"key": "weapon-category",
+	        	"description": "Weapon group (choice one category",
+	        	"group": "weapons",
+	        	"ranks": 1
+        	}
+        ],
+        "selectableSkillList": [
+        	{
+        		"key": "weapon-skill",
+        		"description": "Weapon skill selection",
+        		"group": "weapons",
+        		"ranks": 1,
+        		"skills": 1
+        	},
             {
+            	"key": "subterfuge-stealth-skill",
+            	"description": "Subterfuge - Stealth skill (choice of up two skills, 2 total)",
                 "category": "subterfuge-stealth",
-                "value": 2
+                "ranks": 2,
+                "skills": 2
             },
             {
+            	"key": "subterfuge-mechanics-skill",
+            	"description": "Subterfuge - Mechanics (choice one skill)",
                 "category": "subterfuge-mechanics",
-                "value": 1
+                "ranks": 1,
+                "skills": 1
             },
             {
-                "category": "subterfuge-attack",
-                "value": 3
+            	"key": "subterfuge-attack-skill",
+            	"description": "Subterfuge - Attack (choice up to two skills, 3 total)",
+            	"category": "subterfuge-attack",
+            	"ranks": 3,
+            	"skills": 2
             },
             {
-                "category": "awareness-senses",
-                "value": 1
+            	"key": "awareness-senses-skill",
+            	"description": "Awareness Senses (choice one skill)",
+            	"category": "awareness-senses",
+            	"ranks": 1,
+            	"skills": 1
             },
             {
-                "category": "special-attacks",
-                "value": 2
+            	"key": "special-attacks-skill",
+            	"description": "Special Attacks (choice one skill, 2 total)",
+            	"category": "special-attacks",
+            	"ranks": 2,
+            	"skills": 1
             }
         ],
-        "selectionSkillRanks": [
-            {
-                "category": "weapon",
-                "value": 1
-            }
-        ],
-        "startingMoney": "+d10g"
+        "startingMoney": "+d10g",
+        "costByProfession": {
+        	"fighter":                       25,
+        	"thief":                         16,
+        	"rogue":                         20,
+        	"warrior-monk":                  25,
+        	"layman":                        28,
+        	"magician":                      40,
+        	"illusionist":                   36,
+        	"cleric":                        38,
+        	"animist":                       34,
+        	"mentalist":                     37,
+        	"lay-healer":                    38,
+        	"healer":                        40,
+        	"mystic":                        37,
+        	"sorcerer":                      41,
+        	"ranger":                        26,
+        	"paladin":                       34,
+        	"monk":                          29,
+        	"dabbler":                       27,
+        	"bard":                          31,
+        	"magent":                        24
+        }
 	},
 	{
 		"id": "berserker",

@@ -27,17 +27,15 @@ public class TacticalSessionService {
 		return sessionRepository
 			.findById(request.getStrategicSessionId())
 			.switchIfEmpty(Mono.error(new BadRequestException("Invalid sessionId")))
-			.map(session -> {
-				return TacticalSession.builder()
-					.strategicSessionId(session.getId())
-					.name(request.getName())
-					.description(request.getDescription())
-					.state(TacticalSessionState.CREATED)
-					.entityMetadata(EntityMetadata.builder()
-						.created(LocalDateTime.now())
-						.build())
-					.build();
-			})
+			.map(session -> TacticalSession.builder()
+				.strategicSessionId(session.getId())
+				.name(request.getName())
+				.description(request.getDescription())
+				.state(TacticalSessionState.CREATED)
+				.entityMetadata(EntityMetadata.builder()
+					.created(LocalDateTime.now())
+					.build())
+				.build())
 			.flatMap(tacticalSessionRepository::insert);
 	}
 

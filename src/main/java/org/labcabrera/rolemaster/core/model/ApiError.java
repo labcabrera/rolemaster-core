@@ -19,13 +19,13 @@ public class ApiError {
 	private String message;
 
 	@Builder.Default
-	private List<Message> messages = new ArrayList<>();
+	private List<ApiErrorMessage> messages = new ArrayList<>();
 
 	@Data
 	@AllArgsConstructor
 	@NoArgsConstructor
 	@Builder
-	public static class Message {
+	public static class ApiErrorMessage {
 
 		private String message;
 

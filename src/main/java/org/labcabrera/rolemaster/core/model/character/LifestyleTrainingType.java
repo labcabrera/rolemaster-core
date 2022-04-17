@@ -1,22 +1,30 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum LifestyleTrainingType {
+import lombok.Getter;
 
-	LIFESTYLE("lifestyle"),
+public enum LifestyleTrainingType implements CodeNameEnum {
 
-	VOCATIONAL("vocational");
+	LIFESTYLE("lifestyle", "Lifestyle"),
 
+	VOCATIONAL("vocational", "Vocational");
+
+	private String code;
+
+	@Getter
 	private String name;
 
-	private LifestyleTrainingType(String name) {
+	private LifestyleTrainingType(String code, String name) {
+		this.code = code;
 		this.name = name;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }

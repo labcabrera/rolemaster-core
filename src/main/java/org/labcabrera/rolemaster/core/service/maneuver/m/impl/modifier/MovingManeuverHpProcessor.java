@@ -16,7 +16,7 @@ public class MovingManeuverHpProcessor implements MovingManeuverModifierProcesso
 			return;
 		}
 		Hp hp = context.getCharacterStatus().get().getHp();
-		double damagePercent = 100 - hp.getPercent();
+		double damagePercent = 100d - hp.getPercent();
 		int result;
 		if (damagePercent > 75) {
 			result = -30;
@@ -39,7 +39,6 @@ public class MovingManeuverHpProcessor implements MovingManeuverModifierProcesso
 			.type(ModifierType.HP)
 			.build();
 		context.getManeuverModifiers().add(modifier);
-
 	}
 
 }

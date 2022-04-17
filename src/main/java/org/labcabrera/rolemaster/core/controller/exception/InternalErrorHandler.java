@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.ApiError;
-import org.labcabrera.rolemaster.core.model.ApiError.Message;
+import org.labcabrera.rolemaster.core.model.ApiError.ApiErrorMessage;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,38 +21,41 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class InternalErrorHandler {
 
+	private static final String INVALID_REQUEST = "Invalid request";
+	private static final String INVALID_REQUEST_CODE = String.valueOf(HttpStatus.BAD_REQUEST.value());
+
+	private static final String INTERNAL_SERVER_ERROR = "Internal server error";
+	private static final String INTERNAL_SERVER_CODE = String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value());
+
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ApiError> serverExceptionHandler(Exception ex) {
 		log.debug("Handling exception {}", ex.getClass().getName());
 
 		if (ex instanceof BadRequestException) {
-			log.warn("Invalid request", ex);
+			log.warn(INVALID_REQUEST, ex);
 			ApiError error = ApiError.builder()
 				.message(ex.getMessage())
-				.code("400")
+				.code(INVALID_REQUEST_CODE)
 				.build();
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof ConstraintViolationException) {
-			log.warn("Invalid request", ex.getMessage());
+			log.warn(INVALID_REQUEST, ex.getMessage());
 			ApiError error = ApiError.builder()
 				.message(ex.getMessage())
-				.code("400")
+				.code(INVALID_REQUEST_CODE)
 				.build();
 			return ResponseEntity.badRequest().body(error);
 		}
-		else if (ex instanceof WebExchangeBindException) {
+		else if (ex instanceof WebExchangeBindException bindException) {
 			log.info("Invalid request: {}", ex.getMessage());
-			WebExchangeBindException bindEx = (WebExchangeBindException) ex;
 			ApiError error = ApiError.builder()
-				.code("400")
-				.message("Invalid request")
+				.code(INVALID_REQUEST_CODE)
+				.message(INVALID_REQUEST)
 				.build();
-			bindEx.getAllErrors().stream().forEach(e -> {
-				error.getMessages().add(Message.builder()
-					.message(e.getDefaultMessage())
-					.build());
-			});
+			bindException.getAllErrors().stream().forEach(e -> error.getMessages().add(ApiErrorMessage.builder()
+				.message(e.getDefaultMessage())
+				.build()));
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof NotFoundException) {
@@ -60,13 +63,13 @@ public class InternalErrorHandler {
 			return ResponseEntity.notFound().build();
 		}
 		else {
-			log.error("Internal server error", ex);
+			log.error(INTERNAL_SERVER_ERROR, ex);
 		}
 
 		String message = ex.getMessage();
 		ApiError error = ApiError.builder()
-			.code("500")
-			.message(StringUtils.isNotBlank(message) ? message : "Internal server error")
+			.code(INTERNAL_SERVER_CODE)
+			.message(StringUtils.isNotBlank(message) ? message : INTERNAL_SERVER_ERROR)
 			.build();
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}

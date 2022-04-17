@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character.processor;
 
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.message.Messages.Errors;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -38,7 +40,10 @@ public class CharacterSkillProcessor implements CharacterPostProcessor {
 	}
 
 	private int getBonusCategory(CharacterSkill characterSkill, CharacterInfo character) {
-		return character.getSkillCategory(characterSkill.getCategoryId()).get().getTotalBonus();
+		String categoryId = characterSkill.getCategoryId();
+		return character.getSkillCategory(categoryId)
+			.orElseThrow(() -> new DataConsistenceException(Errors.characterMissingSkillCategory(categoryId)))
+			.getTotalBonus();
 	}
 
 	private int getBonusRank(CharacterSkill skill) {

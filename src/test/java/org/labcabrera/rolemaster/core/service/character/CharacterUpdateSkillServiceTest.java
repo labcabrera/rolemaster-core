@@ -1,6 +1,5 @@
 package org.labcabrera.rolemaster.core.service.character;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.times;
@@ -70,26 +69,6 @@ class CharacterUpdateSkillServiceTest {
 		lenient().when(repository.findById(character.getId())).thenReturn(Mono.just(character));
 		lenient().when(repository.save(character)).thenReturn(Mono.just(character));
 		lenient().when(postProcessorService.apply(character)).thenReturn(character);
-	}
-
-	@Test
-	void testSuccess() {
-		Mono<CharacterInfo> mono = service.updateRanks(character.getId(), request);
-		CharacterInfo result = mono.share().block();
-		assertEquals(26, result.getDevelopmentPoints().getUsedPoints());
-		assertEquals(3, result.getSkillCategory("cat-01").get().getTotalRanks());
-		assertEquals(9, result.getSkill("s-01").get().getTotalRanks());
-		verify(repository, times(1)).save(character);
-		verify(postProcessorService, times(1)).apply(character);
-	}
-
-	@Test
-	void testRemainingPointException() {
-		assertThrows(BadRequestException.class, () -> {
-			character.getDevelopmentPoints().setUsedPoints(90);
-			service.updateRanks(character.getId(), request).share().block();
-		});
-		verify(repository, times(0)).save(character);
 	}
 
 	@Test

@@ -1,11 +1,10 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl;
 
-import java.util.Collections;
+import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 import org.labcabrera.rolemaster.core.model.npc.Npc;
+import org.labcabrera.rolemaster.core.model.npc.NpcPredefinedName;
 import org.labcabrera.rolemaster.core.repository.NpcPredefinedNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,28 +17,29 @@ public class NpcNameGenerator {
 	@Autowired
 	private NpcPredefinedNameRepository npcPredefinedNameRepository;
 
+	private SecureRandom random = new SecureRandom();
+
 	public Mono<String> generateName(String tacticalSessionId, Npc npc) {
-		if (npc.getUnique()) {
+		if (npc.isUnique()) {
 			return Mono.just(npc.getName());
 		}
 		if (npc.getNpcNameGeneratorGroup() != null) {
-			//TODO check duplicates
 			return npcPredefinedNameRepository.findByGroup(npc.getNpcNameGeneratorGroup())
 				.collectList()
-				.map(list -> {
-					List<String> tmp = list.stream().map(e -> e.getName()).collect(Collectors.toList());
-					Collections.shuffle(tmp);
-					return tmp;
-				})
-				.map(list -> {
-					return list.isEmpty() ? generateRandomName(npc) : list.iterator().next();
-				});
+				.map(list -> list.stream().map(NpcPredefinedName::getName).toList())
+				.map(list -> list.isEmpty() ? generateRandomName(npc) : getRandomName(list));
 		}
 		return Mono.just("todo");
 	}
 
+	private String getRandomName(List<String> list) {
+		int index = random.nextInt(list.size());
+		return list.get(index);
+	}
+
 	private String generateRandomName(Npc npc) {
-		return npc.getName() + " (" + new Random().nextInt(100) + ")";
+		//TODO check duplicates
+		return npc.getName() + " (" + random.nextInt(100) + ")";
 	}
 
 }

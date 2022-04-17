@@ -51,6 +51,7 @@
 			},
 			"51-55": {
 				"text": "Blow to foe's chest. Foe stumbles back and puts up a feeble guard.",
+				"hp": 2,
 				"bleeding": 1,
 				"debuffs": {
 					"must-parry": 1

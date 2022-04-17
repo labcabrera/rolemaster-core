@@ -74,6 +74,10 @@ public class CharacterInfo {
 	private Map<ResistanceType, CharacterResistance> resistances = new LinkedHashMap<>();
 
 	@Builder.Default
+	@Schema(description = "Training packages adquired.")
+	private Map<String, LifestyleTrainingType> trainingPackages = new LinkedHashMap<>();
+
+	@Builder.Default
 	@Schema(description = "List of character development points. These points are used for both creation and leveling up.", required = true)
 	private CharacterDevelopment developmentPoints = new CharacterDevelopment();
 

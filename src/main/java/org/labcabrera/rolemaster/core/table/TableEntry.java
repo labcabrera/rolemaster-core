@@ -13,17 +13,17 @@ public final class TableEntry {
 	 */
 	public static boolean checkKeyRange(String key, int roll) {
 		if (key.startsWith("<")) {
-			int min = Integer.valueOf(key.substring(1));
+			int min = Integer.parseInt(key.substring(1));
 			return roll < min;
 
 		}
 		else if (key.startsWith(">")) {
-			int max = Integer.valueOf(key.substring(1));
+			int max = Integer.parseInt(key.substring(1));
 			return roll > max;
 		}
 		String[] tmp = key.split(":");
-		int min = Integer.valueOf(tmp[0]);
-		int max = Integer.valueOf(tmp[1]);
+		int min = Integer.parseInt(tmp[0]);
+		int max = Integer.parseInt(tmp[1]);
 		return roll >= min && roll <= max;
 	}
 

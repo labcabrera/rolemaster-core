@@ -32,6 +32,8 @@ public class SkillControllerImpl implements SkillController {
 		example.getProbe().setProgressionType(null);
 		example.getProbe().setSkillBonus(null);
 		example.getProbe().setType(null);
+		example.getProbe().setCustomizableOptions(null);
+		example.getProbe().setCustomizationRestriction(null);
 		if (StringUtils.isNotBlank(categoryId)) {
 			example.getProbe().setCategoryId(categoryId);
 		}

@@ -1,10 +1,12 @@
 package org.labcabrera.rolemaster.core.model.npc;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.Getter;
 
-public enum NpcSpeed {
+public enum NpcSpeed implements CodeNameEnum {
 
 	INCHING("IN", "Inching", -16),
 
@@ -24,22 +26,23 @@ public enum NpcSpeed {
 
 	BLINDING_FAST("BF", "Blinding Fast", 16);
 
-	private String name;
+	private String code;
 
 	@Getter
-	private String description;
+	private String name;
 
 	@Getter
 	private Integer initiativeModifier;
 
-	private NpcSpeed(String name, String description, Integer initiativeModifier) {
+	private NpcSpeed(String code, String name, Integer initiativeModifier) {
+		this.code = code;
 		this.name = name;
-		this.description = description;
+		this.initiativeModifier = initiativeModifier;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }

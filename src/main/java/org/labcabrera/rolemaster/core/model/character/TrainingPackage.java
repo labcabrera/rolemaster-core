@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.annotation.Id;
@@ -20,17 +22,24 @@ public class TrainingPackage {
 
 	@Id
 	private String id;
-	
+
 	private String name;
 
 	private LifestyleTrainingType type;
 
-	@Schema(description = "Time to adquire in months")
-	private Integer timeAdquisition;
+	@Schema(description = "Time to adquire in months.")
+	private Integer timeAcquisition;
 
-	private Map<String, Integer> skillCategoryRanks;
+	private Map<String, Integer> fixedSkillCategories;
 
-	private Map<String, Integer> skillRanks;
+	private Map<String, Integer> fixedSkills;
+
+	private List<SelectableSkillCategory> selectableSkillCategoryList;
+
+	private List<SelectableSkill> selectableSkillList;
 
 	private String startingMoney;
+
+	@Builder.Default
+	private Map<String, Integer> costByProfession = new LinkedHashMap<>();
 }

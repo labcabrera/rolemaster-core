@@ -59,7 +59,7 @@ public class MeleeAttackExecutionService {
 			.map(weaponTableProcessor::apply)
 			.flatMap(ctx -> attackResultProcessor.apply(ctx.getAction()))
 			.flatMap(actionRepository::save)
-			.map(e -> (TacticalActionMeleeAttack) e);
+			.map(TacticalActionMeleeAttack.class::cast);
 	}
 
 	private void loadTarget(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
@@ -69,12 +69,12 @@ public class MeleeAttackExecutionService {
 				throw new BadRequestException("Can not declare target in full melee attack type");
 			}
 			break;
-		case PRESS_AND_MELEE:
-		case REACT_AND_MELEE:
+		case PRESS_AND_MELEE, REACT_AND_MELEE:
 			if (execution.getTarget() == null) {
 				throw new BadRequestException("Required target");
 			}
 			action.setTarget(execution.getTarget());
+			break;
 		default:
 			break;
 		}

@@ -7,7 +7,7 @@ import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
-import org.labcabrera.rolemaster.core.message.Message.Errors;
+import org.labcabrera.rolemaster.core.message.Messages.Errors;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -112,16 +112,13 @@ public class TacticalServiceImpl implements TacticalService {
 	public Mono<TacticalRound> startRound(String tacticalSessionId) {
 		return tacticalSessionRepository.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
-			.map(e -> {
-				TacticalRound round = TacticalRound.builder()
-					.state(TacticalRoundState.ACTION_DECLARATION)
-					.tacticalSessionId(tacticalSessionId)
-					.metadata(EntityMetadata.builder()
-						.created(LocalDateTime.now())
-						.build())
-					.build();
-				return round;
-			})
+			.map(e -> TacticalRound.builder()
+				.state(TacticalRoundState.ACTION_DECLARATION)
+				.tacticalSessionId(tacticalSessionId)
+				.metadata(EntityMetadata.builder()
+					.created(LocalDateTime.now())
+					.build())
+				.build())
 			.zipWith(tacticalRoundRepository
 				.findFirstByTacticalSessionIdOrderByRoundDesc(tacticalSessionId)
 				.switchIfEmpty(Mono.just(TacticalRound.builder().round(1).build())), (a, b) -> {
