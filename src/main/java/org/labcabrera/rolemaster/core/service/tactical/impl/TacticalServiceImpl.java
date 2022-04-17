@@ -169,7 +169,7 @@ public class TacticalServiceImpl implements TacticalService {
 	@Override
 	public Mono<TacticalRound> startExecutionPhase(String roundId) {
 		return tacticalRoundRepository.findById(roundId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.ROUND_NOT_FOUND_T)))
+			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.roundNotFound(roundId))))
 			.flatMap(initiativeService::loadActionInitiatives);
 	}
 
