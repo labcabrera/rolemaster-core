@@ -74,7 +74,7 @@
 				"weaponId": "scimitar",
 				"bonus": 80,
 				"type": "melee",
-				"primary": false
+				"primary": true
 			}
 		],
 		"defensiveBonus": 40,
