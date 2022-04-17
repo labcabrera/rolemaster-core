@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.message.Messages.Errors;
+import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 
 @Service
 public class CharacterItemServiceImpl implements CharacterItemService {
@@ -40,6 +42,7 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 	}
 
 	public Mono<Void> deleteItem(String characterItemId) {
+		//TODO recalcular
 		return characterItemRepository.findById(characterItemId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterItemNotFound(characterItemId))))
 			.flatMap(characterItemRepository::delete);
@@ -76,10 +79,7 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 				validateItemPosition(pair.getT2(), request);
 				return pair;
 			})
-			.map(pair -> {
-				validateItemCollision(pair.getT2(), request);
-				return pair;
-			})
+			.flatMap(pair -> unequipAffectedItem(pair, request))
 			.map(pair -> CharacterItem.builder()
 				.characterId(characterId)
 				.itemId(request.getItemId())
@@ -115,13 +115,28 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 				throw new BadRequestException(Errors.ONLY_WEAPONS_OR_SHIELDS_CAN_BE_EQUIPPEN_IN_OFF_HAND);
 			}
 			break;
+		case EQUIPED:
+			if (!(item instanceof ArmorPiece)) {
+				throw new BadRequestException(Errors.ONLY_ARMOR_CAN_BE_IN_POSITION_EQUIPED);
+			}
+			break;
 		default:
 			break;
 		}
 	}
 
-	private void validateItemCollision(Item item, AddCharacterItem request) {
-		//TODO
+	private Mono<Tuple2<CharacterInfo, Item>> unequipAffectedItem(Tuple2<CharacterInfo, Item> tuple, AddCharacterItem request) {
+		if (request.getPosition() == ItemPosition.CARRIED || request.getPosition() == ItemPosition.STORED) {
+			return Mono.just(tuple);
+		}
+
+		return Mono.just(tuple)
+			.zipWith(this.getCharacterItems(null).collectList())
+			.map(pair -> {
+
+				return pair;
+			})
+			.map(e -> e.getT1());
 	}
 
 	private BigDecimal getWeigth(AddCharacterItem request, Item item) {

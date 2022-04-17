@@ -27,6 +27,7 @@ public class Messages {
 		public static final String INVALID_ROUND_STATE = "Invalid round state.";
 		public static final String ONLY_WEAPONS_OR_SHIELDS_CAN_BE_EQUIPPEN_IN_OFF_HAND = "Only weapons or shields can be equippen in off-hand.";
 		public static final String ONLY_WEAPONS_CAN_BE_EQUIPPED_IN_MAIN_HAND = "Only weapons can be equipped in main hand.";
+		public static final String ONLY_ARMOR_CAN_BE_IN_POSITION_EQUIPED = "Only armor pieces can be equipped.";
 
 		public static final String tacticalSessionNotFound(String tacticalSessionId) {
 			return String.format(TACTICAL_SESSION_NOT_FOUND_T, tacticalSessionId);

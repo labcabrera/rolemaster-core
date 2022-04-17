@@ -1,24 +1,27 @@
 package org.labcabrera.rolemaster.core.model.character.item;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
-public enum ItemPosition {
+public enum ItemPosition implements CodeNameEnum {
 
+	@Schema(description = "Only weapon.")
 	MAIN_HAND("main-hand", "Main hand"),
 
+	@Schema(description = "Weapon or shield.")
 	OFF_HAND("off-hand", "Off-hand"),
 
+	@Schema(description = "Only armon pieces except shields.")
 	EQUIPED("equipped", "Equipped"),
 
-	/** Equipment currently carried by the character (which affects its weight). */
+	@Schema(description = "Equipment currently carried by the character (which affects its weight). Any item.")
 	CARRIED("carried", "Carried"),
 
-	/**
-	 * Equipment owned by the character but not directly accessible from the adventure
-	 * (e.g. stored at home).
-	 */
+	@Schema(description = "Equipment owned by the character but not directly accessible from the adventure (e.g. stored at home).")
 	STORED("stored", "Stored");
 
 	private String code;
