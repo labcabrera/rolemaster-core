@@ -13,8 +13,8 @@
 				"text": "Blade misses foe's face by inches. You receive initiative next round.",
 				"hp": 1,
 				"buffs": {
-                	"has-initiative": 1
-                }
+					"has-initiative": 1
+				}
 			},
 			"16-20": {
 				"text": "Strike passes under foe's arm. It fails to bite deep. He recoils.",
@@ -137,7 +137,7 @@
 				},
 				"bonus": {
 					"bonus": 20,
-					"rounds": 1 
+					"rounds": 1
 				}
 			},
 			"86-90": {
@@ -171,7 +171,6 @@
 						}
 					}
 				}
-				
 			},
 			"96-99": {
 				"text": "The tip of your weapon slashes foe's nose. Minor wound and a permanent scar.",
@@ -204,8 +203,8 @@
 				"text": "Foe steps quickly out of your reach. You receive initiative next round.",
 				"hp": 3,
 				"buffs": {
-                	"has-initiative": 1
-                }
+					"has-initiative": 1
+				}
 			},
 			"16-20": {
 				"text": "Blow to foe's side. Foe defends energetically.",
@@ -401,14 +400,14 @@
 				"text": "Blow to foe's side yields the initiative to you next round.",
 				"hp": 6,
 				"buffs": {
-                	"has-initiative": 1
-                }
+					"has-initiative": 1
+				}
 			},
 			"16-20": {
 				"text": "Your assault catches foe in side and forces him back 5 feet.",
 				"hp": 4,
 				"debuffs": {
-					"must-parry": 1 
+					"must-parry": 1
 				},
 				"penalty": {
 					"penalty": -20,
@@ -562,65 +561,65 @@
 		},
 		"D": {
 			"01-05": {
-                "text": "Strike lands poorly.",
-                "hp": 2
+				"text": "Strike lands poorly.",
+				"hp": 2
 			},
 			"06-10": {
-                "text": "An opening appears and all you can to is smack foe lightly.",
-                "hp": 4
+				"text": "An opening appears and all you can to is smack foe lightly.",
+				"hp": 4
 			},
 			"11-15": {
-                "text": "You force your opponent back. He keeps smack foe lightly.",
-                "hp": 3,
-                "debuffs": {
-                    "must-parry": 1
-                }
+				"text": "You force your opponent back. He keeps smack foe lightly.",
+				"hp": 3,
+				"debuffs": {
+					"must-parry": 1
+				}
 			},
 			"16-20": {
-                "text": "You lean in and slash foe's side. You receive initiative next round.",
+				"text": "You lean in and slash foe's side. You receive initiative next round.",
 				"hp": 2,
-                "buffs": {
-                	"has-initiative": 1
-                },
-                "penalty": {
-                    "penalty": -10
-                }
+				"buffs": {
+					"has-initiative": 1
+				},
+				"penalty": {
+					"penalty": -10
+				}
 			},
 			"21-35": {
-                "text": "Arm and chest strike. Foe cannot defend himself for a moment. You step around his shielded side.",
+				"text": "Arm and chest strike. Foe cannot defend himself for a moment. You step around his shielded side.",
 				"hp": 3,
-                "debuffs": {
-                    "stunned": 1,
+				"debuffs": {
+					"stunned": 1,
 					"cant-parry": 1
-                }
+				}
 			},
 			"36-45": {
-                "text": "Foe blocks your attack on his chest. You slash foe's upper area.",
+				"text": "Foe blocks your attack on his chest. You slash foe's upper area.",
 				"hp": 3,
 				"bleeding": 2
 			},
 			"46-50": {
-                "text": "Reach long and catch foe in his lower back. He twists out of it, but is unbalanced.",
-                "hp": 3,
+				"text": "Reach long and catch foe in his lower back. He twists out of it, but is unbalanced.",
+				"hp": 3,
 				"bleeding": 2,
-                "debuffs": {
-                    "stunned": 1,
-                    "cant-parry": 1
-                }
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				}
 			},
 			"51-55": {
-                "text": "Heavy blow to upper torso. Wound falls open and foe is in pain. His guard is still up, amazingly enough.",
-                "hp": 5,
-                "bleeding": 3,
-                "debuffs": {
-                    "must-parry": 1
-                },
-                "penalty": {
-                    "penalty": -15
-                }
+				"text": "Heavy blow to upper torso. Wound falls open and foe is in pain. His guard is still up, amazingly enough.",
+				"hp": 5,
+				"bleeding": 3,
+				"debuffs": {
+					"must-parry": 1
+				},
+				"penalty": {
+					"penalty": -15
+				}
 			},
 			"56-60": {
-                "text": "Tip of your blade gets a hit on foe's thigh. You twist your weapon.",
+				"text": "Tip of your blade gets a hit on foe's thigh. You twist your weapon.",
 				"hp": 6,
 				"bleeding": 2,
 				"debuffs": {
@@ -628,58 +627,58 @@
 				}
 			},
 			"61-65": {
-                "text": "You are lucky to strike foe's forearm while recovering from a lunge.",
-                "hp": 4,
-                "bleeding": 3,
-                "debuffs": {
-                    "stunned": 2
-                },
-                "penalty": {
-                    "penalty": -10
-                }
+				"text": "You are lucky to strike foe's forearm while recovering from a lunge.",
+				"hp": 4,
+				"bleeding": 3,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -10
+				}
 			},
 			"66-66": {
-                "text": "You knock foe out for 6 hours with a strike to side of head. If foe has no helm you kill him instantly.",
-                "hp": 15,
-                "conditionalEffects": {
-                    "with-helmet": {
-                        "debuffs": {
-                            "shock": 10000
-                        }
-                    },
-                    "without-helmet": {
+				"text": "You knock foe out for 6 hours with a strike to side of head. If foe has no helm you kill him instantly.",
+				"hp": 15,
+				"conditionalEffects": {
+					"with-helmet": {
+						"debuffs": {
+							"shock": 10000
+						}
+					},
+					"without-helmet": {
 						"debuffs": {
 							"instant-death": 1
 						}
-                    }
-                }
+					}
+				}
 			},
 			"67-70": {
-                "text": "Strike down foe's defenses with a blow to both arms.",
-                "hp": 3,
-                "debuffs": {
-                    "stunned": 3,
-                    "cant-parry": 2
-                },
+				"text": "Strike down foe's defenses with a blow to both arms.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 2
+				},
 				"bonus": {
 					"bonus": 10,
 					"rounds": 1
 				}
 			},
 			"71-75": {
-                "text": "Slash muscle and sever tendons in foe's lower leg. He can't stand much longer. His guard is feeble.",
-                "debuffs":{
-                    "stunned": 3,
-                    "cant-parry": 2
-                },
-                "penalty": {
-                    "penalty": -50
-                }
+				"text": "Slash muscle and sever tendons in foe's lower leg. He can't stand much longer. His guard is feeble.",
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -50
+				}
 			},
 			"76-80": {
 				"text": "Foe mistakenly brings his weapon arm across your blade. Sever tendons. Foe's arm is limp and useless.",
 				"hp": 10,
-				"debuffs":{
+				"debuffs": {
 					"stunned": 4,
 					"cant-parry": 2
 				},
@@ -691,7 +690,7 @@
 				"text": "You plunge your weapon into foe's stomach. Major abdomenal wound. Foe is instantly pale from blood loss.",
 				"hp": 10,
 				"bleeding": 8,
-				"debuffs":{
+				"debuffs": {
 					"stunned": 4,
 					"cant-parry": 2
 				},
@@ -700,17 +699,17 @@
 				}
 			},
 			"86-90": {
-                "text": "Your attempt to disarm foe is even more effective. Sever opponent's hand. Foe is in shock for 6 rounds and then dies.",
-                "hp": 6,
+				"text": "Your attempt to disarm foe is even more effective. Sever opponent's hand. Foe is in shock for 6 rounds and then dies.",
+				"hp": 6,
 				"debuffs": {
 					"mortal-damage": 6,
 					"shock": 6,
 					"stunned": 6,
 					"cant-parry": 6
-                }
+				}
 			},
 			"91-95": {
-                "text": "Sever foe's weapon arm and bury your sword into foe's side. Foe falls prone Foe is in shock for 12 rounds, then dies.",
+				"text": "Sever foe's weapon arm and bury your sword into foe's side. Foe falls prone Foe is in shock for 12 rounds, then dies.",
 				"hp": 15,
 				"debuffs": {
 					"shock": 12,
@@ -720,15 +719,15 @@
 				}
 			},
 			"96-99": {
-                "text": "Slash foe's side. Foe dies in 3 rounds due to internal organ damage. Foe is down and unconscious immediately.",
+				"text": "Slash foe's side. Foe dies in 3 rounds due to internal organ damage. Foe is down and unconscious immediately.",
 				"hp": 20,
-                "debuffs": {
+				"debuffs": {
 					"mortal-damage": 3,
-                    "shock": 3
-                }
+					"shock": 3
+				}
 			},
 			"100-100": {
-                "text": "Impale foe in heart. Foe dies instantly. Heart is destroyed. 25% chance your weapon is stuck in for 2 rounds.",
+				"text": "Impale foe in heart. Foe dies instantly. Heart is destroyed. 25% chance your weapon is stuck in for 2 rounds.",
 				"debuffs": {
 					"instant-death": 1
 				}
@@ -736,55 +735,55 @@
 		},
 		"E": {
 			"01-05": {
-                "text": "Your attack is weak.",
-                "hp": 3
+				"text": "Your attack is weak.",
+				"hp": 3
 			},
 			"06-10": {
-                "text": "Unbalance foe. You receive initiative next round.",
-                "hp": 5,
-                "buffs": {
-                	"has-initiative": 1
-                }
+				"text": "Unbalance foe. You receive initiative next round.",
+				"hp": 5,
+				"buffs": {
+					"has-initiative": 1
+				}
 			},
 			"11-15": {
-                "text": "You push aside foe's weapon and force him back.",
-                "hp": 4,
-                "debuffs": {
-                    "must-parry": 1
-                }
+				"text": "You push aside foe's weapon and force him back.",
+				"hp": 4,
+				"debuffs": {
+					"must-parry": 1
+				}
 			},
 			"16-20": {
-                "text": "Strong blow to foe's ribs. Foe drops his guard and almost his weapon.",
-                "debuffs":{
-                    "stunned": 1,
+				"text": "Strong blow to foe's ribs. Foe drops his guard and almost his weapon.",
+				"debuffs": {
+					"stunned": 1,
 					"cant-parry": 1
-                },
-                "bonus": {
-                    "bonus": 10
-                }
+				},
+				"bonus": {
+					"bonus": 10
+				}
 			},
 			"21-35": {
-                "text": "Foe avoids your main effort, but you nick him on your recovery. Foe receives minor side wound and stumbles back 10 feet.",
-                "hp": 3,
-                "bleeding": 1,
-                "penalty": {
-                    "penalty": -10
-                }
+				"text": "Foe avoids your main effort, but you nick him on your recovery. Foe receives minor side wound and stumbles back 10 feet.",
+				"hp": 3,
+				"bleeding": 1,
+				"penalty": {
+					"penalty": -10
+				}
 			},
 			"36-45": {
-                "text": "Blow to foe's upper leg. Leg armor helps block the blow.",
-                "conditionalEffects": {
-                    "with-leg-greave": {
-                        "hp": 5
-                    },
-                    "without-leg-greave": {
-                        "hp": 3,
-                        "bleeding": 3
-                    }
-                }
+				"text": "Blow to foe's upper leg. Leg armor helps block the blow.",
+				"conditionalEffects": {
+					"with-leg-greave": {
+						"hp": 5
+					},
+					"without-leg-greave": {
+						"hp": 3,
+						"bleeding": 3
+					}
+				}
 			},
 			"46-50": {
-                "text": "Strike to foe's stomach. He doubles over in pain and you pull your sword clean with one more sweep.",
+				"text": "Strike to foe's stomach. He doubles over in pain and you pull your sword clean with one more sweep.",
 				"hp": 4,
 				"bleeding": 3,
 				"debuffs": {
@@ -793,110 +792,110 @@
 				}
 			},
 			"51-55": {
-                "text": "Cut foe open with little grace. You are unsure of your success until you see all the blood coming out of his chest.",
+				"text": "Cut foe open with little grace. You are unsure of your success until you see all the blood coming out of his chest.",
 				"hp": 6,
-				"bleeding": 2,
-                "debuffs": {
-                    "stunned": 2
-                },
-                "penalty": {
-                    "penalty": -10
-                }
+				"bleeding": 4,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -10
+				}
 			},
 			"56-60": {
-                "text": "Thigh wound. Your blow cuts deep and severs an important vein.",
-                "hp": 8,
-                "bleeding": 5,
-                "debuffs":{
-                    "stunned": 2
-                }
+				"text": "Thigh wound. Your blow cuts deep and severs an important vein.",
+				"hp": 8,
+				"bleeding": 5,
+				"debuffs": {
+					"stunned": 2
+				}
 			},
 			"61-65": {
-                "text": "Foe tries to disarm you and pays with a nasty cut to his forearm.",
-                "hp": 6,
-                "bleeding": 3,
-                "debuffs": {
-                    "stunned": 2
-                },
-                "penalty": {
-                    "penalty": -15
-                }
+				"text": "Foe tries to disarm you and pays with a nasty cut to his forearm.",
+				"hp": 6,
+				"bleeding": 3,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -15
+				}
 			},
 			"66-66": {
-                "text": "Block foe's weapon arm away and then sever it. Foe drops immediately and expires in 12 rounds. Good shot!",
-                "hp": 12,
+				"text": "Block foe's weapon arm away and then sever it. Foe drops immediately and expires in 12 rounds. Good shot!",
+				"hp": 12,
 				"debuffs": {
 					"mortal-damage": 12,
-                    "shock": 12
-                },
-                "bonus": {
-                    "bonus": 10
-                }
+					"shock": 12
+				},
+				"bonus": {
+					"bonus": 10
+				}
 			},
 			"67-70": {
-                "text": "Slash tendons and crush the bones in foe's shield arm shoulder. Arm is useless.",
-                "bleeding": 2,
-                "debuffs": {
-                    "stunned": 4
-                },
+				"text": "Slash tendons and crush the bones in foe's shield arm shoulder. Arm is useless.",
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 4
+				},
 				"injuries": {
 					"right-arm-useless": "Critical effect."
 				}
 			},
 			"71-75": {
-                "text": "Slash foe's lower leg and sever muscle and tendons. Foe will fall without something to lean against.",
+				"text": "Slash foe's lower leg and sever muscle and tendons. Foe will fall without something to lean against.",
 				"hp": 8,
-                "debuffs": {
-                    "stunned": 6
-                },
-                "penalty": {
-                    "penalty": -70
-                }
+				"debuffs": {
+					"stunned": 6
+				},
+				"penalty": {
+					"penalty": -70
+				}
 			},
 			"76-80": {
-                "text": "Foe reaches out to block your blow. You sever two fingers and break his shield arm making it useless.",
-                "hp": 12,
-                "debuffs": {
-                    "stunned": 3,
-                    "cant-parry": 3
-                },
+				"text": "Foe reaches out to block your blow. You sever two fingers and break his shield arm making it useless.",
+				"hp": 12,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+				},
 				"otherEffects": [
 					"Broken shield"
 				]
 			},
 			"81-85": {
-                "text": "Sever opponent's hand. Sad. Foe is down and in shock for 12 rounds, then dies.",
-                "hp": 5,
+				"text": "Sever opponent's hand. Sad. Foe is down and in shock for 12 rounds, then dies.",
+				"hp": 5,
 				"debuffs": {
 					"mortal-damage": 12,
-                    "shock": 12
-                }
+					"shock": 12
+				}
 			},
 			"86-90": {
-                "text": "Meat chopping strike severs foe's leg. Foe drops and lapses in unconsciousness. Foe dies in 9 rounds.",
-                "debuffs": {
+				"text": "Meat chopping strike severs foe's leg. Foe drops and lapses in unconsciousness. Foe dies in 9 rounds.",
+				"debuffs": {
 					"mortal-damage": 9,
-                    "shock": 9
-                }
+					"shock": 9
+				}
 			},
 			"91-95": {
-                "text": "Sever foe's spine. Foe collapses, paralyzed from the neck down permanently.",
-                "hp": 20,
+				"text": "Sever foe's spine. Foe collapses, paralyzed from the neck down permanently.",
+				"hp": 20,
 				"debuffs": {
-                    "shock": 1000
-                },
+					"shock": 1000
+				},
 				"injuries": {
 					"paralyzed-neck-down": "Critical effect."
 				}
 			},
 			"96-99": {
-                "text": "Strike to foe's head destroys brain and makes life difficult for the poor fool. Foe expires in a heap—immediately.",
-                "debuffs": {
+				"text": "Strike to foe's head destroys brain and makes life difficult for the poor fool. Foe expires in a heap—immediately.",
+				"debuffs": {
 					"instant-death": 1
-                }
+				}
 			},
 			"100-100": {
-                "text": "Very close! Strike to foe's groin area. All vital organs are destroyed immediately. Foe dies after 24 rounds of agony.",
+				"text": "Very close! Strike to foe's groin area. All vital organs are destroyed immediately. Foe dies after 24 rounds of agony.",
 				"hp": 10,
 				"debuffs": {
 					"mortal-damage": 24,

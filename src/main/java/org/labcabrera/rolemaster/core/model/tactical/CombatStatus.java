@@ -30,7 +30,7 @@ public class CombatStatus {
 	private List<Bleeding> bleeding = new ArrayList<>();
 
 	@Builder.Default
-	private List<Penalty> penalty = new ArrayList<>();
+	private List<Penalty> penalties = new ArrayList<>();
 
 	@Builder.Default
 	private List<AttackBonus> bonus = new ArrayList<>();
@@ -46,8 +46,12 @@ public class CombatStatus {
 	@Schema(description = "Amount of round activity required to complete the missile weapon reload.")
 	private Integer reloadingActivityPercent = 0;
 
-	public Integer bleedingTotal() {
+	public Integer getTotalBleeding() {
 		return bleeding.stream().map(Bleeding::getHp).reduce(0, (a, b) -> a + b);
+	}
+
+	public Integer getTotalPenalties() {
+		return penalties.stream().map(Penalty::getPenalty).reduce(0, (a, b) -> a + b);
 	}
 
 	public CombatStatus addDebuff(Debuff key, Integer value) {

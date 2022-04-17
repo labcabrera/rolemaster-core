@@ -1,11 +1,8 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import java.util.Map.Entry;
-
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
-import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
@@ -71,16 +68,19 @@ public class AttackResultProcessor {
 					if (ctr.getHp() != null) {
 						tc.getHp().subtract(ctr.getHp());
 					}
+
 					if (ctr.getBleeding() != null) {
-						Bleeding bleeding = Bleeding.builder()
+						cs.getBleeding().add(Bleeding.builder()
 							.hp(ctr.getBleeding())
-							.description("Bleeding for critical: " + ctr.getText())
-							.build();
-						cs.getBleeding().add(bleeding);
+							.build());
 					}
-					for (Entry<Debuff, Integer> dse : ctr.getDebuffs().entrySet()) {
-						tc.getCombatStatus().addDebuff(dse.getKey(), dse.getValue());
+
+					if (ctr.getPenalty() != null) {
+						cs.getPenalties().add(ctr.getPenalty());
 					}
+
+					ctr.getDebuffs().entrySet().stream().forEach(e -> cs.addDebuff(e.getKey(), e.getValue()));
+					ctr.getInjuries().entrySet().stream().forEach(e -> cs.getInjuries().put(e.getKey(), e.getValue()));
 					tc.getCombatStatus().getInjuries().putAll(ctr.getInjuries());
 				}
 				return tc;
