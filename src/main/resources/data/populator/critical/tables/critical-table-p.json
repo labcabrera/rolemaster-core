@@ -512,7 +512,7 @@
 					"cant-parry": 2
 				},
 				"bonus": {
-					"bonus": -15,
+					"bonus": 15,
 					"rounds": 1
 				}
 			},
@@ -585,7 +585,7 @@
 					}
 				}
 			},
-			"95-99": {
+			"96-99": {
 				"text": "Strike through foe's neck breaks backbone and severs spine. Foe is paralyzed from the neck down.",
 				"debuffs": {
 					"shock": 100

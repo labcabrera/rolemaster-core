@@ -25,6 +25,10 @@ public enum ConditionalCriticalEffect {
 	WITHOUT_LEG_ARMOR("without-leg-armor"),
 
 	WITH_PLATE_CHEST("with-plate-chest"),
+	
+	WITH_CHEST_ARMOR("with-chest-armor"),
+	
+	WITHOUT_CHEST_ARMOR("without-chest-armor"),
 
 	WITHOUT_PLATE_CHEST("without-plate-chest"),
 
