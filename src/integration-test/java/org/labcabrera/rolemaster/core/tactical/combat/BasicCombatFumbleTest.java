@@ -54,7 +54,7 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 			.build()).share().block();
 
 		String tsId = ts.getId();
-		String npcId = "ork-fighter-melee-ii";
+		String npcId = "orc-fighter-ii";
 
 		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
 		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();
