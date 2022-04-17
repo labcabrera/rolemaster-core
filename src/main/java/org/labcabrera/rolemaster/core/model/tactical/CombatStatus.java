@@ -50,7 +50,7 @@ public class CombatStatus {
 		return bleeding.stream().map(Bleeding::getHp).reduce(0, (a, b) -> a + b);
 	}
 
-	public Integer getTotalPenalties() {
+	public Integer getTotalPenalty() {
 		return penalties.stream().map(Penalty::getPenalty).reduce(0, (a, b) -> a + b);
 	}
 
