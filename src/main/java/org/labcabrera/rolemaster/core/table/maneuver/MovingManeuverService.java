@@ -26,7 +26,7 @@ public class MovingManeuverService {
 	@PostConstruct
 	private void readTable() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
-			.getResourceAsStream("data/populator/maneuvers/moving-maneuver.json")) {
+			.getResourceAsStream("data/table/maneuver/moving-maneuver.json")) {
 			this.movingManeuverTable = objectMapper.readerFor(MovingManeuverTable.class).readValue(in);
 		}
 	}

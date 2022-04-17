@@ -27,7 +27,7 @@ class CriticalTableSTest {
 
 	private CriticalTable readTable() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
-			.getResourceAsStream("data/populator/critical/tables/critical-table-s.json")) {
+			.getResourceAsStream("data/table/critical/critical-table-s.json")) {
 			return objectMapper.readerFor(CriticalTable.class).readValue(in);
 		}
 	}

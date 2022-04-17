@@ -65,7 +65,7 @@ public class WeaponTable {
 	}
 
 	private void loadFromFile(String weaponId) {
-		String resource = "data/populator/weapons/tables/" + weaponId + ".csv";
+		String resource = "data/table/weapon/" + weaponId + ".csv";
 		Map<Integer, Map<Integer, String>> map = new LinkedHashMap<>();
 		try (
 			InputStream in = getClass().getClassLoader().getResourceAsStream(resource);

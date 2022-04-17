@@ -26,9 +26,9 @@ public class CriticalTableService {
 
 	@PostConstruct
 	public void loadTables() throws IOException {
-		tables.put(CriticalType.S, loadTable("data/populator/critical/tables/critical-table-s.json"));
-		tables.put(CriticalType.P, loadTable("data/populator/critical/tables/critical-table-p.json"));
-		tables.put(CriticalType.K, loadTable("data/populator/critical/tables/critical-table-k.json"));
+		tables.put(CriticalType.S, loadTable("data/table/critical/critical-table-s.json"));
+		tables.put(CriticalType.P, loadTable("data/table/critical/critical-table-p.json"));
+		tables.put(CriticalType.K, loadTable("data/table/critical/critical-table-k.json"));
 	}
 
 	public CriticalTableResult getResult(CriticalType type, CriticalSeverity severity, Integer roll) {

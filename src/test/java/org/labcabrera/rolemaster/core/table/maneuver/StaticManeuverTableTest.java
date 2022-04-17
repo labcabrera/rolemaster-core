@@ -89,7 +89,7 @@ class StaticManeuverTableTest {
 
 	private StaticManeuverTable readTable() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
-			.getResourceAsStream("data/populator/maneuvers/static-maneuver.json")) {
+			.getResourceAsStream("data/table/maneuver/static-maneuver.json")) {
 			return objectMapper.readerFor(StaticManeuverTable.class).readValue(in);
 		}
 	}
