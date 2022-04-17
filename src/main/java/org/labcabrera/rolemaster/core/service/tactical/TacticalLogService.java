@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical;
 
 import java.time.LocalDateTime;
 
-import org.labcabrera.rolemaster.core.message.Message.TacticalLogs;
+import org.labcabrera.rolemaster.core.message.Messages.TacticalLogs;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSessionLog;
