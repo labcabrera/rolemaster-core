@@ -34,10 +34,7 @@ public class TacticalCharacter {
 
 	private Integer level;
 
-	@Builder.Default
-	private Boolean isNpc = false;
-
-	private Boolean dead;
+	private boolean isNpc;
 
 	@Builder.Default
 	private Hp hp = new Hp();

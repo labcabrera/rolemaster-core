@@ -63,7 +63,7 @@ public class CharacterItemService {
 	public BigDecimal getWeight(CharacterInventory inventory) {
 		return inventory.getItems().stream()
 			.filter(e -> e.getStatus() != null && e.getStatus() != ItemStatus.STORED && e.getWeigth() != null)
-			.map(e -> e.getWeigth())
+			.map(CharacterItem::getWeigth)
 			.reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
 	}
 

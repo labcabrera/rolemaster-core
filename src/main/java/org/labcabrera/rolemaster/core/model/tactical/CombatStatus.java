@@ -1,8 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,10 +21,10 @@ import lombok.NoArgsConstructor;
 public class CombatStatus {
 
 	@Builder.Default
-	private Map<Buff, Integer> buffs = new HashMap<>();
+	private Map<Buff, Integer> buffs = new EnumMap<>(Buff.class);
 
 	@Builder.Default
-	private Map<Debuff, Integer> debuffs = new HashMap<>();
+	private Map<Debuff, Integer> debuffs = new EnumMap<>(Debuff.class);
 
 	@Builder.Default
 	private List<Bleeding> bleeding = new ArrayList<>();
@@ -37,7 +36,7 @@ public class CombatStatus {
 	private List<AttackBonus> bonus = new ArrayList<>();
 
 	@Builder.Default
-	private Map<InjuryType, String> injuries = new LinkedHashMap<>();
+	private Map<InjuryType, String> injuries = new EnumMap<>(InjuryType.class);
 
 	@Deprecated
 	@Builder.Default
@@ -48,7 +47,7 @@ public class CombatStatus {
 	private Integer reloadingActivityPercent = 0;
 
 	public Integer bleedingTotal() {
-		return bleeding.stream().map(e -> e.getHp()).reduce(0, (a, b) -> a + b);
+		return bleeding.stream().map(Bleeding::getHp).reduce(0, (a, b) -> a + b);
 	}
 
 	public CombatStatus addDebuff(Debuff key, Integer value) {

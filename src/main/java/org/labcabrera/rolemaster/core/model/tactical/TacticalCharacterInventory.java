@@ -37,12 +37,10 @@ public class TacticalCharacterInventory {
 
 	private Optional<CharacterWeapon> getWeapon(ItemStatus status) {
 		CharacterItem item = items.stream().filter(e -> e.getStatus() == status).findFirst().orElse(null);
-		if (item == null || !(item instanceof CharacterWeapon)) {
-			return Optional.empty();
+		if (item instanceof CharacterWeapon weapon) {
+			return Optional.of(weapon);
 		}
-		else {
-			return Optional.of((CharacterWeapon) item);
-		}
+		return Optional.empty();
 	}
 
 	public Integer getEquipedArmor() {

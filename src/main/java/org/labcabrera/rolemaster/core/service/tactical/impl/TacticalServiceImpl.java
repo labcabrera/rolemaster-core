@@ -112,16 +112,13 @@ public class TacticalServiceImpl implements TacticalService {
 	public Mono<TacticalRound> startRound(String tacticalSessionId) {
 		return tacticalSessionRepository.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
-			.map(e -> {
-				TacticalRound round = TacticalRound.builder()
-					.state(TacticalRoundState.ACTION_DECLARATION)
-					.tacticalSessionId(tacticalSessionId)
-					.metadata(EntityMetadata.builder()
-						.created(LocalDateTime.now())
-						.build())
-					.build();
-				return round;
-			})
+			.map(e -> TacticalRound.builder()
+				.state(TacticalRoundState.ACTION_DECLARATION)
+				.tacticalSessionId(tacticalSessionId)
+				.metadata(EntityMetadata.builder()
+					.created(LocalDateTime.now())
+					.build())
+				.build())
 			.zipWith(tacticalRoundRepository
 				.findFirstByTacticalSessionIdOrderByRoundDesc(tacticalSessionId)
 				.switchIfEmpty(Mono.just(TacticalRound.builder().round(1).build())), (a, b) -> {

@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.service;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RandomService {
 
-	private Random random = new Random();
+	private SecureRandom random = new SecureRandom();
 
 	public int dX(int value) {
 		return 1 + random.nextInt(value);

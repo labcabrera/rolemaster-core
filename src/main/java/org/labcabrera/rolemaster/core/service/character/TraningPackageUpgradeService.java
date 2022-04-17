@@ -2,12 +2,12 @@ package org.labcabrera.rolemaster.core.service.character;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 import org.labcabrera.rolemaster.core.dto.TrainingPackageCategorySelection;
+import org.labcabrera.rolemaster.core.dto.TrainingPackageSkillSelection;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
@@ -53,7 +53,7 @@ public class TraningPackageUpgradeService {
 			.map(pair -> upgradeSelectableCategories(pair, request))
 			.flatMap(pair -> upgradeSelectableSkills(pair, request))
 			.map(this::applyPackage)
-			.map(e -> e.getT1())
+			.map(Tuple2::getT1)
 			.map(postProcessorService)
 			.flatMap(characterService::update);
 	}
@@ -114,9 +114,9 @@ public class TraningPackageUpgradeService {
 		TrainingPackageUpgrade request) {
 		CharacterInfo character = pair.getT1();
 
-		List<String> existingSkills = request.getSkillSelection().stream().map(e -> e.getSkillId())
+		List<String> existingSkills = request.getSkillSelection().stream().map(TrainingPackageSkillSelection::getSkillId)
 			.filter(e -> character.getSkill(e).isPresent())
-			.collect(Collectors.toList());
+			.toList();
 
 		existingSkills.stream().forEach(skillId -> {
 			int ranks = request.getSkillSelection().stream()
@@ -126,9 +126,9 @@ public class TraningPackageUpgradeService {
 			addSkillRanks(character, skillId, ranks);
 		});
 
-		List<String> newSkills = request.getSkillSelection().stream().map(e -> e.getSkillId())
+		List<String> newSkills = request.getSkillSelection().stream().map(TrainingPackageSkillSelection::getSkillId)
 			.filter(e -> character.getSkill(e).isEmpty())
-			.collect(Collectors.toList());
+			.toList();
 
 		if (newSkills.isEmpty()) {
 			return Mono.just(pair);

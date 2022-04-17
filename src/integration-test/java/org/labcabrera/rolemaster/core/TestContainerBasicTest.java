@@ -18,12 +18,9 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Disabled
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@Testcontainers
-@Slf4j
 public class TestContainerBasicTest {
 
 	@Container
@@ -41,7 +38,6 @@ public class TestContainerBasicTest {
 		String mongoHost = mongoDBContainer.getHost();
 		int mongoPort = mongoDBContainer.getMappedPort(27017);
 		String mongoConnection = String.format("mongodb://%s:%s/rolemaster?retryWrites=true&w=majority", mongoHost, mongoPort);
-		log.info("Using mongo container URI: {}", mongoConnection);
 		registry.add("spring.data.mongodb.uri", () -> mongoConnection);
 	}
 

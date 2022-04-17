@@ -73,8 +73,4 @@ public class StrategicSessionService {
 			.flatMap(repository::save);
 	}
 
-	public StrategicSession addNpc(String sessionId, String npcId) {
-		return null;
-	}
-
 }

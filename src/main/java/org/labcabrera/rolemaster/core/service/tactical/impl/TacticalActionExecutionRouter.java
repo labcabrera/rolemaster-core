@@ -24,19 +24,17 @@ public class TacticalActionExecutionRouter {
 	private MissileAttackExecutionService missileExecutionService;
 
 	public Mono<TacticalAction> execute(TacticalAction action, TacticalActionExecution request) {
-		if (action instanceof TacticalActionMeleeAttack) {
-			if (!(request instanceof MeleeAttackExecution)) {
+		if (action instanceof TacticalActionMeleeAttack tacticalMeleeAction) {
+			if (!(request instanceof MeleeAttackExecution meleeAttackExecution)) {
 				throw new BadRequestException("Expected melee attack execution");
 			}
-			return meleeExecutionService.execute((TacticalActionMeleeAttack) action, (MeleeAttackExecution) request)
-				.map(e -> (TacticalAction) e);
+			return meleeExecutionService.execute(tacticalMeleeAction, meleeAttackExecution).map(TacticalAction.class::cast);
 		}
-		else if (action instanceof TacticalActionMissileAttack) {
-			if (!(request instanceof MissileAttackExecution)) {
+		else if (action instanceof TacticalActionMissileAttack missileAttack) {
+			if (!(request instanceof MissileAttackExecution missileAttackExecution)) {
 				throw new BadRequestException("Expected missile attack execution");
 			}
-			return missileExecutionService.execute((TacticalActionMissileAttack) action, (MissileAttackExecution) request)
-				.map(e -> (TacticalAction) e);
+			return missileExecutionService.execute(missileAttack, missileAttackExecution).map(TacticalAction.class::cast);
 		}
 		throw new RuntimeException("Not implemented");
 	}

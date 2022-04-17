@@ -67,6 +67,7 @@ task integrationTest(type: Test) {
 	testClassesDirs = sourceSets.integrationTest.output.classesDirs
 	classpath = sourceSets.integrationTest.runtimeClasspath
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
 
 tasks.named('test') {

@@ -75,29 +75,13 @@ public class ExperienceLevelTable {
 		switch (level) {
 		case 0:
 			return 0L;
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
+		case 1, 2, 3, 4, 5:
 			return 10000L * level;
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-		case 10:
+		case 6, 7, 8, 9, 10:
 			return 50000L + ((level - 5) * 20000L);
-		case 11:
-		case 12:
-		case 13:
-		case 14:
-		case 15:
+		case 11, 12, 13, 14, 15:
 			return 150000L + ((level - 10) * 30000L);
-		case 16:
-		case 17:
-		case 18:
-		case 19:
-		case 20:
+		case 16, 17, 18, 19, 20:
 			return 300000L + ((level - 15) * 40000L);
 		default:
 			return 500000L + ((level - 20) * 50000L);

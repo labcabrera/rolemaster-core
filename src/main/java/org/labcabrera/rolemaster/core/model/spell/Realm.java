@@ -1,10 +1,12 @@
 package org.labcabrera.rolemaster.core.model.spell;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.Getter;
 
-public enum Realm {
+public enum Realm implements CodeNameEnum {
 
 	CHANNELING("channeling", "Channeling"),
 
@@ -14,19 +16,19 @@ public enum Realm {
 
 	ARCANE("arcane", "Arcane");
 
-	private String name;
+	private String code;
 
 	@Getter
-	private String description;
+	private String name;
 
-	Realm(String name, String description) {
+	Realm(String code, String name) {
+		this.code = code;
 		this.name = name;
-		this.description = description;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }

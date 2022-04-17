@@ -72,7 +72,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 			.then(Mono.just(ta))
 			.zipWith(actionRepository.existsByRoundIdAndSourceAndPriority(ta.getRoundId(), ta.getSource(), ta.getPriority()))
 			.map(pair -> {
-				if (pair.getT2()) {
+				if (Boolean.TRUE.equals(pair.getT2())) {
 					throw new BadRequestException("Duplicate action declaration");
 				}
 				TacticalAction action = pair.getT1();
@@ -95,7 +95,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
 			.map(e -> criticalAttackExecutionService.apply(e, request))
 			.flatMap(actionRepository::save)
-			.map(e -> (TacticalActionAttack) e)
+			.map(TacticalActionAttack.class::cast)
 			.flatMap(e -> attackResultProcessor.apply(e));
 	}
 
@@ -103,7 +103,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	public Mono<TacticalAction> executeFumble(String actionId, FumbleExecution execution) {
 		return actionRepository.findById(actionId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
-			.map(e -> (TacticalActionAttack) e)
+			.map(TacticalActionAttack.class::cast)
 			.map(e -> fumbleAttackExecutionService.apply(e, execution))
 			//TODO Process fumble result
 			.flatMap(actionRepository::save);

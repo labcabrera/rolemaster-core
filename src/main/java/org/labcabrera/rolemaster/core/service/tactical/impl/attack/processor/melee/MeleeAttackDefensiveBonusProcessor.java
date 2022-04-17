@@ -44,13 +44,11 @@ public class MeleeAttackDefensiveBonusProcessor {
 		String targetId = context.getAction().getTarget();
 		return actionRepository.findByRoundIdAndSource(roundId, targetId)
 			.collectList()
-			.map(list -> {
-				return list.stream().filter(e -> e instanceof TacticalActionMeleeAttack)
-					.map(e -> (TacticalActionMeleeAttack) e)
-					.filter(e -> e.getParry() > 0 && e.getParried() == false)
-					.filter(e -> e.getTarget() == null || sourceId.equals(e.getTarget()))
-					.findFirst();
-			})
+			.map(list -> list.stream().filter(TacticalActionMeleeAttack.class::isInstance)
+				.map(TacticalActionMeleeAttack.class::cast)
+				.filter(e -> e.getParry() > 0 && !e.getParried())
+				.filter(e -> e.getTarget() == null || sourceId.equals(e.getTarget()))
+				.findFirst())
 			.flatMap(optional -> {
 				if (optional.isEmpty()) {
 					return Mono.just(0);
@@ -64,6 +62,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 	}
 
 	private int getShieldBonus(MeleeAttackContext context) {
+		//TODO shield bonus
 		return 0;
 	}
 

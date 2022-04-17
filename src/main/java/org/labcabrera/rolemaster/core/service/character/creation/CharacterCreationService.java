@@ -113,28 +113,21 @@ public class CharacterCreationService {
 				tuple.getT1().setProfession(tuple.getT2());
 				return tuple.getT1();
 			})
-			.flatMap(ctx -> {
-				return skillCategoryRepository.findAll(Sort.by("id"))
-					.collectList()
-					.doOnNext(ctx::setSkillCategories)
-					.map(e -> ctx);
-			})
-			.flatMap(ctx -> {
-				return skillRepository.findSkillsOnNewCharacter()
-					.collectList()
-					.doOnNext(ctx::setSkills)
-					.map(e -> ctx);
-			})
+			.flatMap(ctx -> skillCategoryRepository.findAll(Sort.by("id"))
+				.collectList()
+				.doOnNext(ctx::setSkillCategories)
+				.map(e -> ctx))
+			.flatMap(ctx -> skillRepository.findSkillsOnNewCharacter()
+				.collectList()
+				.doOnNext(ctx::setSkills)
+				.map(e -> ctx))
 			.map(ctx -> loadAttributes(ctx, request))
 			.map(this::loadSkillCategories)
 			.map(ctx -> loadSkillCategoryWeapons(ctx, request))
 			.map(this::loadSkills)
 			.map(this::loadResistances)
-			.map(e -> {
-				postProcessorService.apply(e.getCharacter());
-				return e;
-			})
 			.map(CharacterModificationContext::getCharacter)
+			.map(postProcessorService)
 			.flatMap(repository::save)
 			.doOnNext(e -> log.info("Created character {}", e))
 			.map(e -> e);

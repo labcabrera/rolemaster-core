@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
 import org.labcabrera.rolemaster.core.table.TableEntry;
 
@@ -29,7 +30,7 @@ public class MovingManeuverTable {
 				return map.get(key);
 			}
 		}
-		throw new RuntimeException("Invalid data for roll " + roll);
+		throw new DataConsistenceException("Invalid data for roll " + roll);
 	}
 
 	public boolean checkConsistence(ManeuverDificulty dificulty, int roll) {

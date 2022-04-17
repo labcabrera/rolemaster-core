@@ -18,22 +18,19 @@ public class TacticalActionConverter implements Converter<TacticalActionDeclarat
 	@Override
 	public TacticalAction convert(TacticalActionDeclaration source) {
 		TacticalAction result = null;
-		if (source instanceof TacticalActionMovementDeclaration) {
-			TacticalActionMovementDeclaration tmp = (TacticalActionMovementDeclaration) source;
+		if (source instanceof TacticalActionMovementDeclaration tmp) {
 			result = TacticalActionMovement.builder()
 				.pace(tmp.getPace())
 				.build();
 		}
-		else if (source instanceof TacticalActionMeleeAttackDeclaration) {
-			TacticalActionMeleeAttackDeclaration tmp = (TacticalActionMeleeAttackDeclaration) source;
+		else if (source instanceof TacticalActionMeleeAttackDeclaration tmp) {
 			result = TacticalActionMeleeAttack.builder()
 				.target(tmp.getTarget())
 				.meleeAttackType(tmp.getMeleeAttackType())
 				.parry(tmp.getParry())
 				.build();
 		}
-		else if (source instanceof TacticalActionMissileAttackDeclaration) {
-			TacticalActionMissileAttackDeclaration tmp = (TacticalActionMissileAttackDeclaration) source;
+		else if (source instanceof TacticalActionMissileAttackDeclaration tmp) {
 			result = TacticalActionMissileAttack.builder()
 				.target(tmp.getTarget())
 				.build();

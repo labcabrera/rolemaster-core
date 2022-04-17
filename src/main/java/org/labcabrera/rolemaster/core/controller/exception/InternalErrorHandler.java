@@ -47,18 +47,15 @@ public class InternalErrorHandler {
 				.build();
 			return ResponseEntity.badRequest().body(error);
 		}
-		else if (ex instanceof WebExchangeBindException) {
+		else if (ex instanceof WebExchangeBindException bindException) {
 			log.info("Invalid request: {}", ex.getMessage());
-			WebExchangeBindException bindEx = (WebExchangeBindException) ex;
 			ApiError error = ApiError.builder()
 				.code(INVALID_REQUEST_CODE)
 				.message(INVALID_REQUEST)
 				.build();
-			bindEx.getAllErrors().stream().forEach(e -> {
-				error.getMessages().add(ApiErrorMessage.builder()
-					.message(e.getDefaultMessage())
-					.build());
-			});
+			bindException.getAllErrors().stream().forEach(e -> error.getMessages().add(ApiErrorMessage.builder()
+				.message(e.getDefaultMessage())
+				.build()));
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof NotFoundException) {

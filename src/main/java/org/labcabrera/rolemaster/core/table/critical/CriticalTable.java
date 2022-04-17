@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.table.critical;
 
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
@@ -34,8 +35,7 @@ public class CriticalTable {
 				return tmp.get(str);
 			}
 		}
-		//TODO
-		throw new RuntimeException("Missing data");
+		throw new DataConsistenceException("Missing critical result for " + severity + " and roll " + roll);
 	}
 
 }

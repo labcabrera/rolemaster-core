@@ -86,13 +86,13 @@ public class WeaponTable {
 		int roll = Integer.parseInt(x[0]);
 		int armor;
 		String value;
-		Map<Integer, String> values = new LinkedHashMap<>();
+		Map<Integer, String> tmp = new LinkedHashMap<>();
 		for (int i = 1; i < x.length; i++) {
 			armor = 21 - i;
 			value = x[i];
-			values.put(armor, value);
+			tmp.put(armor, value);
 		}
-		map.put(roll, values);
+		map.put(roll, tmp);
 	}
 
 	private void checkHeaderFormat(String weaponId, String header) {
