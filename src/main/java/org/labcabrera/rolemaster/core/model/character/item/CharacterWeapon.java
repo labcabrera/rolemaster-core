@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character.inventory;
+package org.labcabrera.rolemaster.core.model.character.item;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

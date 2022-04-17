@@ -6,20 +6,22 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.Getter;
 
-public enum ItemType implements CodeNameEnum {
+public enum ArmorItemType implements CodeNameEnum {
 
-	WEAPON("weapon", "Weapon"),
+	ARMOR("armor", "Armor"),
 
-	ARMOR_PIECE("armor-piece", "Armor Piece"),
+	ACCESSORY("accessory", "Accessory"),
 
-	MISCELLANEOUS("miscellaneous", "Miscellaneous");
+	SHIELD("shield", "Shield"),
+
+	HELMET("helmet", "Helmet");
 
 	private String code;
 
 	@Getter
 	private String name;
 
-	private ItemType(String code, String name) {
+	private ArmorItemType(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}

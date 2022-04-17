@@ -5,7 +5,6 @@ import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterInventory;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -58,12 +57,6 @@ public interface CharacterController {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")
 	@Operation(summary = "Delete character.")
 	Mono<Void> deleteById(@PathVariable String id);
-
-	@GetMapping("/{id}/inventory")
-	@Operation(summary = "Gets the character's inventory.")
-	@ApiResponse(responseCode = "200", description = "Success")
-	@ApiResponse(responseCode = "404", description = "Character inventory not found", content = @Content(schema = @Schema(implementation = Void.class)))
-	Mono<CharacterInventory> findCharacterInventoryById(@PathVariable String id);
 
 	@PostMapping("/{id}/skills")
 	Mono<CharacterInfo> addSkill(@PathVariable("id") String characterId,

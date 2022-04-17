@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.NotImplementedException;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;

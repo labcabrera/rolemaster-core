@@ -7,7 +7,7 @@
 		"mmMax": 0,
 		"missilePenalty": 0,
 		"quicknessPenalty": 0,
-		"includeGreaves": false,
+		"includeGreaves": false
 	},
 	{
 		"armor": 2,
@@ -47,15 +47,7 @@
 		"mmMax": 0,
 		"missilePenalty": 0,
 		"quicknessPenalty": 0,
-		"includeGreaves": false,
-		"commonCost": {
-			"s": 1
-		},
-		"commonWeight": {
-			"min": 1.000,
-			"max": 1.500
-		},
-		"craftDuration": 48
+		"includeGreaves": false
 	},
 	{
 		"armor": 6,
@@ -195,7 +187,7 @@
 		"mmMax": -150,
 		"missilePenalty": 30,
 		"quicknessPenalty": 30,
-		"includeGreaves": true
+		"includeGreaves": true,
 	},
 	{
 		"armor": 20,
@@ -205,6 +197,22 @@
 		"mmMax": -165,
 		"missilePenalty": 40,
 		"quicknessPenalty": 30,
-		"includeGreaves": true
+		"includeGreaves": true,
+		"commonCost": {
+			"s": 11
+		},
+		"commonWeight": {
+			"min": 27.500,
+			"max": 38.500
+		},
+		"craftDuration": 2880,
+		"commonCost": {
+			"s": 11
+		},
+		"commonWeight": {
+			"min": 8.500,
+			"max": 13.500
+		},
+		"craftDuration": 384
 	}
 ]

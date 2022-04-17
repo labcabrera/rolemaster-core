@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterItem;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
-import org.labcabrera.rolemaster.core.model.character.inventory.ItemStatus;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterWeapon;
+import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,16 +27,16 @@ public class TacticalCharacterInventory {
 	private List<CharacterItem> items = new ArrayList<>();
 
 	public CharacterWeapon getMainHandWeapon() {
-		Optional<CharacterWeapon> weapon = getWeapon(ItemStatus.MAIN_HAND);
+		Optional<CharacterWeapon> weapon = getWeapon(ItemPosition.MAIN_HAND);
 		return weapon.isPresent() ? weapon.get() : getNoWeaponTemplate();
 	}
 
 	public Optional<CharacterWeapon> getOffHandWeapon() {
-		return getWeapon(ItemStatus.OFF_HAND);
+		return getWeapon(ItemPosition.OFF_HAND);
 	}
 
-	private Optional<CharacterWeapon> getWeapon(ItemStatus status) {
-		CharacterItem item = items.stream().filter(e -> e.getStatus() == status).findFirst().orElse(null);
+	private Optional<CharacterWeapon> getWeapon(ItemPosition status) {
+		CharacterItem item = items.stream().filter(e -> e.getPosition() == status).findFirst().orElse(null);
 		if (item instanceof CharacterWeapon weapon) {
 			return Optional.of(weapon);
 		}

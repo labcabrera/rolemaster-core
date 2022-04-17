@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.model.item.ArmorPiece;
 import org.labcabrera.rolemaster.core.model.item.Item;
+import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ public class ItemPopulator implements ApplicationRunner {
 
 	private static final String RESOURCE_WEAPONS = "data/populator/items/weapons.json";
 	private static final String RESOURCE_ITEMS = "data/populator/items/items.json";
+	private static final String RESOURCE_ARMOR_PIECES = "data/populator/items/armor-pieces.json";
 
 	@Autowired
 	private ItemRepository repository;
@@ -60,6 +63,19 @@ public class ItemPopulator implements ApplicationRunner {
 			}).readValue(in);
 			list.addAll(values);
 		}
+
+		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(RESOURCE_ARMOR_PIECES)) {
+			List<ArmorPiece> values = objectMapper.readerFor(new TypeReference<List<ArmorPiece>>() {
+			}).readValue(in);
+			values.stream().forEach(e -> {
+				e.setType(ItemType.ARMOR_PIECE);
+				if (e.getId() == null) {
+					e.setId(e.getName().toLowerCase().replace(' ', '-'));
+				}
+			});
+			list.addAll(values);
+		}
+
 		return list;
 	}
 

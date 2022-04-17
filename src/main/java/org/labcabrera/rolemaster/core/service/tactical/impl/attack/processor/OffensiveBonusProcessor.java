@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.item.RangeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;

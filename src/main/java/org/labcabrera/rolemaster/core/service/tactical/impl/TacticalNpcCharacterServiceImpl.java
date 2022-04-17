@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
-import org.labcabrera.rolemaster.core.model.character.inventory.ItemStatus;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterWeapon;
+import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
 import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
@@ -104,13 +104,13 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 			Weapon weapon = weapons.stream().filter(e -> e.getId().equals(weaponId)).findFirst()
 				.orElseThrow(() -> new RuntimeException("Weapon " + weaponId + " not found"));
 			String skillId = weaponId;
-			ItemStatus status = attack.getPrimary() ? ItemStatus.MAIN_HAND : ItemStatus.CARRIED;
+			ItemPosition status = attack.getPrimary() ? ItemPosition.MAIN_HAND : ItemPosition.CARRIED;
 			CharacterWeapon characterWeapon = CharacterWeapon.builder()
 				.fumble(weapon.getFumble())
 				.itemId(weaponId)
 				.skillId(skillId)
 				.weaponTableId(weaponId)
-				.status(status)
+				.position(status)
 				.build();
 			tacticalCharacter.getInventory().getItems().add(characterWeapon);
 			tacticalCharacter.getNpcSkills().put(skillId, attack.getBonus());

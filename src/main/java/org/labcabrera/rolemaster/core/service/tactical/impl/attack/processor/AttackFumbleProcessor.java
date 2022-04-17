@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterWeapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character.inventory;
+package org.labcabrera.rolemaster.core.model.character.item;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -16,6 +16,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Deprecated
 @Document(collection = "characterInventories")
 @Data
 @AllArgsConstructor
