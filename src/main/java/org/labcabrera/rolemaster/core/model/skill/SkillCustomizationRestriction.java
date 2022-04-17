@@ -12,7 +12,9 @@ public enum SkillCustomizationRestriction implements CodeNameEnum {
 
 	WEAPON_SKILL("weapon-skill", "Weapon skill"),
 
-	LANGUAGE("language", "Language");
+	LANGUAGE("language", "Language"),
+
+	DISARM_FOE("disarm-foe", "Disarm Foe");
 
 	private String code;
 

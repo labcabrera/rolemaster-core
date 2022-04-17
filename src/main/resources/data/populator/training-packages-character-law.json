@@ -10,42 +10,42 @@
             "awareness-senses":       1
         },
         "skillRanks": {
-            "body-development": 1,
-            "climbing": 1,
-            "swimming": 1,
-            "alertness": 2,
-            "observation": 1,
-            "attunement": 1,
-            "first-aid": 1
         },
         "selectionCategorySkillRanks": [
             {
                 "category": "subterfuge-stealth",
-                "value": 2
+                "ranks": 2,
+                "skills": 2
             },
             {
                 "category": "subterfuge-mechanics",
-                "value": 1
+                "ranks": 1,
+                "skills": 1
             },
             {
-                "category": "subterfuge-attack",
-                "value": 3
+            	"category": "subterfuge-attack",
+            	"ranks": 3,
+            	"skills": 2
             },
             {
-                "category": "awareness-senses",
-                "value": 1
+            	"category": "awareness-senses",
+            	"ranks": 1,
+            	"skills": 1
             },
             {
-                "category": "special-attacks",
-                "value": 2
+            	"category": "special-attacks",
+            	"ranks": 2,
+            	"skills": 1
             }
         ],
-        "selectionSkillRanks": [
-            {
-                "category": "weapon",
-                "value": 1
-            }
+        "selectionSkillCategoryGroupRanks": [
+        	{
+        		"weapon": 1
+        	} 
         ],
+        "selectionSKillGroupRanks": {
+       		"weapon": 1
+        },
         "startingMoney": "+d10g"
 	},
 	{

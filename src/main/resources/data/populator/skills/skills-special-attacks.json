@@ -1,0 +1,42 @@
+[
+    {
+        "id": "brawling",
+        "name": "Brawling",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "special-attacks",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to combat in which there is no organized melee (tavern brawls, riots, etc.). Targets are chosen on the basis of proximity and blows are exchanged in an essentially random fashion. This skill allows one to better handle one-self in such situations. Sometimes a character will find himself in combat without a weapon. If it is a general melee situation (i.e., combatants are using weapons designed kill each other), such a character may make “Martial Arts” attacks (e.g., degree 1-4 strikes, degree 1-4 sweeps, boxing, wrestling, tackling, etc.), see Section 4.2. He may not use Brawling attacks in such a situation. If such a combatant has a substantial object in his hands capable of blocking a weapon blow (e.g., a stool, a mattress, a log, a body), he may be given a shield bonus for the item. In such a case, a GM may even allow the combatant to make a “club” attack. In a similar manner, a combatant may “parry” with suitable terrain features (e.g., dodge around a tree, duck under a large branch, step behind a door). As always, the GM is the final judge as to the appropriateness of such “parrying” situations. In a brawl (i.e., a general fracas, the combatants are not using killing weapons; e.g., a barroom brawl), an unarmed character can make Brawling attacks or Martial Arts attacks as he chooses. If the character chooses to make Brawling attacks, the Arms Law Attack Table 3.3 (p. 71) should be used with Brawling criticals. If Arms Law is unavailable, use the Bash & Grapple Attack Table A-10.9.8 (RMFRP, p. 227) with a maximum result of “Small.” The benefit of such a choice is in the relative non-lethality of Brawling attacks."
+    },
+    {
+        "id": "disarm-foe-armed",
+        "name": "Disarm Foe (Armed) †",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "special-attacks",
+        "progressionType": "standard",
+        "customizableOptions": 1,
+		"customizationRestriction": "disarm-foe",
+        "description": "This skill provides a bonus to remove a foe’s weapon with your own. If successful, the opponent must make a successful RR based on the target’s skill ranks in the weapon used vs. the attacker’s number of skill ranks of disarming skill used. If the RR is successful, the disarming attempt fails. If it fails, the opponent is disarmed. There are 4 separate skills for the user to develop: 1-Handed, 2-Handed, Pole Arm and Two-Weapon Combo."
+    },
+    {
+        "id": "disarm-foe-unarmed",
+        "name": "Disarm Foe (Unarmed) †",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "special-attacks",
+        "progressionType": "standard",
+        "customizableOptions": 1,
+		"customizationRestriction": "disarm-foe",
+        "description": "This skill provides a bonus to remove a foe’s weapon with your bare hands. If successful, the opponent must make a successful RR based on the target’s skill ranks in the weapon used vs. the attacker’s number of skill ranks of disarming skill used. This is an entirely different skill from Disarm Foe (Armed). If the RR is successful, the character performing the maneuver takes a 'B' critical of the type appropriate to the weapon. If the RR fails, the character performing the maneuver may disarm the opponent, either discarding or acquiring the opponent’s weapon. There are 4 separate skills for the user to develop: 1-Handed Edge, 1-Handed Concussion, Two-Handed, and Pole Arm."
+    },
+    {
+        "id": "jousting",
+        "name": "Jousting",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "special-attacks",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for using complex lancing (mounted) maneuvers, such as tilting, skewering rings in a tourney, etc."
+    }
+]

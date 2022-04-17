@@ -1,0 +1,20 @@
+[
+    {
+        "id": "adrenal-defense",
+        "name": "Adrenal Defense",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "special-defenses",
+        "progressionType": "standard",
+        "description": "By using this skill, attacks with melee or missile weapons may be dodged or deflected (wholly or partially). The skill bonus of the Defender is added to his DB versus melee attacks. Against missile attacks the skill bonus is halved and added to the Defensive Bonus. To use Adrenal Defense, you must be aware of the fact that you are under attack. In addition, the character must not be wearing any armor and cannot have a shield or large object in his hands."
+    },
+    {
+        "id": "adrenal-toughness",
+        "name": "Adrenal Toughness",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "special-defenses",
+        "progressionType": "standard",
+        "description": "By using this skill, the individual may toughen his body to withstand blows that would otherwise inflict damage. This skill requires taking a 20% activity action in the round immediately prior to the use of this skill (or during the snap action phase of the same round). Then, the character must make a static maneuver modified by this skill bonus. If successful, the individual may reduce the severity of any critical by one (i.e., an 'E' becomes a 'D', a 'B' becomes an 'A', etc.) during the next round (or remainder of the current round). In addition, any self-inflicted critical stemming from the individual striking a surface or object is nullified completely (e.g., no Krush critical would be sustained from attempting to break a brick with one’s hand, etc.)."
+    }
+]
