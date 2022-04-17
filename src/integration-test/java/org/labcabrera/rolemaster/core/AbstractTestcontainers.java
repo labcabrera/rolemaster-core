@@ -3,9 +3,8 @@ package org.labcabrera.rolemaster.core;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
-@Testcontainers
+//@Testcontainers
 public abstract class AbstractTestcontainers {
 
 	private static final MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:5.0.6");
