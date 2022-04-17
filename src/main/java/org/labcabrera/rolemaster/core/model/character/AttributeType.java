@@ -1,38 +1,46 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum AttributeType {
+import lombok.Getter;
 
-	AGILITY("ag"),
+public enum AttributeType implements CodeNameEnum {
 
-	CONSTITUTION("co"),
+	AGILITY("ag", "Agility"),
 
-	MEMORY("me"),
+	CONSTITUTION("co", "Constitution"),
 
-	REASONING("re"),
+	MEMORY("me", "Memory"),
 
-	SELF_DISCIPLINE("sd"),
+	REASONING("re", "Reasoning"),
 
-	EMPATHY("em"),
+	SELF_DISCIPLINE("sd", "Self discipline"),
 
-	INTUTITION("in"),
+	EMPATHY("em", "Empaty"),
 
-	PRESENCE("pr"),
+	INTUTITION("in", "Intuition"),
 
-	QUICKNESS("qu"),
+	PRESENCE("pr", "Presence"),
 
-	STRENGTH("st");
+	QUICKNESS("qu", "Quickness"),
 
+	STRENGTH("st", "Strength");
+
+	private String code;
+
+	@Getter
 	private String name;
 
-	AttributeType(String name) {
+	AttributeType(String code, String name) {
+		this.code = code;
 		this.name = name;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }

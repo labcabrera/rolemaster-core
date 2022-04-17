@@ -75,6 +75,7 @@ public class MeleeAttackExecutionService {
 				throw new BadRequestException("Required target");
 			}
 			action.setTarget(execution.getTarget());
+			break;
 		default:
 			break;
 		}

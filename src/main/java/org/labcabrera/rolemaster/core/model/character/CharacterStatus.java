@@ -1,26 +1,34 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum CharacterStatus {
+import lombok.Getter;
 
-	PARTIALLY_CREATED("partiallyCreated"),
+public enum CharacterStatus implements CodeNameEnum {
 
-	CREATED("created"),
+	PARTIALLY_CREATED("partiallyCreated", "Partially created"),
 
-	CLOSED("closed"),
+	CREATED("created", "Created"),
 
-	DEATH("death");
+	CLOSED("closed", "Closed"),
 
+	DEATH("death", "Death");
+
+	private String code;
+
+	@Getter
 	private String name;
 
-	private CharacterStatus(String name) {
+	private CharacterStatus(String code, String name) {
+		this.code = code;
 		this.name = name;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }
