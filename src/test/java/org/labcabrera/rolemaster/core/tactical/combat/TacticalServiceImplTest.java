@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.tactical;
+package org.labcabrera.rolemaster.core.tactical.combat;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;

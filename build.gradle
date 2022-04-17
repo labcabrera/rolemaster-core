@@ -22,9 +22,6 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
-	integrationTestImplementation {
-		extendsFrom testImplementation
-	}
 }
 
 repositories {
@@ -52,22 +49,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	implementation platform("org.testcontainers:testcontainers-bom:${testcontainersVersion}")
-
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'io.projectreactor:reactor-test'
-	testImplementation 'org.testcontainers:junit-jupiter'
-	testImplementation 'org.testcontainers:mongodb'
 
-}
-
-task integrationTest(type: Test) {
-	group 'springboot-testing'
-	description 'Runs the integration tests'
-	testClassesDirs = sourceSets.integrationTest.output.classesDirs
-	classpath = sourceSets.integrationTest.runtimeClasspath
-	useJUnitPlatform()
-	finalizedBy jacocoTestReport
 }
 
 tasks.named('test') {
@@ -93,7 +76,6 @@ sonarqube {
 		property "sonar.password",          System.getenv('SONARQUBE_PASSWORD')
 	}
 }
-
 
 jib {
 	from {

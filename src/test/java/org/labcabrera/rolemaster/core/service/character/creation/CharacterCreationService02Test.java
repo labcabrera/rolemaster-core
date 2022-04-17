@@ -1,4 +1,6 @@
-package org.labcabrera.rolemaster.core.character;
+package org.labcabrera.rolemaster.core.service.character.creation;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -11,10 +13,10 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -131,6 +133,8 @@ class CharacterCreationService02Test {
 
 		SkillUpgrade updateSkillRequest = objectMapper.readerFor(SkillUpgrade.class).readValue(json);
 		character = skillUpdateService.updateRanks(character.getId(), updateSkillRequest).share().block();
+
+		assertEquals(2, character.getSkill("shord-sword").get().getRanks().get(RankType.DEVELOPMENT));
 
 		File folder = new File("build/characters");
 		if (!folder.exists()) {

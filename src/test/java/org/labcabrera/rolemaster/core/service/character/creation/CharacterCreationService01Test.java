@@ -1,8 +1,8 @@
-package org.labcabrera.rolemaster.core.character;
+package org.labcabrera.rolemaster.core.service.character.creation;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +17,6 @@ import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

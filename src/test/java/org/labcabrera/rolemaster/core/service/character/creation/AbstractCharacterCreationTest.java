@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.character;
+package org.labcabrera.rolemaster.core.service.character.creation;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -9,7 +9,6 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

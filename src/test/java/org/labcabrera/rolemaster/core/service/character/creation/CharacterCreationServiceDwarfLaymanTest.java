@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.character;
+package org.labcabrera.rolemaster.core.service.character.creation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
