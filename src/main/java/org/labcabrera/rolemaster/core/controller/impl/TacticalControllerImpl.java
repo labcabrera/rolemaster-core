@@ -60,6 +60,9 @@ public class TacticalControllerImpl implements TacticalSessionController {
 			.map(e -> {
 				e.setName(request.getName());
 				e.setDescription(request.getDescription());
+				e.setTerrain(request.getTerrain());
+				e.setTemperature(request.getTemperature());
+				e.setExhaustionMultiplier(request.getExhaustionMultiplier());
 				e.getEntityMetadata().setUpdated(LocalDateTime.now());
 				return e;
 			})

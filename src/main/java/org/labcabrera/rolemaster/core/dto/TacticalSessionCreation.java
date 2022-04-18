@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotBlank;
 
+import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
 import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -31,7 +32,7 @@ public class TacticalSessionCreation {
 	private TerrainType terrain = TerrainType.NORMAL;
 
 	@Schema(description = "Temperature in degrees Celsius. If the value is greater than 37 or less than -7 it affects the exhaustion point multiplier.", required = false, example = "24")
-	private Integer temperature;
+	private TemperatureMultiplier temperature;
 
 	@Schema(description = "Customized multiplier to exhaustion points.", required = false, example = "1")
 	private BigDecimal exhaustionMultiplier;

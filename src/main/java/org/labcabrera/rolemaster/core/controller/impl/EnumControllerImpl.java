@@ -9,6 +9,8 @@ import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
+import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
+import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
@@ -22,7 +24,9 @@ public class EnumControllerImpl implements EnumController {
 
 	@Override
 	public Mono<List<String>> getEnums() {
-		return Mono.just(Arrays.asList("realm", "movement-pace", "melee-attack-type", "melee-attack-facing", "item-position"));
+		return Mono.just(
+			Arrays.asList("realm", "movement-pace", "melee-attack-type", "melee-attack-facing", "item-position", "terrain",
+				"temperature-multiplier"));
 	}
 
 	@Override
@@ -38,6 +42,10 @@ public class EnumControllerImpl implements EnumController {
 			return toFlux(MovementPace.values());
 		case "realm":
 			return toFlux(Realm.values());
+		case "temperature-multiplier":
+			return toFlux(TemperatureMultiplier.values());
+		case "terrain":
+			return toFlux(TerrainType.values());
 		default:
 			throw new BadRequestException("Invalid enum name");
 		}

@@ -1,10 +1,12 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.Getter;
 
-public enum TerrainType {
+public enum TerrainType implements CodeNameEnum {
 
 	NORMAL("normal", "Normal", 1),
 
