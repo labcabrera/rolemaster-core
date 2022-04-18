@@ -1,14 +1,13 @@
 package org.labcabrera.rolemaster.core.service.character.item;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.message.Messages.Errors;
-import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
@@ -24,13 +23,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
 @Service
-@Slf4j
 public class CharacterItemServiceImpl implements CharacterItemService {
 
 	@Autowired
@@ -42,65 +39,72 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 	@Autowired
 	private CharacterInfoRepository characterRepository;
 
+	@Override
 	public Mono<CharacterItem> getItem(String characterItemId) {
 		return characterItemRepository.findById(characterItemId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterItemNotFound(characterItemId))));
 	}
 
+	@Override
 	public Mono<Void> deleteItem(String characterItemId) {
-		//TODO recalcular
 		return characterItemRepository.findById(characterItemId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterItemNotFound(characterItemId))))
 			.flatMap(characterItemRepository::delete);
+		//TODO recalcular
 	}
 
-	public Mono<Void> equip(String characterItemId) {
-		throw new NotImplementedException();
-	}
-
-	public Mono<Void> unequip(String characterItemId) {
-		throw new NotImplementedException();
-	}
-
-	public Mono<Void> store(String characterItemId) {
-		throw new NotImplementedException();
-	}
-
+	@Override
 	public Mono<CharacterItem> changeItemPosition(String characterItem, ItemPosition newPosition) {
-		throw new NotImplementedException();
+		return characterItemRepository.findById(characterItem)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character item not found.")))
+			.flatMap(e -> Mono.just(e).zipWith(itemRepository.findById(e.getItemId())))
+			.map(pair -> validateItemPosition(pair, pair.getT2(), newPosition))
+			.flatMap(e -> unequipAffectedItem(e, e.getT1().getCharacterId(), e.getT2(), newPosition))
+			.map(Tuple2::getT1)
+			.map(item -> {
+				item.setPosition(newPosition);
+				item.getMetadata().setUpdated(LocalDateTime.now());
+				return item;
+			})
+			.flatMap(characterItemRepository::save);
+		//TODO recalcular
 	}
 
+	@Override
 	public Flux<CharacterItem> getCharacterItems(String characterId, ItemType type, ItemPosition position) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(characterId))))
 			.map(e -> {
-				CharacterItem probe = new CharacterItem();
-				probe.setCharacterId(characterId);
-				probe.setType(type);
-				probe.setPosition(position);
-				probe.setCustomizations(null);
-				probe.setBroken(null);
+				CharacterItem probe = CharacterItem.builder()
+					.characterId(characterId)
+					.type(type)
+					.position(position)
+					.customizations(null)
+					.count(null)
+					.broken(null)
+					.build();
 				return Example.of(probe);
 			})
 			.flatMapMany(example -> characterItemRepository.findAll(example, Sort.by(Direction.ASC, "name")));
 	}
 
+	@Override
 	public Mono<CharacterItem> addItem(String characterId, AddCharacterItem request) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(characterId))))
 			.zipWith(itemRepository.findById(request.getItemId()))
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.itemNotFound(request.getItemId()))))
-			.map(pair -> {
-				validateItemPosition(pair.getT2(), request);
-				return pair;
-			})
-			.flatMap(pair -> unequipAffectedItem(pair, request.getPosition()))
+			.map(pair -> validateItemPosition(pair, pair.getT2(), request.getPosition()))
+			.map(pair -> validateItemCount(pair, pair.getT2(), request.getCount()))
+			.flatMap(pair -> unequipAffectedItem(pair, pair.getT1().getId(), pair.getT2(), request.getPosition()))
 			.map(pair -> CharacterItem.builder()
 				.characterId(characterId)
 				.itemId(request.getItemId())
 				.type(pair.getT2().getType())
+				.armorType((pair.getT2()instanceof ArmorPiece ap) ? ap.getArmorType() : null)
 				.name(pair.getT2().getName())
 				.position(request.getPosition())
+				.count(request.getCount())
 				.broken(false)
 				.weight(getWeight(request, pair.getT2()))
 				.build())
@@ -113,8 +117,8 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 	 * @param item
 	 * @param request
 	 */
-	private void validateItemPosition(Item item, AddCharacterItem request) {
-		switch (request.getPosition()) {
+	private <E> E validateItemPosition(E data, Item item, ItemPosition position) {
+		switch (position) {
 		case MAIN_HAND:
 			if (item.getType() != ItemType.WEAPON) {
 				throw new BadRequestException(Errors.ONLY_WEAPONS_CAN_BE_EQUIPPED_IN_MAIN_HAND);
@@ -138,29 +142,41 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 		default:
 			break;
 		}
+		return data;
 	}
 
-	private Mono<Tuple2<CharacterInfo, Item>> unequipAffectedItem(Tuple2<CharacterInfo, Item> tuple, ItemPosition position) {
-		if (position == ItemPosition.CARRIED || position == ItemPosition.STORED) {
-			return Mono.just(tuple);
+	private <E> E validateItemCount(E data, Item item, Integer count) {
+		if (Boolean.FALSE.equals(item.getMultipleItem()) && count > 1) {
+			throw new BadRequestException("Item dont allow multiple values.");
 		}
-		CharacterInfo character = tuple.getT1();
-		return Mono.just(tuple)
-			.zipWith(characterItemRepository.findByCharacterIdAndPosition(character.getId(), position).collectList())
+		return data;
+	}
+
+	private <E> Mono<E> unequipAffectedItem(E data, String characterId, Item item, ItemPosition position) {
+		if (position == ItemPosition.CARRIED || position == ItemPosition.STORED) {
+			return Mono.just(data);
+		}
+		return Mono.just(data)
+			.zipWith(characterItemRepository.findByCharacterIdAndPosition(characterId, position).collectList())
 			.flatMap(pair -> {
 				List<CharacterItem> sameSlotItems = pair.getT2();
 				if (sameSlotItems.isEmpty()) {
-					return Mono.just(pair);
+					return Mono.just(data);
 				}
 				if (position == ItemPosition.MAIN_HAND || position == ItemPosition.OFF_HAND) {
-					sameSlotItems.stream().forEach(e -> e.setPosition(ItemPosition.CARRIED));
-					return characterItemRepository.saveAll(sameSlotItems).then(Mono.just(pair));
+					sameSlotItems.stream().forEach(i -> i.setPosition(ItemPosition.CARRIED));
+					return characterItemRepository.saveAll(sameSlotItems).then(Mono.just(data));
 				}
-				//TODO
-				log.warn("TODO: check unequip items.");
-				return Mono.just(pair);
-			})
-			.map(Tuple2::getT1);
+				if (position == ItemPosition.EQUIPED && item instanceof ArmorPiece ap) {
+					if (ap.getArmorType() == ArmorItemType.HELMET || ap.getArmorType() == ArmorItemType.ARMOR) {
+						sameSlotItems.stream()
+							.filter(e -> e.getArmorType() == ap.getArmorType())
+							.forEach(i -> i.setPosition(ItemPosition.CARRIED));
+						return characterItemRepository.saveAll(sameSlotItems).then(Mono.just(data));
+					}
+				}
+				return Mono.just(data);
+			});
 	}
 
 	private BigDecimal getWeight(AddCharacterItem request, Item item) {

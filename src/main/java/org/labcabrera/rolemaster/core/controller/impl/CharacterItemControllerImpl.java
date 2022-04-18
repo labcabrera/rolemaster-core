@@ -29,21 +29,6 @@ public class CharacterItemControllerImpl implements CharacterItemController {
 	}
 
 	@Override
-	public Mono<Void> equip(String characterItemId) {
-		return characterItemService.equip(characterItemId);
-	}
-
-	@Override
-	public Mono<Void> unequip(String characterItemId) {
-		return characterItemService.unequip(characterItemId);
-	}
-
-	@Override
-	public Mono<Void> store(String characterItemId) {
-		return characterItemService.store(characterItemId);
-	}
-
-	@Override
 	public Mono<CharacterItem> changeItemPosition(String characterItem, ItemPosition position) {
 		return characterItemService.changeItemPosition(characterItem, position);
 	}

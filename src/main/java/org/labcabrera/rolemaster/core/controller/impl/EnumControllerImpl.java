@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.controller.EnumController;
 import org.labcabrera.rolemaster.core.dto.NamedKey;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
@@ -21,20 +22,22 @@ public class EnumControllerImpl implements EnumController {
 
 	@Override
 	public Mono<List<String>> getEnums() {
-		return Mono.just(Arrays.asList("realm", "movement-pace", "melee-attack-type", "melee-attack-facing"));
+		return Mono.just(Arrays.asList("realm", "movement-pace", "melee-attack-type", "melee-attack-facing", "item-position"));
 	}
 
 	@Override
 	public Flux<NamedKey> getEnumValues(String enumName) {
 		switch (enumName) {
-		case "realm":
-			return toFlux(Realm.values());
-		case "movement-pace":
-			return toFlux(MovementPace.values());
-		case "melee-attack-type":
-			return toFlux(MeleeAttackType.values());
+		case "item-position":
+			return toFlux(ItemPosition.values());
 		case "melee-attack-facing":
 			return toFlux(MeleeAttackFacing.values());
+		case "melee-attack-type":
+			return toFlux(MeleeAttackType.values());
+		case "movement-pace":
+			return toFlux(MovementPace.values());
+		case "realm":
+			return toFlux(Realm.values());
 		default:
 			throw new BadRequestException("Invalid enum name");
 		}

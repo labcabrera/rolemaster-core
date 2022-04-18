@@ -31,18 +31,6 @@ public interface CharacterItemController {
 	@Operation(summary = "Deletes an item equipped by a character.")
 	Mono<Void> deleteItem(@PathVariable("id") String characterItemId);
 
-	@PostMapping("/{id}/equip")
-	@Operation(summary = "Changes the status of an item to equipped.")
-	Mono<Void> equip(@PathVariable("id") String characterItemId);
-
-	@PostMapping("/{id}/unequip")
-	@Operation(summary = "Changes the status of an item to 'carried'.")
-	Mono<Void> unequip(@PathVariable("id") String characterItemId);
-
-	@PostMapping("/{id}/store")
-	@Operation(summary = "Changes the status of an item to 'stored'.")
-	Mono<Void> store(@PathVariable("id") String characterItemId);
-
 	@PostMapping("/{id}/position/{position}")
 	@Operation(summary = "Changes the status of an item to 'stored'.")
 	Mono<CharacterItem> changeItemPosition(@PathVariable("id") String characterItem, @PathVariable("position") ItemPosition position);

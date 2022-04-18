@@ -3,6 +3,8 @@ package org.labcabrera.rolemaster.core.model.character.item;
 import java.math.BigDecimal;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.springframework.data.annotation.Id;
 
@@ -27,6 +29,8 @@ public class CharacterItem {
 
 	private ItemType type;
 
+	private ArmorItemType armorType;
+
 	private String name;
 
 	private ItemPosition position;
@@ -34,9 +38,15 @@ public class CharacterItem {
 	private BigDecimal weight;
 
 	@Builder.Default
+	private Integer count = 1;
+
+	@Builder.Default
 	private Boolean broken = false;
 
 	//TODO define
 	private Map<String, String> customizations;
+
+	@Builder.Default
+	private EntityMetadata metadata = new EntityMetadata();
 
 }

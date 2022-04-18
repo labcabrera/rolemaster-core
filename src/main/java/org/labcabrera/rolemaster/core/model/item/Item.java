@@ -32,6 +32,9 @@ public class Item {
 	private ItemType type;
 
 	@Builder.Default
+	private Boolean multipleItem = false;
+
+	@Builder.Default
 	private Integer count = 1;
 
 	@Schema(description = "Value in hours")

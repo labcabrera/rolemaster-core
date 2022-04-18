@@ -28,4 +28,7 @@ public class AddCharacterItem {
 	@Schema(description = "Item weight. If not provided, it will be calculated from the common range determined by the type of item.", required = false)
 	private BigDecimal weight;
 
+	@Builder.Default
+	private Integer count = 1;
+
 }

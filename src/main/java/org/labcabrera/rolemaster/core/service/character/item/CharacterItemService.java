@@ -20,12 +20,6 @@ public interface CharacterItemService {
 
 	Mono<Void> deleteItem(@NotBlank String characterItemId);
 
-	Mono<Void> equip(@NotBlank String characterItemId);
-
-	Mono<Void> unequip(@NotBlank String characterItemId);
-
-	Mono<Void> store(@NotBlank String characterItemId);
-
 	Mono<CharacterItem> changeItemPosition(@NotBlank String characterItem, @NotNull ItemPosition newPosition);
 
 	Flux<CharacterItem> getCharacterItems(@NotBlank String characterId, ItemType type, ItemPosition position);

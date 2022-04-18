@@ -20,10 +20,13 @@ public class ItemControllerImpl implements ItemController {
 
 	@Override
 	public Flux<Item> find(ItemType type, Pageable pageable) {
-		Item probe = new Item();
-		probe.setCommonCost(null);
-		probe.setCommonWeight(null);
-		probe.setType(type);
+		Item probe = Item.builder()
+			.type(type)
+			.commonCost(null)
+			.commonWeight(null)
+			.count(null)
+			.multipleItem(null)
+			.build();
 		Example<Item> example = Example.of(probe);
 		return repository.findAll(example, pageable.getSort());
 	}
