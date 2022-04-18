@@ -4,6 +4,7 @@ import org.labcabrera.rolemaster.core.controller.CharacterItemController;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
+import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.labcabrera.rolemaster.core.service.character.item.CharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,8 +49,8 @@ public class CharacterItemControllerImpl implements CharacterItemController {
 	}
 
 	@Override
-	public Flux<CharacterItem> getCharacterItems(String characterId) {
-		return characterItemService.getCharacterItems(characterId);
+	public Flux<CharacterItem> getCharacterItems(String characterId, ItemType type, ItemPosition position) {
+		return characterItemService.getCharacterItems(characterId, type, position);
 	}
 
 	@Override

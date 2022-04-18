@@ -34,7 +34,7 @@ public class CharacterItem {
 	private BigDecimal weigth;
 
 	@Builder.Default
-	private boolean broken = false;
+	private Boolean broken = false;
 
 	//TODO define
 	private Map<String, String> customizations;

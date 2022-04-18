@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character.item;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
@@ -18,13 +19,18 @@ import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.CharacterItemRepository;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
 @Service
+@Slf4j
 public class CharacterItemServiceImpl implements CharacterItemService {
 
 	@Autowired
@@ -64,10 +70,19 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 		throw new NotImplementedException();
 	}
 
-	public Flux<CharacterItem> getCharacterItems(String characterId) {
+	public Flux<CharacterItem> getCharacterItems(String characterId, ItemType type, ItemPosition position) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(characterId))))
-			.thenMany(characterItemRepository.findByCharacterId(characterId));
+			.map(e -> {
+				CharacterItem probe = new CharacterItem();
+				probe.setCharacterId(characterId);
+				probe.setType(type);
+				probe.setPosition(position);
+				probe.setCustomizations(null);
+				probe.setBroken(null);
+				return Example.of(probe);
+			})
+			.flatMapMany(example -> characterItemRepository.findAll(example, Sort.by(Direction.ASC, "name")));
 	}
 
 	public Mono<CharacterItem> addItem(String characterId, AddCharacterItem request) {
@@ -79,7 +94,7 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 				validateItemPosition(pair.getT2(), request);
 				return pair;
 			})
-			.flatMap(pair -> unequipAffectedItem(pair, request))
+			.flatMap(pair -> unequipAffectedItem(pair, request.getPosition()))
 			.map(pair -> CharacterItem.builder()
 				.characterId(characterId)
 				.itemId(request.getItemId())
@@ -125,18 +140,27 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 		}
 	}
 
-	private Mono<Tuple2<CharacterInfo, Item>> unequipAffectedItem(Tuple2<CharacterInfo, Item> tuple, AddCharacterItem request) {
-		if (request.getPosition() == ItemPosition.CARRIED || request.getPosition() == ItemPosition.STORED) {
+	private Mono<Tuple2<CharacterInfo, Item>> unequipAffectedItem(Tuple2<CharacterInfo, Item> tuple, ItemPosition position) {
+		if (position == ItemPosition.CARRIED || position == ItemPosition.STORED) {
 			return Mono.just(tuple);
 		}
-
+		CharacterInfo character = tuple.getT1();
 		return Mono.just(tuple)
-			.zipWith(this.getCharacterItems(null).collectList())
-			.map(pair -> {
-
-				return pair;
+			.zipWith(characterItemRepository.findByCharacterIdAndPosition(character.getId(), position).collectList())
+			.flatMap(pair -> {
+				List<CharacterItem> sameSlotItems = pair.getT2();
+				if (sameSlotItems.isEmpty()) {
+					return Mono.just(pair);
+				}
+				if (position == ItemPosition.MAIN_HAND || position == ItemPosition.OFF_HAND) {
+					sameSlotItems.stream().forEach(e -> e.setPosition(ItemPosition.CARRIED));
+					return characterItemRepository.saveAll(sameSlotItems).then(Mono.just(pair));
+				}
+				//TODO
+				log.warn("TODO: check unequip items.");
+				return Mono.just(pair);
 			})
-			.map(e -> e.getT1());
+			.map(Tuple2::getT1);
 	}
 
 	private BigDecimal getWeigth(AddCharacterItem request, Item item) {

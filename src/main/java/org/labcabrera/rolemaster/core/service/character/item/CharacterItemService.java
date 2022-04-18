@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
+import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.springframework.validation.annotation.Validated;
 
 import reactor.core.publisher.Flux;
@@ -27,7 +28,7 @@ public interface CharacterItemService {
 
 	Mono<CharacterItem> changeItemPosition(@NotBlank String characterItem, @NotNull ItemPosition newPosition);
 
-	Flux<CharacterItem> getCharacterItems(@NotBlank String characterId);
+	Flux<CharacterItem> getCharacterItems(@NotBlank String characterId, ItemType type, ItemPosition position);
 
 	Mono<CharacterItem> addItem(@NotBlank String characterId, @Valid AddCharacterItem request);
 
