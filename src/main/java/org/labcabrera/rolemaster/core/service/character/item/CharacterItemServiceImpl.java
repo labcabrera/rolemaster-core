@@ -102,7 +102,7 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 				.name(pair.getT2().getName())
 				.position(request.getPosition())
 				.broken(false)
-				.weigth(getWeigth(request, pair.getT2()))
+				.weight(getWeight(request, pair.getT2()))
 				.build())
 			.flatMap(characterItemRepository::save);
 		//TODO recalcular pesos y otros valores que pueden cambiar
@@ -163,9 +163,9 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 			.map(Tuple2::getT1);
 	}
 
-	private BigDecimal getWeigth(AddCharacterItem request, Item item) {
-		if (request.getWeigth() != null) {
-			return request.getWeigth();
+	private BigDecimal getWeight(AddCharacterItem request, Item item) {
+		if (request.getWeight() != null) {
+			return request.getWeight();
 		}
 		else if (item.getCommonWeight() != null) {
 			return item.getCommonWeight().getMin().add(item.getCommonWeight().getMax()).divide(new BigDecimal(2));

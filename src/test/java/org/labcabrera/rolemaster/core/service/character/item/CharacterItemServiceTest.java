@@ -48,7 +48,7 @@ class CharacterItemServiceTest {
 		assertEquals("reinforced-full-length-leather-coat", coat.getItemId());
 		assertEquals("Reinforced Full-Length Leather Coat", coat.getName());
 		assertEquals(ItemType.ARMOR_PIECE, coat.getType());
-		assertTrue(new BigDecimal("11").compareTo(coat.getWeigth()) == 0);
+		assertTrue(new BigDecimal("11").compareTo(coat.getWeight()) == 0);
 
 		AddCharacterItem addGreaves = AddCharacterItem.builder()
 			.itemId("arm-greaves")

@@ -31,7 +31,7 @@ public class CharacterItem {
 
 	private ItemPosition position;
 
-	private BigDecimal weigth;
+	private BigDecimal weight;
 
 	@Builder.Default
 	private Boolean broken = false;

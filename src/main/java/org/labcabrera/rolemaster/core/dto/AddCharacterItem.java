@@ -25,7 +25,7 @@ public class AddCharacterItem {
 	@NotNull
 	private ItemPosition position;
 
-	@Schema(description = "Item weigth. If not provided, it will be calculated from the common range determined by the type of item.", required = false)
-	private BigDecimal weigth;
+	@Schema(description = "Item weight. If not provided, it will be calculated from the common range determined by the type of item.", required = false)
+	private BigDecimal weight;
 
 }
