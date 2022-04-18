@@ -1,7 +1,6 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.springframework.data.annotation.Id;
@@ -38,8 +37,14 @@ public class TacticalSession {
 	private TacticalSessionState state;
 
 	@Builder.Default
-	@Schema(description = "Tactical session log.")
-	private List<String> log = new ArrayList<>();
+	@Schema(description = "Type of terrain. If the value is not 'normal' it affects the fatigue point multiplier.", required = false, example = "normal")
+	private TerrainType terrain = TerrainType.NORMAL;
+
+	@Schema(description = "Temperature in degrees Celsius. If the value is greater than 37 or less than -7 it affects the exhaustion point multiplier.", required = false, example = "24")
+	private Integer temperature;
+
+	@Schema(description = "Customized multiplier to exhaustion points.", required = false, example = "1")
+	private BigDecimal exhaustionMultiplier;
 
 	@Builder.Default
 	@Schema(description = "Audit data.", required = true)
