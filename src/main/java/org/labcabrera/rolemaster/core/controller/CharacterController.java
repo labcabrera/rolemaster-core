@@ -59,10 +59,12 @@ public interface CharacterController {
 	Mono<Void> deleteById(@PathVariable String id);
 
 	@PostMapping("/{id}/skills")
+	@Operation(summary = "Adds a skill to a character.")
 	Mono<CharacterInfo> addSkill(@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody AddSkill request);
 
 	@PostMapping("/{id}/skills/upgrade")
+	@Operation(summary = "Performs a rank up operation of skill categories and skills.")
 	Mono<CharacterInfo> updateRanks(@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody SkillUpgrade request);
 
