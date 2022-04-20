@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
+import java.util.Map;
+
 import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.validation.ValidTacticalActionMeleAttack;
@@ -31,7 +33,7 @@ public class TacticalActionMeleeAttack extends TacticalActionAttack {
 	@NotNull
 	private MeleeAttackType meleeAttackType;
 
-	private MeleeAttackFacing facing;
+	private Map<AttackTargetType, MeleeAttackFacing> facingMap;
 
 	@Builder.Default
 	private OffHandUsage offHandUsage = OffHandUsage.NONE;

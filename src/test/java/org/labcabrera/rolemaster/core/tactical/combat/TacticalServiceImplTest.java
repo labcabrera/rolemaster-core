@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
@@ -17,6 +18,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
@@ -67,7 +69,7 @@ class TacticalServiceImplTest {
 			.priority(TacticalActionPhase.NORMAL)
 			.meleeAttackType(MeleeAttackType.FULL)
 			.source(tc1.getId())
-			.target(tc2.getId())
+			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, tc2.getId()))
 			.actionPercent(80)
 			.build();
 

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,7 @@ import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
-import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
@@ -63,9 +64,8 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertEquals(1, actionQueue.size());
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
-			.target(taMelee02.getId())
-			.facing(MeleeAttackFacing.NORMAL)
-			.roll(OpenRoll.of(105))
+			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(105)))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();
@@ -73,7 +73,8 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
 		assertEquals(10, meleeResolved01.getAttackResults().get(0).getHp());
-		assertEquals(-10, meleeResolved01.getOffensiveBonus());
+		assertEquals(-10,
+			meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).values().stream().reduce(0, (a, b) -> a + b));
 		assertEquals(1, meleeResolved01.getCriticalResults().size());
 		assertEquals(CriticalSeverity.A, meleeResolved01.getCriticalResults().get(0).getSeverity());
 		assertEquals(CriticalType.S, meleeResolved01.getCriticalResults().get(0).getType());

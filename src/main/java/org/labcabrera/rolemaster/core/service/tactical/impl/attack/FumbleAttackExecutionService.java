@@ -25,7 +25,7 @@ public class FumbleAttackExecutionService {
 	}
 
 	private AttackFumbleResult getFirstUnresolvedFumble(TacticalActionAttack action) {
-		return action.getFumbleResults().stream().filter(e -> e.getResult() == null)
+		return action.getFumbleResults().values().stream().filter(e -> e.getResult() == null)
 			.findFirst().orElseThrow();
 	}
 }

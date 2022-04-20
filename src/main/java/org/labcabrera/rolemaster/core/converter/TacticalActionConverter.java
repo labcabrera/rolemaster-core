@@ -1,10 +1,13 @@
 package org.labcabrera.rolemaster.core.converter;
 
+import java.util.Collections;
+
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMissileAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
@@ -25,8 +28,7 @@ public class TacticalActionConverter implements Converter<TacticalActionDeclarat
 		}
 		else if (source instanceof TacticalActionMeleeAttackDeclaration tmp) {
 			result = TacticalActionMeleeAttack.builder()
-				.target(tmp.getTarget())
-				.secondaryTarget(tmp.getSecondaryTarget())
+				.targets(tmp.getTargets())
 				.meleeAttackMode(tmp.getMeleeAttackMode())
 				.meleeAttackType(tmp.getMeleeAttackType())
 				.parry(tmp.getParry())
@@ -34,7 +36,7 @@ public class TacticalActionConverter implements Converter<TacticalActionDeclarat
 		}
 		else if (source instanceof TacticalActionMissileAttackDeclaration tmp) {
 			result = TacticalActionMissileAttack.builder()
-				.target(tmp.getTarget())
+				.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, tmp.getTarget()))
 				.build();
 		}
 		else {

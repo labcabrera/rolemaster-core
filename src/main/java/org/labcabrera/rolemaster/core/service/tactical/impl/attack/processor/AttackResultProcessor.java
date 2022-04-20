@@ -4,6 +4,7 @@ import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -41,16 +42,19 @@ public class AttackResultProcessor {
 			return Mono.just(attack);
 		}
 		return Mono.just(attack)
-			.flatMap(this::updateTarget)
-			.map(e -> attack)
-			.flatMap(this::updateSource)
-			.map(e -> attack)
-			.flatMap(this::updateAttack)
+			.then(updateTarget(attack, AttackTargetType.MAIN_HAND))
+			.then(updateTarget(attack, AttackTargetType.OFF_HAND))
+			.then(updateSource(attack))
+			.then(updateAttack(attack))
 			.flatMap(logService::logAttackResult);
 	}
 
-	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack) {
-		return tacticalCharacterRepository.findById(attack.getTarget())
+	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackTargetType type) {
+		if (!attack.getTargets().containsKey(type)) {
+			return Mono.empty();
+		}
+		String characterId = attack.getTargets().get(type);
+		return tacticalCharacterRepository.findById(characterId)
 			.map(tc -> {
 				attack.getAttackResults().stream().forEach(ar -> tc.getHp().subtract(ar.getHp()));
 				attack.getCriticalResults().stream().map(e -> e.getCriticalTableResult()).forEach(ctr -> {
@@ -76,7 +80,7 @@ public class AttackResultProcessor {
 	}
 
 	private Mono<TacticalCharacter> updateSource(TacticalActionAttack attack) {
-		return tacticalCharacterRepository.findById(attack.getTarget())
+		return tacticalCharacterRepository.findById(attack.getSource())
 			.map(tc -> {
 				if (attack.getExhaustionPoints() != null) {
 					tc.getExhaustionPoints().substract(attack.getExhaustionPoints());

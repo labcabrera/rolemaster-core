@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import org.labcabrera.rolemaster.core.model.combat.MissileCover;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
@@ -65,12 +67,18 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 		TacticalActionAttack missileResolved01 = (TacticalActionAttack) actionResolved;
 
 		assertNotNull(missileResolved01);
-		assertEquals(-30, missileResolved01.getOffensiveBonus());
-		assertEquals(40, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.SKILL));
-		assertEquals(-30, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.DEFENSIVE_BONUS));
-		assertEquals(-40, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.DISTANCE));
+		Map<OffensiveBonusModifier, Integer> bonusMap = missileResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
+
+		assertEquals(40, bonusMap.get(OffensiveBonusModifier.SKILL));
+		assertEquals(-30, bonusMap.get(OffensiveBonusModifier.DEFENSIVE_BONUS));
+		assertEquals(-40, bonusMap.get(OffensiveBonusModifier.DISTANCE));
+
+		assertEquals(3L, bonusMap.values().stream().filter(e -> e != 0).count());
+		assertEquals(-30, bonusMap.values().stream().reduce(0, (a, b) -> a + b));
+
 		assertEquals(TacticalActionState.RESOLVED, missileResolved01.getState());
 		assertEquals(5, missileResolved01.getAttackResults().get(0).getHp());
+		assertEquals(taMelee02.getId(), missileResolved01.getAttackResults().get(0).getTarget());
 	}
 
 }

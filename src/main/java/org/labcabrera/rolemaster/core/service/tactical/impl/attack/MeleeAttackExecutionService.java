@@ -1,7 +1,11 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
+import java.util.Collection;
+
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -41,18 +45,17 @@ public class MeleeAttackExecutionService {
 	private AttackResultProcessor attackResultProcessor;
 
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
-		loadTarget(action, execution);
-		action.setRoll(execution.getRoll());
-		action.setSecondaryRoll(execution.getSecondaryRoll());
-		action.setSecondaryTarget(execution.getSecondaryTarget());
-		action.setFacing(execution.getFacing());
+		loadTargets(action, execution);
+		action.setRolls(execution.getRolls());
+		action.setTargets(execution.getTargets());
+		action.setFacingMap(execution.getFacingMap());
 
 		MeleeAttackContext context = new MeleeAttackContext();
 		context.setAction(action);
 
 		return Mono.just(context)
 			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MeleeAttackContext>setSource(b))
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getTarget()), (a, b) -> a.<MeleeAttackContext>setTarget(b))
+			.flatMap(this::loadTargets)
 			.flatMap(fumbleProcessor::apply)
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(defensiveBonusProcessor::apply)
@@ -62,22 +65,40 @@ public class MeleeAttackExecutionService {
 			.map(TacticalActionMeleeAttack.class::cast);
 	}
 
-	private void loadTarget(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
+	private void loadTargets(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		switch (action.getMeleeAttackType()) {
 		case FULL:
-			if (execution.getTarget() != null) {
+			if (execution.getTargets().isEmpty()) {
 				throw new BadRequestException("Can not declare target in full melee attack type");
 			}
 			break;
 		case PRESS_AND_MELEE, REACT_AND_MELEE:
-			if (execution.getTarget() == null) {
+			if (execution.getTargets().isEmpty()) {
 				throw new BadRequestException("Required target");
 			}
-			action.setTarget(execution.getTarget());
+			//TODO check count for 2 weapon attack
 			break;
 		default:
 			break;
 		}
+	}
+
+	private Mono<MeleeAttackContext> loadTargets(MeleeAttackContext context) {
+		Collection<String> ids = context.getAction().getTargets().values();
+		return tacticalCharacterRepository.findAllById(ids).collectList()
+			.map(list -> {
+				if (list.size() != ids.size()) {
+					throw new BadRequestException("Invalid targets");
+				}
+				context.getAction().getTargets().entrySet().stream().forEach(e -> {
+					AttackTargetType key = e.getKey();
+					String value = e.getValue();
+					TacticalCharacter tc = list.stream().filter(i -> value.equals(e.getValue())).findFirst().orElseThrow();
+					context.getTargets().put(key, tc);
+				});
+				return context;
+			})
+			.flatMap(ctx -> Mono.just(context));
 	}
 
 }

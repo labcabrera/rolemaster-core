@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.springframework.stereotype.Component;
 
@@ -26,12 +27,12 @@ public class AttackFumbleProcessor {
 			.findFirst().orElse(null);
 		//TODO read
 		Integer fumble = 4;
-		Integer primaryRoll = context.getAction().getRoll().getFirstRoll();
+		Integer primaryRoll = context.getAction().getRolls().get(AttackTargetType.MAIN_HAND).getFirstRoll();
 		if (primaryRoll <= fumble) {
 			AttackFumbleResult afr = AttackFumbleResult.builder()
 				.type(getFumbleType(mainItem))
 				.build();
-			context.getAction().getFumbleResults().add(afr);
+			context.getAction().getFumbleResults().put(AttackTargetType.OFF_HAND, afr);
 		}
 		return Mono.just(context);
 	}

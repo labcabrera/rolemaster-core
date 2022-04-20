@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,16 +12,18 @@ import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Component
+@Slf4j
 public class AttackWeaponTableProcessor {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
@@ -31,16 +34,14 @@ public class AttackWeaponTableProcessor {
 	@Autowired
 	private WeaponTable weaponTable;
 
-	@Autowired
-	private TacticalCharacterRepository tacticalCharacterRepository;
-
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		if (context.getAction().isFlumbe()) {
 			return Mono.just(context);
 		}
+		log.debug("Processing weapon table for attack {}", context.getAction().getId());
 		return Mono.just(context)
-			.flatMap(this::processMainHandAttack)
-			.flatMap(this::processOffHandAttack)
+			.map(this::processMainHandAttack)
+			.map(this::processOffHandAttack)
 			.map(ctx -> {
 				updateState(ctx.getAction());
 				return ctx;
@@ -48,43 +49,34 @@ public class AttackWeaponTableProcessor {
 			.flatMap(ctx -> Mono.just(ctx));
 	}
 
-	private <T extends AttackContext<?>> Mono<T> processMainHandAttack(T context) {
+	private <T extends AttackContext<?>> T processMainHandAttack(T context) {
+		return processAttack(context, AttackTargetType.MAIN_HAND);
+	}
+
+	private <T extends AttackContext<?>> T processOffHandAttack(T context) {
+		if (context.getAction().getTargets().size() != 2) {
+			return context;
+		}
+		return processAttack(context, AttackTargetType.OFF_HAND);
+	}
+
+	private <T extends AttackContext<?>> T processAttack(T context, AttackTargetType type) {
+		ItemPosition itemPosition = type == AttackTargetType.MAIN_HAND ? ItemPosition.MAIN_HAND : ItemPosition.OFF_HAND;
 		CharacterItem mainHandItem = context.getSource().getItems().stream()
-			.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
+			.filter(e -> e.getPosition() == itemPosition)
 			.findFirst().orElse(null);
 		if (mainHandItem == null) {
 			throw new NotImplementedException("Special attacks");
 		}
 		String weaponTableId = mainHandItem.getItemId();
 		TacticalActionAttack action = context.getAction();
-		int targetArmor = getTargetArmor(context.getTarget());
-		int offensiveBonus = context.getAction().getOffensiveBonus();
-		int primaryRoll = context.getAction().getRoll().getFirstRoll();
-		processAttackResult(action, weaponTableId, offensiveBonus, targetArmor, primaryRoll);
-		return Mono.just(context);
-	}
-
-	private <T extends AttackContext<?>> Mono<T> processOffHandAttack(T context) {
-		CharacterItem offHandItem = context.getSource().getItems().stream()
-			.filter(e -> e.getPosition() == ItemPosition.OFF_HAND)
-			.findFirst().orElse(null);
-		if (offHandItem == null) {
-			throw new NotImplementedException("Special attacks");
-		}
-		String weaponTableId = offHandItem.getItemId();
-		TacticalActionAttack action = context.getAction();
-		//TODO no es este bonus ya que hay que aplicar la bd del otro target, el -20 de offHand, etc...
-		int offensiveBonus = context.getAction().getOffensiveBonus();
-		int secondaryRoll = context.getAction().getRoll().getFirstRoll();
-		int targetArmor = getTargetArmor(context.getTarget());
-
-		return tacticalCharacterRepository.findById(action.getSecondaryTarget())
-			.map(e -> e.getArmor())
-			.map(armor -> {
-				processAttackResult(action, weaponTableId, offensiveBonus, targetArmor, secondaryRoll);
-				return context;
-			})
-			.flatMap(ctx -> Mono.just(ctx));
+		TacticalCharacter target = context.getTargets().get(type);
+		int targetArmor = target.getArmor();
+		Map<?, Integer> offensiveBonusmap = context.getAction().getOffensiveBonusMap().get(type);
+		int bonus = offensiveBonusmap.values().stream().reduce(0, (a, b) -> a + b);
+		int primaryRoll = context.getAction().getRolls().get(type).getResult();
+		processAttackResult(action, weaponTableId, bonus, targetArmor, primaryRoll);
+		return context;
 	}
 
 	private void processAttackResult(TacticalActionAttack action, String weaponTableId, int offensiveBonus, int armor, int roll) {
@@ -136,10 +128,6 @@ public class AttackWeaponTableProcessor {
 		else {
 			action.setState(TacticalActionState.PENDING_RESOLUTION);
 		}
-	}
-
-	private Integer getTargetArmor(TacticalCharacter ta) {
-		return ta.getArmor();
 	}
 
 }

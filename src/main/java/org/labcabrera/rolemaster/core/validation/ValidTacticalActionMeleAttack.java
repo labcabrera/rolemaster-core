@@ -33,14 +33,14 @@ public @interface ValidTacticalActionMeleAttack {
 			if (value.getMeleeAttackType() != null) {
 				switch (value.getMeleeAttackType()) {
 				case FULL:
-					if (value.getTarget() == null) {
+					if (value.getTargets().isEmpty()) {
 						context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_ATTACK_MELEE_REQUIRED_TARGET)
 							.addConstraintViolation();
 						result = false;
 					}
 					break;
 				case PRESS_AND_MELEE, REACT_AND_MELEE:
-					if (value.getTarget() != null) {
+					if (!value.getTargets().isEmpty()) {
 						context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_ATTACK_MELEE_NOT_REQUIRED_TARGET)
 							.addConstraintViolation();
 						result = false;

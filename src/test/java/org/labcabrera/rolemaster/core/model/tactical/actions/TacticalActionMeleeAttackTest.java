@@ -4,10 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.InitiativeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
@@ -33,7 +36,7 @@ class TacticalActionMeleeAttackTest {
 			.parry(55)
 			.priority(TacticalActionPhase.NORMAL)
 			.source("source-01")
-			.target("target-01")
+			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, "target-01"))
 			.state(TacticalActionState.PENDING)
 			.notes("foo")
 			.build();

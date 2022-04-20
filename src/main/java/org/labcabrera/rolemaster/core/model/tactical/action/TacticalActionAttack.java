@@ -2,13 +2,13 @@ package org.labcabrera.rolemaster.core.model.tactical.action;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,20 +23,14 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public abstract class TacticalActionAttack extends TacticalAction {
 
-	protected String target;
+	protected Map<AttackTargetType, String> targets;
 
-	@Schema(description = "In the case of a two-weapon attack, the target of the secondary weapon can be set.")
-	protected String secondaryTarget;
+	protected Map<AttackTargetType, OpenRoll> rolls;
 
-	protected OpenRoll roll;
-
-	protected OpenRoll secondaryRoll;
+	protected Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> offensiveBonusMap = new LinkedHashMap<>();
 
 	@Builder.Default
-	protected Map<OffensiveBonusModifier, Integer> offensiveBonusMap = new LinkedHashMap<>();
-
-	@Builder.Default
-	protected List<AttackFumbleResult> fumbleResults = new ArrayList<>();
+	protected Map<AttackTargetType, AttackFumbleResult> fumbleResults = new EnumMap<>(AttackTargetType.class);
 
 	@Builder.Default
 	protected List<AttackResult> attackResults = new ArrayList<>();
@@ -45,9 +39,9 @@ public abstract class TacticalActionAttack extends TacticalAction {
 
 	protected BigDecimal exhaustionPoints;
 
-	public Integer getOffensiveBonus() {
-		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
-	}
+	//	public Integer getOffensiveBonus() {
+	//		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
+	//	}
 
 	public boolean isFlumbe() {
 		return !fumbleResults.isEmpty();

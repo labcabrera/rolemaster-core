@@ -1,6 +1,10 @@
 package org.labcabrera.rolemaster.core.dto.action.execution;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 import org.labcabrera.rolemaster.core.model.OpenRoll;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,20 +22,14 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class MeleeAttackExecution extends TacticalActionExecution {
 
-	private OpenRoll roll;
-
+	@Builder.Default
 	@Schema(description = "Secondary roll when using two weapons.")
-	private OpenRoll secondaryRoll;
-
-	private String target;
-
-	private String secondaryTarget;
+	private Map<AttackTargetType, OpenRoll> rolls = new EnumMap<>(AttackTargetType.class);
 
 	@Builder.Default
-	private MeleeAttackFacing facing = MeleeAttackFacing.NORMAL;
+	private Map<AttackTargetType, String> targets = new EnumMap<>(AttackTargetType.class);
 
-	//TODO translate
 	@Builder.Default
-	private Boolean desenvainado = false;
+	private Map<AttackTargetType, MeleeAttackFacing> facingMap = new EnumMap<>(AttackTargetType.class);
 
 }

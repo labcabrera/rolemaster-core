@@ -1,7 +1,11 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 
 import lombok.Getter;
@@ -13,14 +17,9 @@ public abstract class AttackContext<A extends TacticalActionAttack> {
 	@Setter
 	private A action;
 
-	//	@Setter
-	//	private E execution;
-
 	private TacticalCharacter source;
 
-	private TacticalCharacter target;
-
-	private TacticalCharacter secondaryTarget;
+	private Map<AttackTargetType, TacticalCharacter> targets = new EnumMap<>(AttackTargetType.class);
 
 	@Setter
 	private Weapon weapon;
@@ -31,9 +30,4 @@ public abstract class AttackContext<A extends TacticalActionAttack> {
 		return (E) this;
 	}
 
-	@SuppressWarnings({ "unchecked" })
-	public <E> E setTarget(TacticalCharacter value) {
-		this.target = value;
-		return (E) this;
-	}
 }

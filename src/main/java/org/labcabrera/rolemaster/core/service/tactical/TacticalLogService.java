@@ -57,7 +57,7 @@ public class TacticalLogService {
 			Mono.just(attack),
 			roundRepository.findById(attack.getId()),
 			characterRepository.findById(attack.getSource()),
-			characterRepository.findById(attack.getTarget()))
+			characterRepository.findById(attack.getTargets().values().iterator().next()))
 			.map(tuple -> getAttackMessage(attack, tuple.getT2(), tuple.getT3(), tuple.getT4()))
 			.flatMapMany(logRepository::saveAll)
 			.collectList()
