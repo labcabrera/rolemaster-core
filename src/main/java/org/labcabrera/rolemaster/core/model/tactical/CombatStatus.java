@@ -65,4 +65,15 @@ public class CombatStatus {
 		return this;
 	}
 
+	public CombatStatus addBuff(Buff key, Integer value) {
+		if (buffs.containsKey(key)) {
+			int rounds = buffs.get(key) + value;
+			buffs.put(key, rounds);
+		}
+		else {
+			buffs.put(key, value);
+		}
+		return this;
+	}
+
 }

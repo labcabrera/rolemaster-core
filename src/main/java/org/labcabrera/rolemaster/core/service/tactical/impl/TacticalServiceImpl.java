@@ -77,6 +77,9 @@ public class TacticalServiceImpl implements TacticalService {
 	@Autowired
 	private TacticalInitiativeService initiativeService;
 
+	@Autowired
+	private EndTurnCharacterProcessor endTurnCharacterProcessor;
+
 	@Override
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return tacticalSessionService.createSession(request);
@@ -112,6 +115,7 @@ public class TacticalServiceImpl implements TacticalService {
 	public Mono<TacticalRound> startRound(String tacticalSessionId) {
 		return tacticalSessionRepository.findById(tacticalSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
+			.flatMap(session -> endTurnCharacterProcessor.process(session, tacticalSessionId))
 			.map(e -> TacticalRound.builder()
 				.state(TacticalRoundState.ACTION_DECLARATION)
 				.tacticalSessionId(tacticalSessionId)

@@ -1,0 +1,258 @@
+[
+	{
+		"id": "khazad-durin",
+		"name": "Khazad (House of Durin)",
+		"attributeModifiers": {
+			"ag": -2,
+			"co": 6,
+			"me": 0,
+			"re": 0,
+			"sd": 2,
+			"em": -1,
+			"in": 0,
+			"pr": -1,
+			"qu": -2,
+			"st": 2
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    40,
+			"mentalism":  40,
+			"poison":     20,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [7,4,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [6,4,3,3],
+			"mentalism":              [3,2,1,1] 
+		},
+		"specialAbilities": [
+		],
+		"_backgroundOptions": 5,
+		"_startingLanguageSelection": [
+			"small-speech:s8:w6",
+			"common-speech:s8:w6"
+		],
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "noldo",
+		"name": "Noldo",
+		"attributeModifiers": {
+			"ag": 4,
+			"co": 4,
+			"me": 2,
+			"re": 0,
+			"sd": -5,
+			"em": 2,
+			"in": 2,
+			"pr": 6,
+			"qu": 6,
+			"st": 0
+		},
+		"resistanceBonus": {
+			"channeling": -5,
+			"essence":    -5,
+			"mentalism":  -5,
+			"poison":     10,
+			"disease":    100
+		},
+		"bodyDevelopmentProgression": [7,3,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [7,6,5,4],
+			"mentalism":              [6,5,4,3] 
+		},
+		"specialAbilities": [
+			"+20 DB and RR bonuses versus cold attacks.",
+			"Elves are able to see on a star-lit or moonlit night, as if full it were daylight. Their vision is restricted with less light-with any light source, they can see 50' perfectly and 100' fairly well. However, in absolute darkness they are no better than Men.",
+			"Their sense of hearing is also superb (+10 to Awareness maneuvers involving only hearing), and no doubt accounts for the Elven skills with music.",
+			"TODO"
+		],
+		"backgroundOptions": 1,
+		"startingLanguageSelection": [
+			"quenya:s10:w10",
+			"sindarin:s8:w6",
+			"westron:s8:w6",
+			"adunaic:s6:w4"
+		],
+		"soulDeparture": 1,
+		"recoveryMultiplier": 3.0,
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "sinda",
+		"name": "Sinda",
+		"attributeModifiers": {
+			"ag": 4,
+			"co": 2,
+			"me": 2,
+			"re": 0,
+			"sd": -5,
+			"em": 2,
+			"in": 2,
+			"pr": 4,
+			"qu": 4,
+			"st": 0
+		},
+		"resistanceBonus": {
+			"channeling": -5,
+			"essence":    -5,
+			"mentalism":  -5,
+			"poison":     10,
+			"disease":    100
+		},
+		"bodyDevelopmentProgression": [7,3,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [7,6,5,4],
+			"mentalism":              [6,5,4,3] 
+		},
+		"specialAbilities": [
+			"TODO"
+		],
+		"backgroundOptions": 1,
+		"startingLanguageSelection": [
+			"sindarin:s10:w10",
+			"westron:s8:w6",
+			"betheur:s8:w6",
+			"quenya:s6:w4",
+			"adunaic:s6:w4"
+		],
+		"soulDeparture": 2,
+		"recoveryMultiplier": 2.0,
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "hobbit",
+		"name": "Hobbit",
+		"attributeModifiers": {
+			"ag": 6,
+			"co": 6,
+			"me": 0,
+			"re": 0,
+			"sd": 4,
+			"em": -2,
+			"in": 0,
+			"pr": -6,
+			"qu": 4,
+			"st": -8
+		},
+		"resistanceBonus": {
+			"channeling": 20,
+			"essence":    50,
+			"mentalism":  40,
+			"poison":     30,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [6,2,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [2,1,1,1],
+			"mentalism":              [2,1,1,1] 
+		},
+		"skillBonus": {
+			"caving": 25
+		},
+		"specialAbilities": [
+			"Khazâd see well in extreme darkness. In the dimmest light, they c an see 50' perfectly, and fairly well up to 100'. They can see 10' in total da rkness (non- magic al)."
+		],
+		"backgroundOptions": 4,
+		"startingLanguageSelection": [
+			"khuzdul:s8:w6",
+			"westron:s8:w6",
+			"silvan:s5:w5",
+			"sindarin:s4:w4"
+		],
+		"soulDeparture": 21,
+		"recoveryMultiplier": 0.5,
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "uruk",
+		"name": "Uruk",
+		"attributeModifiers": {
+			"ag": 0,
+			"co": 8,
+			"me": 0,
+			"re": 0,
+			"sd": -2,
+			"em": -6,
+			"in": -2,
+			"pr": -4,
+			"qu": 0,
+			"st": 4
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     20,
+			"disease":    5
+		},
+		"bodyDevelopmentProgression": [7,5,3,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [5,3,2,2],
+			"mentalism":              [5,3,2,2] 
+		},
+		"exhaustionPoints": 30,
+		"specialAbilities": [
+			"+30 DB and RR bonuses versus heat and cold attacks.",
+			"Uruk-hai usually sleep during daylight hours, although they need sleep only once every 3 days (more often to restore Power Points). Uruk-hai operate freely in daylight, and their vision in most darkness is as good as a Man’s during the height of day. When there is barely any light (cloudy, moonless nights; upper caverns, dungeons), Uruk-hai can see at least 30' perfectly and fairly well up to 75'. In absolute darkness, they can see 10"
+		],
+		"backgroundOptions": 4,
+		"startingLanguageSelection": [
+			"black-speech:s8:w2",
+			"orcish:s8:w3",
+			"westron:s5:w2"
+		],
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "olog",
+		"name": "Olog",
+		"attributeModifiers": {
+			"ag": 0,
+			"co": 6,
+			"me": -2,
+			"re": -2,
+			"sd": 0,
+			"em": -4,
+			"in": -4,
+			"pr": -2,
+			"qu": 0,
+			"st": 8
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     20,
+			"disease":    10
+		},
+		"bodyDevelopmentProgression": [15,13,7,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [3,2,1,1],
+			"mentalism":              [3,2,1,1] 
+		},
+		"_exhaustionPoints": 30,
+		"specialAbilities": [
+			"Black Trolls ignore bleeding or stun results when given a critical strike from a normal weapon, since they are more resistant to unenchanted weapons.",
+			"Trolls do not know fear +100 RR vs fear."
+		],
+		"backgroundOptions": 1,
+		"startingLanguageSelection": [
+			"black-speech:s6:w2",
+			"westron:s4:w2"
+		],
+		"soulDeparture": 1,
+		"recoveryMultiplier": 0.5,
+		"professionRestrictions": [
+			"figther"
+		],
+		"universes": [ "middle-earth" ]
+	}
+]
