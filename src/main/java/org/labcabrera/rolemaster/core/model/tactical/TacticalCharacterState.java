@@ -10,6 +10,8 @@ public enum TacticalCharacterState implements CodeNameEnum {
 
 	NORMAL("normal", "Normal"),
 
+	MASSIVE_SHOCK("massive-shock", "Massive Shock"),
+
 	MASSIVE_SHOCK_DYING("massive-shock-dying", "Massive shock dying"),
 
 	DEAD("dead", "Dead");

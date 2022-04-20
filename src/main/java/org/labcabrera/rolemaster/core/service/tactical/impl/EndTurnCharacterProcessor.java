@@ -2,6 +2,8 @@ package org.labcabrera.rolemaster.core.service.tactical.impl;
 
 import java.util.Map.Entry;
 
+import org.labcabrera.rolemaster.core.model.combat.Penalty;
+import org.labcabrera.rolemaster.core.model.tactical.AttackBonus;
 import org.labcabrera.rolemaster.core.model.tactical.Buff;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
@@ -20,23 +22,15 @@ public class EndTurnCharacterProcessor {
 
 	public <E> Mono<E> process(E data, String tacticalSessionId) {
 		return characterRepository.findByTacticalSessionId(tacticalSessionId)
-			.map(this::processDeath)
 			.map(this::processBleeding)
 			.map(this::processBuffs)
 			.map(this::processDebuffs)
 			.map(this::processBonus)
 			.map(this::processPenalty)
+			.map(this::processDeath)
 			.flatMap(characterRepository::save)
 			.collectList()
 			.then(Mono.just(data));
-	}
-
-	private TacticalCharacter processDeath(TacticalCharacter tc) {
-		if (tc.getHp().getCurrent() < 1) {
-			tc.setState(TacticalCharacterState.MASSIVE_SHOCK_DYING);
-			this.processDeath(tc);
-		}
-		return tc;
 	}
 
 	private TacticalCharacter processBleeding(TacticalCharacter tc) {
@@ -51,35 +45,50 @@ public class EndTurnCharacterProcessor {
 			if (buff.getValue() > 0) {
 				buff.setValue(buff.getValue() - 1);
 			}
-			if (buff.getValue() == 0) {
-				tc.getCombatStatus().getBuffs().remove(buff.getKey());
-			}
 		}
+		tc.getCombatStatus().getBuffs().entrySet().removeIf(e -> e.getValue() < 1);
 		return tc;
 	}
 
 	private TacticalCharacter processDebuffs(TacticalCharacter tc) {
 		for (Entry<Debuff, Integer> debuff : tc.getCombatStatus().getDebuffs().entrySet()) {
+			int value = debuff.getValue();
 			if (debuff.getValue() > 0) {
-				debuff.setValue(debuff.getValue() - 1);
+				debuff.setValue(value - 1);
 			}
-			if (debuff.getValue() == 0) {
-				tc.getCombatStatus().getDebuffs().remove(debuff.getKey());
-				if (debuff.getKey() == Debuff.INSTANT_DEATH || debuff.getKey() == Debuff.MORTAL_DAMAGE) {
-					tc.setState(TacticalCharacterState.DEAD);
-				}
+			if (value == 0 && (debuff.getKey() == Debuff.INSTANT_DEATH || debuff.getKey() == Debuff.MORTAL_DAMAGE)) {
+				tc.setState(TacticalCharacterState.DEAD);
 			}
 		}
+		tc.getCombatStatus().getDebuffs().entrySet().removeIf(e -> e.getValue() < 1);
 		return tc;
 	}
 
 	private TacticalCharacter processBonus(TacticalCharacter tc) {
-		//TODO
+		for (AttackBonus bonus : tc.getCombatStatus().getBonus()) {
+			if (bonus.getRounds() != null && bonus.getRounds() > 1) {
+				bonus.setRounds(bonus.getRounds() - 1);
+			}
+		}
+		tc.getCombatStatus().getBonus().removeIf(e -> e.getBonus() != null && e.getRounds() < 1);
 		return tc;
 	}
 
 	private TacticalCharacter processPenalty(TacticalCharacter tc) {
-		//TODO
+		for (Penalty p : tc.getCombatStatus().getPenalties()) {
+			if (p.getRounds() != null && p.getRounds() > 1) {
+				p.setRounds(p.getRounds() - 1);
+			}
+		}
+		tc.getCombatStatus().getPenalties().removeIf(e -> e.getRounds() != null && e.getRounds() < 1);
+		return tc;
+	}
+
+	private TacticalCharacter processDeath(TacticalCharacter tc) {
+		if (tc.getHp().getCurrent() < 1 && tc.getState() == TacticalCharacterState.NORMAL) {
+			tc.setState(TacticalCharacterState.MASSIVE_SHOCK);
+			//TODO comprobar numero de puntos de la constitucion para ver si entra en massive-shock-dying
+		}
 		return tc;
 	}
 
