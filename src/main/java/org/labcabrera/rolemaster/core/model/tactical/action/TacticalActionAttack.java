@@ -1,7 +1,9 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
@@ -33,9 +35,13 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	@Builder.Default
 	protected Map<OffensiveBonusModifier, Integer> offensiveBonusMap = new LinkedHashMap<>();
 
-	protected AttackResult attackResult;
+	@Builder.Default
+	protected List<AttackFumbleResult> fumbleResults = new ArrayList<>();
 
-	protected AttackResult secondaryAttackResult;
+	@Builder.Default
+	protected List<AttackResult> attackResults = new ArrayList<>();
+
+	private List<TacticalCriticalResult> criticalResults = new ArrayList<>();
 
 	protected BigDecimal exhaustionPoints;
 
@@ -44,19 +50,10 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	}
 
 	public boolean isFlumbe() {
-		if (attackResult != null && attackResult.getFumbleResult() != null) {
-			return true;
-		}
-		else if (secondaryAttackResult != null && secondaryAttackResult.getCriticalResult() != null) {
-			return true;
-		}
-		return false;
+		return !fumbleResults.isEmpty();
 	}
 
 	public boolean hasPendingCriticalResolution() {
-		if (attackResult != null && attackResult.requiresCriticalResolution()) {
-			return true;
-		}
-		return false;
+		return criticalResults.stream().filter(e -> e.getCriticalTableResult() == null).count() > 0L;
 	}
 }

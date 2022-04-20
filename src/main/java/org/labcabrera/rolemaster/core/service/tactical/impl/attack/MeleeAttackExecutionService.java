@@ -2,7 +2,6 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -43,8 +42,9 @@ public class MeleeAttackExecutionService {
 
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		loadTarget(action, execution);
-		action.setAttackResult(new AttackResult());
 		action.setRoll(execution.getRoll());
+		action.setSecondaryRoll(execution.getSecondaryRoll());
+		action.setSecondaryTarget(execution.getSecondaryTarget());
 		action.setFacing(execution.getFacing());
 
 		MeleeAttackContext context = new MeleeAttackContext();
@@ -56,7 +56,7 @@ public class MeleeAttackExecutionService {
 			.flatMap(fumbleProcessor::apply)
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(defensiveBonusProcessor::apply)
-			.map(weaponTableProcessor::apply)
+			.flatMap(weaponTableProcessor::apply)
 			.flatMap(ctx -> attackResultProcessor.apply(ctx.getAction()))
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMeleeAttack.class::cast);

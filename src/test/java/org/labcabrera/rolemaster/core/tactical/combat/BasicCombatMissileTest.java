@@ -70,7 +70,7 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 		assertEquals(-30, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.DEFENSIVE_BONUS));
 		assertEquals(-40, missileResolved01.getOffensiveBonusMap().get(OffensiveBonusModifier.DISTANCE));
 		assertEquals(TacticalActionState.RESOLVED, missileResolved01.getState());
-		assertEquals(5, missileResolved01.getAttackResult().getHp());
+		assertEquals(5, missileResolved01.getAttackResults().get(0).getHp());
 	}
 
 }

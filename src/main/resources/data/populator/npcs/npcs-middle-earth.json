@@ -9,15 +9,18 @@
 		"hp": 50,
 		"hpBaseModifier": "D",
 		"armorType": 8,
-		"attacks": [
+		"defensiveBonus": 30,
+		"items": [
 			{
-				"weaponId": "scimitar",
-				"bonus": 40,
-				"type": "melee",
-				"primary": true
+				"itemId": "scimitar",
+				"type": "weapon",
+				"name": "Scimitar",
+				"position": "main-hand"
 			}
 		],
-		"defensiveBonus": 30,
+		"skills": {
+			"scimitar": 40
+		},
 		"baseMove": 50,
 		"mmBonus": 0,
 		"maxPace": "fastSprint",
@@ -36,21 +39,25 @@
 		"hp": 50,
 		"hpBaseModifier": "D",
 		"armorType": 8,
-		"attacks": [
+		"defensiveBonus": 30,
+		"items": [
 			{
-				"weaponId": "short-bow",
-				"bonus": 40,
-				"type": "ranged",
-				"primary": true
+				"itemId": "short-bow",
+				"type": "weapon",
+				"name": "Short Bow",
+				"position": "main-hand"
 			},
 			{
-				"weaponId": "scimitar",
-				"bonus": 25,
-				"type": "melee",
-				"primary": false
+				"itemId": "scimitar",
+				"type": "weapon",
+				"name": "Scimitar",
+				"position": "carried"
 			}
 		],
-		"defensiveBonus": 30,
+		"skills": {
+			"short-bow": 40,
+			"scimitar": 25
+		},
 		"baseMove": 50,
 		"mmBonus": 0,
 		"maxPace": "fastSprint",
@@ -69,14 +76,17 @@
 		"hp": 70,
 		"hpBaseModifier": "D",
 		"armorType": 17,
-		"attacks": [
+		"items": [
 			{
-				"weaponId": "scimitar",
-				"bonus": 80,
-				"type": "melee",
-				"primary": true
+				"itemId": "scimitar",
+				"type": "weapon",
+				"name": "Scimitar",
+				"position": "main-hand"
 			}
 		],
+		"skills": {
+			"scimitar": 80
+		},
 		"defensiveBonus": 40,
 		"baseMove": 60,
 		"mmBonus": 10,

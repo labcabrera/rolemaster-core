@@ -12,6 +12,7 @@ import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
 import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class EnumControllerImpl implements EnumController {
 	public Mono<List<String>> getEnums() {
 		return Mono.just(
 			Arrays.asList("realm", "movement-pace", "melee-attack-type", "melee-attack-facing", "item-position", "terrain",
-				"temperature-multiplier"));
+				"temperature-multiplier", "melee-attack-mode"));
 	}
 
 	@Override
@@ -36,6 +37,8 @@ public class EnumControllerImpl implements EnumController {
 			return toFlux(ItemPosition.values());
 		case "melee-attack-facing":
 			return toFlux(MeleeAttackFacing.values());
+		case "melee-attack-mode":
+			return toFlux(MeleeAttackMode.values());
 		case "melee-attack-type":
 			return toFlux(MeleeAttackType.values());
 		case "movement-pace":

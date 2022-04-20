@@ -4,10 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.labcabrera.rolemaster.core.model.character.item.CharacterWeapon;
+import org.apache.commons.lang3.NotImplementedException;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.RangeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
@@ -47,8 +50,31 @@ public class OffensiveBonusProcessor {
 
 	private <T extends AttackContext<?>> Mono<T> loadSkillBonus(T context) {
 		TacticalCharacter source = context.getSource();
-		CharacterWeapon weapon = source.getInventory().getMainHandWeapon();
-		String skillId = weapon.getSkillId();
+
+		String skillId = null;
+
+		if (context.getAction()instanceof TacticalActionMeleeAttack ma) {
+			if (ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
+				//TODO
+				CharacterItem itemMainHand = source.getItems().stream()
+					.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
+					.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
+				String mainHandSkillId = itemMainHand.getItemId();
+
+				CharacterItem itemOffHand = source.getItems().stream()
+					.filter(e -> e.getPosition() == ItemPosition.OFF_HAND)
+					.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
+				String secondarySkill = itemOffHand.getItemId();
+				skillId = "two-weapon-combat:" + mainHandSkillId + ":" + secondarySkill;
+			}
+		}
+
+		if (skillId == null) {
+			CharacterItem itemMainHand = source.getItems().stream()
+				.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
+				.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
+			skillId = itemMainHand.getItemId();
+		}
 		return Mono.just(context)
 			.zipWith(skillService.getSkill(source, skillId), (a, b) -> {
 				a.getAction().getOffensiveBonusMap().put(OffensiveBonusModifier.SKILL, b);
@@ -185,9 +211,11 @@ public class OffensiveBonusProcessor {
 	private Mono<Optional<Integer>> getBonusDistance(AttackContext<?> context) {
 		if (context.getAction() instanceof TacticalActionMissileAttack) {
 			TacticalActionMissileAttack action = (TacticalActionMissileAttack) context.getAction();
-			CharacterWeapon mainHandWeapon = context.getSource().getInventory().getMainHandWeapon();
 			int distance = action.getDistance();
-			return getBonusDistance(distance, mainHandWeapon.getItemId());
+			CharacterItem itemMainHand = context.getSource().getItems().stream()
+				.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
+				.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
+			return getBonusDistance(distance, itemMainHand.getItemId());
 		}
 		return Mono.just(Optional.empty());
 	}

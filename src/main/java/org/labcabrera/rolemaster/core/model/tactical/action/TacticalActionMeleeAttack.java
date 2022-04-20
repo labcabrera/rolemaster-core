@@ -25,6 +25,10 @@ import lombok.experimental.SuperBuilder;
 public class TacticalActionMeleeAttack extends TacticalActionAttack {
 
 	@NotNull
+	@Builder.Default
+	private MeleeAttackMode meleeAttackMode = MeleeAttackMode.MAIN_WEAPON;
+
+	@NotNull
 	private MeleeAttackType meleeAttackType;
 
 	private MeleeAttackFacing facing;

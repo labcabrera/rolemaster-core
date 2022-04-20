@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.dto.action.declaration;
 
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -19,6 +20,10 @@ import lombok.experimental.SuperBuilder;
 public class TacticalActionMeleeAttackDeclaration extends TacticalActionDeclaration {
 
 	private String target;
+
+	private String secondaryTarget;
+
+	private MeleeAttackMode meleeAttackMode;
 
 	private MeleeAttackType meleeAttackType;
 

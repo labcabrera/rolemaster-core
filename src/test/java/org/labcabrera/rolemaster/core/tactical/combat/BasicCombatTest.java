@@ -68,7 +68,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 		assertNotNull(meleeResolved01);
 		assertEquals(TacticalActionState.RESOLVED, meleeResolved01.getState());
 		assertEquals(-10, meleeResolved01.getOffensiveBonus());
-		assertEquals(6, meleeResolved01.getAttackResult().getHp());
+		assertEquals(6, meleeResolved01.getAttackResults().get(0).getHp());
 	}
 
 }

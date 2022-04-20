@@ -44,7 +44,6 @@ public class MissileAttackExecutionService {
 			.zipWith(characterRepository.findById(context.getAction().getTarget()), (a, b) -> a.<MissileAttackContext>setTarget(b))
 			.flatMap(offensiveBonusProcessor::apply)
 			.map(attackWeaponTableProcessor::apply)
-			.map(MissileAttackContext::getAction)
 			.flatMap(act -> attackResultProcessor.apply(action))
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMissileAttack.class::cast);

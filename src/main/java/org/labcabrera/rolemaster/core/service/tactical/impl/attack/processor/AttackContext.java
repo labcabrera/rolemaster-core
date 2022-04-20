@@ -20,6 +20,8 @@ public abstract class AttackContext<A extends TacticalActionAttack> {
 
 	private TacticalCharacter target;
 
+	private TacticalCharacter secondaryTarget;
+
 	@Setter
 	private Weapon weapon;
 

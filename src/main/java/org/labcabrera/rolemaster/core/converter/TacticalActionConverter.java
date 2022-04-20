@@ -26,6 +26,8 @@ public class TacticalActionConverter implements Converter<TacticalActionDeclarat
 		else if (source instanceof TacticalActionMeleeAttackDeclaration tmp) {
 			result = TacticalActionMeleeAttack.builder()
 				.target(tmp.getTarget())
+				.secondaryTarget(tmp.getSecondaryTarget())
+				.meleeAttackMode(tmp.getMeleeAttackMode())
 				.meleeAttackType(tmp.getMeleeAttackType())
 				.parry(tmp.getParry())
 				.build();

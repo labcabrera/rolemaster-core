@@ -1,15 +1,14 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
-import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
 import org.labcabrera.rolemaster.core.table.critical.CriticalTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,14 +31,13 @@ public class CriticalAttackExecutionService {
 		}
 		TacticalActionAttack tacticalAttack = (TacticalActionAttack) action;
 
-		AttackResult attackResult = getUnresolvedCriticalAttack(tacticalAttack);
-
-		CriticalType type = attackResult.getCriticalResult().getType();
-		CriticalSeverity severity = attackResult.getCriticalResult().getSeverity();
+		TacticalCriticalResult tcr = getFirstUnresolvedCritical(tacticalAttack);
+		CriticalType type = tcr.getType();
+		CriticalSeverity severity = tcr.getSeverity();
 		CriticalTableResult result = criticalTable.getResult(type, severity, execution.getRoll());
 
-		attackResult.getCriticalResult().setRoll(execution.getRoll());
-		attackResult.getCriticalResult().setCriticalTableResult(result);
+		tcr.setRoll(execution.getRoll());
+		tcr.setCriticalTableResult(result);
 
 		if (!tacticalAttack.hasPendingCriticalResolution()) {
 			action.setState(TacticalActionState.PENDING_RESOLUTION);
@@ -47,11 +45,10 @@ public class CriticalAttackExecutionService {
 		return action;
 	}
 
-	private AttackResult getUnresolvedCriticalAttack(TacticalActionAttack attack) {
-		if (attack.getAttackResult().requiresCriticalResolution()) {
-			return attack.getAttackResult();
-		}
-		throw new NotImplementedException();
+	private TacticalCriticalResult getFirstUnresolvedCritical(TacticalActionAttack tacticalAttack) {
+		return tacticalAttack.getCriticalResults().stream()
+			.filter(e -> e.getRoll() == null)
+			.findFirst().orElseThrow(() -> new BadRequestException("Not found any unresolved critical"));
 	}
 
 }

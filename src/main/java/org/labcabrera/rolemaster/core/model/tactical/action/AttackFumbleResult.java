@@ -15,6 +15,8 @@ public class AttackFumbleResult {
 
 	private FumbleType type;
 
+	private Integer roll;
+
 	private FumbleTableResult result;
 
 }
