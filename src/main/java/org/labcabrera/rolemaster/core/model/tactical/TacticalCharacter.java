@@ -61,6 +61,9 @@ public class TacticalCharacter {
 	private Integer defensiveBonus;
 
 	@Builder.Default
+	private TacticalCharacterState state = TacticalCharacterState.NORMAL;
+
+	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();
 
 }

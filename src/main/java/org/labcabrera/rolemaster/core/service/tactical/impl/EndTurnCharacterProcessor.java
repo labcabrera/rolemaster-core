@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 import org.labcabrera.rolemaster.core.model.tactical.Buff;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacterState;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,10 @@ public class EndTurnCharacterProcessor {
 	}
 
 	private TacticalCharacter processDeath(TacticalCharacter tc) {
-		//TODO
+		if (tc.getHp().getCurrent() < 1) {
+			tc.setState(TacticalCharacterState.MASSIVE_SHOCK_DYING);
+			this.processDeath(tc);
+		}
 		return tc;
 	}
 
@@ -43,10 +47,10 @@ public class EndTurnCharacterProcessor {
 	}
 
 	private TacticalCharacter processBuffs(TacticalCharacter tc) {
-		tc.getCombatStatus().getBuffs().entrySet().stream()
-			.filter(e -> e.getValue() > 0)
-			.map(e -> e.setValue(e.getValue() - 1));
 		for (Entry<Buff, Integer> buff : tc.getCombatStatus().getBuffs().entrySet()) {
+			if (buff.getValue() > 0) {
+				buff.setValue(buff.getValue() - 1);
+			}
 			if (buff.getValue() == 0) {
 				tc.getCombatStatus().getBuffs().remove(buff.getKey());
 			}
@@ -55,12 +59,15 @@ public class EndTurnCharacterProcessor {
 	}
 
 	private TacticalCharacter processDebuffs(TacticalCharacter tc) {
-		tc.getCombatStatus().getDebuffs().entrySet().stream()
-			.filter(e -> e.getValue() > 0)
-			.map(e -> e.setValue(e.getValue() - 1));
-		for (Entry<Debuff, Integer> buff : tc.getCombatStatus().getDebuffs().entrySet()) {
-			if (buff.getValue() == 0) {
-				tc.getCombatStatus().getDebuffs().remove(buff.getKey());
+		for (Entry<Debuff, Integer> debuff : tc.getCombatStatus().getDebuffs().entrySet()) {
+			if (debuff.getValue() > 0) {
+				debuff.setValue(debuff.getValue() - 1);
+			}
+			if (debuff.getValue() == 0) {
+				tc.getCombatStatus().getDebuffs().remove(debuff.getKey());
+				if (debuff.getKey() == Debuff.INSTANT_DEATH || debuff.getKey() == Debuff.MORTAL_DAMAGE) {
+					tc.setState(TacticalCharacterState.DEAD);
+				}
 			}
 		}
 		return tc;
