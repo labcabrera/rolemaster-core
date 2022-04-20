@@ -1,0 +1,111 @@
+[
+	{
+		"id": "sauron",
+		"name": "Sauron",
+		"shortDescription": "Sauron",
+		"level": 180,
+		"hp": 600,
+		"armorType": 20,
+		"defensiveBonus": 200,
+		"attacks": [
+		],
+		"items": [
+			{
+				"itemId": "mace",
+				"type": "weapon",
+				"name": "The Shadow Mace",
+				"bonus": 60,
+				"notes": [
+					"In the hands of anyone but Sauron the mace is -30.",
+					"The mace becomes instantly invisible whenever the wielder concentrates this desire"
+				],
+				"description": "Black ithilnaur mace with glows red when within 300' of an Elf."
+			},
+			{
+				"itemId": "broadsword",
+				"type": "weapon",
+				"name": "The Black Sword",
+				"bonus": 45,
+				"special": [
+					"unbreakable",
+					"elf-slaying"
+				],
+				"description": "Black ithilnaur, elf-slaying broadsword."
+			},
+			{
+				"itemId": "full-plate",
+				"type": "armor",
+				"name": "The Black Scale",
+				"bonus": 80,
+				"description": "Unencumbering black dragonshin and black ithilnaur scale amor. Treat as plate AT20 with a DB of -80"
+			}
+		],
+		"unique": true,
+		"universeId": "middle-earth"
+	},
+	{
+		"id": "sauron-one-ring",
+		"name": "Sauron - One Ring",
+		"shortDescription": "Sauron",
+		"level": 360,
+		"unique": true,
+		"universeId": "middle-earth"
+	},
+	{
+		"id": "the-witch-king",
+		"name": "The Witch King",
+		"shortDescription": "The Witch King",
+		"_level": 120,
+		"_levelBaseModifier": "B",
+		"unique": true,
+		"hp": 360,
+		"_powerPoints": 1170,
+		"_hpBaseModifier": "D",
+		"armorType": 20,
+		"attacks": [
+			{
+				"weaponId": "broadsword",
+				"bonus": 180,
+				"type": "melee",
+				"primary": true
+			},
+			{
+				"weaponId": "mace",
+				"bonus": 180,
+				"type": "melee",
+				"primary": true
+			}
+		],
+		"skills": {
+		},
+		"items": [
+			{
+				"itemId": "broadsword",
+				"type": "weapon",
+				"name": "Fire sword",
+				"notes": [
+					"For every critical hit that the sword does, it will do an additional heat critical hit",
+					"Shatters weapons that fail to resist versus a 60th level spell of destruction"
+				],
+				"percent": 30
+			},
+			{
+				"itemId": "mace",
+				"type": "mace",
+				"notes": [
+					"Mace of slaying men and elves",
+					"Resist versus a 60th level 'slow death' spell",
+					"Shatters weapons that fail to resist versus a 60th level spell of destruction"
+				],
+				"percent": 30
+			}
+		],
+		"defensiveBonus": 120,
+		"_baseMove": 50,
+		"_mmBonus": 0,
+		"_maxPace": "fastSprint",
+		"_movementSpeed": "SL",
+		"_attackQuickness": "MD",
+		"universeId": "middle-earth"
+	}
+]

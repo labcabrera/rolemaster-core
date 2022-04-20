@@ -85,21 +85,5 @@
 		"attackQuickness": "MD",
 		"universeId": "middle-earth",
 		"npcNameGeneratorGroup": "orc"
-	},
-	{
-		"id": "sauron",
-		"name": "Sauron",
-		"shortDescription": "Sauron",
-		"level": 180,
-		"unique": true,
-		"universeId": "middle-earth"
-	},
-	{
-		"id": "sauron-one-ring",
-		"name": "Sauron - One Ring",
-		"shortDescription": "Sauron",
-		"level": 360,
-		"unique": true,
-		"universeId": "middle-earth"
 	}
 ]
