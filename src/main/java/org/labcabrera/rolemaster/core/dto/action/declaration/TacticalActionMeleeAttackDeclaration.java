@@ -6,6 +6,7 @@ import java.util.Map;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
+import org.labcabrera.rolemaster.core.validation.ValidTacticalActionMeleAttackDeclaration;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -16,6 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+@ValidTacticalActionMeleAttackDeclaration
 @JsonPropertyOrder({ "priority", "actionPercent", "source", "target", "meleeAttackType", "parry", "notes" })
 @Data
 @AllArgsConstructor
