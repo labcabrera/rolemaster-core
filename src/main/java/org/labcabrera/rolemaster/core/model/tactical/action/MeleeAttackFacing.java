@@ -11,7 +11,7 @@ public enum MeleeAttackFacing implements CodeNameEnum {
 
 	FLANK("flank", "Flank (+15)", 15),
 
-	REAR_FLANK("rear-flank", "Read Flank (+25)", 25),
+	REAR_FLANK("rear-flank", "Rear Flank (+25)", 25),
 
 	REAR("rear", "Rear (+35)", 35);
 

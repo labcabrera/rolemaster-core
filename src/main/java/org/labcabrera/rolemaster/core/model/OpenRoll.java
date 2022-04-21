@@ -35,7 +35,7 @@ public class OpenRoll {
 	private List<Integer> rolls = new ArrayList<>();
 
 	public Integer getFirstRoll() {
-		return rolls.iterator().next();
+		return rolls != null && !rolls.isEmpty() ? rolls.iterator().next() : null;
 	}
 
 	public String toString() {

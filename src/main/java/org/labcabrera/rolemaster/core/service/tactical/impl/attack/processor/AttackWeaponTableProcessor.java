@@ -82,13 +82,15 @@ public class AttackWeaponTableProcessor {
 	private void processAttackResult(TacticalActionAttack action, String target, String weaponTableId, int offensiveBonus, int armor,
 		int roll) {
 
-		int attackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, offensiveBonus + roll));
-		String stringResult = weaponTable.get(weaponTableId, armor, attackResult);
+		int attackResult = offensiveBonus + roll;
+		int tableAttackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, attackResult));
+		String stringResult = weaponTable.get(weaponTableId, armor, tableAttackResult);
 
 		AttackResult result = AttackResult.builder()
 			.target(target)
 			.weaponTableId(weaponTableId)
-			.attackResult(attackResult)
+			.result(attackResult)
+			.totalBonus(offensiveBonus)
 			.targetArmor(armor)
 			.hp(0)
 			.build();

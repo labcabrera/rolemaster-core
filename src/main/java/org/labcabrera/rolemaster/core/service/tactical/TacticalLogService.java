@@ -70,7 +70,7 @@ public class TacticalLogService {
 		for (AttackResult ar : attack.getAttackResults()) {
 			StringBuilder sb = new StringBuilder();
 			sb.append("Character ").append(source.getName()).append(" attacks ").append(target.getName());
-			sb.append(" for ").append(ar.getAttackResult());
+			sb.append(" for ").append(ar.getResult());
 			sb.append(" (").append(ar.getWeaponTableId()).append(")");
 			//TODO fumble / criticals
 			sb.append(".");

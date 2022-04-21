@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
+import java.util.List;
+
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
@@ -31,24 +33,27 @@ public class CriticalAttackExecutionService {
 		}
 		TacticalActionAttack tacticalAttack = (TacticalActionAttack) action;
 
-		TacticalCriticalResult tcr = getFirstUnresolvedCritical(tacticalAttack);
-		CriticalType type = tcr.getType();
-		CriticalSeverity severity = tcr.getSeverity();
-		CriticalTableResult result = criticalTable.getResult(type, severity, execution.getRoll());
+		List<TacticalCriticalResult> pending = tacticalAttack.getCriticalResults().stream()
+			.filter(e -> e.getCriticalTableResult() == null)
+			.toList();
+		List<String> keys = execution.getRolls().keySet().stream().sorted().toList();
 
-		tcr.setRoll(execution.getRoll());
-		tcr.setCriticalTableResult(result);
-
-		if (!tacticalAttack.hasPendingCriticalResolution()) {
-			action.setState(TacticalActionState.PENDING_RESOLUTION);
+		if (pending.size() != keys.size()) {
+			throw new BadRequestException("Invalid critical rolls");
 		}
-		return action;
-	}
 
-	private TacticalCriticalResult getFirstUnresolvedCritical(TacticalActionAttack tacticalAttack) {
-		return tacticalAttack.getCriticalResults().stream()
-			.filter(e -> e.getRoll() == null)
-			.findFirst().orElseThrow(() -> new BadRequestException("Not found any unresolved critical"));
+		for (int i = 0; i < keys.size(); i++) {
+			String key = keys.get(i);
+			TacticalCriticalResult tcr = pending.get(i);
+			int roll = execution.getRolls().get(key);
+			CriticalType type = tcr.getType();
+			CriticalSeverity severity = tcr.getSeverity();
+			CriticalTableResult result = criticalTable.getResult(type, severity, roll);
+			tcr.setRoll(roll);
+			tcr.setCriticalTableResult(result);
+		}
+		action.setState(TacticalActionState.PENDING_RESOLUTION);
+		return action;
 	}
 
 }

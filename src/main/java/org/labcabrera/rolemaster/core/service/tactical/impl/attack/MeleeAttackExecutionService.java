@@ -1,11 +1,14 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
+import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -47,7 +50,6 @@ public class MeleeAttackExecutionService {
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		loadTargets(action, execution);
 		action.setRolls(execution.getRolls());
-		action.setTargets(execution.getTargets());
 		action.setFacingMap(execution.getFacingMap());
 
 		MeleeAttackContext context = new MeleeAttackContext();
@@ -68,15 +70,18 @@ public class MeleeAttackExecutionService {
 	private void loadTargets(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		switch (action.getMeleeAttackType()) {
 		case FULL:
-			if (execution.getTargets().isEmpty()) {
-				throw new BadRequestException("Can not declare target in full melee attack type");
-			}
+			//			if (!execution.getTargets().isEmpty()) {
+			//				throw new BadRequestException("Can not declare target in full melee attack type");
+			//			}
 			break;
 		case PRESS_AND_MELEE, REACT_AND_MELEE:
 			if (execution.getTargets().isEmpty()) {
 				throw new BadRequestException("Required target");
 			}
-			//TODO check count for 2 weapon attack
+			if (action.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS && execution.getTargets().size() != 2) {
+				throw new BadRequestException("Expected 2 targets using two weapon attacks");
+			}
+			action.setTargets(execution.getTargets());
 			break;
 		default:
 			break;
@@ -84,7 +89,7 @@ public class MeleeAttackExecutionService {
 	}
 
 	private Mono<MeleeAttackContext> loadTargets(MeleeAttackContext context) {
-		Collection<String> ids = context.getAction().getTargets().values();
+		List<String> ids = new ArrayList<>(new HashSet<>(context.getAction().getTargets().values()));
 		return tacticalCharacterRepository.findAllById(ids).collectList()
 			.map(list -> {
 				if (list.size() != ids.size()) {

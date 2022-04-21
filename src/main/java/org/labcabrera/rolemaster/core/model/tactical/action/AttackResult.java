@@ -15,7 +15,9 @@ public class AttackResult {
 	private String target;
 
 	@Schema(description = "Result of the attack plus all modifiers.")
-	private Integer attackResult;
+	private Integer result;
+
+	private Integer totalBonus;
 
 	private String weaponTableId;
 

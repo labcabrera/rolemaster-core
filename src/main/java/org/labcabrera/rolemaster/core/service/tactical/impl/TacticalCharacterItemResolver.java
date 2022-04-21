@@ -22,7 +22,7 @@ public class TacticalCharacterItemResolver {
 	public CharacterItem getWeapon(TacticalCharacter tc, ItemPosition position) {
 		return tc.getItems().stream()
 			.filter(e -> e.getType() == ItemType.WEAPON)
-			.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
+			.filter(e -> e.getPosition() == position)
 			.findFirst().orElseThrow(() -> new BadRequestException("Not valid weapon equiped in " + position));
 	}
 
