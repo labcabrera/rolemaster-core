@@ -19,6 +19,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeA
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.WeaponRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,13 +28,17 @@ import reactor.core.publisher.Mono;
 @Component
 public class OffensiveBonusProcessor {
 
-	private static final List<Debuff> NO_DEFENSIVE_BONUS_DEBUFS = Arrays.asList(Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS);
+	private static final List<Debuff> NO_DEFENSIVE_BONUS_DEBUFS = Arrays.asList(Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS,
+		Debuff.INSTANT_DEATH);
 
 	@Autowired
 	private TacticalSkillService skillService;
 
 	@Autowired
 	private WeaponRepository weaponRepository;
+
+	@Autowired
+	private TacticalCharacterItemResolver characterItemResolver;
 
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		if (context.getAction().isFlumbe()) {
@@ -48,6 +53,7 @@ public class OffensiveBonusProcessor {
 			.map(this::loadBonusActionPercent)
 			.map(this::loadBonusMeleePosition)
 			.map(this::loadBonusDefensive)
+			.flatMap(this::loadOffHandBonus)
 			.flatMap(this::loadBonusDistance);
 	}
 
@@ -59,28 +65,18 @@ public class OffensiveBonusProcessor {
 
 	private <T extends AttackContext<?>> Mono<T> loadSkillBonus(T context) {
 		TacticalCharacter source = context.getSource();
-		String skillId = null;
+
+		CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
+		String skillId = itemMainHand.getItemId();
+
 		if (context.getAction()instanceof TacticalActionMeleeAttack ma) {
 			if (ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
-				//TODO
-				CharacterItem itemMainHand = source.getItems().stream()
-					.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
-					.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
-				String mainHandSkillId = itemMainHand.getItemId();
-
-				CharacterItem itemOffHand = source.getItems().stream()
-					.filter(e -> e.getPosition() == ItemPosition.OFF_HAND)
-					.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
-				String secondarySkill = itemOffHand.getItemId();
-				skillId = "two-weapon-combat:" + mainHandSkillId + ":" + secondarySkill;
+				CharacterItem itemOffHand = characterItemResolver.getOffHandWeapon(source);
+				String offHandSkill = itemOffHand.getItemId();
+				skillId = skillService.getTwoWeaponSkill(skillId, offHandSkill);
 			}
 		}
-		if (skillId == null) {
-			CharacterItem itemMainHand = source.getItems().stream()
-				.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
-				.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
-			skillId = itemMainHand.getItemId();
-		}
+
 		return Mono.just(context)
 			.zipWith(skillService.getSkill(source, skillId), (a, b) -> {
 				a.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.SKILL, b);
@@ -157,6 +153,17 @@ public class OffensiveBonusProcessor {
 		else {
 			return Mono.just(context);
 		}
+	}
+
+	private <T extends AttackContext<?>> Mono<T> loadOffHandBonus(T context) {
+		if (context.getAction()instanceof TacticalActionMeleeAttack ma) {
+			if (ma.getMeleeAttackMode() == MeleeAttackMode.OFF_HAND_WEAPON || ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
+				//TODO check ambidextrous trait
+				context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.OFF_HAND, -20);
+			}
+		}
+		return Mono.just(context);
+
 	}
 
 	private int getBonusDefensive(TacticalCharacter target) {

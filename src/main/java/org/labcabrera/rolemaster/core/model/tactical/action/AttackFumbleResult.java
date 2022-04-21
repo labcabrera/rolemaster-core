@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AttackFumbleResult {
 
+	private Integer weaponFumble;
+
 	private FumbleType type;
 
 	private Integer roll;

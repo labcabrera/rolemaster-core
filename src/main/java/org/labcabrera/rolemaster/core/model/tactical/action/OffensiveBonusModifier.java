@@ -22,7 +22,9 @@ public enum OffensiveBonusModifier {
 
 	PARRY("parry"),
 
-	DISTANCE("missile-distance");
+	DISTANCE("missile-distance"),
+
+	OFF_HAND("off-hand");
 
 	private String name;
 

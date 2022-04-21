@@ -30,6 +30,10 @@ public class TacticalSkillService {
 		}
 	}
 
+	public String getTwoWeaponSkill(String mainHandSkillId, String offHandSkillId) {
+		return "two-weapon-combat:" + mainHandSkillId + ":" + offHandSkillId;
+	}
+
 	private Mono<Integer> getNpcSkill(TacticalCharacter character, String skillId) {
 		return npcRepository.findById(character.getCharacterId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("NPC not found")))

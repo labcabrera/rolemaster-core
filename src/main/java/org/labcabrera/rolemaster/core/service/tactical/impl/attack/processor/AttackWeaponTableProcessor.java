@@ -15,6 +15,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
+import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,9 @@ public class AttackWeaponTableProcessor {
 
 	@Autowired
 	private WeaponTable weaponTable;
+
+	@Autowired
+	private TacticalCharacterItemResolver itemResolver;
 
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		if (context.getAction().isFlumbe()) {
@@ -60,9 +64,7 @@ public class AttackWeaponTableProcessor {
 
 	private <T extends AttackContext<?>> T processAttack(T context, AttackTargetType type) {
 		ItemPosition itemPosition = type == AttackTargetType.MAIN_HAND ? ItemPosition.MAIN_HAND : ItemPosition.OFF_HAND;
-		CharacterItem mainHandItem = context.getSource().getItems().stream()
-			.filter(e -> e.getPosition() == itemPosition)
-			.findFirst().orElse(null);
+		CharacterItem mainHandItem = itemResolver.getWeapon(context.getSource(), itemPosition);
 		if (mainHandItem == null) {
 			throw new NotImplementedException("Special attacks");
 		}
