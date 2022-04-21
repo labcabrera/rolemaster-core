@@ -82,7 +82,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, meleeResolved01.getState());
 
 		AttackCriticalExecution criticalExecution = AttackCriticalExecution.builder()
-			.roll(55)
+			.rolls(Collections.singletonMap("roll-1", 55))
 			.build();
 
 		TacticalAction taResolved02 = tacticalActionService.executeCritical(taResolved01.getId(), criticalExecution).share().block();
