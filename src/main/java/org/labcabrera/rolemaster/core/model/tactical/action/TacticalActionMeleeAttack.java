@@ -33,10 +33,8 @@ public class TacticalActionMeleeAttack extends TacticalActionAttack {
 	@NotNull
 	private MeleeAttackType meleeAttackType;
 
+	@NotNull
 	private Map<AttackTargetType, MeleeAttackFacing> facingMap;
-
-	@Builder.Default
-	private OffHandUsage offHandUsage = OffHandUsage.NONE;
 
 	@Builder.Default
 	private Integer parry = 0;

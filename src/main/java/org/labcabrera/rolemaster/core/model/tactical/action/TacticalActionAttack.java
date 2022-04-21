@@ -27,6 +27,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 
 	protected Map<AttackTargetType, OpenRoll> rolls;
 
+	@Builder.Default
 	protected Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> offensiveBonusMap = new LinkedHashMap<>();
 
 	@Builder.Default
