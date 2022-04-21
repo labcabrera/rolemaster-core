@@ -42,18 +42,16 @@ public class AttackWeaponTableProcessor {
 		return Mono.just(context)
 			.map(this::processMainHandAttack)
 			.map(this::processOffHandAttack)
-			.map(ctx -> {
-				updateState(ctx.getAction());
-				return ctx;
-			})
-			.flatMap(ctx -> Mono.just(ctx));
+			.map(this::updateState);
 	}
 
 	private <T extends AttackContext<?>> T processMainHandAttack(T context) {
+		log.debug("Processing weapon main attack table for attack {}", context.getAction().getId());
 		return processAttack(context, AttackTargetType.MAIN_HAND);
 	}
 
 	private <T extends AttackContext<?>> T processOffHandAttack(T context) {
+		log.debug("Processing weapon off-hand table attack for attack {}", context.getAction().getId());
 		if (context.getAction().getTargets().size() != 2) {
 			return context;
 		}
@@ -75,15 +73,18 @@ public class AttackWeaponTableProcessor {
 		Map<?, Integer> offensiveBonusmap = context.getAction().getOffensiveBonusMap().get(type);
 		int bonus = offensiveBonusmap.values().stream().reduce(0, (a, b) -> a + b);
 		int primaryRoll = context.getAction().getRolls().get(type).getResult();
-		processAttackResult(action, weaponTableId, bonus, targetArmor, primaryRoll);
+		processAttackResult(action, target.getId(), weaponTableId, bonus, targetArmor, primaryRoll);
 		return context;
 	}
 
-	private void processAttackResult(TacticalActionAttack action, String weaponTableId, int offensiveBonus, int armor, int roll) {
+	private void processAttackResult(TacticalActionAttack action, String target, String weaponTableId, int offensiveBonus, int armor,
+		int roll) {
+
 		int attackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, offensiveBonus + roll));
 		String stringResult = weaponTable.get(weaponTableId, armor, attackResult);
 
 		AttackResult result = AttackResult.builder()
+			.target(target)
 			.weaponTableId(weaponTableId)
 			.attackResult(attackResult)
 			.targetArmor(armor)
@@ -118,7 +119,8 @@ public class AttackWeaponTableProcessor {
 
 	}
 
-	private void updateState(TacticalActionAttack action) {
+	private <T extends AttackContext<?>> T updateState(T context) {
+		TacticalActionAttack action = context.getAction();
 		boolean requiresCriticalResolution = action.getCriticalResults().stream()
 			.filter(e -> e.getCriticalTableResult() == null)
 			.count() > 0;
@@ -128,6 +130,7 @@ public class AttackWeaponTableProcessor {
 		else {
 			action.setState(TacticalActionState.PENDING_RESOLUTION);
 		}
+		return context;
 	}
 
 }
