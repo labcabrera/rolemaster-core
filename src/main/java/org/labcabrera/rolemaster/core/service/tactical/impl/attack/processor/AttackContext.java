@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
@@ -15,8 +14,6 @@ import lombok.Setter;
 
 @Getter
 public abstract class AttackContext<A extends TacticalActionAttack> {
-
-	private TacticalSession session;
 
 	@Setter
 	private A action;
