@@ -8,12 +8,14 @@ import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMelee
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMissileAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovingManeuverDeclaration;
+import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionStaticManeuverDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovement;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovingManeuver;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionStaticManeuver;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -43,6 +45,11 @@ public class TacticalActionConverter implements Converter<TacticalActionDeclarat
 		}
 		else if (source instanceof TacticalActionMovingManeuverDeclaration tmp) {
 			result = TacticalActionMovingManeuver.builder()
+				.skillId(tmp.getSkillId())
+				.build();
+		}
+		else if (source instanceof TacticalActionStaticManeuverDeclaration tmp) {
+			result = TacticalActionStaticManeuver.builder()
 				.skillId(tmp.getSkillId())
 				.build();
 		}
