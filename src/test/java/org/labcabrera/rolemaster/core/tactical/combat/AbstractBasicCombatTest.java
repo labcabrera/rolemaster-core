@@ -1,16 +1,10 @@
 package org.labcabrera.rolemaster.core.tactical.combat;
 
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
-import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.tactical.AbstractTacticalTest;
 
 public abstract class AbstractBasicCombatTest extends AbstractTacticalTest {
-
-	protected StrategicSession sts;
-
-	protected TacticalSession ts;
 
 	protected TacticalCharacter taMelee01;
 

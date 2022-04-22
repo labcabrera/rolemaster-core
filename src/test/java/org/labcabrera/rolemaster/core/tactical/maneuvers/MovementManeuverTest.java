@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.tactical.maneuvers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
@@ -18,17 +19,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class MovementManeuverTest extends AbstractTacticalTest {
 
+	@BeforeEach
+	void cleanUp() {
+		clearData();
+		prepare();
+	}
+
 	@Test
 	void testMovement() {
-		TacticalRound round01 = tacticalService.startRound(ts.getId()).share().block();
+		TacticalRound round = tacticalService.startRound(ts.getId()).share().block();
 
-		TacticalCharacter tc01 = tacticalService.addNpc(ts.getId(), "orc-fighter-scimitar-ii", NpcCustomization.builder()
+		TacticalCharacter tc = tacticalService.addNpc(ts.getId(), "orc-fighter-scimitar-ii", NpcCustomization.builder()
 			.name("orc-01").build())
 			.share().block();
 
 		TacticalAction a01 = tacticalActionService.delare(TacticalActionMovementDeclaration.builder()
-			.roundId(round01.getId())
-			.source(tc01.getId())
+			.roundId(round.getId())
+			.source(tc.getId())
 			.pace(MovementPace.RUN)
 			.actionPercent(20)
 			.priority(TacticalActionPhase.SNAP)
