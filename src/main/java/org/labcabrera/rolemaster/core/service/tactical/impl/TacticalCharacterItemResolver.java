@@ -34,4 +34,10 @@ public class TacticalCharacterItemResolver {
 			.findFirst().orElseThrow(() -> new BadRequestException("Not valid weapon equiped in " + position));
 	}
 
+	public CharacterItem getItem(TacticalCharacter tc, ItemPosition position) {
+		return tc.getItems().stream()
+			.filter(e -> e.getPosition() == position)
+			.findFirst().orElse(null);
+	}
+
 }

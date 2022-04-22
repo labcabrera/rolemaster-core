@@ -66,7 +66,7 @@ public class EndTurnCharacterProcessor {
 
 	private TacticalCharacter processBonus(TacticalCharacter tc) {
 		for (AttackBonus bonus : tc.getCombatStatus().getBonus()) {
-			if (bonus.getRounds() != null && bonus.getRounds() > 1) {
+			if (bonus.getRounds() != null && bonus.getRounds() > 0) {
 				bonus.setRounds(bonus.getRounds() - 1);
 			}
 		}
@@ -76,7 +76,7 @@ public class EndTurnCharacterProcessor {
 
 	private TacticalCharacter processPenalty(TacticalCharacter tc) {
 		for (Penalty p : tc.getCombatStatus().getPenalties()) {
-			if (p.getRounds() != null && p.getRounds() > 1) {
+			if (p.getRounds() != null && p.getRounds() > 0) {
 				p.setRounds(p.getRounds() - 1);
 			}
 		}

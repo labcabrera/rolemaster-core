@@ -89,7 +89,7 @@ public class AttackResultProcessor {
 					CombatStatus cs = tc.getCombatStatus();
 					ctr.getBuffs().entrySet().stream().forEach(e -> cs.addBuff(e.getKey(), e.getValue()));
 					if (ctr.getBonus() != null) {
-						cs.getBonus().add(ctr.getBonus());
+						cs.addBonus(ctr.getBonus().getBonus(), ctr.getBonus().getRounds());
 					}
 				});
 				return tc;

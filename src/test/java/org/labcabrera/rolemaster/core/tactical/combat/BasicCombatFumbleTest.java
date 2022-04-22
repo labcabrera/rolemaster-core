@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,7 +54,7 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 			.build()).share().block();
 
 		String tsId = ts.getId();
-		String npcId = "orc-fighter-ii";
+		String npcId = "orc-fighter-scimitar-ii";
 
 		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
 		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();
@@ -76,17 +75,12 @@ class BasicCombatFumbleTest extends AbstractCombatTest {
 		assertEquals(TacticalActionState.PENDING, a01.getState());
 
 		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
-
 		round01 = tacticalService.setInitiative(r01Id, cc01.getId(), 11).share().block();
-
 		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
-
-		List<TacticalAction> actionQueue = tacticalService.getActionQueue(r01Id).share().collectList().share().block();
-		assertEquals(1, actionQueue.size());
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, cc02.getId()))
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(105)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(1)))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();

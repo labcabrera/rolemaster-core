@@ -10,7 +10,10 @@ public enum AttackTargetType implements CodeNameEnum {
 
 	MAIN_HAND("main-hand", "Main Hand"),
 
-	OFF_HAND("off-hand", "Off-Hand");
+	OFF_HAND("off-hand", "Off-Hand"),
+
+	/** Shield / off-hand block. */
+	BLOCK("block", "Block");
 
 	private String code;
 

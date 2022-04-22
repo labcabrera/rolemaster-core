@@ -1,8 +1,8 @@
 [
 	{
-		"id": "orc-fighter-ii",
-		"name": "Orc - Fighter II",
-		"shortDescription": "Orc Fighter II",
+		"id": "orc-fighter-scimitar-ii",
+		"name": "Orc - Fighter Scimitar - II",
+		"shortDescription": "Orc Fighter - II",
 		"level": 2,
 		"levelBaseModifier": "B",
 		"unique": false,
@@ -16,10 +16,58 @@
 				"type": "weapon",
 				"name": "Scimitar",
 				"position": "main-hand"
+			},
+			{
+				"itemId": "normal-shield",
+				"type": "armor-piece",
+				"name": "Normal Shield",
+				"position": "off-hand"
+			},
+			{
+				"itemId": "dagger",
+				"type": "weapon",
+				"name": "Dagger",
+				"position": "carried"
 			}
 		],
 		"skills": {
 			"scimitar": 40
+		},
+		"baseMove": 50,
+		"mmBonus": 0,
+		"maxPace": "fastSprint",
+		"movementSpeed": "SL",
+		"attackQuickness": "MD",
+		"universeId": "middle-earth",
+		"npcNameGeneratorGroup": "orc"
+	},
+	{
+		"id": "orc-fighter-lance-ii",
+		"name": "Orc - Fighter Lance - II",
+		"shortDescription": "Orc Fighter - II",
+		"level": 2,
+		"levelBaseModifier": "B",
+		"unique": false,
+		"hp": 50,
+		"hpBaseModifier": "D",
+		"armorType": 8,
+		"defensiveBonus": 30,
+		"items": [
+			{
+				"itemId": "lance",
+				"type": "weapon",
+				"name": "Lance",
+				"position": "main-hand"
+			},
+			{
+				"itemId": "dagger",
+				"type": "weapon",
+				"name": "Dagger",
+				"position": "carried"
+			}
+		],
+		"skills": {
+			"lance": 40
 		},
 		"baseMove": 50,
 		"mmBonus": 0,

@@ -54,25 +54,48 @@ public class CombatStatus {
 		return penalties.stream().map(Penalty::getPenalty).reduce(0, (a, b) -> a + b);
 	}
 
+	public Integer getTotalBonus() {
+		return bonus.stream().map(AttackBonus::getBonus).reduce(0, (a, b) -> a + b);
+	}
+
+	/**
+	 * Since at the end of the turn all the buffs are decremented, one is added to the
+	 * result so that it is valid for the following turn.
+	 */
 	public CombatStatus addDebuff(Debuff key, Integer value) {
 		if (debuffs.containsKey(key)) {
-			int rounds = debuffs.get(key) + value;
+			int rounds = debuffs.get(key) + value + 1;
 			debuffs.put(key, rounds);
 		}
 		else {
-			debuffs.put(key, value);
+			debuffs.put(key, value + 1);
 		}
 		return this;
 	}
 
+	/**
+	 * Since at the end of the turn all the debuffs are decremented, one is added to the
+	 * result so that it is valid for the following turn.
+	 */
 	public CombatStatus addBuff(Buff key, Integer value) {
 		if (buffs.containsKey(key)) {
-			int rounds = buffs.get(key) + value;
+			int rounds = buffs.get(key) + value + 1;
 			buffs.put(key, rounds);
 		}
 		else {
-			buffs.put(key, value);
+			buffs.put(key, value + 1);
 		}
+		return this;
+	}
+
+	public CombatStatus addBonus(Integer bonus, Integer rounds) {
+		if (rounds == null || rounds < 1) {
+			throw new IllegalArgumentException("Rounds must be not null");
+		}
+		this.bonus.add(AttackBonus.builder()
+			.bonus(bonus)
+			.rounds(rounds + 1)
+			.build());
 		return this;
 	}
 
