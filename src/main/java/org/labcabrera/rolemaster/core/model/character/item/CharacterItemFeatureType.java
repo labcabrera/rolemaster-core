@@ -1,19 +1,45 @@
 package org.labcabrera.rolemaster.core.model.character.item;
 
-public enum CharacterItemFeatureType {
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 
-	BONUS,
+import com.fasterxml.jackson.annotation.JsonValue;
 
-	MATERIAL,
+import lombok.Getter;
 
-	SLAYER,
+public enum CharacterItemFeatureType implements CodeNameEnum {
 
-	RANGE,
+	BONUS("bonus", "Bonus", false),
 
-	FLUMBE,
+	MATERIAL("material", "Material", true),
 
-	SHIELD_BONUS,
+	SLAYER("slayer", "Slayer", true),
 
-	UNBREAKABLE;
+	FLUMBE("flumbe", "Flumbe", false),
+
+	SHIELD_BONUS("shield-bonus", "Shield bonus", false),
+
+	UNBREAKABLE("unbreakable", "Unbreakable", false),
+
+	ADDITIONAL_CRITICAL("additional-critical", "Additional critical", true);
+
+	private String code;
+
+	@Getter
+	private String name;
+
+	@Getter
+	private boolean allowMultipleValues;
+
+	private CharacterItemFeatureType(String code, String name, boolean allowMultipleValues) {
+		this.code = code;
+		this.name = name;
+		this.allowMultipleValues = allowMultipleValues;
+	}
+
+	@JsonValue
+	@Override
+	public String getCode() {
+		return code;
+	}
 
 }

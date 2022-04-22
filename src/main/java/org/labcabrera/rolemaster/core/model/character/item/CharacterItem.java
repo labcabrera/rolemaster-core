@@ -32,6 +32,8 @@ public class CharacterItem {
 
 	private ArmorItemType armorType;
 
+	private String skillId;
+
 	private String name;
 
 	private ItemPosition position;
