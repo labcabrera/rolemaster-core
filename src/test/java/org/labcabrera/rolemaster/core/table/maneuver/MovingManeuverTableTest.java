@@ -37,7 +37,7 @@ class MovingManeuverTableTest {
 
 	private MovingManeuverTable readTable() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
-			.getResourceAsStream("data/populator/maneuvers/moving-maneuver.json")) {
+			.getResourceAsStream("data/table/maneuver/moving-maneuver.json")) {
 			return objectMapper.readerFor(MovingManeuverTable.class).readValue(in);
 		}
 	}

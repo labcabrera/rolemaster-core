@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
+import java.util.Map;
+
 import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.validation.ValidTacticalActionMeleAttack;
@@ -25,18 +27,23 @@ import lombok.experimental.SuperBuilder;
 public class TacticalActionMeleeAttack extends TacticalActionAttack {
 
 	@NotNull
+	@Builder.Default
+	private MeleeAttackMode meleeAttackMode = MeleeAttackMode.MAIN_WEAPON;
+
+	@NotNull
 	private MeleeAttackType meleeAttackType;
 
-	private MeleeAttackFacing facing;
-
-	@Builder.Default
-	private OffHandUsage offHandUsage = OffHandUsage.NONE;
+	@NotNull
+	private Map<AttackTargetType, MeleeAttackFacing> facingMap;
 
 	@Builder.Default
 	private Integer parry = 0;
 
 	@Schema(description = "Indicates whether the action has been used to stop the attack of a given attacker.")
 	@Builder.Default
-	private Boolean parried = false;
+	private boolean parried = false;
+
+	@Builder.Default
+	private boolean blocked = false;
 
 }

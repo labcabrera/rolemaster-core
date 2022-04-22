@@ -27,7 +27,12 @@ public class Item {
 
 	private String name;
 
+	private String description;
+
 	private ItemType type;
+
+	@Builder.Default
+	private Boolean multipleItem = false;
 
 	@Builder.Default
 	private Integer count = 1;

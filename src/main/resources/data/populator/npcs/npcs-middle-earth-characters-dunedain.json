@@ -1,0 +1,39 @@
+[
+	{
+		"id": "boromir",
+		"name": "Boromir",
+		"shortDescription": "Boromir",
+		"level": 20,
+		"_hp": 600,
+		"_armorType": 20,
+		"_defensiveBonus": 200,
+		"attacks": [
+		],
+		"items": [
+			{
+				"itemId": "broadsword",
+				"type": "weapon",
+				"bonus": 30,
+				"name": "Migthy Blade",
+				"description": "A long sword, in design very similar to Andúril but of less lineage."
+			},
+			{
+				"itemId": "normal-sield",
+				"type": "armor-piece",
+				"armorType": "shield",
+				"bonus": 35
+			}
+		],
+		"skills": {
+			"climbing": 120,
+			"swimming": 76,
+			"detect-traps": 56,
+			"pick-lock": 66,
+			"acrobatics": 45,
+			"ambush": 35,
+			"TODO": -1
+		},
+		"unique": true,
+		"universeId": "middle-earth"
+	}
+]

@@ -1,0 +1,32 @@
+[
+	{
+		"id": "gollum",
+		"name": "Gollum",
+		"shortDescription": "Gollum",
+		"level": 15,
+		"hp": 130,
+		"armorType": 1,
+		"defensiveBonus": 60,
+		"_attacks": [
+			{
+				"_weaponId": "mgr-???",
+				"bonus": 125,
+				"type": "melee",
+				"primary": true
+			},
+			{
+				"_weaponId": "mbi-???",
+				"bonus": 85,
+				"type": "melee",
+				"primary": false
+			}
+		],
+		"items": [
+		],
+		"skills": {
+		},
+		"baseMovement": 50,
+		"unique": true,
+		"universeId": "middle-earth"
+	}
+]

@@ -1,7 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverRequest;
-import org.labcabrera.rolemaster.core.model.maneuver.m.MovingManeuverResult;
+import org.labcabrera.rolemaster.core.table.maneuver.MovingManeuverResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,6 +10,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/moving-maneuvers")
 public interface MovingManeuverController {
 
-	Mono<MovingManeuverResult> execute(MovingManeuverRequest request);
+	//TODO REFACTORING MODEL
+	Mono<MovingManeuverResult> execute(Object request);
 
 }

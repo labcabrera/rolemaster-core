@@ -1,22 +1,30 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.NotImplementedException;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterWeapon;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
+import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Mono;
+
 @Component
+@Slf4j
 public class AttackWeaponTableProcessor {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
@@ -27,37 +35,66 @@ public class AttackWeaponTableProcessor {
 	@Autowired
 	private WeaponTable weaponTable;
 
-	public <T extends AttackContext<?>> T apply(T context) {
+	@Autowired
+	private TacticalCharacterItemResolver itemResolver;
+
+	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		if (context.getAction().isFlumbe()) {
+			return Mono.just(context);
+		}
+		log.debug("Processing weapon table for attack {}", context.getAction().getId());
+		return Mono.just(context)
+			.map(this::processMainHandAttack)
+			.map(this::processOffHandAttack)
+			.map(this::updateState);
+	}
+
+	private <T extends AttackContext<?>> T processMainHandAttack(T context) {
+		log.debug("Processing weapon main attack table for attack {}", context.getAction().getId());
+		return processAttack(context, AttackTargetType.MAIN_HAND);
+	}
+
+	private <T extends AttackContext<?>> T processOffHandAttack(T context) {
+		log.debug("Processing weapon off-hand table attack for attack {}", context.getAction().getId());
+		if (context.getAction().getTargets().size() != 2) {
 			return context;
 		}
+		return processAttack(context, AttackTargetType.OFF_HAND);
+	}
+
+	private <T extends AttackContext<?>> T processAttack(T context, AttackTargetType type) {
+		ItemPosition itemPosition = type == AttackTargetType.MAIN_HAND ? ItemPosition.MAIN_HAND : ItemPosition.OFF_HAND;
+		CharacterItem mainHandItem = itemResolver.getWeapon(context.getSource(), itemPosition);
+		if (mainHandItem == null) {
+			throw new NotImplementedException("Special attacks");
+		}
+		String weaponTableId = mainHandItem.getItemId();
 		TacticalActionAttack action = context.getAction();
-
-		CharacterWeapon primaryWeapon = context.getSource().getInventory().getMainHandWeapon();
-		String weaponTableId = primaryWeapon.getWeaponTableId();
-
-		int targetArmor = getTargetArmor(context.getTarget());
-		int offensiveBonus = context.getAction().getOffensiveBonus();
-		int primaryRoll = context.getAction().getRoll().getFirstRoll();
-
-		// Primary attack
-		AttackResult primaryAttack = getAttackResult(weaponTableId, offensiveBonus, targetArmor, primaryRoll);
-		action.setAttackResult(primaryAttack);
-
-		updateState(action);
+		TacticalCharacter target = context.getTargets().get(type);
+		int targetArmor = target.getArmor();
+		Map<?, Integer> offensiveBonusmap = context.getAction().getOffensiveBonusMap().get(type);
+		int bonus = offensiveBonusmap.values().stream().reduce(0, (a, b) -> a + b);
+		int primaryRoll = context.getAction().getRolls().get(type).getResult();
+		processAttackResult(action, target.getId(), weaponTableId, bonus, targetArmor, primaryRoll);
 		return context;
 	}
 
-	private AttackResult getAttackResult(String weaponTableId, int offensiveBonus, int armor, int roll) {
-		int attackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, offensiveBonus + roll));
-		String stringResult = weaponTable.get(weaponTableId, armor, attackResult);
+	private void processAttackResult(TacticalActionAttack action, String target, String weaponTableId, int offensiveBonus, int armor,
+		int roll) {
+
+		int attackResult = offensiveBonus + roll;
+		int tableAttackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, attackResult));
+		String stringResult = weaponTable.get(weaponTableId, armor, tableAttackResult);
 
 		AttackResult result = AttackResult.builder()
+			.target(target)
 			.weaponTableId(weaponTableId)
-			.attackResult(attackResult)
+			.result(attackResult)
+			.totalBonus(offensiveBonus)
 			.targetArmor(armor)
 			.hp(0)
 			.build();
+		action.getAttackResults().add(result);
 
 		Pattern patternHp = Pattern.compile(PATTERN_HP);
 		Matcher matcherHp = patternHp.matcher(stringResult);
@@ -73,33 +110,31 @@ public class AttackWeaponTableProcessor {
 				CriticalSeverity severity = CriticalSeverity.valueOf(matcherCrit.group(2));
 				CriticalType type = CriticalType.valueOf(matcherCrit.group(3));
 				result.setHp(hp);
-				result.setCriticalResult(TacticalCriticalResult.builder()
+				TacticalCriticalResult tcr = TacticalCriticalResult.builder()
 					.severity(severity)
 					.type(type)
-					.build());
+					.build();
+				action.getCriticalResults().add(tcr);
 			}
 			else {
 				throw new NotImplementedException("Invalid result format " + attackResult);
 			}
 		}
-		return result;
+
 	}
 
-	private void updateState(TacticalActionAttack action) {
-		boolean resolved = true;
-		if (action.getAttackResult().requiresCriticalResolution()) {
-			resolved = false;
-		}
-		if (resolved) {
-			action.setState(TacticalActionState.PENDING_RESOLUTION);
-		}
-		else {
+	private <T extends AttackContext<?>> T updateState(T context) {
+		TacticalActionAttack action = context.getAction();
+		boolean requiresCriticalResolution = action.getCriticalResults().stream()
+			.filter(e -> e.getCriticalTableResult() == null)
+			.count() > 0;
+		if (requiresCriticalResolution) {
 			action.setState(TacticalActionState.PENDING_CRITICAL_RESOLUTION);
 		}
-	}
-
-	private Integer getTargetArmor(TacticalCharacter ta) {
-		return ta.getInventory().getEquipedArmor();
+		else {
+			action.setState(TacticalActionState.PENDING_RESOLUTION);
+		}
+		return context;
 	}
 
 }

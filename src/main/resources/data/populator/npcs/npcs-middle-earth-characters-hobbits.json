@@ -1,0 +1,40 @@
+[
+	{
+		"id": "frodo",
+		"name": "Frodo Baggins",
+		"shortDescription": "Frodo",
+		"level": 12,
+		"hp": 79,
+		"armorType": 17,
+		"defensiveBonus": 45,
+		"attacks": [
+			{
+				"weaponId": "short-sword",
+				"bonus": 105,
+				"type": "melee",
+				"primary": true
+			}
+		],
+		"items": [
+			{
+				"itemId": "short-sword",
+				"type": "weapon",
+				"name": "Sting",
+				"bonus": 15,
+				"position": "main-hand",
+				"_features": [
+					"ork-slayer"
+				],
+				"description": ""
+			}
+		],
+		"skills": {
+			"climbing": 35,
+			"riding:horses": 30,
+			"pick-pockets": 25,
+			"perception": 66
+		},
+		"unique": true,
+		"universeId": "middle-earth"
+	}
+]

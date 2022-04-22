@@ -25,7 +25,7 @@ public class StaticManeuverService {
 	@PostConstruct
 	private void readTable() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
-			.getResourceAsStream("data/populator/maneuvers/static-maneuver.json")) {
+			.getResourceAsStream("data/table/maneuver/static-maneuver.json")) {
 			this.staticManeuverTable = objectMapper.readerFor(StaticManeuverTable.class).readValue(in);
 		}
 	}

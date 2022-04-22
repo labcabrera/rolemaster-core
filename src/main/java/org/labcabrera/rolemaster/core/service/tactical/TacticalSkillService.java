@@ -2,9 +2,11 @@ package org.labcabrera.rolemaster.core.service.tactical;
 
 import java.util.Optional;
 
+import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.repository.NpcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,9 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class TacticalSkillService {
+
+	@Autowired
+	private NpcRepository npcRepository;
 
 	@Autowired
 	private CharacterInfoRepository characterInfoRepository;
@@ -25,12 +30,16 @@ public class TacticalSkillService {
 		}
 	}
 
+	public String getTwoWeaponSkill(String mainHandSkillId, String offHandSkillId) {
+		return "two-weapon-combat:" + mainHandSkillId + ":" + offHandSkillId;
+	}
+
 	private Mono<Integer> getNpcSkill(TacticalCharacter character, String skillId) {
-		int result = 0;
-		if (character.getNpcSkills() != null && character.getNpcSkills().containsKey(skillId)) {
-			result = character.getNpcSkills().get(skillId);
-		}
-		return Mono.just(result);
+		return npcRepository.findById(character.getCharacterId())
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("NPC not found")))
+			.map(npc -> {
+				return npc.getSkills().getOrDefault(skillId, 0);
+			});
 	}
 
 	private Mono<Integer> getCharacterSkill(TacticalCharacter character, String skill) {

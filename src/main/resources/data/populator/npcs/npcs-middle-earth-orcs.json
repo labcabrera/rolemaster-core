@@ -1,0 +1,149 @@
+[
+	{
+		"id": "orc-fighter-scimitar-ii",
+		"name": "Orc - Fighter Scimitar - II",
+		"shortDescription": "Orc Fighter - II",
+		"level": 2,
+		"levelBaseModifier": "B",
+		"unique": false,
+		"hp": 50,
+		"hpBaseModifier": "D",
+		"armorType": 8,
+		"defensiveBonus": 30,
+		"items": [
+			{
+				"itemId": "scimitar",
+				"type": "weapon",
+				"name": "Scimitar",
+				"position": "main-hand"
+			},
+			{
+				"itemId": "normal-shield",
+				"type": "armor-piece",
+				"armorType": "shield",
+				"name": "Normal Shield",
+				"position": "off-hand"
+			},
+			{
+				"itemId": "dagger",
+				"type": "weapon",
+				"name": "Dagger",
+				"position": "carried"
+			}
+		],
+		"skills": {
+			"scimitar": 40,
+			"jumping": 25
+		},
+		"baseMove": 50,
+		"mmBonus": 0,
+		"maxPace": "fastSprint",
+		"movementSpeed": "SL",
+		"attackQuickness": "MD",
+		"universeId": "middle-earth",
+		"npcNameGeneratorGroup": "orc"
+	},
+	{
+		"id": "orc-fighter-lance-ii",
+		"name": "Orc - Fighter Lance - II",
+		"shortDescription": "Orc Fighter - II",
+		"level": 2,
+		"levelBaseModifier": "B",
+		"unique": false,
+		"hp": 50,
+		"hpBaseModifier": "D",
+		"armorType": 8,
+		"defensiveBonus": 30,
+		"items": [
+			{
+				"itemId": "lance",
+				"type": "weapon",
+				"name": "Lance",
+				"position": "main-hand"
+			},
+			{
+				"itemId": "dagger",
+				"type": "weapon",
+				"name": "Dagger",
+				"position": "carried"
+			}
+		],
+		"skills": {
+			"lance": 40
+		},
+		"baseMove": 50,
+		"mmBonus": 0,
+		"maxPace": "fastSprint",
+		"movementSpeed": "SL",
+		"attackQuickness": "MD",
+		"universeId": "middle-earth",
+		"npcNameGeneratorGroup": "orc"
+	},
+	{
+		"id": "orc-ranged-ii",
+		"name": "Orc - Ranged II",
+		"shortDescription": "Orc Ranged II",
+		"level": 2,
+		"levelBaseModifier": "B",
+		"unique": false,
+		"hp": 50,
+		"hpBaseModifier": "D",
+		"armorType": 8,
+		"defensiveBonus": 30,
+		"items": [
+			{
+				"itemId": "short-bow",
+				"type": "weapon",
+				"name": "Short Bow",
+				"position": "main-hand"
+			},
+			{
+				"itemId": "scimitar",
+				"type": "weapon",
+				"name": "Scimitar",
+				"position": "carried"
+			}
+		],
+		"skills": {
+			"short-bow": 40,
+			"scimitar": 25
+		},
+		"baseMove": 50,
+		"mmBonus": 0,
+		"maxPace": "fastSprint",
+		"movementSpeed": "SL",
+		"attackQuickness": "MD",
+		"universeId": "middle-earth",
+		"npcNameGeneratorGroup": "orc"
+	},
+	{
+		"id": "orc-fighter-iv",
+		"shortDescription": "Orc Fighter IV",
+		"name": "Orc - Fighter IV",
+		"level": 4,
+		"levelBaseModifier": "D",
+		"unique": false,
+		"hp": 70,
+		"hpBaseModifier": "D",
+		"armorType": 17,
+		"items": [
+			{
+				"itemId": "scimitar",
+				"type": "weapon",
+				"name": "Scimitar",
+				"position": "main-hand"
+			}
+		],
+		"skills": {
+			"scimitar": 80
+		},
+		"defensiveBonus": 40,
+		"baseMove": 60,
+		"mmBonus": 10,
+		"maxPace": "sprint",
+		"movementSpeed": "MD",
+		"attackQuickness": "MD",
+		"universeId": "middle-earth",
+		"npcNameGeneratorGroup": "orc"
+	}
+]

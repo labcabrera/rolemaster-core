@@ -17,7 +17,8 @@ public class RacePopulator extends AbstractJsonPopulator<Race> {
 			"data/populator/races/races.json",
 			"data/populator/races/races-men.json",
 			"data/populator/races/races-orcs.json",
-			"data/populator/races/races-elves.json");
+			"data/populator/races/races-elves.json",
+			"data/populator/races/races-middle-earth.json");
 	}
 
 	@Override

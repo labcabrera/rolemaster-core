@@ -1,8 +1,11 @@
 package org.labcabrera.rolemaster.core.model.npc;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,22 +29,30 @@ public class Npc {
 
 	private String shortDescription;
 
+	private boolean unique;
+
 	private Integer level;
 
 	private String levelBaseModifier;
 
 	private Integer hp;
 
-	private String hpBaseModifier;
+	private Integer powerPoints;
 
-	@Builder.Default
-	private List<NpcAttack> attacks = new ArrayList<>();
+	private String hpBaseModifier;
 
 	private Integer armorType;
 
 	private Integer defensiveBonus;
 
-	private boolean unique;
+	@Builder.Default
+	private List<NpcAttack> attacks = new ArrayList<>();
+
+	@Builder.Default
+	private List<CharacterItem> items = new ArrayList<>();
+
+	@Builder.Default
+	private Map<String, Integer> skills = new LinkedHashMap<>();
 
 	private Integer baseMove;
 

@@ -1,9 +1,11 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.character.ContextCharacterModifiers;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -52,13 +54,14 @@ public class TacticalCharacter {
 	private ContextCharacterModifiers modifiers = new ContextCharacterModifiers();
 
 	@Builder.Default
-	private TacticalCharacterInventory inventory = new TacticalCharacterInventory();
-
-	private Map<String, Integer> npcSkills;
+	private List<CharacterItem> items = new ArrayList<>();
 
 	private Integer armor;
 
 	private Integer defensiveBonus;
+
+	@Builder.Default
+	private TacticalCharacterState state = TacticalCharacterState.NORMAL;
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();

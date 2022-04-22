@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,7 @@ import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
-import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
@@ -63,25 +64,25 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertEquals(1, actionQueue.size());
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
-			.target(taMelee02.getId())
-			.facing(MeleeAttackFacing.NORMAL)
-			.roll(OpenRoll.of(105))
+			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(105)))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
-		assertEquals(10, meleeResolved01.getAttackResult().getHp());
-		assertEquals(-10, meleeResolved01.getOffensiveBonus());
-		assertNotNull(meleeResolved01.getAttackResult().getCriticalResult());
-		assertEquals(CriticalSeverity.A, meleeResolved01.getAttackResult().getCriticalResult().getSeverity());
-		assertEquals(CriticalType.S, meleeResolved01.getAttackResult().getCriticalResult().getType());
+		assertEquals(10, meleeResolved01.getAttackResults().get(0).getHp());
+		assertEquals(-10,
+			meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).values().stream().reduce(0, (a, b) -> a + b));
+		assertEquals(1, meleeResolved01.getCriticalResults().size());
+		assertEquals(CriticalSeverity.A, meleeResolved01.getCriticalResults().get(0).getSeverity());
+		assertEquals(CriticalType.S, meleeResolved01.getCriticalResults().get(0).getType());
 
 		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, meleeResolved01.getState());
 
 		AttackCriticalExecution criticalExecution = AttackCriticalExecution.builder()
-			.roll(55)
+			.rolls(Collections.singletonMap("roll-1", 55))
 			.build();
 
 		TacticalAction taResolved02 = tacticalActionService.executeCritical(taResolved01.getId(), criticalExecution).share().block();
@@ -89,13 +90,13 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		TacticalActionMeleeAttack meleeResolved02 = (TacticalActionMeleeAttack) taResolved02;
 
 		assertEquals(TacticalActionState.RESOLVED, meleeResolved02.getState());
-		assertEquals(2, meleeResolved02.getAttackResult().getCriticalResult().getCriticalTableResult().getHp());
-		assertEquals(55, meleeResolved02.getAttackResult().getCriticalResult().getRoll());
+		assertEquals(2, meleeResolved02.getCriticalResults().get(0).getCriticalTableResult().getHp());
+		assertEquals(55, meleeResolved02.getCriticalResults().get(0).getRoll());
 
 		taMelee02 = this.tacticalCharacterRepository.findById(taMelee02.getId()).share().block();
 		assertEquals(38, taMelee02.getHp().getCurrent());
 		assertEquals(1, taMelee02.getCombatStatus().getDebuffs().size());
-		assertEquals(1, taMelee02.getCombatStatus().getDebuffs().get(Debuff.MUST_PARRY));
+		assertEquals(2, taMelee02.getCombatStatus().getDebuffs().get(Debuff.MUST_PARRY));
 
 	}
 

@@ -16,13 +16,21 @@ public enum OffensiveBonusModifier {
 
 	EXHAUSTION("exhaustion"),
 
+	PENALTY("penalty"),
+
+	BONUS("bonus"),
+
 	ACTION_PERCENT("action-percent"),
 
 	MELEE_FACING("melee-facing"),
 
-	PARRY("parry"),
+	PARRY_ATTACK("parry-attack"),
 
-	DISTANCE("missile-distance");
+	PARRY_DEFENSE("parry-defense"),
+
+	DISTANCE("missile-distance"),
+
+	OFF_HAND("off-hand");
 
 	private String name;
 

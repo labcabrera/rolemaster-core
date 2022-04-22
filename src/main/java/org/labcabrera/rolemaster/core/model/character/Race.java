@@ -64,6 +64,13 @@ public class Race {
 
 	private List<String> specialAbilities;
 
+	private Integer soulDeparture;
+
+	private Double recoveryMultiplier;
+
+	@Builder.Default
+	private List<String> professionRestrictions = new ArrayList<>();
+
 	@Builder.Default
 	private List<String> universes = new ArrayList<>();
 

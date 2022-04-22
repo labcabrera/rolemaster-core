@@ -1,0 +1,64 @@
+[
+	{
+		"id": "feanor",
+		"name": "Fëanor",
+		"shortDescription": "Fëanor",
+		"level": 120,
+		"_levelBaseModifier": "B",
+		"unique": true,
+		"hp": 250,
+		"powerPoints": 1170,
+		"hpBaseModifier": "D",
+		"armorType": 20,
+		"attacks": [
+			{
+				"weaponId": "two-handed-sword",
+				"bonus": 510,
+				"type": "melee",
+				"primary": true
+			}
+		],
+		"skills": {
+			"acrobatics": 155,
+			"acting": 90,
+			"adrenal-defense": 50,
+			"adrenal-moves": 150,
+			"ambush": 35,
+			"climbing": 180,
+			"frenzy": 235,
+			"gambling": 150,
+			"mathematics": 260,
+			"meditation": 190,
+			"perception": 205,
+			"public-speaking": 280,
+			"riding:horse": 180,
+			"seduction": 210,
+			"signaling": 245,
+			"singing": 195,
+			"leadership": 261,
+			"stalking": 190,
+			"hiding": 190,
+			"strategy": 232,
+			"tactics": 232,
+			"swimming": 100,
+			"tracking": 236,
+			"directed-spell": 200
+		},
+		"items": [
+			{
+				"itemId": "two-handed-sword",
+				"type": "weapon",
+				"name": "Ancaruin",
+				"bonus": 88,
+				"description": "(S. Jaws of Red Flame) two handed sword, hilts of golden mithril and adamant rubi; blade of mithril, and red eog. Holy, highly intelligent, telepahic, may be thrown 1000' with no penalties. Caster may immolate at whill: cannot be stunned, or stunned unable to parry, anyone within 5' takesa a 'C' severity heat critical. Of Heat: the sword flames when wieldad, does an additional heat critical and triple concussion hits."
+			}
+		],
+		"defensiveBonus": 180,
+		"_baseMove": 50,
+		"_mmBonus": 0,
+		"_maxPace": "fastSprint",
+		"_movementSpeed": "SL",
+		"_attackQuickness": "MD",
+		"universeId": "middle-earth"
+	}
+]

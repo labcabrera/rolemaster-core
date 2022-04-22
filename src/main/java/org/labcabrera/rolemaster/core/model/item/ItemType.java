@@ -1,28 +1,32 @@
 package org.labcabrera.rolemaster.core.model.item;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum ItemType {
+import lombok.Getter;
 
-	MISCELLANEOUS("miscellaneous"),
+public enum ItemType implements CodeNameEnum {
 
-	WEAPON("weapon"),
+	WEAPON("weapon", "Weapon"),
 
-	SHIELD("shield"),
+	ARMOR_PIECE("armor-piece", "Armor Piece"),
 
-	ARMOR("armor"),
+	MISCELLANEOUS("miscellaneous", "Miscellaneous");
 
-	ARMOR_ACCESSORY("armorAccessory");
+	private String code;
 
+	@Getter
 	private String name;
 
-	private ItemType(String name) {
+	private ItemType(String code, String name) {
+		this.code = code;
 		this.name = name;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
 }

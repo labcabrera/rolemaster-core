@@ -3,6 +3,7 @@
 		"id": "arrows",
 		"name": "Arrows",
 		"type": "miscellaneous",
+		"multipleItem": true,
 		"count": 20,
 		"commonCost": {
 			"s": 5

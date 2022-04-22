@@ -5,7 +5,6 @@ import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterInventory;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -59,17 +58,13 @@ public interface CharacterController {
 	@Operation(summary = "Delete character.")
 	Mono<Void> deleteById(@PathVariable String id);
 
-	@GetMapping("/{id}/inventory")
-	@Operation(summary = "Gets the character's inventory.")
-	@ApiResponse(responseCode = "200", description = "Success")
-	@ApiResponse(responseCode = "404", description = "Character inventory not found", content = @Content(schema = @Schema(implementation = Void.class)))
-	Mono<CharacterInventory> findCharacterInventoryById(@PathVariable String id);
-
 	@PostMapping("/{id}/skills")
+	@Operation(summary = "Adds a skill to a character.")
 	Mono<CharacterInfo> addSkill(@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody AddSkill request);
 
 	@PostMapping("/{id}/skills/upgrade")
+	@Operation(summary = "Performs a rank up operation of skill categories and skills.")
 	Mono<CharacterInfo> updateRanks(@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody SkillUpgrade request);
 

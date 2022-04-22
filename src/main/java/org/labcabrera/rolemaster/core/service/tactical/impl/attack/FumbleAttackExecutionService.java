@@ -16,12 +16,16 @@ public class FumbleAttackExecutionService {
 	private FumbleTable fumbleTable;
 
 	public TacticalActionAttack apply(TacticalActionAttack action, FumbleExecution execution) {
-		//TODO 2 weapon combat
-		AttackFumbleResult fumbleResult = action.getAttackResult().getFumbleResult();
-
+		AttackFumbleResult fumbleResult = getFirstUnresolvedFumble(action);
 		FumbleType fumbleType = fumbleResult.getType();
 		FumbleTableResult fumbleTableResult = fumbleTable.get(fumbleType, execution.getRoll());
+		fumbleResult.setRoll(execution.getRoll());
 		fumbleResult.setResult(fumbleTableResult);
 		return action;
+	}
+
+	private AttackFumbleResult getFirstUnresolvedFumble(TacticalActionAttack action) {
+		return action.getFumbleResults().values().stream().filter(e -> e.getResult() == null)
+			.findFirst().orElseThrow();
 	}
 }

@@ -1,70 +1,29 @@
 package org.labcabrera.rolemaster.core.service.character.item;
 
-import java.math.BigDecimal;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import org.bson.types.ObjectId;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterInventory;
-import org.labcabrera.rolemaster.core.model.character.inventory.CharacterItem;
-import org.labcabrera.rolemaster.core.model.character.inventory.ItemStatus;
-import org.labcabrera.rolemaster.core.repository.CharacterInventoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
+import org.labcabrera.rolemaster.core.model.item.ItemType;
+import org.springframework.validation.annotation.Validated;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Service
-public class CharacterItemService {
+@Validated
+public interface CharacterItemService {
 
-	@Autowired
-	private CharacterInventoryRepository repository;
+	Mono<CharacterItem> getItem(@NotBlank String characterItemId);
 
-	public Mono<CharacterInventory> findByCharacterId(String characterId) {
-		return repository.findById(characterId);
-	}
+	Mono<Void> deleteItem(@NotBlank String characterItemId);
 
-	public Mono<CharacterInventory> addItem(String caracterId, CharacterItem item) {
-		return repository.findById(caracterId)
-			.map(e -> {
-				item.setId(new ObjectId().toString());
-				e.getItems().add(item);
-				return e;
-			})
-			.flatMap(repository::save);
-	}
+	Mono<CharacterItem> changeItemPosition(@NotBlank String characterItem, @NotNull ItemPosition newPosition);
 
-	public Mono<Void> equip(String itemId) {
-		return null;
-	}
+	Flux<CharacterItem> getCharacterItems(@NotBlank String characterId, ItemType type, ItemPosition position);
 
-	public Mono<Void> unequip(String itemId) {
-		return null;
-	}
-
-	public Mono<Void> store(String itemId) {
-		return null;
-	}
-
-	public Mono<Void> equipWeapon(String itemId) {
-		return null;
-	}
-
-	public Mono<Void> equipSecondaryWeapon(String itemId) {
-		return null;
-	}
-
-	public Mono<Void> equipArmor(String itemId) {
-		return null;
-	}
-
-	public Mono<Void> equipArmorAccesory(String itemId) {
-		return null;
-	}
-
-	public BigDecimal getWeight(CharacterInventory inventory) {
-		return inventory.getItems().stream()
-			.filter(e -> e.getStatus() != null && e.getStatus() != ItemStatus.STORED && e.getWeigth() != null)
-			.map(CharacterItem::getWeigth)
-			.reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
-	}
+	Mono<CharacterItem> addItem(@NotBlank String characterId, @Valid AddCharacterItem request);
 
 }

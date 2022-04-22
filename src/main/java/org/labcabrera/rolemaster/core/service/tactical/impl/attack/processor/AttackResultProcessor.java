@@ -1,14 +1,10 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import java.util.Map.Entry;
-
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
-import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
-import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -46,67 +42,60 @@ public class AttackResultProcessor {
 			return Mono.just(attack);
 		}
 		return Mono.just(attack)
-			.flatMap(this::updateTarget)
-			.map(e -> attack)
-			.flatMap(this::updateSource)
-			.map(e -> attack)
-			.flatMap(this::updateAttack)
+			.then(updateTarget(attack, AttackTargetType.MAIN_HAND))
+			.then(updateTarget(attack, AttackTargetType.OFF_HAND))
+			.then(updateSource(attack))
+			.then(updateAttack(attack))
 			.flatMap(logService::logAttackResult);
 	}
 
-	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack) {
-		return updateTarget(attack, attack.getAttackResult());
-	}
-
-	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackResult attackResult) {
-		return tacticalCharacterRepository.findById(attack.getTarget())
+	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackTargetType type) {
+		if (!attack.getTargets().containsKey(type)) {
+			return Mono.empty();
+		}
+		String characterId = attack.getTargets().get(type);
+		return tacticalCharacterRepository.findById(characterId)
 			.map(tc -> {
-				if (attackResult.getHp() != null) {
-					tc.getHp().subtract(attackResult.getHp());
-				}
-				if (attackResult.getCriticalResult() != null && attackResult.getCriticalResult().getCriticalTableResult() != null) {
-					CriticalTableResult ctr = attackResult.getCriticalResult().getCriticalTableResult();
+				attack.getAttackResults().stream().forEach(ar -> tc.getHp().subtract(ar.getHp()));
+				attack.getCriticalResults().stream().map(e -> e.getCriticalTableResult()).forEach(ctr -> {
 					CombatStatus cs = tc.getCombatStatus();
-
 					if (ctr.getHp() != null) {
 						tc.getHp().subtract(ctr.getHp());
 					}
 					if (ctr.getBleeding() != null) {
-						Bleeding bleeding = Bleeding.builder()
+						cs.getBleeding().add(Bleeding.builder()
 							.hp(ctr.getBleeding())
-							.description("Bleeding for critical: " + ctr.getText())
-							.build();
-						cs.getBleeding().add(bleeding);
+							.build());
 					}
-					for (Entry<Debuff, Integer> dse : ctr.getDebuffs().entrySet()) {
-						tc.getCombatStatus().addDebuff(dse.getKey(), dse.getValue());
+					if (ctr.getPenalty() != null) {
+						cs.getPenalties().add(ctr.getPenalty());
 					}
+					ctr.getDebuffs().entrySet().stream().forEach(e -> cs.addDebuff(e.getKey(), e.getValue()));
+					ctr.getInjuries().entrySet().stream().forEach(e -> cs.getInjuries().put(e.getKey(), e.getValue()));
 					tc.getCombatStatus().getInjuries().putAll(ctr.getInjuries());
-				}
+				});
 				return tc;
 			})
 			.flatMap(tacticalCharacterRepository::save);
 	}
 
 	private Mono<TacticalCharacter> updateSource(TacticalActionAttack attack) {
-		return updateSource(attack, attack.getAttackResult());
-	}
-
-	private Mono<TacticalCharacter> updateSource(TacticalActionAttack attack, AttackResult attackResult) {
-		return tacticalCharacterRepository.findById(attack.getTarget())
+		return tacticalCharacterRepository.findById(attack.getSource())
 			.map(tc -> {
 				if (attack.getExhaustionPoints() != null) {
 					tc.getExhaustionPoints().substract(attack.getExhaustionPoints());
 				}
-				if (attackResult.getCriticalResult() != null && attackResult.getCriticalResult().getCriticalTableResult() != null) {
-					CriticalTableResult ctr = attackResult.getCriticalResult().getCriticalTableResult();
+				attack.getCriticalResults().stream().map(e -> e.getCriticalTableResult()).forEach(ctr -> {
+					CombatStatus cs = tc.getCombatStatus();
+					ctr.getBuffs().entrySet().stream().forEach(e -> cs.addBuff(e.getKey(), e.getValue()));
 					if (ctr.getBonus() != null) {
-						tc.getCombatStatus().getBonus().add(ctr.getBonus());
+						cs.addBonus(ctr.getBonus().getBonus(), ctr.getBonus().getRounds());
 					}
-				}
+				});
 				return tc;
 			})
 			.flatMap(tacticalCharacterRepository::save);
+
 	}
 
 	private Mono<TacticalActionAttack> updateAttack(TacticalActionAttack attack) {

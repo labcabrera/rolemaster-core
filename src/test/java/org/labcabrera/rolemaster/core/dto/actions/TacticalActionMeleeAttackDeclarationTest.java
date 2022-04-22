@@ -2,11 +2,14 @@ package org.labcabrera.rolemaster.core.dto.actions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
+import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,7 +32,7 @@ class TacticalActionMeleeAttackDeclarationTest {
 			.source("source-01")
 			.meleeAttackType(MeleeAttackType.FULL)
 			.parry(55)
-			.target("target-01")
+			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, "target-01"))
 			.notes("foo")
 			.build();
 

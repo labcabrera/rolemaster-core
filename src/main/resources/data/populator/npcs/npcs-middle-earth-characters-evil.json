@@ -1,0 +1,181 @@
+[
+	{
+		"id": "sauron",
+		"name": "Sauron",
+		"shortDescription": "Sauron",
+		"level": 180,
+		"hp": 600,
+		"armorType": 20,
+		"defensiveBonus": 200,
+		"attacks": [
+		],
+		"items": [
+			{
+				"itemId": "mace",
+				"type": "weapon",
+				"name": "The Shadow Mace",
+				"bonus": 60,
+				"notes": [
+					"In the hands of anyone but Sauron the mace is -30.",
+					"The mace becomes instantly invisible whenever the wielder concentrates this desire"
+				],
+				"description": "Black ithilnaur mace with glows red when within 300' of an Elf."
+			},
+			{
+				"itemId": "broadsword",
+				"type": "weapon",
+				"name": "The Black Sword",
+				"bonus": 45,
+				"_features": [
+					"unbreakable",
+					"elf-slayer"
+				],
+				"description": "Black ithilnaur, elf-slaying broadsword."
+			},
+			{
+				"itemId": "full-plate",
+				"type": "armor-piece",
+				"armorType": "armor",
+				"name": "The Black Scale",
+				"bonus": 80,
+				"description": "Unencumbering black dragonshin and black ithilnaur scale amor. Treat as plate AT20 with a DB of -80"
+			}
+		],
+		"skills": {
+		},
+		"unique": true,
+		"universeId": "middle-earth"
+	},
+	{
+		"id": "sauron-one-ring",
+		"name": "Sauron - One Ring",
+		"shortDescription": "Sauron",
+		"level": 360,
+		"unique": true,
+		"universeId": "middle-earth"
+	},
+	{
+		"id": "the-witch-king",
+		"name": "The Witch King",
+		"shortDescription": "The Witch King",
+		"level": 60,
+		"unique": true,
+		"hp": 360,
+		"defensiveBonus": 120,
+		"powerPoints": 180,
+		"_hpBaseModifier": "D",
+		"armorType": 20,
+		"_attacks": [
+			{
+				"weaponId": "broadsword",
+				"bonus": 180,
+				"type": "melee",
+				"primary": true
+			},
+			{
+				"weaponId": "mace",
+				"bonus": 180,
+				"type": "melee",
+				"primary": true
+			}
+		],
+		"skills": {
+			"broadsword": 180,
+			"mace": 180,
+			"short-sword": 180,
+			"two-weapon-combat:broadsword:mace": 180,
+			"two-weapon-combat:broadsword:dagger": 180,
+			"climbing": 75,
+			"swimming": 80,
+			"riding:horse": 102,
+			"strategy": 151,
+			"trading": 55,
+			"ambush": 9
+		},
+		"items": [
+			{
+				"position": "main-hand",
+				"itemId": "broadsword",
+				"type": "weapon",
+				"name": "Vasamacil",
+				"bonus": 30,
+				"_features": [
+					"ithilnaur",
+					"extra-critical-heat",
+					"weapon-shatter-lvl-60"
+				],
+				"description": "(Q. 'Blade-eater', S. 'Vasamegil') Flaming broadsword forged in Thangorodrim out of black ithilnaur and inlaid with veins of fused rubbies."
+			},
+			{
+				"position": "off-hand",
+				"itemId": "mace",
+				"type": "weapon",
+				"name": "Nallagurth",
+				"_notes": [
+					"Resist versus a 60th level 'slow death' spell"
+				],
+				"bonus": 30,
+				"_features": [
+					"ithilnaur",
+					"man-slayer",
+					"elf-slayer"
+				],
+				"description": "('Death's Proclaimer). Mace forged in Utumno out of black eog and subtly inlaid with veins of fused diamonds."
+			},
+			{
+				"itemId": "composite-bow",
+				"type": "weapon",
+				"name": "Romoquenáro",
+				"notes": [
+					"Mace of slaying men and elves",
+					"Resist versus a 60th level 'slow death' spell",
+					"Shatters weapons that fail to resist versus a 60th level spell of destruction"
+				],
+				"bonus": 30,
+				"features": [
+				],
+				"description": "Númenórean steel composite bow. Whenever it is fired in darkness its arrow immolates upen leaving the bow. While on fire, the arrow yields a +30 Fireball attack whenever it strikes a target."
+			},
+			{
+				"position": "carried",
+				"itemId": "short-sword",
+				"type": "weapon",
+				"name": "Morgul-knife",
+				"bonus": 30,
+				"description": "Dagger with striles as a short sword. Its long, thin enchanged blade gleams with a cold glint. Its dibolves when exposed to sunligth and breaks off whenever the knife yields a critial strike. Once the blade is embedded in a victim, the victim must roll a RR versus the wielder's lvl. Failure results in the blade findings its way to the victim's hearth within a number of days equals to 50 minus the RR failure number. [TODO]"
+			},
+			{
+				"position": "equipped",
+				"itemId": "crown",
+				"type": "armor-piece",
+				"armorType": "armor",
+				"name": "Crown of Angmar",
+				"bonus": 15,
+				"description": "A simple, enchanted iron crown, unadorned by any jewels or inlays. It is the symbol od the King of the North. A +6 Essence and Channeling spell adder, its add +15 to wearer's DB."				
+			},
+			{
+				"position": "equipped",
+				"itemId": "",
+				"type": "armor-piece",
+				"armorType": "helmet",
+				"name": "Thôlogaer Ciryatano",
+				"description": "('Sea-helm of Ciryatan') A x6 Essence and Channeling PP multiplier, the magic Sea-Helm was one woen by Tad-Ciryatan of Númenor. Uts overlaping Sea-drake skin plates climax in a spiny crown-shaped crest, a variation of the karma design used by the Uinendil (S. 'Followers of Uinen') Captains of Númenor. Its add +5 to wearer RRs vs spells attacks."				
+			},
+			{
+				"position": "equipped",
+				"itemId": "full-plate",
+				"type": "armor-piece",
+				"armorType": "armor",
+				"name": "Morgul Plate",
+				"bonus": 20,
+				"description": "Black Sea-Drake skin plate armor with encumbers wearer like normal clothes (i.e. no armor/AT1)."
+			}
+		],
+		"_baseMove": 30,
+		"_mmBonus": 0,
+		"_maxPace": "fastSprint",
+		"_movementSpeed": "SL",
+		"_attackQuickness": "MD",
+		"universeId": "middle-earth"
+	}
+]
