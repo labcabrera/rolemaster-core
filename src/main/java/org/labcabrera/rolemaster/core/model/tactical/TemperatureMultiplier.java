@@ -35,6 +35,7 @@ public enum TemperatureMultiplier implements CodeNameEnum {
 	private TemperatureMultiplier(String code, String name, Integer multiplier) {
 		this.code = code;
 		this.name = name;
+		this.multiplier = multiplier;
 	}
 
 	@JsonValue

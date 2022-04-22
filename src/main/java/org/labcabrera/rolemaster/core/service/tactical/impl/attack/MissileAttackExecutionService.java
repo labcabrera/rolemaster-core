@@ -10,6 +10,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackExhaustionProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MissileAttackContext;
@@ -37,6 +38,9 @@ public class MissileAttackExecutionService {
 	@Autowired
 	private AttackResultProcessor attackResultProcessor;
 
+	@Autowired
+	private AttackExhaustionProcessor exhaustionProcessor;
+
 	public Mono<TacticalActionMissileAttack> execute(TacticalActionMissileAttack action, MissileAttackExecution execution) {
 		action.setDistance(execution.getDistance());
 		action.setCover(execution.getCover());
@@ -51,6 +55,7 @@ public class MissileAttackExecutionService {
 			.flatMap(this::loadTargets)
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(attackWeaponTableProcessor::apply)
+			.flatMap(exhaustionProcessor::apply)
 			.flatMap(act -> attackResultProcessor.apply(action))
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMissileAttack.class::cast);

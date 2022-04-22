@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
+import java.math.BigDecimal;
+
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
@@ -92,6 +94,10 @@ public class AttackResultProcessor {
 						cs.addBonus(ctr.getBonus().getBonus(), ctr.getBonus().getRounds());
 					}
 				});
+				if (attack.getExhaustionPoints() != null) {
+					BigDecimal ep = tc.getExhaustionPoints().getCurrent().subtract(attack.getExhaustionPoints());
+					tc.getExhaustionPoints().setCurrent(ep);
+				}
 				return tc;
 			})
 			.flatMap(tacticalCharacterRepository::save);
