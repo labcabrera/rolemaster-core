@@ -123,7 +123,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		final TacticalActionMeleeAttack attack = attacks.iterator().next();
 		final boolean update = checkUpdateParry;
 		return Mono.just(context)
-			.map(e -> processShield(context, attack, target, type))
+			.map(e -> processShield(context, target, type))
 			.flatMap(e -> updateBlockedActionIfRequired(context, attack, update));
 	}
 
@@ -137,8 +137,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		return context;
 	}
 
-	private Mono<MeleeAttackContext> processShield(MeleeAttackContext context, TacticalActionMeleeAttack attack, TacticalCharacter target,
-		AttackTargetType type) {
+	private Mono<MeleeAttackContext> processShield(MeleeAttackContext context, TacticalCharacter target, AttackTargetType type) {
 		CharacterItem item = itemResolver.getItem(target, ItemPosition.OFF_HAND);
 		int bonus = 0;
 		if (statusService.canBlock()) {

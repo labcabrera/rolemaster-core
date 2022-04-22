@@ -2,7 +2,6 @@ package org.labcabrera.rolemaster.core.service.character.item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,7 +47,7 @@ class CharacterItemServiceTest {
 		assertEquals("reinforced-full-length-leather-coat", coat.getItemId());
 		assertEquals("Reinforced Full-Length Leather Coat", coat.getName());
 		assertEquals(ItemType.ARMOR_PIECE, coat.getType());
-		assertTrue(new BigDecimal("11").compareTo(coat.getWeight()) == 0);
+		assertEquals(0, new BigDecimal("11").compareTo(coat.getWeight()));
 
 		AddCharacterItem addGreaves = AddCharacterItem.builder()
 			.itemId("arm-greaves")
