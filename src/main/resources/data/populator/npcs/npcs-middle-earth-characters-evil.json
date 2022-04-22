@@ -26,7 +26,7 @@
 				"type": "weapon",
 				"name": "The Black Sword",
 				"bonus": 45,
-				"features": [
+				"_features": [
 					"unbreakable",
 					"elf-slayer"
 				],
@@ -99,7 +99,7 @@
 				"type": "weapon",
 				"name": "Vasamacil",
 				"bonus": 30,
-				"features": [
+				"_features": [
 					"ithilnaur",
 					"extra-critical-heat",
 					"weapon-shatter-lvl-60"
@@ -115,7 +115,7 @@
 					"Resist versus a 60th level 'slow death' spell"
 				],
 				"bonus": 30,
-				"features": [
+				"_features": [
 					"ithilnaur",
 					"man-slayer",
 					"elf-slayer"

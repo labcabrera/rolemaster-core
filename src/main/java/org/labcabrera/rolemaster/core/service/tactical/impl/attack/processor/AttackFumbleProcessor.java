@@ -6,8 +6,8 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterItemService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
+import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

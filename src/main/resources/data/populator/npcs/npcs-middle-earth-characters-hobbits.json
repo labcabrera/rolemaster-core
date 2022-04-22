@@ -22,7 +22,7 @@
 				"name": "Sting",
 				"bonus": 15,
 				"position": "main-hand",
-				"features": [
+				"_features": [
 					"ork-slayer"
 				],
 				"description": ""

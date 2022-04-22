@@ -15,7 +15,7 @@ public class NpcPopulator extends AbstractJsonPopulator<Npc> {
 	protected List<String> getResources() {
 		return Arrays.asList(
 			"data/populator/npcs/npcs-generic.json",
-			"data/populator/npcs/npcs-middle-earth.json",
+			"data/populator/npcs/npcs-middle-earth-orcs.json",
 			"data/populator/npcs/npcs-middle-earth-characters-dunedain.json",
 			"data/populator/npcs/npcs-middle-earth-characters-elves.json",
 			"data/populator/npcs/npcs-middle-earth-characters-evil.json",

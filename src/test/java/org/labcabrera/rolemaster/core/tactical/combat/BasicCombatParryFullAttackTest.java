@@ -44,7 +44,7 @@ class BasicCombatParryFullAttackTest extends AbstractBasicCombatTest {
 			.actionPercent(80)
 			.source(taMelee01.getId())
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
-			.parry(0)
+			.parry(5)
 			.meleeAttackType(MeleeAttackType.PRESS_AND_MELEE)
 			.build()).share().block();
 
@@ -54,7 +54,7 @@ class BasicCombatParryFullAttackTest extends AbstractBasicCombatTest {
 			.actionPercent(80)
 			.source(taMelee02.getId())
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee01.getId()))
-			.parry(20)
+			.parry(25)
 			.meleeAttackType(MeleeAttackType.FULL)
 			.build()).share().block();
 
@@ -68,7 +68,7 @@ class BasicCombatParryFullAttackTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(105)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(55)))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();
@@ -77,8 +77,9 @@ class BasicCombatParryFullAttackTest extends AbstractBasicCombatTest {
 
 		Map<OffensiveBonusModifier, Integer> mainHandMap = meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
 
-		assertEquals(20, mainHandMap.get(OffensiveBonusModifier.PARRY));
-		assertEquals(0, mainHandMap.get(OffensiveBonusModifier.SHIELD));
+		assertEquals(-5, mainHandMap.get(OffensiveBonusModifier.PARRY_ATTACK));
+		assertEquals(25, mainHandMap.get(OffensiveBonusModifier.PARRY_DEFENSE));
+		assertEquals(20, mainHandMap.get(OffensiveBonusModifier.SHIELD));
 	}
 
 }

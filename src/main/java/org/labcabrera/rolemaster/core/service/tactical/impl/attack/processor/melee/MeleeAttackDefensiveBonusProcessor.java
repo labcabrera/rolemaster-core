@@ -11,9 +11,9 @@ import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifi
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterItemService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterStatusService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
+import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -58,7 +58,6 @@ public class MeleeAttackDefensiveBonusProcessor {
 	private Mono<MeleeAttackContext> processParry(MeleeAttackContext context, List<TacticalAction> targetActions, AttackTargetType type) {
 		TacticalCharacter target = context.getTargets().get(type);
 		boolean checkUpdateParry = false;
-		TacticalActionMeleeAttack attack = null;
 
 		// NOTE There may be more than one attack in the case of combat with two weapons against the same target.
 		// In this case the parry value must be the same for both attacks.
@@ -79,28 +78,43 @@ public class MeleeAttackDefensiveBonusProcessor {
 				.toList();
 			checkUpdateParry = !attacks.isEmpty();
 		}
-
-		attack = attacks.isEmpty() ? null : attacks.iterator().next();
-
-		int parry = 0;
-		int shield = 0;
-
-		if (attack != null) {
-			if (statusService.canParry(target)) {
-				parry = attack.getParry();
-			}
-			if (statusService.canBlock()) {
-				CharacterItem item = itemResolver.getItem(target, ItemPosition.OFF_HAND);
-				shield = itemService.getShieldBonus(item);
-			}
+		if (attacks.isEmpty()) {
+			return Mono.just(context);
 		}
+		final TacticalActionMeleeAttack attack = attacks.iterator().next();
+		final boolean update = checkUpdateParry;
+		return Mono.just(context)
+			.map(e -> processParry(context, attack, target, type))
+			.map(e -> processShield(context, attack, target, type))
+			.flatMap(e -> updateParryActionIfRequired(context, attack, update));
+	}
 
-		context.getAction().getOffensiveBonusMap().get(type).put(OffensiveBonusModifier.PARRY, parry);
-		context.getAction().getOffensiveBonusMap().get(type).put(OffensiveBonusModifier.SHIELD, shield);
+	private MeleeAttackContext processParry(MeleeAttackContext context, TacticalActionMeleeAttack attack, TacticalCharacter target,
+		AttackTargetType type) {
+		int parry = 0;
+		if (statusService.canParry(target)) {
+			parry = attack.getParry();
+		}
+		context.getAction().getOffensiveBonusMap().get(type).put(OffensiveBonusModifier.PARRY_DEFENSE, parry);
+		return context;
+	}
 
+	private Mono<MeleeAttackContext> processShield(MeleeAttackContext context, TacticalActionMeleeAttack attack, TacticalCharacter target,
+		AttackTargetType type) {
+		CharacterItem item = itemResolver.getItem(target, ItemPosition.OFF_HAND);
+		int bonus = 0;
+		if (statusService.canBlock()) {
+			bonus = itemService.getShieldBonus(item);
+		}
+		context.getAction().getOffensiveBonusMap().get(type).put(OffensiveBonusModifier.SHIELD, bonus);
+		return Mono.just(context);
+	}
+
+	private Mono<MeleeAttackContext> updateParryActionIfRequired(MeleeAttackContext context, TacticalActionMeleeAttack attack,
+		boolean checkUpdateParry) {
 		if (checkUpdateParry && attack != null) {
 			attack.setParried(true);
-			return actionRepository.save(attack).map(e -> context);
+			return actionRepository.save(attack).map(i -> context);
 		}
 		else {
 			return Mono.just(context);

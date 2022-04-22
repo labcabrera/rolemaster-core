@@ -53,8 +53,11 @@ public class OffensiveBonusProcessor {
 			.map(this::loadBonusActionPercent)
 			.map(this::loadBonusMeleePosition)
 			.map(this::loadBonusDefensive)
+			.map(this::loadBonusParry)
+			.map(this::loadBonusPenaltyAndBonus)
 			.flatMap(this::loadOffHandBonus)
-			.flatMap(this::loadBonusDistance);
+			.flatMap(this::loadBonusDistance)
+			.map(this::cleanUp);
 	}
 
 	private <T extends AttackContext<?>> T initialize(T context) {
@@ -93,6 +96,20 @@ public class OffensiveBonusProcessor {
 		return context;
 	}
 
+	private <T extends AttackContext<?>> T loadBonusPenaltyAndBonus(T context) {
+		int penalty = context.getSource().getCombatStatus().getTotalPenalty();
+		if (penalty != 0) {
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.PENALTY, penalty);
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.PENALTY, penalty);
+		}
+		int bonus = context.getSource().getCombatStatus().getTotalBonus();
+		if (bonus != 0) {
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.BONUS, bonus);
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.BONUS, bonus);
+		}
+		return context;
+	}
+
 	private <T extends AttackContext<?>> T loadBonusHp(T context) {
 		Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
 		map.get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.HP, getBonusHp(context.getSource()));
@@ -119,6 +136,15 @@ public class OffensiveBonusProcessor {
 		int bonus = getBonusActionPercent(context.getAction());
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.ACTION_PERCENT, bonus);
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.ACTION_PERCENT, bonus);
+		return context;
+	}
+
+	private <T extends AttackContext<?>> T loadBonusParry(T context) {
+		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
+			int parry = meleeAttack.getParry();
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.PARRY_ATTACK, -parry);
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.PARRY_ATTACK, -parry);
+		}
 		return context;
 	}
 
@@ -163,7 +189,6 @@ public class OffensiveBonusProcessor {
 			}
 		}
 		return Mono.just(context);
-
 	}
 
 	private int getBonusDefensive(TacticalCharacter target) {
@@ -252,4 +277,18 @@ public class OffensiveBonusProcessor {
 				return modifier;
 			});
 	}
+
+	private <T extends AttackContext<?>> T cleanUp(T context) {
+		boolean cleanUp = true;
+		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
+			if (meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
+				cleanUp = false;
+			}
+		}
+		if (cleanUp && context.getAction().getOffensiveBonusMap().containsKey(AttackTargetType.OFF_HAND)) {
+			context.getAction().getOffensiveBonusMap().remove(AttackTargetType.OFF_HAND);
+		}
+		return context;
+	}
+
 }

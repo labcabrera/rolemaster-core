@@ -1,0 +1,30 @@
+[
+	{
+		"id": "target-shield",
+		"name": "Target Shield",
+		"armorType": "shield",
+		"shieldBonus": 20,
+		"missileShieldBonus": 10
+	},
+	{
+		"id": "normal-shield",
+		"name": "Normal Shield",
+		"armorType": "shield",
+		"shieldBonus": 20,
+		"missileShieldBonus": 20
+	},
+	{
+		"id": "full-shield",
+		"name": "Full Shield",
+		"armorType": "shield",
+		"shieldBonus": 25,
+		"missileShieldBonus": 25
+	},
+	{
+		"id": "wall-shield",
+		"name": "Wall Shield",
+		"armorType": "shield",
+		"shieldBonus": 30,
+		"missileShieldBonus": 40
+	}
+]

@@ -20,6 +20,7 @@
 			{
 				"itemId": "normal-shield",
 				"type": "armor-piece",
+				"armorType": "shield",
 				"name": "Normal Shield",
 				"position": "off-hand"
 			},

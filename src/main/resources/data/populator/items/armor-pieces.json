@@ -204,31 +204,6 @@
 		"craftDuration": 48
 	},
 	{
-		"id": "target-shield",
-		"name": "Target Shield",
-		"armorType": "shield"
-	},
-	{
-		"id": "normal-shield",
-		"name": "Normal Shield",
-		"armorType": "shield"
-	},
-	{
-		"id": "full-shield",
-		"name": "Full Shield",
-		"armorType": "shield"
-	},
-	{
-		"id": "wall-shield",
-		"name": "Wall Shield",
-		"armorType": "shield"
-	},
-	{
-		"id": "target-shield",
-		"name": "Target Shield",
-		"armorType": "shield"
-	},
-	{
 		"id": "leather-helmet",
 		"name": "Leather Helmet",
 		"armorType": "helmet"
