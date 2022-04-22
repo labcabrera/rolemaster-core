@@ -1,0 +1,11 @@
+[
+	{
+		"id": "age",
+		"name": "Age",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have reached at least middle age for your race. You must roll stat deterioration rolls each year. You are older, probably wiser, and a little slower."
+	}
+]

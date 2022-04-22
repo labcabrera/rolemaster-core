@@ -1,0 +1,20 @@
+[
+	{
+		"id": "absent-minded",
+		"name": "Absent-Minded",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have a hard time paying attention to something that is not immediately threatening. You are intensely interested in one item or idea, then you get distracted and focus on something else. You tend to ignore your surroundings when something has attracted your attention. You tend to forget things. To find an item you misplaced, or recall a conversation you recently had, you must roll 1d100 (open-ended) modified by your Me bonus. If the result is over 100, you are successful. If you fail this roll, you cannot remember. You should role play this flaw at all times. Remember that you are neither dumb nor slow, you just have a short attention span and poor concentration."
+	},
+	{
+		"id": "addiction-simple-common",
+		"name": "Addiction/Simple (Common)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You are addicted to a common substance (e.g., alcohol, etc.) that has an Addiction Factor of 5 or less (see Gamemaster Law for more information on addiction & withdrawal). Your addiction starts as a level 1 addiction to the substance."
+	}
+]

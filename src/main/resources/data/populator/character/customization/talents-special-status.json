@@ -1,0 +1,11 @@
+[
+	{
+		"id": "favored-minor)",
+		"name": "Favored (Minor)",
+		"type": "talent",
+		"category": "special-status",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You have been befriended by a high-ranking official. This official may be a noble or may be a relative. The official is acknowledged by a small number of people (e.g., mayor of a city). If the GM deems it appropriate, the befriended official can be related to you."
+	}
+]

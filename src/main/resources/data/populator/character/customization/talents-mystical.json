@@ -1,0 +1,11 @@
+[
+	{
+		"id": "aggression",
+		"name": "Aggression",
+		"type": "talent",
+		"category": "mystical",
+		"costType": "minor",
+		"cost": 7,
+		"description": "You receive +10 bonus to either your base attack rolls or to your elemental attack rolls (choose when purchasing the talent)."
+	}
+]

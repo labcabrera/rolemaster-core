@@ -1,0 +1,443 @@
+[
+	{
+		"id": "acrobat",
+		"name": "Acrobat",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 6,
+		"categoryBonus": {
+			"athletic-gymnastics": 20
+		},
+		"description": "You receive a special bonus of +20 to your Athletic • Gymnastics skill Category."
+	},
+	{
+		"id": "arcane-discovery-minor",
+		"name": "Arcane Discovery (Minor)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 6,
+		"description": "You may learn and use one Arcane • Open spell list as an Own Realm • Open list."
+	},
+	{
+		"id": "arcane-discovery-major",
+		"name": "Arcane Discovery (Major)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 11,
+		"description": "You may learn and use one Arcane • Closed spell list as an Own Realm • Closed list."
+	},
+	{
+		"id": "assassin-training",
+		"name": "Assassin Training",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 8,
+		"description": "The Ambush skill is classified as everyman for you."
+	},
+	{
+		"id": "deadly-training",
+		"name": "Deadly Training",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 8,
+		"skillBonus": {
+			"poison-lore": 25,
+			"using-removing-poison": 25,
+			"silent-attack": 25,
+			"ambush": 25,
+			"stalking": 25,
+			"hiding": 25
+		},
+		"description": "You receive a special bonus of +25 to your Poison Lore, Use/Remove Poison, Silent Kill, Stalk, Hide and Ambush maneuvers (not to critical modifications)."
+	},
+	{
+		"id": "directed-weapons-master-minor",
+		"name": "Directed Weapons Master (Minor)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "One weapon skill may be classified as everyman."
+	},
+	{
+		"id": "directed-weapons-master-major",
+		"name": "Directed Weapons Master (Major)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 15,
+		"description": "One weapon skill may be classified as occupational. All other skills in the same category are classified as everyman."
+	},
+	{
+		"id": "geographic-awareness",
+		"name": "Geographic Awareness",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You receive a special bonus of +35 to your Mapping and Direction Sense skills. You have a special bonus of +25 to your Navigation skill for a given area if you have seen a map of it and have studied it for more than ten minutes."
+	},
+	{
+		"id": "gymnastic-training",
+		"name": "Gymnastic Training",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 7,
+		"skillBonusSelect": [
+			{
+				"category": "athletic-gymnastic",
+				"bonus": 25
+			},
+			{
+				"options": [
+					"adrenal-leaping",
+					"adrenal-landing",
+					"adrenal-balance"
+				],
+				"bonus": 25
+			}
+		],
+		"description": "You receive a special bonus of +35 to your Mapping and Direction Sense skills. You have a special bonus of +25 to your Navigation skill for a given area if you have seen a map of it and have studied it for more than ten minutes."
+	},
+	{
+		"id": "herbalist",
+		"name": "Herbalist",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 7,
+		"skillBonus": {
+			"cooking-baking": 20,
+			"cooking-curing": 20,
+			"cooking-distilling": 20,
+			"cooking-winery": 20,
+			"foraging": 20,
+			"TODO-use-prepared-herbs": 20,
+			"TODO-prepare-herbs": 20,
+			"poison-lore": 20,
+			"herb-lore": 20
+		},
+		"description": "You naturally recognize herbs and poisons and may use them. You also receive a special bonus of +20 to all of your Cooking, Foraging, Use Prepared Herbs, Prepare Herbs, Poison Lore, and Herb Lore maneuvers."
+	},
+	{
+		"id": "inner-reserve-lesser",
+		"name": "Inner Reserve (Lesser)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You can withstand more pain than a normal person. When determining your available concussion hits you may add a +1 to each Body Development rank your purchase. For example, if your Body Development progression is normally 0 • 6 • 4 • 2 • 1, you will gain 7 points for the first ten ranks, 5 for the second ten, etc."
+	},
+	{
+		"id": "inner-reserve-minor",
+		"name": "Inner Reserve (Minor)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "As the lesser talent, except the bonus is +2."
+	},
+	{
+		"id": "inner-reserve-major",
+		"name": "Inner Reserve (Major)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 15,
+		"description": "As the lesser talent, except the bonus is +4."
+	},
+	{
+		"id": "inner-reserve-greater",
+		"name": "Inner Reserve (Greater)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "greater",
+		"cost": 20,
+		"description": "As the lesser talent, except the bonus is +4."
+	},
+	{
+		"id": "internal-clock",
+		"name": "Internal Clock",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 3,
+		"description": "You receive a special bonus of +15 to your Time Sense skill and Time Sense is classified as an occupational skill for you."
+	},
+	{
+		"id": "judge-of-angles",
+		"name": "Judge of Angles",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You can judge angles and changes in the slant of relatively uniform, solid surfaces. You can tell the angle of an incline almost immediately. You receive a special bonus of +25 bonus when attempting to perceive traps or secret doors that are set in walls, floors, or ceilings."
+	},
+	{
+		"id": "judge-of-weaponry",
+		"name": "Judge of Weaponry",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You have a special bonus or +40 to your Weapon Evaluation skill."
+	},
+	{
+		"id": "lightning-strike",
+		"name": "Lightning Strike",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 12,
+		"description": "You receive a special bonus of +5 to your initiative rolls. You receive no penalty for snap actions, but only receive a +5 for deliberate actions."
+	},
+	{
+		"id": "martial-arts-training-minor",
+		"name": "Martial Arts Training (Minor)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "You receive a special bonus of +10 to your Martial Arts group, Self Control category, and to Special Defenses."
+	},
+	{
+		"id": "martial-arts-training-major",
+		"name": "Martial Arts Training (Major)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 15,
+		"description": "As the minor talent, except the bonus is +15."
+	},
+	{
+		"id": "martial-arts-training-greater",
+		"name": "Martial Arts Training (Greater)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "greater",
+		"cost": 30,
+		"description": "As the minor talent, except the bonus is +20 and one Special Defense skill is classified as everyman."
+	},
+	{
+		"id": "natural-archer",
+		"name": "Natural Archer",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 8,
+		"description": "You receive a 25% increase to all bow ranges and you receive a special bonus of +5 to your Missile Weapon category."
+	},
+	{
+		"id": "natural-facility-with-armor",
+		"name": "Natural Facility With Armor",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "You receive a special bonus of +10 to your Armor group. One Armor skill is classified as everyman."
+	},
+	{
+		"id": "natural-horseman",
+		"name": "Natural Horseman",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 7,
+		"description": "You receive a special bonus of +25 to all maneuvers involving horses."
+	},
+	{
+		"id": "natural-weapons-master",
+		"name": "Natural Weapons Master",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "greater",
+		"cost": 30,
+		"description": "All weapon skills are classified as everyman."
+	},
+	{
+		"id": "outdoorsman",
+		"name": "Outdoorsman",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 12,
+		"description": "You receive a special bonus of +50 to all Foraging, fire starting, and shelter location maneuvers while you are outdoors. You also receive a special bonus of +20 to all Tracking, Hunting, Stalk, and Hide maneuvers while you are outdoors."
+	},
+	{
+		"id": "portage-skills",
+		"name": "Portage Skills",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 3,
+		"description": "All of your encumbrance penalties are halved."
+	},
+	{
+		"id": "power-lesser",
+		"name": "Power (Lesser)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You have 3 extra ranks of spells. Only your own base spells and your own realm open & closed spells may be chosen."
+	},
+	{
+		"id": "power-minor",
+		"name": "Power (Minor)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "As the lesser talent above, except you have 10 ranks of spells."
+	},
+	{
+		"id": "power-major",
+		"name": "Power (Major)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 20,
+		"description": "As the lesser talent above, except you have 25 ranks of spells. No more than 10 of these may be from any one spell list."
+	},
+	{
+		"id": "power-greater",
+		"name": "Power (Greater)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "greater",
+		"cost": 30,
+		"description": "As the Major talent above, except you have 50 ranks of spells."
+	},
+	{
+		"id": "precision",
+		"name": "precision",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "greater",
+		"cost": 20,
+		"description": "Due to the precision of your strikes, you may make an Ambush maneuver every time you attack with a melee weapon. The GM will assign modifications to this maneuver based upon the combat situation—e.g., subtracting 35 while adding your flank/rear OB bonuses, subtracting the amount your target parries against you, etc."
+	},
+	{
+		"id": "racial-training-familiar",
+		"name": "Racial Training (Familiar)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "major",
+		"cost": 15,
+		"description": "Your race is known for a group of skills. You may pick up to 6 skills that are related somehow (subject to GM approval). You will receive a special bonus of +10 for those skills due to your upbringing."
+	},
+	{
+		"id": "racial-training-expert",
+		"name": "Racial Training (Expert)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "greater",
+		"cost": 25,
+		"description": "Your race is renown for their expertise with a group of skills. You may pick up to 6 skills that are related somehow (subject to GM approval). You will receive a special bonus of +20 for those skills due to your upbringing."
+	},
+	{
+		"id": "shield-attack",
+		"name": "Shield Attack",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 7,
+		"description": "You receive a special bonus of +20 to Shield Bash skill."
+	},
+	{
+		"id": "skilled-lesser",
+		"name": "Skilled (Lesser)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You may receive a special bonus of +5 to one skill category, or receive a special bonus of +10 to one specific skill. A skill category or skill may only be chosen if its bonus progression is combined or standard. You may only purchase this ability once for a given skill or skill category."
+	},
+	{
+		"id": "skilled-minor",
+		"name": "Skilled (Minor)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "As the lesser talent, except the skill category bonus is +10 and the skill bonus is +20."
+	},
+	{
+		"id": "skilled-major",
+		"name": "Skilled (Major)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 20,
+		"description": "As the lesser talent, except the skill category bonus is +15 and the skill bonus is +30."
+	},
+	{
+		"id": "skilled-greater",
+		"name": "Skilled (Greater)",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 30,
+		"description": "As the lesser talent, except the skill category bonus is +20 and the skill bonus is +40."
+	},
+	{
+		"id": "sleight-of-hand",
+		"name": "Sleight-of-Hand",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 13,
+		"description": "You receive a special bonus of +20 to your Subterfuge • Stealth skill Category."
+	},
+	{
+		"id": "swift-dresser",
+		"name": "Swift Dresser",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "lesser",
+		"cost": 3,
+		"description": "All of the time it takes to either put on or take off your armor is reduced by 25%."
+	},
+	{
+		"id": "trained-regular-footman",
+		"name": "Trained Regular Footman",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "Blocking, Tackling, Wrestling, and Boxing are classified as everyman skills for you."
+	},
+	{
+		"id": "underground-upraising",
+		"name": "Underground Upraising",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "You receive a special bonus of +10 to the Subterfuge • Mechanics and Subterfuge • Stealth skill categories. Select one Subterfuge • Stealth or Subterfuge • Mechanics skill that may be classified as everyman."
+	},
+	{
+		"id": "warrior-extraordinaire",
+		"name": "Warrior Extraordinaire",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "greater",
+		"cost": 35,
+		"description": "All melee weapons are classified as everyman. One Combat Maneuvers skill is also classified as everyman. You also receive a special bonus of +10 to Special Attacks."
+	},
+	{
+		"id": "weapon-control",
+		"name": "Weapon Control",
+		"type": "talent",
+		"category": "special-training",
+		"costType": "minor",
+		"cost": 10,
+		"description": "All weapons in your primary weapon category (that category with the lowest development point cost) have their fumble range reduced by 2 (to a minimum of 1). All other weapon categories have their fumble range reduced by 1 (to a minimum of 1)."
+	}
+]

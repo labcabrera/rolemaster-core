@@ -1,0 +1,299 @@
+[
+	{
+		"id": "accelerated-mending",
+		"name": "Accelerated Mending",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 3,
+		"description": "Your normal recovery time for injuries is halved—this does not apply to concussion hits."
+	},
+	{
+		"id": "acute-hearing",
+		"name": "Acute Hearing",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 7,
+		"description": "You have a keen sense of hearing that allows you to perceive any sounds within a range of 100' in open areas or 25' when listening through solid barriers. You receive a special bonus of +10 to your Awareness categories when dealing with these sounds."
+	},
+	{
+		"id": "acute-smell",
+		"name": "Acute Smell",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 7,
+		"description": "You have an acute sense of smell. You can smell odors up to 100' upwind, 2000' downwind, and 500' in still air. You receive a special bonus of +25 to Tracking something based on its odor. You receive a special bonus of +10 to your Awareness categories when dealing with smells."
+	},
+	{
+		"id": "ambidexterity-lesser",
+		"name": "Ambidexterity (Lesser)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You may use either hand equally well. There is no penalty for using a weapon in your “off” hand."
+	},
+	{
+		"id": "ambidexterity-minor",
+		"name": "Ambidexterity (Minor)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 10,
+		"description": "As the lesser talent, except you receive a special bonus of +15 to your Two-weapon Combat skill."
+	},
+	{
+		"id": "battle-cry",
+		"name": "Battle Cry",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 7,
+		"description": "You may shout your “battle cry” just before or during a combat. When you do this, you receive a special bonus of +10 to your OB and DB for the remainder of the combat. You may only use this ability once per day."
+	},
+	{
+		"id": "blazing-speed",
+		"name": "Blazing Speed",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "Your Base Movement Rate is increased by +10."
+	},
+	{
+		"id": "cold-resistance-lesser",
+		"name": "Cold Resistance (Minor)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 5,
+		"description": ""
+	},
+	{
+		"id": "cold-resistance-minor",
+		"name": "Cold Resistance (Minor)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 10,
+		"description": ""
+	},
+	{
+		"id": "cold-resistance-major",
+		"name": "Cold Resistance (Major)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 15,
+		"description": ""
+	},
+	{
+		"id": "cold-resistance-greater",
+		"name": "Cold Resistance (Greater)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "greater",
+		"cost": 20,
+		"description": ""
+	},
+	{
+		"id": "combat-reflexes",
+		"name": "Combat Reflexes",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 10,
+		"description": "Your reactive reflexes grant you a special bonus of +5 to DB and OB. When rolling for initiative determination, you may roll one extra die and must then decide which die rolled is not used. This talent may not be taken if Lightning Strike is taken."
+	},
+	{
+		"id": "commanding-demeanor",
+		"name": "Commanding Demeanor",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 18,
+		"description": "You receive a special bonus of +25 to your Leadership skill. In addition, you can take a 50% action (requires a Leadership maneuver) to instill fear in a foe that can see and hear you (foe makes a Fear RR versus your level). Also, you can take a 25% action (requires a Leadership maneuver) to inspire your allies that can see and hear you—they get a +10 bonus to their OBs and DBs."
+	},
+	{
+		"id": "dead-eye",
+		"name": "Dead Eye",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 7,
+		"description": "All of your missile range penalties are halved."
+	},
+	{
+		"id": "dense-major",
+		"name": "Dense (Major)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 15,
+		"description": "Your body is twice as dense as normal. Your total weight is double normal (generate a normal weight, then double it), but your height is unchanged. You receive a special bonus of +5 to your OB and DB. You can choose to take double concussion hits from an attack that delivers a critical strike in order to reduce its severity by 1 (an ‘A’ becomes an ‘A-25’)—choose after the attack roll but before the critical roll."
+	},
+	{
+		"id": "dense-greater",
+		"name": "Dense (Greater)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 25,
+		"description": "As the major talent, except 4 times normal and the OB/DB bonus is +10. In addition, you can choose to take triple concussion hits in order to reduce a critical strike severity by 2 (an ‘A’ becomes an ‘A-50’, a ‘B’ becomes an ‘A-25’)."
+	},
+	{
+		"id": "dwarfism-lesser",
+		"name": "Dwarfism (Lesser)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 5,
+		"description": ""
+	},
+	{
+		"id": "dwarfism-minor",
+		"name": "Dwarfism (Minor)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 10,
+		"description": ""
+	},
+	{
+		"id": "dwarfism-major",
+		"name": "Dwarfism (Major)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 15,
+		"description": ""
+	},
+	{
+		"id": "ear-for-music",
+		"name": "Ear for Music",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You can reproduce any sound you hear. If the noise could not be reproduced by your vocal cords, you can reproduce it on an appropriate instrument. You can also play any piece of music you hear once (though not necessarily played well). You receive a special bonus of +25 to all Singing and Play Instrument maneuvers."
+	},
+	{
+		"id": "extra-limbs-1",
+		"name": "Extra Limbs (+1)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 10,
+		"description": ""
+	},
+	{
+		"id": "extra-limbs-1",
+		"name": "Extra Limbs (+1)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 10,
+		"description": "You have an extra limb. Having an extra limb does not grant you any special ability, but you can accomplish actions that may be impossible for others to do. Any combat skills developed for extra limbs should be in the Special Attacks or Special Defenses skill categories (GM decision)"
+	},
+	{
+		"id": "extra-limbs-2",
+		"name": "Extra Limbs (+2)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 15,
+		"description": "As Extra Limbs (+1), except you have two extra limbs."
+	},
+	{
+		"id": "extra-limbs-1",
+		"name": "Extra Limbs (+1)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "greater",
+		"cost": 20,
+		"description": "As Extra Limbs (+1), except you have three extra limbs."
+	},
+	{
+		"id": "eye-of-the-tiger",
+		"name": "Eye of the Tiger",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 7,
+		"description": "You have a special bonus of +20 to all of your Adrenal Strength maneuvers."
+	},
+	{
+		"id": "flight",
+		"name": "Flight",
+		"type": "talent",
+		"category": "physical",
+		"costType": "greater",
+		"cost": 25,
+		"description": "You have the natural ability to fly. You must choose what allows you to fly (wings, gravity, magic, etc.) You can fly at speeds of up to 75' per round. You may increase your base rate by making the appropriate maneuver roll."
+	},
+	{
+		"id": "fluid-wrists",
+		"name": "Fluid Wrists",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "Due to your fine wrists, you receive a special bonus of +20 to all attacks with a thrown weapon and Martial Arts • Sweeps and Throws skills."
+	},
+	{
+		"id": "giantism-minor",
+		"name": "Giantism (Minor)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 10,
+		"description": "You are larger than normal. You are half again as tall as a normal member of your race (figure normal height, then increase it by 50%) and weigh twice as much (figure normal weight, then double it). You receive a special bonus of +2 to your St bonus and -2 to your Qu bonus."
+	},
+	{
+		"id": "giantism-major",
+		"name": "Giantism (Major)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 15,
+		"description": "As the minor talent, except your height is 2 times normal, your weight is 4 times normal, and your special St/Qu bonuses are +4/-4. Any critical strike against you has its severity reduced by 1 (an ‘A’ becomes an ‘A-25’)"
+	},
+	{
+		"id": "giantism-greater",
+		"name": "Giantism (Greater)",
+		"type": "talent",
+		"category": "physical",
+		"costType": "greater",
+		"cost": 25,
+		"description": "As the minor talent, except your height is 3 times normal, your weight is 6 times normal, and your special St/Qu bonuses are +6/-6. You are treated as a Large creature for criticals."
+	},
+	{
+		"id": "gliding",
+		"name": "Gliding",
+		"type": "talent",
+		"category": "physical",
+		"costType": "major",
+		"cost": 15,
+		"description": "You may glide like a bird. The product of your altitude and horizontal speed cannot exceed 100' per round. For example, you can glide at a rate of 5' per round if you were 20' off the ground or you can glide at the rate of 50' per round if you were 2' off the ground. Note that the total must equal 100' (i.e., you cannot choose to have a total less than or more than 100')."
+	},
+	{
+		"id": "golden-throat",
+		"name": "Golden Throat",
+		"type": "talent",
+		"category": "physical",
+		"costType": "minor",
+		"cost": 8,
+		"description": "You have a soothing and calming voice. This gives you a special bonus of +15 to any maneuver where you verbally attempt to calm or persuade (Singing, Public Speaking, Duping, Trading, Acting, etc.)."
+	},
+	{
+		"id": "hammerhand",
+		"name": "Hammerhand",
+		"type": "talent",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "Your hands are much harder than normal. You may make Martial Arts • Strikes attacks with your bare hands and inflict an Impact critical of one less severity as your Martial Arts • Strikes critical (an ‘A’ becomes an ‘A-25’)."
+	}
+]

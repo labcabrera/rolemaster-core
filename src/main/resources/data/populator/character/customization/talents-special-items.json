@@ -1,0 +1,11 @@
+[
+	{
+		"id": "bonus-item-i",
+		"name": "Bonus Item (I)",
+		"type": "talent",
+		"category": "special-items",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You have two exceptional items, either high quality or special purpose. Exactly what item you have is for you and your GM to decide; a special, non-magical bonus of +5 will be applied to the appropriate skills affected by those items. For example you may have a +5 lockpick kit that bestows its bonus upon your Pick Locks skill."
+	}
+]
