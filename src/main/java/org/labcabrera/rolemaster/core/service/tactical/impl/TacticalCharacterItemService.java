@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.model.character.item.CharacterItemFeature;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItemFeatureType;
 import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
+import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.repository.WeaponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,7 @@ public class TacticalCharacterItemService {
 			return Integer.parseInt(feature);
 		}
 		if (item.getType() == ItemType.ARMOR_PIECE && item.getArmorType() == ArmorItemType.SHIELD) {
-			int bonus = getShieldBonus(item.getItemId());
-			return bonus;
+			return getShieldBonus(item.getItemId());
 		}
 		if (item.getType() == ItemType.WEAPON) {
 			int result = 5;
@@ -48,7 +48,7 @@ public class TacticalCharacterItemService {
 		}
 		return weaponRepository.findById(item.getItemId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Weapon " + item.getId() + " no found")))
-			.map(e -> e.getFumble());
+			.map(Weapon::getFumble);
 	}
 
 	public String getFeature(CharacterItem item, CharacterItemFeatureType type) {
@@ -63,8 +63,7 @@ public class TacticalCharacterItemService {
 
 	public int getShieldBonus(String itemId) {
 		switch (itemId) {
-		case "target-shield":
-		case "normal-shield":
+		case "target-shield", "normal-shield":
 			return 20;
 		case "full-shield":
 			return 25;

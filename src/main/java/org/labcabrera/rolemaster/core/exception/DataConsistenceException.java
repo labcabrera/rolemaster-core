@@ -7,4 +7,8 @@ public class DataConsistenceException extends RuntimeException {
 		super(message);
 	}
 
+	public DataConsistenceException(String message, Throwable ex) {
+		super(message, ex);
+	}
+
 }

@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.exception.MissingWeaponData;
 import org.springframework.stereotype.Component;
 
@@ -76,7 +77,7 @@ public class WeaponTable {
 			}
 		}
 		catch (Exception ex) {
-			throw new RuntimeException(ex);
+			throw new DataConsistenceException("Error reading weapon table " + weaponId, ex);
 		}
 		values.put(weaponId, map);
 	}
@@ -98,7 +99,7 @@ public class WeaponTable {
 	private void checkHeaderFormat(String weaponId, String header) {
 		String check = weaponId + ",20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1";
 		if (!check.equals(header)) {
-			throw new RuntimeException("Invalid header for weapon " + weaponId);
+			throw new DataConsistenceException("Invalid header for weapon table " + weaponId);
 		}
 	}
 

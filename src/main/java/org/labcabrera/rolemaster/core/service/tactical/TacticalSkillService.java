@@ -37,9 +37,7 @@ public class TacticalSkillService {
 	private Mono<Integer> getNpcSkill(TacticalCharacter character, String skillId) {
 		return npcRepository.findById(character.getCharacterId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("NPC not found")))
-			.map(npc -> {
-				return npc.getSkills().getOrDefault(skillId, 0);
-			});
+			.map(npc -> npc.getSkills().getOrDefault(skillId, 0));
 	}
 
 	private Mono<Integer> getCharacterSkill(TacticalCharacter character, String skill) {

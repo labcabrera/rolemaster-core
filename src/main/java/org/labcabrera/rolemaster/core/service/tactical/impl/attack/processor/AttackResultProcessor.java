@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
@@ -59,7 +60,7 @@ public class AttackResultProcessor {
 		return tacticalCharacterRepository.findById(characterId)
 			.map(tc -> {
 				attack.getAttackResults().stream().forEach(ar -> tc.getHp().subtract(ar.getHp()));
-				attack.getCriticalResults().stream().map(e -> e.getCriticalTableResult()).forEach(ctr -> {
+				attack.getCriticalResults().stream().map(TacticalCriticalResult::getCriticalTableResult).forEach(ctr -> {
 					CombatStatus cs = tc.getCombatStatus();
 					if (ctr.getHp() != null) {
 						tc.getHp().subtract(ctr.getHp());
@@ -87,7 +88,7 @@ public class AttackResultProcessor {
 				if (attack.getExhaustionPoints() != null) {
 					tc.getExhaustionPoints().substract(attack.getExhaustionPoints());
 				}
-				attack.getCriticalResults().stream().map(e -> e.getCriticalTableResult()).forEach(ctr -> {
+				attack.getCriticalResults().stream().map(TacticalCriticalResult::getCriticalTableResult).forEach(ctr -> {
 					CombatStatus cs = tc.getCombatStatus();
 					ctr.getBuffs().entrySet().stream().forEach(e -> cs.addBuff(e.getKey(), e.getValue()));
 					if (ctr.getBonus() != null) {

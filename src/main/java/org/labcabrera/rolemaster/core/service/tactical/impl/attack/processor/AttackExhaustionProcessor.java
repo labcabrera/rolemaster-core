@@ -20,8 +20,8 @@ import reactor.core.publisher.Mono;
 @Component
 public class AttackExhaustionProcessor {
 
-	private BigDecimal MELEE_DIVISOR = new BigDecimal("2");
-	private BigDecimal MISSILE_DIVISOR = new BigDecimal("6");
+	private static final BigDecimal MELEE_DIVISOR = new BigDecimal("2");
+	private static final BigDecimal MISSILE_DIVISOR = new BigDecimal("6");
 
 	@Autowired
 	private TacticalRoundRepository roundRepository;
@@ -58,8 +58,7 @@ public class AttackExhaustionProcessor {
 
 		BigDecimal exhaustionPoints = base
 			.multiply(totalMultiplier)
-			.divide(divisor)
-			.setScale(3, RoundingMode.HALF_EVEN);
+			.divide(divisor, 3, RoundingMode.HALF_EVEN);
 		context.getAction().setExhaustionPoints(exhaustionPoints);
 		return Mono.just(context);
 	}

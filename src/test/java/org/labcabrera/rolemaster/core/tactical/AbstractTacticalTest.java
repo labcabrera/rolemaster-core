@@ -1,11 +1,14 @@
 package org.labcabrera.rolemaster.core.tactical;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
+import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -65,6 +68,9 @@ public abstract class AbstractTacticalTest {
 			.strategicSessionId(sts.getId())
 			.name("Test tactical session " + LocalDateTime.now())
 			.description("Testing")
+			.temperature(TemperatureMultiplier.NORMAL)
+			.terrain(TerrainType.NORMAL)
+			.exhaustionMultiplier(BigDecimal.ONE)
 			.build()).share().block();
 	}
 }

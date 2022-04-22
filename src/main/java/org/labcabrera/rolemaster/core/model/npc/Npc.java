@@ -48,9 +48,6 @@ public class Npc {
 
 	private Integer defensiveBonus;
 
-	//	@Builder.Default
-	//	private List<NpcAttack> attacks = new ArrayList<>();
-
 	@Builder.Default
 	private List<CharacterItem> items = new ArrayList<>();
 

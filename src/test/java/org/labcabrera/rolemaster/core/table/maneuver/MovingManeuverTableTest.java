@@ -28,7 +28,7 @@ class MovingManeuverTableTest {
 			if (md != ManeuverDificulty.NONE) {
 				for (int i = -201; i < 280; i++) {
 					assertTrue(table.checkConsistence(md, i), "Invalid consistence: " + md + " -> " + i);
-					assertTrue(table.getResult(md, i).getResult() != null, "Invalid consistence: " + md + " -> " + i);
+					assertNotNull(table.getResult(md, i).getResult(), "Invalid consistence: " + md + " -> " + i);
 				}
 			}
 		}

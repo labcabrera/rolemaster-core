@@ -69,7 +69,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		List<TacticalActionMeleeAttack> attacks = targetActions.stream()
 			.filter(TacticalActionMeleeAttack.class::isInstance)
 			.map(TacticalActionMeleeAttack.class::cast)
-			.filter(e -> e.getParry() > 0 && !e.isParried())
+			.filter(this::notParried)
 			.filter(e -> e.getTargets().values().contains(context.getSource().getId()))
 			.toList();
 
@@ -78,8 +78,8 @@ public class MeleeAttackDefensiveBonusProcessor {
 			attacks = targetActions.stream()
 				.filter(TacticalActionMeleeAttack.class::isInstance)
 				.map(TacticalActionMeleeAttack.class::cast)
-				.filter(e -> notRequiredTarget(e))
-				.filter(e -> e.getParry() > 0 && !e.isParried())
+				.filter(this::notRequiredTarget)
+				.filter(this::notParried)
 				.toList();
 			checkUpdateParry = !attacks.isEmpty();
 		}
@@ -103,7 +103,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		List<TacticalActionMeleeAttack> attacks = targetActions.stream()
 			.filter(TacticalActionMeleeAttack.class::isInstance)
 			.map(TacticalActionMeleeAttack.class::cast)
-			.filter(e -> !e.isBlocked())
+			.filter(this::notBloked)
 			.filter(e -> e.getTargets().values().contains(context.getSource().getId()))
 			.toList();
 
@@ -112,8 +112,8 @@ public class MeleeAttackDefensiveBonusProcessor {
 			attacks = targetActions.stream()
 				.filter(TacticalActionMeleeAttack.class::isInstance)
 				.map(TacticalActionMeleeAttack.class::cast)
-				.filter(e -> notRequiredTarget(e))
-				.filter(e -> !e.isBlocked())
+				.filter(this::notRequiredTarget)
+				.filter(this::notBloked)
 				.toList();
 			checkUpdateParry = !attacks.isEmpty();
 		}
@@ -175,4 +175,12 @@ public class MeleeAttackDefensiveBonusProcessor {
 			|| attack.getMeleeAttackType() == MeleeAttackType.REACT_AND_MELEE;
 	}
 
+	private boolean notParried(TacticalActionMeleeAttack attack) {
+		return attack.getParry() > 0 && !attack.isParried();
+
+	}
+
+	private boolean notBloked(TacticalActionMeleeAttack attack) {
+		return !attack.isBlocked();
+	}
 }
