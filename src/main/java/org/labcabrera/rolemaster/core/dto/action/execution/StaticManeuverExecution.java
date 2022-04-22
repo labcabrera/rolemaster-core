@@ -20,7 +20,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class MovingManeuverExecution extends TacticalActionExecution {
+public class StaticManeuverExecution extends TacticalActionExecution {
 
 	@NotNull
 	private OpenRoll roll;
