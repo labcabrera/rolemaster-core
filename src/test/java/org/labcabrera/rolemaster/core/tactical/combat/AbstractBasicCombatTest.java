@@ -1,15 +1,12 @@
 package org.labcabrera.rolemaster.core.tactical.combat;
 
-import java.time.LocalDateTime;
-
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
-import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
-import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.tactical.AbstractTacticalTest;
 
-public abstract class AbstractBasicCombatTest extends AbstractCombatTest {
+public abstract class AbstractBasicCombatTest extends AbstractTacticalTest {
 
 	protected StrategicSession sts;
 
@@ -24,16 +21,7 @@ public abstract class AbstractBasicCombatTest extends AbstractCombatTest {
 	protected TacticalCharacter taRanged01;
 
 	protected void prepare() {
-		sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
-			.name("Test strategic session " + LocalDateTime.now())
-			.description("Testing")
-			.build()).share().block();
-
-		ts = tacticalService.createSession(TacticalSessionCreation.builder()
-			.strategicSessionId(sts.getId())
-			.name("Test tactical session " + LocalDateTime.now())
-			.description("Testing")
-			.build()).share().block();
+		super.prepare();
 
 		taMelee01 = tacticalService.addNpc(ts.getId(), "orc-fighter-scimitar-ii", NpcCustomization.builder()
 			.name("orc-01").build())

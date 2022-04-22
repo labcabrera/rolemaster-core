@@ -32,7 +32,8 @@
 			}
 		],
 		"skills": {
-			"scimitar": 40
+			"scimitar": 40,
+			"jumping": 25
 		},
 		"baseMove": 50,
 		"mmBonus": 0,

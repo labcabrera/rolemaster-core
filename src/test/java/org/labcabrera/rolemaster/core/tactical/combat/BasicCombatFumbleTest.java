@@ -26,11 +26,12 @@ import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
+import org.labcabrera.rolemaster.core.tactical.AbstractTacticalTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BasicCombatFumbleTest extends AbstractCombatTest {
+class BasicCombatFumbleTest extends AbstractTacticalTest {
 
 	@Autowired
 	private StrategicSessionService strategicSessionService;

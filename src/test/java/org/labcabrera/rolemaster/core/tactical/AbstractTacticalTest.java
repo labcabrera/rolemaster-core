@@ -1,5 +1,11 @@
-package org.labcabrera.rolemaster.core.tactical.combat;
+package org.labcabrera.rolemaster.core.tactical;
 
+import java.time.LocalDateTime;
+
+import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
+import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
+import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -10,7 +16,7 @@ import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class AbstractCombatTest {
+public abstract class AbstractTacticalTest {
 
 	@Autowired
 	protected StrategicSessionService strategicSessionService;
@@ -36,6 +42,10 @@ public abstract class AbstractCombatTest {
 	@Autowired
 	protected TacticalCharacterRepository tacticalCharacterRepository;
 
+	protected StrategicSession sts;
+
+	protected TacticalSession ts;
+
 	protected void clearData() {
 		strategicSessionRepository.deleteAll()
 			.then(tacticalSessionRepository.deleteAll())
@@ -43,5 +53,18 @@ public abstract class AbstractCombatTest {
 			.then(tacticalActionRepository.deleteAll())
 			.then(tacticalCharacterRepository.deleteAll())
 			.share().block();
+	}
+
+	protected void prepare() {
+		sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
+			.name("Test strategic session " + LocalDateTime.now())
+			.description("Testing")
+			.build()).share().block();
+
+		ts = tacticalService.createSession(TacticalSessionCreation.builder()
+			.strategicSessionId(sts.getId())
+			.name("Test tactical session " + LocalDateTime.now())
+			.description("Testing")
+			.build()).share().block();
 	}
 }
