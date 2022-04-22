@@ -41,6 +41,9 @@ public class TacticalActionMeleeAttack extends TacticalActionAttack {
 
 	@Schema(description = "Indicates whether the action has been used to stop the attack of a given attacker.")
 	@Builder.Default
-	private Boolean parried = false;
+	private boolean parried = false;
+
+	@Builder.Default
+	private boolean blocked = false;
 
 }

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.missile;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import java.util.function.Function;
 

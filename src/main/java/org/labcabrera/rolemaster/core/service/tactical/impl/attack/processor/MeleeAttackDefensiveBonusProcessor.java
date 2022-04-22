@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.melee;
+package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import java.util.List;
 
@@ -52,7 +52,12 @@ public class MeleeAttackDefensiveBonusProcessor {
 		String targetId = tc.getId();
 		return actionRepository.findByRoundIdAndSource(roundId, targetId)
 			.collectList()
-			.flatMap(list -> processParry(context, list, type));
+			.flatMap(list -> processShieldAndSParryBonus(context, list, type));
+	}
+
+	private Mono<MeleeAttackContext> processShieldAndSParryBonus(MeleeAttackContext context, List<TacticalAction> actions,
+		AttackTargetType type) {
+		return processParry(context, actions, type).then(processShield(context, actions, type));
 	}
 
 	private Mono<MeleeAttackContext> processParry(MeleeAttackContext context, List<TacticalAction> targetActions, AttackTargetType type) {
@@ -64,6 +69,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		List<TacticalActionMeleeAttack> attacks = targetActions.stream()
 			.filter(TacticalActionMeleeAttack.class::isInstance)
 			.map(TacticalActionMeleeAttack.class::cast)
+			.filter(e -> e.getParry() > 0 && !e.isParried())
 			.filter(e -> e.getTargets().values().contains(context.getSource().getId()))
 			.toList();
 
@@ -72,9 +78,8 @@ public class MeleeAttackDefensiveBonusProcessor {
 			attacks = targetActions.stream()
 				.filter(TacticalActionMeleeAttack.class::isInstance)
 				.map(TacticalActionMeleeAttack.class::cast)
-				.filter(e -> e.getParry() > 0)
 				.filter(e -> notRequiredTarget(e))
-				.filter(e -> e.getParried() == false)
+				.filter(e -> e.getParry() > 0 && !e.isParried())
 				.toList();
 			checkUpdateParry = !attacks.isEmpty();
 		}
@@ -85,8 +90,41 @@ public class MeleeAttackDefensiveBonusProcessor {
 		final boolean update = checkUpdateParry;
 		return Mono.just(context)
 			.map(e -> processParry(context, attack, target, type))
-			.map(e -> processShield(context, attack, target, type))
 			.flatMap(e -> updateParryActionIfRequired(context, attack, update));
+	}
+
+	private Mono<MeleeAttackContext> processShield(MeleeAttackContext context, List<TacticalAction> targetActions,
+		AttackTargetType type) {
+		TacticalCharacter target = context.getTargets().get(type);
+		boolean checkUpdateParry = false;
+
+		// NOTE There may be more than one attack in the case of combat with two weapons against the same target.
+		// In this case the parry value must be the same for both attacks.
+		List<TacticalActionMeleeAttack> attacks = targetActions.stream()
+			.filter(TacticalActionMeleeAttack.class::isInstance)
+			.map(TacticalActionMeleeAttack.class::cast)
+			.filter(e -> !e.isBlocked())
+			.filter(e -> e.getTargets().values().contains(context.getSource().getId()))
+			.toList();
+
+		// Search for melee attacks that do not have specified targets (press and melee & react and melee).
+		if (attacks.isEmpty()) {
+			attacks = targetActions.stream()
+				.filter(TacticalActionMeleeAttack.class::isInstance)
+				.map(TacticalActionMeleeAttack.class::cast)
+				.filter(e -> notRequiredTarget(e))
+				.filter(e -> !e.isBlocked())
+				.toList();
+			checkUpdateParry = !attacks.isEmpty();
+		}
+		if (attacks.isEmpty()) {
+			return Mono.just(context);
+		}
+		final TacticalActionMeleeAttack attack = attacks.iterator().next();
+		final boolean update = checkUpdateParry;
+		return Mono.just(context)
+			.map(e -> processShield(context, attack, target, type))
+			.flatMap(e -> updateBlockedActionIfRequired(context, attack, update));
 	}
 
 	private MeleeAttackContext processParry(MeleeAttackContext context, TacticalActionMeleeAttack attack, TacticalCharacter target,
@@ -114,7 +152,18 @@ public class MeleeAttackDefensiveBonusProcessor {
 		boolean checkUpdateParry) {
 		if (checkUpdateParry && attack != null) {
 			attack.setParried(true);
-			return actionRepository.save(attack).map(i -> context);
+			return actionRepository.save(attack).thenReturn(context);
+		}
+		else {
+			return Mono.just(context);
+		}
+	}
+
+	private Mono<MeleeAttackContext> updateBlockedActionIfRequired(MeleeAttackContext context, TacticalActionMeleeAttack attack,
+		boolean checkUpdateBlock) {
+		if (checkUpdateBlock && attack != null) {
+			attack.setBlocked(true);
+			return actionRepository.save(attack).thenReturn(context);
 		}
 		else {
 			return Mono.just(context);
