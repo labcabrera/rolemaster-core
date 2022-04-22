@@ -1,13 +1,12 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
-import org.labcabrera.rolemaster.core.repository.WeaponRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterItemService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,7 +24,7 @@ public class AttackFumbleProcessor {
 	private TacticalCharacterItemResolver itemResolver;
 
 	@Autowired
-	private WeaponRepository weaponRepository;
+	private TacticalCharacterItemService itemService;
 
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		return Mono.just(context)
@@ -69,9 +68,7 @@ public class AttackFumbleProcessor {
 		if (item == null) {
 			return Mono.just(NO_WEAPON_FUMBLE);
 		}
-		return weaponRepository.findById(item.getItemId())
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Weapon " + item.getId() + " no found")))
-			.map(e -> e.getFumble());
+		return itemService.getFumble(item);
 	}
 
 	private FumbleType getFumbleType(CharacterItem item) {

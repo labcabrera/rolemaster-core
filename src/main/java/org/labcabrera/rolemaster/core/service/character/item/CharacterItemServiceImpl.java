@@ -79,7 +79,6 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 					.characterId(characterId)
 					.type(type)
 					.position(position)
-					.customizations(null)
 					.count(null)
 					.broken(null)
 					.build();
