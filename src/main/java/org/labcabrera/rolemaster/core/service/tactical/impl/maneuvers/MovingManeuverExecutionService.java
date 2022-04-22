@@ -33,7 +33,7 @@ public class MovingManeuverExecutionService {
 	public Mono<TacticalActionMovingManeuver> execute(TacticalActionMovingManeuver action, MovingManeuverExecution execution) {
 		ManeuverDificulty dificulty = execution.getDificulty();
 		int roll = execution.getRoll().getResult();
-		Map<String, Integer> modifiers = action.getModifiers();
+		Map<String, Integer> modifiers = execution.getModifiers();
 
 		return characterRepository.findById(action.getSource())
 			.flatMap(tc -> bonusProcessor.getBonusMap(action, tc, modifiers))
