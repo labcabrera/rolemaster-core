@@ -16,7 +16,8 @@ It offers the following functionalities:
 ** Static maneuvers.
 ** Moving maneuvers.
 ** Spell casting.
-* NPC and items administration.
+* NPC administration.
+* Item administration.
 
 == Technologies
 
