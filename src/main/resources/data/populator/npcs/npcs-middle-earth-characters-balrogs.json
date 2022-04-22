@@ -58,7 +58,7 @@
 			{
 				"name": "Bash",
 				"weaponTableId": "bash",
-				"bonus": 180,
+				"skillId": "#bash",
 				"features": [
 					{
 						"type": "additional-critical",
@@ -69,7 +69,7 @@
 			{
 				"name": "Grapple",
 				"weaponTableId": "grapple",
-				"bonus": 120,
+				"skillId": "#grapple",
 				"features": [
 					{
 						"type": "additional-critical",
@@ -89,10 +89,9 @@
 		"skills": {
 			"#melee": 275,
 			"#missile": 120,
-			"two-weapon-combat:#melee:#melee": 275, 
-			"bash": 180,
-			"grapple": 120,
-			
+			"#bash": 180,
+			"#grapple": 120,
+			"two-weapon-combat:#melee:#melee": 275,
 			"climbing": 102,
 			"directed-spells": 72,
 			"frenzy": 102,
