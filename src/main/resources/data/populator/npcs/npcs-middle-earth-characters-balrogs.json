@@ -3,7 +3,7 @@
 		"id": "balrog",
 		"name": "Balrog",
 		"shortDescription": "Balrog",
-		"level": 36,
+		"level": 60,
 		"hp": 420,
 		"armorType": 20,
 		"defensiveBonus": 90,
