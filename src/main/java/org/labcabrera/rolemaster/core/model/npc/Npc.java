@@ -27,6 +27,9 @@ public class Npc {
 
 	private String name;
 
+	@Builder.Default
+	private List<String> raceWeywords = new ArrayList<>();
+
 	private String shortDescription;
 
 	private boolean unique;
@@ -66,6 +69,9 @@ public class Npc {
 	private NpcSpeed attackQuickness;
 
 	private MovementPace maxPace;
+
+	@Builder.Default
+	private NpcCriticalTable criticalTable = NpcCriticalTable.DEFAULT;
 
 	private String universeId;
 

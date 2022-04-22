@@ -21,6 +21,7 @@ public class NpcPopulator extends AbstractJsonPopulator<Npc> {
 			"data/populator/npcs/npcs-middle-earth-characters-elves.json",
 			"data/populator/npcs/npcs-middle-earth-characters-evil.json",
 			"data/populator/npcs/npcs-middle-earth-characters-hobbits.json",
+			"data/populator/npcs/npcs-middle-earth-characters-nazgul.json",
 			"data/populator/npcs/npcs-middle-earth-characters-other.json");
 	}
 
