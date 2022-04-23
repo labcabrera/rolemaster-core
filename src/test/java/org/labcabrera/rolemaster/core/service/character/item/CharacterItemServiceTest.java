@@ -45,7 +45,7 @@ class CharacterItemServiceTest {
 		CharacterItem coat = characterItemService.addItem(characterInfo.getId(), addCoat).share().block();
 		assertNotNull(coat);
 		assertEquals("reinforced-full-length-leather-coat", coat.getItemId());
-		assertEquals("Reinforced Full-Length Leather Coat", coat.getName());
+		assertEquals("Reinforced Full-Length Leather Coat (AT8)", coat.getName());
 		assertEquals(ItemType.ARMOR_PIECE, coat.getType());
 		assertEquals(0, new BigDecimal("11").compareTo(coat.getWeight()));
 

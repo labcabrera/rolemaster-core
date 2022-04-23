@@ -1,8 +1,9 @@
 [
 	{
 		"id": "leather-jerkin",
-		"armor": 5,
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 5,
 		"name": "Leather Jerkin (AT5)",
 		"description": "A heavy leather coat without arms and reaching only to the waist or mid-thigh.",
 		"commonCost": {
@@ -16,8 +17,9 @@
 	},
 	{
 		"id": "leather-coat",
-		"armor": 6,
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 6,
 		"name": "Leather Coat (AT6)",
 		"description": "A heavy leather coat covering the arms and torso to mid-thigh.",
 		"commonCost": {
@@ -30,8 +32,10 @@
 		"craftDuration": 144
 	},
 	{
-		"armor": 7,
+		"id": "reinforced-leather-coat",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 7,
 		"name": "Reinforced Leather Coat (AT7)",
 		"description": "A heavy leather coat covering the arms and torso to mid-thigh, but with either rigid-leather sections or metal sections sewn in for reinforcement.",
 		"commonCost": {
@@ -44,8 +48,10 @@
 		"craftDuration": 366
 	},
 	{
-		"armor": 8,
+		"id": "reinforced-full-length-leather-coat",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 8,
 		"name": "Reinforced Full-Length Leather Coat (AT8)",
 		"description": "A reinforced leather coat (as above) that covers to the lower leg.",
 		"commonCost": {
@@ -58,8 +64,10 @@
 		"craftDuration": 384
 	},
 	{
-		"armor": 9,
+		"id": "leather-breastplate",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 9,
 		"name": "Leather Breastplate (AT9)",
 		"description": "A rigid breastplate covering the torso to mid-thigh and part of the upper arms.",
 		"commonCost": {
@@ -72,8 +80,10 @@
 		"craftDuration": 96
 	},
 	{
-		"armor": 13,
+		"id": "chain-shirt",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 13,
 		"name": "Chain Shirt (AT13)",
 		"description": "A chain mail shirt covering the torso to mid-thigh and half of the upper arms.",
 		"mmMin": -10,
@@ -91,8 +101,10 @@
 		"craftDuration": 504
 	},
 	{
-		"armor": 15,
+		"id": "full-chain",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 15,
 		"name": "Full Chain  (AT15)",
 		"description": "Chain mail covering most of the body and legs in the form of a shirt and leggings.",
 		"mmMin": -25,
@@ -111,6 +123,7 @@
 	},
 	{
 		"armor": 16,
+		"type": "armor-piece",
 		"armorType": "armor",
 		"name": "Chain Hauberk (AT16)",
 		"description": "A full-length chain mail coat split from the waist in the front and back to facilitate movement.",
@@ -129,8 +142,10 @@
 		"craftDuration": 840
 	},
 	{
-		"armor": 17,
+		"id": "metal-breastplate",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 17,
 		"name": "Metal Breastplate (AT17)",
 		"description": "A metal breastplate plus smaller plates covering torso to mid-thigh and part of the upper arms.",
 		"mmMin": -15,
@@ -148,8 +163,10 @@
 		"craftDuration": 504
 	},
 	{
-		"armor": 19,
+		"id": "half-plate",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 19,
 		"name": "Half Plate (AT19)",
 		"description": "Rigid plate armor covering the body, but with chain mail between the plates, at the joints, and covering the legs.",
 		"mmMin": -35,
@@ -167,8 +184,10 @@
 		"craftDuration": 1680
 	},
 	{
-		"armor": 20,
+		"id": "full-plate",
+		"type": "armor-piece",
 		"armorType": "armor",
+		"armor": 20,
 		"name": "Full Plate  (AT20)",
 		"description": "Rigid plate armor as half plate, but with plates overlapping at joints, and plate armor covering the legs.",
 		"mmMin": -45,

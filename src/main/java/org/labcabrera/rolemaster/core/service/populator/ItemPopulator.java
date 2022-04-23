@@ -67,12 +67,6 @@ public class ItemPopulator implements ApplicationRunner {
 			InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/armor-pieces.json")) {
 			List<ArmorPiece> values = objectMapper.readerFor(new TypeReference<List<ArmorPiece>>() {
 			}).readValue(in);
-			values.stream().forEach(e -> {
-				e.setType(ItemType.ARMOR_PIECE);
-				if (e.getId() == null) {
-					e.setId(e.getName().toLowerCase().replace(' ', '-'));
-				}
-			});
 			list.addAll(values);
 		}
 
