@@ -94,6 +94,12 @@ public class CharacterInfo {
 	private Integer baseMovementRate;
 
 	@Builder.Default
+	private Integer armor = 1;
+
+	@Builder.Default
+	private BigDecimal carriedWeight = BigDecimal.ZERO;
+
+	@Builder.Default
 	private List<String> notes = new ArrayList<>();
 
 	@Builder.Default

@@ -32,12 +32,15 @@
 	{
 		"id": "boots",
 		"name": "Boots",
-		"type": "miscellaneous"
-	},
-	{
-		"id": "boots",
-		"name": "Boots",
-		"type": "miscellaneous"
+		"type": "miscellaneous",
+		"commonCost": {
+			"s": 1
+		},
+		"commonWeight": {
+			"min": 1.500,
+			"max": 2.000
+		},
+		"craftDuration": 72
 	},
 	{
 		"id": "brush",
@@ -92,7 +95,15 @@
 	{
 		"id": "cloak",
 		"name": "Cloak",
-		"type": "miscellaneous"
+		"type": "miscellaneous",
+		"commonCost": {
+			"c": 9
+		},
+		"commonWeight": {
+			"min": 1.000,
+			"max": 1.500
+		},
+		"craftDuration": 24
 	},
 	{
 		"id": "climbing-pick",
