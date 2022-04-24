@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class MeleeAttackDefensiveBonusProcessor {
+public class MeleeAttackDefensiveBonusProcessor extends AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalActionRepository actionRepository;
@@ -34,8 +34,9 @@ public class MeleeAttackDefensiveBonusProcessor {
 	@Autowired
 	private TacticalCharacterStatusService statusService;
 
-	public Mono<MeleeAttackContext> apply(MeleeAttackContext context) {
-		if (context.getAction().isFlumbe()) {
+	@Override
+	public Mono<AttackContext> apply(AttackContext context) {
+		if (context.getAction().isFlumbe() || !(context.getAction() instanceof TacticalActionMeleeAttack)) {
 			return Mono.just(context);
 		}
 		return Mono.just(context)
@@ -43,7 +44,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 			.flatMap(e -> processShieldAndSParryBonus(context, AttackTargetType.OFF_HAND));
 	}
 
-	private Mono<MeleeAttackContext> processShieldAndSParryBonus(MeleeAttackContext context, AttackTargetType type) {
+	private Mono<AttackContext> processShieldAndSParryBonus(AttackContext context, AttackTargetType type) {
 		TacticalCharacter tc = context.getTargets().get(type);
 		if (tc == null) {
 			return Mono.just(context);
@@ -55,12 +56,12 @@ public class MeleeAttackDefensiveBonusProcessor {
 			.flatMap(list -> processShieldAndSParryBonus(context, list, type));
 	}
 
-	private Mono<MeleeAttackContext> processShieldAndSParryBonus(MeleeAttackContext context, List<TacticalAction> actions,
+	private Mono<AttackContext> processShieldAndSParryBonus(AttackContext context, List<TacticalAction> actions,
 		AttackTargetType type) {
 		return processParry(context, actions, type).then(processShield(context, actions, type));
 	}
 
-	private Mono<MeleeAttackContext> processParry(MeleeAttackContext context, List<TacticalAction> targetActions, AttackTargetType type) {
+	private Mono<AttackContext> processParry(AttackContext context, List<TacticalAction> targetActions, AttackTargetType type) {
 		TacticalCharacter target = context.getTargets().get(type);
 		boolean checkUpdateParry = false;
 
@@ -93,7 +94,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 			.flatMap(e -> updateParryActionIfRequired(context, attack, update));
 	}
 
-	private Mono<MeleeAttackContext> processShield(MeleeAttackContext context, List<TacticalAction> targetActions,
+	private Mono<AttackContext> processShield(AttackContext context, List<TacticalAction> targetActions,
 		AttackTargetType type) {
 		TacticalCharacter target = context.getTargets().get(type);
 		boolean checkUpdateParry = false;
@@ -127,7 +128,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 			.flatMap(e -> updateBlockedActionIfRequired(context, attack, update));
 	}
 
-	private MeleeAttackContext processParry(MeleeAttackContext context, TacticalActionMeleeAttack attack, TacticalCharacter target,
+	private AttackContext processParry(AttackContext context, TacticalActionMeleeAttack attack, TacticalCharacter target,
 		AttackTargetType type) {
 		int parry = 0;
 		if (statusService.canParry(target)) {
@@ -137,7 +138,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		return context;
 	}
 
-	private Mono<MeleeAttackContext> processShield(MeleeAttackContext context, TacticalCharacter target, AttackTargetType type) {
+	private Mono<AttackContext> processShield(AttackContext context, TacticalCharacter target, AttackTargetType type) {
 		CharacterItem item = itemResolver.getItem(target, ItemPosition.OFF_HAND);
 		int bonus = 0;
 		if (statusService.canBlock()) {
@@ -147,7 +148,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		return Mono.just(context);
 	}
 
-	private Mono<MeleeAttackContext> updateParryActionIfRequired(MeleeAttackContext context, TacticalActionMeleeAttack attack,
+	private Mono<AttackContext> updateParryActionIfRequired(AttackContext context, TacticalActionMeleeAttack attack,
 		boolean checkUpdateParry) {
 		if (checkUpdateParry && attack != null) {
 			attack.setParried(true);
@@ -158,7 +159,7 @@ public class MeleeAttackDefensiveBonusProcessor {
 		}
 	}
 
-	private Mono<MeleeAttackContext> updateBlockedActionIfRequired(MeleeAttackContext context, TacticalActionMeleeAttack attack,
+	private Mono<AttackContext> updateBlockedActionIfRequired(AttackContext context, TacticalActionMeleeAttack attack,
 		boolean checkUpdateBlock) {
 		if (checkUpdateBlock && attack != null) {
 			attack.setBlocked(true);

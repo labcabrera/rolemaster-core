@@ -27,7 +27,8 @@ public class AttackBreakageProcessor extends AbstractAttackProcessor {
 	@Autowired
 	private TacticalCharacterItemService itemService;
 
-	public <T extends AttackContext<?>> Mono<T> apply(T context) {
+	@Override
+	public Mono<AttackContext> apply(AttackContext context) {
 		if (context.getAction().getState() != TacticalActionState.PENDING) {
 			log.debug("Ignoring weapon brekage processor");
 			return Mono.just(context);
@@ -38,7 +39,7 @@ public class AttackBreakageProcessor extends AbstractAttackProcessor {
 			.flatMap(ctx -> apply(ctx, AttackTargetType.OFF_HAND));
 	}
 
-	private <T extends AttackContext<?>> Mono<T> apply(T context, AttackTargetType type) {
+	private Mono<AttackContext> apply(AttackContext context, AttackTargetType type) {
 		if (!context.getAction().getRolls().containsKey(type)) {
 			return Mono.just(context);
 		}

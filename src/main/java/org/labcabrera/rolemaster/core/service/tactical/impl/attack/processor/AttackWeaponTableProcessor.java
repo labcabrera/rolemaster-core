@@ -25,7 +25,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class AttackWeaponTableProcessor {
+public class AttackWeaponTableProcessor extends AbstractAttackProcessor {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
 	private static final String PATTERN_CRIT = "^([0-9]+)(\\w)(\\w)$";
@@ -38,7 +38,7 @@ public class AttackWeaponTableProcessor {
 	@Autowired
 	private TacticalCharacterItemResolver itemResolver;
 
-	public <T extends AttackContext<?>> Mono<T> apply(T context) {
+	public Mono<AttackContext> apply(AttackContext context) {
 		if (context.getAction().getState() != TacticalActionState.PENDING) {
 			return Mono.just(context);
 		}
@@ -49,12 +49,12 @@ public class AttackWeaponTableProcessor {
 			.map(this::updateState);
 	}
 
-	private <T extends AttackContext<?>> T processMainHandAttack(T context) {
+	private AttackContext processMainHandAttack(AttackContext context) {
 		log.debug("Processing weapon main attack table for attack {}", context.getAction().getId());
 		return processAttack(context, AttackTargetType.MAIN_HAND);
 	}
 
-	private <T extends AttackContext<?>> T processOffHandAttack(T context) {
+	private AttackContext processOffHandAttack(AttackContext context) {
 		log.debug("Processing weapon off-hand table attack for attack {}", context.getAction().getId());
 		if (context.getAction().getTargets().size() != 2) {
 			return context;
@@ -62,7 +62,7 @@ public class AttackWeaponTableProcessor {
 		return processAttack(context, AttackTargetType.OFF_HAND);
 	}
 
-	private <T extends AttackContext<?>> T processAttack(T context, AttackTargetType type) {
+	private AttackContext processAttack(AttackContext context, AttackTargetType type) {
 		ItemPosition itemPosition = type == AttackTargetType.MAIN_HAND ? ItemPosition.MAIN_HAND : ItemPosition.OFF_HAND;
 		CharacterItem mainHandItem = itemResolver.getWeapon(context.getSource(), itemPosition);
 		if (mainHandItem == null) {
@@ -123,7 +123,7 @@ public class AttackWeaponTableProcessor {
 
 	}
 
-	private <T extends AttackContext<?>> T updateState(T context) {
+	private AttackContext updateState(AttackContext context) {
 		TacticalActionAttack action = context.getAction();
 		boolean requiresCriticalResolution = action.hasUnresolvedCritical();
 		if (requiresCriticalResolution) {

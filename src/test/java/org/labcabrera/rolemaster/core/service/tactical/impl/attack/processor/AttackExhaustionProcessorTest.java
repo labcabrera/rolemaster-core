@@ -37,7 +37,7 @@ class AttackExhaustionProcessorTest {
 	private TacticalRoundRepository roundRepository;
 
 	@Mock
-	private MeleeAttackContext context;
+	private AttackContext context;
 
 	@Mock
 	private TacticalCharacter character;
@@ -71,28 +71,28 @@ class AttackExhaustionProcessorTest {
 
 	@Test
 	void test() {
-		AttackContext<?> block = processor.apply(context).share().block();
+		AttackContext block = processor.apply(context).share().block();
 		assertEquals(new BigDecimal("1.500"), block.getAction().getExhaustionPoints());
 	}
 
 	@Test
 	void testHpM75() {
 		when(character.getHp()).thenReturn(Hp.builder().max(100).current(70).build());
-		AttackContext<?> block = processor.apply(context).share().block();
+		AttackContext block = processor.apply(context).share().block();
 		assertEquals(new BigDecimal("2.000"), block.getAction().getExhaustionPoints());
 	}
 
 	@Test
 	void testHpM50() {
 		when(character.getHp()).thenReturn(Hp.builder().max(100).current(40).build());
-		AttackContext<?> block = processor.apply(context).share().block();
+		AttackContext block = processor.apply(context).share().block();
 		assertEquals(new BigDecimal("3.000"), block.getAction().getExhaustionPoints());
 	}
 
 	@Test
 	void testMissile() {
 		when(context.isMeleeAttack()).thenReturn(false);
-		AttackContext<?> block = processor.apply(context).share().block();
+		AttackContext block = processor.apply(context).share().block();
 		assertEquals(new BigDecimal("0.500"), block.getAction().getExhaustionPoints());
 	}
 

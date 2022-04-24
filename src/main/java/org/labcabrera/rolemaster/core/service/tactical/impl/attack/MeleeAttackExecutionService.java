@@ -1,23 +1,16 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackBreakageProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackDefensiveBonusProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveBonusProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +20,6 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class MeleeAttackExecutionService {
-
-	@Autowired
-	private TacticalCharacterRepository tacticalCharacterRepository;
 
 	@Autowired
 	private TacticalActionRepository actionRepository;
@@ -52,6 +42,9 @@ public class MeleeAttackExecutionService {
 	@Autowired
 	private AttackResultProcessor attackResultProcessor;
 
+	@Autowired
+	private AttackContextLoader contextLoader;
+
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		if (action.getState() != TacticalActionState.PENDING) {
 			return Mono.just(action);
@@ -60,12 +53,11 @@ public class MeleeAttackExecutionService {
 		action.setRolls(execution.getRolls());
 		action.setFacingMap(execution.getFacingMap());
 
-		MeleeAttackContext context = new MeleeAttackContext();
+		AttackContext context = new AttackContext();
 		context.setAction(action);
 
 		return Mono.just(context)
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MeleeAttackContext>setSource(b))
-			.flatMap(this::loadTargets)
+			.flatMap(contextLoader::apply)
 			.flatMap(fumbleProcessor::apply)
 			.flatMap(breakageProcessor::apply)
 			.flatMap(offensiveBonusProcessor::apply)
@@ -95,24 +87,6 @@ public class MeleeAttackExecutionService {
 		default:
 			break;
 		}
-	}
-
-	private Mono<MeleeAttackContext> loadTargets(MeleeAttackContext context) {
-		List<String> ids = new ArrayList<>(new HashSet<>(context.getAction().getTargets().values()));
-		return tacticalCharacterRepository.findAllById(ids).collectList()
-			.map(list -> {
-				if (list.size() != ids.size()) {
-					throw new BadRequestException("Invalid targets");
-				}
-				context.getAction().getTargets().entrySet().stream().forEach(e -> {
-					AttackTargetType key = e.getKey();
-					String value = e.getValue();
-					TacticalCharacter tc = list.stream().filter(i -> value.equals(e.getValue())).findFirst().orElseThrow();
-					context.getTargets().put(key, tc);
-				});
-				return context;
-			})
-			.flatMap(ctx -> Mono.just(context));
 	}
 
 }

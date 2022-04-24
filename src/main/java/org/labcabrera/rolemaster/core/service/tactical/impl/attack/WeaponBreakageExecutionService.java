@@ -22,17 +22,17 @@ public class WeaponBreakageExecutionService {
 			.flatMap(this::processAttack);
 	}
 
-	private Mono<AttackContext<?>> loadContext(TacticalActionAttack action, WeaponBreakageExecution execution) {
+	private Mono<AttackContext> loadContext(TacticalActionAttack action, WeaponBreakageExecution execution) {
 		//TODO
 		throw new NotImplementedException();
 	}
 
-	private Mono<AttackContext<?>> processBreakage(AttackContext<?> context) {
+	private Mono<AttackContext> processBreakage(AttackContext context) {
 		//TODO
 		throw new NotImplementedException();
 	}
 
-	private Mono<TacticalAction> processAttack(AttackContext<?> context) {
+	private Mono<TacticalAction> processAttack(AttackContext context) {
 		//TODO
 		throw new NotImplementedException();
 	}

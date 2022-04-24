@@ -13,10 +13,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public abstract class AttackContext<A extends TacticalActionAttack> {
+public class AttackContext {
 
 	@Setter
-	private A action;
+	private TacticalActionAttack action;
 
 	private TacticalCharacter source;
 

@@ -4,6 +4,6 @@ import reactor.core.publisher.Mono;
 
 public abstract class AbstractAttackProcessor {
 
-	public abstract <T extends AttackContext<?>> Mono<T> apply(T context);
+	public abstract Mono<AttackContext> apply(AttackContext context);
 
 }

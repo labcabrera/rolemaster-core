@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
  * Service that updates character data based on the outcome of an attack
  */
 @Component
-public class AttackExhaustionProcessor {
+public class AttackExhaustionProcessor extends AbstractAttackProcessor {
 
 	private static final BigDecimal MELEE_DIVISOR = new BigDecimal("2");
 	private static final BigDecimal MISSILE_DIVISOR = new BigDecimal("6");
@@ -29,19 +29,20 @@ public class AttackExhaustionProcessor {
 	@Autowired
 	private TacticalSessionRepository sessionRepository;
 
-	public <T extends AttackContext<?>> Mono<T> apply(T context) {
+	@Override
+	public Mono<AttackContext> apply(AttackContext context) {
 		return roundRepository.findById(context.getAction().getRoundId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Round not found")))
 			.flatMap(round -> this.apply(context, round));
 	}
 
-	private <T extends AttackContext<?>> Mono<T> apply(T context, TacticalRound round) {
+	private Mono<AttackContext> apply(AttackContext context, TacticalRound round) {
 		return sessionRepository.findById(round.getTacticalSessionId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Session not found")))
 			.flatMap(session -> this.apply(context, session));
 	}
 
-	private <T extends AttackContext<?>> Mono<T> apply(T context, TacticalSession session) {
+	private Mono<AttackContext> apply(AttackContext context, TacticalSession session) {
 		BigDecimal base = BigDecimal.ONE;
 		BigDecimal divisor = context.isMeleeAttack() ? MELEE_DIVISOR : MISSILE_DIVISOR;
 

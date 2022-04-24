@@ -30,7 +30,7 @@ public class AttackFumbleProcessor extends AbstractAttackProcessor {
 	private TacticalCharacterItemService itemService;
 
 	@Override
-	public <T extends AttackContext<?>> Mono<T> apply(T context) {
+	public Mono<AttackContext> apply(AttackContext context) {
 		if (context.getAction().getState() != TacticalActionState.PENDING) {
 			log.debug("Ignoring attack fumble processor");
 			return Mono.just(context);
@@ -41,11 +41,11 @@ public class AttackFumbleProcessor extends AbstractAttackProcessor {
 			.flatMap(this::processOffHandAttack);
 	}
 
-	private <T extends AttackContext<?>> Mono<T> processMainHandAttack(T context) {
+	private Mono<AttackContext> processMainHandAttack(AttackContext context) {
 		return fumbleHandAttack(context, AttackTargetType.MAIN_HAND);
 	}
 
-	private <T extends AttackContext<?>> Mono<T> processOffHandAttack(T context) {
+	private Mono<AttackContext> processOffHandAttack(AttackContext context) {
 		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
 			if (meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
 				return fumbleHandAttack(context, AttackTargetType.OFF_HAND);
@@ -54,7 +54,7 @@ public class AttackFumbleProcessor extends AbstractAttackProcessor {
 		return Mono.just(context);
 	}
 
-	private <T extends AttackContext<?>> Mono<T> fumbleHandAttack(T context, AttackTargetType type) {
+	private Mono<AttackContext> fumbleHandAttack(AttackContext context, AttackTargetType type) {
 		CharacterItem weapon = itemResolver.getWeapon(context.getSource(), type);
 		return Mono.just(context)
 			.zipWith(getFumble(weapon))
