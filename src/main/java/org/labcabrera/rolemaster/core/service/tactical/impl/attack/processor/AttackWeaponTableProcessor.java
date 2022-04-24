@@ -87,7 +87,6 @@ public class AttackWeaponTableProcessor {
 		String stringResult = weaponTable.get(weaponTableId, armor, tableAttackResult);
 
 		AttackResult result = AttackResult.builder()
-			.target(target)
 			.weaponTableId(weaponTableId)
 			.result(attackResult)
 			.totalBonus(offensiveBonus)

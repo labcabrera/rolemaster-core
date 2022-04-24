@@ -78,7 +78,6 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 
 		assertEquals(TacticalActionState.RESOLVED, missileResolved01.getState());
 		assertEquals(5, missileResolved01.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
-		assertEquals(taMelee02.getId(), missileResolved01.getAttackResults().get(AttackTargetType.MAIN_HAND).getTarget());
 	}
 
 }
