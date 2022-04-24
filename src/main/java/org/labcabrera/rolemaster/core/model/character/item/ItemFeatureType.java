@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.Getter;
 
-public enum CharacterItemFeatureType implements CodeNameEnum {
+public enum ItemFeatureType implements CodeNameEnum {
 
 	BONUS("bonus", "Bonus", false),
 
@@ -36,7 +36,7 @@ public enum CharacterItemFeatureType implements CodeNameEnum {
 	@Getter
 	private boolean allowMultipleValues;
 
-	private CharacterItemFeatureType(String code, String name, boolean allowMultipleValues) {
+	private ItemFeatureType(String code, String name, boolean allowMultipleValues) {
 		this.code = code;
 		this.name = name;
 		this.allowMultipleValues = allowMultipleValues;

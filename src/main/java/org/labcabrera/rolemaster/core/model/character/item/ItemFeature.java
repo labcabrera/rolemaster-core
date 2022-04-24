@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CharacterItemFeature {
+public class ItemFeature {
 
-	private CharacterItemFeatureType type;
+	private ItemFeatureType type;
 
 	private String value;
 

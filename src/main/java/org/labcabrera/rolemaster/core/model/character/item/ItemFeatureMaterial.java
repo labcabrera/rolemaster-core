@@ -1,0 +1,32 @@
+package org.labcabrera.rolemaster.core.model.character.item;
+
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import lombok.Getter;
+
+public enum ItemFeatureMaterial implements CodeNameEnum {
+
+	WOOD("wood", "Wood");
+
+	private String code;
+
+	@Getter
+	private String name;
+
+	@Getter
+	private boolean allowMultipleValues;
+
+	private ItemFeatureMaterial(String code, String name) {
+		this.code = code;
+		this.name = name;
+	}
+
+	@JsonValue
+	@Override
+	public String getCode() {
+		return code;
+	}
+
+}

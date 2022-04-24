@@ -1,13 +1,16 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl;
 
+import java.util.List;
+
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
-import org.labcabrera.rolemaster.core.model.character.item.CharacterItemFeature;
-import org.labcabrera.rolemaster.core.model.character.item.CharacterItemFeatureType;
+import org.labcabrera.rolemaster.core.model.character.item.ItemFeature;
+import org.labcabrera.rolemaster.core.model.character.item.ItemFeatureType;
 import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.labcabrera.rolemaster.core.model.item.Weapon;
+import org.labcabrera.rolemaster.core.model.item.WeaponRange;
 import org.labcabrera.rolemaster.core.repository.WeaponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +27,7 @@ public class TacticalCharacterItemService {
 		if (item == null) {
 			return 0;
 		}
-		String feature = getFeature(item, CharacterItemFeatureType.SHIELD_BONUS);
+		String feature = getFeature(item, ItemFeatureType.SHIELD_BONUS);
 		if (feature != null) {
 			return Integer.parseInt(feature);
 		}
@@ -42,7 +45,7 @@ public class TacticalCharacterItemService {
 	}
 
 	public Mono<Integer> getFumble(CharacterItem item) {
-		String feature = getFeature(item, CharacterItemFeatureType.SHIELD_BONUS);
+		String feature = getFeature(item, ItemFeatureType.SHIELD_BONUS);
 		if (feature != null) {
 			return Mono.just(Integer.parseInt(feature));
 		}
@@ -51,13 +54,13 @@ public class TacticalCharacterItemService {
 			.map(Weapon::getFumble);
 	}
 
-	public String getFeature(CharacterItem item, CharacterItemFeatureType type) {
+	public String getFeature(CharacterItem item, ItemFeatureType type) {
 		if (item.getFeatures() == null) {
 			return null;
 		}
 		return item.getFeatures().stream()
 			.filter(e -> e.getType() == type)
-			.map(CharacterItemFeature::getValue)
+			.map(ItemFeature::getValue)
 			.findFirst().orElse(null);
 	}
 
@@ -72,6 +75,25 @@ public class TacticalCharacterItemService {
 		default:
 			throw new DataConsistenceException("Unmapped shield " + itemId);
 		}
+	}
+
+	public Mono<Integer> getRangeModifier(CharacterItem item, Float distance) {
+		//TODO check customization & talents
+		return weaponRepository.findById(item.getItemId())
+			.map(weapon -> {
+				List<WeaponRange> list = weapon.getRangeModifiers().stream().filter(e -> checkDistance(e, distance)).toList();
+				if (list.size() == 0) {
+					throw new BadRequestException("Invalid distance " + distance);
+				}
+				else if (list.size() > 1) {
+					throw new DataConsistenceException("Multiple range modifiers for distance " + distance);
+				}
+				return list.iterator().next().getModifier();
+			});
+	}
+
+	private boolean checkDistance(WeaponRange range, Float distance) {
+		return true;
 	}
 
 }

@@ -5,10 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
-import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
-import org.labcabrera.rolemaster.core.model.item.RangeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
@@ -17,9 +14,9 @@ import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifi
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
-import org.labcabrera.rolemaster.core.repository.WeaponRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
+import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -35,10 +32,13 @@ public class OffensiveBonusProcessor {
 	private TacticalSkillService skillService;
 
 	@Autowired
-	private WeaponRepository weaponRepository;
+	private TacticalCharacterItemResolver characterItemResolver;
 
 	@Autowired
-	private TacticalCharacterItemResolver characterItemResolver;
+	private TacticalCharacterItemResolver itemResolver;
+
+	@Autowired
+	private TacticalCharacterItemService itemService;
 
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
 		if (context.getAction().isFlumbe()) {
@@ -162,13 +162,10 @@ public class OffensiveBonusProcessor {
 
 	private <T extends AttackContext<?>> Mono<T> loadBonusDistance(T context) {
 		if (context.getAction()instanceof TacticalActionMissileAttack missileAttack) {
-			CharacterItem itemMainHand = context.getSource().getItems().stream()
-				.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
-				.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
-			int distance = missileAttack.getDistance();
-			String weaponId = itemMainHand.getItemId();
+			CharacterItem itemMainHand = itemResolver.getMainHandWeapon(context.getSource());
+			Float distance = missileAttack.getDistance();
 			return Mono.just(context)
-				.zipWith(getBonusDistance(distance, weaponId))
+				.zipWith(itemService.getRangeModifier(itemMainHand, distance))
 				.map(pair -> {
 					int bonus = pair.getT2();
 					Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
@@ -263,19 +260,6 @@ public class OffensiveBonusProcessor {
 			return Integer.min(0, percent - 60);
 		}
 		return 0;
-	}
-
-	private Mono<Integer> getBonusDistance(Integer distance, String weaponId) {
-		return weaponRepository.findById(weaponId)
-			.map(weapon -> {
-				int modifier = -1000;
-				for (RangeModifier rangeModifier : weapon.getRangeModifiers()) {
-					if (distance <= rangeModifier.getRange() && rangeModifier.getModifier() > modifier) {
-						modifier = rangeModifier.getModifier();
-					}
-				}
-				return modifier;
-			});
 	}
 
 	private <T extends AttackContext<?>> T cleanUp(T context) {

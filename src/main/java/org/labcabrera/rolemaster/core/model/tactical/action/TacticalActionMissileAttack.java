@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class TacticalActionMissileAttack extends TacticalActionAttack {
 
-	private Integer distance;
+	private Float distance;
 
 	private MissileCover cover;
 

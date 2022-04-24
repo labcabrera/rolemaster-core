@@ -22,7 +22,7 @@ public class MissileAttackExecution extends TacticalActionExecution {
 	private OpenRoll roll;
 
 	@NotNull
-	private Integer distance;
+	private Float distance;
 
 	@NotNull
 	private MissileCover cover;

@@ -47,7 +47,7 @@ public class CharacterItem {
 	private Boolean broken = false;
 
 	@Builder.Default
-	private List<CharacterItemFeature> features = new ArrayList<>();
+	private List<ItemFeature> features = new ArrayList<>();
 
 	private String description;
 

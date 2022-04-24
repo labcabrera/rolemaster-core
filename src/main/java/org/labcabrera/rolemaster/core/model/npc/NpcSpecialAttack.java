@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.model.npc;
 
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.model.character.item.CharacterItemFeature;
+import org.labcabrera.rolemaster.core.model.character.item.ItemFeature;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +21,6 @@ public class NpcSpecialAttack {
 
 	private String skillId;
 
-	private List<CharacterItemFeature> features;
+	private List<ItemFeature> features;
 
 }

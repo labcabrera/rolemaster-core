@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RangeModifier {
+public class WeaponRange {
 
-	private Integer range;
+	private Float min;
+
+	private Float max;
 
 	private Integer modifier;
 
