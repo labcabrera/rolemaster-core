@@ -72,6 +72,9 @@ public class AttackBreakageProcessor extends AbstractAttackProcessor {
 
 	public boolean checkBreakage(Integer breakage, OpenRoll openRoll) {
 		int roll = openRoll.getRolls() != null && !openRoll.getRolls().isEmpty() ? openRoll.getFirstRoll() : openRoll.getResult();
+		if (roll > 100) {
+			return false;
+		}
 		int checkModule = roll % 11;
 		if (checkModule != 0) {
 			return false;

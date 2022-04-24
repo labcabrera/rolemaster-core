@@ -6,13 +6,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackBreakageProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.MeleeAttackDefensiveBonusProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveBonusProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,25 +19,10 @@ public class MeleeAttackExecutionService {
 	private TacticalActionRepository actionRepository;
 
 	@Autowired
-	private OffensiveBonusProcessor offensiveBonusProcessor;
-
-	@Autowired
-	private MeleeAttackDefensiveBonusProcessor defensiveBonusProcessor;
-
-	@Autowired
-	private AttackWeaponTableProcessor weaponTableProcessor;
-
-	@Autowired
-	private AttackFumbleProcessor fumbleProcessor;
-
-	@Autowired
-	private AttackBreakageProcessor breakageProcessor;
-
-	@Autowired
-	private AttackResultProcessor attackResultProcessor;
-
-	@Autowired
 	private AttackContextLoader contextLoader;
+
+	@Autowired
+	private AttackProcessorService processorService;
 
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		if (action.getState() != TacticalActionState.PENDING) {
@@ -52,18 +31,9 @@ public class MeleeAttackExecutionService {
 		loadTargets(action, execution);
 		action.setRolls(execution.getRolls());
 		action.setFacingMap(execution.getFacingMap());
-
-		AttackContext context = new AttackContext();
-		context.setAction(action);
-
-		return Mono.just(context)
+		return Mono.just(new AttackContext(action))
 			.flatMap(contextLoader::apply)
-			.flatMap(fumbleProcessor::apply)
-			.flatMap(breakageProcessor::apply)
-			.flatMap(offensiveBonusProcessor::apply)
-			.flatMap(defensiveBonusProcessor::apply)
-			.flatMap(weaponTableProcessor::apply)
-			.flatMap(attackResultProcessor::apply)
+			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMeleeAttack.class::cast);

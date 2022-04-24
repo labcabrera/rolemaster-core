@@ -122,8 +122,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 		return actionRepository.findById(actionId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
 			.map(TacticalActionAttack.class::cast)
-			.flatMap(attack -> breakageExecutionService.apply(attack, execution))
-			.map(TacticalActionAttack.class::cast);
+			.flatMap(attack -> breakageExecutionService.apply(attack, execution));
 	}
 
 }

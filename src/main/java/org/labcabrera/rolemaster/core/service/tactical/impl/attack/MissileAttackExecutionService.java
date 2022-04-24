@@ -7,10 +7,6 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackExhaustionProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.OffensiveBonusProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,16 +19,7 @@ public class MissileAttackExecutionService {
 	private TacticalActionRepository actionRepository;
 
 	@Autowired
-	private OffensiveBonusProcessor offensiveBonusProcessor;
-
-	@Autowired
-	private AttackWeaponTableProcessor attackWeaponTableProcessor;
-
-	@Autowired
-	private AttackResultProcessor attackResultProcessor;
-
-	@Autowired
-	private AttackExhaustionProcessor exhaustionProcessor;
+	private AttackProcessorService processorService;
 
 	@Autowired
 	private AttackContextLoader contextLoader;
@@ -42,16 +29,9 @@ public class MissileAttackExecutionService {
 		action.setCover(execution.getCover());
 		action.setRolls(new EnumMap<>(AttackTargetType.class));
 		action.getRolls().put(AttackTargetType.MAIN_HAND, execution.getRoll());
-
-		AttackContext context = new AttackContext();
-		context.setAction(action);
-
-		return Mono.just(context)
+		return Mono.just(new AttackContext(action))
 			.flatMap(contextLoader::apply)
-			.flatMap(offensiveBonusProcessor::apply)
-			.flatMap(attackWeaponTableProcessor::apply)
-			.flatMap(exhaustionProcessor::apply)
-			.flatMap(attackResultProcessor::apply)
+			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMissileAttack.class::cast);
