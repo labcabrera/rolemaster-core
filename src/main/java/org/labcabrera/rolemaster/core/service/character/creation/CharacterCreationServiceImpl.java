@@ -14,6 +14,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterResistance;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.CharacterStatus;
+import org.labcabrera.rolemaster.core.model.character.CharacterWeight;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.RankType;
@@ -85,7 +86,9 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			.professionId(request.getProfessionId())
 			.age(request.getAge())
 			.height(request.getHeight())
-			.weight(request.getWeight())
+			.weight(CharacterWeight.builder()
+				.characterWeight(request.getWeight())
+				.build())
 			.status(CharacterStatus.PARTIALLY_CREATED)
 			.build();
 

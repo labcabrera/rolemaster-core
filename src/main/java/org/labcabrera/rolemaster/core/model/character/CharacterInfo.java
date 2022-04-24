@@ -45,9 +45,6 @@ public class CharacterInfo {
 	@Schema(description = "Character height in cm.", required = true, example = "184")
 	private Integer height;
 
-	@Schema(description = "Character weight in kg.", required = true, example = "72")
-	private Integer weight;
-
 	@Schema(description = "Character race identifier.", required = true, example = "common-men")
 	private String raceId;
 
@@ -97,7 +94,13 @@ public class CharacterInfo {
 	private Integer armor = 1;
 
 	@Builder.Default
-	private BigDecimal carriedWeight = BigDecimal.ZERO;
+	private Integer armorPenalty = 0;
+
+	@Builder.Default
+	private Integer armorQuPenalty = 0;
+
+	@Builder.Default
+	private CharacterWeight weight = new CharacterWeight();
 
 	@Builder.Default
 	private List<String> notes = new ArrayList<>();

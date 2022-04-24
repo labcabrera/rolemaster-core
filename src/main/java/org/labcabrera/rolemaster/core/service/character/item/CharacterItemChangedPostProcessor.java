@@ -26,6 +26,15 @@ public class CharacterItemChangedPostProcessor {
 	@Autowired
 	private CharacterItemRepository characterItemRepository;
 
+	@Autowired
+	private WeightPenaltyCalculator weightPenaltyCalculator;
+
+	@Autowired
+	private ArmorPenaltyCalculator armorPenaltyCalculator;
+
+	@Autowired
+	private DefensiveBonusCalculator defensiveBonusCalculator;
+
 	public <E> Mono<E> apply(E e, String characterId) {
 		return Mono.zip(
 			Mono.just(e),
@@ -33,7 +42,9 @@ public class CharacterItemChangedPostProcessor {
 			characterItemRepository.findByCharacterId(characterId).collectList())
 			.map(this::processWeigth)
 			.map(this::processArmor)
-			.map(this::processArmorPenalty)
+			.map(t -> armorPenaltyCalculator.apply(t, t.getT2()))
+			.map(t -> weightPenaltyCalculator.apply(t, t.getT2()))
+			.map(t -> defensiveBonusCalculator.apply(t, t.getT2()))
 			.map(this::processMovementRate)
 			.flatMap(tuple -> characterRepository.save(tuple.getT2()).thenReturn(e));
 	}
@@ -41,11 +52,16 @@ public class CharacterItemChangedPostProcessor {
 	private <E> Tuple3<E, CharacterInfo, List<CharacterItem>> processWeigth(Tuple3<E, CharacterInfo, List<CharacterItem>> tuple) {
 		List<CharacterItem> items = tuple.getT3().stream().filter(this::isCarried).toList();
 		BigDecimal total = BigDecimal.ZERO;
+		BigDecimal itemWeight = BigDecimal.ZERO;
 		for (CharacterItem item : items) {
 			BigDecimal w = item.getWeight().multiply(new BigDecimal(item.getCount()));
 			total = total.add(w);
+			if (item.getType() != ItemType.ARMOR_PIECE && item.getArmorType() != ArmorItemType.ARMOR) {
+				itemWeight = itemWeight.add(w);
+			}
 		}
-		tuple.getT2().setCarriedWeight(total);
+		tuple.getT2().getWeight().setTotalCarriedWeight(total);
+		tuple.getT2().getWeight().setItemWeight(itemWeight);
 		return tuple;
 	}
 
@@ -65,11 +81,6 @@ public class CharacterItemChangedPostProcessor {
 			}
 		}
 		tuple.getT2().setArmor(at);
-		return tuple;
-	}
-
-	private <E> Tuple3<E, CharacterInfo, List<CharacterItem>> processArmorPenalty(Tuple3<E, CharacterInfo, List<CharacterItem>> tuple) {
-		//TODO armor penalty
 		return tuple;
 	}
 
