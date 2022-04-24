@@ -10,14 +10,16 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeA
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
+@Order(0)
 @Component
 @Slf4j
-public class AttackFumbleProcessor {
+public class AttackFumbleProcessor extends AbstractAttackProcessor {
 
 	private static final int NO_WEAPON_FUMBLE = 2;
 
@@ -27,7 +29,13 @@ public class AttackFumbleProcessor {
 	@Autowired
 	private TacticalCharacterItemService itemService;
 
+	@Override
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
+		if (context.getAction().getState() != TacticalActionState.PENDING) {
+			log.debug("Ignoring attack fumble processor");
+			return Mono.just(context);
+		}
+		log.debug("Processing attack fumble");
 		return Mono.just(context)
 			.flatMap(this::processMainHandAttack)
 			.flatMap(this::processOffHandAttack);

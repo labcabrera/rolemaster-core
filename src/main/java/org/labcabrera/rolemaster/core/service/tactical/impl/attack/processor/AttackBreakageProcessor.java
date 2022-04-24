@@ -10,14 +10,16 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
+@Order(1)
 @Component
 @Slf4j
-public class AttackBreakageProcessor {
+public class AttackBreakageProcessor extends AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalCharacterItemResolver itemResolver;
@@ -26,6 +28,11 @@ public class AttackBreakageProcessor {
 	private TacticalCharacterItemService itemService;
 
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
+		if (context.getAction().getState() != TacticalActionState.PENDING) {
+			log.debug("Ignoring weapon brekage processor");
+			return Mono.just(context);
+		}
+		log.debug("Processing weapon breakage");
 		return Mono.just(context)
 			.flatMap(ctx -> apply(ctx, AttackTargetType.MAIN_HAND))
 			.flatMap(ctx -> apply(ctx, AttackTargetType.OFF_HAND));

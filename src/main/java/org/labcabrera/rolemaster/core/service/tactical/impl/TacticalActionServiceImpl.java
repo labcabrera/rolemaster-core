@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDecla
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.WeaponBreakageExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.message.Messages.Errors;
@@ -18,6 +19,7 @@ import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.FumbleAttackExecutionService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.WeaponBreakageExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 
 	@Autowired
 	private TacticalActionExecutionRouter tacticalActionExecutionRouter;
+
+	@Autowired
+	private WeaponBreakageExecutionService breakageExecutionService;
 
 	@Override
 	public Mono<TacticalAction> getDeclaredAction(String actionId) {
@@ -107,6 +112,15 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 			.map(e -> fumbleAttackExecutionService.apply(e, execution))
 			//TODO Process fumble result
 			.flatMap(actionRepository::save);
+	}
+
+	@Override
+	public Mono<TacticalAction> executeBreakage(String actionId, WeaponBreakageExecution execution) {
+		return actionRepository.findById(actionId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
+			.map(TacticalActionAttack.class::cast)
+			.flatMap(attack -> breakageExecutionService.apply(attack, execution))
+			.map(TacticalActionAttack.class::cast);
 	}
 
 }

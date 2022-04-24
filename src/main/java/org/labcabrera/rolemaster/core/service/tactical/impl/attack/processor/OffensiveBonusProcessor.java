@@ -20,9 +20,11 @@ import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterIte
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Component
+@Slf4j
 public class OffensiveBonusProcessor {
 
 	private static final List<Debuff> NO_DEFENSIVE_BONUS_DEBUFS = Arrays.asList(Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS,
@@ -44,6 +46,7 @@ public class OffensiveBonusProcessor {
 		if (context.getAction().isFlumbe()) {
 			return Mono.just(context);
 		}
+		log.debug("Processing offensive bonus");
 		return Mono.just(context)
 			.map(this::initialize)
 			.flatMap(this::loadSkillBonus)
