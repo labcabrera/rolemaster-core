@@ -51,7 +51,8 @@ public class MissileAttackExecutionService {
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(attackWeaponTableProcessor::apply)
 			.flatMap(exhaustionProcessor::apply)
-			.flatMap(act -> attackResultProcessor.apply(action))
+			.flatMap(attackResultProcessor::apply)
+			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMissileAttack.class::cast);
 	}

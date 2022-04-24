@@ -20,6 +20,7 @@ import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.FumbleAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.WeaponBreakageExecutionService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +102,9 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 			.map(e -> criticalAttackExecutionService.apply(e, request))
 			.flatMap(actionRepository::save)
 			.map(TacticalActionAttack.class::cast)
-			.flatMap(e -> attackResultProcessor.apply(e));
+			.map(e -> new AttackContext(e))
+			.flatMap(attackResultProcessor::apply)
+			.map(AttackContext::getAction);
 	}
 
 	@Override

@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
  */
 @Component
 @Slf4j
-public class AttackResultProcessor {
+public class AttackResultProcessor extends AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalActionRepository tacticalActionRepository;
@@ -35,17 +35,20 @@ public class AttackResultProcessor {
 	@Autowired
 	private TacticalLogService logService;
 
-	public Mono<TacticalActionAttack> apply(TacticalActionAttack attack) {
+	@Override
+	public Mono<AttackContext> apply(AttackContext context) {
+		TacticalActionAttack attack = context.getAction();
 		log.info("Processing attack result for action {} ({})", attack.getId(), attack.getState());
 		if (attack.getState() != TacticalActionState.PENDING_RESOLUTION) {
-			return Mono.just(attack);
+			return Mono.just(context);
 		}
 		return Mono.just(attack)
 			.then(updateTarget(attack, AttackTargetType.MAIN_HAND))
 			.then(updateTarget(attack, AttackTargetType.OFF_HAND))
 			.then(updateSource(attack))
 			.then(updateAttack(attack))
-			.flatMap(logService::logAttackResult);
+			.flatMap(logService::logAttackResult)
+			.thenReturn(context);
 	}
 
 	private Mono<TacticalCharacter> updateTarget(TacticalActionAttack attack, AttackTargetType type) {

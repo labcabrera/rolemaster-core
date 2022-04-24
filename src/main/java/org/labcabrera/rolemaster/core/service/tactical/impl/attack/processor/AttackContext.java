@@ -10,9 +10,11 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
+@NoArgsConstructor
 public class AttackContext {
 
 	@Setter
@@ -25,10 +27,13 @@ public class AttackContext {
 	@Setter
 	private Weapon weapon;
 
-	@SuppressWarnings({ "unchecked" })
-	public <E> E setSource(TacticalCharacter value) {
+	public AttackContext(TacticalActionAttack action) {
+		this.action = action;
+	}
+
+	public AttackContext setSource(TacticalCharacter value) {
 		this.source = value;
-		return (E) this;
+		return this;
 	}
 
 	public boolean isMeleeAttack() {

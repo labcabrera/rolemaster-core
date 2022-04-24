@@ -63,7 +63,8 @@ public class MeleeAttackExecutionService {
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(defensiveBonusProcessor::apply)
 			.flatMap(weaponTableProcessor::apply)
-			.flatMap(ctx -> attackResultProcessor.apply(ctx.getAction()))
+			.flatMap(attackResultProcessor::apply)
+			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMeleeAttack.class::cast);
 	}

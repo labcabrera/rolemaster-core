@@ -24,7 +24,7 @@ public class AttackContextLoader extends AbstractAttackProcessor {
 	@Override
 	public Mono<AttackContext> apply(AttackContext context) {
 		return Mono.just(context)
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.<AttackContext>setSource(b))
+			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.setSource(b))
 			.flatMap(this::loadTargets);
 	}
 
