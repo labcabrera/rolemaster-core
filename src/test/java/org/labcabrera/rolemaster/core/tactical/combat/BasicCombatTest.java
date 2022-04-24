@@ -76,7 +76,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 
 		assertEquals(-10, bonusMap.values().stream().filter(e -> e != 0).reduce(0, (a, b) -> a + b));
 		assertEquals(TacticalActionState.RESOLVED, meleeResolved01.getState());
-		assertEquals(6, meleeResolved01.getAttackResults().get(0).getHp());
+		assertEquals(6, meleeResolved01.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
 	}
 
 }

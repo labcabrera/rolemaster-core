@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
@@ -33,9 +34,7 @@ public class CriticalAttackExecutionService {
 		}
 		TacticalActionAttack tacticalAttack = (TacticalActionAttack) action;
 
-		List<TacticalCriticalResult> pending = tacticalAttack.getCriticalResults().stream()
-			.filter(e -> e.getCriticalTableResult() == null)
-			.toList();
+		List<TacticalCriticalResult> pending = getPendingCriticalResults(tacticalAttack);
 		List<String> keys = execution.getRolls().keySet().stream().sorted().toList();
 
 		if (pending.size() != keys.size()) {
@@ -54,6 +53,15 @@ public class CriticalAttackExecutionService {
 		}
 		action.setState(TacticalActionState.PENDING_RESOLUTION);
 		return action;
+	}
+
+	private List<TacticalCriticalResult> getPendingCriticalResults(TacticalActionAttack attack) {
+		List<TacticalCriticalResult> results = new ArrayList<>();
+		for (List<TacticalCriticalResult> list : attack.getCriticalResults().values()) {
+			List<TacticalCriticalResult> unresolved = list.stream().filter(e -> e.getCriticalTableResult() == null).toList();
+			results.addAll(unresolved);
+		}
+		return results;
 	}
 
 }

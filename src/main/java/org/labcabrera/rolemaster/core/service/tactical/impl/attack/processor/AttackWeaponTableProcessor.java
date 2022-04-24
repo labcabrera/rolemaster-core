@@ -75,12 +75,12 @@ public class AttackWeaponTableProcessor {
 		Map<?, Integer> offensiveBonusmap = context.getAction().getOffensiveBonusMap().get(type);
 		int bonus = offensiveBonusmap.values().stream().reduce(0, (a, b) -> a + b);
 		int primaryRoll = context.getAction().getRolls().get(type).getResult();
-		processAttackResult(action, target.getId(), weaponTableId, bonus, targetArmor, primaryRoll);
+		processAttackResult(action, type, target.getId(), weaponTableId, bonus, targetArmor, primaryRoll);
 		return context;
 	}
 
-	private void processAttackResult(TacticalActionAttack action, String target, String weaponTableId, int offensiveBonus, int armor,
-		int roll) {
+	private void processAttackResult(TacticalActionAttack action, AttackTargetType type, String target, String weaponTableId,
+		int offensiveBonus, int armor, int roll) {
 
 		int attackResult = offensiveBonus + roll;
 		int tableAttackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, attackResult));
@@ -94,7 +94,7 @@ public class AttackWeaponTableProcessor {
 			.targetArmor(armor)
 			.hp(0)
 			.build();
-		action.getAttackResults().add(result);
+		action.getAttackResults().put(type, result);
 
 		Pattern patternHp = Pattern.compile(PATTERN_HP);
 		Matcher matcherHp = patternHp.matcher(stringResult);
@@ -108,13 +108,13 @@ public class AttackWeaponTableProcessor {
 			if (matcherCrit.matches()) {
 				int hp = Integer.parseInt(matcherCrit.group(1));
 				CriticalSeverity severity = CriticalSeverity.valueOf(matcherCrit.group(2));
-				CriticalType type = CriticalType.valueOf(matcherCrit.group(3));
+				CriticalType criticalType = CriticalType.valueOf(matcherCrit.group(3));
 				result.setHp(hp);
 				TacticalCriticalResult tcr = TacticalCriticalResult.builder()
 					.severity(severity)
-					.type(type)
+					.type(criticalType)
 					.build();
-				action.getCriticalResults().add(tcr);
+				action.addCriticalResult(tcr, type);
 			}
 			else {
 				throw new NotImplementedException("Invalid result format " + attackResult);
@@ -125,9 +125,7 @@ public class AttackWeaponTableProcessor {
 
 	private <T extends AttackContext<?>> T updateState(T context) {
 		TacticalActionAttack action = context.getAction();
-		boolean requiresCriticalResolution = action.getCriticalResults().stream()
-			.filter(e -> e.getCriticalTableResult() == null)
-			.count() > 0;
+		boolean requiresCriticalResolution = action.hasUnresolvedCritical();
 		if (requiresCriticalResolution) {
 			action.setState(TacticalActionState.PENDING_CRITICAL_RESOLUTION);
 		}
