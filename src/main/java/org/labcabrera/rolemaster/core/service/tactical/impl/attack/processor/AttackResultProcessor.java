@@ -37,12 +37,7 @@ public class AttackResultProcessor {
 
 	public Mono<TacticalActionAttack> apply(TacticalActionAttack attack) {
 		log.info("Processing attack result for action {} ({})", attack.getId(), attack.getState());
-		if (attack.isFlumbe()) {
-			attack.setState(TacticalActionState.PENDING_FUMBLE_RESOLUTION);
-			return Mono.just(attack);
-		}
-		if (attack.hasUnresolvedCritical()) {
-			attack.setState(TacticalActionState.PENDING_CRITICAL_RESOLUTION);
+		if (attack.getState() != TacticalActionState.PENDING_RESOLUTION) {
 			return Mono.just(attack);
 		}
 		return Mono.just(attack)

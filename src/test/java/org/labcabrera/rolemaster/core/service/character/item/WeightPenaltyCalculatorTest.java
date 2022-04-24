@@ -32,7 +32,7 @@ class WeightPenaltyCalculatorTest {
 			.bonus(Collections.singletonMap(AttributeBonusType.ATTRIBUTE, 2))
 			.build());
 		character.setWeight(CharacterWeight.builder()
-			.characterWeight(100)
+			.weight(100)
 			.itemWeight(BigDecimal.ZERO)
 			.build());
 		character.setArmorQuPenalty(-10);

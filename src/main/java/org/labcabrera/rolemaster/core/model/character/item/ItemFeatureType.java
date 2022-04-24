@@ -20,12 +20,17 @@ public enum ItemFeatureType implements CodeNameEnum {
 
 	UNBREAKABLE("unbreakable", "Unbreakable", false),
 
+	BREAKAGE("breakage", "Breakage", false),
+
+	/** Weapon strength for breakage check. */
+	BREAKAGE_STRENGTH("breakage-strength", "Breakage strength", false),
+
 	ADDITIONAL_CRITICAL("additional-critical", "Additional critical", true),
 
 	SHATTER_PARRY_WEAPON("shatter-parry-weapon", "Shatter parry weapon", false),
 
 	SPELL_ON_HIT("spell-on-hit", "Spell on hit", true),
-	
+
 	DIRECT_SPELL_ON_HIT("direct-spell-on-hit", "Direct spell on hit", true);
 
 	private String code;

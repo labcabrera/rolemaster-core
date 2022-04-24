@@ -34,6 +34,9 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	protected Map<AttackTargetType, AttackFumbleResult> fumbleResults = new EnumMap<>(AttackTargetType.class);
 
 	@Builder.Default
+	protected Map<AttackTargetType, AttackBreakageResult> breakageResults = new EnumMap<>(AttackTargetType.class);
+
+	@Builder.Default
 	protected Map<AttackTargetType, AttackResult> attackResults = new EnumMap<>(AttackTargetType.class);
 
 	private Map<AttackTargetType, List<TacticalCriticalResult>> criticalResults = new EnumMap<>(AttackTargetType.class);
@@ -45,9 +48,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	}
 
 	public void addCriticalResult(TacticalCriticalResult critical, AttackTargetType attackTargetType) {
-		if (!criticalResults.containsKey(attackTargetType)) {
-			criticalResults.put(attackTargetType, new ArrayList<>());
-		}
+		criticalResults.computeIfAbsent(attackTargetType, e -> new ArrayList<>());
 		criticalResults.get(attackTargetType).add(critical);
 	}
 

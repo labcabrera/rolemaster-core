@@ -66,21 +66,21 @@ public class TacticalLogService {
 	private List<TacticalSessionLog> getAttackMessage(TacticalActionAttack attack, TacticalRound round, TacticalCharacter source,
 		TacticalCharacter target) {
 		List<TacticalSessionLog> result = new ArrayList<>();
-		//		for (AttackResult ar : attack.getAttackResults()) {
-		//			StringBuilder sb = new StringBuilder();
-		//			sb.append("Character ").append(source.getName()).append(" attacks ").append(target.getName());
-		//			sb.append(" for ").append(ar.getResult());
-		//			sb.append(" (").append(ar.getWeaponTableId()).append(")");
-		//			//TODO fumble / criticals
-		//			sb.append(".");
-		//			TacticalSessionLog tsl = TacticalSessionLog.builder()
-		//				.tacticalSessionId(round.getTacticalSessionId())
-		//				.round(round.getRound())
-		//				.message(sb.toString())
-		//				.created(LocalDateTime.now())
-		//				.build();
-		//			result.add(tsl);
-		//		}
+		attack.getAttackResults().values().forEach(ar -> {
+			StringBuilder sb = new StringBuilder();
+			//TODO target not valid using two weapons
+			sb.append("Character ").append(source.getName()).append(" attacks ").append(target.getName());
+			sb.append(" for ").append(ar.getResult());
+			sb.append(" (").append(ar.getWeaponTableId()).append(")");
+			sb.append(".");
+			TacticalSessionLog tsl = TacticalSessionLog.builder()
+				.tacticalSessionId(round.getTacticalSessionId())
+				.round(round.getRound())
+				.message(sb.toString())
+				.created(LocalDateTime.now())
+				.build();
+			result.add(tsl);
+		});
 		return result;
 	}
 

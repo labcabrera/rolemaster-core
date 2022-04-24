@@ -39,7 +39,7 @@ public class AttackWeaponTableProcessor {
 	private TacticalCharacterItemResolver itemResolver;
 
 	public <T extends AttackContext<?>> Mono<T> apply(T context) {
-		if (context.getAction().isFlumbe()) {
+		if (context.getAction().getState() != TacticalActionState.PENDING) {
 			return Mono.just(context);
 		}
 		log.debug("Processing weapon table for attack {}", context.getAction().getId());
@@ -114,6 +114,7 @@ public class AttackWeaponTableProcessor {
 					.type(criticalType)
 					.build();
 				action.addCriticalResult(tcr, type);
+				action.setState(TacticalActionState.PENDING_CRITICAL_RESOLUTION);
 			}
 			else {
 				throw new NotImplementedException("Invalid result format " + attackResult);

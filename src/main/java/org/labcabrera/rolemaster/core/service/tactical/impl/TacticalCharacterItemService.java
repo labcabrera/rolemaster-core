@@ -92,8 +92,40 @@ public class TacticalCharacterItemService {
 			});
 	}
 
+	public boolean isUnbreakable(CharacterItem item) {
+		if (item.getFeatures() == null) {
+			return false;
+		}
+		return item.getFeatures().stream().filter(e -> e.getType() == ItemFeatureType.UNBREAKABLE).count() > 0;
+	}
+
+	public Mono<Integer> getBreakage(CharacterItem item) {
+		if (item.getFeatures() != null) {
+			List<ItemFeature> list = item.getFeatures().stream().filter(e -> e.getType() == ItemFeatureType.BREAKAGE).toList();
+			if (!list.isEmpty()) {
+				return Mono.just(Integer.parseInt(list.iterator().next().getValue()));
+			}
+		}
+		return weaponRepository.findById(item.getItemId()).map(Weapon::getBreakage);
+	}
+
+	public Mono<Integer> getStrength(CharacterItem item) {
+		if (item.getFeatures() != null) {
+			List<ItemFeature> list = item.getFeatures().stream().filter(e -> e.getType() == ItemFeatureType.BREAKAGE_STRENGTH).toList();
+			if (!list.isEmpty()) {
+				return Mono.just(Integer.parseInt(list.iterator().next().getValue()));
+			}
+		}
+		return weaponRepository.findById(item.getItemId())
+			.map(weapon -> {
+				int min = weapon.getCommonStrength().getMin();
+				int max = weapon.getCommonStrength().getMax();
+				return (min + max) / 2;
+			});
+	}
+
 	private boolean checkDistance(WeaponRange range, Float distance) {
-		return true;
+		return distance >= range.getMin() && distance <= range.getMax();
 	}
 
 }

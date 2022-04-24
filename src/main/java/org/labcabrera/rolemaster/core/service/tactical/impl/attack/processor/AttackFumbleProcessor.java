@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
@@ -59,6 +60,7 @@ public class AttackFumbleProcessor {
 						.type(getFumbleType(weapon))
 						.build();
 					context.getAction().getFumbleResults().put(type, afr);
+					context.getAction().setState(TacticalActionState.PENDING_FUMBLE_RESOLUTION);
 				}
 				return context;
 			});

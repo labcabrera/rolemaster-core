@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CharacterWeight {
 
-	private Integer characterWeight;
+	private Integer weight;
 
 	@Builder.Default
 	private Integer weightPenalty = 0;

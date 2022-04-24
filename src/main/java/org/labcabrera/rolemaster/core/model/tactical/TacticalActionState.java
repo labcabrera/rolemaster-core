@@ -6,19 +6,21 @@ public enum TacticalActionState {
 
 	PENDING("pending"),
 
-	PENDING_CRITICAL_RESOLUTION("pending-critical-resolution"),
-
 	PENDING_FUMBLE_RESOLUTION("pending-fumble-resolution"),
+
+	PENDING_BREAKAGE_RESOLUTION("pending-breakage-resolution"),
+
+	PENDING_CRITICAL_RESOLUTION("pending-critical-resolution"),
 
 	PENDING_RESOLUTION("pending-resolution"),
 
 	RESOLVED("resolved");
 
 	@JsonValue
-	String name;
+	String code;
 
-	private TacticalActionState(String name) {
-		this.name = name;
+	private TacticalActionState(String code) {
+		this.code = code;
 	}
 
 }

@@ -40,6 +40,8 @@ public class CharacterItem {
 
 	private BigDecimal weight;
 
+	private Float length;
+
 	@Builder.Default
 	private Integer count = 1;
 

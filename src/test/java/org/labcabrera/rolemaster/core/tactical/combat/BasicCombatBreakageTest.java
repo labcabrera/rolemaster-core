@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Collections;
-import java.util.Map;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,13 +16,12 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
-import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BasicCombatTest extends AbstractBasicCombatTest {
+class BasicCombatBreakageTest extends AbstractBasicCombatTest {
 
 	@BeforeEach
 	void cleanUp() {
@@ -33,9 +32,10 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 	@Test
 	void test() {
 		TacticalRound round01 = tacticalService.startRound(ts.getId()).share().block();
+		String r01Id = round01.getId();
 
 		TacticalAction a01 = tacticalActionService.delare(TacticalActionMeleeAttackDeclaration.builder()
-			.roundId(round01.getId())
+			.roundId(r01Id)
 			.priority(TacticalActionPhase.NORMAL)
 			.actionPercent(80)
 			.source(taMelee01.getId())
@@ -46,31 +46,24 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 		assertNotNull(a01.getState());
 		assertEquals(TacticalActionState.PENDING, a01.getState());
 
-		round01 = tacticalService.startInitiativeDeclaration(round01.getId()).share().block();
-		round01 = tacticalService.setInitiative(round01.getId(), taMelee01.getId(), 11).share().block();
-		round01 = tacticalService.startExecutionPhase(round01.getId()).share().block();
+		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
+
+		round01 = tacticalService.setInitiative(r01Id, taMelee01.getId(), 11).share().block();
+
+		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
+
+		List<TacticalAction> actionQueue = tacticalService.getActionQueue(r01Id).share().collectList().share().block();
+		assertEquals(1, actionQueue.size());
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(80)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(11)))
 			.build();
 
 		TacticalActionMeleeAttack resolved = (TacticalActionMeleeAttack) tacticalActionService.execute(a01.getId(), meleeAttackExecution)
 			.share().block();
 
-		assertNotNull(resolved);
-		assertEquals(TacticalActionState.RESOLVED, resolved.getState());
-
-		Map<OffensiveBonusModifier, Integer> bonusMap = resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
-		// Skill                   +40
-		// Action percent:         -20
-		// BD                      -30
-		assertEquals(-10, bonusMap.values().stream().filter(e -> e != 0).reduce(0, (a, b) -> a + b));
-		assertEquals(40, bonusMap.get(OffensiveBonusModifier.SKILL));
-		assertEquals(-20, bonusMap.get(OffensiveBonusModifier.ACTION_PERCENT));
-		assertEquals(-30, bonusMap.get(OffensiveBonusModifier.DEFENSIVE_BONUS));
-
-		assertEquals(6, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
+		assertEquals(TacticalActionState.PENDING_BREAKAGE_RESOLUTION, resolved.getState());
 	}
 
 }

@@ -47,7 +47,7 @@ public class Item {
 
 	private Range<BigDecimal> commonWeight;
 
-	private Range<BigDecimal> commonLength;
+	private Range<Integer> commonLength;
 
 	private List<ItemFeature> commonFeatures;
 

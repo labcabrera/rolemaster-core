@@ -13,7 +13,7 @@ public class WeightPenaltyCalculator {
 	private static final BigDecimal TEN = new BigDecimal(10);
 
 	public <E> E apply(E data, CharacterInfo character) {
-		BigDecimal weightAllowance = new BigDecimal(character.getWeight().getCharacterWeight()).divide(TEN);
+		BigDecimal weightAllowance = new BigDecimal(character.getWeight().getWeight()).divide(TEN);
 		BigDecimal itemWeigth = character.getWeight().getItemWeight();
 		BigDecimal relation = itemWeigth.divide(weightAllowance, 2, RoundingMode.HALF_EVEN);
 

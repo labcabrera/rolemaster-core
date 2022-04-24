@@ -87,7 +87,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			.age(request.getAge())
 			.height(request.getHeight())
 			.weight(CharacterWeight.builder()
-				.characterWeight(request.getWeight())
+				.weight(request.getWeight())
 				.build())
 			.status(CharacterStatus.PARTIALLY_CREATED)
 			.build();

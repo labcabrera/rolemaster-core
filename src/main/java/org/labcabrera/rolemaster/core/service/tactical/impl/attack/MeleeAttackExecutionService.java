@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackBreakageProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
@@ -45,9 +47,15 @@ public class MeleeAttackExecutionService {
 	private AttackFumbleProcessor fumbleProcessor;
 
 	@Autowired
+	private AttackBreakageProcessor breakageProcessor;
+
+	@Autowired
 	private AttackResultProcessor attackResultProcessor;
 
 	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
+		if (action.getState() != TacticalActionState.PENDING) {
+			return Mono.just(action);
+		}
 		loadTargets(action, execution);
 		action.setRolls(execution.getRolls());
 		action.setFacingMap(execution.getFacingMap());
@@ -59,6 +67,7 @@ public class MeleeAttackExecutionService {
 			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> a.<MeleeAttackContext>setSource(b))
 			.flatMap(this::loadTargets)
 			.flatMap(fumbleProcessor::apply)
+			.flatMap(breakageProcessor::apply)
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(defensiveBonusProcessor::apply)
 			.flatMap(weaponTableProcessor::apply)
@@ -70,9 +79,9 @@ public class MeleeAttackExecutionService {
 	private void loadTargets(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
 		switch (action.getMeleeAttackType()) {
 		case FULL:
-			//			if (!execution.getTargets().isEmpty()) {
-			//				throw new BadRequestException("Can not declare target in full melee attack type");
-			//			}
+			if (!execution.getTargets().isEmpty()) {
+				throw new BadRequestException("Can not declare target in full melee attack type");
+			}
 			break;
 		case PRESS_AND_MELEE, REACT_AND_MELEE:
 			if (execution.getTargets().isEmpty()) {
