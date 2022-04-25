@@ -91,13 +91,10 @@ public class CharacterInfo {
 	private Integer baseMovementRate;
 
 	@Builder.Default
-	private Integer armor = 1;
+	private CharacterArmor armor = new CharacterArmor();
 
 	@Builder.Default
-	private Integer armorPenalty = 0;
-
-	@Builder.Default
-	private Integer armorQuPenalty = 0;
+	private Integer defensiveBonus = 0;
 
 	@Builder.Default
 	private CharacterWeight weight = new CharacterWeight();

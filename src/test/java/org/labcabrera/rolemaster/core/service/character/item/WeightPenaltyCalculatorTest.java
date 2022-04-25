@@ -35,7 +35,7 @@ class WeightPenaltyCalculatorTest {
 			.weight(100)
 			.itemWeight(BigDecimal.ZERO)
 			.build());
-		character.setArmorQuPenalty(-10);
+		character.getArmor().setArmorQuPenalty(-10);
 	}
 
 	@Test

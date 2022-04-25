@@ -3,7 +3,6 @@ package org.labcabrera.rolemaster.core.service.character.item;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
@@ -30,10 +29,13 @@ public class CharacterItemChangedPostProcessor {
 	private WeightPenaltyCalculator weightPenaltyCalculator;
 
 	@Autowired
-	private ArmorPenaltyCalculator armorPenaltyCalculator;
+	private ArmorCalculator armorPenaltyCalculator;
 
 	@Autowired
 	private DefensiveBonusCalculator defensiveBonusCalculator;
+
+	@Autowired
+	private ArmorResolver armorResolver;
 
 	public <E> Mono<E> apply(E e, String characterId) {
 		return Mono.zip(
@@ -41,7 +43,7 @@ public class CharacterItemChangedPostProcessor {
 			characterRepository.findById(characterId),
 			characterItemRepository.findByCharacterId(characterId).collectList())
 			.map(this::processWeigth)
-			.map(this::processArmor)
+			.flatMap(this::processArmor)
 			.map(t -> armorPenaltyCalculator.apply(t, t.getT2()))
 			.map(t -> weightPenaltyCalculator.apply(t, t.getT2()))
 			.map(t -> defensiveBonusCalculator.apply(t, t.getT2()))
@@ -65,23 +67,9 @@ public class CharacterItemChangedPostProcessor {
 		return tuple;
 	}
 
-	private <E> Tuple3<E, CharacterInfo, List<CharacterItem>> processArmor(Tuple3<E, CharacterInfo, List<CharacterItem>> tuple) {
+	private <E> Mono<Tuple3<E, CharacterInfo, List<CharacterItem>>> processArmor(Tuple3<E, CharacterInfo, List<CharacterItem>> tuple) {
 		List<CharacterItem> items = tuple.getT3().stream().filter(this::isEquipedArmor).toList();
-		int at = 1;
-		List<CharacterItem> armors = items.stream().filter(e -> e.getArmorType() == ArmorItemType.ARMOR).toList();
-		if (armors.size() > 1) {
-			throw new BadRequestException("Multiple armors equiped");
-		}
-		else if (armors.size() == 1) {
-			CharacterItem armor = armors.iterator().next();
-			//TODO check at customization
-			switch (armor.getItemId()) {
-			default:
-				at = 8;
-			}
-		}
-		tuple.getT2().setArmor(at);
-		return tuple;
+		return armorResolver.resolveArmor(tuple, tuple.getT2(), items);
 	}
 
 	private <E> Tuple3<E, CharacterInfo, List<CharacterItem>> processMovementRate(Tuple3<E, CharacterInfo, List<CharacterItem>> tuple) {

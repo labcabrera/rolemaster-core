@@ -19,6 +19,8 @@ interface CharacterPostProcessor extends Consumer<CharacterInfo> {
 		static final int DEV_POINTS = 231;
 		static final int EXHAUSTION_POINTS = 240;
 
+		static final int DB = 300;
+
 		private Orders() {
 		}
 
