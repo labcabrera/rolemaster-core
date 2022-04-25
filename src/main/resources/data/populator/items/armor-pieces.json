@@ -4,7 +4,11 @@
 		"name": "Arm Greaves",
 		"armorType": "accessory",
 		"commonCost": {
-			"s": 1
+			"silver": 1
+		},
+		"commonWeight": {
+			"min": 1.000,
+			"max": 1.500
 		},
 		"craftDuration": 48
 	},
@@ -13,43 +17,103 @@
 		"name": "Leg Greaves",
 		"armorType": "accessory",
 		"commonCost": {
-			"s": 1
+			"silver": 1
+		},
+		"commonWeight": {
+			"min": 1.500,
+			"max": 2.000
 		},
 		"craftDuration": 48
 	},
 	{
 		"id": "leather-helmet",
 		"name": "Leather Helmet",
-		"armorType": "helmet"
+		"armorType": "helmet",
+		"commonCost": {
+			"bronze": 15
+		},
+		"commonWeight": {
+			"min": 0.500,
+			"max": 1.000
+		},
+		"craftDuration": 24
 	},
 	{
 		"id": "superior-leather-helm",
 		"name": "Superior Leather Helm",
-		"armorType": "helmet"
+		"armorType": "helmet",
+		"commonCost": {
+			"bronze": 25
+		},
+		"commonWeight": {
+			"min": 0.750,
+			"max": 1.250
+		},
+		"craftDuration": 36
 	},
 	{
 		"id": "plate-helm",
 		"name": "Plate Helm",
-		"armorType": "helmet"
+		"armorType": "helmet",
+		"commonCost": {
+			"bronze": 35
+		},
+		"commonWeight": {
+			"min": 0.750,
+			"max": 1.50
+		},
+		"craftDuration": 24
 	},
 	{
 		"id": "pot-helm",
 		"name": "Pot Helm",
-		"armorType": "helmet"
+		"armorType": "helmet",
+		"commonCost": {
+			"silver": 4
+		},
+		"commonWeight": {
+			"min": 0.750,
+			"max": 1.50
+		},
+		"craftDuration": 72
 	},
 	{
 		"id": "full-helm",
 		"name": "Full Helm",
-		"armorType": "helmet"
+		"armorType": "helmet",
+		"commonCost": {
+			"silver": 9
+		},
+		"commonWeight": {
+			"min": 1.250,
+			"max": 2.250
+		},
+		"craftDuration": 192
 	},
 	{
 		"id": "visored-helm",
 		"name": "Visored Helm",
-		"armorType": "helmet"
+		"armorType": "helmet",
+		"commonCost": {
+			"bronze": 125
+		},
+		"commonWeight": {
+			"min": 1.000,
+			"max": 2.250
+		},
+		"craftDuration": 240
 	},
 	{
 		"id": "aventail",
 		"name": "Aventail",
-		"armorType": "helmet"
+		"armorType": "helmet",
+		"commonCost": {
+			"silver": 3
+		},
+		"commonWeight": {
+			"min": 0.500,
+			"max": 0.500
+		},
+		"craftDuration": 24
 	}
 ]

@@ -4,27 +4,59 @@
 		"name": "Target Shield",
 		"armorType": "shield",
 		"shieldBonus": 20,
-		"missileShieldBonus": 10
+		"missileShieldBonus": 10,
+		"commonCost": {
+			"bronze": 35
+		},
+		"commonWeight": {
+			"min": 1.5,
+			"max": 4.5
+		},
+		"craftDuration": 72
 	},
 	{
 		"id": "normal-shield",
 		"name": "Normal Shield",
 		"armorType": "shield",
 		"shieldBonus": 20,
-		"missileShieldBonus": 20
+		"missileShieldBonus": 20,
+		"commonCost": {
+			"bronze": 55
+		},
+		"commonWeight": {
+			"min": 4.5,
+			"max": 9.0
+		},
+		"craftDuration": 120
 	},
 	{
 		"id": "full-shield",
 		"name": "Full Shield",
 		"armorType": "shield",
 		"shieldBonus": 25,
-		"missileShieldBonus": 25
+		"missileShieldBonus": 25,
+		"commonCost": {
+			"silver": 7
+		},
+		"commonWeight": {
+			"min": 7.0,
+			"max": 10.0
+		},
+		"craftDuration": 144
 	},
 	{
 		"id": "wall-shield",
 		"name": "Wall Shield",
 		"armorType": "shield",
 		"shieldBonus": 30,
-		"missileShieldBonus": 40
+		"missileShieldBonus": 40,
+		"commonCost": {
+			"silver": 9
+		},
+		"commonWeight": {
+			"min": 14.0,
+			"max": 22.5
+		},
+		"craftDuration": 72
 	}
 ]

@@ -7,7 +7,7 @@
 		"name": "Leather Jerkin (AT5)",
 		"description": "A heavy leather coat without arms and reaching only to the waist or mid-thigh.",
 		"commonCost": {
-			"s": 1
+			"silver": 1
 		},
 		"commonWeight": {
 			"min": 3.250,
@@ -23,7 +23,7 @@
 		"name": "Leather Coat (AT6)",
 		"description": "A heavy leather coat covering the arms and torso to mid-thigh.",
 		"commonCost": {
-			"s": 6
+			"silver": 6
 		},
 		"commonWeight": {
 			"min": 7.000,
@@ -39,7 +39,7 @@
 		"name": "Reinforced Leather Coat (AT7)",
 		"description": "A heavy leather coat covering the arms and torso to mid-thigh, but with either rigid-leather sections or metal sections sewn in for reinforcement.",
 		"commonCost": {
-			"s": 9
+			"silver": 9
 		},
 		"commonWeight": {
 			"min": 7.500,
@@ -55,7 +55,7 @@
 		"name": "Reinforced Full-Length Leather Coat (AT8)",
 		"description": "A reinforced leather coat (as above) that covers to the lower leg.",
 		"commonCost": {
-			"s": 11
+			"silver": 11
 		},
 		"commonWeight": {
 			"min": 8.500,
@@ -71,7 +71,7 @@
 		"name": "Leather Breastplate (AT9)",
 		"description": "A rigid breastplate covering the torso to mid-thigh and part of the upper arms.",
 		"commonCost": {
-			"c": 45
+			"bronze": 45
 		},
 		"commonWeight": {
 			"min": 4.500,
@@ -92,7 +92,7 @@
 		"quicknessPenalty": 5,
 		"includeGreaves": false,
 		"commonCost": {
-			"s": 15
+			"silver": 15
 		},
 		"commonWeight": {
 			"min": 7.000,
@@ -113,7 +113,7 @@
 		"quicknessPenalty": 20,
 		"includeGreaves": true,
 		"commonCost": {
-			"s": 65
+			"silver": 65
 		},
 		"commonWeight": {
 			"min": 16.500,
@@ -133,7 +133,7 @@
 		"quicknessPenalty": 20,
 		"includeGreaves": true,
 		"commonCost": {
-			"s": 55
+			"silver": 55
 		},
 		"commonWeight": {
 			"min": 16.000,
@@ -154,7 +154,7 @@
 		"quicknessPenalty": 10,
 		"includeGreaves": false,
 		"commonCost": {
-			"s": 20
+			"silver": 20
 		},
 		"commonWeight": {
 			"min": 9.000,
@@ -175,7 +175,7 @@
 		"quicknessPenalty": 30,
 		"includeGreaves": true,
 		"commonCost": {
-			"s": 100
+			"silver": 100
 		},
 		"commonWeight": {
 			"min": 22.750,
@@ -196,7 +196,7 @@
 		"quicknessPenalty": 30,
 		"includeGreaves": true,
 		"commonCost": {
-			"s": 11
+			"silver": 11
 		},
 		"commonWeight": {
 			"min": 27.500,

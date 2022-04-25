@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Schema(description = "Talents and flaws.")
-@Document(collection = "characterCustomization")
+@Document(collection = "characterCustomizations")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
