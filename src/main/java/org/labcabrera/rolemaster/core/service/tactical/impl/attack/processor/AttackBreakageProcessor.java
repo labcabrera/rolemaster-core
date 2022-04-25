@@ -30,7 +30,10 @@ public class AttackBreakageProcessor extends AbstractAttackProcessor {
 	@Override
 	public Mono<AttackContext> apply(AttackContext context) {
 		if (context.getAction().getState() != TacticalActionState.PENDING) {
-			log.debug("Ignoring weapon brekage processor");
+			log.debug("Ignoring weapon brekage processor (state: {})", context.getAction().getState());
+			return Mono.just(context);
+		}
+		if (!context.getAction().getBreakageResults().isEmpty()) {
 			return Mono.just(context);
 		}
 		log.debug("Processing weapon breakage");

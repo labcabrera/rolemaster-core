@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class WeaponBreakageExecution {
 
-	private Map<AttackTargetType, Integer> roll;
+	private Map<AttackTargetType, Integer> rolls;
 
 }

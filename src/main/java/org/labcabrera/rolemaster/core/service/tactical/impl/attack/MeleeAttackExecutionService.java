@@ -10,9 +10,11 @@ import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.Att
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class MeleeAttackExecutionService {
 
 	@Autowired
@@ -28,6 +30,7 @@ public class MeleeAttackExecutionService {
 		if (action.getState() != TacticalActionState.PENDING) {
 			return Mono.just(action);
 		}
+		log.debug("Processing melee attack");
 		loadTargets(action, execution);
 		action.setRolls(execution.getRolls());
 		action.setFacingMap(execution.getFacingMap());

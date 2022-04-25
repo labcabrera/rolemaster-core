@@ -9,11 +9,13 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
+import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
+import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +29,10 @@ class CharacterItemServiceTest {
 	private CharacterItemService characterItemService;
 
 	@Autowired
-	private CharacterCreationService service;
+	private CharacterCreationService creationService;
+
+	@Autowired
+	private CharacterAddSkillService addSkillService;
 
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -35,7 +40,9 @@ class CharacterItemServiceTest {
 	@Test
 	void testCreation() throws IOException {
 		CharacterCreationRequest request = readRequest();
-		CharacterInfo characterInfo = service.create(request).share().block();
+		CharacterInfo characterInfo = creationService.create(request).share().block();
+
+		characterInfo = addSkillService.addSkill(characterInfo.getId(), AddSkill.builder().skillId("soft-leather").build()).share().block();
 
 		AddCharacterItem addCoat = AddCharacterItem.builder()
 			.itemId("reinforced-full-length-leather-coat")

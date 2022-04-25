@@ -8,6 +8,8 @@ import lombok.Getter;
 
 public enum ItemFeatureType implements CodeNameEnum {
 
+	BROKEN("broken", "Broken", false),
+
 	BONUS("bonus", "Bonus", false),
 
 	MATERIAL("material", "Material", true),

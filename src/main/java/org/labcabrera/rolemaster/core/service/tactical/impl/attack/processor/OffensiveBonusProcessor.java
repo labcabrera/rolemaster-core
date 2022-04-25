@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
@@ -43,7 +44,7 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 	private TacticalCharacterItemService itemService;
 
 	public Mono<AttackContext> apply(AttackContext context) {
-		if (context.getAction().isFlumbe()) {
+		if (context.getAction().getState() != TacticalActionState.PENDING) {
 			return Mono.just(context);
 		}
 		log.debug("Processing offensive bonus");

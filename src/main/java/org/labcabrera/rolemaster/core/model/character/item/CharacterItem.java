@@ -58,4 +58,8 @@ public class CharacterItem {
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();
 
+	public boolean hasFeature(ItemFeatureType type) {
+		return features.stream().filter(e -> e.getType() == type).count() > 0;
+	}
+
 }

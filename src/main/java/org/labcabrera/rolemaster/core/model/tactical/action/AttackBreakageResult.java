@@ -3,8 +3,6 @@ package org.labcabrera.rolemaster.core.model.tactical.action;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.model.OpenRoll;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +18,7 @@ public class AttackBreakageResult {
 
 	private Integer strength;
 
-	private OpenRoll roll;
+	private Integer roll;
 
 	private Integer result;
 
