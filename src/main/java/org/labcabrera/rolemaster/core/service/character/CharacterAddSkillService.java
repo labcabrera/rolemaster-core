@@ -35,16 +35,19 @@ public class CharacterAddSkillService {
 	public Mono<CharacterInfo> addSkill(@NotEmpty String characterId, @Valid AddSkill request) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
+			.flatMap(character -> addSkill(character, request));
+	}
+
+	public Mono<CharacterInfo> addSkill(CharacterInfo characterInfo, @Valid AddSkill request) {
+		return Mono.just(characterInfo)
 			.zipWith(skillRepository.findById(request.getSkillId()))
 			.map(pair -> {
 				CharacterInfo character = pair.getT1();
 				Skill skill = pair.getT2();
-
 				String skillId = getSkillId(skill.getId(), request.getCustomizations());
 				if (character.getSkill(skillId).isPresent()) {
 					throw new BadRequestException("Duplicate skill " + skillId);
 				}
-
 				CharacterSkillCategory skillCategory = character.getSkillCategory(skill.getCategoryId()).get();
 				CharacterSkill characterSkill = CharacterSkill.builder()
 					.skillId(skillId)

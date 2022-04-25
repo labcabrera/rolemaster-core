@@ -1,18 +1,49 @@
 package org.labcabrera.rolemaster.core.service.character.item;
 
+import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterArmorPostProcessor;
+import org.labcabrera.rolemaster.core.table.armor.ArmorModifier;
+import org.labcabrera.rolemaster.core.table.armor.ArmorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import reactor.core.publisher.Mono;
 
 @Component
 public class ArmorCalculator {
 
 	@Autowired
+	private ArmorService armorService;
+
+	@Autowired
 	private CharacterArmorPostProcessor armorProcessor;
 
-	public <E> E apply(E data, CharacterInfo character) {
-		armorProcessor.accept(character);
-		return data;
+	@Autowired
+	private CharacterAddSkillService addSkillService;
+
+	public <E> Mono<E> apply(E data, CharacterInfo character) {
+		int equippedArmor = character.getArmor().getArmor();
+		ArmorModifier armorModifier = armorService.getArmorModifier(equippedArmor);
+		String skillId = armorModifier.getSkillId();
+		if (skillId != null && character.getSkill(skillId).isEmpty()) {
+			return addSkillService.addSkill(character, AddSkill.builder().skillId(skillId).build())
+				.thenReturn(character)
+				.map(c -> {
+					armorProcessor.accept(c);
+					return c;
+				})
+				.thenReturn(data);
+		}
+		else {
+			return Mono.just(character)
+				.map(c -> {
+					armorProcessor.accept(character);
+					return c;
+				})
+				.thenReturn(data);
+		}
 	}
+
 }

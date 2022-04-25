@@ -44,7 +44,7 @@ public class CharacterItemChangedPostProcessor {
 			characterItemRepository.findByCharacterId(characterId).collectList())
 			.map(this::processWeigth)
 			.flatMap(this::processArmor)
-			.map(t -> armorPenaltyCalculator.apply(t, t.getT2()))
+			.flatMap(t -> armorPenaltyCalculator.apply(t, t.getT2()))
 			.map(t -> weightPenaltyCalculator.apply(t, t.getT2()))
 			.map(t -> defensiveBonusCalculator.apply(t, t.getT2()))
 			.map(this::processMovementRate)
