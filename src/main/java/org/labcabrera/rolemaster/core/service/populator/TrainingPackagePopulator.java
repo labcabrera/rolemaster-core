@@ -14,8 +14,11 @@ public class TrainingPackagePopulator extends AbstractJsonPopulator<TrainingPack
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
-			"data/populator/training-packages.json",
-			"data/populator/training-packages-character-law.json");
+			"data/populator/training/training-package-adventurer.json",
+			"data/populator/training/training-package-assassin.json",
+			
+			"data/populator/training/training-packages.json",
+			"data/populator/training/training-packages-character-law.json");
 	}
 
 	@Override

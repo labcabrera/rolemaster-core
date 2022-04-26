@@ -1,0 +1,38 @@
+[
+    {
+        "id": "contacting",
+        "name": "Contacting",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "urban",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to locating individuals of influence or knowledge within an urban environment. It includes knowledge of where such individuals may be found as well a information involving how they might be reached (e.g., locating a crime boss or fence, politician, etc.). This skill is the equivalent of scrounging except that it operates for individuals or locations. Note that actual interaction with such persons are covered by the skills in the Influence Skill Category."
+    },
+    {
+        "id": "mingling",
+        "name": "Mingling",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "urban",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to attempts to mix easily with a large urban population, whether for the purposes of remaining unnoticed, escaping pursuers, or simply moving easily through a crowd."
+    },
+    {
+        "id": "scrounging",
+        "name": "Scrounging",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "urban",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus in being able to come up with the location of a particular needed item, part or ingredient. This skill is normally used in an urban type of setting."
+    },
+    {
+        "id": "streetwise",
+        "name": "Streetwise",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "urban",
+        "progressionType": "standard",
+        "description": "Awareness of events and protocol in the street society and underworld and the ability to interact with the individuals who run and live in the common or underworld society. Note that this skill does not necessarily enable a character to find such individuals."
+    }
+]

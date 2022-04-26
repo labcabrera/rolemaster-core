@@ -1,40 +1,5 @@
 [
     {
-        "id": "adventurer",
-        "name": "Adventurer",
-        "type": "lifestyle",
-        "timeAcquisition": 102,
-        "skillCategoryRanks": {
-            "athletic-gymnastic": 1,
-            "athletic-endurance": 2,
-            "awareness-searching": 2,
-            "power-awareness": 1,
-            "technical-trade": 1
-        },
-        "skillRanks": {
-            "body-development": 1,
-            "climbing": 1,
-            "swimming": 1,
-            "alertness": 2,
-            "observation": 1,
-            "attunement": 1,
-            "first-aid": 1
-        },
-        "selectionCategorySkillRanks": [
-            {
-                "category": "weapon",
-                "value": 1
-            }
-        ],
-        "selectionSkillRanks": [
-            {
-                "category": "weapon",
-                "value": 1
-            }
-        ],
-        "startingMoney": "+d10g"
-    },
-    {
         "id": "animal-friend",
         "name": "Animal Friend",
         "type": "lifestyle",
