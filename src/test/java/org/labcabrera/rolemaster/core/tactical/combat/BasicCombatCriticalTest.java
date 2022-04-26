@@ -72,12 +72,12 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
-		assertEquals(10, meleeResolved01.getAttackResults().get(0).getHp());
+		assertEquals(10, meleeResolved01.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
 		assertEquals(-10,
 			meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).values().stream().reduce(0, (a, b) -> a + b));
 		assertEquals(1, meleeResolved01.getCriticalResults().size());
-		assertEquals(CriticalSeverity.A, meleeResolved01.getCriticalResults().get(0).getSeverity());
-		assertEquals(CriticalType.S, meleeResolved01.getCriticalResults().get(0).getType());
+		assertEquals(CriticalSeverity.A, meleeResolved01.getCriticalResults().get(AttackTargetType.MAIN_HAND).get(0).getSeverity());
+		assertEquals(CriticalType.S, meleeResolved01.getCriticalResults().get(AttackTargetType.MAIN_HAND).get(0).getType());
 
 		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, meleeResolved01.getState());
 
@@ -90,8 +90,8 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		TacticalActionMeleeAttack meleeResolved02 = (TacticalActionMeleeAttack) taResolved02;
 
 		assertEquals(TacticalActionState.RESOLVED, meleeResolved02.getState());
-		assertEquals(2, meleeResolved02.getCriticalResults().get(0).getCriticalTableResult().getHp());
-		assertEquals(55, meleeResolved02.getCriticalResults().get(0).getRoll());
+		assertEquals(2, meleeResolved02.getCriticalResults().get(AttackTargetType.MAIN_HAND).get(0).getCriticalTableResult().getHp());
+		assertEquals(55, meleeResolved02.getCriticalResults().get(AttackTargetType.MAIN_HAND).get(0).getRoll());
 
 		taMelee02 = this.tacticalCharacterRepository.findById(taMelee02.getId()).share().block();
 		assertEquals(38, taMelee02.getHp().getCurrent());

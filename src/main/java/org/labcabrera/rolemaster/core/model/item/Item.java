@@ -2,9 +2,11 @@ package org.labcabrera.rolemaster.core.model.item;
 
 import java.math.BigDecimal;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.Range;
+import org.labcabrera.rolemaster.core.model.character.item.ItemFeature;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -44,5 +46,9 @@ public class Item {
 	private Map<CoinType, Integer> commonCost = new EnumMap<>(CoinType.class);
 
 	private Range<BigDecimal> commonWeight;
+
+	private Range<Integer> commonLength;
+
+	private List<ItemFeature> commonFeatures;
 
 }

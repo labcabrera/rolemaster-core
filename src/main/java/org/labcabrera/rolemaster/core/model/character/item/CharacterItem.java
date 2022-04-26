@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +16,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+@Document(collection = "characterItems")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,11 +34,15 @@ public class CharacterItem {
 
 	private ArmorItemType armorType;
 
+	private String skillId;
+
 	private String name;
 
 	private ItemPosition position;
 
 	private BigDecimal weight;
+
+	private Float length;
 
 	@Builder.Default
 	private Integer count = 1;
@@ -45,11 +51,15 @@ public class CharacterItem {
 	private Boolean broken = false;
 
 	@Builder.Default
-	private List<CharacterItemFeature> features = new ArrayList<>();
+	private List<ItemFeature> features = new ArrayList<>();
 
 	private String description;
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();
+
+	public boolean hasFeature(ItemFeatureType type) {
+		return features.stream().filter(e -> e.getType() == type).count() > 0;
+	}
 
 }

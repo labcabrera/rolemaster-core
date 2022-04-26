@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum CoinType {
 
-	GOLD("g"),
+	GOLD("gold"),
 
-	SILVER("s"),
+	SILVER("silver"),
 
-	COPPER("c");
+	BRONZE("bronze"),
+
+	COPPER("copper");
 
 	private String name;
 

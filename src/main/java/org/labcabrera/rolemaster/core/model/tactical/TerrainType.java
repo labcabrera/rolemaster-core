@@ -29,6 +29,7 @@ public enum TerrainType implements CodeNameEnum {
 	private TerrainType(String code, String name, Integer multiplier) {
 		this.code = code;
 		this.name = name;
+		this.multiplier = multiplier;
 	}
 
 	@JsonValue

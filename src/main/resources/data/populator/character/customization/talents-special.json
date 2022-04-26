@@ -1,0 +1,11 @@
+[
+	{
+		"id": "adherent",
+		"name": "Adherent",
+		"type": "talent",
+		"category": "special",
+		"costType": "greater",
+		"cost": 25,
+		"description": "Your body can adhere to virtually any surface. You can literally walk on walls and ceilings if you desire. Your movement rate up a wall or over a ceiling is one-fourth of normal movement (due to an annoying thing called gravity). You receive a special bonus of +50 to all Climbing maneuvers."
+	}
+]

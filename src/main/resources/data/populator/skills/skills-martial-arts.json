@@ -3,7 +3,7 @@
         "id": "boxing",
         "name": "Boxing",
         "type": "special",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
         "description": "This is the skill of using one’s fists and feet to strike an opponent, while protecting oneself from similar blows. This skill uses the Tooth & Claw Attack Table A-10.9.7 (p. 226) and may not exceed the damage done by a “small” attack."
@@ -12,7 +12,7 @@
         "id": "tackling",
         "name": "Tackling",
         "type": "special",
-        "loadOnNewCharacters": true,
+        "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
         "description": "This is the skill of diving at a person in order to bring them to the ground in the intent of momentarily immobilizing them. This skill uses the Bash & Grapple Attack Table A-10.9.8 (p. 227) and may not exceed the damage done by a “small” attack."

@@ -5,6 +5,7 @@ import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDecla
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.WeaponBreakageExecution;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
@@ -56,6 +57,11 @@ public class TacticalSessionActionControllerImpl implements TacticalSessionActio
 	@Override
 	public Mono<TacticalAction> executeFumble(String actionId, FumbleExecution request) {
 		return tacticalActionService.executeFumble(actionId, request);
+	}
+
+	@Override
+	public Mono<TacticalAction> executeBreakage(String actionId, WeaponBreakageExecution request) {
+		return tacticalActionService.executeBreakage(actionId, request);
 	}
 
 }

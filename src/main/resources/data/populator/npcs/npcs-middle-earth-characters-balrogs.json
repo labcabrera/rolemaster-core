@@ -1,0 +1,116 @@
+[
+	{
+		"id": "balrog",
+		"name": "Balrog",
+		"shortDescription": "Balrog",
+		"level": 60,
+		"hp": 420,
+		"armorType": 20,
+		"defensiveBonus": 90,
+		"items": [
+			{
+				"itemId": "whip",
+				"type": "weapon",
+				"skillId": "#melee",
+				"name": "Cuivigurth",
+				"features": [
+					{
+						"type": "bonus",
+						"value": "30"
+					},
+					{
+						"type": "additional-critical",
+						"value": "heat:-2"
+					},
+					{
+						
+						"type": "material",
+						"value": "ogamur"
+					}
+				],
+				"weigth": 11,
+				"description": "Giant, laming Whip of black ogamur. Range 36 feet."
+			},
+			{
+				"itemId": "two-hand-sword",
+				"type": "weapon",
+				"skillId": "#melee",
+				"name": "Light Cleaver",
+				"features": [
+					{
+						"type": "bonus",
+						"value": 30
+					},
+					{
+						"type": "additional-critical",
+						"value": "heat:-1"
+					},
+					{
+						"type": "material",
+						"value": "eog"
+					}
+				],
+				"weigth": 8,
+				"description": "Giang flaming Sword (treat as 2-hadler) of black eog."
+			}
+		],
+		"specialAttacks": [
+			{
+				"name": "Bash",
+				"weaponTableId": "bash",
+				"skillId": "#bash",
+				"features": [
+					{
+						"type": "additional-critical",
+						"value": "heat:0"
+					}
+				]
+			},
+			{
+				"name": "Grapple",
+				"weaponTableId": "grapple",
+				"skillId": "#grapple",
+				"features": [
+					{
+						"type": "additional-critical",
+						"value": "heat:0"
+					}
+				]
+			}
+		],
+		"notes": [
+			"Use susper large creature critical strike table",
+			"Strength: enables the balrog to toss ant pole arm up to 100' without range penalty. He can throw rocks (up to 100lbs) up to 200'",
+			"Fligth: The Fire Demon can fly up to 240 feet per round, but it takes 1-5 rounds to develop lift and take to the air. He is also a cumbersome flyer. The first round of fligth he can move up to 60'; during the second round he can move up to 120'; the third round he can move up to 180'; and the fourth and following rounds he can move up to his maximum of 240'.",
+			"Inmolation: As a Fire Spririt, the Balrog is immune to fire and can inmmolate at will, even in mid-round. When completely immersed (not doused) in waterm however, his flames go out, leaving his slimy surface exposed. When he is not of fire he does not deliver any Heat criticals.",
+			"Presence: The Balrog makes a RR versus an 18th level Fear spell. With a RR failure of 01-50 the victim flees in fear for 1-10 minutes. If the RR failure is 51-199 the victim is frozen in place for 1-10 rounds. Should they fail by 101+ hey die of frigth. Note that victims get a +10 bonus if the Demon is not in flames.",
+			"Domination: The Balrog can direct his gaze upon ant one individual (within 300') in order to dominate fe poor fool." 
+		],
+		"skills": {
+			"#melee": 275,
+			"#missile": 120,
+			"#bash": 180,
+			"#grapple": 120,
+			"two-weapon-combat:#melee:#melee": 275,
+			"climbing": 102,
+			"directed-spells": 72,
+			"frenzy": 102,
+			"leadership": 93,
+			"perception": 83,
+			"public-speaking": 40,
+			"strategy": 84,
+			"tactics": 84,
+			"subduing": 40,
+			"swimming": 93
+		},
+		"languages": [
+			"melkorin:s10:s8",
+			"black-speach:s10:s8",
+			"sindarin:s6:s4",
+			"orcish:s6:s4",
+			"sindarin:s6:s4"
+		],
+		"unique": true,
+		"universeId": "middle-earth"
+	}
+]

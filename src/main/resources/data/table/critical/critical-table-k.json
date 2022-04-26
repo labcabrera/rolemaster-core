@@ -818,7 +818,7 @@
 					"stunned": 1
 				},
 				"bonus": {
-					"bonus": 1,
+					"bonus": 5,
 					"rounds": 1
 				}
 			},
@@ -826,7 +826,7 @@
 				"text": "Strong blow breaks foe's guard. He is unbalanced.",
 				"debuffs": {
 					"stunned": 1,
-					"must-parry": 1
+					"cant-parry": 1
 				},
 				"bonus": {
 					"bonus": 10,

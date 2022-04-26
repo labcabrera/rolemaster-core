@@ -1,18 +1,21 @@
 package org.labcabrera.rolemaster.core.controller.exception;
 
+import java.util.List;
+
 import javax.validation.ConstraintViolationException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.ApiError;
-import org.labcabrera.rolemaster.core.model.ApiError.ApiErrorMessage;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.bind.support.WebExchangeBindException;
+import org.springframework.web.server.ServerWebInputException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -47,15 +50,18 @@ public class InternalErrorHandler {
 				.build();
 			return ResponseEntity.badRequest().body(error);
 		}
-		else if (ex instanceof WebExchangeBindException bindException) {
+		else if (ex instanceof BindingResult bindException) {
+			String message = getBindExceptionMessage(bindException);
+			ApiError error = ApiError.builder().code(INVALID_REQUEST_CODE).message(message).build();
+			log.info("Invalid request: {}", message, bindException);
+			return ResponseEntity.badRequest().body(error);
+		}
+		else if (ex instanceof ServerWebInputException inputException) {
 			log.info("Invalid request: {}", ex.getMessage());
 			ApiError error = ApiError.builder()
 				.code(INVALID_REQUEST_CODE)
 				.message(INVALID_REQUEST)
 				.build();
-			bindException.getAllErrors().stream().forEach(e -> error.getMessages().add(ApiErrorMessage.builder()
-				.message(e.getDefaultMessage())
-				.build()));
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof NotFoundException) {
@@ -72,6 +78,19 @@ public class InternalErrorHandler {
 			.message(StringUtils.isNotBlank(message) ? message : INTERNAL_SERVER_ERROR)
 			.build();
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	protected String getBindExceptionMessage(BindingResult ex) {
+		StringBuilder sb = new StringBuilder("Invalid request.");
+		List<FieldError> errors = ex.getFieldErrors();
+		for (FieldError error : errors) {
+			sb.append(" ")
+				.append(error.getField())
+				.append(" ")
+				.append(error.getDefaultMessage())
+				.append(".");
+		}
+		return sb.toString();
 	}
 
 }

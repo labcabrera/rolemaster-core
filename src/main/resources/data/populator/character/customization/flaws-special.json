@@ -1,0 +1,11 @@
+[
+	{
+		"id": "cursed-shape-shifter",
+		"name": "Cursed Shape Shifter",
+		"type": "flaw",
+		"category": "special",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are cursed to randomly change shape into an animal. You are never sure what animal you will become with each transformation. Each week, there is a 5% (non-cumulative) chance that you will change shape into an animal. The change lasts for d10 days, and the animal you change into is determined by the GM (he could choose to use the table below). You can be assured that the animal you do change into will be small and nonthreatening."
+	}
+]

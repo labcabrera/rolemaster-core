@@ -5,11 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
-import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
-import org.labcabrera.rolemaster.core.model.item.RangeModifier;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
@@ -17,16 +15,18 @@ import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifi
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
-import org.labcabrera.rolemaster.core.repository.WeaponRepository;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
+import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Component
-public class OffensiveBonusProcessor {
+@Slf4j
+public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 
 	private static final List<Debuff> NO_DEFENSIVE_BONUS_DEBUFS = Arrays.asList(Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS,
 		Debuff.INSTANT_DEATH);
@@ -35,15 +35,19 @@ public class OffensiveBonusProcessor {
 	private TacticalSkillService skillService;
 
 	@Autowired
-	private WeaponRepository weaponRepository;
-
-	@Autowired
 	private TacticalCharacterItemResolver characterItemResolver;
 
-	public <T extends AttackContext<?>> Mono<T> apply(T context) {
-		if (context.getAction().isFlumbe()) {
+	@Autowired
+	private TacticalCharacterItemResolver itemResolver;
+
+	@Autowired
+	private TacticalCharacterItemService itemService;
+
+	public Mono<AttackContext> apply(AttackContext context) {
+		if (context.getAction().getState() != TacticalActionState.PENDING) {
 			return Mono.just(context);
 		}
+		log.debug("Processing offensive bonus");
 		return Mono.just(context)
 			.map(this::initialize)
 			.flatMap(this::loadSkillBonus)
@@ -60,13 +64,13 @@ public class OffensiveBonusProcessor {
 			.map(this::cleanUp);
 	}
 
-	private <T extends AttackContext<?>> T initialize(T context) {
+	private AttackContext initialize(AttackContext context) {
 		context.getAction().getOffensiveBonusMap().put(AttackTargetType.MAIN_HAND, new LinkedHashMap<>());
 		context.getAction().getOffensiveBonusMap().put(AttackTargetType.OFF_HAND, new LinkedHashMap<>());
 		return context;
 	}
 
-	private <T extends AttackContext<?>> Mono<T> loadSkillBonus(T context) {
+	private Mono<AttackContext> loadSkillBonus(AttackContext context) {
 		TacticalCharacter source = context.getSource();
 
 		CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
@@ -88,7 +92,7 @@ public class OffensiveBonusProcessor {
 			});
 	}
 
-	private <T extends AttackContext<?>> T loadBonusDefensive(T context) {
+	private AttackContext loadBonusDefensive(AttackContext context) {
 		context.getTargets().entrySet().stream().forEach(e -> {
 			int bd = getBonusDefensive(e.getValue());
 			context.getAction().getOffensiveBonusMap().get(e.getKey()).put(OffensiveBonusModifier.DEFENSIVE_BONUS, -bd);
@@ -96,7 +100,7 @@ public class OffensiveBonusProcessor {
 		return context;
 	}
 
-	private <T extends AttackContext<?>> T loadBonusPenaltyAndBonus(T context) {
+	private AttackContext loadBonusPenaltyAndBonus(AttackContext context) {
 		int penalty = context.getSource().getCombatStatus().getTotalPenalty();
 		if (penalty != 0) {
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.PENALTY, penalty);
@@ -110,14 +114,14 @@ public class OffensiveBonusProcessor {
 		return context;
 	}
 
-	private <T extends AttackContext<?>> T loadBonusHp(T context) {
+	private AttackContext loadBonusHp(AttackContext context) {
 		Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
 		map.get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.HP, getBonusHp(context.getSource()));
 		map.get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.HP, getBonusHp(context.getSource()));
 		return context;
 	}
 
-	private <T extends AttackContext<?>> T loadBonusTargetStatus(T context) {
+	private AttackContext loadBonusTargetStatus(AttackContext context) {
 		context.getTargets().entrySet().stream().forEach(e -> {
 			int bonus = getBonusTargetStatus(e.getValue());
 			context.getAction().getOffensiveBonusMap().get(e.getKey()).put(OffensiveBonusModifier.TARGET_STATUS, bonus);
@@ -125,21 +129,21 @@ public class OffensiveBonusProcessor {
 		return context;
 	}
 
-	private <T extends AttackContext<?>> T loadBonusExhaustion(T context) {
+	private AttackContext loadBonusExhaustion(AttackContext context) {
 		int bonus = getBonusExhaustion(context.getSource());
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.EXHAUSTION, bonus);
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.EXHAUSTION, bonus);
 		return context;
 	}
 
-	private <T extends AttackContext<?>> T loadBonusActionPercent(T context) {
+	private AttackContext loadBonusActionPercent(AttackContext context) {
 		int bonus = getBonusActionPercent(context.getAction());
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.ACTION_PERCENT, bonus);
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.ACTION_PERCENT, bonus);
 		return context;
 	}
 
-	private <T extends AttackContext<?>> T loadBonusParry(T context) {
+	private AttackContext loadBonusParry(AttackContext context) {
 		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
 			int parry = meleeAttack.getParry();
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.PARRY_ATTACK, -parry);
@@ -148,7 +152,7 @@ public class OffensiveBonusProcessor {
 		return context;
 	}
 
-	private <T extends AttackContext<?>> T loadBonusMeleePosition(T context) {
+	private AttackContext loadBonusMeleePosition(AttackContext context) {
 		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
 			context.getTargets().entrySet().stream().forEach(e -> {
 				if (meleeAttack.getFacingMap().containsKey(e.getKey())) {
@@ -160,15 +164,12 @@ public class OffensiveBonusProcessor {
 		return context;
 	}
 
-	private <T extends AttackContext<?>> Mono<T> loadBonusDistance(T context) {
+	private Mono<AttackContext> loadBonusDistance(AttackContext context) {
 		if (context.getAction()instanceof TacticalActionMissileAttack missileAttack) {
-			CharacterItem itemMainHand = context.getSource().getItems().stream()
-				.filter(e -> e.getPosition() == ItemPosition.MAIN_HAND)
-				.findFirst().orElseThrow(() -> new NotImplementedException("Special attacks not implemented"));
-			int distance = missileAttack.getDistance();
-			String weaponId = itemMainHand.getItemId();
+			CharacterItem itemMainHand = itemResolver.getMainHandWeapon(context.getSource());
+			Float distance = missileAttack.getDistance();
 			return Mono.just(context)
-				.zipWith(getBonusDistance(distance, weaponId))
+				.zipWith(itemService.getRangeModifier(itemMainHand, distance))
 				.map(pair -> {
 					int bonus = pair.getT2();
 					Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
@@ -181,7 +182,7 @@ public class OffensiveBonusProcessor {
 		}
 	}
 
-	private <T extends AttackContext<?>> Mono<T> loadOffHandBonus(T context) {
+	private Mono<AttackContext> loadOffHandBonus(AttackContext context) {
 		if (context.getAction()instanceof TacticalActionMeleeAttack ma) {
 			if (ma.getMeleeAttackMode() == MeleeAttackMode.OFF_HAND_WEAPON || ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
 				//TODO check ambidextrous trait
@@ -265,20 +266,7 @@ public class OffensiveBonusProcessor {
 		return 0;
 	}
 
-	private Mono<Integer> getBonusDistance(Integer distance, String weaponId) {
-		return weaponRepository.findById(weaponId)
-			.map(weapon -> {
-				int modifier = -1000;
-				for (RangeModifier rangeModifier : weapon.getRangeModifiers()) {
-					if (distance <= rangeModifier.getRange() && rangeModifier.getModifier() > modifier) {
-						modifier = rangeModifier.getModifier();
-					}
-				}
-				return modifier;
-			});
-	}
-
-	private <T extends AttackContext<?>> T cleanUp(T context) {
+	private AttackContext cleanUp(AttackContext context) {
 		boolean cleanUp = true;
 		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
 			if (meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {

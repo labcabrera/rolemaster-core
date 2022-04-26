@@ -5,11 +5,13 @@ import javax.validation.Valid;
 import org.labcabrera.rolemaster.core.controller.CharacterController;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
+import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
+import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +34,9 @@ public class CharacterControllerImpl implements CharacterController {
 
 	@Autowired
 	private CharacterUpdateSkillService characterUpdateSkillService;
+
+	@Autowired
+	private TrainingPackageUpgradeService trainingPackageUpgradeService;
 
 	@Override
 	public Mono<CharacterInfo> findById(String id) {
@@ -61,6 +66,11 @@ public class CharacterControllerImpl implements CharacterController {
 	@Override
 	public Mono<CharacterInfo> addSkill(String characterId, AddSkill request) {
 		return addSkillService.addSkill(characterId, request);
+	}
+
+	@Override
+	public Mono<CharacterInfo> addTrainingPackage(String characterId, TrainingPackageUpgrade request) {
+		return trainingPackageUpgradeService.upgrade(characterId, request);
 	}
 
 }

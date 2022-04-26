@@ -37,6 +37,9 @@ public class TacticalSessionCreation {
 	@Schema(description = "Customized multiplier to exhaustion points.", required = false, example = "1")
 	private BigDecimal exhaustionMultiplier;
 
+	@Schema(description = "Bonus to be added to the weapon breakage roll in combat (so that we can prevent it from happening too often).", required = false, example = "0")
+	private Integer breakageBonus;
+
 	@Schema(description = "Tactical session name.", required = false, example = "Example of player's comment.")
 	private String description;
 

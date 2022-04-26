@@ -1,47 +1,78 @@
 [
 	{
-		"id": "arrows",
-		"name": "Arrows",
+		"id": "arrow",
+		"name": "Arrow",
 		"type": "miscellaneous",
 		"multipleItem": true,
-		"count": 20,
 		"commonCost": {
-			"s": 5
+			"copper": 5
 		},
 		"commonWeight": {
 			"min": 0.075,
 			"max": 0.075
 		},
-		"craftDuration": 24
+		"craftDuration": 1,
+		"description": "Wooden shafts and iron tips."
 	},
 	{
 		"id": "backpack",
-		"name": "backpack",
-		"type": "miscellaneous"
+		"name": "Backpack",
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 2
+		},
+		"commonWeight": {
+			"min": -1,
+			"max": -1
+		},
+		"craftDuration": 24,
+		"description": "Leather or canvas. Holds 20 lbs; 1 cubic foot."
 	},
 	{
 		"id": "bedroll-light",
 		"name": "Bedroll - Light",
-		"type": "miscellaneous"
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 2
+		},
+		"commonWeight": {
+			"min": 2.0,
+			"max": 3.25
+		},
+		"craftDuration": 12,
+		"description": "Wool blanket. 2 season."
 	},
 	{
 		"id": "bedroll-heavy",
 		"name": "Bedroll - Heavy",
-		"type": "miscellaneous"
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 2
+		},
+		"commonWeight": {
+			"min": 4.0,
+			"max": 5.0
+		},
+		"craftDuration": 24,
+		"description": "Wool/fur. 4 season."
 	},
 	{
 		"id": "boots",
 		"name": "Boots",
-		"type": "miscellaneous"
-	},
-	{
-		"id": "boots",
-		"name": "Boots",
-		"type": "miscellaneous"
+		"type": "miscellaneous",
+		"commonCost": {
+			"silver": 1
+		},
+		"commonWeight": {
+			"min": 1.5,
+			"max": 2.0
+		},
+		"craftDuration": 72,
+		"description": "Leather."
 	},
 	{
 		"id": "brush",
-		"name": "Brush (writting)",
+		"name": "Brush (writing)",
 		"type": "miscellaneous"
 	},
 	{
@@ -92,7 +123,15 @@
 	{
 		"id": "cloak",
 		"name": "Cloak",
-		"type": "miscellaneous"
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 9
+		},
+		"commonWeight": {
+			"min": 1.0,
+			"max": 1.5
+		},
+		"craftDuration": 24
 	},
 	{
 		"id": "climbing-pick",
@@ -183,5 +222,63 @@
 		"id": "nails",
 		"name": "Nails",
 		"type": "miscellaneous"
+	},
+	{
+		"id": "oar",
+		"name": "Oar",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "oil-flask",
+		"name": "Oil flask",
+		"type": "miscellaneous"
+	},
+	{
+		"id": "padded-undercoat",
+		"name": "Padded undercoat",
+		"type": "miscellaneous",
+		"description": "Heavy linen or wool."
+	},
+	{
+		"id": "paddle",
+		"name": "Paddle",
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 16
+		},
+		"commonWeight": {
+			"min": 1.5,
+			"max": 2.0
+		},
+		"craftDuration": 24,
+		"description": "Wood. 4'-5'."
+	},
+	{
+		"id": "padlock",
+		"name": "Padlock",
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 23
+		},
+		"commonWeight": {
+			"min": 0.5,
+			"max": 0.5
+		},
+		"craftDuration": 24,
+		"description": "Iron; with 2 keys. +0 to Lock picking attempts."
+	},
+	{
+		"id": "pants",
+		"name": "Pants",
+		"type": "miscellaneous",
+		"commonCost": {
+			"copper": 25
+		},
+		"commonWeight": {
+			"min": 0.5,
+			"max": 1.0
+		},
+		"craftDuration": 24,
+		"description": "Linen."
 	}
 ]

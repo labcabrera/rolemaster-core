@@ -33,7 +33,11 @@
 		],
 		"skills": {
 			"scimitar": 40,
-			"jumping": 25
+			"dagger": 40,
+			"jumping": 25,
+			"climbing": 30,
+			"hiding": 15,
+			"stalking": 15
 		},
 		"baseMove": 50,
 		"mmBonus": 0,
@@ -69,7 +73,12 @@
 			}
 		],
 		"skills": {
-			"lance": 40
+			"lance": 40,
+			"dagger": 40,
+			"jumping": 25,
+			"climbing": 30,
+			"hiding": 15,
+			"stalking": 15
 		},
 		"baseMove": 50,
 		"mmBonus": 0,
@@ -106,7 +115,12 @@
 		],
 		"skills": {
 			"short-bow": 40,
-			"scimitar": 25
+			"scimitar": 25,
+			"dagger": 30,
+			"jumping": 25,
+			"climbing": 30,
+			"hiding": 15,
+			"stalking": 15
 		},
 		"baseMove": 50,
 		"mmBonus": 0,
@@ -132,10 +146,28 @@
 				"type": "weapon",
 				"name": "Scimitar",
 				"position": "main-hand"
+			},
+			{
+				"itemId": "normal-shield",
+				"type": "armor-piece",
+				"armorType": "shield",
+				"name": "Normal Shield",
+				"position": "off-hand"
+			},
+			{
+				"itemId": "dagger",
+				"type": "weapon",
+				"name": "Dagger",
+				"position": "carried"
 			}
 		],
 		"skills": {
-			"scimitar": 80
+			"scimitar": 80,
+			"dagger": 70,
+			"jumping": 25,
+			"climbing": 30,
+			"hidding": 15,
+			"stalking": 15
 		},
 		"defensiveBonus": 40,
 		"baseMove": 60,

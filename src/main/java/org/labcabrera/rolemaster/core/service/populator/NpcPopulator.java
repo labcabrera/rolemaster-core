@@ -16,10 +16,12 @@ public class NpcPopulator extends AbstractJsonPopulator<Npc> {
 		return Arrays.asList(
 			"data/populator/npcs/npcs-generic.json",
 			"data/populator/npcs/npcs-middle-earth-orcs.json",
+			"data/populator/npcs/npcs-middle-earth-characters-balrogs.json",
 			"data/populator/npcs/npcs-middle-earth-characters-dunedain.json",
 			"data/populator/npcs/npcs-middle-earth-characters-elves.json",
 			"data/populator/npcs/npcs-middle-earth-characters-evil.json",
 			"data/populator/npcs/npcs-middle-earth-characters-hobbits.json",
+			"data/populator/npcs/npcs-middle-earth-characters-nazgul.json",
 			"data/populator/npcs/npcs-middle-earth-characters-other.json");
 	}
 

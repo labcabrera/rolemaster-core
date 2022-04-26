@@ -3,7 +3,6 @@ package org.labcabrera.rolemaster.core.service.populator;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.item.ArmorPiece;
@@ -27,10 +26,6 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class ItemPopulator implements ApplicationRunner {
 
-	private static final String RESOURCE_WEAPONS = "data/populator/items/weapons.json";
-	private static final String RESOURCE_ITEMS = "data/populator/items/items.json";
-	private static final String RESOURCE_ARMOR_PIECES = "data/populator/items/armor-pieces.json";
-
 	@Autowired
 	private ItemRepository repository;
 
@@ -43,28 +38,20 @@ public class ItemPopulator implements ApplicationRunner {
 			.deleteAll()
 			.thenMany(Flux.fromIterable(values))
 			.flatMap(repository::save)
-			.then(Mono.just(String.format("Inserted %s entities from %s",
-				values.size(),
-				Arrays.asList(RESOURCE_ITEMS, RESOURCE_WEAPONS))))
+			.then(Mono.just(String.format("Inserted %s item entities", values.size())))
 			.subscribe(log::info);
 	}
 
 	protected List<Item> collectValues() throws IOException {
 		List<Item> list = new ArrayList<>();
 
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(RESOURCE_ITEMS)) {
-			List<Item> values = objectMapper.readerFor(new TypeReference<List<Item>>() {
-			}).readValue(in);
-			list.addAll(values);
-		}
-
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(RESOURCE_WEAPONS)) {
+		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/weapons.json")) {
 			List<Weapon> values = objectMapper.readerFor(new TypeReference<List<Weapon>>() {
 			}).readValue(in);
 			list.addAll(values);
 		}
 
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(RESOURCE_ARMOR_PIECES)) {
+		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/armors.json")) {
 			List<ArmorPiece> values = objectMapper.readerFor(new TypeReference<List<ArmorPiece>>() {
 			}).readValue(in);
 			values.stream().forEach(e -> {
@@ -73,6 +60,13 @@ public class ItemPopulator implements ApplicationRunner {
 					e.setId(e.getName().toLowerCase().replace(' ', '-'));
 				}
 			});
+			list.addAll(values);
+		}
+
+		try (
+			InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/armor-pieces.json")) {
+			List<ArmorPiece> values = objectMapper.readerFor(new TypeReference<List<ArmorPiece>>() {
+			}).readValue(in);
 			list.addAll(values);
 		}
 
@@ -85,6 +79,12 @@ public class ItemPopulator implements ApplicationRunner {
 					e.setId(e.getName().toLowerCase().replace(' ', '-'));
 				}
 			});
+			list.addAll(values);
+		}
+
+		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/items.json")) {
+			List<Item> values = objectMapper.readerFor(new TypeReference<List<Item>>() {
+			}).readValue(in);
 			list.addAll(values);
 		}
 

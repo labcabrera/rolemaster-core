@@ -2,6 +2,8 @@ package org.labcabrera.rolemaster.core.model.item;
 
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.model.Range;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,10 +21,12 @@ public class Weapon extends Item {
 
 	private Integer fumble;
 
-	private List<Integer> roture;
+	private Integer breakage;
 
-	private List<Integer> resistance;
+	private Range<Integer> commonStrength;
 
-	private List<RangeModifier> rangeModifiers;
+	private List<WeaponRange> rangeModifiers;
+	
+	private String projectileItemId;
 
 }

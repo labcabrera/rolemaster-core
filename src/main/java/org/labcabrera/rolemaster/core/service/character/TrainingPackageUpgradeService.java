@@ -30,7 +30,7 @@ import reactor.util.function.Tuple2;
 
 @Service
 @Validated
-public class TraningPackageUpgradeService {
+public class TrainingPackageUpgradeService {
 
 	@Autowired
 	private CharacterService characterService;

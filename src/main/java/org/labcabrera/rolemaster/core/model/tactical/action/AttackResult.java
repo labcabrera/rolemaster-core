@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AttackResult {
 
-	private String target;
-
 	@Schema(description = "Result of the attack plus all modifiers.")
 	private Integer result;
 

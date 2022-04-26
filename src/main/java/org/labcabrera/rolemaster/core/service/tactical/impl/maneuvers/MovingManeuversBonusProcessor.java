@@ -20,7 +20,7 @@ public class MovingManeuversBonusProcessor {
 	public Mono<Map<String, Integer>> getBonusMap(TacticalActionMovingManeuver action, TacticalCharacter tc, Map<String, Integer> map) {
 		return Mono.zip(Mono.just(action), Mono.just(tc), Mono.just(map))
 			.flatMap(this::processSkill)
-			.map(tuple -> tuple.getT3());
+			.map(Tuple3::getT3);
 	}
 
 	private Mono<Tuple3<TacticalActionMovingManeuver, TacticalCharacter, Map<String, Integer>>> processSkill(

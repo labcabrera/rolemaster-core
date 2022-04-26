@@ -1,0 +1,11 @@
+[
+	{
+		"id": "animal-empathy",
+		"name": "Animal Empathy",
+		"type": "talent",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": 5,
+		"description": "You have empathy with a certain type of animal. Any maneuver with such an animal receives a special bonus of +25 to it. If you associate with a specific animal for a month, you can communicate empathically that animal from a range of 1' for every level you have. The GM will have to determine what qualifies as an acceptable animal."
+	}
+]

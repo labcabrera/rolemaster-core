@@ -1,0 +1,207 @@
+[
+	{
+		"id": "leather-jerkin",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 5,
+		"name": "Leather Jerkin (AT5)",
+		"description": "A heavy leather coat without arms and reaching only to the waist or mid-thigh.",
+		"commonCost": {
+			"silver": 1
+		},
+		"commonWeight": {
+			"min": 3.250,
+			"max": 5.500
+		},
+		"craftDuration": 48
+	},
+	{
+		"id": "leather-coat",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 6,
+		"name": "Leather Coat (AT6)",
+		"description": "A heavy leather coat covering the arms and torso to mid-thigh.",
+		"commonCost": {
+			"silver": 6
+		},
+		"commonWeight": {
+			"min": 7.000,
+			"max": 9.000
+		},
+		"craftDuration": 144
+	},
+	{
+		"id": "reinforced-leather-coat",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 7,
+		"name": "Reinforced Leather Coat (AT7)",
+		"description": "A heavy leather coat covering the arms and torso to mid-thigh, but with either rigid-leather sections or metal sections sewn in for reinforcement.",
+		"commonCost": {
+			"silver": 9
+		},
+		"commonWeight": {
+			"min": 7.500,
+			"max": 11.500
+		},
+		"craftDuration": 366
+	},
+	{
+		"id": "reinforced-full-length-leather-coat",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 8,
+		"name": "Reinforced Full-Length Leather Coat (AT8)",
+		"description": "A reinforced leather coat (as above) that covers to the lower leg.",
+		"commonCost": {
+			"silver": 11
+		},
+		"commonWeight": {
+			"min": 8.500,
+			"max": 13.500
+		},
+		"craftDuration": 384
+	},
+	{
+		"id": "leather-breastplate",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 9,
+		"name": "Leather Breastplate (AT9)",
+		"description": "A rigid breastplate covering the torso to mid-thigh and part of the upper arms.",
+		"commonCost": {
+			"bronze": 45
+		},
+		"commonWeight": {
+			"min": 4.500,
+			"max": 8.250
+		},
+		"craftDuration": 96
+	},
+	{
+		"id": "chain-shirt",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 13,
+		"name": "Chain Shirt (AT13)",
+		"description": "A chain mail shirt covering the torso to mid-thigh and half of the upper arms.",
+		"mmMin": -10,
+		"mmMax": -70,
+		"missilePenalty": 0,
+		"quicknessPenalty": 5,
+		"includeGreaves": false,
+		"commonCost": {
+			"silver": 15
+		},
+		"commonWeight": {
+			"min": 7.000,
+			"max": 11.500
+		},
+		"craftDuration": 504
+	},
+	{
+		"id": "full-chain",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 15,
+		"name": "Full Chain  (AT15)",
+		"description": "Chain mail covering most of the body and legs in the form of a shirt and leggings.",
+		"mmMin": -25,
+		"mmMax": -120,
+		"missilePenalty": 20,
+		"quicknessPenalty": 20,
+		"includeGreaves": true,
+		"commonCost": {
+			"silver": 65
+		},
+		"commonWeight": {
+			"min": 16.500,
+			"max": 22.750
+		},
+		"craftDuration": 1440
+	},
+	{
+		"armor": 16,
+		"type": "armor-piece",
+		"armorType": "armor",
+		"name": "Chain Hauberk (AT16)",
+		"description": "A full-length chain mail coat split from the waist in the front and back to facilitate movement.",
+		"mmMin": -25,
+		"mmMax": -130,
+		"missilePenalty": 20,
+		"quicknessPenalty": 20,
+		"includeGreaves": true,
+		"commonCost": {
+			"silver": 55
+		},
+		"commonWeight": {
+			"min": 16.000,
+			"max": 18.000
+		},
+		"craftDuration": 840
+	},
+	{
+		"id": "metal-breastplate",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 17,
+		"name": "Metal Breastplate (AT17)",
+		"description": "A metal breastplate plus smaller plates covering torso to mid-thigh and part of the upper arms.",
+		"mmMin": -15,
+		"mmMax": -90,
+		"missilePenalty": 0,
+		"quicknessPenalty": 10,
+		"includeGreaves": false,
+		"commonCost": {
+			"silver": 20
+		},
+		"commonWeight": {
+			"min": 9.000,
+			"max": 13.500
+		},
+		"craftDuration": 504
+	},
+	{
+		"id": "half-plate",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 19,
+		"name": "Half Plate (AT19)",
+		"description": "Rigid plate armor covering the body, but with chain mail between the plates, at the joints, and covering the legs.",
+		"mmMin": -35,
+		"mmMax": -150,
+		"missilePenalty": 30,
+		"quicknessPenalty": 30,
+		"includeGreaves": true,
+		"commonCost": {
+			"silver": 100
+		},
+		"commonWeight": {
+			"min": 22.750,
+			"max": 31.750
+		},
+		"craftDuration": 1680
+	},
+	{
+		"id": "full-plate",
+		"type": "armor-piece",
+		"armorType": "armor",
+		"armor": 20,
+		"name": "Full Plate  (AT20)",
+		"description": "Rigid plate armor as half plate, but with plates overlapping at joints, and plate armor covering the legs.",
+		"mmMin": -45,
+		"mmMax": -165,
+		"missilePenalty": 40,
+		"quicknessPenalty": 30,
+		"includeGreaves": true,
+		"commonCost": {
+			"silver": 11
+		},
+		"commonWeight": {
+			"min": 27.500,
+			"max": 38.500
+		},
+		"craftDuration": 2880
+	}
+]

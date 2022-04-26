@@ -1,0 +1,178 @@
+[
+	{
+		"armor": 1,
+		"mmMin": 0,
+		"mmMax": 0,
+		"missilePenalty": 0,
+		"quicknessPenalty": 0,
+		"includeGreaves": false
+	},
+	{
+		"armor": 2,
+		"mmMin": 0,
+		"mmMax": 0,
+		"missilePenalty": 0,
+		"quicknessPenalty": 0,
+		"includeGreaves": false
+	},
+	{
+		"armor": 3,
+		"mmMin": 0,
+		"mmMax": 0,
+		"missilePenalty": 0,
+		"quicknessPenalty": 0,
+		"includeGreaves": false
+	},
+	{
+		"armor": 4,
+		"mmMin": 0,
+		"mmMax": 0,
+		"missilePenalty": 0,
+		"quicknessPenalty": 0,
+		"includeGreaves": false
+	},
+	{
+		"armor": 5,
+		"skillId": "soft-leather",
+		"mmMin": 0,
+		"mmMax": 0,
+		"missilePenalty": 0,
+		"quicknessPenalty": 0,
+		"includeGreaves": false
+	},
+	{
+		"armor": 6,
+		"skillId": "soft-leather",
+		"mmMin": 0,
+		"mmMax": -20,
+		"missilePenalty": 5,
+		"quicknessPenalty": 0,
+		"includeGreaves": false
+	},
+	{
+		"armor": 7,
+		"skillId": "soft-leather",
+		"mmMin": -10,
+		"mmMax": -40,
+		"missilePenalty": 15,
+		"quicknessPenalty": 10,
+		"includeGreaves": false
+	},
+	{
+		"armor": 8,
+		"skillId": "soft-leather",
+		"mmMin": -15,
+		"mmMax": -50,
+		"missilePenalty": 15,
+		"quicknessPenalty": 15,
+		"includeGreaves": false
+	},
+	{
+		"armor": 9,
+		"skillId": "rigid-leather",
+		"mmMin": -5,
+		"mmMax": -50,
+		"missilePenalty": 0,
+		"quicknessPenalty": 0,
+		"includeGreaves": false
+	},
+	{
+		"armor": 10,
+		"skillId": "rigid-leather",
+		"mmMin": -10,
+		"mmMax": -70,
+		"missilePenalty": 10,
+		"quicknessPenalty": 5,
+		"includeGreaves": true
+	},
+	{
+		"armor": 11,
+		"skillId": "rigid-leather",
+		"mmMin": -15,
+		"mmMax": -90,
+		"missilePenalty": 20,
+		"quicknessPenalty": 15,
+		"includeGreaves": true
+	},
+	{
+		"armor": 12,
+		"skillId": "rigid-leather",
+		"mmMin": -15,
+		"mmMax": -110,
+		"missilePenalty": 30,
+		"quicknessPenalty": 15,
+		"includeGreaves": true
+	},
+	{
+		"armor": 13,
+		"skillId": "armor-chain",
+		"mmMin": -10,
+		"mmMax": -70,
+		"missilePenalty": 0,
+		"quicknessPenalty": 5,
+		"includeGreaves": false
+	},
+	{
+		"armor": 14,
+		"skillId": "armor-chain",
+		"mmMin": -15,
+		"mmMax": -90,
+		"missilePenalty": 10,
+		"quicknessPenalty": 10,
+		"includeGreaves": true
+	},
+	{
+		"armor": 15,
+		"skillId": "armor-chain",
+		"mmMin": -25,
+		"mmMax": -120,
+		"missilePenalty": 20,
+		"quicknessPenalty": 20,
+		"includeGreaves": true
+	},
+	{
+		"armor": 16,
+		"skillId": "armor-chain",
+		"mmMin": -25,
+		"mmMax": -130,
+		"missilePenalty": 20,
+		"quicknessPenalty": 20,
+		"includeGreaves": true
+	},
+	{
+		"armor": 17,
+		"skillId": "armor-plate",
+		"mmMin": -15,
+		"mmMax": -90,
+		"missilePenalty": 0,
+		"quicknessPenalty": 10,
+		"includeGreaves": false
+	},
+	{
+		"armor": 18,
+		"skillId": "armor-plate",
+		"mmMin": -20,
+		"mmMax": -110,
+		"missilePenalty": 10,
+		"quicknessPenalty": 20,
+		"includeGreaves": true
+	},
+	{
+		"armor": 19,
+		"skillId": "armor-plate",
+		"mmMin": -35,
+		"mmMax": -150,
+		"missilePenalty": 30,
+		"quicknessPenalty": 30,
+		"includeGreaves": true
+	},
+	{
+		"armor": 20,
+		"skillId": "armor-plate",
+		"mmMin": -45,
+		"mmMax": -165,
+		"missilePenalty": 40,
+		"quicknessPenalty": 30,
+		"includeGreaves": true
+	}
+]

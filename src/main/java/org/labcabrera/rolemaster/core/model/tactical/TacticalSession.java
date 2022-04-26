@@ -46,6 +46,9 @@ public class TacticalSession {
 	@Schema(description = "Customized multiplier to exhaustion points.", required = false, example = "1")
 	private BigDecimal exhaustionMultiplier;
 
+	@Schema(description = "Bonus to be added to the weapon breakage roll in combat (so that we can prevent it from happening too often).", required = false, example = "0")
+	private Integer breakageBonus;
+
 	@Builder.Default
 	@Schema(description = "Audit data.", required = true)
 	private EntityMetadata entityMetadata = new EntityMetadata();

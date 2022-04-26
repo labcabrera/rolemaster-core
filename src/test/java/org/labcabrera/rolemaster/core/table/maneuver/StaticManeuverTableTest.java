@@ -1,12 +1,12 @@
 package org.labcabrera.rolemaster.core.table.maneuver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,16 +20,23 @@ class StaticManeuverTableTest {
 	@Autowired
 	private ObjectMapper objectMapper;
 
-	@Test
-	void test() throws IOException {
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
-		StaticManeuverTable table = readTable();
-		assertNotNull(table);
+	private StaticManeuverTable table;
 
+	@BeforeEach
+	void configure() throws IOException {
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+		table = readTable();
+	}
+
+	@Test
+	void testConsistency() {
 		for (int i = -50; i < 200; i++) {
 			assertTrue(table.checkConsistence(i), "Invalid consistence: " + i);
 		}
+	}
 
+	@Test
+	void testFailures() throws IOException {
 		StaticManeuverResult result = table.getResult(-26);
 		assertEquals("Spectacular Failure", result.getName());
 		assertEquals(0, result.getSuccessPercent());
@@ -53,8 +60,11 @@ class StaticManeuverTableTest {
 		result = table.getResult(75);
 		assertEquals("Failure", result.getName());
 		assertEquals(0, result.getSuccessPercent());
+	}
 
-		result = table.getResult(76);
+	@Test
+	void testSuccess() {
+		StaticManeuverResult result = table.getResult(76);
 		assertEquals("Partial Success", result.getName());
 		assertEquals(20, result.getSuccessPercent());
 

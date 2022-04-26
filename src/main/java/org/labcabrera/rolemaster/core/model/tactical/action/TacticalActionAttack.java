@@ -34,21 +34,33 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	protected Map<AttackTargetType, AttackFumbleResult> fumbleResults = new EnumMap<>(AttackTargetType.class);
 
 	@Builder.Default
-	protected List<AttackResult> attackResults = new ArrayList<>();
+	protected Map<AttackTargetType, AttackBreakageResult> breakageResults = new EnumMap<>(AttackTargetType.class);
 
-	private List<TacticalCriticalResult> criticalResults = new ArrayList<>();
+	@Builder.Default
+	protected Map<AttackTargetType, AttackResult> attackResults = new EnumMap<>(AttackTargetType.class);
+
+	private Map<AttackTargetType, List<TacticalCriticalResult>> criticalResults = new EnumMap<>(AttackTargetType.class);
 
 	protected BigDecimal exhaustionPoints;
-
-	//	public Integer getOffensiveBonus() {
-	//		return offensiveBonusMap.values().stream().reduce(0, (a, b) -> a + b);
-	//	}
 
 	public boolean isFlumbe() {
 		return !fumbleResults.isEmpty();
 	}
 
-	public boolean hasPendingCriticalResolution() {
-		return criticalResults.stream().filter(e -> e.getCriticalTableResult() == null).count() > 0L;
+	public void addCriticalResult(TacticalCriticalResult critical, AttackTargetType attackTargetType) {
+		criticalResults.computeIfAbsent(attackTargetType, e -> new ArrayList<>());
+		criticalResults.get(attackTargetType).add(critical);
 	}
+
+	public boolean hasUnresolvedCritical() {
+		for (List<TacticalCriticalResult> list : criticalResults.values()) {
+			for (TacticalCriticalResult critical : list) {
+				if (critical.getCriticalTableResult() == null) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }

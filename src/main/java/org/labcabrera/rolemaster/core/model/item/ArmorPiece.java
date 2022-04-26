@@ -15,6 +15,6 @@ public class ArmorPiece extends Item {
 
 	private ArmorItemType armorType;
 
-	private String armor;
+	private Integer armor;
 
 }

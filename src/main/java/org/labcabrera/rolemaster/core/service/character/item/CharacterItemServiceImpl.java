@@ -39,6 +39,9 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 	@Autowired
 	private CharacterInfoRepository characterRepository;
 
+	@Autowired
+	private CharacterItemChangedPostProcessor characterItemChangedPostProcessor;
+
 	@Override
 	public Mono<CharacterItem> getItem(String characterItemId) {
 		return characterItemRepository.findById(characterItemId)
@@ -49,8 +52,10 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 	public Mono<Void> deleteItem(String characterItemId) {
 		return characterItemRepository.findById(characterItemId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterItemNotFound(characterItemId))))
-			.flatMap(characterItemRepository::delete);
-		//TODO recalcular
+			.flatMap(characterItemRepository::delete)
+			.then(characterItemRepository.findById(characterItemId))
+			.flatMap(item -> characterItemChangedPostProcessor.apply(item, item.getCharacterId()))
+			.then(Mono.empty());
 	}
 
 	@Override
@@ -66,8 +71,8 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 				item.getMetadata().setUpdated(LocalDateTime.now());
 				return item;
 			})
-			.flatMap(characterItemRepository::save);
-		//TODO recalcular
+			.flatMap(characterItemRepository::save)
+			.flatMap(item -> characterItemChangedPostProcessor.apply(item, item.getCharacterId()));
 	}
 
 	@Override
@@ -107,8 +112,8 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 				.broken(false)
 				.weight(getWeight(request, pair.getT2()))
 				.build())
-			.flatMap(characterItemRepository::save);
-		//TODO recalcular pesos y otros valores que pueden cambiar
+			.flatMap(characterItemRepository::save)
+			.flatMap(item -> characterItemChangedPostProcessor.apply(item, characterId));
 	}
 
 	/**

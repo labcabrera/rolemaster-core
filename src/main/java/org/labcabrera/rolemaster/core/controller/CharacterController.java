@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.controller;
 
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
+import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
@@ -67,5 +68,10 @@ public interface CharacterController {
 	@Operation(summary = "Performs a rank up operation of skill categories and skills.")
 	Mono<CharacterInfo> updateRanks(@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody SkillUpgrade request);
+
+	@PostMapping("/{id}/training-packages")
+	@Operation(summary = "Applies a training package to a character.")
+	Mono<CharacterInfo> addTrainingPackage(@PathVariable("id") String characterId,
+		@org.springframework.web.bind.annotation.RequestBody TrainingPackageUpgrade request);
 
 }

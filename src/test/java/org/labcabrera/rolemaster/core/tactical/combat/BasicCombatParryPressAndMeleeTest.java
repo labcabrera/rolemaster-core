@@ -80,7 +80,7 @@ class BasicCombatParryPressAndMeleeTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution01 = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(55)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(56)))
 			.build();
 
 		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution01).share().block();
@@ -97,7 +97,7 @@ class BasicCombatParryPressAndMeleeTest extends AbstractBasicCombatTest {
 		assertTrue(a02Check.isBlocked());
 
 		MeleeAttackExecution meleeAttackExecution03 = MeleeAttackExecution.builder()
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(55)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(56)))
 			.build();
 		TacticalActionMeleeAttack meleeResolved03 = (TacticalActionMeleeAttack) tacticalActionService
 			.execute(a03.getId(), meleeAttackExecution03).share().block();

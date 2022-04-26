@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.table.TableEntry;
 
 import lombok.Getter;
@@ -17,13 +18,13 @@ public class StaticManeuverTable {
 
 	private Map<String, StaticManeuverResult> results;
 
-	public StaticManeuverResult getResult(int roll) {
+	public StaticManeuverResult getResult(int roll) {		
 		for (String key : results.keySet()) {
 			if (TableEntry.checkKeyRange(key, roll)) {
 				return results.get(key);
 			}
 		}
-		throw new RuntimeException("Invalid table results for roll " + roll);
+		throw new DataConsistenceException("Invalid table results for roll " + roll);
 	}
 
 	public boolean checkConsistence(int roll) {

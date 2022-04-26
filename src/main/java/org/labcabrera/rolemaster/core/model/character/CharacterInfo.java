@@ -45,9 +45,6 @@ public class CharacterInfo {
 	@Schema(description = "Character height in cm.", required = true, example = "184")
 	private Integer height;
 
-	@Schema(description = "Character weight in kg.", required = true, example = "72")
-	private Integer weight;
-
 	@Schema(description = "Character race identifier.", required = true, example = "common-men")
 	private String raceId;
 
@@ -92,6 +89,15 @@ public class CharacterInfo {
 
 	@Schema(description = "Value in meters.", required = true, example = "15")
 	private Integer baseMovementRate;
+
+	@Builder.Default
+	private CharacterArmor armor = new CharacterArmor();
+
+	@Builder.Default
+	private Integer defensiveBonus = 0;
+
+	@Builder.Default
+	private CharacterWeight weight = new CharacterWeight();
 
 	@Builder.Default
 	private List<String> notes = new ArrayList<>();

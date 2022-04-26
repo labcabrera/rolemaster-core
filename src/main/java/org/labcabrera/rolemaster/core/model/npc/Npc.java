@@ -27,6 +27,9 @@ public class Npc {
 
 	private String name;
 
+	@Builder.Default
+	private List<String> raceWeywords = new ArrayList<>();
+
 	private String shortDescription;
 
 	private boolean unique;
@@ -46,13 +49,13 @@ public class Npc {
 	private Integer defensiveBonus;
 
 	@Builder.Default
-	private List<NpcAttack> attacks = new ArrayList<>();
-
-	@Builder.Default
 	private List<CharacterItem> items = new ArrayList<>();
 
 	@Builder.Default
 	private Map<String, Integer> skills = new LinkedHashMap<>();
+
+	@Builder.Default
+	private List<NpcSpecialAttack> specialAttacks = new ArrayList<>();
 
 	private Integer baseMove;
 
@@ -64,8 +67,13 @@ public class Npc {
 
 	private MovementPace maxPace;
 
+	@Builder.Default
+	private NpcCriticalTable criticalTable = NpcCriticalTable.DEFAULT;
+
 	private String universeId;
 
 	private String npcNameGeneratorGroup;
+
+	private List<String> notes;
 
 }

@@ -7,14 +7,6 @@
 		"hp": 79,
 		"armorType": 17,
 		"defensiveBonus": 45,
-		"attacks": [
-			{
-				"weaponId": "short-sword",
-				"bonus": 105,
-				"type": "melee",
-				"primary": true
-			}
-		],
 		"items": [
 			{
 				"itemId": "short-sword",
@@ -22,8 +14,11 @@
 				"name": "Sting",
 				"bonus": 15,
 				"position": "main-hand",
-				"_features": [
-					"ork-slayer"
+				"features": [
+					{
+						"type": "slayer",
+						"value": "orcs"
+					}
 				],
 				"description": ""
 			}

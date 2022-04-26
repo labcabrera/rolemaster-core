@@ -8,7 +8,6 @@ import org.labcabrera.rolemaster.core.message.Messages.TacticalLogs;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSessionLog;
-import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
@@ -67,12 +66,12 @@ public class TacticalLogService {
 	private List<TacticalSessionLog> getAttackMessage(TacticalActionAttack attack, TacticalRound round, TacticalCharacter source,
 		TacticalCharacter target) {
 		List<TacticalSessionLog> result = new ArrayList<>();
-		for (AttackResult ar : attack.getAttackResults()) {
+		attack.getAttackResults().values().forEach(ar -> {
 			StringBuilder sb = new StringBuilder();
+			//TODO target not valid using two weapons
 			sb.append("Character ").append(source.getName()).append(" attacks ").append(target.getName());
 			sb.append(" for ").append(ar.getResult());
 			sb.append(" (").append(ar.getWeaponTableId()).append(")");
-			//TODO fumble / criticals
 			sb.append(".");
 			TacticalSessionLog tsl = TacticalSessionLog.builder()
 				.tacticalSessionId(round.getTacticalSessionId())
@@ -81,7 +80,7 @@ public class TacticalLogService {
 				.created(LocalDateTime.now())
 				.build();
 			result.add(tsl);
-		}
+		});
 		return result;
 	}
 

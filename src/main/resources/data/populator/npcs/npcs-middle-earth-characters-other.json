@@ -7,23 +7,21 @@
 		"hp": 130,
 		"armorType": 1,
 		"defensiveBonus": 60,
-		"_attacks": [
+		"specialAttacks": [
 			{
-				"_weaponId": "mgr-???",
-				"bonus": 125,
-				"type": "melee",
-				"primary": true
+				"name": "mgr",
+				"skillId": "#mgr"
 			},
 			{
-				"_weaponId": "mbi-???",
-				"bonus": 85,
-				"type": "melee",
-				"primary": false
+				"name": "mbi",
+				"skillId": "#mbi"
 			}
 		],
 		"items": [
 		],
 		"skills": {
+			"#mgr": 125,
+			"#mbi": 85
 		},
 		"baseMovement": 50,
 		"unique": true,

@@ -1,0 +1,293 @@
+[
+	{
+		"id": "the-witch-king",
+		"name": "The Witch King",
+		"raceKeywords": [ "nazgul", "dunadan", "fallen-numenorean" ],
+		"profession": "sorcerer",
+		"shortDescription": "The Witch King",
+		"level": 60,
+		"unique": true,
+		"hp": 360,
+		"defensiveBonus": 120,
+		"powerPoints": 180,
+		"armorType": 20,
+		"skills": {
+			"broadsword": 180,
+			"mace": 180,
+			"short-sword": 180,
+			"two-weapon-combat:broadsword:mace": 180,
+			"two-weapon-combat:broadsword:dagger": 180,
+			"climbing": 75,
+			"swimming": 80,
+			"riding:horse": 102,
+			"strategy": 151,
+			"trading": 55,
+			"ambush": 9
+		},
+		"items": [
+			{
+				"itemId": "broadsword",
+				"type": "weapon",
+				"name": "Vasamacil",
+				"features": [
+					{
+						"type": "bonus",
+						"value": "30"
+					},
+					{
+						"type": "additional-critical",
+						"value": "heat:0"
+					},
+					{
+						"type": "shatter-parry-weapon",
+						"value": "60"
+					},
+					{
+						"type": "material",
+						"value": "ithilnaur" 
+					},
+					{
+						"type": "unbreakable"
+					}
+				],
+				"position": "main-hand",
+				"description": "(Q. 'Blade-eater', S. 'Vasamegil') Flaming broadsword forged in Thangorodrim out of black ithilnaur and inlaid with veins of fused rubbies."
+			},
+			{
+				"itemId": "mace",
+				"type": "weapon",
+				"name": "Nallagurth",
+				"features": [
+					{
+						"type": "bonus",
+						"value": "30"
+					},
+					{
+						"type": "slayer",
+						"value": "man"
+					},
+					{
+						"type": "slayer",
+						"value": "elf"
+					},
+					{
+						"type": "spell-on-hit",
+						"value": "slow-death:60"
+					},
+					{
+						"type": "material",
+						"value": "ithilnaur" 
+					},
+					{
+						"type": "unbreakable"
+					}
+				],
+				"position": "off-hand",
+				"description": "('Death's Proclaimer). Mace forged in Utumno out of black eog and subtly inlaid with veins of fused diamonds."
+			},
+			{
+				"itemId": "composite-bow",
+				"type": "weapon",
+				"name": "Romoquenáro",
+				"features": [
+					{
+						"type": "bonus",
+						"value": "30"
+					},
+					{
+						"type": "direct-spell-on-hit",
+						"value": "fireball:30"
+					},
+					{
+						"type": "unbreakable"
+					}
+				],
+				"description": "Númenórean steel composite bow. Whenever it is fired in darkness its arrow immolates upen leaving the bow. While on fire, the arrow yields a +30 Fireball attack whenever it strikes a target."
+			},
+			{
+				"position": "carried",
+				"itemId": "short-sword",
+				"type": "weapon",
+				"name": "Morgul-knife",
+				"features": [
+					{
+						"type": "bonus",
+						"value": "30"
+					}
+				],
+				"description": "Dagger with striles as a short sword. Its long, thin enchanged blade gleams with a cold glint. Its dibolves when exposed to sunligth and breaks off whenever the knife yields a critial strike. Once the blade is embedded in a victim, the victim must roll a RR versus the wielder's lvl. Failure results in the blade findings its way to the victim's hearth within a number of days equals to 50 minus the RR failure number. [TODO]"
+			},
+			{
+				"position": "equipped",
+				"itemId": "crown",
+				"type": "armor-piece",
+				"armorType": "armor",
+				"name": "Crown of Angmar",
+				"bonus": 15,
+				"description": "A simple, enchanted iron crown, unadorned by any jewels or inlays. It is the symbol od the King of the North. A +6 Essence and Channeling spell adder, its add +15 to wearer's DB."				
+			},
+			{
+				"position": "equipped",
+				"itemId": "",
+				"type": "armor-piece",
+				"armorType": "helmet",
+				"name": "Thôlogaer Ciryatano",
+				"description": "('Sea-helm of Ciryatan') A x6 Essence and Channeling PP multiplier, the magic Sea-Helm was one woen by Tad-Ciryatan of Númenor. Uts overlaping Sea-drake skin plates climax in a spiny crown-shaped crest, a variation of the karma design used by the Uinendil (S. 'Followers of Uinen') Captains of Númenor. Its add +5 to wearer RRs vs spells attacks."				
+			},
+			{
+				"position": "equipped",
+				"itemId": "full-plate",
+				"type": "armor-piece",
+				"armorType": "armor",
+				"name": "Morgul Plate",
+				"bonus": 20,
+				"description": "Black Sea-Drake skin plate armor with encumbers wearer like normal clothes (i.e. no armor/AT1)."
+			}
+		],
+		"_baseMove": 30,
+		"_mmBonus": 0,
+		"_maxPace": "fastSprint",
+		"_movementSpeed": "SL",
+		"_attackQuickness": "MD",
+		"criticalTable": "large",
+		"universeId": "middle-earth",
+		"notes": [
+			"Shadowy form <special>",
+			"Appearance <special>",
+			"Strength of the form <special",
+			"Vulnerability to Nature <special>",
+			"Effect of Varda <special>",
+			"Enhanced Senses <special>",
+			"Presence - Anyone coming withing sigth of a Nazgûl makes a RR versus a 6th level Fear spell. <special>",
+			"Black Breath <special>"			
+		]
+	},
+	{
+		"id": "adunaphel",
+		"name": "Adûnaphel",
+		"shortDescription": "Adûnaphel",
+		"level": 32,
+		"unique": true,
+		"hp": 160,
+		"defensiveBonus": 75,
+		"_powerPoints": 180,
+		"armorType": 19,
+		"skills": {
+			"#melee": 160,
+			"#missile": 125
+		},
+		"description": "Black Númenórean Bard. Seventh of the Nine."
+	},
+	{
+		"id": "akhorahil",
+		"name": "Akhôrahil",
+		"shortDescription": "Akhôrahil",
+		"level": 36,
+		"unique": true,
+		"hp": 155,
+		"defensiveBonus": 85,
+		"_powerPoints": 180,
+		"armorType": 15,
+		"skills": {
+			"#melee": 125,
+			"#missile": 75
+		},
+		"description": "Black Númenórean Mage/Sorcerer. The Fifth."
+	},
+	{
+		"id": "dwar",
+		"name": "Dwar",
+		"shortDescription": "Dwar",
+		"level": 39,
+		"unique": true,
+		"hp": 195,
+		"defensiveBonus": 75,
+		"_powerPoints": 180,
+		"armorType": 19,
+		"skills": {
+			"#melee": 140,
+			"#missile": 100
+		},
+		"description": "Wôlim Mage. Third of the Nine."
+	},
+	{
+		"id": "hoarmurath",
+		"name": "Hoarmûrath",
+		"shortDescription": "Hoarmûrath",
+		"level": 33,
+		"unique": true,
+		"hp": 185,
+		"defensiveBonus": 95,
+		"_powerPoints": 180,
+		"armorType": 11,
+		"skills": {
+			"#melee": 150,
+			"#missile": 80
+		},
+		"description": "Urd Animist. Sixth of the Nine."
+	},
+	{
+		"id": "indur",
+		"name": "Indûr",
+		"shortDescription": "Indûr",
+		"level": 37,
+		"unique": true,
+		"hp": 165,
+		"defensiveBonus": 120,
+		"_powerPoints": 180,
+		"armorType": 13,
+		"skills": {
+			"#melee": 140,
+			"#missile": 95
+		},
+		"description": "Kiarn Mage. Fourth of the Nine."
+	},
+	{
+		"id": "khamul",
+		"name": "Khamûl",
+		"shortDescription": "Khamûl",
+		"level": 50,
+		"unique": true,
+		"hp": 240,
+		"defensiveBonus": 90,
+		"_powerPoints": 180,
+		"armorType": 20,
+		"skills": {
+			"#melee": 210,
+			"#missile": 180
+		},
+		"description": "Womaw (Avaradan) Ranger. The Second."
+	},
+	{
+		"id": "ren",
+		"name": "Ren",
+		"shortDescription": "Ren",
+		"level": 32,
+		"unique": true,
+		"hp": 160,
+		"defensiveBonus": 95,
+		"_powerPoints": 180,
+		"armorType": 12,
+		"skills": {
+			"#melee": 125,
+			"#missile": 85
+		},
+		"description": "Chey Mage/Illusionist. Eigth of the Nine."
+	},
+	{
+		"id": "uvatha",
+		"name": "Ûvatha",
+		"shortDescription": "Ûvatha",
+		"level": 31,
+		"unique": true,
+		"hp": 180,
+		"defensiveBonus": 100,
+		"_powerPoints": 180,
+		"armorType": 4,
+		"skills": {
+			"#melee": 180,
+			"#missile": 240
+		},
+		"description": "Variag Figther. Messenger and Ninth."
+	}
+]

@@ -485,7 +485,7 @@
 					"cant-parry": 2
 				},
 				"bonus": {
-					"bonus": 15,
+					"bonus": 10,
 					"rounds": 1
 				}
 			},

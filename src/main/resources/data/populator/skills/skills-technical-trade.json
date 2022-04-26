@@ -1,0 +1,209 @@
+[
+    {
+        "id": "begging",
+        "name": "Begging",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for eliciting a sympathetic response from the person being solicited."
+    },
+    {
+        "id": "first-aid",
+        "name": "First Aid",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for applications of emergency aid or treatment (limited to type of creature), such as attempts to halt or slow bleeding or damaging deterioration. It is suggested that, provided with the proper tools or bandages, a character using first aid could stop up to 5 hits/round of “bleeding” damage without resorting to a tourniquet. Used normally in the field without the benefits of a proper medical facility or elaborate equipment. See Section 24.1 (p. 75) for more details."
+    },
+    {
+        "id": "gambling",
+        "name": "Gambling",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus when playing any game with a significant element of luck. Also includes cheating as a form of improving one’s luck at any game."
+    },
+    {
+        "id": "mapping",
+        "name": "Mapping",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to making, recognizing and using simple maps. This skill is not capable of producing fully detailed maps like those of a cartographer, but it is sufficient to the task of marking out one’s journey well enough to find one’s way home."
+    },
+    {
+        "id": "operating-equipment",
+        "name": "Operating Equipment",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus to operate simple equipment, or a specific set of complex equipment, such as millworks, automatic looms, etc."
+    },
+    {
+        "id": "orienteering",
+        "name": "Orienteering",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for using landmarks, the sun, stars and other simple navigational tricks to arrive at a desired location. Note that Orienteering provides only a general sense of the proper direction towards a location; hazards, obstacles, or distances are not learned."
+    },
+    {
+        "id": "sailing",
+        "name": "Sailing",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for operating a sailing vessel or for serving as part of a crew operating a sailing vessel."
+    },
+    {
+        "id": "tactical-games",
+        "name": "Tactical Games",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for playing games which contain very little chance element, such as Chess or Go."
+    },
+    {
+        "id": "using-prepared-herbs",
+        "name": "Using Prepared Herbs",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-general",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for playing games which contain very little chance element, such as Chess or Go."
+    },
+    {
+        "id": "diagnostics",
+        "name": "Diagnostics †",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-professional",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for determining the medical condition of a patient. Skill must be learned for a particular race or type of creature. One must pick the skill in either general diagnosis, or diagnosis of a specific race. General diagnostics skill of 6 ranks or higher allows certification of simple medical practice on all races (use of field equipment and healing drugs). Diagnostics skill for a specific race of 12 ranks or higher is required for surgical certification (and reasonable competence)."
+    },
+    {
+        "id": "engineering",
+        "name": "Engineering",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-professional",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for knowing major facts about engineering of the appropriate technical level known to the culture. Also provides a bonus for attempts to utilize that knowledge in new projects. A GM may require different types of Engineering to be treated as separate skills."
+    },
+    {
+        "id": "mechanition",
+        "name": "Mechanition †",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-professional",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for building and using a machine that already exists. It will be necessary to have the appropriate tools to build the machine. Each type of machine is a potential specialization."
+    },
+    {
+        "id": "mining",
+        "name": "Mining †",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-professional",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for assessing the possibilities of mining in an area, and supervising the creation and running of the mine. The following is a partial listing of specialized mining processes: Dredging, Open Pit, Quarry. Tunneling."
+    },
+    {
+        "id": "second-aid",
+        "name": "Second Aid",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-professional",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for performing minor surgery, including sewing closed wounds, removing diseased or mangled limbs, bone setting and any other minor surgery operation."
+    },
+    {
+        "id": "administration",
+        "name": "Administration",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for functioning successfully within a familiar government where record keeping, personnel interaction, and bureaucracy is present. Also useful in gaining public office and applying governmental power."
+    },
+    {
+        "id": "appraisal",
+        "name": "Appraisal",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for determining or estimating the value of an object or goods other than armor, metal, stones or weapons."
+    },
+    {
+        "id": "boat-pilot",
+        "name": "Boat Pilot †",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for knowledge of water courses such as the locations of sand bars, rapids, waterfalls, whirlpools, currents, reefs, icebergs, vegetation clogs (underwater snags and roots, overhead hanging branches and vines), etc. Each different water course is a potential specialization."
+    },
+    {
+        "id": "evaluate-armor",
+        "name": "Evaluate Armor",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "Provides a bonus for determining the value and quality of armor."
+    },
+    {
+        "id": "evaluate-metal",
+        "name": "Evaluate Metal",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "Provides a bonus for determining the value and quality of metal objects in worked, refined or raw condition."
+    },
+    {
+        "id": "evaluate-stone",
+        "name": "Evaluate Stone",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "Provides a bonus for determining the value and quality of stone objects in worked, refined, or raw condition—also used to evaluate gems."
+    },
+    {
+        "id": "evaluate-weapon",
+        "name": "Evaluate Weapon",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "Provides a bonus for determining the value and quality of weapons."
+    },
+    {
+        "id": "navigation",
+        "name": "Navigation",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "This skill provides a bonus for determining proper directions and distances when using a map in conjunction with various directional aids, such as a compass, sextant, clock, etc. This includes the concept of orienting, and is applicable on land, water or the stars. Note that this skill is far more precise and complex than Orienteering."
+    },
+    {
+        "id": "tactics",
+        "name": "Tactics †",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": "These skills provide bonuses for perceiving and planning appropriate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately. The following is a partial listing of types of tactics: Battle Field, Naval, Sabotage, Siege, Small Unit."
+    }
+]

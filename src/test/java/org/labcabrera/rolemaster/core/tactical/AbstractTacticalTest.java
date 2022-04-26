@@ -1,11 +1,13 @@
 package org.labcabrera.rolemaster.core.tactical;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
+import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -57,14 +59,18 @@ public abstract class AbstractTacticalTest {
 
 	protected void prepare() {
 		sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
-			.name("Test strategic session " + LocalDateTime.now())
+			.name("Test strategic session")
+			.universeId("middle-earth")
 			.description("Testing")
 			.build()).share().block();
 
 		ts = tacticalService.createSession(TacticalSessionCreation.builder()
 			.strategicSessionId(sts.getId())
-			.name("Test tactical session " + LocalDateTime.now())
+			.name("Test tactical session")
 			.description("Testing")
+			.temperature(TemperatureMultiplier.NORMAL)
+			.terrain(TerrainType.NORMAL)
+			.exhaustionMultiplier(BigDecimal.ONE)
 			.build()).share().block();
 	}
 }

@@ -50,7 +50,8 @@ public class TacticalControllerImpl implements TacticalSessionController {
 
 	@Override
 	public Mono<TacticalSession> findTacticalSessionsById(String id) {
-		return tacticalSessionRepository.findById(id);
+		return tacticalSessionRepository.findById(id)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session not found.")));
 	}
 
 	@Override

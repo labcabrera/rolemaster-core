@@ -13,8 +13,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class CharacterWeapon extends CharacterItem {
 
-	private String skillId;
-
 	private String weaponTableId;
 
 	private Integer fumble;

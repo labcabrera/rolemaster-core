@@ -6,6 +6,7 @@ import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDecla
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
+import org.labcabrera.rolemaster.core.dto.action.execution.WeaponBreakageExecution;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,6 +48,12 @@ public interface TacticalSessionActionController {
 	Mono<TacticalAction> execute(
 		@PathVariable("id") String actionId,
 		@Valid @RequestBody TacticalActionExecution actionDeclaration);
+
+	@PostMapping("/{id}/execution/breakage")
+	@Operation(summary = "Executes a weapon breakage result.")
+	Mono<TacticalAction> executeBreakage(
+		@PathVariable("id") String actionId,
+		@RequestBody WeaponBreakageExecution request);
 
 	@PostMapping("/{id}/execution/critical")
 	@Operation(summary = "Executes a critical result.")
