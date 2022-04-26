@@ -44,7 +44,7 @@ class TrainingPackageService01Test {
 
 		String json = """
 			{
-				"trainingPackageId": "assasin",
+				"trainingPackageId": "assassin",
 				"categorySelection": [
 					{
 						"key": "weapon-category",
