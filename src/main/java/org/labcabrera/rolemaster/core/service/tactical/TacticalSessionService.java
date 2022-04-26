@@ -35,6 +35,7 @@ public class TacticalSessionService {
 				.temperature(request.getTemperature())
 				.terrain(request.getTerrain())
 				.exhaustionMultiplier(request.getExhaustionMultiplier())
+				.breakageBonus(request.getBreakageBonus())
 				.entityMetadata(EntityMetadata.builder()
 					.created(LocalDateTime.now())
 					.build())
