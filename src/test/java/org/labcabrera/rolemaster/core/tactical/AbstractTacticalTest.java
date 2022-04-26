@@ -1,7 +1,6 @@
 package org.labcabrera.rolemaster.core.tactical;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
@@ -60,13 +59,14 @@ public abstract class AbstractTacticalTest {
 
 	protected void prepare() {
 		sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
-			.name("Test strategic session " + LocalDateTime.now())
+			.name("Test strategic session")
+			.universeId("middle-earth")
 			.description("Testing")
 			.build()).share().block();
 
 		ts = tacticalService.createSession(TacticalSessionCreation.builder()
 			.strategicSessionId(sts.getId())
-			.name("Test tactical session " + LocalDateTime.now())
+			.name("Test tactical session")
 			.description("Testing")
 			.temperature(TemperatureMultiplier.NORMAL)
 			.terrain(TerrainType.NORMAL)

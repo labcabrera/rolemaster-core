@@ -16,6 +16,7 @@ import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
+import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,9 @@ public class CharacterAddSkillService {
 	@Autowired
 	private SkillRepository skillRepository;
 
+	@Autowired
+	private CharacterPostProcessorService postProcessor;
+
 	public Mono<CharacterInfo> addSkill(@NotEmpty String characterId, @Valid AddSkill request) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
@@ -46,7 +50,7 @@ public class CharacterAddSkillService {
 				Skill skill = pair.getT2();
 				String skillId = getSkillId(skill.getId(), request.getCustomizations());
 				if (character.getSkill(skillId).isPresent()) {
-					throw new BadRequestException("Duplicate skill " + skillId);
+					throw new BadRequestException("Duplicate skill " + skillId + ".");
 				}
 				CharacterSkillCategory skillCategory = character.getSkillCategory(skill.getCategoryId()).get();
 				CharacterSkill characterSkill = CharacterSkill.builder()
@@ -70,6 +74,7 @@ public class CharacterAddSkillService {
 				character.getSkills().add(characterSkill);
 				return character;
 			})
+			.map(postProcessor::apply)
 			.flatMap(characterRepository::save);
 	}
 

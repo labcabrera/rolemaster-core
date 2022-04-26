@@ -13,7 +13,7 @@ import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
-import org.labcabrera.rolemaster.core.service.character.TraningPackageUpgradeService;
+import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +27,7 @@ class TrainingPackageService01Test {
 	private CharacterCreationService service;
 
 	@Autowired
-	private TraningPackageUpgradeService traningPackageUpgradeService;
+	private TrainingPackageUpgradeService traningPackageUpgradeService;
 
 	@Autowired
 	private ObjectMapper objectMapper;

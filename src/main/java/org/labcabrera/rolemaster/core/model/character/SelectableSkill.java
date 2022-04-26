@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.model.character;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +19,7 @@ public class SelectableSkill {
 
 	private String group;
 
-	private String category;
+	private List<String> categories;
 
 	private Integer ranks;
 
