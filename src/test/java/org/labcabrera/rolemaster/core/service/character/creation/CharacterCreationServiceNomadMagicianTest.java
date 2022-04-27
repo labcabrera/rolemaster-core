@@ -20,7 +20,7 @@ class CharacterCreationServiceNomadMagicianTest extends AbstractCharacterCreatio
 				{
 				"name": "Test Nomads Magician",
 				"level": 1,
-				"raceId": "nomads",
+				"raceId": "nomad",
 				"professionId": "magician",
 				"realmId": "essence",
 				"age": 41,

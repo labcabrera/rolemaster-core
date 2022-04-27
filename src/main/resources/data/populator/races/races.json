@@ -1,7 +1,7 @@
 [
 	{
-		"id": "dwarves",
-		"name": "Dwarves",
+		"id": "dwarf",
+		"name": "Dwarf",
 		"attributeModifiers": {
 			"ag": -2,
 			"co": 6,
@@ -41,8 +41,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "halflings",
-		"name": "Halflings",
+		"id": "halfling",
+		"name": "Halfling",
 		"attributeModifiers": {
 			"ag": 6,
 			"co": 6,

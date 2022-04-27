@@ -20,7 +20,7 @@ class CharacterCreationServiceWoodElvesHealerTest extends AbstractCharacterCreat
 				{
 				"name": "Test Wood Elves Healer",
 				"level": 1,
-				"raceId": "wood-elves",
+				"raceId": "wood-elf",
 				"professionId": "healer",
 				"realmId": "essence",
 				"age": 41,

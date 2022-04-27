@@ -20,7 +20,7 @@ class CharacterCreationServiceGreaterOrkRogueTest extends AbstractCharacterCreat
 				{
 				"name": "Test Greater Orcs Rogue",
 				"level": 1,
-				"raceId": "greater-orcs",
+				"raceId": "greater-orc",
 				"professionId": "rogue",
 				"realmId": "essence",
 				"age": 41,

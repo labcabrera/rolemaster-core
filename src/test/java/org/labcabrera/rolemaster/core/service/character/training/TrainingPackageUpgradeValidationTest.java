@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.character.training;
+package org.labcabrera.rolemaster.core.service.character.training;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

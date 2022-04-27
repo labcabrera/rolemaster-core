@@ -44,7 +44,7 @@ class CharacterCreationService02Test {
 			{
 				"name": "Pieterman",
 				"level": 1,
-				"raceId": "hillmen",
+				"raceId": "hillman",
 				"professionId": "layman",
 				"realmId": "channeling",
 				"age": 25,

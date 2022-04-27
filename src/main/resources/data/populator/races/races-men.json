@@ -1,7 +1,7 @@
 [
 	{
-		"id": "common-men",
-		"name": "Common Men",
+		"id": "common-man",
+		"name": "Common Man",
 		"attributeModifiers": {
 			"sd": 2,
 			"st": 2
@@ -44,8 +44,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "high-men",
-		"name": "High men",
+		"id": "high-man",
+		"name": "High man",
 		"attributeModifiers": {
 			"ag": -2,
 			"co": 4,
@@ -76,8 +76,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "nomads",
-		"name": "Nomads",
+		"id": "nomad",
+		"name": "Nomad",
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 0,
@@ -114,8 +114,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "nomads-mixed-men",
-		"name": "Nomads Mixed Men",
+		"id": "nomad-mixed",
+		"name": "Nomad (Mixed)",
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 2,
@@ -152,8 +152,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "hillmen",
-		"name": "Hillmen",
+		"id": "hillman",
+		"name": "Hillman",
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 0,
@@ -192,8 +192,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "hillmen-mixed-men",
-		"name": "Hillmen Mixed Men",
+		"id": "hillman-mixed",
+		"name": "Hillman (Mixed)",
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 2,

@@ -1,7 +1,7 @@
 [
 	{
-		"id": "wood-elves",
-		"name": "Wood elves",
+		"id": "wood-elf",
+		"name": "Wood elf",
 		"attributeModifiers": {
 			"ag": 4,
 			"co": 0,
@@ -39,8 +39,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "high-elves",
-		"name": "High Elves",
+		"id": "high-elf",
+		"name": "High Elf",
 		"attributeModifiers": {
 		"ag": 2,
 		"me": 2,
@@ -66,8 +66,8 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "grey-elves",
-		"name": "Grey Elves",
+		"id": "grey-elf",
+		"name": "Grey Elf",
 		"attributeModifiers": {
 			"ag": 2,
 			"co": 0,
@@ -98,15 +98,15 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "fair-elves",
-		"name": "Fair Elves",
+		"id": "fair-elf",
+		"name": "Fair Elf",
 		"specialAbilities": [
 		],
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "half-elves",
-		"name": "Half Elves",
+		"id": "half-elf",
+		"name": "Half Elf",
 		"specialAbilities": [
 		],
 		"universes": [ "generic" ]
