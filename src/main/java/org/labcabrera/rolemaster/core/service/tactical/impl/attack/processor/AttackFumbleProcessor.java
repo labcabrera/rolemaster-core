@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.service.context.HasItemMap;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,29 +58,25 @@ public class AttackFumbleProcessor extends AbstractAttackProcessor {
 
 	private Mono<AttackContext> fumbleHandAttack(AttackContext context, AttackTargetType type) {
 		CharacterItem weapon = itemResolver.getWeapon(context.getSource(), type);
-		return Mono.just(context)
-			.zipWith(getFumble(weapon))
-			.map(pair -> {
-				int weaponFumble = pair.getT2();
-				int roll = context.getAction().getRolls().get(type).getResult();
-				if (roll <= weaponFumble) {
-					log.debug("Adding fumble result for attack {}", context.getAction().getId());
-					AttackFumbleResult afr = AttackFumbleResult.builder()
-						.weaponFumble(weaponFumble)
-						.type(getFumbleType(weapon))
-						.build();
-					context.getAction().getFumbleResults().put(type, afr);
-					context.getAction().setState(TacticalActionState.PENDING_FUMBLE_RESOLUTION);
-				}
-				return context;
-			});
+		int weaponFumble = getFumble(weapon, context);
+		int roll = context.getAction().getRolls().get(type).getResult();
+		if (roll <= weaponFumble) {
+			log.debug("Adding fumble result for attack {}", context.getAction().getId());
+			AttackFumbleResult afr = AttackFumbleResult.builder()
+				.weaponFumble(weaponFumble)
+				.type(getFumbleType(weapon))
+				.build();
+			context.getAction().getFumbleResults().put(type, afr);
+			context.getAction().setState(TacticalActionState.PENDING_FUMBLE_RESOLUTION);
+		}
+		return Mono.just(context);
 	}
 
-	private Mono<Integer> getFumble(CharacterItem item) {
+	private Integer getFumble(CharacterItem item, HasItemMap hasItemMap) {
 		if (item == null) {
-			return Mono.just(NO_WEAPON_FUMBLE);
+			return NO_WEAPON_FUMBLE;
 		}
-		return itemService.getFumble(item);
+		return itemService.getFumble(item, hasItemMap);
 	}
 
 	private FumbleType getFumbleType(CharacterItem item) {

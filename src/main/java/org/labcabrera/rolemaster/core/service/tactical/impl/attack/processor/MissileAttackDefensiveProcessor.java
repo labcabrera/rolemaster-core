@@ -10,6 +10,7 @@ public class MissileAttackDefensiveProcessor extends AbstractAttackProcessor {
 
 	@Override
 	public Mono<AttackContext> apply(AttackContext context) {
+		//TODO missile modifiers
 		return Mono.just(context);
 	}
 

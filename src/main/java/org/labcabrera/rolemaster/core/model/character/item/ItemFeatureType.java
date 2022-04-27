@@ -29,6 +29,8 @@ public enum ItemFeatureType implements CodeNameEnum {
 
 	ADDITIONAL_CRITICAL("additional-critical", "Additional critical", true),
 
+	WEAPON_TABLE("weapon-table", "Weapon table", false),
+
 	SHATTER_PARRY_WEAPON("shatter-parry-weapon", "Shatter parry weapon", false),
 
 	SPELL_ON_HIT("spell-on-hit", "Spell on hit", true),

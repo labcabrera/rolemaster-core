@@ -56,7 +56,7 @@ public class InternalErrorHandler {
 			log.info("Invalid request: {}", message, bindException);
 			return ResponseEntity.badRequest().body(error);
 		}
-		else if (ex instanceof ServerWebInputException inputException) {
+		else if (ex instanceof ServerWebInputException) {
 			log.info("Invalid request: {}", ex.getMessage());
 			ApiError error = ApiError.builder()
 				.code(INVALID_REQUEST_CODE)
@@ -80,7 +80,7 @@ public class InternalErrorHandler {
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	protected String getBindExceptionMessage(BindingResult ex) {
+	private String getBindExceptionMessage(BindingResult ex) {
 		StringBuilder sb = new StringBuilder("Invalid request.");
 		List<FieldError> errors = ex.getFieldErrors();
 		for (FieldError error : errors) {

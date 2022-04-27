@@ -10,33 +10,22 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.labcabrera.rolemaster.core.model.tactical.Hp;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
 import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
-import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import reactor.core.publisher.Mono;
-
 @ExtendWith(MockitoExtension.class)
 class AttackExhaustionProcessorTest {
 
 	@InjectMocks
 	private AttackExhaustionProcessor processor;
-
-	@Mock
-	private TacticalSessionRepository sessionRepository;
-
-	@Mock
-	private TacticalRoundRepository roundRepository;
 
 	@Mock
 	private AttackContext context;
@@ -47,24 +36,16 @@ class AttackExhaustionProcessorTest {
 	@Mock
 	private TacticalSession tacticalSession;
 
-	@Mock
-	private TacticalRound tacticalRound;
-
 	@Spy
 	private TacticalActionMeleeAttack action;
 
 	@BeforeEach
 	void setUp() {
 		action.setRoundId("round-01");
-		when(tacticalRound.getTacticalSessionId()).thenReturn("session-01");
-
-		when(sessionRepository.findById("session-01")).thenReturn(Mono.just(tacticalSession));
-		when(roundRepository.findById("round-01")).thenReturn(Mono.just(tacticalRound));
-
+		when(context.getTacticalSession()).thenReturn(tacticalSession);
 		when(tacticalSession.getExhaustionMultiplier()).thenReturn(BigDecimal.ONE);
 		when(tacticalSession.getTemperature()).thenReturn(TemperatureMultiplier.ABOVE_37);
 		when(tacticalSession.getTerrain()).thenReturn(TerrainType.ROUGH);
-
 		when(context.getAction()).thenReturn(action);
 		when(context.getSource()).thenReturn(character);
 		when(character.getHp()).thenReturn(Hp.builder().max(100).current(100).build());

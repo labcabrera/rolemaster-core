@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -44,13 +43,14 @@ class BasicCombatFumbleTest extends AbstractTacticalTest {
 	@Test
 	void test() {
 		StrategicSession sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
-			.name("Test strategic session " + LocalDateTime.now())
+			.name("Test strategic session")
+			.universeId("middle-earth")
 			.description("Testing")
 			.build()).share().block();
 
 		TacticalSession ts = tacticalService.createSession(TacticalSessionCreation.builder()
 			.strategicSessionId(sts.getId())
-			.name("Test tactical session " + LocalDateTime.now())
+			.name("Test tactical session")
 			.description("Testing")
 			.build()).share().block();
 

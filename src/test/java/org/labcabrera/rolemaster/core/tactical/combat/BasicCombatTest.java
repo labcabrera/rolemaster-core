@@ -63,9 +63,11 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 		assertEquals(TacticalActionState.RESOLVED, resolved.getState());
 
 		Map<OffensiveBonusModifier, Integer> bonusMap = resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
+
 		// Skill                   +40
 		// Action percent:         -20
 		// BD                      -30
+
 		assertEquals(-10, bonusMap.values().stream().filter(e -> e != 0).reduce(0, (a, b) -> a + b));
 		assertEquals(40, bonusMap.get(OffensiveBonusModifier.SKILL));
 		assertEquals(-20, bonusMap.get(OffensiveBonusModifier.ACTION_PERCENT));

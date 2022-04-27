@@ -169,18 +169,11 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 		if (context.getAction()instanceof TacticalActionMissileAttack missileAttack) {
 			CharacterItem itemMainHand = itemResolver.getMainHandWeapon(context.getSource());
 			Float distance = missileAttack.getDistance();
-			return Mono.just(context)
-				.zipWith(itemService.getRangeModifier(itemMainHand, distance))
-				.map(pair -> {
-					int bonus = pair.getT2();
-					Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
-					map.get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.DISTANCE, bonus);
-					return pair.getT1();
-				});
+			int bonus = itemService.getRangeModifier(itemMainHand, distance, context);
+			Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
+			map.get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.DISTANCE, bonus);
 		}
-		else {
-			return Mono.just(context);
-		}
+		return Mono.just(context);
 	}
 
 	private Mono<AttackContext> loadOffHandBonus(AttackContext context) {
