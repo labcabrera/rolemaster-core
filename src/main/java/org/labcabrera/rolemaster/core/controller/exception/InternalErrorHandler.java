@@ -56,12 +56,10 @@ public class InternalErrorHandler {
 			log.info("Invalid request: {}", message, bindException);
 			return ResponseEntity.badRequest().body(error);
 		}
-		else if (ex instanceof ServerWebInputException) {
-			log.info("Invalid request: {}", ex.getMessage());
-			ApiError error = ApiError.builder()
-				.code(INVALID_REQUEST_CODE)
-				.message(INVALID_REQUEST)
-				.build();
+		else if (ex instanceof ServerWebInputException inputException) {
+			String message = getServerWebInputExceptionMessage(inputException);
+			log.info("Invalid request: {}", message, inputException);
+			ApiError error = ApiError.builder().code(INVALID_REQUEST_CODE).message(message).build();
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof NotFoundException) {
@@ -90,6 +88,16 @@ public class InternalErrorHandler {
 				.append(error.getDefaultMessage())
 				.append(".");
 		}
+		return sb.toString();
+	}
+
+	private String getServerWebInputExceptionMessage(ServerWebInputException ex) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Invalid request.");
+		if (ex.getReason() != null) {
+			sb.append(" ").append(ex.getReason());
+		}
+		sb.append(".");
 		return sb.toString();
 	}
 
