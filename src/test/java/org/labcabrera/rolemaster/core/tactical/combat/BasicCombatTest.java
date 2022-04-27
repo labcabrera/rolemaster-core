@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.tactical.combat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
 
@@ -71,6 +72,14 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 		assertEquals(-30, bonusMap.get(OffensiveBonusModifier.DEFENSIVE_BONUS));
 
 		assertEquals(6, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
+
+		assertEquals(0, new BigDecimal("0.5").compareTo(resolved.getExhaustionPoints()));
+
+		taMelee01 = this.tacticalCharacterRepository.findById(taMelee01.getId()).share().block();
+
+		assertEquals(0, new BigDecimal("50.0").compareTo(taMelee01.getExhaustionPoints().getMax()));
+		assertEquals(0, new BigDecimal("49.5").compareTo(taMelee01.getExhaustionPoints().getCurrent()));
+
 	}
 
 }

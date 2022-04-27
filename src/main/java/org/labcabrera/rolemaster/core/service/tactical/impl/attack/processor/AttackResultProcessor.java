@@ -1,6 +1,5 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
@@ -73,10 +72,6 @@ public class AttackResultProcessor extends AbstractAttackProcessor {
 					tc.getExhaustionPoints().substract(attack.getExhaustionPoints());
 				}
 				attack.getCriticalResults().values().stream().forEach(list -> applySourceCriticalResults(tc, list));
-				if (attack.getExhaustionPoints() != null) {
-					BigDecimal ep = tc.getExhaustionPoints().getCurrent().subtract(attack.getExhaustionPoints());
-					tc.getExhaustionPoints().setCurrent(ep);
-				}
 				return tc;
 			})
 			.flatMap(tacticalCharacterRepository::save);

@@ -1,6 +1,5 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
@@ -31,9 +30,6 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 	public Mono<TacticalCharacter> create(String tacticalSessionId, Npc npc, NpcCustomization npcCustomization) {
 		Integer level = npc.getLevel();
 		Integer maxHp = npc.getHp();
-
-		BigDecimal exhaustionPoints = new BigDecimal(100);
-
 		TacticalCharacter result = TacticalCharacter.builder()
 			.name(npcCustomization != null ? npcCustomization.getName() : null)
 			.shortDescription(npc.getShortDescription())
@@ -50,8 +46,8 @@ public class TacticalNpcCharacterServiceImpl implements TacticalNpcCharacterServ
 				.current(100)
 				.build())
 			.exhaustionPoints(ExhaustionPoints.builder()
-				.max(exhaustionPoints)
-				.current(exhaustionPoints)
+				.max(npc.getExhaustionPoints())
+				.current(npc.getExhaustionPoints())
 				.build())
 			.items(npc.getItems())
 			.armor(npc.getArmorType())

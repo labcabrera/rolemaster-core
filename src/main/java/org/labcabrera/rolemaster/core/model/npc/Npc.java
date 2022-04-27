@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.npc;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,6 +42,9 @@ public class Npc {
 	private Integer hp;
 
 	private Integer powerPoints;
+
+	@Builder.Default
+	private BigDecimal exhaustionPoints = new BigDecimal(50);
 
 	private String hpBaseModifier;
 
