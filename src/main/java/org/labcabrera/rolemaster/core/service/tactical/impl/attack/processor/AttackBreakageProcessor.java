@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackBreakageResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;

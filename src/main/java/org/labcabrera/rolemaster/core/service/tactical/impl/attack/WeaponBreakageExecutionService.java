@@ -15,8 +15,9 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack
 import org.labcabrera.rolemaster.core.repository.CharacterItemRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.service.context.loader.AttackContextLoader;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +52,7 @@ public class WeaponBreakageExecutionService {
 		}
 		log.debug("Processing weapon breakage");
 		loadBreakageRolls(action, execution);
-		return Mono.just(new AttackContext(action))
+		return Mono.just(AttackContext.builder().action(action).build())
 			.flatMap(contextLoader::apply)
 			.map(this::processBreakage)
 			.flatMap(this::processWeaponBreakage)

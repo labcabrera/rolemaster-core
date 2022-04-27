@@ -12,6 +12,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

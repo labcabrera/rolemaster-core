@@ -6,7 +6,8 @@ import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecutio
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.service.context.loader.AttackContextLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class MissileAttackExecutionService {
 		action.setCover(execution.getCover());
 		action.setRolls(new EnumMap<>(AttackTargetType.class));
 		action.getRolls().put(AttackTargetType.MAIN_HAND, execution.getRoll());
-		return Mono.just(new AttackContext(action))
+		return Mono.just(AttackContext.builder().action(action).build())
 			.flatMap(contextLoader::apply)
 			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)

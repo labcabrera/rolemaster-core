@@ -15,8 +15,10 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
 import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -64,7 +66,6 @@ class AttackExhaustionProcessorTest {
 		when(tacticalSession.getTerrain()).thenReturn(TerrainType.ROUGH);
 
 		when(context.getAction()).thenReturn(action);
-		when(context.isMeleeAttack()).thenReturn(true);
 		when(context.getSource()).thenReturn(character);
 		when(character.getHp()).thenReturn(Hp.builder().max(100).current(100).build());
 	}
@@ -91,7 +92,10 @@ class AttackExhaustionProcessorTest {
 
 	@Test
 	void testMissile() {
-		when(context.isMeleeAttack()).thenReturn(false);
+		TacticalActionMissileAttack missileAction = new TacticalActionMissileAttack();
+		missileAction.setRoundId("round-01");
+
+		when(context.getAction()).thenReturn(missileAction);
 		AttackContext block = processor.apply(context).share().block();
 		assertEquals(new BigDecimal("0.500"), block.getAction().getExhaustionPoints());
 	}

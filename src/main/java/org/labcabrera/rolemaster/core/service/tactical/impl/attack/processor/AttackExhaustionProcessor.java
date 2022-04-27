@@ -7,8 +7,10 @@ import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,8 +45,9 @@ public class AttackExhaustionProcessor extends AbstractAttackProcessor {
 	}
 
 	private Mono<AttackContext> apply(AttackContext context, TacticalSession session) {
+		boolean isMeleeAttack = context.getAction() instanceof TacticalActionMeleeAttack;
 		BigDecimal base = BigDecimal.ONE;
-		BigDecimal divisor = context.isMeleeAttack() ? MELEE_DIVISOR : MISSILE_DIVISOR;
+		BigDecimal divisor = isMeleeAttack ? MELEE_DIVISOR : MISSILE_DIVISOR;
 
 		BigDecimal multiplierCustom = session.getExhaustionMultiplier();
 		BigDecimal multiplierTemperature = new BigDecimal(session.getTemperature().getMultiplier());
