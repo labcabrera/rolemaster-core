@@ -81,6 +81,9 @@ public class CharacterInfo {
 	@Schema(description = "Character max hit points. It is calculated from the Body Development ability.", required = true, example = "78")
 	private Integer maxHp;
 
+	@Schema(description = "Character max power points.", required = true, example = "42")
+	private Integer maxPowerPoints;
+
 	@Schema(description = "Maximum number of fatigue points of the character.", required = true, example = "66")
 	private BigDecimal maxExhaustionPoints;
 
