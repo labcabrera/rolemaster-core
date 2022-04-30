@@ -22,7 +22,7 @@ class CharacterCreationServiceCommonMenRangerTest extends AbstractCharacterCreat
 				"level": 1,
 				"raceId": "common-man",
 				"professionId": "ranger",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

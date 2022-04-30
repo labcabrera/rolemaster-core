@@ -46,7 +46,7 @@ class CharacterCreationService02Test {
 				"level": 1,
 				"raceId": "hillman",
 				"professionId": "layman",
-				"realmId": "channeling",
+				"realm": "channeling",
 				"age": 25,
 				"height": 184,
 				"weight": 82,

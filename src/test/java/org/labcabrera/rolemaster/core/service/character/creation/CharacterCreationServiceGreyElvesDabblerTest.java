@@ -22,7 +22,7 @@ class CharacterCreationServiceGreyElvesDabblerTest extends AbstractCharacterCrea
 				"level": 1,
 				"raceId": "grey-elf",
 				"professionId": "dabbler",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

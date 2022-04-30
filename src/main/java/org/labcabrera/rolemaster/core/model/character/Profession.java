@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -32,7 +33,7 @@ public class Profession {
 	private String name;
 
 	@Schema(description = "Available realms")
-	private List<String> availableRealms;
+	private List<Realm> availableRealms;
 
 	@Builder.Default
 	private Map<String, Integer> skillCategoryBonus = new LinkedHashMap<>();

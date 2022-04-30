@@ -23,7 +23,7 @@ class CharacterCreationServiceOrkFighterTest extends AbstractCharacterCreationTe
 				"level": 1,
 				"raceId": "orc",
 				"professionId": "fighter",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

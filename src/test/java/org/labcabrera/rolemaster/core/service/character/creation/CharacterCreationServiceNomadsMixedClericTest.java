@@ -20,7 +20,7 @@ class CharacterCreationServiceNomadsMixedClericTest extends AbstractCharacterCre
 				"level": 1,
 				"raceId": "nomad-mixed",
 				"professionId": "healer",
-				"realmId": "essence",
+				"realm": "channeling",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

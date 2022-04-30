@@ -22,7 +22,7 @@ class CharacterCreationServiceGreaterOrkRogueTest extends AbstractCharacterCreat
 				"level": 1,
 				"raceId": "greater-orc",
 				"professionId": "rogue",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

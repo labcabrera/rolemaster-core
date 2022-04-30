@@ -24,6 +24,7 @@ import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
 import org.labcabrera.rolemaster.core.model.skill.SkillCategory;
+import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
@@ -75,8 +76,8 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	@Override
 	public Mono<CharacterInfo> create(CharacterCreationRequest request) {
 		log.info("Processing new character {}", request.getName());
-
 		final CharacterInfo character = CharacterInfo.builder()
+			.realm(request.getRealm())
 			.level(0)
 			.maxLevel(request.getLevel())
 			.xp(null)
@@ -113,6 +114,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 				tuple.getT1().setProfession(tuple.getT2());
 				return tuple.getT1();
 			})
+			.map(this::checkRealm)
 			.flatMap(ctx -> skillCategoryRepository.findAll(Sort.by("id"))
 				.collectList()
 				.doOnNext(ctx::setSkillCategories)
@@ -235,5 +237,13 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			result += characterInfo.getAttributes().get(at).getTotalBonus();
 		}
 		return result;
+	}
+
+	private CharacterModificationContext checkRealm(CharacterModificationContext context) {
+		List<Realm> availableRealms = context.getProfession().getAvailableRealms();
+		if (!availableRealms.contains(context.getCharacter().getRealm())) {
+			throw new BadRequestException("Invalid realm.");
+		}
+		return context;
 	}
 }

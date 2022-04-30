@@ -13,7 +13,7 @@ class CharacterCreationServiceHighMenMagentTest extends AbstractCharacterCreatio
 				"level": 1,
 				"raceId": "high-man",
 				"professionId": "magent",
-				"realmId": "essence",
+				"realm": "mentalism",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

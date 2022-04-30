@@ -22,7 +22,7 @@ class CharacterCreationServiceNomadMagicianTest extends AbstractCharacterCreatio
 				"level": 1,
 				"raceId": "nomad",
 				"professionId": "magician",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

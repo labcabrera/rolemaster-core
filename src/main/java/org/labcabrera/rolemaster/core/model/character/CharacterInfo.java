@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -32,6 +33,9 @@ public class CharacterInfo {
 
 	@Schema(description = "Character name.", required = true, example = "Bilbo Baggins")
 	private String name;
+
+	@Schema(description = "Character realm.", required = true, example = "channeling")
+	private Realm realm;
 
 	@Schema(description = "Character current level. Zero if character is under creation.", required = true, example = "3")
 	private Integer level;
