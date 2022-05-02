@@ -44,6 +44,9 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 	@Autowired
 	private TacticalCharacterItemService itemService;
 
+	@Autowired
+	private MissilePreparationServiceBonusProcessor missilePreparationServiceBonusProcessor;
+
 	public Mono<AttackContext> apply(AttackContext context) {
 		if (context.getAction().getState() != TacticalActionState.PENDING) {
 			return Mono.just(context);
@@ -52,6 +55,7 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 		return Mono.just(context)
 			.map(this::initialize)
 			.flatMap(this::loadSkillBonus)
+			.map(this::loadCustomBonus)
 			.map(this::loadBonusHp)
 			.map(this::loadBonusTargetStatus)
 			.map(this::loadBonusExhaustion)
@@ -60,6 +64,7 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 			.map(this::loadBonusDefensive)
 			.map(this::loadBonusParry)
 			.map(this::loadBonusPenaltyAndBonus)
+			.map(this::loadMissilePreparation)
 			.flatMap(this::loadOffHandBonus)
 			.flatMap(this::loadBonusDistance)
 			.map(this::cleanUp);
@@ -73,27 +78,33 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 
 	private Mono<AttackContext> loadSkillBonus(AttackContext context) {
 		TacticalCharacter source = context.getSource();
-
 		CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
 		String skillId = itemMainHand.getItemId();
-		if(itemMainHand.getSkillId() != null) {
+		if (itemMainHand.getSkillId() != null) {
 			skillId = itemMainHand.getSkillId();
 		}
-
-		if (context.getAction()instanceof TacticalActionMeleeAttack ma) {
+		if (context.getAction() instanceof TacticalActionMeleeAttack ma) {
 			if (ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
 				CharacterItem itemOffHand = characterItemResolver.getOffHandWeapon(source);
 				String offHandSkill = itemOffHand.getItemId();
 				skillId = skillService.getTwoWeaponSkill(skillId, offHandSkill);
 			}
 		}
-
 		return Mono.just(context)
 			.zipWith(skillService.getSkill(source, skillId), (a, b) -> {
 				a.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.SKILL, b);
 				a.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.SKILL, b);
 				return a;
 			});
+	}
+
+	private AttackContext loadCustomBonus(AttackContext context) {
+		if (context.getAction().getCustomBonus() != null) {
+			int bonus = context.getAction().getCustomBonus();
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.CUSTOM, bonus);
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.CUSTOM, bonus);
+		}
+		return context;
 	}
 
 	private AttackContext loadBonusDefensive(AttackContext context) {
@@ -148,7 +159,7 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 	}
 
 	private AttackContext loadBonusParry(AttackContext context) {
-		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
+		if (context.getAction() instanceof TacticalActionMeleeAttack meleeAttack) {
 			int parry = meleeAttack.getParry();
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.PARRY_ATTACK, -parry);
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.PARRY_ATTACK, -parry);
@@ -157,7 +168,7 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 	}
 
 	private AttackContext loadBonusMeleePosition(AttackContext context) {
-		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
+		if (context.getAction() instanceof TacticalActionMeleeAttack meleeAttack) {
 			context.getTargets().entrySet().stream().forEach(e -> {
 				if (meleeAttack.getFacingMap().containsKey(e.getKey())) {
 					int bonus = meleeAttack.getFacingMap().get(e.getKey()).getModifier();
@@ -169,7 +180,7 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 	}
 
 	private Mono<AttackContext> loadBonusDistance(AttackContext context) {
-		if (context.getAction()instanceof TacticalActionMissileAttack missileAttack) {
+		if (context.getAction() instanceof TacticalActionMissileAttack missileAttack) {
 			CharacterItem itemMainHand = itemResolver.getMainHandWeapon(context.getSource());
 			Float distance = missileAttack.getDistance();
 			int bonus = itemService.getRangeModifier(itemMainHand, distance, context);
@@ -180,13 +191,24 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 	}
 
 	private Mono<AttackContext> loadOffHandBonus(AttackContext context) {
-		if (context.getAction()instanceof TacticalActionMeleeAttack ma) {
+		if (context.getAction() instanceof TacticalActionMeleeAttack ma) {
 			if (ma.getMeleeAttackMode() == MeleeAttackMode.OFF_HAND_WEAPON || ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
 				//TODO check ambidextrous trait
 				context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.OFF_HAND, -20);
 			}
 		}
 		return Mono.just(context);
+	}
+
+	private AttackContext loadMissilePreparation(AttackContext context) {
+		if (context.getAction() instanceof TacticalActionMissileAttack missileAttack) {
+			CharacterItem item = itemResolver.getMainHandWeapon(context.getSource());
+			int rounds = missileAttack.getPreparationRounds();
+			int value = -missilePreparationServiceBonusProcessor.getPreparationBonus(item.getItemId(), rounds);
+			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND)
+				.put(OffensiveBonusModifier.MISSILE_PREPARATION_ROUNDS, value);
+		}
+		return context;
 	}
 
 	private int getBonusDefensive(TacticalCharacter target) {
@@ -265,7 +287,7 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 
 	private AttackContext cleanUp(AttackContext context) {
 		boolean cleanUp = true;
-		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
+		if (context.getAction() instanceof TacticalActionMeleeAttack meleeAttack) {
 			if (meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
 				cleanUp = false;
 			}

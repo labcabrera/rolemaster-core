@@ -30,7 +30,11 @@ public enum OffensiveBonusModifier {
 
 	DISTANCE("missile-distance"),
 
-	OFF_HAND("off-hand");
+	OFF_HAND("off-hand"),
+
+	MISSILE_PREPARATION_ROUNDS("missile-preparation-rounds"),
+
+	CUSTOM("custom");
 
 	private String name;
 

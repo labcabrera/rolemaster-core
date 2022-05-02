@@ -6,6 +6,7 @@ import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.Cover;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,11 @@ public class MissileAttackExecution extends TacticalActionExecution {
 
 	@NotNull
 	private Float distance;
+
+	private Integer customBonus;
+
+	@Builder.Default
+	private Integer preparationRounds = 0;
 
 	@NotNull
 	private Cover cover;

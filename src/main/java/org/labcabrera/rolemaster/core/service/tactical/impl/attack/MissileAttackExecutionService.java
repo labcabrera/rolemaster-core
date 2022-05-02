@@ -26,16 +26,22 @@ public class MissileAttackExecutionService {
 	private AttackContextLoader contextLoader;
 
 	public Mono<TacticalActionMissileAttack> execute(TacticalActionMissileAttack action, MissileAttackExecution execution) {
-		action.setDistance(execution.getDistance());
-		action.setCover(execution.getCover());
-		action.setRolls(new EnumMap<>(AttackTargetType.class));
-		action.getRolls().put(AttackTargetType.MAIN_HAND, execution.getRoll());
+		loadActionData(action, execution);
 		return Mono.just(AttackContext.builder().action(action).build())
 			.flatMap(contextLoader::apply)
 			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMissileAttack.class::cast);
+	}
+
+	private void loadActionData(TacticalActionMissileAttack action, MissileAttackExecution execution) {
+		action.setDistance(execution.getDistance());
+		action.setCover(execution.getCover());
+		action.setRolls(new EnumMap<>(AttackTargetType.class));
+		action.getRolls().put(AttackTargetType.MAIN_HAND, execution.getRoll());
+		action.setPreparationRounds(execution.getPreparationRounds());
+		action.setCustomBonus(execution.getCustomBonus());
 	}
 
 }

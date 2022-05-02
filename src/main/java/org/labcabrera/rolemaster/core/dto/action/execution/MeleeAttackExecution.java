@@ -32,4 +32,6 @@ public class MeleeAttackExecution extends TacticalActionExecution {
 	@Builder.Default
 	private Map<AttackTargetType, MeleeAttackFacing> facingMap = new EnumMap<>(AttackTargetType.class);
 
+	private Integer customBonus;
+
 }

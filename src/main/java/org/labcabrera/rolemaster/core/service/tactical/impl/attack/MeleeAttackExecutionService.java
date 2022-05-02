@@ -32,15 +32,20 @@ public class MeleeAttackExecutionService {
 			return Mono.just(action);
 		}
 		log.debug("Processing melee attack");
+		loadAction(action, execution);
 		loadTargets(action, execution);
-		action.setRolls(execution.getRolls());
-		action.setFacingMap(execution.getFacingMap());
 		return Mono.just(AttackContext.builder().action(action).build())
 			.flatMap(contextLoader::apply)
 			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMeleeAttack.class::cast);
+	}
+
+	private void loadAction(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
+		action.setRolls(execution.getRolls());
+		action.setFacingMap(execution.getFacingMap());
+		action.setCustomBonus(execution.getCustomBonus());
 	}
 
 	private void loadTargets(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
