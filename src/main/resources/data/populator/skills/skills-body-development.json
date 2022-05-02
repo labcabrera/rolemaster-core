@@ -9,8 +9,7 @@
             "sd",
             "co"
         ],
-        "progressionType": "raceBodyDevelopment",
-        "clasification": "special",
+        "progressionType": "race-body-development",
         "skillBonus": 50,
         "description": "Skill rank in Body Development is one of the factors which determines how many hits (concussion hits) a character can take without passing out. A character’s total hits are is equal to his Body Development skill bonus."
     }

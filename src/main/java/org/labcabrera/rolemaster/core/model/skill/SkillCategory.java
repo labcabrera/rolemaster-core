@@ -37,10 +37,7 @@ public class SkillCategory {
 	@Builder.Default
 	private List<SkillModifier> modifiers = new ArrayList<>();
 
-	//TODO Make enum
-	private String skillCategoryBonusProgression;
-
-	//TODO Make enum
-	private String skillBonusProgression;
+	@Builder.Default
+	private SkillProgressionType progressionType = SkillProgressionType.CATEGORY;
 
 }

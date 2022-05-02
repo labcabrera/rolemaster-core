@@ -82,6 +82,10 @@ public class CharacterInfo {
 	@Schema(description = "List of character development points. These points are used for both creation and leveling up.", required = true)
 	private CharacterDevelopment developmentPoints = new CharacterDevelopment();
 
+	private List<Integer> bodyDevelopmentProgression;
+
+	private List<Integer> powerPointProgression;
+
 	@Schema(description = "Character max hit points. It is calculated from the Body Development ability.", required = true, example = "78")
 	private Integer maxHp;
 

@@ -5,7 +5,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": true,
         "categoryId": "awareness-perceptions",
-        "progressionType": "standard",
+        "progressionType": "limited",
         "description": "This skill provides a bonus for unconscious observation and assimilation of information from the general environment. The GM should use this skill to allow characters a chance to notice objects, events, and other phenomena around them. Note that the use of this skill assumes that the character has not indicated that he is looking for such a thing. If the player is actively seeking something within the environment, the appropriate Awareness • Searching skill should be used. The existence of this as a skill indicates one’s ability to train sensitivity to such things, but more active observation should be handled by the skills of Observation and Situational Awareness."
     },
     {
@@ -14,7 +14,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "awareness-perceptions",
-        "progressionType": "standard",
+        "progressionType": "limited",
         "description": "This skill provides a bonus to detect animate traps, ambushes or assassinations in progress. Note that this is a passive skill, and should not be used when the player has indicated that he is actively searching for signs of ambush or assassins. Range is 10' per skill rank. The existence of this as an acquirable skill indicates one’s abil- ity to train one’s level of sensitivity to such things, but more active observation should be handled by the skills of Observation and/or Situational Awareness. Quality of the set ambush: +30 to -70"
     },
     {

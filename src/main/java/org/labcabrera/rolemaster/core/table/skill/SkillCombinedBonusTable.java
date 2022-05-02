@@ -7,8 +7,9 @@ import java.util.function.UnaryOperator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SkillCombinedBonusTable implements UnaryOperator<Integer> {
+class SkillCombinedBonusTable implements UnaryOperator<Integer> {
 
+	@Override
 	public Integer apply(Integer value) {
 		if (value == 0) {
 			return -15;

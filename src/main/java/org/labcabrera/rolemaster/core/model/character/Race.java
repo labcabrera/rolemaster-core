@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -37,7 +38,7 @@ public class Race {
 	private List<Integer> bodyDevelopmentProgression = new ArrayList<>();
 
 	@Builder.Default
-	private Map<String, List<Integer>> ppDevelopmentProgression = new HashMap<>();
+	private Map<Realm, List<Integer>> ppDevelopmentProgression = new HashMap<>();
 
 	@Builder.Default
 	private Map<ResistanceType, Integer> resistanceBonus = new EnumMap<>(ResistanceType.class);

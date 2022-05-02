@@ -23,7 +23,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-specialized",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill provides a bonus for using higher levels of mathematics (e.g., calculus, differential equations, basic relativity, etc.). You must develop a higher skill rank in Basic Mathematics (e.g., if your rank in Basic Math is 12 you may only develop this skill to 11 skill ranks)."
     },
     {
@@ -32,7 +32,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-specialized",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill provides knowledge of linguistic trends, customs, habits and cultural trends of any known races and cultures. Skill may be developed in-depth of a specific race or culture from your home world. Several different races or cultures may be developed simultaneously, assuming research materials are available."
     },
     {
@@ -41,7 +41,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-specialized",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill provides a bonus for identifying and mixing various non-magical substances with relatively predictable results. Acids, itching powders, toxins, etc. are just a few of the possible results. Some combinations the GM may deem inappropriate for his world (e.g., he might disallow gunpowder or petroleum products). Allows user to know elemental composition, reactions, compounds, etc. Skill is modified from -30 to -70 for lack of laboratory equipment, supplies, etc."
     }
 ]

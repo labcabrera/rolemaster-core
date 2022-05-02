@@ -1,14 +1,19 @@
 package org.labcabrera.rolemaster.core.table.skill;
 
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class SkillSpecialBonusTable {
+import org.springframework.stereotype.Component;
+
+@Component
+public class SkillSpecialBonusTable implements BiFunction<Integer, List<Integer>, Integer> {
 
 	/**
 	 * @param value
 	 * @param mask Example [6,5,4,3]
 	 * @return
 	 */
+	@Override
 	public Integer apply(Integer value, List<Integer> mask) {
 		if (value < 11) {
 			return value * mask.get(0);

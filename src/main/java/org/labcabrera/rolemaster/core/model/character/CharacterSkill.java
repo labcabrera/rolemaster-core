@@ -31,7 +31,8 @@ public class CharacterSkill implements HasRanks {
 
 	private List<String> customization;
 
-	private SkillProgressionType progressionType;
+	@Builder.Default
+	private SkillProgressionType progressionType = SkillProgressionType.STANDARD;
 
 	@Builder.Default
 	private List<Integer> developmentCost = new ArrayList<>();

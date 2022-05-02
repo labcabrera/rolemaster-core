@@ -32,7 +32,6 @@ import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.labcabrera.rolemaster.core.table.character.ExperienceLevelTable;
-import org.labcabrera.rolemaster.core.table.skill.SkillCategoryBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -54,9 +53,6 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
-
-	@Autowired
-	private SkillCategoryBonusTable skillCategoryBonusTable;
 
 	@Autowired
 	private RaceRepository raceRepository;
@@ -104,6 +100,8 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 				CharacterModificationContext ctx = tuple.getT1();
 				Race race = tuple.getT2();
 				ctx.setRace(race);
+				ctx.getCharacter().setBodyDevelopmentProgression(race.getBodyDevelopmentProgression());
+				ctx.getCharacter().setPowerPointProgression(race.getPpDevelopmentProgression().get(ctx.getCharacter().getRealm()));
 				ctx.getCharacter().getDevelopmentPoints().setBackgroundOptions(race.getBackgroundOptions());
 				ctx.getCharacter().getNotes().addAll(race.getSpecialAbilities());
 				return ctx;
@@ -159,15 +157,14 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
 			int bonusProfession = profession.getSkillCategoryBonus().getOrDefault(categoryId, 0);
 			int bonusAttribute = getAttributeBonus(category, character);
-			int bonusRanks = skillCategoryBonusTable.getBonus(adolescenceRank);
 			CharacterSkillCategory characterSkillCategory = CharacterSkillCategory.builder()
 				.categoryId(category.getId())
 				.developmentCost(profession.getSkillCategoryDevelopmentCost().getOrDefault(categoryId, new ArrayList<>()))
 				.attributes(category.getAttributeBonus())
 				.group(category.getGroup())
+				.progressionType(category.getProgressionType())
 				.build();
 			characterSkillCategory.getRanks().put(RankType.ADOLESCENCE, adolescenceRank);
-			characterSkillCategory.getBonus().put(BonusType.RANK, bonusRanks);
 			characterSkillCategory.getBonus().put(BonusType.PROFESSION, bonusProfession);
 			characterSkillCategory.getBonus().put(BonusType.ATTRIBUTE, bonusAttribute);
 			character.getSkillCategories().add(characterSkillCategory);
