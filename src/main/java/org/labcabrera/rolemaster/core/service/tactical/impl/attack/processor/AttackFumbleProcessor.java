@@ -81,7 +81,7 @@ public class AttackFumbleProcessor extends AbstractAttackProcessor {
 
 	private FumbleType getFumbleType(CharacterItem item) {
 		//TODO check weapon type
-		return FumbleType.HAND_1H;
+		return FumbleType.WEAPON_1H;
 	}
 
 }

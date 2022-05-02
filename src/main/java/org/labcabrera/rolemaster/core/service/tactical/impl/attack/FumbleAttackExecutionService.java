@@ -5,7 +5,7 @@ import org.labcabrera.rolemaster.core.model.combat.FumbleTableResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
-import org.labcabrera.rolemaster.core.table.fumble.FumbleTable;
+import org.labcabrera.rolemaster.core.table.fumble.FumbleTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 public class FumbleAttackExecutionService {
 
 	@Autowired
-	private FumbleTable fumbleTable;
+	private FumbleTableService fumbleTableService;
 
 	public TacticalActionAttack apply(TacticalActionAttack action, FumbleExecution execution) {
 		AttackFumbleResult fumbleResult = getFirstUnresolvedFumble(action);
 		FumbleType fumbleType = fumbleResult.getType();
-		FumbleTableResult fumbleTableResult = fumbleTable.get(fumbleType, execution.getRoll());
+		FumbleTableResult fumbleTableResult = fumbleTableService.getResult(fumbleType, execution.getRoll());
 		fumbleResult.setRoll(execution.getRoll());
 		fumbleResult.setResult(fumbleTableResult);
 		return action;
