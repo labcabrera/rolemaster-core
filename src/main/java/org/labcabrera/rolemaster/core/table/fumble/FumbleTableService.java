@@ -24,9 +24,7 @@ public class FumbleTableService {
 	public void loadTables() throws IOException {
 		try (
 			InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/table/critical/fumble-table.json")) {
-			FumbleTable t = objectMapper.readerFor(FumbleTable.class).readValue(in);
-			this.fumbleTable = t;
-			System.out.println();
+			fumbleTable = objectMapper.readerFor(FumbleTable.class).readValue(in);
 		}
 	}
 

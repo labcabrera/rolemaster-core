@@ -15,7 +15,7 @@ public class SkillRankBonusService {
 	@Autowired
 	private SkillRankBonusTable bonusTable;
 
-	public int getBonus(CharacterSkillCategory category, CharacterInfo character) {
+	public int getBonus(CharacterSkillCategory category) {
 		int ranks = category.getTotalRanks();
 		return bonusTable.getBonus(category.getProgressionType(), ranks, null);
 	}

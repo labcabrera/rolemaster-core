@@ -37,9 +37,7 @@ class SkillRankBonusTable {
 			return combinedTable.apply(ranks);
 		case LIMITED:
 			return limitedTable.apply(ranks);
-		case SPECIAL:
-		case RACE_POWER_POINTS:
-		case RACE_BODY_DEVELOPMENT:
+		case SPECIAL, RACE_POWER_POINTS, RACE_BODY_DEVELOPMENT:
 			return specialTable.apply(ranks, mask);
 		default:
 			throw new DataConsistenceException("Invalid progresssion type " + progressionType);

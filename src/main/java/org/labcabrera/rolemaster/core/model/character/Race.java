@@ -2,7 +2,6 @@ package org.labcabrera.rolemaster.core.model.character;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +37,7 @@ public class Race {
 	private List<Integer> bodyDevelopmentProgression = new ArrayList<>();
 
 	@Builder.Default
-	private Map<Realm, List<Integer>> ppDevelopmentProgression = new HashMap<>();
+	private Map<Realm, List<Integer>> ppDevelopmentProgression = new EnumMap<>(Realm.class);
 
 	@Builder.Default
 	private Map<ResistanceType, Integer> resistanceBonus = new EnumMap<>(ResistanceType.class);

@@ -23,7 +23,7 @@ public class CharacterSkillCategoryPostprocessor implements CharacterPostProcess
 	public void accept(CharacterInfo character) {
 		log.debug("Processing character {}", character.getName());
 		character.getSkillCategories().stream().forEach(category -> {
-			int rankBonus = rankBonusService.getBonus(category, character);
+			int rankBonus = rankBonusService.getBonus(category);
 			category.getBonus().put(BonusType.ATTRIBUTE, getCategoryBonus(category, character));
 			category.getBonus().put(BonusType.RANK, rankBonus);
 		});
