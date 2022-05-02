@@ -33,6 +33,8 @@ public enum ItemFeatureType implements CodeNameEnum {
 
 	SHATTER_PARRY_WEAPON("shatter-parry-weapon", "Shatter parry weapon", false),
 
+	SKILL_BONUS("skill-bonus", "Skill bonus", true),
+
 	SPELL_ON_HIT("spell-on-hit", "Spell on hit", true),
 
 	DIRECT_SPELL_ON_HIT("direct-spell-on-hit", "Direct spell on hit", true);

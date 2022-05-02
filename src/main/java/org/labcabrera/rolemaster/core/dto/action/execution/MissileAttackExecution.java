@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.dto.action.execution;
 import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.combat.MissileCover;
+import org.labcabrera.rolemaster.core.model.combat.Cover;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +25,6 @@ public class MissileAttackExecution extends TacticalActionExecution {
 	private Float distance;
 
 	@NotNull
-	private MissileCover cover;
+	private Cover cover;
 
 }

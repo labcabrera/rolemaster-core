@@ -76,6 +76,9 @@ public class OffensiveBonusProcessor extends AbstractAttackProcessor {
 
 		CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
 		String skillId = itemMainHand.getItemId();
+		if(itemMainHand.getSkillId() != null) {
+			skillId = itemMainHand.getSkillId();
+		}
 
 		if (context.getAction()instanceof TacticalActionMeleeAttack ma) {
 			if (ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
