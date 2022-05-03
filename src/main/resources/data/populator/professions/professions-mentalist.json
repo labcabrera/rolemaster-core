@@ -69,25 +69,6 @@
 			[20],
 			[20],
 			[20]			
-		],
-		"lifestyleCost": {
-			"adventurer": -1,
-			"amateur-mage": -1,
-			"animal-friend": -1,
-			"assasin": -1,
-			"berserker": -1,
-			"burglar": -1,
-			"city-guard": -1,
-			"doctor": -1,
-			"herbalist": -1,
-			"hunter": -1,
-			"knight": -1,
-			"loremaster": -1,
-			"merchant": -1,
-			"performer": -1,
-			"scout": -1,
-			"soldier": -1,
-			"traveler": -1
-		}
+		]
 	}
 ]

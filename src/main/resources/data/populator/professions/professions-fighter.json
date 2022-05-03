@@ -72,23 +72,6 @@
 			[2,7],
 			[5],
 			[5]
-		],
-		"lifestyleCost": {
-			"adventurer": 29,
-			"amateur-mage": 43,
-			"animal-friend": 26,
-			"burglar": 21,
-			"city-guard": 15,
-			"doctor": 23,
-			"herbalist": 23,
-			"hunter": 29,
-			"knight": 25,
-			"loremaster": 29,
-			"merchant": 25,
-			"performer": 28,
-			"scout": 21,
-			"soldier": 15,
-			"traveler": 13
-		}
+		]
 	}
 ]
