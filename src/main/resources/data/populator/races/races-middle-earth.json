@@ -2,6 +2,7 @@
 	{
 		"id": "dunadan",
 		"name": "Dúnadan",
+		"keywords": ["man","dunadan","high-man"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 4,
@@ -22,12 +23,12 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [7,5,3,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [6,5,4,3],
 			"mentalism":              [7,6,5,4] 
 		},
-		"adolescenseSkillCategoryRanks": {
+		"adolescenceSkillCategoryRanks": {
 			"armor-light": 1,
 			"armor-medium": 2,
 			"athletic-brawn": 1,
@@ -46,7 +47,7 @@
 			"weapon-missile": 1,
 			"weapon-pole-arms": 1
 		},
-		"adolescenseSkillRanks": {
+		"adolescenceSkillRanks": {
 			"rigid-leather": 1,
 			"armor-chain": 2,
 			"swimming": 1,
@@ -74,6 +75,7 @@
 	{
 		"id": "black-numenorean",
 		"name": "Black Númenórean",
+		"keywords": ["man","numenorean","high-man"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 4,
@@ -94,12 +96,12 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [7,5,3,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [6,5,4,3],
 			"mentalism":              [7,6,5,4] 
 		},
-		"adolescenseSkillCategoryRanks": {
+		"adolescenceSkillCategoryRanks": {
 			"armor-light": 1, 
 			"armor-medium": 2,
 			"athletic-brawn": 1,
@@ -117,7 +119,7 @@
 			"weapon-missile": 1,
 			"weapon-thrown": 1
 		},
-		"adolescenseSkillRanks": {
+		"adolescenceSkillRanks": {
 			"armor-chain": 2,
 			"swimming": 3,
 			"alertness": 1,
@@ -148,6 +150,7 @@
 	{
 		"id": "khazad-durin",
 		"name": "Khazad (House of Durin)",
+		"keywords": ["dwarf"],
 		"attributeModifiers": {
 			"ag": -2,
 			"co": 6,
@@ -168,7 +171,7 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [7,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [6,4,3,3],
 			"mentalism":              [3,2,1,1] 
@@ -185,6 +188,7 @@
 	{
 		"id": "noldo",
 		"name": "Noldo",
+		"keywords": ["elf","noldo"],
 		"attributeModifiers": {
 			"ag": 4,
 			"co": 4,
@@ -205,7 +209,7 @@
 			"disease":    100
 		},
 		"bodyDevelopmentProgression": [7,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [7,6,5,4],
 			"mentalism":              [6,5,4,3] 
@@ -230,6 +234,7 @@
 	{
 		"id": "sinda",
 		"name": "Sinda",
+		"keywords": ["elf","sinda"],
 		"attributeModifiers": {
 			"ag": 4,
 			"co": 2,
@@ -250,12 +255,12 @@
 			"disease":    100
 		},
 		"bodyDevelopmentProgression": [7,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [7,6,5,4],
 			"mentalism":              [6,5,4,3] 
 		},
-		"adolescenseSkillCategoryRanks": {
+		"adolescenceSkillCategoryRanks": {
 			"armor-light":				1,
 			"athletic-brawn":			1,
 			"athletic-endurance":		1,
@@ -271,7 +276,7 @@
 			"weapon-1h-edged":			1,
 			"weapon-missile":			2
 		},
-		"adolescenseSkillRanks": {
+		"adolescenceSkillRanks": {
 			"swimming":					2,
 			"climbing":					1,
 			"alertness":				6,
@@ -309,6 +314,7 @@
 	{
 		"id": "hobbit",
 		"name": "Hobbit",
+		"keywords": ["hobbit"],
 		"attributeModifiers": {
 			"ag": 6,
 			"co": 6,
@@ -329,7 +335,7 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [6,2,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [2,1,1,1],
 			"mentalism":              [2,1,1,1] 
@@ -354,6 +360,7 @@
 	{
 		"id": "olog",
 		"name": "Olog",
+		"keywords": ["troll","olog"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 6,
@@ -374,12 +381,12 @@
 			"disease":    10
 		},
 		"bodyDevelopmentProgression": [15,13,7,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [3,2,1,1],
 			"mentalism":              [3,2,1,1] 
 		},
-		"adolescenseSkillCategoryRanks": {
+		"adolescenceSkillCategoryRanks": {
 			"armor-light": 1,
 			"armor-medium": 3,
 			"athletic-brawn": 1,
@@ -392,7 +399,7 @@
 			"weapon-2h": 5,
 			"weapon-thrown": 2
 		},
-		"adolescenseSkillRanks": {
+		"adolescenceSkillRanks": {
 			"armor-chain": 3,
 			"climbing": 1,
 			"alertness": 2,

@@ -101,7 +101,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 				Race race = tuple.getT2();
 				ctx.setRace(race);
 				ctx.getCharacter().setBodyDevelopmentProgression(race.getBodyDevelopmentProgression());
-				ctx.getCharacter().setPowerPointProgression(race.getPpDevelopmentProgression().get(ctx.getCharacter().getRealm()));
+				ctx.getCharacter().setPowerPointProgression(race.getPowerPointsProgression().get(ctx.getCharacter().getRealm()));
 				ctx.getCharacter().getDevelopmentPoints().setBackgroundOptions(race.getBackgroundOptions());
 				ctx.getCharacter().getNotes().addAll(race.getSpecialAbilities());
 				return ctx;
@@ -154,7 +154,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 		Profession profession = context.getProfession();
 		context.getSkillCategories().stream().forEach(category -> {
 			String categoryId = category.getId();
-			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
+			int adolescenceRank = race.getAdolescenceSkillCategoryRanks().getOrDefault(categoryId, 0);
 			int bonusProfession = profession.getSkillCategoryBonus().getOrDefault(categoryId, 0);
 			int bonusAttribute = getAttributeBonus(category, character);
 			CharacterSkillCategory characterSkillCategory = CharacterSkillCategory.builder()
@@ -177,9 +177,9 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 		context.getSkills().stream().forEach(skill -> {
 			String categoryId = skill.getCategoryId();
 			String skillId = skill.getId();
-			Integer adolescenceRanks = race.getAdolescenseSkillRanks().getOrDefault(skill.getId(), 0);
+			Integer adolescenceRanks = race.getAdolescenceSkillRanks().getOrDefault(skill.getId(), 0);
 			if (skill.getCustomizableOptions() > 0) {
-				List<Entry<String, Integer>> list = race.getAdolescenseSkillRanks().entrySet().stream()
+				List<Entry<String, Integer>> list = race.getAdolescenceSkillRanks().entrySet().stream()
 					.filter(e -> e.getKey().startsWith(skill.getId()))
 					.toList();
 				if (!list.isEmpty()) {

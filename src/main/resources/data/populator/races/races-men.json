@@ -2,11 +2,12 @@
 	{
 		"id": "common-man",
 		"name": "Common Man",
+		"keywords": ["man"],
 		"attributeModifiers": {
 			"sd": 2,
 			"st": 2
 		},
-		"adolescenseSkillCategoryRanks": {
+		"adolescenceSkillCategoryRanks": {
 			"armor-light": 1,
 			"armor-medium": 1,
 			"weapon-1h-edged": 1,
@@ -24,11 +25,11 @@
 			"subterfuge-stealth": 1,
 			"technical-trade-general": 1
 		},
-		"adolescenseSkillRanks": {
+		"adolescenceSkillRanks": {
 			"body-development": 2
 		},
 		"bodyDevelopmentProgression": [6,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [6,5,4,3],
 			"mentalism":              [6,5,4,3] 
@@ -46,6 +47,7 @@
 	{
 		"id": "high-man",
 		"name": "High man",
+		"keywords": ["man","high-man"],
 		"attributeModifiers": {
 			"ag": -2,
 			"co": 4,
@@ -54,7 +56,7 @@
 			"st": 4
 		},
 		"bodyDevelopmentProgression": [7,5,3,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [6,5,4,3],
 			"mentalism":              [7,6,5,4] 
@@ -98,7 +100,7 @@
 			"disease":    0
 		},
 		"bodyDevelopmentProgression":	[6,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":				[6,5,4,3],
 			"essence":					[6,5,4,3],
 			"mentalism":				[7,6,5,4] 
@@ -136,7 +138,7 @@
 			"disease":    0
 		},
 		"bodyDevelopmentProgression": [6,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [6,5,4,3],
 			"mentalism":              [7,6,5,4] 
@@ -174,7 +176,7 @@
 			"disease":    0
 		},
 		"bodyDevelopmentProgression":	[6,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":				[6,5,4,3],
 			"essence":					[6,5,4,3],
 			"mentalism":				[7,6,5,4] 
@@ -214,7 +216,7 @@
 			"disease":					0
 		},
 		"bodyDevelopmentProgression":	[6,5,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":				[6,5,4,3],
 			"essence":					[6,5,4,3],
 			"mentalism":				[7,6,5,4] 

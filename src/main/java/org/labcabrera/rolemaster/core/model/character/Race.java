@@ -28,7 +28,8 @@ public class Race {
 
 	private String name;
 
-	private EntityMetadata metadata;
+	@Builder.Default
+	private List<String> keywords = new ArrayList<>();
 
 	@Builder.Default
 	private Map<AttributeType, Integer> attributeModifiers = new LinkedHashMap<>();
@@ -37,16 +38,16 @@ public class Race {
 	private List<Integer> bodyDevelopmentProgression = new ArrayList<>();
 
 	@Builder.Default
-	private Map<Realm, List<Integer>> ppDevelopmentProgression = new EnumMap<>(Realm.class);
+	private Map<Realm, List<Integer>> powerPointsProgression = new EnumMap<>(Realm.class);
 
 	@Builder.Default
 	private Map<ResistanceType, Integer> resistanceBonus = new EnumMap<>(ResistanceType.class);
 
 	@Builder.Default
-	private Map<String, Integer> adolescenseSkillCategoryRanks = new LinkedHashMap<>();
+	private Map<String, Integer> adolescenceSkillCategoryRanks = new LinkedHashMap<>();
 
 	@Builder.Default
-	private Map<String, Integer> adolescenseSkillRanks = new LinkedHashMap<>();
+	private Map<String, Integer> adolescenceSkillRanks = new LinkedHashMap<>();
 
 	@Builder.Default
 	private Map<String, Integer> skillCategoryBonus = new LinkedHashMap<>();
@@ -74,4 +75,5 @@ public class Race {
 	@Builder.Default
 	private List<String> universes = new ArrayList<>();
 
+	private EntityMetadata metadata;
 }

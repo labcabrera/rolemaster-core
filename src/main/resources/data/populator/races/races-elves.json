@@ -22,7 +22,7 @@
 			"disease": 100
 		},
 		"bodyDevelopmentProgression": [6,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [7,6,5,4],
 			"mentalism":              [6,5,4,3] 
@@ -56,7 +56,7 @@
 			"poison": 10,		"disease": 100
 		},
 		"bodyDevelopmentProgression": [7,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 		"channeling":             [6,5,4,3],
 		"essence":                [7,6,5,4],
 		"mentalism":              [6,5,4,3] 
@@ -88,7 +88,7 @@
 			"disease":			100
 		},
 		"bodyDevelopmentProgression":	[6,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":				[6,5,4,3],
 			"essence":					[7,6,5,4],
 			"mentalism":				[6,5,4,3] 

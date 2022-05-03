@@ -22,7 +22,7 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [7,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [3,2,1,1],
 			"mentalism":              [3,2,1,1] 
@@ -63,7 +63,7 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [6,2,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [2,1,1,1],
 			"mentalism":              [2,1,1,1] 

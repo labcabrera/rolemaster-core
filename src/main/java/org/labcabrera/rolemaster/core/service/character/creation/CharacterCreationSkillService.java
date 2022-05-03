@@ -17,7 +17,7 @@ public class CharacterCreationSkillService {
 	private SkillRepository skillRepository;
 
 	public Flux<Skill> getSkills(Race race) {
-		List<String> ids = race.getAdolescenseSkillRanks().keySet().stream().map(e -> {
+		List<String> ids = race.getAdolescenceSkillRanks().keySet().stream().map(e -> {
 			int index = e.indexOf(":");
 			if (index > 0) {
 				return e.substring(0, index);

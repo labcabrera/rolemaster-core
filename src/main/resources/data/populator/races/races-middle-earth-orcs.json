@@ -2,6 +2,7 @@
 	{
 		"id": "common-orc",
 		"name": "Orc (LOTR)",
+		"keywords": ["orc"],
 		"attributeModifiers": {
 			"ag": -2,
 			"co": 6,
@@ -22,12 +23,12 @@
 			"disease":    5
 		},
 		"bodyDevelopmentProgression": [6,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [4,3,2,1],
 			"mentalism":              [4,3,2,1] 
 		},
-		"adolescenseSkillCategoryRanks": {
+		"adolescenceSkillCategoryRanks": {
 			"armor-light": 3,
 			"armor-medium": 2,
 			"athletic-brawn": 1,
@@ -42,7 +43,7 @@
 			"weapon-pole-arms": 1,
 			"weapon-thrown": 1
 		},
-		"adolescenseSkillRanks": {
+		"adolescenceSkillRanks": {
 			"soft-leather": 1,
 			"rigid-leather": 3,
 			"armor-chain": 2,
@@ -72,6 +73,7 @@
 	{
 		"id": "uruk",
 		"name": "Uruk",
+		"keywords": ["orc"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 8,
@@ -92,12 +94,12 @@
 			"disease":    5
 		},
 		"bodyDevelopmentProgression": [7,5,3,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [5,3,2,2],
 			"mentalism":              [5,3,2,2] 
 		},
-		"adolescenseSkillCategoryRanks": {
+		"adolescenceSkillCategoryRanks": {
 			"armor-light": 3,
 			"armor-medium": 3,
 			"athletic-brawn": 1,
@@ -113,7 +115,7 @@
 			"weapon-pole-arms": 1,
 			"weapon-thrown": 1
 		},
-		"adolescenseSkillRanks": {
+		"adolescenceSkillRanks": {
 			"soft-leather": 1,
 			"rigid-leather": 3,
 			"armor-chain": 3,
