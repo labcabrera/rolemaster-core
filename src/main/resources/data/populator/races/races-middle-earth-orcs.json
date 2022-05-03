@@ -1,0 +1,143 @@
+[
+	{
+		"id": "common-orc",
+		"name": "Orc (LOTR)",
+		"attributeModifiers": {
+			"ag": -2,
+			"co": 6,
+			"me": -4,
+			"re": -4,
+			"sd": -8,
+			"em": -6,
+			"in": -4,
+			"pr": -4,
+			"qu": 2,
+			"st": 2
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     20,
+			"disease":    5
+		},
+		"bodyDevelopmentProgression": [6,4,2,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [4,3,2,1],
+			"mentalism":              [4,3,2,1] 
+		},
+		"adolescenseSkillCategoryRanks": {
+			"armor-light": 3,
+			"armor-medium": 2,
+			"athletic-brawn": 1,
+			"athletic-endurance": 1,
+			"athletic-gymnastics": 1,
+			"awareness-searching": 1,
+			"lore-general": 1,
+			"outdoor-environmental": 2,
+			"subterfuge-attack": 1,
+			"weapon-1h-concussion": 1,
+			"weapon-1h-edged": 2,
+			"weapon-pole-arms": 1,
+			"weapon-thrown": 1
+		},
+		"adolescenseSkillRanks": {
+			"soft-leather": 1,
+			"rigid-leather": 3,
+			"armor-chain": 2,
+			"climbing": 1,
+			"alertness": 1,
+			"body-development": 2,
+			"ambush": 1,
+			"scimitar": 2,
+			"club": 1,
+			"lance": 1,
+			"bola": 1
+		},
+		"exhaustionPointsBonus": 20,
+		"specialAbilities": [
+			"They can travel for 2 days without rest. Alternatively, they can run for up to 12 hours without stopping.",
+			"+30 DB and RR bonuses versus heat and cold attacks."
+		],
+		"backgroundOptions": 6,
+		"startingLanguageSelection": [
+			"orcish:s8:w2",
+			"westron:s4:w0"
+		],
+		"soulDeparture": 1,
+		"recoveryMultiplier": 0.5,
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "uruk",
+		"name": "Uruk",
+		"attributeModifiers": {
+			"ag": 0,
+			"co": 8,
+			"me": 0,
+			"re": 0,
+			"sd": -2,
+			"em": -6,
+			"in": -2,
+			"pr": -4,
+			"qu": 0,
+			"st": 4
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     20,
+			"disease":    5
+		},
+		"bodyDevelopmentProgression": [7,5,3,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [5,3,2,2],
+			"mentalism":              [5,3,2,2] 
+		},
+		"adolescenseSkillCategoryRanks": {
+			"armor-light": 3,
+			"armor-medium": 3,
+			"athletic-brawn": 1,
+			"athletic-endurance": 1,
+			"athletic-gymnastics": 1,
+			"awareness-searching": 1,
+			"lore-general": 1,
+			"outdoor-environmental": 2,
+			"subterfuge-attack": 1,
+			"tecnical-trade-general": 1,
+			"weapon-1h-concussion": 1,
+			"weapon-1h-edged": 2,
+			"weapon-pole-arms": 1,
+			"weapon-thrown": 1
+		},
+		"adolescenseSkillRanks": {
+			"soft-leather": 1,
+			"rigid-leather": 3,
+			"armor-chain": 3,
+			"climbing": 1,
+			"alertness": 2,
+			"body-development": 2,
+			"race-lore:orcs": 3,
+			"ambush": 1,
+			"scimitar": 2,
+			"club": 1,
+			"lance": 1,
+			"bola": 1
+		},
+		"exhaustionPoints": 30,
+		"specialAbilities": [
+			"+30 DB and RR bonuses versus heat and cold attacks.",
+			"Uruk-hai usually sleep during daylight hours, although they need sleep only once every 3 days (more often to restore Power Points). Uruk-hai operate freely in daylight, and their vision in most darkness is as good as a Man’s during the height of day. When there is barely any light (cloudy, moonless nights; upper caverns, dungeons), Uruk-hai can see at least 30' perfectly and fairly well up to 75'. In absolute darkness, they can see 10"
+		],
+		"backgroundOptions": 4,
+		"startingLanguageSelection": [
+			"black-speech:s8:w2",
+			"orcish:s8:w3",
+			"westron:s5:w2"
+		],
+		"universes": [ "middle-earth" ]
+	}
+]

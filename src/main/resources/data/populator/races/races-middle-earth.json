@@ -352,47 +352,6 @@
 		"universes": [ "middle-earth" ]
 	},
 	{
-		"id": "uruk",
-		"name": "Uruk",
-		"attributeModifiers": {
-			"ag": 0,
-			"co": 8,
-			"me": 0,
-			"re": 0,
-			"sd": -2,
-			"em": -6,
-			"in": -2,
-			"pr": -4,
-			"qu": 0,
-			"st": 4
-		},
-		"resistanceBonus": {
-			"channeling": 0,
-			"essence":    0,
-			"mentalism":  0,
-			"poison":     20,
-			"disease":    5
-		},
-		"bodyDevelopmentProgression": [7,5,3,1],
-		"ppDevelopmentProgression": {
-			"channeling":             [6,5,4,3],
-			"essence":                [5,3,2,2],
-			"mentalism":              [5,3,2,2] 
-		},
-		"exhaustionPoints": 30,
-		"specialAbilities": [
-			"+30 DB and RR bonuses versus heat and cold attacks.",
-			"Uruk-hai usually sleep during daylight hours, although they need sleep only once every 3 days (more often to restore Power Points). Uruk-hai operate freely in daylight, and their vision in most darkness is as good as a Man’s during the height of day. When there is barely any light (cloudy, moonless nights; upper caverns, dungeons), Uruk-hai can see at least 30' perfectly and fairly well up to 75'. In absolute darkness, they can see 10"
-		],
-		"backgroundOptions": 4,
-		"startingLanguageSelection": [
-			"black-speech:s8:w2",
-			"orcish:s8:w3",
-			"westron:s5:w2"
-		],
-		"universes": [ "middle-earth" ]
-	},
-	{
 		"id": "olog",
 		"name": "Olog",
 		"attributeModifiers": {
@@ -420,10 +379,33 @@
 			"essence":                [3,2,1,1],
 			"mentalism":              [3,2,1,1] 
 		},
-		"_exhaustionPoints": 30,
+		"adolescenseSkillCategoryRanks": {
+			"armor-light": 1,
+			"armor-medium": 3,
+			"athletic-brawn": 1,
+			"athletic-endurance": 1,
+			"athletic-gymnastics": 1,
+			"awareness-searching": 1,
+			"lore-general": 1,
+			"outdoor-environmental": 2,
+			"techical-trade-general": 1,
+			"weapon-2h": 5,
+			"weapon-thrown": 2
+		},
+		"adolescenseSkillRanks": {
+			"armor-chain": 3,
+			"climbing": 1,
+			"alertness": 2,
+			"body-development": 5,
+			"two-hand-sword": 5,
+			"bola": 2
+		},
 		"specialAbilities": [
 			"Black Trolls ignore bleeding or stun results when given a critical strike from a normal weapon, since they are more resistant to unenchanted weapons.",
-			"Trolls do not know fear +100 RR vs fear."
+			"Trolls do not know fear +100 RR vs fear.",
+			"Their skin gives them a natural AT16.",
+			"They can operate freely in daylight.",
+			"Because of their size they are treated as a large creatures for criticals."
 		],
 		"backgroundOptions": 1,
 		"startingLanguageSelection": [
