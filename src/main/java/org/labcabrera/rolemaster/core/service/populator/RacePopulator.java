@@ -19,6 +19,7 @@ public class RacePopulator extends AbstractJsonPopulator<Race> {
 			"data/populator/races/races-orcs.json",
 			"data/populator/races/races-elves.json",
 			"data/populator/races/races-middle-earth.json",
+			"data/populator/races/races-middle-earth-men.json",
 			"data/populator/races/races-middle-earth-orcs.json");
 	}
 

@@ -353,7 +353,7 @@
 		"name": "Urban",
 		"group": "urban",
 		"attributeBonus": ["in","pr","re"],
-		"progressionType": "none",
+		"progressionType": "standard",
 		"description": "This category involves the use of skills pertaining to an urban environment. They range from urban social skills to foraging for food in a town or city."
 	},
 	{

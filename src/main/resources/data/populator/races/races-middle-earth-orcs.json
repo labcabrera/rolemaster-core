@@ -1,7 +1,7 @@
 [
 	{
 		"id": "common-orc",
-		"name": "Orc (LOTR)",
+		"name": "Orc (Middle-Earth)",
 		"keywords": ["orc"],
 		"attributeModifiers": {
 			"ag": -2,
