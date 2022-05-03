@@ -41,7 +41,7 @@
 			"power-awareness": 			3,
 			"science-analytic-basic":	2,
 			"subterfuge-stealth":		2,
-			"tecnical-trade-general":	1,
+			"technical-trade-general":	1,
 			"weapon-1h-edged":			1,
 			"weapon-missile":			1
 		},
@@ -53,7 +53,7 @@
 			"riding:horse":				1,
 			"stalking":					2,
 			"hiding":					2,
-			"broad-sword":				1,
+			"broadsword":				1,
 			"long-bow":					1
 		},
 		"specialAbilities": [
@@ -110,7 +110,7 @@
 			"power-awareness": 			2,
 			"science-analytic-basic":	1,
 			"subterfuge-stealth":		3,
-			"tecnical-trade-general":	1,
+			"technical-trade-general":	1,
 			"weapon-1h-edged":			1,
 			"weapon-missile":			2
 		},
@@ -141,7 +141,7 @@
 		"startingLanguageSelection": [
 			"sindarin:s10:w10",
 			"westron:s8:w6",
-			"betheur:s8:w6",
+			"silvan:s8:w6",
 			"quenya:s6:w4",
 			"adunaic:s6:w4"
 		],

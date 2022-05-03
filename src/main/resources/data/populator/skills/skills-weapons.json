@@ -135,7 +135,7 @@
         "description": "Weapon  ability."
     },
     {
-        "id": "composible-bow",
+        "id": "composite-bow",
         "name": "Composite Bow",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-missile",

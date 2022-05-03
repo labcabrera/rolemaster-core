@@ -14,7 +14,8 @@ public class LanguagePopulator extends AbstractJsonPopulator<Language> {
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
-			"data/populator/languages.json");
+			"data/populator/languages.json",
+			"data/populator/languages-middle-earth.json");
 	}
 
 	@Override
