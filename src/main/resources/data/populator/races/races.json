@@ -2,6 +2,7 @@
 	{
 		"id": "dwarf",
 		"name": "Dwarf",
+		"keywords": ["dwarf"],
 		"attributeModifiers": {
 			"ag": -2,
 			"co": 6,
@@ -43,6 +44,7 @@
 	{
 		"id": "halfling",
 		"name": "Halfling",
+		"keywords": ["halfling"],
 		"attributeModifiers": {
 			"ag": 6,
 			"co": 6,

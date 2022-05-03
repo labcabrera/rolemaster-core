@@ -80,6 +80,7 @@
 	{
 		"id": "nomad",
 		"name": "Nomad",
+		"keywords": ["man","nomad"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 0,
@@ -118,6 +119,7 @@
 	{
 		"id": "nomad-mixed",
 		"name": "Nomad (Mixed)",
+		"keywords": ["man","nomad","mixed-man"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 2,
@@ -156,6 +158,7 @@
 	{
 		"id": "hillman",
 		"name": "Hillman",
+		"keywords": ["man","hillman"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 0,
@@ -196,6 +199,7 @@
 	{
 		"id": "hillman-mixed",
 		"name": "Hillman (Mixed)",
+		"keywords": ["man","hillman","mixed-man"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 2,

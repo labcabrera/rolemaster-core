@@ -2,6 +2,7 @@
 	{
 		"id": "wood-elf",
 		"name": "Wood elf",
+		"keywords": ["elf"],
 		"attributeModifiers": {
 			"ag": 4,
 			"co": 0,
@@ -41,6 +42,7 @@
 	{
 		"id": "high-elf",
 		"name": "High Elf",
+		"keywords": ["elf"],
 		"attributeModifiers": {
 		"ag": 2,
 		"me": 2,
@@ -68,6 +70,7 @@
 	{
 		"id": "grey-elf",
 		"name": "Grey Elf",
+		"keywords": ["elf"],
 		"attributeModifiers": {
 			"ag": 2,
 			"co": 0,
@@ -100,6 +103,7 @@
 	{
 		"id": "fair-elf",
 		"name": "Fair Elf",
+		"keywords": ["elf"],
 		"specialAbilities": [
 		],
 		"universes": [ "generic" ]
@@ -107,6 +111,7 @@
 	{
 		"id": "half-elf",
 		"name": "Half Elf",
+		"keywords": ["elf"],
 		"specialAbilities": [
 		],
 		"universes": [ "generic" ]
