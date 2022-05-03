@@ -1,0 +1,140 @@
+{
+	"type": "K",
+	"map": {
+		"normal": {
+			"1:5": {
+				"text": "Weapon shatters on foe's solid form.",
+				"hp": 12
+			},
+			"6:10": {
+				"text": "Solid, but futile.",
+				"hp": 3
+			},
+			"11:20": {
+				"text": "Hardly enough for victory. Weak side strike.",
+				"hp": 6
+			},
+			"21:30": {
+				"text": "Strong blow to foe's forearm yields its measure.",
+				"hp": 9
+			},
+			"31:40": {
+				"text": "Strike to beast's chest. Some unseen piece of protection blocks your attack.",
+				"hp": 12
+			},
+			"41:50": {
+				"text": "Strike lands upon foe's side. He responds by leaping back away from you.",
+				"hp": 15
+			},
+			"51:65": {
+				"text": "Blow crashes into foe's leg. The damage is obvious by the look on his face.",
+				"hp": 20
+			},
+			"66:66": {
+				"text": "Well placed strike to foe's neck severs the jugular vein. Foe falls and dies in 6 rounds.",
+				"debuffs": {
+					"mortal-damage": 6,
+					"shock": 6
+				}
+			},
+			"67:70": {
+				"text": "Foe's leg catches your failing strike at the right moment. The leg is bruised badly",
+				"hp": 25
+			},
+			"71:80": {
+				"text": "Arm strike gives foe a bruise.",
+				"hp": 30
+			},
+			"81:90": {
+				"text": "Strong blast to foe's stomach staggers foe. His guard drops for a moment. You have a chance.",
+				"hp": 20,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"bonus": {
+					"bonus": 10,
+					"rounds": 1
+				}
+			},
+			"91:95": {
+				"text": "Strong blow to foe's leg yields a gaping wound. If foe has blood, you see a lot of it.",
+				"hp": 18,
+				"debuffs": {
+					"stunned": 3
+				},
+				"bleeding": 5,
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"96:98": {
+				"text": "Plunge your weapon into foe's heart. Foe dies instantly, and falls on you. You are pinned for 6 rounds and +20H!",
+				"debuffs": {
+					"instant-death": 1
+				}
+			},
+			"99:100": {
+				"text": "Strike through foe's lungs. Foe falls down and dies after 6 rounds. Allies get a bonus!",
+				"hp": 24,
+				"debuffs": {
+					"shock": 6,
+					"mortal-damage": 6
+				},
+				"bonus": {
+					"bonus": 20,
+					"rounds": 1
+				}
+			},
+			"101:150": {
+				"text": "Awesome strike to shoulder sends foe stumbling. He has trouble getting his balance back.",
+				"hp": 50,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+				},
+				"penalty": {
+					"penalty": -35
+				}
+			},
+			"151:175": {
+				"text": "Strike drives bone into kidneys and liver. Foe drops and dies in 6 rounds. What a pity.",
+				"debuffs": {
+					"shock": 6,
+					"mortal-damage": 6
+				}
+			},
+			"176:200": {
+				"text": "Strike to bowels destroys foe's abdomenal areas. Foe's blood is all over you. Foe dies in 12 rounds.",
+				"hp": 35,
+				"debuffs": {
+					"shock": 12,
+					"mortal-damage": 12
+				},
+				"bonus": {
+					"bonus": 15,
+					"rounds": 1
+				}
+			},
+			"201:250": {
+				"text": "Blow to foe's forearm severs a vein. Foe dies in 7 rounds from shock and blood loss. He is still standing.",
+				"hp": 15,
+				"debuffs": {
+					"stunned": 6,
+					"mortal-damage": 7
+				},
+				"penalty": {
+					"penalty": -30
+				}
+			},
+			">250": {
+				"text": "You grapple your foe and deal him a mighty blow. You are knocked out. Foe is also impaired.",
+				"hp": 35,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+				}
+			}
+		}
+	}
+}
