@@ -75,7 +75,7 @@
 	{
 		"id": "black-numenorean",
 		"name": "Black Númenórean",
-		"keywords": ["man","numenorean","high-man"],
+		"keywords": ["man","black-numenorean","high-man"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 4,
@@ -442,6 +442,77 @@
 		"backgroundOptions": 5,
 		"startingLanguageSelection": [
 			"westron:s8:w6"
+		],
+		"soulDeparture": 12,
+		"recoveryMultiplier": 1,
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "haradrim",
+		"name": "Haradrim",
+		"keywords": ["man"],
+		"attributeModifiers": {
+			"ag": 0,
+			"co": 0,
+			"me": 0,
+			"re": 0,
+			"sd": 2,
+			"em": 0,
+			"in": 0,
+			"pr": 0,
+			"qu": 0,
+			"st": 2
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     0,
+			"disease":    0
+		},
+		"bodyDevelopmentProgression": [6,4,2,1],
+		"powerPointsProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [6,5,4,3],
+			"mentalism":              [7,6,5,4] 
+		},
+		"adolescenceSkillCategoryRanks": {
+			"armor-light": 1,
+			"athletic-brawn": 1,
+			"athletic-endurance": 1,
+			"athletic-gymnastics": 1,
+			"awareness-searching": 1,
+			"communications": 1,
+			"lore-general": 3,
+			"outdoor-animal": 7,
+			"outdoor-environmental": 3,
+			"technical-trade-general": 1,
+			"weapon-1h-edged": 1,
+			"weapon-pole-arms": 2,
+			"weapon-thrown": 1
+		},
+		"adolescenceSkillRanks": {
+			"soft-leather": 1,
+			"alertness": 2,
+			"body-development": 2,
+			"race-lore:haradan": 3,
+			"riding:horse": 7,
+			"scimitar": 1,
+			"lance": 2,
+			"bola": 1
+		},
+		"skillCategoryBonus": {
+		},
+		"skillBonus": {
+		},
+		"specialAbilities": [
+			"+10 DB and RR versus heat/fire attacks; -10 DB and RR versus cold/ice attacks."
+		],
+		"backgroundOptions": 5,
+		"startingLanguageSelection": [
+			"haradic:s8:w6",
+			"westron:s6:w6",
+			"apysaic:s6:w4"
 		],
 		"soulDeparture": 12,
 		"recoveryMultiplier": 1,

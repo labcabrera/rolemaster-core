@@ -28,12 +28,42 @@
 			"essence":                [6,4,3,3],
 			"mentalism":              [3,2,1,1] 
 		},
+		"adolescenceSkillCategoryRanks": {
+			"armor-light":				1,
+			"armor-medium":				3,
+			"athletic-brawn":			1,
+			"athletic-endurance":		1,
+			"athletic-gymnastics":		1,
+			"awareness-searching":		1,
+			"communications":			1,
+			"lore-general":				3,
+			"outdoor-environmental":	2,
+			"science-analytic-basic":	1,
+			"tecnical-trade-general":	1,
+			"weapon-1h-concussion":		4,
+			"weapon-thrown":			1
+		},
+		"adolescenceSkillRanks": {
+			"rigid-leather":			1,
+			"armor-chain":				3,
+			"climbing":					1,
+			"alertness":				4,
+			"body-development":			3,
+			"mace":						4,
+			"bola":						1
+		},
+		"skillBonus": {
+			"caving-spelunking": 25
+		},
 		"specialAbilities": [
+			"Resistance aga inst flame and ice: +30 DB and RR bonuses versus heat and cold attacks."
 		],
-		"_backgroundOptions": 5,
-		"_startingLanguageSelection": [
-			"small-speech:s8:w6",
-			"common-speech:s8:w6"
+		"backgroundOptions": 4,
+		"startingLanguageSelection": [
+			"khuzdul:s8:w6",
+			"westron:s8:w6",
+			"silvan:s5:w5",
+			"sindarin:s4:w4"
 		],
 		"universes": [ "middle-earth" ]
 	},
