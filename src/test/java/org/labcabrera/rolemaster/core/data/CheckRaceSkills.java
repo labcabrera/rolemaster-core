@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.model.character.Race;
@@ -37,17 +38,40 @@ class CheckRaceSkills {
 		List<Skill> skills = skillRepository.findAll().collectList().share().block();
 		List<String> errors = new ArrayList<>();
 
-		races.stream().filter(e -> e.getAdolescenceSkillCategoryRanks() != null).forEach(race -> {
-			race.getAdolescenceSkillCategoryRanks().keySet().stream()
-				.forEach(categoryId -> checkSkillCategory(race.getId(), categoryId, skillCategories, errors));
-		});
-
-		races.stream().filter(e -> e.getAdolescenceSkillRanks() != null).forEach(race -> {
-			race.getAdolescenceSkillRanks().keySet().stream().forEach(skillId -> checkSkill(race.getId(), skillId, skills, errors));
-		});
-
+		races.stream().filter(e -> e.getAdolescenceSkillCategoryRanks() != null)
+			.forEach(race -> checkSkillCategories(
+				race.getId(),
+				race.getAdolescenceSkillCategoryRanks().keySet(),
+				skillCategories,
+				errors));
+		races.stream().filter(e -> e.getSkillCategoryBonus() != null)
+			.forEach(race -> checkSkillCategories(
+				race.getId(),
+				race.getSkillCategoryBonus().keySet(),
+				skillCategories,
+				errors));
+		races.stream().filter(e -> e.getAdolescenceSkillRanks() != null)
+			.forEach(race -> checkSkills(
+				race.getId(),
+				race.getAdolescenceSkillRanks().keySet(),
+				skills,
+				errors));
+		races.stream().filter(e -> e.getSkillBonus() != null)
+			.forEach(race -> checkSkills(
+				race.getId(),
+				race.getSkillBonus().keySet(),
+				skills,
+				errors));
 		errors.stream().forEach(e -> log.error(e));
 		assertTrue(errors.isEmpty());
+	}
+
+	private void checkSkillCategories(String raceId, Set<String> categoryIds, List<SkillCategory> skillCategories, List<String> errors) {
+		categoryIds.stream().forEach(e -> checkSkillCategory(raceId, e, skillCategories, errors));
+	}
+
+	private void checkSkills(String raceId, Set<String> skillIds, List<Skill> skills, List<String> errors) {
+		skillIds.stream().forEach(e -> checkSkill(raceId, e, skills, errors));
 	}
 
 	private void checkSkillCategory(String raceId, String categoryId, List<SkillCategory> skillCategories, List<String> errors) {

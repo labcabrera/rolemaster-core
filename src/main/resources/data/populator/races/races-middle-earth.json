@@ -29,7 +29,7 @@
 			"mentalism":              [2,1,1,1] 
 		},
 		"skillBonus": {
-			"caving": 25
+			"caving-spelunking": 25
 		},
 		"specialAbilities": [
 			"Khazâd see well in extreme darkness. In the dimmest light, they c an see 50' perfectly, and fairly well up to 100'. They can see 10' in total da rkness (non- magic al)."

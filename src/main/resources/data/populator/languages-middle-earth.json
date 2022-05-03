@@ -124,5 +124,103 @@
 		"group": "",
 		"universeId": "middle-earth",
 		"description": "The extent of Silvan or “Avarin” dialects spoken in the west is unclear. They certainly predominant among the Elves of northern Rhovanion (specifically in Mirkwwod). it isclear, though, that the Silvan Elves carried Avarin into the forests and mountains wherever they settled. Of the three branches of Elvish, this is the least “noble” and most varied. Avarin dialects can be nearly as beautiful and melodic as Quenya or nearly as harsh as the Varadja spoken by the Variags."
+	},
+	{
+		"id": "blarm",
+		"name": "Blarm",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The tongue of the Hillmen of Rhauder."
+	},
+	{
+		"id": "daenael",
+		"name": "Daenael",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Old Dunael. This language is classified Restricted. The language of the Daen Coentis people. A forgotten culture who were indigenous to what is now central and western Gondor."
+	},
+	{
+		"id": "eothrik",
+		"name": "Eothrik",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "This is a Rhovanion dialect used by the Éothraim. And is the ancestor of Éothirric. Was in use between T.A. 1-1856."
+	},
+	{
+		"id": "eothirric",
+		"name": "Éothirric",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "A Decendant of the Eothrik language and ancestor to Rohirric and was in use betwwen T.A. 1857-2510."
+	},
+	{
+		"id": "fornen",
+		"name": "Fornen",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The ancient speech of the northmen of Rhovanion. Rohirric and other Northman tongues derive from the language."
+	},
+	{
+		"id": "gramuik",
+		"name": "Gramuik",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "This is a Rhovanion dialect used by the Gramuz."
+	},
+	{
+		"id": "labba",
+		"name": "Labba",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "An obscure Aravadorin tongue of the Mornerin branch; is the language of the Lossoth. It is shaped by their culture, so they have no word for certain concepts familiar to other men such as “desert”. On the other hand, they use a thousand differant words for concepts based on snow and ice. There is no written form of this language."
+	},
+	{
+		"id": "nahaiduk",
+		"name": "Nahaiduk",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "A Rhovanion Northman dialect used by the Woodmen."
+	},
+	{
+		"id": "pukael",
+		"name": "Pûkael",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Is the guteral tongue of the Woses and is alien to the other tongues of men. The Pûkael tongue gave birth to Daenael, the common ancestor of both Dunael and the coastal tongues of Gondor (before the coming of Dúnedain). Having no use for traditional runes or script, the Woses have developed there own system of pictogram signs - most quite simple - which they utilize for the most practical purposes, notably to mark paths or signal their brethren while out in the wood."
+	},
+	{
+		"id": "rhovaik",
+		"name": "Rhovaik",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Is a Rhovanion Northman dialect, used by the men of Dale and Esgaroth. The so called Urban Northmen."
+	},
+	{
+		"id": "tazinain",
+		"name": "Tazinain",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "This is the language spoken in the area of Middle-earth known as Greater Harad."
+	},
+	{
+		"id": "umitic",
+		"name": "Umitic",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The language of the Umli."
+	},
+	{
+		"id": "varadja",
+		"name": "Varadja",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The language of the Variags."
+	},
+	{
+		"id": "waildyth",
+		"name": "Waildyth",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Used by the Beijabar is a system of nature signals which can be used to speak over long distances without betraying one’s presence, since the sounds are merely variations on the noises of the wild - beasts, the wind, and the like. There is no written form of this language."
 	}
 ]
