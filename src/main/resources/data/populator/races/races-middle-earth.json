@@ -1,5 +1,151 @@
 [
 	{
+		"id": "dunadan",
+		"name": "Dúnadan",
+		"attributeModifiers": {
+			"ag": 0,
+			"co": 4,
+			"me": 0,
+			"re": 0,
+			"sd": 0,
+			"em": 0,
+			"in": 0,
+			"pr": 3,
+			"qu": 0,
+			"st": 4
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     5,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [7,5,3,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [6,5,4,3],
+			"mentalism":              [7,6,5,4] 
+		},
+		"adolescenseSkillCategoryRanks": {
+			"armor-light": 1,
+			"armor-medium": 2,
+			"athletic-brawn": 1,
+			"athletic-endurance": 1,
+			"athletic-gymnastics": 1,
+			"awaresness-searching": 1,
+			"communications": 3,
+			"lore-general": 3,
+			"outdoor-animal": 1,
+			"outdoor-environmental": 1,
+			"power-awareness": 2,
+			"science-analytic-basic": 1,
+			"technical-trade-general": 1, 
+			"weapon-1h-edged": 2,
+			"weapon-2h": 1,
+			"weapon-missile": 1,
+			"weapon-pole-arms": 1
+		},
+		"adolescenseSkillRanks": {
+			"rigid-leather": 1,
+			"armor-chain": 2,
+			"swimming": 1,
+			"alertness": 1,
+			"body-development": 3,
+			"broadsword": 2,
+			"two-hand-sword": 1,
+			"long-bow": 1,
+			"lance": 1,
+			"riding:horse": 1
+		},
+		"specialAbilities": [
+		],
+		"backgroundOptions": 5,
+		"startingLanguageSelection": [
+			"adunaic:s8:w6",
+			"westron:s8:w6",
+			"sindarin:s6:w6",
+			"quenya:s2:w2"
+		],
+		"soulDeparture": 10,
+		"recoveryMultiplier": 0.75,
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "black-numenorean",
+		"name": "Black Númenórean",
+		"attributeModifiers": {
+			"ag": 0,
+			"co": 4,
+			"me": 0,
+			"re": 0,
+			"sd": 0,
+			"em": 0,
+			"in": 0,
+			"pr": 3,
+			"qu": 0,
+			"st": 4
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    0,
+			"mentalism":  0,
+			"poison":     5,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [7,5,3,1],
+		"ppDevelopmentProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [6,5,4,3],
+			"mentalism":              [7,6,5,4] 
+		},
+		"adolescenseSkillCategoryRanks": {
+			"armor-light": 1, 
+			"armor-medium": 2,
+			"athletic-brawn": 1,
+			"athletic-endurance": 1,
+			"athletic-gymnastics": 1,
+			"awaresness-searching": 1,
+			"communications": 3,
+			"lore-general": 3,
+			"outdoor-animal": 1,
+			"outdoor-environmental": 1,
+			"power-awareness": 2,
+			"science-analytic-basic": 1,
+			"technical-trade-general": 1, 
+			"weapon-1h-edged": 1,
+			"weapon-missile": 1,
+			"weapon-thrown": 1
+		},
+		"adolescenseSkillRanks": {
+			"armor-chain": 2,
+			"swimming": 3,
+			"alertness": 1,
+			"body-development": 2,
+			"riding:horse": 1,
+			"broadsword": 1,
+			"composite-bow": 1,
+			"bola": 1
+		},
+		"skillCategoryBonus": {
+			"weapon-1h-concussion": 10,
+			"weapon-1h-edged": 10,
+			"weapon-2h": 10,
+			"weapon-pole-arms": 10
+		},
+		"specialAbilities": [
+		],
+		"backgroundOptions": 4,
+		"startingLanguageSelection": [
+			"adunaic:s8:w8",
+			"westron:s8:w8",
+			"haradic:s6:w6"
+		],
+		"soulDeparture": 10,
+		"recoveryMultiplier": 0.75,
+		"universes": [ "middle-earth" ]
+	},
+	{
 		"id": "khazad-durin",
 		"name": "Khazad (House of Durin)",
 		"attributeModifiers": {
@@ -109,6 +255,42 @@
 			"essence":                [7,6,5,4],
 			"mentalism":              [6,5,4,3] 
 		},
+		"adolescenseSkillCategoryRanks": {
+			"armor-light":				1,
+			"athletic-brawn":			1,
+			"athletic-endurance":		1,
+			"athletic-gymnastics":		1,
+			"awareness-searching":		1,
+			"lore-general":				3,
+			"outdoor-animal":			1,
+			"outdoor-environmental":	4,
+			"power-awareness": 			2,
+			"science-analytic-basic":	1,
+			"subterfuge-stealth":		3,
+			"tecnical-trade-general":	1,
+			"weapon-1h-edged":			1,
+			"weapon-missile":			2
+		},
+		"adolescenseSkillRanks": {
+			"swimming":					2,
+			"climbing":					1,
+			"alertness":				6,
+			"body-development":			1,
+			"riding:horse":				1,
+			"stalking":					3,
+			"hiding":					3,
+			"short-sword":				1,
+			"long-bow":					2
+		},
+		"_TODO_adolescenceSkillSelections": {
+			"communications": 3,
+			"languages": 16,
+			"region-lore:own": 3,
+			"culture-lore:own": 3,
+			"own-spell-list": 3
+		},
+		"_TODO_hobby-ranks": 8,
+		"_TODO_talent_points": 25, 
 		"specialAbilities": [
 			"TODO"
 		],
@@ -120,8 +302,8 @@
 			"quenya:s6:w4",
 			"adunaic:s6:w4"
 		],
-		"soulDeparture": 2,
-		"recoveryMultiplier": 2.0,
+		"soulDeparture": 6,
+		"recoveryMultiplier": 1.5,
 		"universes": [ "middle-earth" ]
 	},
 	{

@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.service.character.creation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
@@ -29,7 +30,6 @@ import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
-import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.labcabrera.rolemaster.core.table.character.ExperienceLevelTable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +64,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	private SkillCategoryRepository skillCategoryRepository;
 
 	@Autowired
-	private SkillRepository skillRepository;
+	private CharacterCreationSkillService characterCreationSkillService;
 
 	@Autowired
 	private ExperienceLevelTable experienceLevelTable;
@@ -117,14 +117,14 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 				.collectList()
 				.doOnNext(ctx::setSkillCategories)
 				.map(e -> ctx))
-			.flatMap(ctx -> skillRepository.findSkillsOnNewCharacter()
+			.flatMap(ctx -> characterCreationSkillService.getSkills(ctx.getRace())
 				.collectList()
 				.doOnNext(ctx::setSkills)
 				.map(e -> ctx))
 			.map(ctx -> loadAttributes(ctx, request))
 			.map(this::loadSkillCategories)
 			.map(ctx -> loadSkillCategoryWeapons(ctx, request))
-			.map(this::loadSkills)
+			.map(this::loadDefaultSkills)
 			.map(this::loadResistances)
 			.map(CharacterModificationContext::getCharacter)
 			.map(postProcessorService)
@@ -172,21 +172,32 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 		return context;
 	}
 
-	private CharacterModificationContext loadSkills(CharacterModificationContext context) {
+	private CharacterModificationContext loadDefaultSkills(CharacterModificationContext context) {
 		Race race = context.getRace();
 		context.getSkills().stream().forEach(skill -> {
 			String categoryId = skill.getCategoryId();
+			String skillId = skill.getId();
+			Integer adolescenceRanks = race.getAdolescenseSkillRanks().getOrDefault(skill.getId(), 0);
+			if (skill.getCustomizableOptions() > 0) {
+				List<Entry<String, Integer>> list = race.getAdolescenseSkillRanks().entrySet().stream()
+					.filter(e -> e.getKey().startsWith(skill.getId()))
+					.toList();
+				if (!list.isEmpty()) {
+					skillId = list.iterator().next().getKey();
+					adolescenceRanks = list.iterator().next().getValue();
+				}
+			}
 			CharacterSkillCategory category = context.getCharacter().getSkillCategory(categoryId)
 				.orElseThrow(() -> new BadRequestException("Invalid skill category " + categoryId));
 			CharacterSkill cs = CharacterSkill.builder()
-				.skillId(skill.getId())
+				.skillId(skillId)
 				.categoryId(skill.getCategoryId())
 				.group(category.getGroup())
 				.developmentCost(category.getDevelopmentCost())
 				.attributes(category.getAttributes())
 				.progressionType(skill.getProgressionType())
 				.build();
-			cs.getRanks().put(RankType.ADOLESCENCE, race.getAdolescenseSkillRanks().getOrDefault(skill.getId(), 0));
+			cs.getRanks().put(RankType.ADOLESCENCE, adolescenceRanks);
 			cs.getRanks().put(RankType.CONSOLIDATED, 0);
 			cs.getRanks().put(RankType.DEVELOPMENT, 0);
 			cs.getBonus().put(BonusType.SKILL_SPECIAL, skill.getSkillBonus());
