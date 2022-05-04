@@ -20,6 +20,7 @@ class CharacterCreationServiceCommonMenRangerTest extends AbstractCharacterCreat
 				{
 				"name": "Test Common Men Ranger",
 				"level": 1,
+				"universeId": "generic",
 				"raceId": "common-man",
 				"professionId": "ranger",
 				"realm": "essence",

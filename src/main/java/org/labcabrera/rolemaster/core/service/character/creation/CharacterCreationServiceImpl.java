@@ -14,14 +14,12 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterResistance;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
-import org.labcabrera.rolemaster.core.model.character.CharacterStatus;
-import org.labcabrera.rolemaster.core.model.character.CharacterWeight;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.character.ResistanceBonusType;
 import org.labcabrera.rolemaster.core.model.character.ResistanceType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
 import org.labcabrera.rolemaster.core.model.skill.SkillCategory;
@@ -31,8 +29,8 @@ import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
-import org.labcabrera.rolemaster.core.table.character.ExperienceLevelTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -67,32 +65,15 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	private CharacterCreationSkillService characterCreationSkillService;
 
 	@Autowired
-	private ExperienceLevelTable experienceLevelTable;
+	private Converter<CharacterCreation, CharacterInfo> converter;
 
 	@Override
-	public Mono<CharacterInfo> create(CharacterCreationRequest request) {
+	public Mono<CharacterInfo> create(CharacterCreation request) {
 		log.info("Processing new character {}", request.getName());
-		final CharacterInfo character = CharacterInfo.builder()
-			.realm(request.getRealm())
-			.level(0)
-			.maxLevel(request.getLevel())
-			.xp(null)
-			.xp(experienceLevelTable.getRequiredExperience(request.getLevel()))
-			.name(request.getName())
-			.raceId(request.getRaceId())
-			.professionId(request.getProfessionId())
-			.age(request.getAge())
-			.height(request.getHeight())
-			.weight(CharacterWeight.builder()
-				.weight(request.getWeight())
-				.build())
-			.status(CharacterStatus.PARTIALLY_CREATED)
-			.build();
-
-		final CharacterModificationContext context = CharacterModificationContextImpl.builder()
+		CharacterInfo character = converter.convert(request);
+		CharacterModificationContext context = CharacterModificationContextImpl.builder()
 			.character(character)
 			.build();
-
 		return Mono.just(context)
 			.zipWith(raceRepository.findById(request.getRaceId()))
 			.switchIfEmpty(Mono.error(new BadRequestException("Race " + request.getRaceId() + " not found")))
@@ -133,7 +114,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			.map(e -> e);
 	}
 
-	private CharacterModificationContext loadAttributes(CharacterModificationContext context, CharacterCreationRequest request) {
+	private CharacterModificationContext loadAttributes(CharacterModificationContext context, CharacterCreation request) {
 		Arrays.asList(AttributeType.values()).stream().forEach(e -> {
 			int value = request.getBaseAttributes().containsKey(e) ? request.getBaseAttributes().get(e) : 1;
 			int potentialValue = attributeCreationService.getPotentialStat(value);
@@ -206,7 +187,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 		return context;
 	}
 
-	private CharacterModificationContext loadSkillCategoryWeapons(CharacterModificationContext context, CharacterCreationRequest request) {
+	private CharacterModificationContext loadSkillCategoryWeapons(CharacterModificationContext context, CharacterCreation request) {
 		CharacterInfo character = context.getCharacter();
 		Profession profession = context.getProfession();
 		int sizeExpected = profession.getSkillCategoryWeaponDevelopmentCost().size();

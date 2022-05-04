@@ -7,7 +7,7 @@ import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
@@ -44,7 +44,7 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Mono<CharacterInfo> create(@Valid CharacterCreationRequest request) {
+	public Mono<CharacterInfo> create(@Valid CharacterCreation request) {
 		return creationService.create(request);
 	}
 

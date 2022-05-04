@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ class TrainingPackageUpgradeValidationTest {
 
 	@Test
 	void testMissingTrainingPackageId() throws IOException {
-		CharacterCreationRequest request = readRequest();
+		CharacterCreation request = readRequest();
 		CharacterInfo character = service.create(request).share().block();
 		assertEquals(61, character.getDevelopmentPoints().getTotalPoints());
 		assertEquals(0, character.getDevelopmentPoints().getUsedPoints());
@@ -47,7 +47,7 @@ class TrainingPackageUpgradeValidationTest {
 
 	@Test
 	void testInvalidTrainingPackageId() throws IOException {
-		CharacterCreationRequest request = readRequest();
+		CharacterCreation request = readRequest();
 		CharacterInfo character = service.create(request).share().block();
 		assertEquals(61, character.getDevelopmentPoints().getTotalPoints());
 		assertEquals(0, character.getDevelopmentPoints().getUsedPoints());
@@ -59,10 +59,10 @@ class TrainingPackageUpgradeValidationTest {
 		});
 	}
 
-	private CharacterCreationRequest readRequest() throws IOException {
+	private CharacterCreation readRequest() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
 			.getResourceAsStream("openapi/examples/character-creation-example-01.json")) {
-			return objectMapper.readerFor(CharacterCreationRequest.class).readValue(in);
+			return objectMapper.readerFor(CharacterCreation.class).readValue(in);
 		}
 	}
 

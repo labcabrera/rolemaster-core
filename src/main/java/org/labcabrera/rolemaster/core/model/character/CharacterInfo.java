@@ -34,6 +34,9 @@ public class CharacterInfo {
 	@Schema(description = "Character name.", required = true, example = "Bilbo Baggins")
 	private String name;
 
+	@Schema(description = "Universe identifier.", required = true, example = "middle-earth")
+	private String universeId;
+
 	@Schema(description = "Character realm.", required = true, example = "channeling")
 	private Realm realm;
 

@@ -14,7 +14,7 @@ import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.RankType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +43,7 @@ class CharacterCreationService02Test {
 		String json = """
 			{
 				"name": "Pieterman",
+				"universeId": "generic",
 				"level": 1,
 				"raceId": "hillman",
 				"professionId": "layman",
@@ -75,7 +76,7 @@ class CharacterCreationService02Test {
 			}
 			""";
 
-		CharacterCreationRequest request = objectMapper.readerFor(CharacterCreationRequest.class).readValue(json);
+		CharacterCreation request = objectMapper.readerFor(CharacterCreation.class).readValue(json);
 		CharacterInfo character = creationService.create(request).share().block();
 
 		List<AddSkill> addSkills = Arrays.asList(

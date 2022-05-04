@@ -77,7 +77,9 @@ public class CharacterUpdateSkillService {
 	}
 
 	private CharacterInfo calculateDevelopmentCost(CharacterInfo character) {
-		int devCost = calculateCost(character.getSkillCategories()) + calculateCost(character.getSkills());
+		int devCost = calculateCost(character.getSkillCategories())
+			+ calculateCost(character.getSkills())
+			+ calculateTrainingPackageCost(character);
 		if (devCost > character.getDevelopmentPoints().getTotalPoints()) {
 			throw new BadRequestException("Invalid dev cost TODO");
 		}
@@ -89,6 +91,11 @@ public class CharacterUpdateSkillService {
 		return list.stream()
 			.filter(e -> e.getRanks().getOrDefault(RankType.DEVELOPMENT, 0) > 0)
 			.map(this::getCost)
+			.reduce(0, (a, b) -> a + b);
+	}
+
+	private int calculateTrainingPackageCost(CharacterInfo character) {
+		return character.getDevelopmentPoints().getDevelopmentTrainingPackages().values().stream()
 			.reduce(0, (a, b) -> a + b);
 	}
 

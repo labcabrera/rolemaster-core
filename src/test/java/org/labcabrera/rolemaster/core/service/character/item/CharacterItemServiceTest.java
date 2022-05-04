@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
@@ -39,7 +39,7 @@ class CharacterItemServiceTest {
 
 	@Test
 	void testCreation() throws IOException {
-		CharacterCreationRequest request = readRequest();
+		CharacterCreation request = readRequest();
 		CharacterInfo characterInfo = creationService.create(request).share().block();
 
 		characterInfo = addSkillService.addSkill(characterInfo.getId(), AddSkill.builder().skillId("soft-leather").build()).share().block();
@@ -74,10 +74,10 @@ class CharacterItemServiceTest {
 
 	}
 
-	private CharacterCreationRequest readRequest() throws IOException {
+	private CharacterCreation readRequest() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
 			.getResourceAsStream("openapi/examples/character-creation-example-01.json")) {
-			return objectMapper.readerFor(CharacterCreationRequest.class).readValue(in);
+			return objectMapper.readerFor(CharacterCreation.class).readValue(in);
 		}
 	}
 }

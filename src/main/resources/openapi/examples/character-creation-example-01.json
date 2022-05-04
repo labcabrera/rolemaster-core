@@ -1,5 +1,6 @@
 {
 	"name": "Kiove",
+	"universeId": "generic",
 	"level": 1,
 	"raceId": "common-man",
 	"professionId": "thief",

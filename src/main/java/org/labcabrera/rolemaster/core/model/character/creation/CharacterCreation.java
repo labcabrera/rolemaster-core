@@ -22,11 +22,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CharacterCreationRequest {
+public class CharacterCreation {
 
 	@NotEmpty
 	@Schema(description = "Character name.", example = "Kiove", required = true)
 	private String name;
+
+	@NotEmpty
+	@Schema(description = "Universe identifier.", example = "middle-earth", required = true)
+	private String universeId;
 
 	@NotNull
 	@Schema(description = "Character max level.", example = "1", required = true)
