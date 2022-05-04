@@ -29,6 +29,7 @@ public enum SpellSubtype {
 
 	private SpellSubtype(String name, String description) {
 		this.name = name;
+		this.description = description;
 	}
 
 	@JsonValue

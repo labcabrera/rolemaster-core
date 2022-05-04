@@ -48,10 +48,8 @@ public class AttackFumbleProcessor implements AbstractAttackProcessor {
 	}
 
 	private Mono<AttackContext> processOffHandAttack(AttackContext context) {
-		if (context.getAction()instanceof TacticalActionMeleeAttack meleeAttack) {
-			if (meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
-				return fumbleHandAttack(context, AttackTargetType.OFF_HAND);
-			}
+		if (context.getAction() instanceof TacticalActionMeleeAttack ma && ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
+			return fumbleHandAttack(context, AttackTargetType.OFF_HAND);
 		}
 		return Mono.just(context);
 	}
@@ -64,7 +62,7 @@ public class AttackFumbleProcessor implements AbstractAttackProcessor {
 			log.debug("Adding fumble result for attack {}", context.getAction().getId());
 			AttackFumbleResult afr = AttackFumbleResult.builder()
 				.weaponFumble(weaponFumble)
-				.type(getFumbleType(weapon))
+				.type(getFumbleType(context, weapon))
 				.build();
 			context.getAction().getFumbleResults().put(type, afr);
 			context.getAction().setState(TacticalActionState.PENDING_FUMBLE_RESOLUTION);
@@ -79,7 +77,7 @@ public class AttackFumbleProcessor implements AbstractAttackProcessor {
 		return itemService.getFumble(item, hasItemMap);
 	}
 
-	private FumbleType getFumbleType(CharacterItem item) {
+	private FumbleType getFumbleType(AttackContext context, CharacterItem item) {
 		//TODO check weapon type
 		return FumbleType.WEAPON_1H;
 	}

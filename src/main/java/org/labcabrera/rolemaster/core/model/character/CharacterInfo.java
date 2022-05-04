@@ -117,6 +117,10 @@ public class CharacterInfo {
 	private CharacterSize size = CharacterSize.NORMAL;
 
 	@Builder.Default
+	@Schema(description = "List of traits and flaws.")
+	private List<String> customizations = new ArrayList<>();
+
+	@Builder.Default
 	private List<String> notes = new ArrayList<>();
 
 	@Builder.Default
