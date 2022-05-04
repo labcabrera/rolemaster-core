@@ -1,0 +1,509 @@
+[
+	{
+		"id": "karfar-poison",
+		"name": "Karfar",
+		"type": "poison",
+		"poisonType": "circulatory",
+		"poisonForm": "leaf",
+		"preparation": "paste",
+		"climateCode": "hot-and-humid",
+		"localeCode": "jungle-rain-forest",
+		"findingDificulty": "medium",
+		"level": 7,
+		"levelModifier": "C",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 142
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 7C poison. Reddish paste causes he art to malfunction. All effects begin in 2-12 rounds."
+	},
+	{
+		"id": "klytun-poison",
+		"name": "Klytun",
+		"type": "poison",
+		"poisonType": "circulatory",
+		"poisonForm": "root",
+		"preparation": "paste",
+		"climateCode": "semi-arid",
+		"localeCode": "breaks-wadis",
+		"findingDificulty": "medium",
+		"level": 5,
+		"levelModifier": "A",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 53
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 5A poison. Golden paste causes 1-10 day coma. Effects begin after all general effects have begun."
+	},
+	{
+		"id": "taynaga-poison",
+		"name": "Taynaga",
+		"type": "poison",
+		"poisonType": "conversion",
+		"poisonForm": "bark",
+		"preparation": "powder",
+		"climateCode": "cold",
+		"localeCode": "coniferous-forest",
+		"findingDificulty": "medium",
+		"level": 8,
+		"levelModifier": "D",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 27
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 8D poison. Brownish powder sterilize s and gives 5-50 hits. Maximum of moderate general effects."
+	},
+	{
+		"id": "ancalthur-poison",
+		"name": "Ancalthur",
+		"type": "poison",
+		"poisonType": "muscle",
+		"poisonForm": "liquid",
+		"preparation": "ingest",
+		"climateCode": "cold",
+		"localeCode": "freshwater-coasts",
+		"findingDificulty": "very-hard",
+		"level": 2,
+		"_levelModifier": "",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 45
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Victims sense of time is warped, leaving himuncorordinated for 2-4 hours (RR failure 1-50 = -75; RR failure 51+ = -100)."
+	},
+	{
+		"id": "blade-hemlock-poison",
+		"name": "Blade Hemlock",
+		"type": "poison",
+		"poisonType": "muscle",
+		"poisonForm": "paste",
+		"preparation": "ingest",
+		"climateCode": "mild",
+		"localeCode": "freshwater-coasts",
+		"findingDificulty": "very-hard",
+		"level": 6,
+		"_levelModifier": "",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 58
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Hemlock and Curulot. RR failure 01-25 = incapacity 1-10 hours; RR failure 26+ = death in 6-10 rnds."
+	},
+	{
+		"id": "dynallca-poison",
+		"name": "Dynallca",
+		"type": "poison",
+		"poisonType": "muscle",
+		"poisonForm": "leaf",
+		"preparation": "paste",
+		"climateCode": "hot-and-humid",
+		"localeCode": "freshwater-coasts",
+		"findingDificulty": "light",
+		"level": 3,
+		"levelModifier": "B",
+		"addictionFactor": 3,
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 14
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 3B poison. Tan paste affects hearing and gives 1-10 hits. Maximum of Severe general effects (destroys hearing)."
+	},
+	{
+		"id": "water-hemlock-plant-poison",
+		"name": "Water Hemlock Plant",
+		"type": "poison",
+		"poisonType": "muscle",
+		"poisonForm": "liquid",
+		"preparation": "ingest",
+		"climateCode": "mild",
+		"localeCode": "freshwater-coasts",
+		"findingDificulty": "very-hard",
+		"level": 3,
+		"_levelModifier": "B",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 18
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Pale amber clear liquid. Pure derivative. RR failure 01-25 = incapacity 1-10 hours; RR failure 26+ = death in 6-10 rnds."
+	},
+	{
+		"id": "acaana-poison",
+		"name": "Acaana",
+		"type": "poison",
+		"poisonType": "nerve",
+		"poisonForm": "flower",
+		"preparation": "paste",
+		"climateCode": "frigid",
+		"localeCode": "mountains",
+		"findingDificulty": "extremely-hard",
+		"level": 10,
+		"levelModifier": "E",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 600
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 10E poison. Black paste affects nervous system. Extreme effect destroys nervous system and kills instantly."
+	},
+	{
+		"id": "adder-venom-poison",
+		"name": "Adder Venom",
+		"type": "poison",
+		"poisonType": "nerve",
+		"poisonForm": "flower",
+		"preparation": "paste",
+		"climateCode": "mild",
+		"localeCode": "freshwater-coasts",
+		"findingDificulty": "extremely-hard",
+		"level": 10,
+		"_levelModifier": "E",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 75
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Adder poison and Curulot Blossom. RR failure 1-50 = flaccid paralysis for 1-100 rnds; RR failure 51+ = death in 5 rnds."
+	},
+	{
+		"id": "asp-venom-poison",
+		"name": "Asp Venom",
+		"type": "poison",
+		"poisonType": "nerve",
+		"poisonForm": "asp",
+		"preparation": "paste",
+		"climateCode": "mild",
+		"localeCode": "tall-grass",
+		"findingDificulty": "light",
+		"level": 5,
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 23
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 5 poison. Loss of limb struck."
+	},
+	{
+		"id": "juth-poison",
+		"name": "Juth",
+		"type": "poison",
+		"poisonType": "nerve",
+		"poisonForm": "asp",
+		"preparation": "paste",
+		"climateCode": "arid",
+		"localeCode": "desert",
+		"findingDificulty": "hard",
+		"level": 2,
+		"levelModifier": "B",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 56
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 2B poison. Maximum of severe effect (insanity in 1-100 weeks)."
+	},
+	{
+		"id": "ul-acaana-poison",
+		"name": "Ul-Acaana",
+		"type": "poison",
+		"poisonType": "nerve",
+		"poisonForm": "paste",
+		"preparation": "inject",
+		"climateCode": "mild",
+		"localeCode": "freshwater-coasts",
+		"location": "Mid-Endor",
+		"findingDificulty": "sheer-folly",
+		"level": 10,
+		"levelModifier": "B",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 500
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Lvl 10. RR failure 01-20 = coma (1 day); RR failure 21+ = instant death."
+	},
+	{
+		"id": "silmaana-poison",
+		"name": "Silmaana",
+		"type": "poison",
+		"poisonType": "reduction",
+		"poisonForm": "stalk",
+		"preparation": "powder",
+		"climateCode": "mild",
+		"localeCode": "tall-grass",
+		"findingDificulty": "easy",
+		"level": 9,
+		"levelModifier": "C",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 4
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 9C poison. Silver powder scars skin; gives 2-20 hits. Maximum of moderate effects."
+	},
+	{
+		"id": "slota-poison",
+		"name": "Slota",
+		"type": "poison",
+		"poisonType": "reduction",
+		"poisonForm": "spider",
+		"preparation": "paste",
+		"climateCode": "mild",
+		"localeCode": "tall-grass",
+		"findingDificulty": "extremely-hard",
+		"level": 5,
+		"levelModifier": "A",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 36
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 5A poison. Extreme effect is slow (1 day) paralysis and death (1-10 days)."
+	},
+	{
+		"id": "zaganzar-poison",
+		"name": "Zaganzar",
+		"type": "poison",
+		"poisonType": "reduction",
+		"poisonForm": "root",
+		"preparation": "liquid",
+		"climateCode": "cool",
+		"localeCode": "mountains",
+		"findingDificulty": "very-hard",
+		"level": 5,
+		"levelModifier": "H",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 139
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 5H poison. Bluish extract. Maximum of severee effects (blinds by reducing optic nerve to water); gives 1-10 hits."
+	},
+	{
+		"id": "galenaana-poison",
+		"name": "Galenaana",
+		"type": "poison",
+		"poisonType": "respiratory",
+		"poisonForm": "leaf",
+		"preparation": "powder",
+		"climateCode": "cold",
+		"localeCode": "arid",
+		"findingDificulty": "very-hard",
+		"level": 9,
+		"levelModifier": "D",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 179
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 9D poison. Green powder. Maximum of severe effects (except for elves who can suffer extreme effects)."
+	},
+	{
+		"id": "jegga-poison",
+		"name": "Jegga",
+		"type": "poison",
+		"poisonType": "respiratory",
+		"poisonForm": "bats",
+		"preparation": "paste",
+		"climateCode": "mild",
+		"localeCode": "underground",
+		"findingDificulty": "hard",
+		"level": 7,
+		"levelModifier": "B",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 92
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 7B poison. Brown paste gives 1-100 hits. Maximum of mild effects."
+	},
+	{
+		"id": "jitsu-poison",
+		"name": "Jitsu",
+		"type": "poison",
+		"poisonType": "respiratory",
+		"poisonForm": "clams",
+		"preparation": "liquid",
+		"climateCode": "mild",
+		"localeCode": "ocean-saltwater-shores",
+		"findingDificulty": "medium",
+		"level": 5,
+		"levelModifier": "B",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 34
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 5B poison. Yellow venom gives 5-50 hits. Maximum of mild effects."
+	},
+	{
+		"id": "kly-poison",
+		"name": "Kly",
+		"type": "poison",
+		"poisonType": "respiratory",
+		"poisonForm": "berry",
+		"preparation": "paste",
+		"climateCode": "semi-arid",
+		"localeCode": "heath-scrub-moor",
+		"findingDificulty": "hard",
+		"level": 3,
+		"levelModifier": "F",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 154
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 3F poison. Brown juice gives 3-300 hits. Maximum of mild effects."
+	},
+	{
+		"id": "shirolos-poison",
+		"name": "Shirolos",
+		"type": "poison",
+		"poisonType": "respiratory",
+		"poisonForm": "liquid",
+		"preparation": "ingest",
+		"climateCode": "mild",
+		"localeCode": "heath-scrub-moor",
+		"findingDificulty": "sheer-folly",
+		"level": 10,
+		"_levelModifier": "B",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 84
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Lvl 10. Distillation of Sweet Galenas and white wine, clear and yellow. RR failure 01-50 = D rowsiness (-100 Manoeuvreing); RR failure 51+ = Trance like state (1-100 hrs); open to suggestion but cannot move ."
+	},
+	{
+		"id": "thuryik-poison",
+		"name": "Thuryik",
+		"type": "poison",
+		"poisonType": "respiratory",
+		"poisonForm": "gas",
+		"preparation": "ingest",
+		"climateCode": "semi-arid",
+		"localeCode": "volcanic",
+		"findingDificulty": "sheer-folly",
+		"level": 10,
+		"_levelModifier": "B",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 85
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Lvl 10. RR failure = deep sleep (1-10 hrs)."
+	},
+	{
+		"id": "uraana-poison",
+		"name": "Uraana",
+		"type": "poison",
+		"poisonType": "respiratory",
+		"poisonForm": "leaf",
+		"preparation": "paste",
+		"climateCode": "cool",
+		"localeCode": "short-grass",
+		"findingDificulty": "light",
+		"level": 6,
+		"levelModifier": "A",
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 12
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 6A poison. Creamy paste gives 3-30 hits. Maximum of mild effects."
+	}
+]

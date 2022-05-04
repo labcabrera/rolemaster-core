@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.item.ArmorPiece;
+import org.labcabrera.rolemaster.core.model.item.Herb;
 import org.labcabrera.rolemaster.core.model.item.Item;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
+import org.labcabrera.rolemaster.core.model.item.Poison;
 import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +46,15 @@ public class ItemPopulator implements ApplicationRunner {
 
 	protected List<Item> collectValues() throws IOException {
 		List<Item> list = new ArrayList<>();
+		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/weapons.json")) {
+		try (InputStream in = cl.getResourceAsStream("data/populator/items/weapons.json")) {
 			List<Weapon> values = objectMapper.readerFor(new TypeReference<List<Weapon>>() {
 			}).readValue(in);
 			list.addAll(values);
 		}
 
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/armors.json")) {
+		try (InputStream in = cl.getResourceAsStream("data/populator/items/armors.json")) {
 			List<ArmorPiece> values = objectMapper.readerFor(new TypeReference<List<ArmorPiece>>() {
 			}).readValue(in);
 			values.stream().forEach(e -> {
@@ -64,13 +67,13 @@ public class ItemPopulator implements ApplicationRunner {
 		}
 
 		try (
-			InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/armor-pieces.json")) {
+			InputStream in = cl.getResourceAsStream("data/populator/items/armor-pieces.json")) {
 			List<ArmorPiece> values = objectMapper.readerFor(new TypeReference<List<ArmorPiece>>() {
 			}).readValue(in);
 			list.addAll(values);
 		}
 
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/shields.json")) {
+		try (InputStream in = cl.getResourceAsStream("data/populator/items/shields.json")) {
 			List<ArmorPiece> values = objectMapper.readerFor(new TypeReference<List<ArmorPiece>>() {
 			}).readValue(in);
 			values.stream().forEach(e -> {
@@ -82,8 +85,20 @@ public class ItemPopulator implements ApplicationRunner {
 			list.addAll(values);
 		}
 
-		try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("data/populator/items/items.json")) {
+		try (InputStream in = cl.getResourceAsStream("data/populator/items/items.json")) {
 			List<Item> values = objectMapper.readerFor(new TypeReference<List<Item>>() {
+			}).readValue(in);
+			list.addAll(values);
+		}
+
+		try (InputStream in = cl.getResourceAsStream("data/populator/items/poisons-middle-earth.json")) {
+			List<Poison> values = objectMapper.readerFor(new TypeReference<List<Poison>>() {
+			}).readValue(in);
+			list.addAll(values);
+		}
+
+		try (InputStream in = cl.getResourceAsStream("data/populator/items/herbs-middle-earth.json")) {
+			List<Herb> values = objectMapper.readerFor(new TypeReference<List<Herb>>() {
 			}).readValue(in);
 			list.addAll(values);
 		}

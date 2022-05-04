@@ -43,7 +43,7 @@ public class Item {
 	private Integer count = 1;
 
 	@Schema(description = "Value in hours")
-	private Integer craftDuration;
+	private Float craftDuration;
 
 	@Builder.Default
 	private Map<CoinType, Integer> commonCost = new EnumMap<>(CoinType.class);

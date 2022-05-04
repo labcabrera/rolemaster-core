@@ -67,6 +67,9 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	@Autowired
 	private Converter<CharacterCreation, CharacterInfo> converter;
 
+	@Autowired
+	private CharacterCreationItemLoader characterCreationItemLoader;
+
 	@Override
 	public Mono<CharacterInfo> create(CharacterCreation request) {
 		log.info("Processing new character {}", request.getName());
@@ -110,6 +113,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			.map(CharacterModificationContext::getCharacter)
 			.map(postProcessorService)
 			.flatMap(repository::save)
+			.flatMap(characterCreationItemLoader::addItems)
 			.doOnNext(e -> log.info("Created character {}", e))
 			.map(e -> e);
 	}
@@ -235,4 +239,5 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 		}
 		return context;
 	}
+
 }
