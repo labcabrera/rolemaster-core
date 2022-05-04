@@ -26,7 +26,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class AttackWeaponTableProcessor extends AbstractAttackProcessor {
+public class AttackWeaponTableProcessor implements AbstractAttackProcessor {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
 	private static final String PATTERN_CRIT = "^([0-9]+)(\\w)(\\w)$";

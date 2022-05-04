@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.table.critical;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
@@ -29,9 +30,9 @@ public class LargeCreatureCriticalTable {
 			throw new BadRequestException("Invalid large critical creature roll.");
 		}
 		Map<String, CriticalTableResult> tmp = map.get(severity);
-		for (String key : tmp.keySet()) {
-			if (TableEntry.checkKeyRange(key, roll)) {
-				return tmp.get(key);
+		for (Entry<String, CriticalTableResult> entry : tmp.entrySet()) {
+			if (TableEntry.checkKeyRange(entry.getKey(), roll)) {
+				return entry.getValue();
 			}
 		}
 		throw new DataConsistenceException("Invalid data for roll " + roll);

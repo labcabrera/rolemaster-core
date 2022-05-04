@@ -26,7 +26,7 @@ import org.labcabrera.rolemaster.core.tactical.AbstractTacticalTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CombatTest01 extends AbstractTacticalTest {
+class Combat01Test extends AbstractTacticalTest {
 
 	protected TacticalCharacter witchKing;
 	protected TacticalCharacter human01;

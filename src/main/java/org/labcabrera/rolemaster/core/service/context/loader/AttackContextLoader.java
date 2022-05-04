@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class AttackContextLoader extends AbstractAttackProcessor {
+public class AttackContextLoader implements AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;

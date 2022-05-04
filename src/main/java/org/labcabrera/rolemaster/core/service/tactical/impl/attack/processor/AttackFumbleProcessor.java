@@ -21,7 +21,7 @@ import reactor.core.publisher.Mono;
 @Order(0)
 @Component
 @Slf4j
-public class AttackFumbleProcessor extends AbstractAttackProcessor {
+public class AttackFumbleProcessor implements AbstractAttackProcessor {
 
 	private static final int NO_WEAPON_FUMBLE = 2;
 

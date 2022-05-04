@@ -4,8 +4,8 @@ import org.labcabrera.rolemaster.core.service.context.AttackContext;
 
 import reactor.core.publisher.Mono;
 
-public abstract class AbstractAttackProcessor {
+public interface AbstractAttackProcessor {
 
-	public abstract Mono<AttackContext> apply(AttackContext context);
+	Mono<AttackContext> apply(AttackContext context);
 
 }

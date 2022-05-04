@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class MeleeAttackDefensiveBonusProcessor extends AbstractAttackProcessor {
+public class MeleeAttackDefensiveBonusProcessor implements AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalActionRepository actionRepository;

@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.table.maneuver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
@@ -25,9 +26,9 @@ public class MovingManeuverTable {
 			throw new BadRequestException("Unexpected dificulty 'none'");
 		}
 		Map<String, MovingManeuverResult> map = results.get(dificulty);
-		for (String key : map.keySet()) {
-			if (TableEntry.checkKeyRange(key, roll)) {
-				return map.get(key);
+		for (Entry<String, MovingManeuverResult> entry : map.entrySet()) {
+			if (TableEntry.checkKeyRange(entry.getKey(), roll)) {
+				return entry.getValue();
 			}
 		}
 		throw new DataConsistenceException("Invalid data for roll " + roll);

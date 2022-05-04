@@ -27,7 +27,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class OffensiveBonusProcessor extends AbstractAttackProcessor {
+public class OffensiveBonusProcessor implements AbstractAttackProcessor {
 
 	private static final List<Debuff> NO_DEFENSIVE_BONUS_DEBUFS = Arrays.asList(Debuff.SHOCK, Debuff.PRONE, Debuff.UNCONSCIOUS,
 		Debuff.INSTANT_DEATH);
