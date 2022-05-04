@@ -6,7 +6,8 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.service.context.loader.AttackContextLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,15 +32,20 @@ public class MeleeAttackExecutionService {
 			return Mono.just(action);
 		}
 		log.debug("Processing melee attack");
+		loadAction(action, execution);
 		loadTargets(action, execution);
-		action.setRolls(execution.getRolls());
-		action.setFacingMap(execution.getFacingMap());
-		return Mono.just(new AttackContext(action))
+		return Mono.just(AttackContext.builder().action(action).build())
 			.flatMap(contextLoader::apply)
 			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)
 			.map(TacticalActionMeleeAttack.class::cast);
+	}
+
+	private void loadAction(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
+		action.setRolls(execution.getRolls());
+		action.setFacingMap(execution.getFacingMap());
+		action.setCustomBonus(execution.getCustomBonus());
 	}
 
 	private void loadTargets(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {

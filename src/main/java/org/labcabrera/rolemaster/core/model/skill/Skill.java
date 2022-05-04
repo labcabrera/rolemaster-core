@@ -41,7 +41,8 @@ public class Skill {
 	@Builder.Default
 	private List<AttributeType> attributeBonus = new ArrayList<>();
 
-	private SkillProgressionType progressionType;
+	@Builder.Default
+	private SkillProgressionType progressionType = SkillProgressionType.STANDARD;
 
 	@Builder.Default
 	private Integer skillBonus = 0;

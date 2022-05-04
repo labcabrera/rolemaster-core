@@ -1,0 +1,226 @@
+[
+	{
+		"id": "quenya",
+		"name": "Quenya",
+		"group": "elvish",
+		"universeId": "middle-earth",
+		"description": "Quenya is an Elvish language. It was spoken by the Vanyar and Noldor elves in Valinor. When the Noldor returned to Middle-earth in the First Age, they brought Quenya with them. But the native Sindarin became far more common in everyday speech. In the Second Age and especially in the Third Age, Quenya in Middle-earth was used more as a scientific and ritual language. Because of this Tolkien sometimes called Quenya the Elf-Latin."
+	},
+	{
+		"id": "telerin",
+		"name": "Telerin",
+		"group": "elvish",
+		"universeId": "middle-earth",
+		"description": "Telerin is an Elvish language. It was spoken by the Teleri elves. From Telerin developed several new languages and dialects, for example Sindarin."
+	},
+	{
+		"id": "sindarin",
+		"name": "Sindarin",
+		"group": "elvish",
+		"universeId": "middle-earth",
+		"description": "Sindarin is an Elvish language. It came from the Telerin language. It was spoken by the Sindar (or Grey Elves) in Middle-earth. It later became the most common elvish language spoken in Middle-earth."
+	},
+	{
+		"id": "adunaic",
+		"name": "Adûnaic",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": "Adûnaic is the language of the people of Númenor. After the Fall of Númenor, Adûnaic was not often used anymore. From Adûnaic and the native languages of the western coastlands of Middle-earth developed Westron."
+	},
+	{
+		"id": "westron",
+		"name": "Westron",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": "Westron (Westron: Adûni, Sindarin: Annúnaid), or the Common Speech (Westron: Sôval Phârë), is a language of Middle-earth. It comes from Adûnaic and the natives languages of Middle-earth. In the Third Age, Westron is used as the common language, spoken by most peoples. In the books, the text written in English is meant to be Westron most of the time."
+	},
+	{
+		"id": "rohirric",
+		"name": "Rohirric",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": "Rohirric (also Rohirian or Rohanese) is the language of the Rohirrim of Rohan. In the books, Rohirric text and names are always represented by Old English. This is made because Rohirric should feel older but similar to the hobbit's Westron, and they are in the books represented by Old English and Modern English."
+	},
+	{
+		"id": "khuzdul",
+		"name": "Khuzdûl",
+		"group": "dwarf",
+		"universeId": "middle-earth",
+		"description": "Khuzdûl is the language of the Dwarves. The dwarves keep much of what they do a secret, and they also do this with their language. Because of this, only a few place-names and phrases are known from Khuzdûl. Dwarves have never told other (non-dwarven) people their Khuzdûl names. Instead, they use other names when talking to the other peoples of Middle-earth. The dwarven \"nicknames\" that appear in the books are all taken from Norse mythology. Besides the spoken language, called aglab, Khuzdûl had the iglishmek, which was a sign language."
+	},
+	{
+		"id": "entish",
+		"name": "Entish",
+		"group": "ent",
+		"universeId": "middle-earth",
+		"description": "Entish is the language of the Ents. The language is, like the Ents themselves, very \"unhasty\": it takes a lot of time to say something. The language uses very long descriptions and many repetitions. Because it is so complicated and takes so much time, nobody but the Ents use or understand this language."
+	},
+	{
+		"id": "valarin",
+		"name": "Valarin",
+		"group": "ainur",
+		"universeId": "middle-earth",
+		"description": "Valarin was the language spoken by the Ainur."
+	},
+	{
+		"id": "black-speech",
+		"name": "Black Speech",
+		"group": "evil",
+		"universeId": "middle-earth",
+		"description": "Black Speech is the language of Sauron. The language was created by him and used by his followers. The inscription on the One Ring was Black Speech, written in Tengwar. Aside from the Ring-inscription, there are several names and words of Black Speech known."
+	},
+	{
+		"id": "apysaic",
+		"name": "Apysaic",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": "The language of the southern Haradrim. The dominant language family in southwestern Endor. Apysaic is associated with the Apysan (pl. “Apysani”) peoples, a group which swept westward through the Ered Harmel in two major migrations. TheApysaic speakers settled in Far harad, in the areas called Hyarn, Elorna, Mirëdor, Drel, and Pel. The second wave of Appysani entered Harad over 1500 years later and came to control Far Harad. Their tongues are more properly referred to as New of Northern Apysaic, since their speech is heavily influenced by Haradaic."
+	},
+	{
+		"id": "atliduk",
+		"name": "Atliduk",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": "Used by the Beijabar this tongue is a derivation of ancient Eriadorian Northman speech."
+	},
+	{
+		"id": "dunael",
+		"name": "Dunael",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": "The language of the Dunlendings bears no resemblance to the speech of the Northmen or heirs of the Edain (Rohirric or the Westron speakers). Written Dunael is rare, for a premium is placed on oration and the performing arts."
+	},
+	{
+		"id": "kuduk",
+		"name": "Kuduk",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Or Ancient Hobbitish is related to Pûkael. The early hobbit speech of their pre and early Shire years was actually a dialect of Rhovanion Northman. This was abandoned, however, for the years in the Shire saw a gradual adoption (and modification) of Westron. By the late Third Age Hobbitish has become a peculiar dialect of Westron. There is no record of a distinct hobbit language, and Hobbits have apparently always relied on nearby by Mannish tongues. This adoption of the Common speech is indicative of their subtle adaptability, for the whole of the tribes abandoned the original Kuduk tongue when they migrated out of Rhovanion in the 13th and 14th centuries of the Third Age."
+	},
+	{
+		"id": "orkish",
+		"name": "Orkish",
+		"group": "evil",
+		"universeId": "middle-earth",
+		"description": "Is not one language or even a language family; rather it is a number of tribal tongues whose common bond is the large shared vocabulary made up of curses. No grammatical structure for Orkish has ever been devised. Instead, orcs speak dialects based on either Westron or Black Speech or both. Some tribes may use a Southron based form. As a result of this diversity, communication between Orc tribes is exceedingly difficult."
+	},
+	{
+		"id": "haradic",
+		"name": "Haradic",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": ""
+	},
+	{
+		"id": "logathig",
+		"name": "Logathig",
+		"group": "mannish",
+		"universeId": "middle-earth",
+		"description": "Language of the dorwinrim and easterlings."
+	},
+	{
+		"id": "silvan",
+		"name": "Silvan (Bethteur)",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The extent of Silvan or “Avarin” dialects spoken in the west is unclear. They certainly predominant among the Elves of northern Rhovanion (specifically in Mirkwwod). it isclear, though, that the Silvan Elves carried Avarin into the forests and mountains wherever they settled. Of the three branches of Elvish, this is the least “noble” and most varied. Avarin dialects can be nearly as beautiful and melodic as Quenya or nearly as harsh as the Varadja spoken by the Variags."
+	},
+	{
+		"id": "blarm",
+		"name": "Blarm",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The tongue of the Hillmen of Rhauder."
+	},
+	{
+		"id": "daenael",
+		"name": "Daenael",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Old Dunael. This language is classified Restricted. The language of the Daen Coentis people. A forgotten culture who were indigenous to what is now central and western Gondor."
+	},
+	{
+		"id": "eothrik",
+		"name": "Eothrik",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "This is a Rhovanion dialect used by the Éothraim. And is the ancestor of Éothirric. Was in use between T.A. 1-1856."
+	},
+	{
+		"id": "eothirric",
+		"name": "Éothirric",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "A Decendant of the Eothrik language and ancestor to Rohirric and was in use betwwen T.A. 1857-2510."
+	},
+	{
+		"id": "fornen",
+		"name": "Fornen",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The ancient speech of the northmen of Rhovanion. Rohirric and other Northman tongues derive from the language."
+	},
+	{
+		"id": "gramuik",
+		"name": "Gramuik",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "This is a Rhovanion dialect used by the Gramuz."
+	},
+	{
+		"id": "labba",
+		"name": "Labba",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "An obscure Aravadorin tongue of the Mornerin branch; is the language of the Lossoth. It is shaped by their culture, so they have no word for certain concepts familiar to other men such as “desert”. On the other hand, they use a thousand differant words for concepts based on snow and ice. There is no written form of this language."
+	},
+	{
+		"id": "nahaiduk",
+		"name": "Nahaiduk",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "A Rhovanion Northman dialect used by the Woodmen."
+	},
+	{
+		"id": "pukael",
+		"name": "Pûkael",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Is the guteral tongue of the Woses and is alien to the other tongues of men. The Pûkael tongue gave birth to Daenael, the common ancestor of both Dunael and the coastal tongues of Gondor (before the coming of Dúnedain). Having no use for traditional runes or script, the Woses have developed there own system of pictogram signs - most quite simple - which they utilize for the most practical purposes, notably to mark paths or signal their brethren while out in the wood."
+	},
+	{
+		"id": "rhovaik",
+		"name": "Rhovaik",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Is a Rhovanion Northman dialect, used by the men of Dale and Esgaroth. The so called Urban Northmen."
+	},
+	{
+		"id": "tazinain",
+		"name": "Tazinain",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "This is the language spoken in the area of Middle-earth known as Greater Harad."
+	},
+	{
+		"id": "umitic",
+		"name": "Umitic",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The language of the Umli."
+	},
+	{
+		"id": "varadja",
+		"name": "Varadja",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "The language of the Variags."
+	},
+	{
+		"id": "waildyth",
+		"name": "Waildyth",
+		"group": "",
+		"universeId": "middle-earth",
+		"description": "Used by the Beijabar is a system of nature signals which can be used to speak over long distances without betraying one’s presence, since the sounds are merely variations on the noises of the wild - beasts, the wind, and the like. There is no written form of this language."
+	}
+]

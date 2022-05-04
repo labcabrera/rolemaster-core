@@ -5,6 +5,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.Range;
 import org.labcabrera.rolemaster.core.model.character.item.ItemFeature;
 import org.springframework.data.annotation.Id;
@@ -15,6 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 @Document(collection = "items")
@@ -22,6 +24,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
+@ToString(of = "id")
 public class Item {
 
 	@Id
@@ -50,5 +53,17 @@ public class Item {
 	private Range<Integer> commonLength;
 
 	private List<ItemFeature> commonFeatures;
+
+	@SuppressWarnings("unchecked")
+	public <E extends Item> E as(Class<E> entityClass) {
+		try {
+			return (E) this;
+		}
+		catch (Exception ex) {
+			throw new DataConsistenceException(String.format("Class %s cannot be casted to class %s.",
+				this.getClass().getSimpleName(),
+				entityClass.getSimpleName()));
+		}
+	}
 
 }

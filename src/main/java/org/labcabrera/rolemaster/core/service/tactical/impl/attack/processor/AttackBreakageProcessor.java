@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackBreakageResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,39 +39,36 @@ public class AttackBreakageProcessor extends AbstractAttackProcessor {
 		}
 		log.debug("Processing weapon breakage");
 		return Mono.just(context)
-			.flatMap(ctx -> apply(ctx, AttackTargetType.MAIN_HAND))
-			.flatMap(ctx -> apply(ctx, AttackTargetType.OFF_HAND));
+			.map(ctx -> apply(ctx, AttackTargetType.MAIN_HAND))
+			.map(ctx -> apply(ctx, AttackTargetType.OFF_HAND));
 	}
 
-	private Mono<AttackContext> apply(AttackContext context, AttackTargetType type) {
+	private AttackContext apply(AttackContext context, AttackTargetType type) {
 		if (!context.getAction().getRolls().containsKey(type)) {
-			return Mono.just(context);
+			return context;
 		}
 		TacticalCharacter tc = context.getSource();
 		OpenRoll roll = context.getAction().getRolls().get(type);
 		ItemPosition position = type == AttackTargetType.OFF_HAND ? ItemPosition.OFF_HAND : ItemPosition.MAIN_HAND;
 		CharacterItem item = itemResolver.getItem(tc, position);
 		if (itemService.isUnbreakable(item)) {
-			return Mono.just(context);
+			return context;
 		}
-		return Mono.zip(Mono.just(context), itemService.getBreakage(item), itemService.getStrength(item))
-			.map(tuple -> {
-				Integer breakage = tuple.getT2();
-				Integer strength = tuple.getT3();
-				if (breakage == null || strength == null) {
-					log.warn("Undefined Breakage ({}) or strength ({})");
-					return tuple.getT1();
-				}
-				if (checkBreakage(breakage, roll)) {
-					AttackBreakageResult result = AttackBreakageResult.builder()
-						.breakage(breakage)
-						.strength(strength)
-						.build();
-					context.getAction().getBreakageResults().put(type, result);
-					context.getAction().setState(TacticalActionState.PENDING_BREAKAGE_RESOLUTION);
-				}
-				return tuple.getT1();
-			});
+		Integer breakage = itemService.getBreakage(item, context);
+		Integer strength = itemService.getStrength(item, context);
+		if (breakage == null || strength == null) {
+			log.warn("Undefined Breakage ({}) or strength ({})");
+			return context;
+		}
+		if (checkBreakage(breakage, roll)) {
+			AttackBreakageResult result = AttackBreakageResult.builder()
+				.breakage(breakage)
+				.strength(strength)
+				.build();
+			context.getAction().getBreakageResults().put(type, result);
+			context.getAction().setState(TacticalActionState.PENDING_BREAKAGE_RESOLUTION);
+		}
+		return context;
 	}
 
 	public boolean checkBreakage(Integer breakage, OpenRoll openRoll) {

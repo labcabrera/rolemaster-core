@@ -60,5 +60,78 @@
 		"_movementSpeed": "SL",
 		"_attackQuickness": "MD",
 		"universeId": "middle-earth"
+	},
+	{
+		"id": "legolas",
+		"name": "Legolas",
+		"shortDescription": "Legolas",
+		"raceKeywords": [
+			"sinda"
+		],
+		"level": 28,
+		"unique": true,
+		"hp": 148,
+		"powerPoints": 0,
+		"armorType": 13,
+		"skills": {
+			"#melee": 205,
+			"#missile": 240
+		},
+		"items": [
+			{
+				"itemId": "long-bow",
+				"type": "weapon",
+				"name": "Bow of Quickness",
+				"skillId": "#missile",
+				"position": "main-hand",
+				"features": [
+					{
+						"type": "bonus",
+						"value": "30"
+					}
+				],
+				"description": "Fires 3x every two rounds"
+			},
+			{
+				"itemId": "dagger",
+				"type": "weapon",
+				"name": "Long-knife",
+				"skillId": "#melee",
+				"position": "carried",
+				"features": [
+					{
+						"type": "bonus",
+						"value": "20"
+					},
+					{
+						"type": "weapon-table",
+						"value": "short-sword"
+					}
+				]
+			},
+			{
+				"itemId": "target-shield",
+				"type": "armor-piece",
+				"position": "carried",
+				"name": "Shield of Concealment",
+				"features": [
+					{
+						"type": "skill-bonus",
+						"value": "hiding:25"
+					}
+				],
+				"description": "A +25 Shield of Concealment, it gives of a shadowy aura that aids in hiding maneuvers"
+			},
+			{
+				"itemId": "boots",
+				"type": "miscellaneous",
+				"position": "carried",
+				"name": "Boots of Silence",
+				"description": "Dark grey, they are Boots of Silence"
+			}
+		],
+		"defensiveBonus": 70,
+		"mmBonus": 45,
+		"universeId": "middle-earth"
 	}
 ]

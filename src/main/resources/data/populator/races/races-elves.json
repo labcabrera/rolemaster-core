@@ -1,7 +1,8 @@
 [
 	{
-		"id": "wood-elves",
-		"name": "Wood elves",
+		"id": "wood-elf",
+		"name": "Wood elf",
+		"keywords": ["elf"],
 		"attributeModifiers": {
 			"ag": 4,
 			"co": 0,
@@ -22,7 +23,7 @@
 			"disease": 100
 		},
 		"bodyDevelopmentProgression": [6,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [7,6,5,4],
 			"mentalism":              [6,5,4,3] 
@@ -39,8 +40,9 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "high-elves",
-		"name": "High Elves",
+		"id": "high-elf",
+		"name": "High Elf",
+		"keywords": ["elf"],
 		"attributeModifiers": {
 		"ag": 2,
 		"me": 2,
@@ -56,7 +58,7 @@
 			"poison": 10,		"disease": 100
 		},
 		"bodyDevelopmentProgression": [7,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 		"channeling":             [6,5,4,3],
 		"essence":                [7,6,5,4],
 		"mentalism":              [6,5,4,3] 
@@ -66,8 +68,9 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "grey-elves",
-		"name": "Grey Elves",
+		"id": "grey-elf",
+		"name": "Grey Elf",
+		"keywords": ["elf"],
 		"attributeModifiers": {
 			"ag": 2,
 			"co": 0,
@@ -88,7 +91,7 @@
 			"disease":			100
 		},
 		"bodyDevelopmentProgression":	[6,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":				[6,5,4,3],
 			"essence":					[7,6,5,4],
 			"mentalism":				[6,5,4,3] 
@@ -98,15 +101,17 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "fair-elves",
-		"name": "Fair Elves",
+		"id": "fair-elf",
+		"name": "Fair Elf",
+		"keywords": ["elf"],
 		"specialAbilities": [
 		],
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "half-elves",
-		"name": "Half Elves",
+		"id": "half-elf",
+		"name": "Half Elf",
+		"keywords": ["elf"],
 		"specialAbilities": [
 		],
 		"universes": [ "generic" ]

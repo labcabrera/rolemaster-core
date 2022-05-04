@@ -15,6 +15,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackResult;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
 import org.springframework.beans.factory.annotation.Autowired;

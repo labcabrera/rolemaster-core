@@ -20,9 +20,9 @@ class CharacterCreationServiceHighElvesMentalistTest extends AbstractCharacterCr
 				{
 				"name": "Test High Elves Mentalist",
 				"level": 1,
-				"raceId": "high-elves",
+				"raceId": "high-elf",
 				"professionId": "mentalist",
-				"realmId": "essence",
+				"realm": "mentalism",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

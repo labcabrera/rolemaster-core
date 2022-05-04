@@ -21,9 +21,9 @@ class CharacterCreationServiceOrkFighterTest extends AbstractCharacterCreationTe
 				{
 				"name": "Test Orcs Fighter",
 				"level": 1,
-				"raceId": "orcs",
+				"raceId": "orc",
 				"professionId": "fighter",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

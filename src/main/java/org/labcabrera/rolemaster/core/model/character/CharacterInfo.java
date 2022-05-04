@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -32,6 +33,9 @@ public class CharacterInfo {
 
 	@Schema(description = "Character name.", required = true, example = "Bilbo Baggins")
 	private String name;
+
+	@Schema(description = "Character realm.", required = true, example = "channeling")
+	private Realm realm;
 
 	@Schema(description = "Character current level. Zero if character is under creation.", required = true, example = "3")
 	private Integer level;
@@ -78,8 +82,15 @@ public class CharacterInfo {
 	@Schema(description = "List of character development points. These points are used for both creation and leveling up.", required = true)
 	private CharacterDevelopment developmentPoints = new CharacterDevelopment();
 
+	private List<Integer> bodyDevelopmentProgression;
+
+	private List<Integer> powerPointProgression;
+
 	@Schema(description = "Character max hit points. It is calculated from the Body Development ability.", required = true, example = "78")
 	private Integer maxHp;
+
+	@Schema(description = "Character max power points.", required = true, example = "42")
+	private Integer maxPowerPoints;
 
 	@Schema(description = "Maximum number of fatigue points of the character.", required = true, example = "66")
 	private BigDecimal maxExhaustionPoints;

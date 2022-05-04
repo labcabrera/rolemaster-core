@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-class SkillStandarBonusTableTest {
+class SkillStandardBonusTableTest {
 
-	private SkillStandarBonusTable table = new SkillStandarBonusTable();
+	private SkillStandardBonusTable table = new SkillStandardBonusTable();
 
 	@Test
 	void test00() {

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum SkillProgressionType {
 
+	CATEGORY("category"),
+
 	STANDARD("standard"),
 
 	COMBINED("combined"),
@@ -12,7 +14,11 @@ public enum SkillProgressionType {
 
 	SPECIAL("special"),
 
-	RACE_BODY_DEVELOPMENT("raceBodyDevelopment");
+	RACE_BODY_DEVELOPMENT("race-body-development"),
+
+	RACE_POWER_POINTS("race-power-points"),
+
+	NONE("none");
 
 	private String name;
 

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMissileAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecution;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.combat.MissileCover;
+import org.labcabrera.rolemaster.core.model.combat.Cover;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -58,7 +58,8 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 
 		MissileAttackExecution missileAttackExecution = MissileAttackExecution.builder()
 			.distance(36f)
-			.cover(MissileCover.NONE)
+			.cover(Cover.NONE)
+			.preparationRounds(3)
 			.roll(OpenRoll.of(110))
 			.build();
 

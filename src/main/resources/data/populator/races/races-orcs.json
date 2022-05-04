@@ -1,7 +1,8 @@
 [
 	{
-		"id": "orcs",
-		"name": "Orcs",
+		"id": "orc",
+		"name": "Orc",
+		"keywords": ["orc"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 2,
@@ -22,7 +23,7 @@
 			"disease":    5
 		},
 		"bodyDevelopmentProgression": [6,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [4,3,2,1],
 			"mentalism":              [4,3,2,1] 
@@ -43,8 +44,9 @@
 		"universes": [ "generic" ]
 	},
 		{
-		"id": "greater-orcs",
-		"name": "Greater Orcs",
+		"id": "greater-orc",
+		"name": "Greater Orc",
+		"keywords": ["orc"],
 		"attributeModifiers": {
 			"ag": 0,
 			"co": 4,
@@ -65,7 +67,7 @@
 			"disease":    10
 		},
 		"bodyDevelopmentProgression": [7,3,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [5,3,2,2],
 			"mentalism":              [5,3,2,2] 

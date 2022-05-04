@@ -28,6 +28,7 @@
 			{
 				"itemId": "broadsword",
 				"type": "weapon",
+				"position": "main-hand",
 				"name": "Vasamacil",
 				"features": [
 					{
@@ -50,12 +51,12 @@
 						"type": "unbreakable"
 					}
 				],
-				"position": "main-hand",
 				"description": "(Q. 'Blade-eater', S. 'Vasamegil') Flaming broadsword forged in Thangorodrim out of black ithilnaur and inlaid with veins of fused rubbies."
 			},
 			{
 				"itemId": "mace",
 				"type": "weapon",
+				"position": "off-hand",
 				"name": "Nallagurth",
 				"features": [
 					{
@@ -82,12 +83,12 @@
 						"type": "unbreakable"
 					}
 				],
-				"position": "off-hand",
 				"description": "('Death's Proclaimer). Mace forged in Utumno out of black eog and subtly inlaid with veins of fused diamonds."
 			},
 			{
 				"itemId": "composite-bow",
 				"type": "weapon",
+				"position": "carried",
 				"name": "Romoquenáro",
 				"features": [
 					{
@@ -105,39 +106,43 @@
 				"description": "Númenórean steel composite bow. Whenever it is fired in darkness its arrow immolates upen leaving the bow. While on fire, the arrow yields a +30 Fireball attack whenever it strikes a target."
 			},
 			{
-				"position": "carried",
-				"itemId": "short-sword",
+				"itemId": "dagger",
 				"type": "weapon",
+				"position": "carried",
 				"name": "Morgul-knife",
 				"features": [
 					{
 						"type": "bonus",
 						"value": "30"
+					},
+					{
+						"type": "weapon-table",
+						"value": "short-sword"
 					}
 				],
 				"description": "Dagger with striles as a short sword. Its long, thin enchanged blade gleams with a cold glint. Its dibolves when exposed to sunligth and breaks off whenever the knife yields a critial strike. Once the blade is embedded in a victim, the victim must roll a RR versus the wielder's lvl. Failure results in the blade findings its way to the victim's hearth within a number of days equals to 50 minus the RR failure number. [TODO]"
 			},
 			{
-				"position": "equipped",
 				"itemId": "crown",
 				"type": "armor-piece",
+				"position": "equipped",
 				"armorType": "armor",
 				"name": "Crown of Angmar",
 				"bonus": 15,
 				"description": "A simple, enchanted iron crown, unadorned by any jewels or inlays. It is the symbol od the King of the North. A +6 Essence and Channeling spell adder, its add +15 to wearer's DB."				
 			},
 			{
-				"position": "equipped",
-				"itemId": "",
+				"itemId": "plate-helm",
 				"type": "armor-piece",
+				"position": "equipped",
 				"armorType": "helmet",
 				"name": "Thôlogaer Ciryatano",
 				"description": "('Sea-helm of Ciryatan') A x6 Essence and Channeling PP multiplier, the magic Sea-Helm was one woen by Tad-Ciryatan of Númenor. Uts overlaping Sea-drake skin plates climax in a spiny crown-shaped crest, a variation of the karma design used by the Uinendil (S. 'Followers of Uinen') Captains of Númenor. Its add +5 to wearer RRs vs spells attacks."				
 			},
 			{
-				"position": "equipped",
 				"itemId": "full-plate",
 				"type": "armor-piece",
+				"position": "equipped",
 				"armorType": "armor",
 				"name": "Morgul Plate",
 				"bonus": 20,

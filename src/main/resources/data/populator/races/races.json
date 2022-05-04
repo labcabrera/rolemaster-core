@@ -1,7 +1,8 @@
 [
 	{
-		"id": "dwarves",
-		"name": "Dwarves",
+		"id": "dwarf",
+		"name": "Dwarf",
+		"keywords": ["dwarf"],
 		"attributeModifiers": {
 			"ag": -2,
 			"co": 6,
@@ -22,7 +23,7 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [7,4,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [3,2,1,1],
 			"mentalism":              [3,2,1,1] 
@@ -41,8 +42,9 @@
 		"universes": [ "generic" ]
 	},
 	{
-		"id": "halflings",
-		"name": "Halflings",
+		"id": "halfling",
+		"name": "Halfling",
+		"keywords": ["halfling"],
 		"attributeModifiers": {
 			"ag": 6,
 			"co": 6,
@@ -63,7 +65,7 @@
 			"disease":    15
 		},
 		"bodyDevelopmentProgression": [6,2,2,1],
-		"ppDevelopmentProgression": {
+		"powerPointsProgression": {
 			"channeling":             [6,5,4,3],
 			"essence":                [2,1,1,1],
 			"mentalism":              [2,1,1,1] 

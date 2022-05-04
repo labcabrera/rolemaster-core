@@ -20,9 +20,9 @@ class CharacterCreationServiceDwarfLaymanTest extends AbstractCharacterCreationT
 				{
 				"name": "Test Dwarves Layman",
 				"level": 1,
-				"raceId": "dwarves",
+				"raceId": "dwarf",
 				"professionId": "layman",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

@@ -1,0 +1,92 @@
+{
+	"map": {
+		"weapon-1h": {
+			"1-25": {
+				"text": "Your palm is sweaty. Maybe you will improve."
+			},
+			"26-30": {
+				"text": "Klutzy. Drop your weapon. Spend two rounds recovering it; or draw a new one next round."
+			},
+			"31-40": {
+				"text": "Your feet get tangled. You miss the opportunity to get in that vital blow."
+			},
+			"41-50": {
+				"text": "You are over-extended and strain a muscle. Take 1d5 hits."
+			},
+			"51-60": {
+				"text": "You try to impress your opponent with a spin manuever. Too bad. Lose two rounds while you recover."
+			},
+			"61-65": {
+				"text": "You snag your clothes with your weapon, causing it to slip from your hand. Spend two rounds juggling it."
+			},
+			"66-66": {
+				"text": "You execute a perfect attack—against closest ally (yourself if no one else is around). Ally takes 1d10 hits and a 'B' critical."
+			},
+			"67-70": {
+				"text": "You trip over that uneven surface. Spend two rounds staggering. You can still parry."
+			},
+			"71-80": {
+				"text": "You are distracted by that pixie in the corner. You lose 2 rounds of attacks."
+			},
+			"81-85": {
+				"text": "You are suddenly very winded. Take two rounds to relax."
+			},
+			"86-90": {
+				"text": "Hopefully, you will learn that dancing is not appropriate in combat. Your are stunned for two rounds by your lack of ability."
+			},
+			"91-95": {
+				"text": "You fall down as your swing goes wide. You are stunned for three rounds."
+			},
+			"96-99": {
+				"text": "The excitement is just too much! Your momentary frenzy leaves you stunned and unable to parry for three rounds."
+			},
+			"100-100": {
+				"text": "You attempt to maim yourself. Take a 'D' critical."
+			}
+		},
+		"weapon-2h": {
+			"1-25": {
+				"text": "My that weapon is heavy! You lose the opportunity to take a swing."
+			},
+			"26-30": {
+				"text": "Your weapon flies. Take four rounds to recover it; or draw a new one next round."
+			},
+			"31-40": {
+				"text": "Your mind is wandering. Spend the rest of the round clearing your head."
+			},
+			"41-50": {
+				"text": "Stumble over an imaginary dead turtle. You lose 2 rounds of attack, but you can still parry."
+			},
+			"51-60": {
+				"text": "Your combination of acrobatics and attacks is unimpressive. Lose two rounds of attacks, but you can still parry."
+			},
+			"61-65": {
+				"text": "Your weapon flies from your hands, but you are able to catch it before it flies totally away. Lose two rounds of attack."
+			},
+			"66-66": {
+				"text": "Acrobatic manuever leaves you flat on your back. Take 2d10 hits and an 'E' Krush critical."
+			},
+			"67-70": {
+				"text": "You gracefully drop your weapon to the ground. You are able to kick it back into your hand, but you lose two rounds while doing it."
+			},
+			"71-80": {
+				"text": "You strain your shoulders in a mighty swing (that misses). You are stunned for two rounds."
+			},
+			"81-85": {
+				"text": "You lose your grip as you begin your swing. Your weapon is trying to slip away. Spend three rounds gaining control. You can still parry."
+			},
+			"86-90": {
+				"text": "You pulled something on that last swing and now it begins to hurt! You are stunned for three rounds while you recover."
+			},
+			"91-95": {
+				"text": "You fall and narrowly miss gutting yourself! You are stunned for four rounds."
+			},
+			"96-99": {
+				"text": "You trip and fall. You are down for four rounds and unable to parry for three."
+			},
+			"100-100": {
+				"text": "Worst move seen in ages! You are out for 2 days with a groin injury. There is a 50% chance your foes will be out for 3 rounds, laughing."
+			}
+		}
+	}
+}

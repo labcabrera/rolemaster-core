@@ -6,7 +6,7 @@ import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
-import org.labcabrera.rolemaster.core.table.skill.SkillStandarBonusTable;
+import org.labcabrera.rolemaster.core.table.skill.SkillRankBonusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -19,15 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 public class CharacterSkillProcessor implements CharacterPostProcessor {
 
 	@Autowired
-	private SkillStandarBonusTable standarBonusTable;
+	private SkillRankBonusService rankBonusService;
 
 	@Override
 	public void accept(CharacterInfo character) {
 		log.debug("Processing character {}", character.getName());
 		character.getSkills().stream().forEach(characterSkill -> {
+			int rankBonus = rankBonusService.getBonus(characterSkill, character);
 			characterSkill.getBonus().put(BonusType.ATTRIBUTE, getBonusAttribute(characterSkill, character));
 			characterSkill.getBonus().put(BonusType.CATEGORY, getBonusCategory(characterSkill, character));
-			characterSkill.getBonus().put(BonusType.RANK, getBonusRank(characterSkill));
+			characterSkill.getBonus().put(BonusType.RANK, rankBonus);
 		});
 	}
 
@@ -44,11 +45,6 @@ public class CharacterSkillProcessor implements CharacterPostProcessor {
 		return character.getSkillCategory(categoryId)
 			.orElseThrow(() -> new DataConsistenceException(Errors.characterMissingSkillCategory(categoryId)))
 			.getTotalBonus();
-	}
-
-	private int getBonusRank(CharacterSkill skill) {
-		//TODO ver los casos en los que no se usa la tabla estandar
-		return standarBonusTable.apply(skill.getTotalRanks());
 	}
 
 }

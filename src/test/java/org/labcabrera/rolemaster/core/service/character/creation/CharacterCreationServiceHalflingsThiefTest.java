@@ -20,9 +20,9 @@ class CharacterCreationServiceHalflingsThiefTest extends AbstractCharacterCreati
 				{
 				"name": "Test Halflings Thief",
 				"level": 1,
-				"raceId": "halflings",
+				"raceId": "halfling",
 				"professionId": "thief",
-				"realmId": "essence",
+				"realm": "essence",
 				"age": 41,
 				"height": 174,
 				"weight": 72,

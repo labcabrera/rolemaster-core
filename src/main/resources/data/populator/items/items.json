@@ -144,6 +144,11 @@
 		"type": "miscellaneous"
 	},
 	{
+		"id": "crown",
+		"name": "Crown",
+		"type": "miscellaneous"
+	},
+	{
 		"id": "crossbow-bolts",
 		"name": "Crossbow Bolts",
 		"type": "miscellaneous"

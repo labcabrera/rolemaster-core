@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.tactical.combat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
 
@@ -62,15 +63,25 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 		assertEquals(TacticalActionState.RESOLVED, resolved.getState());
 
 		Map<OffensiveBonusModifier, Integer> bonusMap = resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
+
 		// Skill                   +40
 		// Action percent:         -20
 		// BD                      -30
+
 		assertEquals(-10, bonusMap.values().stream().filter(e -> e != 0).reduce(0, (a, b) -> a + b));
 		assertEquals(40, bonusMap.get(OffensiveBonusModifier.SKILL));
 		assertEquals(-20, bonusMap.get(OffensiveBonusModifier.ACTION_PERCENT));
 		assertEquals(-30, bonusMap.get(OffensiveBonusModifier.DEFENSIVE_BONUS));
 
 		assertEquals(6, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
+
+		assertEquals(0, new BigDecimal("0.5").compareTo(resolved.getExhaustionPoints()));
+
+		taMelee01 = this.tacticalCharacterRepository.findById(taMelee01.getId()).share().block();
+
+		assertEquals(0, new BigDecimal("50.0").compareTo(taMelee01.getExhaustionPoints().getMax()));
+		assertEquals(0, new BigDecimal("49.5").compareTo(taMelee01.getExhaustionPoints().getCurrent()));
+
 	}
 
 }

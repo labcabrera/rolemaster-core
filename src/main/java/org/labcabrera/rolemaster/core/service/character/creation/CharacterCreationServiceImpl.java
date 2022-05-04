@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.service.character.creation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
@@ -24,14 +25,13 @@ import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
 import org.labcabrera.rolemaster.core.model.skill.SkillCategory;
+import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
-import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.labcabrera.rolemaster.core.table.character.ExperienceLevelTable;
-import org.labcabrera.rolemaster.core.table.skill.SkillCategoryBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -55,9 +55,6 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	private CharacterPostProcessorService postProcessorService;
 
 	@Autowired
-	private SkillCategoryBonusTable skillCategoryBonusTable;
-
-	@Autowired
 	private RaceRepository raceRepository;
 
 	@Autowired
@@ -67,7 +64,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	private SkillCategoryRepository skillCategoryRepository;
 
 	@Autowired
-	private SkillRepository skillRepository;
+	private CharacterCreationSkillService characterCreationSkillService;
 
 	@Autowired
 	private ExperienceLevelTable experienceLevelTable;
@@ -75,8 +72,8 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	@Override
 	public Mono<CharacterInfo> create(CharacterCreationRequest request) {
 		log.info("Processing new character {}", request.getName());
-
 		final CharacterInfo character = CharacterInfo.builder()
+			.realm(request.getRealm())
 			.level(0)
 			.maxLevel(request.getLevel())
 			.xp(null)
@@ -103,6 +100,8 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 				CharacterModificationContext ctx = tuple.getT1();
 				Race race = tuple.getT2();
 				ctx.setRace(race);
+				ctx.getCharacter().setBodyDevelopmentProgression(race.getBodyDevelopmentProgression());
+				ctx.getCharacter().setPowerPointProgression(race.getPowerPointsProgression().get(ctx.getCharacter().getRealm()));
 				ctx.getCharacter().getDevelopmentPoints().setBackgroundOptions(race.getBackgroundOptions());
 				ctx.getCharacter().getNotes().addAll(race.getSpecialAbilities());
 				return ctx;
@@ -113,18 +112,19 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 				tuple.getT1().setProfession(tuple.getT2());
 				return tuple.getT1();
 			})
+			.map(this::checkRealm)
 			.flatMap(ctx -> skillCategoryRepository.findAll(Sort.by("id"))
 				.collectList()
 				.doOnNext(ctx::setSkillCategories)
 				.map(e -> ctx))
-			.flatMap(ctx -> skillRepository.findSkillsOnNewCharacter()
+			.flatMap(ctx -> characterCreationSkillService.getSkills(ctx.getRace())
 				.collectList()
 				.doOnNext(ctx::setSkills)
 				.map(e -> ctx))
 			.map(ctx -> loadAttributes(ctx, request))
 			.map(this::loadSkillCategories)
 			.map(ctx -> loadSkillCategoryWeapons(ctx, request))
-			.map(this::loadSkills)
+			.map(this::loadDefaultSkills)
 			.map(this::loadResistances)
 			.map(CharacterModificationContext::getCharacter)
 			.map(postProcessorService)
@@ -154,18 +154,17 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 		Profession profession = context.getProfession();
 		context.getSkillCategories().stream().forEach(category -> {
 			String categoryId = category.getId();
-			int adolescenceRank = race.getAdolescenseSkillCategoryRanks().getOrDefault(categoryId, 0);
+			int adolescenceRank = race.getAdolescenceSkillCategoryRanks().getOrDefault(categoryId, 0);
 			int bonusProfession = profession.getSkillCategoryBonus().getOrDefault(categoryId, 0);
 			int bonusAttribute = getAttributeBonus(category, character);
-			int bonusRanks = skillCategoryBonusTable.getBonus(adolescenceRank);
 			CharacterSkillCategory characterSkillCategory = CharacterSkillCategory.builder()
 				.categoryId(category.getId())
 				.developmentCost(profession.getSkillCategoryDevelopmentCost().getOrDefault(categoryId, new ArrayList<>()))
 				.attributes(category.getAttributeBonus())
 				.group(category.getGroup())
+				.progressionType(category.getProgressionType())
 				.build();
 			characterSkillCategory.getRanks().put(RankType.ADOLESCENCE, adolescenceRank);
-			characterSkillCategory.getBonus().put(BonusType.RANK, bonusRanks);
 			characterSkillCategory.getBonus().put(BonusType.PROFESSION, bonusProfession);
 			characterSkillCategory.getBonus().put(BonusType.ATTRIBUTE, bonusAttribute);
 			character.getSkillCategories().add(characterSkillCategory);
@@ -173,21 +172,32 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 		return context;
 	}
 
-	private CharacterModificationContext loadSkills(CharacterModificationContext context) {
+	private CharacterModificationContext loadDefaultSkills(CharacterModificationContext context) {
 		Race race = context.getRace();
 		context.getSkills().stream().forEach(skill -> {
 			String categoryId = skill.getCategoryId();
+			String skillId = skill.getId();
+			Integer adolescenceRanks = race.getAdolescenceSkillRanks().getOrDefault(skill.getId(), 0);
+			if (skill.getCustomizableOptions() > 0) {
+				List<Entry<String, Integer>> list = race.getAdolescenceSkillRanks().entrySet().stream()
+					.filter(e -> e.getKey().startsWith(skill.getId()))
+					.toList();
+				if (!list.isEmpty()) {
+					skillId = list.iterator().next().getKey();
+					adolescenceRanks = list.iterator().next().getValue();
+				}
+			}
 			CharacterSkillCategory category = context.getCharacter().getSkillCategory(categoryId)
 				.orElseThrow(() -> new BadRequestException("Invalid skill category " + categoryId));
 			CharacterSkill cs = CharacterSkill.builder()
-				.skillId(skill.getId())
+				.skillId(skillId)
 				.categoryId(skill.getCategoryId())
 				.group(category.getGroup())
 				.developmentCost(category.getDevelopmentCost())
 				.attributes(category.getAttributes())
 				.progressionType(skill.getProgressionType())
 				.build();
-			cs.getRanks().put(RankType.ADOLESCENCE, race.getAdolescenseSkillRanks().getOrDefault(skill.getId(), 0));
+			cs.getRanks().put(RankType.ADOLESCENCE, adolescenceRanks);
 			cs.getRanks().put(RankType.CONSOLIDATED, 0);
 			cs.getRanks().put(RankType.DEVELOPMENT, 0);
 			cs.getBonus().put(BonusType.SKILL_SPECIAL, skill.getSkillBonus());
@@ -235,5 +245,13 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			result += characterInfo.getAttributes().get(at).getTotalBonus();
 		}
 		return result;
+	}
+
+	private CharacterModificationContext checkRealm(CharacterModificationContext context) {
+		List<Realm> availableRealms = context.getProfession().getAvailableRealms();
+		if (!availableRealms.contains(context.getCharacter().getRealm())) {
+			throw new BadRequestException("Invalid realm.");
+		}
+		return context;
 	}
 }

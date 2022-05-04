@@ -1,11 +1,14 @@
 package org.labcabrera.rolemaster.core.table.skill;
 
+import java.util.function.UnaryOperator;
+
 import org.springframework.stereotype.Component;
 
 @Component
-public class SkillCategoryBonusTable {
+class SkillCategoryBonusTable implements UnaryOperator<Integer> {
 
-	public Integer getBonus(Integer value) {
+	@Override
+	public Integer apply(Integer value) {
 		if (value == 0) {
 			return -15;
 		}

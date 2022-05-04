@@ -11,17 +11,13 @@ import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.labcabrera.rolemaster.core.model.item.Weapon;
 import org.labcabrera.rolemaster.core.model.item.WeaponRange;
-import org.labcabrera.rolemaster.core.repository.WeaponRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.labcabrera.rolemaster.core.service.context.HasItemMap;
 import org.springframework.stereotype.Service;
-
-import reactor.core.publisher.Mono;
 
 @Service
 public class TacticalCharacterItemService {
 
-	@Autowired
-	private WeaponRepository weaponRepository;
+	private static final String MAINE_GAUCHE = "maine-gauche";
 
 	public int getShieldBonus(CharacterItem item) {
 		if (item == null) {
@@ -36,7 +32,7 @@ public class TacticalCharacterItemService {
 		}
 		if (item.getType() == ItemType.WEAPON) {
 			int result = 5;
-			if ("maine-gauche".equals(item.getItemId())) {
+			if (MAINE_GAUCHE.equals(item.getItemId())) {
 				result = 15;
 			}
 			return result;
@@ -44,14 +40,17 @@ public class TacticalCharacterItemService {
 		return 0;
 	}
 
-	public Mono<Integer> getFumble(CharacterItem item) {
+	public Integer getFumble(CharacterItem item, HasItemMap hasItemMap) {
 		String feature = getFeature(item, ItemFeatureType.SHIELD_BONUS);
 		if (feature != null) {
-			return Mono.just(Integer.parseInt(feature));
+			return Integer.parseInt(feature);
 		}
-		return weaponRepository.findById(item.getItemId())
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Weapon " + item.getId() + " no found")))
-			.map(Weapon::getFumble);
+		String itemId = item.getItemId();
+		if (!hasItemMap.getItemMap().containsKey(itemId)) {
+			throw new DataConsistenceException("Missing item " + itemId + ".");
+		}
+		Weapon weapon = hasItemMap.getItemMap().get(itemId).as(Weapon.class);
+		return weapon.getFumble();
 	}
 
 	public String getFeature(CharacterItem item, ItemFeatureType type) {
@@ -77,19 +76,17 @@ public class TacticalCharacterItemService {
 		}
 	}
 
-	public Mono<Integer> getRangeModifier(CharacterItem item, Float distance) {
+	public Integer getRangeModifier(CharacterItem item, Float distance, HasItemMap hasItemMap) {
 		//TODO check customization & talents
-		return weaponRepository.findById(item.getItemId())
-			.map(weapon -> {
-				List<WeaponRange> list = weapon.getRangeModifiers().stream().filter(e -> checkDistance(e, distance)).toList();
-				if (list.size() == 0) {
-					throw new BadRequestException("Invalid distance " + distance);
-				}
-				else if (list.size() > 1) {
-					throw new DataConsistenceException("Multiple range modifiers for distance " + distance);
-				}
-				return list.iterator().next().getModifier();
-			});
+		Weapon weapon = hasItemMap.getItemMap().get(item.getItemId()).as(Weapon.class);
+		List<WeaponRange> list = weapon.getRangeModifiers().stream().filter(e -> checkDistance(e, distance)).toList();
+		if (list.size() == 0) {
+			throw new BadRequestException("Invalid distance " + distance);
+		}
+		else if (list.size() > 1) {
+			throw new DataConsistenceException("Multiple range modifiers for distance " + distance);
+		}
+		return list.iterator().next().getModifier();
 	}
 
 	public boolean isUnbreakable(CharacterItem item) {
@@ -99,29 +96,28 @@ public class TacticalCharacterItemService {
 		return item.getFeatures().stream().filter(e -> e.getType() == ItemFeatureType.UNBREAKABLE).count() > 0;
 	}
 
-	public Mono<Integer> getBreakage(CharacterItem item) {
+	public Integer getBreakage(CharacterItem item, HasItemMap hasItemMap) {
 		if (item.getFeatures() != null) {
 			List<ItemFeature> list = item.getFeatures().stream().filter(e -> e.getType() == ItemFeatureType.BREAKAGE).toList();
 			if (!list.isEmpty()) {
-				return Mono.just(Integer.parseInt(list.iterator().next().getValue()));
+				return Integer.parseInt(list.iterator().next().getValue());
 			}
 		}
-		return weaponRepository.findById(item.getItemId()).map(Weapon::getBreakage);
+		Weapon weapon = hasItemMap.getItemMap().get(item.getItemId()).as(Weapon.class);
+		return weapon.getBreakage();
 	}
 
-	public Mono<Integer> getStrength(CharacterItem item) {
+	public Integer getStrength(CharacterItem item, HasItemMap hasItemMap) {
 		if (item.getFeatures() != null) {
 			List<ItemFeature> list = item.getFeatures().stream().filter(e -> e.getType() == ItemFeatureType.BREAKAGE_STRENGTH).toList();
 			if (!list.isEmpty()) {
-				return Mono.just(Integer.parseInt(list.iterator().next().getValue()));
+				return Integer.parseInt(list.iterator().next().getValue());
 			}
 		}
-		return weaponRepository.findById(item.getItemId())
-			.map(weapon -> {
-				int min = weapon.getCommonStrength().getMin();
-				int max = weapon.getCommonStrength().getMax();
-				return (min + max) / 2;
-			});
+		Weapon weapon = hasItemMap.getItemMap().get(item.getItemId()).as(Weapon.class);
+		int min = weapon.getCommonStrength().getMin();
+		int max = weapon.getCommonStrength().getMax();
+		return (min + max) / 2;
 	}
 
 	private boolean checkDistance(WeaponRange range, Float distance) {

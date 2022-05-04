@@ -1,0 +1,142 @@
+[
+	{
+		"id": "khazad-durin",
+		"name": "Khazâd (House of Durin)",
+		"keywords": ["dwarf"],
+		"attributeModifiers": {
+			"ag": -2,
+			"co": 6,
+			"me": 0,
+			"re": 0,
+			"sd": 2,
+			"em": -1,
+			"in": 0,
+			"pr": -1,
+			"qu": -2,
+			"st": 2
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    40,
+			"mentalism":  40,
+			"poison":     20,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [7,4,2,1],
+		"powerPointsProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [6,4,3,3],
+			"mentalism":              [3,2,1,1] 
+		},
+		"adolescenceSkillCategoryRanks": {
+			"armor-light":				1,
+			"armor-medium":				3,
+			"athletic-brawn":			1,
+			"athletic-endurance":		1,
+			"athletic-gymnastics":		1,
+			"awareness-searching":		1,
+			"communications":			1,
+			"lore-general":				3,
+			"outdoor-environmental":	2,
+			"science-analytic-basic":	1,
+			"technical-trade-general":	1,
+			"weapon-1h-concussion":		4,
+			"weapon-thrown":			1
+		},
+		"adolescenceSkillRanks": {
+			"rigid-leather":			1,
+			"armor-chain":				3,
+			"climbing":					1,
+			"alertness":				4,
+			"body-development":			3,
+			"mace":						4,
+			"bola":						1
+		},
+		"skillBonus": {
+			"caving-spelunking": 25
+		},
+		"specialAbilities": [
+			"Resistance aga inst flame and ice: +30 DB and RR bonuses versus heat and cold attacks."
+		],
+		"backgroundOptions": 4,
+		"startingLanguageSelection": [
+			"khuzdul:s8:w6",
+			"westron:s8:w6",
+			"silvan:s5:w5",
+			"sindarin:s4:w4"
+		],
+		"soulDeparture": 21,
+		"recoveryMultiplier": 0.5,
+		"universes": [ "middle-earth" ]
+	},
+	{
+		"id": "khazad-dwalin",
+		"name": "Khazâd (House of Dwálin)",
+		"keywords": ["dwarf"],
+		"attributeModifiers": {
+			"ag": -2,
+			"co": 6,
+			"me": 0,
+			"re": 0,
+			"sd": 2,
+			"em": -1,
+			"in": 0,
+			"pr": -1,
+			"qu": -2,
+			"st": 2
+		},
+		"resistanceBonus": {
+			"channeling": 0,
+			"essence":    40,
+			"mentalism":  40,
+			"poison":     20,
+			"disease":    15
+		},
+		"bodyDevelopmentProgression": [7,4,2,1],
+		"powerPointsProgression": {
+			"channeling":             [6,5,4,3],
+			"essence":                [6,4,3,3],
+			"mentalism":              [3,2,1,1] 
+		},
+		"adolescenceSkillCategoryRanks": {
+			"armor-light":				1,
+			"armor-medium":				3,
+			"athletic-brawn":			1,
+			"athletic-endurance":		1,
+			"athletic-gymnastics":		1,
+			"awareness-searching":		1,
+			"communications":			1,
+			"lore-general":				3,
+			"outdoor-environmental":	2,
+			"science-analytic-basic":	1,
+			"technical-trade-general":	1,
+			"weapon-1h-concussion":		4,
+			"weapon-thrown":			1
+		},
+		"adolescenceSkillRanks": {
+			"rigid-leather":			1,
+			"armor-chain":				3,
+			"climbing":					1,
+			"alertness":				4,
+			"body-development":			3,
+			"mace":						4,
+			"bola":						1
+		},
+		"skillBonus": {
+			"caving-spelunking": 25
+		},
+		"specialAbilities": [
+			"Resistance aga inst flame and ice: +30 DB and RR bonuses versus heat and cold attacks."
+		],
+		"backgroundOptions": 4,
+		"startingLanguageSelection": [
+			"khuzdul:s8:w6",
+			"westron:s8:w6",
+			"silvan:s5:w5",
+			"sindarin:s4:w4"
+		],
+		"soulDeparture": 21,
+		"recoveryMultiplier": 0.5,
+		"universes": [ "middle-earth" ]
+	}
+]

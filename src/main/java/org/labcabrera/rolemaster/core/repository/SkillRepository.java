@@ -16,4 +16,7 @@ public interface SkillRepository extends ReactiveMongoRepository<Skill, String> 
 	@Query("{ 'id': { $in: ?0 } }")
 	Flux<Skill> findByIds(List<String> ids);
 
+	@Query("{$or :[{'id': { $in: ?0 } },{'loadOnNewCharacters': true}]}")
+	Flux<Skill> findByIdsOnNewCharacter(List<String> ids);
+
 }

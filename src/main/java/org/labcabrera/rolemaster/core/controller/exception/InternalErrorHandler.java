@@ -57,11 +57,9 @@ public class InternalErrorHandler {
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof ServerWebInputException inputException) {
-			log.info("Invalid request: {}", ex.getMessage());
-			ApiError error = ApiError.builder()
-				.code(INVALID_REQUEST_CODE)
-				.message(INVALID_REQUEST)
-				.build();
+			String message = getServerWebInputExceptionMessage(inputException);
+			log.info("Invalid request: {}", message, inputException);
+			ApiError error = ApiError.builder().code(INVALID_REQUEST_CODE).message(message).build();
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof NotFoundException) {
@@ -80,7 +78,7 @@ public class InternalErrorHandler {
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	protected String getBindExceptionMessage(BindingResult ex) {
+	private String getBindExceptionMessage(BindingResult ex) {
 		StringBuilder sb = new StringBuilder("Invalid request.");
 		List<FieldError> errors = ex.getFieldErrors();
 		for (FieldError error : errors) {
@@ -90,6 +88,16 @@ public class InternalErrorHandler {
 				.append(error.getDefaultMessage())
 				.append(".");
 		}
+		return sb.toString();
+	}
+
+	private String getServerWebInputExceptionMessage(ServerWebInputException ex) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Invalid request.");
+		if (ex.getReason() != null) {
+			sb.append(" ").append(ex.getReason());
+		}
+		sb.append(".");
 		return sb.toString();
 	}
 

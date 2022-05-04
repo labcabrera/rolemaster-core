@@ -38,3 +38,7 @@ out/
 
 ### Lock CSV files ###
 src/main/resources/data/populator/weapons/tables/.~*
+
+
+### Custom ###
+.notes.txt

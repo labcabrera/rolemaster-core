@@ -1,7 +1,8 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackBreakageProcessor;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackContext;
+import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackExhaustionProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackWeaponTableProcessor;
@@ -28,6 +29,9 @@ public class AttackProcessorService {
 	private AttackFumbleProcessor fumbleProcessor;
 
 	@Autowired
+	private AttackExhaustionProcessor exhaustionProcessor;
+
+	@Autowired
 	private AttackBreakageProcessor breakageProcessor;
 
 	@Autowired
@@ -40,6 +44,7 @@ public class AttackProcessorService {
 			.flatMap(offensiveBonusProcessor::apply)
 			.flatMap(defensiveBonusProcessor::apply)
 			.flatMap(weaponTableProcessor::apply)
+			.flatMap(exhaustionProcessor::apply)
 			.flatMap(attackResultProcessor::apply);
 	}
 

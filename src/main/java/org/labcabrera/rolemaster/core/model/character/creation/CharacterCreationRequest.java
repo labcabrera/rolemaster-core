@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.validation.ExistingRaceValidator.ExistingRace;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -40,9 +41,9 @@ public class CharacterCreationRequest {
 	@Schema(description = "Characted race identifier.", example = "figther", required = true)
 	private String professionId;
 
-	@NotEmpty
-	@Schema(description = "Characted realm identifier.", example = "essence", required = true)
-	private String realmId;
+	@NotNull
+	@Schema(description = "Characted realm.", example = "essence", required = true)
+	private Realm realm;
 
 	@NotNull
 	@Schema(description = "Character age in years", example = "32", required = true)

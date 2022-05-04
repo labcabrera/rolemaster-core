@@ -3,13 +3,10 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
-import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Mono;
@@ -23,28 +20,11 @@ public class AttackExhaustionProcessor extends AbstractAttackProcessor {
 	private static final BigDecimal MELEE_DIVISOR = new BigDecimal("2");
 	private static final BigDecimal MISSILE_DIVISOR = new BigDecimal("6");
 
-	@Autowired
-	private TacticalRoundRepository roundRepository;
-
-	@Autowired
-	private TacticalSessionRepository sessionRepository;
-
-	@Override
 	public Mono<AttackContext> apply(AttackContext context) {
-		return roundRepository.findById(context.getAction().getRoundId())
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Round not found")))
-			.flatMap(round -> this.apply(context, round));
-	}
-
-	private Mono<AttackContext> apply(AttackContext context, TacticalRound round) {
-		return sessionRepository.findById(round.getTacticalSessionId())
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Session not found")))
-			.flatMap(session -> this.apply(context, session));
-	}
-
-	private Mono<AttackContext> apply(AttackContext context, TacticalSession session) {
+		TacticalSession session = context.getTacticalSession();
+		boolean isMeleeAttack = context.getAction() instanceof TacticalActionMeleeAttack;
 		BigDecimal base = BigDecimal.ONE;
-		BigDecimal divisor = context.isMeleeAttack() ? MELEE_DIVISOR : MISSILE_DIVISOR;
+		BigDecimal divisor = isMeleeAttack ? MELEE_DIVISOR : MISSILE_DIVISOR;
 
 		BigDecimal multiplierCustom = session.getExhaustionMultiplier();
 		BigDecimal multiplierTemperature = new BigDecimal(session.getTemperature().getMultiplier());

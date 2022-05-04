@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.HasRanks;
+import org.labcabrera.rolemaster.core.model.skill.SkillProgressionType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,8 @@ public class CharacterSkillCategory implements HasRanks {
 
 	@Builder.Default
 	private List<AttributeType> attributes = new ArrayList<>();
+
+	private SkillProgressionType progressionType;
 
 	@Builder.Default
 	private List<Integer> developmentCost = new ArrayList<>();

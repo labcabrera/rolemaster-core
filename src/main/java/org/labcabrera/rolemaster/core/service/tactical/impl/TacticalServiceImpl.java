@@ -2,7 +2,6 @@ package org.labcabrera.rolemaster.core.service.tactical.impl;
 
 import java.time.LocalDateTime;
 
-import org.labcabrera.rolemaster.core.converter.TacticalCharacterContextConverter;
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
@@ -14,13 +13,13 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRoundState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
-import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.NpcRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionLogRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalInitiativeService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalNpcCharacterService;
@@ -48,9 +47,6 @@ public class TacticalServiceImpl implements TacticalService {
 	private TacticalRoundService tacticalRoundService;
 
 	@Autowired
-	private TacticalCharacterContextConverter tacticalCharacterContextConverter;
-
-	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
@@ -61,9 +57,6 @@ public class TacticalServiceImpl implements TacticalService {
 
 	@Autowired
 	private TacticalCharacterRepository tacticalCharacterRepository;
-
-	@Autowired
-	private CharacterInfoRepository characterInfoRepository;
 
 	@Autowired
 	private TacticalSessionLogRepository tacticalSessionLogRepository;
@@ -80,6 +73,9 @@ public class TacticalServiceImpl implements TacticalService {
 	@Autowired
 	private EndTurnCharacterProcessor endTurnCharacterProcessor;
 
+	@Autowired
+	private TacticalCharacterService tacticalCharacterService;
+
 	@Override
 	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
 		return tacticalSessionService.createSession(request);
@@ -87,12 +83,7 @@ public class TacticalServiceImpl implements TacticalService {
 
 	@Override
 	public Mono<TacticalCharacter> addCharacter(String tacticalSessionId, String characterId) {
-		return tacticalSessionRepository
-			.findById(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
-			.zipWith(characterInfoRepository.findById(characterId))
-			.map(pair -> tacticalCharacterContextConverter.convert(pair.getT1(), pair.getT2()))
-			.flatMap(tacticalCharacterRepository::save);
+		return tacticalCharacterService.create(tacticalSessionId, characterId);
 	}
 
 	@Override

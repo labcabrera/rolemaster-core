@@ -5,7 +5,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill provides a bonus for getting a weapon from scabbard into battle very quickly. If successful, the weapon is out of the scabbard and in hand without the normal 20% activity required (-20 penalty) for drawing a weapon. If the maneuver roll fails, he has dropped the weapon. If partially successful, the character takes the normal time (and penalty) to draw the weapon."
     },
 	{
@@ -14,7 +14,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill limits one’s OB against an opponent while mounted. The OB of an attack made while mounted can not exceed the attacker’s Mounted Combat skill bonus. A character's Mounted Combat skill cannot have more skill ranks developed than his Riding skill ranks."
     },
 	{
@@ -23,7 +23,7 @@
         "type": "staticManeuver",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill allows an individual to perform elaborate maneuvers with his weapon, including flourishes and feats of weapon control. This skill may, at the GM’s discretion, be used to recover control of a fumbled weapon (only possible if a fumble result has indicated that the wielder has “lost control” of a weapon, not “dropped” it), and may be used to perform unusual maneuvers with one’s weapon. Note that fumbles resulting from swashbuckling attempts may not be negated by further use of this skill."
     },
 	{
@@ -32,7 +32,7 @@
         "type": "special",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "customizableOptions": 2,
         "customizationRestriction": "weapon-skill",
         "description": "This skill allows a combatant to fight with two weapons simultaneously. He is allowed to make 2 weapon attacks for each melee attack action, and may engage two opponents providing neither opponent is receiving any positional combat modifiers for their OB (e.g., If either opponent is receiving +15 for Flank Attack or +20 for Rear Attack the individual cannot attack both opponents in the same round). Two Weapon Combat skill must be developed for each individual two-weapon combination (e.g., shortsword/handaxe, rapier/dagger, etc.). A character's skill rank with a two-weapon combination may not exceed his skill rank of either of the individual weapons (e.g., if a Fighter has 5 skill ranks with a dagger and 9 skill ranks with a short sword, he may only have 5 skill ranks with his short sword/dagger two weapon combination). The OB for each weapon attack is equal to the skill bonus for the Two-weapon Combat skill for the combination of those two weapons."
@@ -43,7 +43,7 @@
         "type": "special",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill provides a bonus for using the body (hands, etc.) or a weapon or a shield to deflect or even catch a thrown weapon or missile directed at the user (this is treated as an action requiring at least 50% activity; with a -1 modification for each 1% activity less than 50%). To determine the effect of such an attempt roll (open-ended) add the Adrenal Deflection skill bonus. Then refer to the Moving Maneuver Table T-4.1 (RMFRP, p. 49), using the “Extremely Hard” column against thrown weapons and the “Sheer Folly” column against missile weapons. If the result is a number, it is subtracted from the weapon’s attack roll (in addition to the normal DB). If the missile or thrown object misses, the character has a chance of catching the item. Roll d100 (open-ended) and add the modification received earlier from the Moving Maneuver Table; if the result is over 100, the item has been caught, if desired."
     },
 	{
@@ -53,7 +53,7 @@
         "customizable": true,
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "customizableOptions": 1,
         "customizationRestriction": "weapon-skill",
         "description": "This skill provides a limit for applying one’s melee OB against an opponent to one’s flank or rear without turning or changing position. The OB of an attack made in this fashion can not exceed the attacker’s Reverse Stroke skill bonus. Note that this skill must be developed separately for each weapon category."
@@ -65,7 +65,7 @@
         "customizable": true,
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill allows an individual to immobilize or render uncon- scious a target by applying a sharp blow to a precise point on the victim’s upper body. The foe is assumed to be “of kind” (usually humanoid) and not “Large” or “Super-large.” The OB of a subduing attack can not exceed the attacker’s Subdual skill bonus (e.g., a Fighter with an OB of +120 and a Subdual bonus of +70 would only be able to apply a +70 OB to his attack). Instead of rolling criticals on the Critical Table indicated by the Weapon Attack Table, the AL Subdual Critical Table 4.9 should be used."
     },
 	{
@@ -75,7 +75,7 @@
         "customizable": true,
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
-        "progressionType": "standard",
+        "progressionType": "combined",
         "description": "This skill provides a bonus for evading a attack by using a tumbling maneuver. The skill rank (not the skill rank bonus) is added to the DB. This skill is rolled for during the round that the skill is actively used. Individual may not parry, use a shield, or attack while using this skill."
     }
 ]
