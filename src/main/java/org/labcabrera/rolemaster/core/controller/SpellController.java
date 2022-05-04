@@ -20,14 +20,14 @@ import reactor.core.publisher.Mono;
 @Tag(name = "Spells", description = "List of spells.")
 public interface SpellController {
 
+	@GetMapping("/{id}")
+	@Operation(summary = "It obtains a certain spell from its identifier.")
+	Mono<Spell> findById(@PathVariable String id);
+
 	@GetMapping
 	@Operation(summary = "Spell search.")
 	Flux<Spell> find(
 		@Parameter(name = "spellListId", required = false) @RequestParam(required = false) String spellListId,
 		@ParameterObject @PageableDefault(sort = "spellListId,level", direction = Direction.ASC, size = 10) Pageable pageable);
-
-	@GetMapping("/{id}")
-	@Operation(summary = "It obtains a certain spell from its identifier.")
-	Mono<Spell> findById(@PathVariable String id);
 
 }

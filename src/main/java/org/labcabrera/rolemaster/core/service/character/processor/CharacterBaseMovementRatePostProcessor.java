@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.service.character.processor;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.table.character.StrideChartTable;
@@ -27,8 +30,8 @@ public class CharacterBaseMovementRatePostProcessor implements CharacterPostProc
 		int strideBonus = strideChartTable.getValue(character.getHeight());
 
 		int valueInFeets = baseValue + attributeBonus + strideBonus;
-		double valueInMetersD = valueInFeets / 3.281;
-		int valueInMeters = (int) valueInMetersD;
+		BigDecimal bd = new BigDecimal(valueInFeets).divide(new BigDecimal(3.281), 0, RoundingMode.HALF_EVEN);
+		int valueInMeters = bd.intValue();
 		character.setBaseMovementRate(valueInMeters);
 	}
 

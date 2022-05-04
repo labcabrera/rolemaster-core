@@ -38,6 +38,8 @@ public class RaceControllerImpl implements RaceController {
 			.startingLanguageSelection(null)
 			.professionRestrictions(null)
 			.exhaustionPointsBonus(null)
+			.size(null)
+			.skinAT(null)
 			.universes(null)
 			.build();
 		if (universeId != null) {
