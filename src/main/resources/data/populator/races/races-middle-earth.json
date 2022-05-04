@@ -109,6 +109,8 @@
 		],
 		"soulDeparture": 1,
 		"recoveryMultiplier": 0.5,
+		"size": "large",
+		"skinAT": 16,
 		"professionRestrictions": [
 			"figther"
 		],

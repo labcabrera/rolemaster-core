@@ -10,7 +10,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import lombok.Data;
 
 @Data
-public class FumbleTable {
+class FumbleTable {
 
 	private Map<FumbleType, Map<String, FumbleTableResult>> map;
 

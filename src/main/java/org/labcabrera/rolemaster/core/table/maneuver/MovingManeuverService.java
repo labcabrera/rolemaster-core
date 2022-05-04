@@ -5,7 +5,8 @@ import java.io.InputStream;
 
 import javax.annotation.PostConstruct;
 
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
+import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +20,8 @@ public class MovingManeuverService {
 
 	private MovingManeuverTable movingManeuverTable;
 
-	public MovingManeuverResult getResult(ManeuverDificulty dificulty, int roll) {
-		return movingManeuverTable.getResult(dificulty, roll);
+	public MovingManeuverResult getResult(ManeuverDifficulty difficulty, int roll) {
+		return movingManeuverTable.getResult(difficulty, roll);
 	}
 
 	@PostConstruct

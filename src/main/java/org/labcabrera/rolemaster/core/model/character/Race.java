@@ -11,6 +11,7 @@ import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -60,6 +61,13 @@ public class Race {
 
 	@Builder.Default
 	private List<String> startingLanguageSelection = new ArrayList<>();
+
+	@Builder.Default
+	private CharacterSize size = CharacterSize.NORMAL;
+
+	@Schema(description = "Armor value provided by the character's skin", example = "1", defaultValue = "1")
+	@Builder.Default
+	private Integer skinAT = 1;
 
 	private Integer backgroundOptions;
 

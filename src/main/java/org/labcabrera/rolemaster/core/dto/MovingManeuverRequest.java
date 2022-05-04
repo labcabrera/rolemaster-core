@@ -1,15 +1,11 @@
-package org.labcabrera.rolemaster.core.dto.action.execution;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
+package org.labcabrera.rolemaster.core.dto;
 
 import javax.validation.constraints.NotNull;
 
-import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -20,14 +16,10 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
-public class StaticManeuverExecution extends TacticalActionExecution {
+public class MovingManeuverRequest extends StaticManeuverRequest {
 
 	@NotNull
-	private OpenRoll roll;
-
+	@Schema(description = "Maneuver difficulty.", example = "medium", required = true)
 	private ManeuverDifficulty difficulty;
-
-	@Builder.Default
-	private Map<String, Integer> modifiers = new LinkedHashMap<>();
 
 }

@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.table.skill;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.function.UnaryOperator;
+import java.util.function.IntUnaryOperator;
 
 import org.springframework.stereotype.Component;
 
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
  * thirty.
  */
 @Component
-class SkillLimitedBonusTable implements UnaryOperator<Integer> {
+class SkillLimitedBonusTable implements IntUnaryOperator {
 
 	@Override
-	public Integer apply(Integer value) {
+	public int applyAsInt(int value) {
 		if (value < 21) {
 			return value;
 		}

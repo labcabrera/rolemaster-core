@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import javax.annotation.PostConstruct;
 
+import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

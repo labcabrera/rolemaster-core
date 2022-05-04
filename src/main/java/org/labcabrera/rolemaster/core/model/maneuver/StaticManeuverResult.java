@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.table.maneuver;
+package org.labcabrera.rolemaster.core.model.maneuver;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

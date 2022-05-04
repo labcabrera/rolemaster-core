@@ -9,6 +9,7 @@ import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.combat.Cover;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
 import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
@@ -28,7 +29,7 @@ public class EnumControllerImpl implements EnumController {
 	public Mono<List<String>> getEnums() {
 		return Mono.just(
 			Arrays.asList("realm", "movement-pace", "melee-attack-type", "melee-attack-facing", "item-position", "terrain",
-				"temperature-multiplier", "melee-attack-mode", "cover-types"));
+				"temperature-multiplier", "melee-attack-mode", "cover-types", "maneuver-difficulties"));
 	}
 
 	@Override
@@ -38,6 +39,8 @@ public class EnumControllerImpl implements EnumController {
 			return toFlux(Cover.values());
 		case "item-position":
 			return toFlux(ItemPosition.values());
+		case "maneuver-difficulties":
+			return toFlux(ManeuverDifficulty.values());
 		case "melee-attack-facing":
 			return toFlux(MeleeAttackFacing.values());
 		case "melee-attack-mode":

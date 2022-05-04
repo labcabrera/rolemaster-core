@@ -3,12 +3,12 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MovingManeuverExecution;
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
+import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovingManeuver;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.table.maneuver.MovingManeuverResult;
 import org.labcabrera.rolemaster.core.table.maneuver.MovingManeuverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class MovingManeuverExecutionService {
 	private MovingManeuversBonusProcessor bonusProcessor;
 
 	public Mono<TacticalActionMovingManeuver> execute(TacticalActionMovingManeuver action, MovingManeuverExecution execution) {
-		ManeuverDificulty dificulty = execution.getDificulty();
+		ManeuverDifficulty difficulty = execution.getDifficulty();
 		int roll = execution.getRoll().getResult();
 		Map<String, Integer> modifiers = execution.getModifiers();
 
@@ -40,7 +40,7 @@ public class MovingManeuverExecutionService {
 			.map(map -> {
 				int totalBonus = map.values().stream().reduce(0, (a, b) -> a + b);
 				int total = roll + totalBonus;
-				MovingManeuverResult result = movingManeuverService.getResult(dificulty, total);
+				MovingManeuverResult result = movingManeuverService.getResult(difficulty, total);
 
 				action.setResult(result);
 				action.setState(TacticalActionState.RESOLVED);

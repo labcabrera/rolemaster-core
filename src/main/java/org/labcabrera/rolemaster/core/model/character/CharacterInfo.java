@@ -114,6 +114,9 @@ public class CharacterInfo {
 	private CharacterWeight weight = new CharacterWeight();
 
 	@Builder.Default
+	private CharacterSize size = CharacterSize.NORMAL;
+
+	@Builder.Default
 	private List<String> notes = new ArrayList<>();
 
 	@Builder.Default

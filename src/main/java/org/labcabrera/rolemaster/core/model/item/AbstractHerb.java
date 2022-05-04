@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.model.item;
 
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +26,7 @@ public abstract class AbstractHerb extends Item {
 
 	private String location;
 
-	private ManeuverDificulty findingDificulty;
+	private ManeuverDifficulty findingDifficulty;
 
 	private Integer level;
 

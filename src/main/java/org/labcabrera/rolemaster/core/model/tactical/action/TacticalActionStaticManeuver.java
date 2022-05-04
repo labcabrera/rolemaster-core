@@ -4,8 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
-import org.labcabrera.rolemaster.core.table.maneuver.StaticManeuverResult;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
+import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverResult;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,7 +26,7 @@ public class TacticalActionStaticManeuver extends TacticalAction {
 	@Builder.Default
 	private Map<String, Integer> modifiers = new LinkedHashMap<>();
 
-	private ManeuverDificulty dificulty;
+	private ManeuverDifficulty difficulty;
 
 	private OpenRoll roll;
 

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.junit.jupiter.api.Test;
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -24,8 +24,8 @@ class MovingManeuverTableTest {
 	void test() throws IOException {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 		MovingManeuverTable table = readTable();
-		for (ManeuverDificulty md : ManeuverDificulty.values()) {
-			if (md != ManeuverDificulty.NONE) {
+		for (ManeuverDifficulty md : ManeuverDifficulty.values()) {
+			if (md != ManeuverDifficulty.NONE) {
 				for (int i = -201; i < 280; i++) {
 					assertTrue(table.checkConsistence(md, i), "Invalid consistence: " + md + " -> " + i);
 					assertNotNull(table.getResult(md, i).getResult(), "Invalid consistence: " + md + " -> " + i);

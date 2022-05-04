@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.table.maneuver.MovingManeuverResult;
+import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

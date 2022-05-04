@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.Getter;
 
-public enum ManeuverDificulty implements CodeNameEnum {
+public enum ManeuverDifficulty implements CodeNameEnum {
 
-	NONE("none", "NONE"),
+	NONE("none", "None"),
 
 	ROUTINE("routine", "Routine"),
 
@@ -33,7 +33,7 @@ public enum ManeuverDificulty implements CodeNameEnum {
 	@Getter
 	private String name;
 
-	private ManeuverDificulty(String code, String name) {
+	private ManeuverDifficulty(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}

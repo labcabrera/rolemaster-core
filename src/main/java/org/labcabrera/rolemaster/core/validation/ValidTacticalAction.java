@@ -31,26 +31,24 @@ public @interface ValidTacticalAction {
 		@Override
 		public boolean isValid(TacticalAction value, ConstraintValidatorContext context) {
 			boolean result = true;
-			if (value.getPriority() != null && value.getActionPercent() != null) {
-				switch (value.getPriority()) {
-				case SNAP:
-					if (value.getActionPercent() > 20) {
-						context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_TACTICAL_ACTION_SNAP_PERCENT)
-							.addConstraintViolation();
-						result = false;
-					}
-					break;
-				case NORMAL:
-					if (value.getActionPercent() > 80) {
-						context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_TACTICAL_ACTION_NORMAL_PERCENT)
-							.addConstraintViolation();
-						result = false;
-					}
-					break;
-				case DELIBERATE:
-				default:
-					break;
+			switch (value.getPriority()) {
+			case SNAP:
+				if (value.getActionPercent() > 20) {
+					context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_TACTICAL_ACTION_SNAP_PERCENT)
+						.addConstraintViolation();
+					result = false;
 				}
+				break;
+			case NORMAL:
+				if (value.getActionPercent() > 80) {
+					context.buildConstraintViolationWithTemplate(ValidationConstants.INVALID_TACTICAL_ACTION_NORMAL_PERCENT)
+						.addConstraintViolation();
+					result = false;
+				}
+				break;
+			case DELIBERATE:
+			default:
+				break;
 			}
 			return result;
 		}
