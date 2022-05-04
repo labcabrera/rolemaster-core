@@ -1,6 +1,8 @@
 package org.labcabrera.rolemaster.core.controller;
 
+import org.labcabrera.rolemaster.core.dto.AddFlaw;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
+import org.labcabrera.rolemaster.core.dto.AddTalent;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.ApiError;
@@ -73,5 +75,15 @@ public interface CharacterController {
 	@Operation(summary = "Applies a training package to a character.")
 	Mono<CharacterInfo> addTrainingPackage(@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody TrainingPackageUpgrade request);
+
+	@PostMapping("/{id}/talents")
+	@Operation(summary = "Adds a talent to a character.")
+	Mono<CharacterInfo> addTalent(@PathVariable("id") String characterId,
+		@org.springframework.web.bind.annotation.RequestBody AddTalent request);
+
+	@PostMapping("/{id}/flaws")
+	@Operation(summary = "Adds a flaw to a character.")
+	Mono<CharacterInfo> addFlaw(@PathVariable("id") String characterId,
+		@org.springframework.web.bind.annotation.RequestBody AddFlaw request);
 
 }
