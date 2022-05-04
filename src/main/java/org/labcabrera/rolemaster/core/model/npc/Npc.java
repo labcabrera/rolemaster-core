@@ -61,7 +61,7 @@ public class Npc {
 	@Builder.Default
 	private List<NpcSpecialAttack> specialAttacks = new ArrayList<>();
 
-	private Integer baseMove;
+	private Integer baseMovementRate;
 
 	private Integer mmBonus;
 

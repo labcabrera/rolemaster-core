@@ -39,7 +39,7 @@
 			"hiding": 15,
 			"stalking": 15
 		},
-		"baseMove": 50,
+		"baseMovementRate": 50,
 		"mmBonus": 0,
 		"maxPace": "fastSprint",
 		"movementSpeed": "SL",
