@@ -24,4 +24,6 @@ public class SpellList {
 
 	private SpellListType type;
 
+	private String professionId;
+
 }

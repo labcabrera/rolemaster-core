@@ -1,0 +1,63 @@
+[
+	{
+		"id": "blood-law",
+		"name": "Blood Law",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "bone-law",
+		"name": "Bone Law",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "calm-spirits",
+		"name": "Calm Spirits",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "creations",
+		"name": "Creations",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "locating-ways",
+		"name": "Locating Ways",
+		"realm": "channeling",
+		"type": "closed"
+	}
+	,
+	{
+		"id": "lore",
+		"name": "Lore",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "muscle-law",
+		"name": "Muscle Law",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "nerve-law",
+		"name": "Nerve Law",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "organ-law",
+		"name": "Organ Law",
+		"realm": "channeling",
+		"type": "closed"
+	},
+	{
+		"id": "symbolic-ways",
+		"name": "Symbolic Ways",
+		"realm": "channeling",
+		"type": "closed"
+	}
+]
