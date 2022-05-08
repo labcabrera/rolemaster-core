@@ -29,6 +29,7 @@ public class CriticalTableService {
 		tables.put(CriticalType.S, loadTable("data/table/critical/critical-table-s.json"));
 		tables.put(CriticalType.P, loadTable("data/table/critical/critical-table-p.json"));
 		tables.put(CriticalType.K, loadTable("data/table/critical/critical-table-k.json"));
+		tables.put(CriticalType.HEAT, loadTable("data/table/critical/critical-table-heat.json"));
 	}
 
 	public CriticalTableResult getResult(CriticalType type, CriticalSeverity severity, Integer roll) {

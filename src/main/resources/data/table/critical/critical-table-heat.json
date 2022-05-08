@@ -1,191 +1,160 @@
 {
-	"type": "k",
+	"type": "heat",
 	"map": {
 		"A": {
 			"1-5": {
-				"text": "Not very impressive."
+				"text": "The air around foe shimmers. Pfft."
 			},
 			"6-10": {
-				"text": "The strike lost something in the translation."
+				"text": "Hot wind makes foe uncomfortable.",
+				"hp": 1
 			},
 			"11-15": {
-				"text": "Foe evades your much of your swing. You have initiative.",
-				"hp": 3,
+				"text": "Foe covers his face and leaps aside. You have initiative.",
+				"hp": 2,
 				"buffs": {
 					"has-initiative": 1
 				}
 			},
 			"16-20": {
-				"text": "Foe steps back 5 feet. He is out of position.",
-				"hp": 2,
-				"debuffs": {
-					"must-parry": 1
+				"text": "Blast stings foe's hands and arms. You have the initiative.",
+				"hp": 3,
+				"buffs": {
+					"has-initiative": 1
 				}
 			},
 			"21-35": {
-				"text": "Foe tries to duck under your strike. You knock him back.",
-				"hp": 3,
+				"text": "Foe's chest and side heat up and garments smolder from assault. He will be easily kindled if you strike again.",
+				"hp": 4,
 				"debuffs": {
-					"must-parry": 1
-				},
-				"bonus": {
-					"bonus": 5,
-					"rounds": 1
+					"stunned": 1
 				}
 			},
 			"36-45": {
-				"text": "Bust foe's shin. You have initiative.",
-				"buffs": {
-					"has-initiative": 1
-				},
-				"conditionalEffects": {
-					"with-leg-greave": {
-						"hp": 9
-					},
-					"without-leg-greave": {
-						"hp": 6,
-						"penalty": {
-							"penalty": -5
-						}
-					}
+				"text": "Hot winds dance around foe parching his exposed skin. He puts up a desperate defence.",
+				"hp": 6,
+				"debuffs": {
+					"must-parry": 1
 				}
 			},
 			"46-50": {
-				"text": "Foe steps under your blow. You catch him in the back.",
-				"hp": 5,
+				"text": "Clothes smoke, then burn. Foe flails his arms trying to put them out. The pain edures longer than the flames.",
+				"hp": 7,
+				"bleeding": 1,
 				"debuffs": {
 					"must-parry": 1
-				},
-				"penalty": {
-					"penalty": -25,
-					"rounds": 1
 				}
 			},
 			"51-55": {
-				"text": "Blow to foe's chest. Foe leans sideways in pain.",
-				"hp": 5,
+				"text": "Spark sets a piece of foe's equipment on fire. Foe must remove the item.",
+				"hp": 8,
 				"debuffs": {
-					"must-parry": 1
+					"must-parry": 2
 				},
-				"penalty": {
-					"penalty": -25,
-					"rounds": 1
-				}
+				"bleeding": 1 
 			},
 			"56-60": {
-				"text": "Blow to foe's waist sends a piece of equipment flying. Foe recoils.",
-				"hp": 5,
+				"text": "Assault ignites foe's back. Equipment crackles as it burns and falls clear.",
+				"hp": 9,
+				"bleeding": 2,
 				"debuffs": {
-					"must-parry": 1
-				},
-				"penalty": {
-					"penalty": -25,
-					"rounds": 1
+					"stunned": 1
 				}
 			},
 			"61-65": {
-				"text": "Strike to weapon forearm.",
+				"text": "Well placed. Strike slams into foe's weapon arm. Garments are burned. Foe's evasion is comical.",
 				"conditionalEffects": {
 					"with-arm-greave": {
-						"hp": 8,
-						"debuffs": {
-							"must-parry": 1
-						}
+						"hp": 7,
+						"bleeding": 1
 					},
 					"without-abdomen-armor": {
-						"hp": 5,
-						"debuffs": {
-							"stunned": 1
-						}
+						"hp": 10,
+						"bleeding": 3
 					}
 				}
 			},
 			"66-66": {
-				"text": "Shatter shoulder in foe's shield arm. Arm is quite useless. Foe drops shield, if he has one.",
-				"hp": 8,
-				"debuffs": {
-					"stunned": 2,
-					"cant-parry": 2
-				},
-				"injuries": {
-					"left-arm-useless": "Critical effect."
-				}
-			},
-			"67-70": {
-				"text": "Solid strike to foe's chest. Knocks the breath out of foe.",
-				"hp": 8,
-				"debuffs": {
-					"stunned": 3,
-					"cant-parry": 1
-				}
-			},
-			"71-75": {
-				"text": "Shot takes foe in lower leg. He fails to jump over it.",
-				"hp": 5,
+				"text": "Flame grapples foe's shield and chest. The wound is grave and infection will follow.",
+				"hp": 9,
 				"debuffs": {
 					"stunned": 2,
 					"cant-parry": 2
 				},
 				"penalty": {
-					"penalty": -20
+					"penalty": -15
+				}
+			},
+			"67-70": {
+				"text": "Toast foe's side and send him stumbling back 5 feet away from you. He blocks his face against any renewed assault.",
+				"hp": 8,
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -5
+				}
+			},
+			"71-75": {
+				"text": "Fire consumes garments and hair. Blinding smoke keeps foe's defenses poorly aligned.",
+				"hp": 12,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
 				}
 			},
 			"76-80": {
-				"text": "Blow to foe's shield arm destroys shield. If no shield, arm is broken.",
-				"conditionalEffects": {
-					"with-shield": {
-						"otherEffects": [
-							"Shield is broken."
-						]
-					},
-					"without-shield": {
-						"injuries": {
-							"left-arm-useless": "Arm Broken. Critical effect."
-						}
-					}
+				"text": "Foe's shield side is engulfed in flame. Foe's shield is kindled if wooden.",
+				"hp": 10,
+				"bleeding": 2,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 1
 				}
 			},
 			"81-85": {
-				"text": "Blow to foe's side sends him stumbling 5 feet to your right.",
-				"hp": 10,
+				"text": "Foe exposes his back while evading the strike. Blast scorches a small wound in his shoulder blade.",
+				"hp": 8,
+				"bleeding": 2,
 				"debuffs": {
-					"stunned": 2,
-					"cant-parry": 2
+					"stunned": 2
 				},
 				"penalty": {
 					"penalty": -20
 				}
 			},
 			"86-90": {
-				"text": "Strike foe in lower back. Muscles and cartilage are damaged.",
-				"hp": 12,
+				"text": "Assault to foe's lower leg consumes covering. Foe falls down. One leg is on fire.",
+				"hp": 10,
 				"debuffs": {
-					"stunned": 3,
-					"cant-parry": 3
+					"downed": 1
 				},
 				"penalty": {
-					"penalty": -25
-				},
-				"injuries": {
-					"back-muscle-and-cartilage-damaged": "Critical effect."
+					"penalty": -20,
+					"rounds": 2
 				}
 			},
 			"91-95": {
-				"text": "Break foe's nose.",
+				"text": "Blow to foe's head. If he has helmet it heats up like a furnace and must be painfully removed. Foe ears and cheeks are burned.",
 				"conditionalEffects": {
-					"with-nose-guard": {
-						"hp": 10,
+					"with-helmet": {
+						"hp": 15,
+						"debuffs": {
+							"stunned": 3
+						},
+						"penalty": {
+							"penalty": -10
+						}
+					},
+					"without-helmet": {
+						"hp": 12,
 						"debuffs": {
 							"stunned": 2,
 							"cant-parry": 2
-						}
-					},
-					"without-nose-guard": {
-						"hp": 15,
-						"bleeding": 2,
-						"debuffs": {
-							"stunned": 3,
-							"cant-parry": 3
+						},
+						"penalty": {
+							"penalty": -30
 						}
 					}
 				},
@@ -194,10 +163,11 @@
 				}
 			},
 			"96-99": {
-				"text": "Blow to foe's head. If foe has no helm, he is dead. If foe has a helm, he is knocked down.",
-				"hp": 20,
+				"text": "Blast lands on the weapon arm and climbs up to foe's neck. It burns all it touches. If foe has any organic neck covering it is destroyed.",
+				"bleeding": 8,
 				"debuffs": {
-					"stunned": 6
+					"stunned": 4,
+					"cant-parry": 4
 				},
 				"conditionalEffects": {
 					"with-helmet": {
@@ -213,77 +183,65 @@
 				}
 			},
 			"100-100": {
-				"text": "Crush foe's jaw. Drive bone through brain. Foe dies instantly.",
-				"hp": 50,
+				"text": "Brutally scar the side of foe's face. Foe is knocked out. He loses 50 from his Appearance and 25 from his Presence.",
+				"hp": 20,
+				"bleeding": 5,
 				"debuffs": {
-					"instant-death": 1
-				},
-				"bonus": {
-					"bonus": 20,
-					"rounds": 1
+					"downed": 1
 				}
 			}
 		},
 		"B": {
 			"1-5": {
-				"text": "Your grip fails you."
+				"text": "Attack is wild and boils nearby water."
 			},
 			"6-10": {
-				"text": "Thud.",
+				"text": "Singe foe's exposed skin. The heat dies quick. Foe is not impressed.",
 				"hp": 2
 			},
 			"11-15": {
-				"text": "Foe evades frantically. You have the initiative next round.",
-				"hp": 3,
+				"text": "Foe simmers in his clothes. He is unfocused and you have initiative.",
+				"hp": 2,
 				"buffs": {
 					"has-initiative": 1
 				}
 			},
 			"16-20": {
-				"text": "Foe is concerned with his own preservation. He steps back 5 feet.",
-				"hp": 4,
-				"debuffs": {
-					"must-parry": 1
-				},
-				"penalty": {
-					"penalty": -10,
-					"rounds": 1
+				"text": "Assault blinds foe for a moment. You have 2 rounds of initiative.",
+				"buffs": {
+					"has-initiative": 2
 				}
 			},
 			"21-35": {
-				"text": "Foe loses some resolve from your solid strike.",
-				"hp": 4,
-				"debuffs": {
-					"must-parry": 1
-				},
-				"penalty": {
-					"penalty": -20,
-					"rounds": 1
+				"text": "Fire laden blast forces foe back. Any containers of water boil and burst open. You have 2 rounds of initiative.",
+				"hp": 6,
+				"buffs": {
+					"has-initiative": 2
 				}
 			},
 			"36-45": {
-				"text": "Blow to foe's left calf. You gain initiative.",
+				"text": "Foe’s shield side is swathed in fire. He may use a shield to avoid the attack, but it combust. Shield hand is is burned.",
 				"buffs": {
 					"has-initiative": 1
 				},
 				"conditionalEffects": {
-					"with-leg-greave": {
-						"hp": 9,
+					"with-shield": {
+						"hp": 3,
 						"debuffs": {
-							"must-parry": 2
+							"must-parry": 3
 						}
 					},
-					"without-leg-greave": {
-						"hp": 6,
-						"penalty": {
-							"penalty": -20,
-							"rounds": 2
+					"without-shield": {
+						"hp": 7,
+						"bleeding": 1,
+						"debuffs": {
+							"must-parry": 1
 						}
 					}
 				}
 			},
 			"46-50": {
-				"text": "Solid blow to back. Foe seeks to avoid this attack again. He has lost his way.",
+				"text": "------------------------------------ TODO ------------------------------------",
 				"hp": 6,
 				"debuffs": {
 					"must-parry": 1
