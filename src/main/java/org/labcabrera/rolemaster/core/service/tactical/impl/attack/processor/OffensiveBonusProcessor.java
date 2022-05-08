@@ -83,12 +83,10 @@ public class OffensiveBonusProcessor implements AbstractAttackProcessor {
 		if (itemMainHand.getSkillId() != null) {
 			skillId = itemMainHand.getSkillId();
 		}
-		if (context.getAction() instanceof TacticalActionMeleeAttack ma) {
-			if (ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
-				CharacterItem itemOffHand = characterItemResolver.getOffHandWeapon(source);
-				String offHandSkill = itemOffHand.getItemId();
-				skillId = skillService.getTwoWeaponSkill(skillId, offHandSkill);
-			}
+		if (context.getAction() instanceof TacticalActionMeleeAttack ma && ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
+			CharacterItem itemOffHand = characterItemResolver.getOffHandWeapon(source);
+			String offHandSkill = itemOffHand.getItemId();
+			skillId = skillService.getTwoWeaponSkill(skillId, offHandSkill);
 		}
 		return Mono.just(context)
 			.zipWith(skillService.getSkill(source, skillId), (a, b) -> {

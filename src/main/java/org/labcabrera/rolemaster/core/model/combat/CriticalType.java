@@ -17,9 +17,9 @@ public enum CriticalType implements CodeNameEnum {
 
 	B("b", "B"),
 
-	LARGE_CREATURE("large-creature", "Large creature"),
+	HEAT("heat", "Heat"),
 
-	HEAT("heat", "Heat");
+	LARGE_CREATURE("large-creature", "Large creature");
 
 	private String code;
 

@@ -30,7 +30,7 @@ public class CharacterBaseMovementRatePostProcessor implements CharacterPostProc
 		int strideBonus = strideChartTable.getValue(character.getHeight());
 
 		int valueInFeets = baseValue + attributeBonus + strideBonus;
-		BigDecimal bd = new BigDecimal(valueInFeets).divide(new BigDecimal(3.281), 0, RoundingMode.HALF_EVEN);
+		BigDecimal bd = new BigDecimal(valueInFeets).divide(BigDecimal.valueOf(3.281d), 0, RoundingMode.HALF_EVEN);
 		int valueInMeters = bd.intValue();
 		character.setBaseMovementRate(valueInMeters);
 	}
