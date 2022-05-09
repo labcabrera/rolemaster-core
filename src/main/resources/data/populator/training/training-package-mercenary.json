@@ -56,10 +56,19 @@
 				"skills": 1
 			},
 			{
-				"key": "communications",
+				"key": "special-attacks",
+				"description": "Special attacks",
+				"categories": [
+					"special-attacks"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "communication",
 				"description": "Choice of one spoken language",
 				"categories": [
-					"communications"
+					"communication"
 				],
 				"ranks": 2,
 				"skills": 1
