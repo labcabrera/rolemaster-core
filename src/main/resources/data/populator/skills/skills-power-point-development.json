@@ -1,0 +1,12 @@
+[
+    {
+        "id": "power-point-development",
+        "name": "Power point development",
+        "loadOnNewCharacters": false,
+        "categoryId": "power-point-development",
+        "attributeBonus": [
+        ],
+        "progressionType": "race-power-points",
+        "description": ""
+    }
+]
