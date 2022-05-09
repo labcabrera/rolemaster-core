@@ -1,0 +1,67 @@
+[
+	{
+		"id": "crafter",
+		"name": "Crafter",
+		"type": "vocational",
+		"timeAcquisition": 28,
+		"fixedSkillCategories": {
+			"techical-trade-general": 3
+		},
+		"fixedSkills": {
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "technical-trade-general",
+				"description": "Technical trade general",
+				"categories": [
+					"technical-trade-general"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "technical-trade-vocational",
+				"description": "Technical trade vocational",
+				"categories": [
+					"technical-trade-vocational"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "crafts",
+				"description": "Crafts",
+				"categories": [
+					"crafts"
+				],
+				"ranks": 3,
+				"skills": 3
+			}
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 24,
+			"thief": 24,
+			"rogue": 24,
+			"warrior-monk": 24,
+			"layman": 24,
+			"magician": 24,
+			"illusionist": 24,
+			"cleric": 24,
+			"animist": 24,
+			"mentalist": 24,
+			"lay-healer": 24,
+			"healer": 24,
+			"mystic": 24,
+			"sorcerer": 24,
+			"ranger": 24,
+			"paladin": 24,
+			"monk": 24,
+			"dabbler": 24,
+			"bard": 24,
+			"magent": 24
+		}
+	}
+]
