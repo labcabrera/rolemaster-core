@@ -32,16 +32,8 @@
 		"name": "Guardian"
 	},
 	{
-		"id": "highwayman",
-		"name": "Highwayman"
-	},
-	{
 		"id": "martial-artist",
 		"name": "Martial Artist"
-	},
-	{
-		"id": "mercenary",
-		"name": "Mercenary"
 	},
 	{
 		"id": "philosopher",

@@ -126,6 +126,15 @@
         "description": "This skill provides a bonus for performing minor surgery, including sewing closed wounds, removing diseased or mangled limbs, bone setting and any other minor surgery operation."
     },
     {
+        "id": "military-organization",
+        "name": "Military Organization",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-professional",
+        "progressionType": "standard",
+        "description": ""
+    },
+    {
         "id": "administration",
         "name": "Administration",
         "type": "staticManeuver",
@@ -205,5 +214,14 @@
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
         "description": "These skills provide bonuses for perceiving and planning appropriate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately. The following is a partial listing of types of tactics: Battle Field, Naval, Sabotage, Siege, Small Unit."
+    },
+    {
+        "id": "siege-engineering",
+        "name": "Siege Engineering",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "technical-trade-vocational",
+        "progressionType": "standard",
+        "description": ""
     }
 ]
