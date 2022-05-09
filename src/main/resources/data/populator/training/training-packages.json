@@ -1,12 +1,5 @@
 [
     {
-        "id": "animal-friend",
-        "name": "Animal Friend",
-        "type": "lifestyle",
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "amateur-mage",
         "name": "Amateur Mage",
         "type": "lifestyle",
