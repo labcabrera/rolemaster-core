@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.npc;
+package org.labcabrera.rolemaster.core.model.character;
 
 import java.util.List;
 
@@ -13,11 +13,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NpcSpecialAttack {
+public class SpecialAttack {
 
 	private String name;
 
 	private String weaponTableId;
+
+	private SpecialAttackSize size;
 
 	private String skillId;
 

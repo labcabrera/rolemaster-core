@@ -9,11 +9,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.MissingWeaponData;
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 
-class WeaponTableTest {
+class WeaponTableServiceTest {
 
-	private WeaponTable weaponTable = new WeaponTable();
+	private WeaponTableService weaponTable = new WeaponTableService();
 
 	@Test
 	void test150() {
@@ -49,7 +49,7 @@ class WeaponTableTest {
 
 	@Test
 	void testInvalidWeapon() {
-		assertThrows(MissingWeaponData.class, () -> {
+		assertThrows(DataConsistenceException.class, () -> {
 			weaponTable.get("invalid-weapon-id", 20, 150);
 		});
 	}
