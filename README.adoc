@@ -24,13 +24,5 @@ It offers the following functionalities:
 * Spring Boot 2.x.
 * Reactor.
 * MongoDB.
-
-== Installation and configuration
-
-* TODO
-
-== Next steps
-
-* Authorization model using https://www.keycloak.org/[keycloak].
-* Tactic & combat services.
-* Initial data populating.
+* OAuth 2.0.
+* Keycloak.
