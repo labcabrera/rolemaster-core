@@ -20,13 +20,15 @@ public class SecurityConfiguration {
 	SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http,
 		Converter<Jwt, Mono<AbstractAuthenticationToken>> jwtAuthenticationConverter) {
 
-		http.authorizeExchange()
+		http.authorizeExchange()		
 			.pathMatchers("/").permitAll()
 			.pathMatchers("/swagger-ui.html").permitAll()
 			.pathMatchers("/webjars/**").permitAll()
 			.pathMatchers("/v3/api-docs/**").permitAll()
 			.pathMatchers("/actuator/**").permitAll()
 			.pathMatchers("/favicon.ico").permitAll()
+			
+			.pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
 			.pathMatchers(HttpMethod.GET, "/races**").permitAll()
 			.pathMatchers(HttpMethod.GET, "/professions**").permitAll()

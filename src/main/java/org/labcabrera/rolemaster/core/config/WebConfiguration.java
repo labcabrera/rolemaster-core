@@ -13,8 +13,9 @@ public class WebConfiguration {
 	CorsWebFilter corsFilter() {
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(false);
-		//config.addAllowedOrigin("http://localhost:8080");
-		//config.addAllowedOrigin("http://localhost:4200");
+		//TODO
+		config.addAllowedOrigin("http://localhost:8080");
+		config.addAllowedOrigin("http://localhost:4200");
 		config.addAllowedOrigin("*");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
