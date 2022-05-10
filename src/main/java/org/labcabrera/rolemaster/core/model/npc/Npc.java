@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.character.SpecialAttack;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 import org.springframework.data.annotation.Id;
@@ -59,9 +60,9 @@ public class Npc {
 	private Map<String, Integer> skills = new LinkedHashMap<>();
 
 	@Builder.Default
-	private List<NpcSpecialAttack> specialAttacks = new ArrayList<>();
+	private List<SpecialAttack> specialAttacks = new ArrayList<>();
 
-	private Integer baseMove;
+	private Integer baseMovementRate;
 
 	private Integer mmBonus;
 
@@ -73,6 +74,8 @@ public class Npc {
 
 	@Builder.Default
 	private NpcCriticalTable criticalTable = NpcCriticalTable.DEFAULT;
+
+	private Integer appearance;
 
 	private String universeId;
 

@@ -1,0 +1,38 @@
+[
+	{
+		"id": "curses",
+		"name": "Curses",
+		"realm": "channeling",
+		"type": "evil"
+	},
+	{
+		"id": "dark-channels",
+		"name": "Dark Channels",
+		"realm": "channeling",
+		"type": "evil"
+	},
+	{
+		"id": "dark-lore",
+		"name": "Dark Lore",
+		"realm": "channeling",
+		"type": "evil"
+	},
+	{
+		"id": "disease",
+		"name": "Disease",
+		"realm": "channeling",
+		"type": "evil"
+	},
+	{
+		"id": "necromancy",
+		"name": "Necromancy",
+		"realm": "channeling",
+		"type": "evil"
+	},
+	{
+		"id": "wounding",
+		"name": "Wounding",
+		"realm": "channeling",
+		"type": "evil"
+	}
+]

@@ -80,7 +80,7 @@ public class TacticalCharacterItemService {
 		//TODO check customization & talents
 		Weapon weapon = hasItemMap.getItemMap().get(item.getItemId()).as(Weapon.class);
 		List<WeaponRange> list = weapon.getRangeModifiers().stream().filter(e -> checkDistance(e, distance)).toList();
-		if (list.size() == 0) {
+		if (list.isEmpty()) {
 			throw new BadRequestException("Invalid distance " + distance);
 		}
 		else if (list.size() > 1) {

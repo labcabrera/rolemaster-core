@@ -1,14 +1,38 @@
 package org.labcabrera.rolemaster.core.model.combat;
 
-public enum CriticalType {
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 
-	NONE,
+import com.fasterxml.jackson.annotation.JsonValue;
 
-	S,
+import lombok.Getter;
 
-	P,
+@Getter
+public enum CriticalType implements CodeNameEnum {
 
-	K,
+	S("s", "S"),
 
-	B;
+	P("p", "P"),
+
+	K("k", "K"),
+
+	B("b", "B"),
+
+	HEAT("heat", "Heat"),
+
+	LARGE_CREATURE("large-creature", "Large creature");
+
+	private String code;
+
+	private String name;
+
+	private CriticalType(String code, String name) {
+		this.code = code;
+		this.name = name;
+	}
+
+	@JsonValue
+	@Override
+	public String getCode() {
+		return code;
+	}
 }

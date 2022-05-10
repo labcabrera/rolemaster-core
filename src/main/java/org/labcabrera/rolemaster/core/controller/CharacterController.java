@@ -1,11 +1,13 @@
 package org.labcabrera.rolemaster.core.controller;
 
+import org.labcabrera.rolemaster.core.dto.AddFlaw;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
+import org.labcabrera.rolemaster.core.dto.AddTalent;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.ApiError;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -52,7 +54,7 @@ public interface CharacterController {
 		@Parameter(description = "Character creation request", required = true) @RequestBody(content = @Content(examples = {
 			@ExampleObject(name = "Character creation example 01", ref = "#/components/examples/characterCreationExample01"),
 			@ExampleObject(name = "Character creation example 02", ref = "#/components/examples/characterCreationExample01")
-		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreationRequest request);
+		})) @org.springframework.web.bind.annotation.RequestBody CharacterCreation request);
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")
@@ -73,5 +75,15 @@ public interface CharacterController {
 	@Operation(summary = "Applies a training package to a character.")
 	Mono<CharacterInfo> addTrainingPackage(@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody TrainingPackageUpgrade request);
+
+	@PostMapping("/{id}/talents")
+	@Operation(summary = "Adds a talent to a character.")
+	Mono<CharacterInfo> addTalent(@PathVariable("id") String characterId,
+		@org.springframework.web.bind.annotation.RequestBody AddTalent request);
+
+	@PostMapping("/{id}/flaws")
+	@Operation(summary = "Adds a flaw to a character.")
+	Mono<CharacterInfo> addFlaw(@PathVariable("id") String characterId,
+		@org.springframework.web.bind.annotation.RequestBody AddFlaw request);
 
 }

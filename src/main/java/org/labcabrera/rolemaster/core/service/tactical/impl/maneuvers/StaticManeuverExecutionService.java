@@ -3,11 +3,11 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.StaticManeuverExecution;
+import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverResult;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionStaticManeuver;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.table.maneuver.StaticManeuverResult;
 import org.labcabrera.rolemaster.core.table.maneuver.StaticManeuverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class StaticManeuverExecutionService {
 	private StaticManeuversBonusProcessor bonusProcessor;
 
 	public Mono<TacticalActionStaticManeuver> execute(TacticalActionStaticManeuver action, StaticManeuverExecution execution) {
-		action.setDificulty(execution.getDificulty());
+		action.setDifficulty(execution.getDifficulty());
 		int roll = execution.getRoll().getResult();
 		Map<String, Integer> modifiers = execution.getModifiers();
 		return characterRepository.findById(action.getSource())

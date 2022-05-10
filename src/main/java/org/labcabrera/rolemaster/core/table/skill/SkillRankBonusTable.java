@@ -30,13 +30,13 @@ class SkillRankBonusTable {
 		case NONE:
 			return 0;
 		case CATEGORY:
-			return categoryTable.apply(ranks);
+			return categoryTable.applyAsInt(ranks);
 		case STANDARD:
-			return standardTable.apply(ranks);
+			return standardTable.applyAsInt(ranks);
 		case COMBINED:
-			return combinedTable.apply(ranks);
+			return combinedTable.applyAsInt(ranks);
 		case LIMITED:
-			return limitedTable.apply(ranks);
+			return limitedTable.applyAsInt(ranks);
 		case SPECIAL, RACE_POWER_POINTS, RACE_BODY_DEVELOPMENT:
 			return specialTable.apply(ranks, mask);
 		default:

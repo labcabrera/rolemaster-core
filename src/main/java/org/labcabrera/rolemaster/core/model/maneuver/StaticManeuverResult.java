@@ -9,16 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ManeuverModifier {
+public class StaticManeuverResult {
 
-	private Integer modifier;
+	private String name;
 
-	private String description;
+	private Integer successPercent;
 
-	private ModifierType type;
-
-	public enum ModifierType {
-		DIFICULTY, HP
-	}
+	private String text;
 
 }

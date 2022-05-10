@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.item.Item;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
@@ -28,6 +29,8 @@ public class AttackContext extends TacticalContext implements HasItemMap {
 	private TacticalActionAttack action;
 
 	private TacticalCharacter source;
+
+	private CharacterInfo sourceCharacterInfo;
 
 	@Builder.Default
 	private Map<AttackTargetType, TacticalCharacter> targets = new EnumMap<>(AttackTargetType.class);

@@ -10,5 +10,8 @@ public enum CriticalSeverity {
 
 	D,
 
-	E
+	E,
+
+	/** An F-severity critical indicates an E-critical roll and a C-critical roll. */
+	F;
 }

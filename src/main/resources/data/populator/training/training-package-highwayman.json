@@ -1,0 +1,82 @@
+[
+	{
+		"id": "highwayman",
+		"name": "Highwayman",
+		"type": "vocational",
+		"timeAcquisition": 35,
+		"fixedSkillCategories": {
+			"lore-general": 3,
+			"outdoor-environmental": 4
+		},
+		"fixedSkills": {
+			"alertness": 1,
+			"body-development": 1
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "region-lore",
+				"description": "Region lore",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "outdoor-environment",
+				"description": "Outdoor environment",
+				"categories": [
+					"outdoor-environment"
+				],
+				"ranks": 4,
+				"skills": 4
+			}
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 19,
+			"thief": 21,
+			"rogue": 20,
+			"warrior-monk": 22,
+			"layman": 22,
+			"magician": 30,
+			"illusionist": 30,
+			"cleric": 27,
+			"animist": 24,
+			"mentalist": 29,
+			"lay-healer": 29,
+			"healer": 28,
+			"mystic": 30,
+			"sorcerer": 30,
+			"ranger": 18,
+			"paladin": 22,
+			"monk": 25,
+			"dabbler": 23,
+			"bard": 23,
+			"magent": 23
+		}
+	}
+]

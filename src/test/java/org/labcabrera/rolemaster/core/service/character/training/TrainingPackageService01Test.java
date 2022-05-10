@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.RankType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ class TrainingPackageService01Test {
 
 	@Test
 	void testCreation() throws IOException {
-		CharacterCreationRequest request = readRequest();
+		CharacterCreation request = readRequest();
 
 		CharacterInfo character = service.create(request).share().block();
 
@@ -119,10 +119,10 @@ class TrainingPackageService01Test {
 		assertEquals(2, character.getSkill("brawling").get().getRanks().get(RankType.TRAINING_PACKAGE));
 	}
 
-	private CharacterCreationRequest readRequest() throws IOException {
+	private CharacterCreation readRequest() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
 			.getResourceAsStream("openapi/examples/character-creation-example-01.json")) {
-			return objectMapper.readerFor(CharacterCreationRequest.class).readValue(in);
+			return objectMapper.readerFor(CharacterCreation.class).readValue(in);
 		}
 	}
 

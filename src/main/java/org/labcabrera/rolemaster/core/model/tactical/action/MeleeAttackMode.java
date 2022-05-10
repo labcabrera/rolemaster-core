@@ -14,6 +14,8 @@ public enum MeleeAttackMode implements CodeNameEnum {
 
 	TWO_WEAPONS("two-weapons", "Two weapons"),
 
+	SPECIAL_ATTACK("special-attack", "Special attack"),
+
 	PARRY("parry", "Parry");
 
 	private String code;

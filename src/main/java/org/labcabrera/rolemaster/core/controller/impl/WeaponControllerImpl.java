@@ -6,7 +6,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import org.labcabrera.rolemaster.core.controller.WeaponController;
-import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
+import org.labcabrera.rolemaster.core.table.weapon.WeaponTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 public class WeaponControllerImpl implements WeaponController {
 
 	@Autowired
-	private WeaponTable weaponTable;
+	private WeaponTableService weaponTable;
 
 	@Override
 	public Mono<List<String>> getLoadedWeapons() {

@@ -14,7 +14,11 @@ public class SpellListPopulator extends AbstractJsonPopulator<SpellList> {
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
-			"data/populator/spells/channeling/channeling-open-lists.json");
+			"data/populator/spells/channeling/channeling-closed-lists.json",
+			"data/populator/spells/channeling/channeling-evil-lists.json",
+			"data/populator/spells/channeling/channeling-open-lists.json",
+			"data/populator/spells/channeling/channeling-profession-base-lists.json"
+			);
 	}
 
 	@Override

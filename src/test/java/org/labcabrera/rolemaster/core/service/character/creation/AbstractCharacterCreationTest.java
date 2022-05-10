@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,7 +25,7 @@ public abstract class AbstractCharacterCreationTest {
 	void testCreation() throws IOException {
 		String json = getRequestAsJson();
 
-		CharacterCreationRequest request = objectMapper.readerFor(CharacterCreationRequest.class).readValue(json);
+		CharacterCreation request = objectMapper.readerFor(CharacterCreation.class).readValue(json);
 
 		CharacterInfo characterInfo = service.create(request).share().block();
 

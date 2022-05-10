@@ -19,6 +19,7 @@ class CharacterCreationServiceHalflingsThiefTest extends AbstractCharacterCreati
 		return """
 				{
 				"name": "Test Halflings Thief",
+				"universeId": "generic",
 				"level": 1,
 				"raceId": "halfling",
 				"professionId": "thief",

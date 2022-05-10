@@ -23,4 +23,7 @@ public class CharacterArmor {
 	@Builder.Default
 	private Integer armorQuPenalty = 0;
 
+	@Builder.Default
+	private Integer skillAT = 1;
+
 }

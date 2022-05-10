@@ -4,7 +4,7 @@
 		"name": "Language Spoken †",
 		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
-		"categoryId": "communication",
+		"categoryId": "communications",
 		"progressionType": "standard",
 		"customizableOptions": 1,
         "customizationRestriction": "language",
@@ -15,7 +15,7 @@
 		"name": "Language Written †",
 		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
-		"categoryId": "communication",
+		"categoryId": "communications",
 		"progressionType": "standard",
 		"customizableOptions": 1,
         "customizationRestriction": "language",
@@ -26,7 +26,7 @@
 		"name": "Lip Reading",
 		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
-		"categoryId": "communication",
+		"categoryId": "communications",
 		"progressionType": "standard",
 		"description": "This skill provides a bonus for reading lips and sign language. Lip reading is only possible with languages that the lip reader knows and then only to the known spoken skill rank. Special creatures (e.g., the Chicken People) might cause a penalty to be added to the character’s bonus due to distinct lack of lips. Line of sight must be maintained with the subject’s mouth. Skill is halved for reading the lips of creatures not of the same general type. Types: Human, Reptile, Avian, Non-Human Mammalian, etc."
 	},
@@ -35,7 +35,7 @@
 		"name": "Signaling",
 		"type": "staticManeuver",
 		"loadOnNewCharacters": false,
-		"categoryId": "communication",
+		"categoryId": "communications",
 		"progressionType": "standard",
 		"description": "This skill provides a bonus when using any form of signal communications. This skill is a specialized form of language and language guidelines apply."
 	}

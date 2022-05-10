@@ -1,0 +1,113 @@
+[
+	{
+		"id": "mercenary",
+		"name": "Mercenary",
+		"type": "lifestyle",
+		"timeAcquisition": 80,
+		"fixedSkillCategories": {
+			"armor-light": 1,
+			"athletic-brawn": 1,
+			"technical-trade-general": 1
+		},
+		"fixedSkills": {
+			"body-development": 2,
+			"military-organization": 1
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 2
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "athletic-brawn",
+				"description": "Athletic brawn",
+				"categories": [
+					"athletic-brawn"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "combat-maneuvers",
+				"description": "Combat Maneuvers",
+				"categories": [
+					"combat-maneuvers"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "special-attacks",
+				"description": "Special attacks",
+				"categories": [
+					"special-attacks"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "communication",
+				"description": "Choice of one spoken language",
+				"categories": [
+					"communication"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "technical-trade-general",
+				"description": "Technical-trade general",
+				"categories": [
+					"technical-trade-general"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"statGains": [
+			"co"
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 28,
+			"thief": 30,
+			"rogue": 29,
+			"warrior-monk": 33,
+			"layman": 31,
+			"magician": 44,
+			"illusionist": 44,
+			"cleric": 36,
+			"animist": 35,
+			"mentalist": 38,
+			"lay-healer": 38,
+			"healer": 39,
+			"mystic": 40,
+			"sorcerer": 44,
+			"ranger": 31,
+			"paladin": 29,
+			"monk": 35,
+			"dabbler": 32,
+			"bard": 32,
+			"magent": 31
+		}
+	}
+]

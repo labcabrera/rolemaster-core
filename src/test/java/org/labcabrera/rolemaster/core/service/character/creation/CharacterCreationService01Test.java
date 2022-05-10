@@ -13,7 +13,7 @@ import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.RankType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
@@ -42,7 +42,7 @@ class CharacterCreationService01Test {
 
 	@Test
 	void testCreation() throws IOException {
-		CharacterCreationRequest request = readRequest();
+		CharacterCreation request = readRequest();
 
 		CharacterInfo characterInfo = service.create(request).share().block();
 
@@ -118,10 +118,10 @@ class CharacterCreationService01Test {
 		assertEquals(Arrays.asList(4, 12), characterInfo.getSkill(checkSkill).get().getDevelopmentCost());
 	}
 
-	private CharacterCreationRequest readRequest() throws IOException {
+	private CharacterCreation readRequest() throws IOException {
 		try (InputStream in = Thread.currentThread().getContextClassLoader()
 			.getResourceAsStream("openapi/examples/character-creation-example-01.json")) {
-			return objectMapper.readerFor(CharacterCreationRequest.class).readValue(in);
+			return objectMapper.readerFor(CharacterCreation.class).readValue(in);
 		}
 	}
 

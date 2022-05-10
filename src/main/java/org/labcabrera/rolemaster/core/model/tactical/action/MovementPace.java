@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
@@ -9,17 +9,17 @@ import lombok.Getter;
 
 public enum MovementPace implements CodeNameEnum {
 
-	WALK("walk", "Walk", 1.0, ManeuverDificulty.NONE),
+	WALK("walk", "Walk", 1.0, ManeuverDifficulty.NONE),
 
-	FAST_WALK("fastWalk", "Fast walk", 1.5, ManeuverDificulty.NONE),
+	FAST_WALK("fastWalk", "Fast walk", 1.5, ManeuverDifficulty.NONE),
 
-	RUN("run", "Run", 1.0, ManeuverDificulty.NONE),
+	RUN("run", "Run", 1.0, ManeuverDifficulty.NONE),
 
-	SPRINT("sprint", "Spring", 1.0, ManeuverDificulty.EASY),
+	SPRINT("sprint", "Spring", 1.0, ManeuverDifficulty.EASY),
 
-	FAST_SPRINT("fastSprint", "Fast sprint", 1.0, ManeuverDificulty.LIGHT),
+	FAST_SPRINT("fastSprint", "Fast sprint", 1.0, ManeuverDifficulty.LIGHT),
 
-	DASH("dash", "Dash", 1.0, ManeuverDificulty.MEDIUM);
+	DASH("dash", "Dash", 1.0, ManeuverDifficulty.MEDIUM);
 
 	private String code;
 
@@ -30,13 +30,13 @@ public enum MovementPace implements CodeNameEnum {
 	private Double multiplier;
 
 	@Getter
-	private ManeuverDificulty dificulty;
+	private ManeuverDifficulty difficulty;
 
-	MovementPace(String name, String description, Double multiplier, ManeuverDificulty dificulty) {
+	MovementPace(String name, String description, Double multiplier, ManeuverDifficulty difficulty) {
 		this.code = name;
 		this.name = description;
 		this.multiplier = multiplier;
-		this.dificulty = dificulty;
+		this.difficulty = difficulty;
 	}
 
 	@JsonValue

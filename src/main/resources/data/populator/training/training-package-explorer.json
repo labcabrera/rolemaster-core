@@ -1,0 +1,90 @@
+[
+	{
+		"id": "explorer",
+		"name": "Explorer",
+		"type": "lifestyle",
+		"timeAcquisition": 66,
+		"fixedSkillCategories": {
+			"athletic-gymnastic": 1,
+			"athletic-endurance": 1,
+			"awareness-searching": 1,
+			"lore-general": 2,
+			"technical-trade-general": 3
+		},
+		"fixedSkills": {
+			"climbing": 1,
+			"swimming": 1,
+			"observation": 1
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "technical-trade-general",
+				"description": "Technical trade general",
+				"categories": [
+					"technical-trade-general"
+				],
+				"ranks": 2,
+				"skills": 2
+			}
+		],
+		"statGains": [
+			"co"
+		],
+		"statGainsSelection": 1,
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 27,
+			"thief": 27,
+			"rogue": 27,
+			"warrior-monk": 26,
+			"layman": 28,
+			"magician": 31,
+			"illusionist": 31,
+			"cleric": 30,
+			"animist": 30,
+			"mentalist": 29,
+			"lay-healer": 29,
+			"healer": 30,
+			"mystic": 30,
+			"sorcerer": 31,
+			"ranger": 28,
+			"paladin": 28,
+			"monk": 27,
+			"dabbler": 28,
+			"bard": 28,
+			"magent": 28
+		}
+	}
+]

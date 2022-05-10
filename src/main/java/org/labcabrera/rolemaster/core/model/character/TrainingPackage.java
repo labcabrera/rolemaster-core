@@ -38,6 +38,12 @@ public class TrainingPackage {
 
 	private List<SelectableSkill> selectableSkillList;
 
+	private List<SelectableSkillCustomization> selectableSkillCustomizations;
+
+	private List<AttributeType> statGains;
+
+	private Integer statGainsSelection;
+
 	private String startingMoney;
 
 	@Builder.Default

@@ -19,6 +19,7 @@ class CharacterCreationServiceDwarfLaymanTest extends AbstractCharacterCreationT
 		return """
 				{
 				"name": "Test Dwarves Layman",
+				"universeId": "generic",
 				"level": 1,
 				"raceId": "dwarf",
 				"professionId": "layman",

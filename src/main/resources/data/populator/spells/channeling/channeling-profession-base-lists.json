@@ -1,0 +1,254 @@
+[
+	{
+		"id": "animal-mastery",
+		"name": "Animal Mastery",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "animist"
+	},
+	{
+		"id": "herb-mastery",
+		"name": "Herb Mastery",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "animist"
+	},
+	{
+		"id": "natures-lore",
+		"name": "Nature’s Lore",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "animist"
+	},
+	{
+		"id": "natures-move-senses",
+		"name": "Nature’s Move./Senses",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "animist"
+	},
+	{
+		"id": "natures-protection",
+		"name": "Nature’s Protection",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "animist"
+	},
+	{
+		"id": "plant-mastery",
+		"name": "Plant Mastery",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "animist"
+	},
+	{
+		"id": "Channels",
+		"name": "channels",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "cleric"
+	},
+	{
+		"id": "communal-ways",
+		"name": "Communal Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "cleric"
+	},
+	{
+		"id": "life-mastery",
+		"name": "Life Mastery",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "cleric"
+	},
+	{
+		"id": "protections",
+		"name": "Protections",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "cleric"
+	},
+	{
+		"id": "replusions",
+		"name": "Replusions",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "cleric"
+	},
+	{
+		"id": "summons",
+		"name": "Summons",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "cleric"
+	},
+	{
+		"id": "communion",
+		"name": "Communion",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "paladin"
+	},
+	{
+		"id": "exorcism",
+		"name": "Exorcism",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "paladin"
+	},
+	{
+		"id": "holy-arms",
+		"name": "Holy Arms",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "paladin"
+	},
+	{
+		"id": "holy-shields",
+		"name": "Holy Shields",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "paladin"
+	},
+	{
+		"id": "inspiring-ways",
+		"name": "Inspiring Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "paladin"
+	},
+	{
+		"id": "inner-walls",
+		"name": "Inner Walls",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "ranger"
+	},
+	{
+		"id": "inner-walls",
+		"name": "Inner Walls",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "ranger"
+	},
+	{
+		"id": "moving-ways",
+		"name": "Moving Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "ranger"
+	},
+	{
+		"id": "natures-guises",
+		"name": "Nature’s Guises",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "ranger"
+	},
+	{
+		"id": "natures-summons",
+		"name": "Nature’s Summons",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "ranger"
+	},
+	{
+		"id": "natures-way",
+		"name": "Nature’s Way",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "ranger"
+	},
+	{
+		"id": "path-mastery",
+		"name": "Path Mastery",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "ranger"
+	},
+	{
+		"id": "blood-ways",
+		"name": "Blood Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "healer"
+	},
+	{
+		"id": "bone-ways",
+		"name": "Bone Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "healer"
+	},
+	{
+		"id": "cleansing",
+		"name": "Cleansing",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "healer"
+	},
+	{
+		"id": "muscle-ways",
+		"name": "Muscle Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "healer"
+	},
+	{
+		"id": "organ-ways",
+		"name": "Organ Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "healer"
+	},
+	{
+		"id": "surface-ways",
+		"name": "Surface Ways",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "healer"
+	},
+	{
+		"id": "flesh-destruction",
+		"name": "Flesh Destruction",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "sorcerer"
+	},
+	{
+		"id": "fluid-destruction",
+		"name": "Fluid Destruction",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "sorcerer"
+	},
+	{
+		"id": "gas-destruction",
+		"name": "Gas Destruction",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "sorcerer"
+	},
+	{
+		"id": "mind-destruction",
+		"name": "Mind Destruction",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "sorcerer"
+	},
+	{
+		"id": "solid-destruction",
+		"name": "Solid Destruction",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "sorcerer"
+	},
+	{
+		"id": "soul-destruction",
+		"name": "Soul Destruction",
+		"realm": "channeling",
+		"type": "base",
+		"professionId": "sorcerer"
+	}
+]

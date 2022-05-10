@@ -9,7 +9,7 @@ import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovingManeuverDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MovingManeuverExecution;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
@@ -51,7 +51,7 @@ class MovingManeuverTest extends AbstractTacticalTest {
 		assertEquals(TacticalActionState.PENDING, actionDeclared.getState());
 
 		MovingManeuverExecution execution = MovingManeuverExecution.builder()
-			.dificulty(ManeuverDificulty.MEDIUM)
+			.difficulty(ManeuverDifficulty.MEDIUM)
 			.roll(OpenRoll.of(50))
 			.build();
 

@@ -1,0 +1,83 @@
+[
+	{
+		"id": "spy",
+		"name": "Spy",
+		"type": "vocational",
+		"timeAcquisition": 44,
+		"fixedSkillCategories": {
+			"subterfuge-stealth": 4,
+			"subterfuge-mechanics": 1,
+			"awareness-searching": 2,
+			"communications": 2,
+			"influence": 2
+		},
+		"fixedSkills": {
+			"alertness": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "subterfuge-stealth",
+				"description": "Subterfuge stealth",
+				"categories": [
+					"subterfuge-stealth"
+				],
+				"ranks": 4,
+				"skills": 4
+			},
+			{
+				"key": "subterfuge-mechanics",
+				"description": "Subterfuge mechanics",
+				"categories": [
+					"subterfuge-mechanics"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "communications",
+				"description": "communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "influence",
+				"description": "Influence",
+				"categories": [
+					"influence"
+				],
+				"ranks": 2,
+				"skills": 2
+			}
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 28,
+			"thief": 22,
+			"rogue": 23,
+			"warrior-monk": 28,
+			"layman": 27,
+			"magician": 33,
+			"illusionist": 44,
+			"cleric": 30,
+			"animist": 30,
+			"mentalist": 33,
+			"lay-healer": 35,
+			"healer": 35,
+			"mystic": 27,
+			"sorcerer": 34,
+			"ranger": 25,
+			"paladin": 32,
+			"monk": 38,
+			"dabbler": 24,
+			"bard": 25,
+			"magent": 18
+		}
+	}
+]

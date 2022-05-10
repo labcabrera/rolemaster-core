@@ -1,9 +1,63 @@
 [
 	{
+		"id": "barriew-law",
+		"name": "Barrier Law",
+		"realm": "channeling",
+		"type": "open"
+	},
+	{
 		"id": "concussions-ways",
 		"name": "Concussion's Ways",
 		"realm": "channeling",
 		"type": "open"
-		
+	},
+	{
+		"id": "detection-mastery",
+		"name": "Detection Mastery",
+		"realm": "channeling",
+		"type": "open"
+	},
+	{
+		"id": "lights-way",
+		"name": "Light's Way",
+		"realm": "channeling",
+		"type": "open"
+	},
+	{
+		"id": "lofty-movements",
+		"name": "Lofty Movements",
+		"realm": "channeling",
+		"type": "open"
+	}
+	,
+	{
+		"id": "natures-law",
+		"name": "Nature’s Law",
+		"realm": "channeling",
+		"type": "open"
+	},
+	{
+		"id": "purifications",
+		"name": "Purifications",
+		"realm": "channeling",
+		"type": "open"
+	},
+	{
+		"id": "sounds-way",
+		"name": "Sound’s Way",
+		"realm": "channeling",
+		"type": "open"
+	},
+	{
+		"id": "spell-defense",
+		"name": "Spell Defense",
+		"realm": "channeling",
+		"type": "open"
+	},
+	{
+		"id": "weather-ways",
+		"name": "Weather Ways",
+		"realm": "channeling",
+		"type": "open"
 	}
 ]

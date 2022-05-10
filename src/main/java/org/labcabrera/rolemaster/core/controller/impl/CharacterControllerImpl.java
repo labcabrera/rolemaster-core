@@ -2,12 +2,15 @@ package org.labcabrera.rolemaster.core.controller.impl;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.controller.CharacterController;
+import org.labcabrera.rolemaster.core.dto.AddFlaw;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
+import org.labcabrera.rolemaster.core.dto.AddTalent;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreationRequest;
+import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
@@ -44,7 +47,7 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Mono<CharacterInfo> create(@Valid CharacterCreationRequest request) {
+	public Mono<CharacterInfo> create(@Valid CharacterCreation request) {
 		return creationService.create(request);
 	}
 
@@ -71,6 +74,16 @@ public class CharacterControllerImpl implements CharacterController {
 	@Override
 	public Mono<CharacterInfo> addTrainingPackage(String characterId, TrainingPackageUpgrade request) {
 		return trainingPackageUpgradeService.upgrade(characterId, request);
+	}
+
+	@Override
+	public Mono<CharacterInfo> addTalent(String characterId, AddTalent request) {
+		throw new NotImplementedException("Not implemented.");
+	}
+
+	@Override
+	public Mono<CharacterInfo> addFlaw(String characterId, AddFlaw request) {
+		throw new NotImplementedException("Not implemented.");
 	}
 
 }

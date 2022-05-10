@@ -20,6 +20,7 @@ class CharacterCreationServiceOrkFighterTest extends AbstractCharacterCreationTe
 		return """
 				{
 				"name": "Test Orcs Fighter",
+				"universeId": "generic",
 				"level": 1,
 				"raceId": "orc",
 				"professionId": "fighter",

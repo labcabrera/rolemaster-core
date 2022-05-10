@@ -1,0 +1,83 @@
+[
+	{
+		"id": "animal-friend",
+		"name": "Animal Friend",
+		"type": "lifestyle",
+		"timeAcquisition": 102,
+		"fixedSkillCategories": {
+			"awareness-searching": 2,
+			"lore-general": 4,
+			"outdoor-environmental": 2,
+			"outdoor-animal": 4,
+			"subterfuge-stealth": 2
+		},
+		"fixedSkills": {
+			"reading-tracks": 1,
+			"tracking": 1,
+			"stalking": 1,
+			"hiding": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "outdoor-animal",
+				"description": "Outdoor animal",
+				"categories": [
+					"outdoor-animal"
+				],
+				"ranks": 4,
+				"skills": 3
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "fauna-lore",
+				"ranks": 2
+			},
+			{
+				"skillId": "flora-lore",
+				"ranks": 1
+			},
+			{
+				"skillId": "region-lore",
+				"ranks": 1
+			}
+		],
+		"statGains": [
+			"em"
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 26,
+			"thief": 26,
+			"rogue": 24,
+			"warrior-monk": 28,
+			"layman": 28,
+			"magician": 33,
+			"illusionist": 31,
+			"cleric": 31,
+			"animist": 22,
+			"mentalist": 33,
+			"lay-healer": 33,
+			"healer": 33,
+			"mystic": 30,
+			"sorcerer": 33,
+			"ranger": 22,
+			"paladin": 30,
+			"monk": 28,
+			"dabbler": 28,
+			"bard": 28,
+			"magent": 26
+		}
+	}
+]

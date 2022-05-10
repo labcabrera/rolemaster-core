@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDificulty;
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +25,7 @@ public class StaticManeuverExecution extends TacticalActionExecution {
 	@NotNull
 	private OpenRoll roll;
 
-	private ManeuverDificulty dificulty;
+	private ManeuverDifficulty difficulty;
 
 	@Builder.Default
 	private Map<String, Integer> modifiers = new LinkedHashMap<>();

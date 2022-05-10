@@ -15,8 +15,13 @@ public class TrainingPackagePopulator extends AbstractJsonPopulator<TrainingPack
 	protected List<String> getResources() {
 		return Arrays.asList(
 			"data/populator/training/training-package-adventurer.json",
+			"data/populator/training/training-package-animal-friend.json",
 			"data/populator/training/training-package-assassin.json",
-			
+			"data/populator/training/training-package-crafter.json",
+			"data/populator/training/training-package-explorer.json",
+			"data/populator/training/training-package-highwayman.json",
+			"data/populator/training/training-package-mercenary.json",
+			"data/populator/training/training-package-spy.json",
 			"data/populator/training/training-packages.json",
 			"data/populator/training/training-packages-character-law.json");
 	}

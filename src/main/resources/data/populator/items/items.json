@@ -22,11 +22,11 @@
 			"bronze": 2
 		},
 		"commonWeight": {
-			"min": -1,
-			"max": -1
+			"min": 1,
+			"max": 1.5
 		},
 		"craftDuration": 24,
-		"description": "Leather or canvas. Holds 20 lbs; 1 cubic foot."
+		"description": "Leather or canvas. Holds 10kg; 30dm cubic."
 	},
 	{
 		"id": "bedroll-light",
@@ -141,7 +141,16 @@
 	{
 		"id": "coat",
 		"name": "Coat",
-		"type": "miscellaneous"
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 15
+		},
+		"commonWeight": {
+			"min": 2.25,
+			"max": 4
+		},
+		"craftDuration": 28,
+		"description": "Leather or heavy linen."
 	},
 	{
 		"id": "crown",
@@ -242,6 +251,14 @@
 		"id": "padded-undercoat",
 		"name": "Padded undercoat",
 		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 6
+		},
+		"commonWeight": {
+			"min": 1,
+			"max": 2
+		},
+		"craftDuration": 48,		
 		"description": "Heavy linen or wool."
 	},
 	{
@@ -285,5 +302,250 @@
 		},
 		"craftDuration": 24,
 		"description": "Linen."
+	},
+	{
+		"id": "papper",
+		"name": "Papper",
+		"type": "miscellaneous",
+		"craftDuration": 2.4,
+		"description": "10 sheets. 12\" x 6\"."
+	},
+	{
+		"id": "parchment",
+		"name": "Parchment",
+		"type": "miscellaneous",
+		"craftDuration": 2.4,
+		"description": "10 sheets. 12\" x 6\". Very durable"
+	},
+	{
+		"id": "pegs",
+		"name": "Pegs",
+		"type": "miscellaneous",
+		"craftDuration": 0.2,
+		"description": "Wood."
+	},
+	{
+		"id": "pitons",
+		"name": "Pitons",
+		"type": "miscellaneous",
+		"craftDuration": 2.4,
+		"description": "Iron."
+	},
+	{
+		"id": "plank",
+		"name": "Plank",
+		"type": "miscellaneous",
+		"craftDuration": 4,
+		"description": "Wood. 10' x 6' x 2\". Bears 350 lbs."
+	},
+	{
+		"id": "pole",
+		"name": "Pole",
+		"type": "miscellaneous",
+		"craftDuration": 3,
+		"description": "Wood. 10'."
+	},
+	{
+		"id": "pot-cooking",
+		"name": "Pot (cooking)",
+		"type": "miscellaneous",
+		"craftDuration": 24,
+		"description": "Iron. Holds 2 gallons."
+	},
+	{
+		"id": "quill-pens",
+		"name": "Quill-pens",
+		"type": "miscellaneous",
+		"craftDuration": 0.2,
+		"description": "Goose feather quills."
+	},
+	{
+		"id": "quiver",
+		"name": "Quiver",
+		"type": "miscellaneous",
+		"craftDuration": 24,
+		"description": "Holds 20 arrows/bolts."
+	},
+	{
+		"id": "rope",
+		"name": "Rope",
+		"type": "miscellaneous",
+		"craftDuration": 72,
+		"description": "Hemp. 50'."
+	},
+	{
+		"id": "rope-superior",
+		"name": "Rope (superior)",
+		"type": "miscellaneous",
+		"craftDuration": 120,
+		"description": "Reinforced hemp. 50'."
+	},
+	{
+		"id": "sack",
+		"name": "Sack",
+		"type": "miscellaneous",
+		"craftDuration": 2,
+		"description": "Holds 50 lbs. 3 cubic feet."
+	},
+	{
+		"id": "saddle",
+		"name": "Saddle",
+		"type": "miscellaneous",
+		"craftDuration": 144,
+		"description": "Includes stirrups, blanket."
+	},
+	{
+		"id": "saddle-bag",
+		"name": "Saddle bag",
+		"type": "miscellaneous",
+		"craftDuration": 48,
+		"description": "Holds 15 lbs. 1.5 cubic feet."
+	},
+	{
+		"id": "saw",
+		"name": "Saw",
+		"type": "miscellaneous",
+		"craftDuration": 48,
+		"description": "Iron. 24\" wood-tool."
+	},
+	{
+		"id": "scabbard-belt",
+		"name": "Scabbard (belt)",
+		"type": "miscellaneous",
+		"craftDuration": 24,
+		"description": "Holds one 1-h weapon."
+	},
+	{
+		"id": "scabbard-shoulder",
+		"name": "Scabbard (shoulder)",
+		"type": "miscellaneous",
+		"craftDuration": 24,
+		"description": "Holds one 2-h weapon."
+	},
+	{
+		"id": "shirt",
+		"name": "Shirt",
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 3
+		},
+		"commonWeight": {
+			"min": 0.5,
+			"max": 0.5
+		},
+		"craftDuration": 36,
+		"description": "Linen."
+	},
+	{
+		"id": "spade",
+		"name": "Spade",
+		"type": "miscellaneous",
+		"craftDuration": 24,
+		"description": "Iron. Wood shaft."
+	},
+	{
+		"id": "sundial",
+		"name": "Sundial",
+		"type": "miscellaneous",
+		"craftDuration": 48,
+		"description": "Iron. Gives approximate time."
+	},
+	{
+		"id": "surcoat",
+		"name": "Surcoat",
+		"type": "miscellaneous",
+		"craftDuration": 36,
+		"description": "Linen."
+	},
+	{
+		"id": "tarp",
+		"name": "Tarp",
+		"type": "miscellaneous",
+		"craftDuration": 2,
+		"description": "Canvas. 5' x 8'."
+	},
+	{
+		"id": "tent",
+		"name": "Tent",
+		"type": "miscellaneous",
+		"commonCost": {
+			"silver": 2
+		},
+		"commonWeight": {
+			"min": 3.5,
+			"max": 4.5
+		},
+		"craftDuration": 48,
+		"description": "Canvas. 1.5 x 2.5m. Two man."
+	},
+	{
+		"id": "tinderbox",
+		"name": "Tinderbox",
+		"type": "miscellaneous",
+		"craftDuration": 12,
+		"description": "Wood. Enough for 7 fires."
+	},
+	{
+		"id": "torch",
+		"name": "Torch",
+		"type": "miscellaneous",
+		"craftDuration": 1,
+		"description": "Lights 20' diameter. (6 hrs)."
+	},
+	{
+		"id": "vial",
+		"name": "Vial",
+		"type": "miscellaneous",
+		"craftDuration": 2,
+		"description": "Glass. Holds 2 oz."
+	},
+	{
+		"id": "water-skin",
+		"name": "Water skin",
+		"type": "miscellaneous",
+		"commonCost": {
+			"copper": 1
+		},
+		"commonWeight": {
+			"min": 0.5,
+			"max": 0.5
+		},
+		"craftDuration": 6,
+		"description": "Holds 0.5l."
+	},
+	{
+		"id": "weapon-belt",
+		"name": "Weapon belt",
+		"type": "miscellaneous",
+		"craftDuration": 12,
+		"description": "Holds 2 scabbards, 3 pouches."
+	},
+	{
+		"id": "wedge-staying",
+		"name": "Wedge (staying)",
+		"type": "miscellaneous",
+		"craftDuration": 1,
+		"description": "Hardwood."
+	},
+	{
+		"id": "wire",
+		"name": "Wire",
+		"type": "miscellaneous",
+		"commonCost": {
+			"bronze": 9
+		},
+		"commonWeight": {
+			"min": 1.5,
+			"max": 1.5
+		},
+		"craftDuration": 5,
+		"description": "10 gauge. Iron. 30m."
+	},
+	{
+		"id": "whistle",
+		"name": "Whistle",
+		"type": "miscellaneous",
+		"craftDuration": 24,
+		"description": "Wood/iron. 4\". Range 1+ mi."
 	}
 ]

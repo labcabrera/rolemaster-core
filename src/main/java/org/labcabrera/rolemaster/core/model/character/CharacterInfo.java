@@ -34,6 +34,9 @@ public class CharacterInfo {
 	@Schema(description = "Character name.", required = true, example = "Bilbo Baggins")
 	private String name;
 
+	@Schema(description = "Universe identifier.", required = true, example = "middle-earth")
+	private String universeId;
+
 	@Schema(description = "Character realm.", required = true, example = "channeling")
 	private Realm realm;
 
@@ -109,6 +112,13 @@ public class CharacterInfo {
 
 	@Builder.Default
 	private CharacterWeight weight = new CharacterWeight();
+
+	@Builder.Default
+	private CharacterSize size = CharacterSize.NORMAL;
+
+	@Builder.Default
+	@Schema(description = "List of traits and flaws.")
+	private List<String> customizations = new ArrayList<>();
 
 	@Builder.Default
 	private List<String> notes = new ArrayList<>();

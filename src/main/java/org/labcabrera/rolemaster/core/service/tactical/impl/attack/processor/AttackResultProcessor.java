@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
  */
 @Component
 @Slf4j
-public class AttackResultProcessor extends AbstractAttackProcessor {
+public class AttackResultProcessor implements AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalActionRepository tacticalActionRepository;

@@ -1,0 +1,49 @@
+[
+	{
+		"id": "argsbargies-herb",
+		"name": "Argsbargies",
+		"type": "herb",
+		"herbType": "antidote",
+		"herbForm": "flower",
+		"preparation": "ingest",
+		"climateCode": "arid",
+		"localeCode": "waste",
+		"findingDifficulty": "hard",
+		"level": 4,
+		"addictionFactor": 7,
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 38
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 4 antidote for muscle poisons."
+	},
+	{
+		"id": "Eldanna-herb",
+		"name": "Eldanna",
+		"type": "herb",
+		"herbType": "antidote",
+		"herbForm": "leaf",
+		"preparation": "brew",
+		"climateCode": "cold",
+		"localeCode": "ocean-saltwaters-shores",
+		"location": "North Endor",
+		"findingDifficulty": "medium",
+		"level": 9,
+		"addictionFactor": 2,
+		"multipleItem": true,
+		"commonCost": {
+			"gold": 99
+		},
+		"commonWeight": {
+			"min": 0,
+			"max": 0
+		},
+		"craftDuration": 0,
+		"description": "Level 9 antidote for Reduction poisons. Reverses the effect of the curse “ Ugliness of Orn” (from the Channelling spell list “Curses” level 15)."
+	}
+]

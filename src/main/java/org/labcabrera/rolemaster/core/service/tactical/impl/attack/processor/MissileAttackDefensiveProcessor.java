@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class MissileAttackDefensiveProcessor extends AbstractAttackProcessor {
+public class MissileAttackDefensiveProcessor implements AbstractAttackProcessor {
 
 	@Override
 	public Mono<AttackContext> apply(AttackContext context) {

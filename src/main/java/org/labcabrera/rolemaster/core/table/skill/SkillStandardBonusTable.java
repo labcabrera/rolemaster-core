@@ -2,13 +2,15 @@ package org.labcabrera.rolemaster.core.table.skill;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.function.IntUnaryOperator;
 
 import org.springframework.stereotype.Component;
 
 @Component
-class SkillStandardBonusTable {
+class SkillStandardBonusTable implements IntUnaryOperator {
 
-	public Integer apply(Integer value) {
+	@Override
+	public int applyAsInt(int value) {
 		if (value == 0) {
 			return -15;
 		}

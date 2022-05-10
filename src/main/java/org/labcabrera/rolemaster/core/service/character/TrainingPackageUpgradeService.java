@@ -173,6 +173,7 @@ public class TrainingPackageUpgradeService {
 		TrainingPackage tp = pair.getT2();
 		int cost = tp.getCostByProfession().get(character.getProfessionId());
 		int devPoints = cost + character.getDevelopmentPoints().getUsedPoints();
+		character.getDevelopmentPoints().getDevelopmentTrainingPackages().put(tp.getId(), cost);
 		character.getDevelopmentPoints().setUsedPoints(devPoints);
 		character.getTrainingPackages().put(tp.getId(), tp.getType());
 		return pair;

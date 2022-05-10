@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
  * Service that updates character data based on the outcome of an attack
  */
 @Component
-public class AttackExhaustionProcessor extends AbstractAttackProcessor {
+public class AttackExhaustionProcessor implements AbstractAttackProcessor {
 
 	private static final BigDecimal MELEE_DIVISOR = new BigDecimal("2");
 	private static final BigDecimal MISSILE_DIVISOR = new BigDecimal("6");

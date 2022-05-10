@@ -12,7 +12,11 @@ public enum ItemType implements CodeNameEnum {
 
 	ARMOR_PIECE("armor-piece", "Armor Piece"),
 
-	MISCELLANEOUS("miscellaneous", "Miscellaneous");
+	MISCELLANEOUS("miscellaneous", "Miscellaneous"),
+
+	HERB("herb", "Herb"),
+	
+	POISON("poison", "Poison");
 
 	private String code;
 

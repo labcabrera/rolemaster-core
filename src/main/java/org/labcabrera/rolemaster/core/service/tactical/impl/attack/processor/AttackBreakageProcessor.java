@@ -20,7 +20,7 @@ import reactor.core.publisher.Mono;
 @Order(1)
 @Component
 @Slf4j
-public class AttackBreakageProcessor extends AbstractAttackProcessor {
+public class AttackBreakageProcessor implements AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalCharacterItemResolver itemResolver;

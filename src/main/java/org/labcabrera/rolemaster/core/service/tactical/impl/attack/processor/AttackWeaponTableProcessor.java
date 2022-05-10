@@ -17,7 +17,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
 import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
-import org.labcabrera.rolemaster.core.table.weapon.WeaponTable;
+import org.labcabrera.rolemaster.core.table.weapon.WeaponTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +26,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class AttackWeaponTableProcessor extends AbstractAttackProcessor {
+public class AttackWeaponTableProcessor implements AbstractAttackProcessor {
 
 	private static final String PATTERN_HP = "^([0-9]+)$";
 	private static final String PATTERN_CRIT = "^([0-9]+)(\\w)(\\w)$";
@@ -34,7 +34,7 @@ public class AttackWeaponTableProcessor extends AbstractAttackProcessor {
 	private static final int MAX_ATTACK = 150;
 
 	@Autowired
-	private WeaponTable weaponTable;
+	private WeaponTableService weaponTable;
 
 	@Autowired
 	private TacticalCharacterItemResolver itemResolver;
@@ -76,12 +76,12 @@ public class AttackWeaponTableProcessor extends AbstractAttackProcessor {
 		Map<?, Integer> offensiveBonusmap = context.getAction().getOffensiveBonusMap().get(type);
 		int bonus = offensiveBonusmap.values().stream().reduce(0, (a, b) -> a + b);
 		int primaryRoll = context.getAction().getRolls().get(type).getResult();
-		processAttackResult(action, type, target.getId(), weaponTableId, bonus, targetArmor, primaryRoll);
+		processAttackResult(action, type, weaponTableId, bonus, targetArmor, primaryRoll);
 		return context;
 	}
 
-	private void processAttackResult(TacticalActionAttack action, AttackTargetType type, String target, String weaponTableId,
-		int offensiveBonus, int armor, int roll) {
+	private void processAttackResult(TacticalActionAttack action, AttackTargetType type, String weaponTableId, int offensiveBonus,
+		int armor, int roll) {
 
 		int attackResult = offensiveBonus + roll;
 		int tableAttackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, attackResult));

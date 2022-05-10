@@ -11,6 +11,7 @@ import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
+import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
@@ -23,7 +24,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class AttackContextLoader extends AbstractAttackProcessor {
+public class AttackContextLoader implements AbstractAttackProcessor {
 
 	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
@@ -36,6 +37,9 @@ public class AttackContextLoader extends AbstractAttackProcessor {
 
 	@Autowired
 	private ItemRepository itemRepository;
+
+	@Autowired
+	private CharacterInfoRepository characterInfoRepository;
 
 	@Override
 	public Mono<AttackContext> apply(AttackContext context) {
@@ -55,7 +59,8 @@ public class AttackContextLoader extends AbstractAttackProcessor {
 				return a;
 			})
 			.flatMap(this::loadTargets)
-			.flatMap(this::loadSourceItems);
+			.flatMap(this::loadSourceItems)
+			.flatMap(this::loadCharacterInfo);
 	}
 
 	private Mono<AttackContext> loadTargets(AttackContext context) {
@@ -92,5 +97,17 @@ public class AttackContextLoader extends AbstractAttackProcessor {
 				list.stream().forEach(e -> context.getItemMap().put(e.getId(), e));
 				return context;
 			});
+	}
+
+	private Mono<AttackContext> loadCharacterInfo(AttackContext context) {
+		if (!context.getSource().isNpc()) {
+			return characterInfoRepository.findById(context.getSource().getCharacterId())
+				.switchIfEmpty(Mono.error(() -> new BadRequestException("Missing character info.")))
+				.map(e -> {
+					context.setSourceCharacterInfo(e);
+					return context;
+				});
+		}
+		return Mono.just(context);
 	}
 }

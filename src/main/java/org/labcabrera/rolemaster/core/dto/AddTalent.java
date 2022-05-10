@@ -1,4 +1,6 @@
-package org.labcabrera.rolemaster.core.table.maneuver;
+package org.labcabrera.rolemaster.core.dto;
+
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,12 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class StaticManeuverResult {
+public class AddTalent {
 
-	private String name;
-
-	private Integer successPercent;
-
-	private String text;
+	@NotEmpty
+	private String talentId;
 
 }
