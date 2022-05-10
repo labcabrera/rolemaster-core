@@ -3,6 +3,8 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.character.SpecialAttack;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
@@ -53,11 +55,22 @@ public class OffensiveBonusProcessor implements AbstractAttackProcessor {
 
 	private Mono<AttackContext> loadSkillBonus(AttackContext context) {
 		TacticalCharacter source = context.getSource();
-		CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
-		String skillId = itemMainHand.getItemId();
-		if (itemMainHand.getSkillId() != null) {
-			skillId = itemMainHand.getSkillId();
+		String skillId;
+		if (context.getAction().getSpecialAttack() != null) {
+			String specialAttackName = context.getAction().getSpecialAttack();
+			SpecialAttack specialAttack = context.getSource().getSpecialAttacks().stream()
+				.filter(e -> e.getName().equals(specialAttackName))
+				.findFirst().orElseThrow(() -> new DataConsistenceException("Missing special attack " + specialAttackName + "."));
+			skillId = specialAttack.getSkillId();
 		}
+		else {
+			CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
+			skillId = itemMainHand.getItemId();
+			if (itemMainHand.getSkillId() != null) {
+				skillId = itemMainHand.getSkillId();
+			}
+		}
+
 		if (context.getAction() instanceof TacticalActionMeleeAttack ma && ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
 			CharacterItem itemOffHand = characterItemResolver.getOffHandWeapon(source);
 			String offHandSkill = itemOffHand.getItemId();

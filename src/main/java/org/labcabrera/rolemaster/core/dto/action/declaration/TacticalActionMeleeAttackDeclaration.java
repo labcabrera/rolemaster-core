@@ -33,6 +33,8 @@ public class TacticalActionMeleeAttackDeclaration extends TacticalActionDeclarat
 
 	private MeleeAttackType meleeAttackType;
 
+	private String specialAttack;
+
 	private Integer parry;
 
 }

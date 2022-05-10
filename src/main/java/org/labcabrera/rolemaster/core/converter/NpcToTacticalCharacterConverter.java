@@ -41,6 +41,7 @@ public class NpcToTacticalCharacterConverter {
 				.current(npc.getExhaustionPoints())
 				.build())
 			.items(npc.getItems())
+			.specialAttacks(npc.getSpecialAttacks())
 			.armor(npc.getArmorType())
 			.defensiveBonus(npc.getDefensiveBonus())
 			.baseMovementRate(npc.getBaseMovementRate())

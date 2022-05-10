@@ -5,6 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.character.SpecialAttack;
+import org.labcabrera.rolemaster.core.model.character.SpecialAttackSize;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
@@ -64,38 +67,47 @@ public class AttackWeaponTableProcessor implements AbstractAttackProcessor {
 	}
 
 	private AttackContext processAttack(AttackContext context, AttackTargetType type) {
-		ItemPosition itemPosition = type == AttackTargetType.MAIN_HAND ? ItemPosition.MAIN_HAND : ItemPosition.OFF_HAND;
-		CharacterItem mainHandItem = itemResolver.getWeapon(context.getSource(), itemPosition);
-		if (mainHandItem == null) {
-			throw new NotImplementedException("Special attacks");
+		String weaponTableId;
+		int maxResult = 150;
+		if (context.getAction().getSpecialAttack() != null) {
+			String specialAttackName = context.getAction().getSpecialAttack();
+			SpecialAttack sa = context.getSource().getSpecialAttacks().stream()
+				.filter(e -> e.getName().equals(specialAttackName))
+				.findFirst().orElseThrow(() -> new DataConsistenceException("Missing special attack " + specialAttackName + "."));
+			weaponTableId = sa.getWeaponTableId();
+			maxResult = getSpecialAttackMaxResult(sa.getSize());
 		}
-		String weaponTableId = mainHandItem.getItemId();
+		else {
+			ItemPosition itemPosition = type == AttackTargetType.MAIN_HAND ? ItemPosition.MAIN_HAND : ItemPosition.OFF_HAND;
+			CharacterItem mainHandItem = itemResolver.getWeapon(context.getSource(), itemPosition);
+			if (mainHandItem == null) {
+				throw new NotImplementedException("Special attacks");
+			}
+			weaponTableId = mainHandItem.getItemId();
+		}
 		TacticalActionAttack action = context.getAction();
 		TacticalCharacter target = context.getTargets().get(type);
 		int targetArmor = target.getArmor();
 		Map<?, Integer> offensiveBonusmap = context.getAction().getOffensiveBonusMap().get(type);
 		int bonus = offensiveBonusmap.values().stream().reduce(0, (a, b) -> a + b);
 		int primaryRoll = context.getAction().getRolls().get(type).getResult();
-		processAttackResult(action, type, weaponTableId, bonus, targetArmor, primaryRoll);
+		int result = Math.min(maxResult, bonus + primaryRoll);
+		processAttackResult(action, type, weaponTableId, targetArmor, result, primaryRoll);
 		return context;
 	}
 
-	private void processAttackResult(TacticalActionAttack action, AttackTargetType type, String weaponTableId, int offensiveBonus,
-		int armor, int roll) {
-
-		int attackResult = offensiveBonus + roll;
+	private void processAttackResult(TacticalActionAttack action, AttackTargetType type, String weaponTableId, int armor,
+		int attackResult, int bonus) {
 		int tableAttackResult = Integer.min(MAX_ATTACK, Integer.max(MIN_ATTACK, attackResult));
 		String stringResult = weaponTable.get(weaponTableId, armor, tableAttackResult);
-
 		AttackResult result = AttackResult.builder()
 			.weaponTableId(weaponTableId)
 			.result(attackResult)
-			.totalBonus(offensiveBonus)
+			.totalBonus(bonus)
 			.targetArmor(armor)
 			.hp(0)
 			.build();
 		action.getAttackResults().put(type, result);
-
 		Pattern patternHp = Pattern.compile(PATTERN_HP);
 		Matcher matcherHp = patternHp.matcher(stringResult);
 		if (matcherHp.matches()) {
@@ -134,6 +146,20 @@ public class AttackWeaponTableProcessor implements AbstractAttackProcessor {
 			action.setState(TacticalActionState.PENDING_RESOLUTION);
 		}
 		return context;
+	}
+
+	private int getSpecialAttackMaxResult(SpecialAttackSize size) {
+		switch (size) {
+		case TINY, SMALL:
+			return 105;
+		case MEDIUM:
+			return 120;
+		case LARGE:
+			return 135;
+		default:
+			return 150;
+		}
+
 	}
 
 }

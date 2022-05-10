@@ -36,11 +36,14 @@ public class TacticalActionConverter implements Converter<TacticalActionDeclarat
 				.meleeAttackMode(tmp.getMeleeAttackMode())
 				.meleeAttackType(tmp.getMeleeAttackType())
 				.parry(tmp.getParry())
+				.specialAttack(tmp.getSpecialAttack())
 				.build();
 		}
 		else if (source instanceof TacticalActionMissileAttackDeclaration tmp) {
 			result = TacticalActionMissileAttack.builder()
 				.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, tmp.getTarget()))
+				//TODO review missile special attack
+				.specialAttack(null)
 				.build();
 		}
 		else if (source instanceof TacticalActionMovingManeuverDeclaration tmp) {

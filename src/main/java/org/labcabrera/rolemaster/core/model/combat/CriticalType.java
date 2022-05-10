@@ -17,6 +17,9 @@ public enum CriticalType implements CodeNameEnum {
 
 	B("b", "B"),
 
+	/** Grapple. */
+	G("g", "G"),
+
 	HEAT("heat", "Heat"),
 
 	LARGE_CREATURE("large-creature", "Large creature");
