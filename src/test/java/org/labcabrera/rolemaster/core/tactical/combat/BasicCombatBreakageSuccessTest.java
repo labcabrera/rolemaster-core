@@ -21,6 +21,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
+import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
@@ -87,6 +88,10 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 		assertEquals(7, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
 		assertEquals(80, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getResult());
 		assertEquals(25, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getTotalBonus());
+
+		assertEquals(40, resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).get(OffensiveBonusModifier.SKILL));
+		assertEquals(-30, resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).get(OffensiveBonusModifier.DEFENSIVE_BONUS));
+		assertEquals(15, resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).get(OffensiveBonusModifier.MELEE_FACING));
 
 		taMelee01 = tacticalCharacterRepository.findById(taMelee01.getId()).share().block();
 		CharacterItem item = itemResolver.getMainHandWeapon(taMelee01);

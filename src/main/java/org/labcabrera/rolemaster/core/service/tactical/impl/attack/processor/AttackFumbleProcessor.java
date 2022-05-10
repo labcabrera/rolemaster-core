@@ -58,8 +58,7 @@ public class AttackFumbleProcessor implements AbstractAttackProcessor {
 		int weaponFumble;
 		CharacterItem weapon = null;
 		if (context.getAction().getSpecialAttack() != null) {
-			//TODO
-			weaponFumble = 2;
+			weaponFumble = NO_WEAPON_FUMBLE;
 		}
 		else {
 			weapon = itemResolver.getWeapon(context.getSource(), type);

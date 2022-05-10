@@ -74,7 +74,7 @@ class BasicCombatSpecialAttackTest extends AbstractBasicCombatTest {
 		assertEquals(1, meleeAttack.getAttackResults().size());
 		assertEquals(7, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
 		assertEquals(120, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getResult());
-		assertEquals(105, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getTotalBonus());
+		assertEquals(95, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getTotalBonus());
 		assertEquals("grapple", meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getWeaponTableId());
 
 		assertEquals(1, meleeAttack.getCriticalResults().size());

@@ -92,7 +92,7 @@ public class AttackWeaponTableProcessor implements AbstractAttackProcessor {
 		int bonus = offensiveBonusmap.values().stream().reduce(0, (a, b) -> a + b);
 		int primaryRoll = context.getAction().getRolls().get(type).getResult();
 		int result = Math.min(maxResult, bonus + primaryRoll);
-		processAttackResult(action, type, weaponTableId, targetArmor, result, primaryRoll);
+		processAttackResult(action, type, weaponTableId, targetArmor, result, bonus);
 		return context;
 	}
 
