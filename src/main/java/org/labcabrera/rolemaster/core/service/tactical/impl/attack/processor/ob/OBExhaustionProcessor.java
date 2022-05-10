@@ -10,11 +10,10 @@ import org.springframework.stereotype.Component;
 public class OBExhaustionProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		int bonus = getBonusExhaustion(context.getSource());
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.EXHAUSTION, bonus);
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.EXHAUSTION, bonus);
-		return context;
 	}
 
 	private int getBonusExhaustion(TacticalCharacter source) {

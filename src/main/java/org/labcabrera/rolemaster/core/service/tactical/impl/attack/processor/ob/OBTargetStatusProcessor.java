@@ -10,12 +10,11 @@ import org.springframework.stereotype.Component;
 public class OBTargetStatusProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		context.getTargets().entrySet().stream().forEach(e -> {
 			int bonus = getBonusTargetStatus(e.getValue());
 			context.getAction().getOffensiveBonusMap().get(e.getKey()).put(OffensiveBonusModifier.TARGET_STATUS, bonus);
 		});
-		return context;
 	}
 
 	private int getBonusTargetStatus(TacticalCharacter target) {

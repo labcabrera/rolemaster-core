@@ -20,7 +20,7 @@ public class OBMissilePreparationProcessor implements OBProcessor {
 	private MissilePreparationServiceBonusProcessor missilePreparationServiceBonusProcessor;
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		if (context.getAction() instanceof TacticalActionMissileAttack missileAttack) {
 			CharacterItem item = itemResolver.getMainHandWeapon(context.getSource());
 			int rounds = missileAttack.getPreparationRounds();
@@ -28,6 +28,5 @@ public class OBMissilePreparationProcessor implements OBProcessor {
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND)
 				.put(OffensiveBonusModifier.MISSILE_PREPARATION_ROUNDS, value);
 		}
-		return context;
 	}
 }

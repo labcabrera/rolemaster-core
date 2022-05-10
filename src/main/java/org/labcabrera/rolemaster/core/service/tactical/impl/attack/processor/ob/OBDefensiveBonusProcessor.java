@@ -16,12 +16,11 @@ public class OBDefensiveBonusProcessor implements OBProcessor {
 		Debuff.INSTANT_DEATH);
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		context.getTargets().entrySet().stream().forEach(e -> {
 			int bd = getBonusDefensive(e.getValue());
 			context.getAction().getOffensiveBonusMap().get(e.getKey()).put(OffensiveBonusModifier.DEFENSIVE_BONUS, -bd);
 		});
-		return context;
 	}
 
 	private int getBonusDefensive(TacticalCharacter target) {

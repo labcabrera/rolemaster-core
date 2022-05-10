@@ -21,7 +21,7 @@ public class OBMissileDistanceProcessor implements OBProcessor {
 	@Autowired
 	private TacticalCharacterItemService itemService;
 
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		if (context.getAction() instanceof TacticalActionMissileAttack missileAttack) {
 			CharacterItem itemMainHand = itemResolver.getMainHandWeapon(context.getSource());
 			Float distance = missileAttack.getDistance();
@@ -29,6 +29,5 @@ public class OBMissileDistanceProcessor implements OBProcessor {
 			Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
 			map.get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.DISTANCE, bonus);
 		}
-		return context;
 	}
 }

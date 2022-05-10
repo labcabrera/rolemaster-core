@@ -9,12 +9,11 @@ import org.springframework.stereotype.Component;
 public class OBCustomBonusProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		if (context.getAction().getCustomBonus() != null) {
 			int bonus = context.getAction().getCustomBonus();
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.CUSTOM, bonus);
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.CUSTOM, bonus);
 		}
-		return context;
 	}
 }

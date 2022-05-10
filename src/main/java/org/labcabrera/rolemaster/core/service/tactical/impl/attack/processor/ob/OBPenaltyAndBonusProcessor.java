@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class OBPenaltyAndBonusProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		int penalty = context.getSource().getCombatStatus().getTotalPenalty();
 		if (penalty != 0) {
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.PENALTY, penalty);
@@ -20,6 +20,5 @@ public class OBPenaltyAndBonusProcessor implements OBProcessor {
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.BONUS, bonus);
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.BONUS, bonus);
 		}
-		return context;
 	}
 }

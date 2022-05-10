@@ -10,13 +10,12 @@ import org.springframework.stereotype.Component;
 public class OBParryProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		if (context.getAction() instanceof TacticalActionMeleeAttack meleeAttack) {
 			int parry = meleeAttack.getParry();
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.PARRY_ATTACK, -parry);
 			context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.PARRY_ATTACK, -parry);
 		}
-		return context;
 	}
 
 }

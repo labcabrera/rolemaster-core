@@ -12,11 +12,10 @@ import org.springframework.stereotype.Component;
 public class OBActionPercentProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		int bonus = getBonusActionPercent(context.getAction());
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.ACTION_PERCENT, bonus);
 		context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.ACTION_PERCENT, bonus);
-		return context;
 	}
 
 	private int getBonusActionPercent(TacticalActionAttack action) {
@@ -29,4 +28,5 @@ public class OBActionPercentProcessor implements OBProcessor {
 		}
 		return 0;
 	}
+
 }

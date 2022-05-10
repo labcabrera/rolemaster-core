@@ -72,7 +72,7 @@ public class OffensiveBonusProcessor implements AbstractAttackProcessor {
 	}
 
 	private AttackContext loadProcessors(AttackContext context) {
-		this.obProcessors.stream().forEach(processor -> processor.process(context));
+		obProcessors.stream().forEach(processor -> processor.accept(context));
 		return context;
 	}
 

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class OBOffHandProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		if (context.getAction() instanceof TacticalActionMeleeAttack ma
 			&& (ma.getMeleeAttackMode() == MeleeAttackMode.OFF_HAND_WEAPON || ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS)) {
 			boolean ambidexterity = false;
@@ -24,7 +24,5 @@ public class OBOffHandProcessor implements OBProcessor {
 				context.getAction().getOffensiveBonusMap().get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.OFF_HAND, -20);
 			}
 		}
-		return context;
-
 	}
 }

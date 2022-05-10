@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class OBMeleePositionProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		if (context.getAction() instanceof TacticalActionMeleeAttack meleeAttack) {
 			context.getTargets().entrySet().stream().forEach(e -> {
 				if (meleeAttack.getFacingMap().containsKey(e.getKey())) {
@@ -18,6 +18,5 @@ public class OBMeleePositionProcessor implements OBProcessor {
 				}
 			});
 		}
-		return context;
 	}
 }

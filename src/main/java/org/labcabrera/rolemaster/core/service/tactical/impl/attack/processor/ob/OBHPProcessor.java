@@ -15,11 +15,10 @@ import org.springframework.stereotype.Component;
 public class OBHPProcessor implements OBProcessor {
 
 	@Override
-	public AttackContext process(AttackContext context) {
+	public void accept(AttackContext context) {
 		Map<AttackTargetType, Map<OffensiveBonusModifier, Integer>> map = context.getAction().getOffensiveBonusMap();
 		map.get(AttackTargetType.MAIN_HAND).put(OffensiveBonusModifier.HP, getBonusHp(context.getSource()));
 		map.get(AttackTargetType.OFF_HAND).put(OffensiveBonusModifier.HP, getBonusHp(context.getSource()));
-		return context;
 	}
 
 	private int getBonusHp(TacticalCharacter source) {
