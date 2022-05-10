@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/user")
-@Tag(name = "Characters", description = "Operations on characters such as search, creation, configuration or leveling up.")
+@Tag(name = "User", description = "User controller.")
 public class UserController {
 
 	@GetMapping
