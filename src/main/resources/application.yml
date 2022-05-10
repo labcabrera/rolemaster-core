@@ -7,23 +7,9 @@ spring:
 
   security:
     oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: rolemaster-core
-            client-secret: A53z77kJjn0MkGJK7qL2y23HWR9xKkXR
-            authorization-grant-type: authorization_code
-            scope:
-              - openid
-              - profile
-              - email
-        provider:
-          keycloak:
-            authorization-uri: http://localhost:8090/auth/realms/rolemaster/protocol/openid-connect/auth
-            token-uri: http://localhost:8090/auth/realms/rolemaster/protocol/openid-connect/token
-            user-info-uri: http://localhost:8090/auth/realms/rolemaster/protocol/openid-connect/userinfo
-            jwk-set-uri: http://localhost:8090/auth/realms/rolemaster/protocol/openid-connect/certs
-            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: ${ROLEMASTER_CORE_JWT_ISSUER_URI:http://localhost:8090/auth/realms/rolemaster}
 
 logging:
   level:
@@ -40,5 +26,7 @@ springdoc:
     tagsSorter: alpha
 
 app:
+  security:
+    clientId: ${ROLEMASTER_CORE_CLIENTID:rolemaster-core}
   openapi:
     version: 1.0-beta
