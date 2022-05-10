@@ -1,0 +1,15 @@
+{
+	"properties": [
+		{
+			"name": "app.security.clientId",
+			"type": "java.lang.String",
+			"description": "OAUth ClientId"
+		},
+		{
+			"name": "app.openapi.version",
+			"type": "java.lang.String",
+			"description": "Version API"
+		}
+		
+	]
+}

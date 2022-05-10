@@ -3,20 +3,30 @@ spring:
     mongodb:
       uri: ${ROLEMASTER_CORE_MONGODB_URI:mongodb://localhost/rolemaster?retryWrites=true&w=majority}
   jackson:
-    default-property-inclusion: non_null
+    default-property-inclusion: NON_NULL
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${ROLEMASTER_CORE_JWT_ISSUER_URI:http://localhost:8090/auth/realms/rolemaster}
 
 logging:
   level:
-    root: WARN
-    org.labcabrera: DEBUG
-    org.mongodb: INFO
-    org.mongodb.driver.protocol.command: INFO
-    
+    root: DEBUG
+    org:
+      labcabrera: DEBUG
+      mongodb: INFO
+    sun: INFO
+    javax: INFO
+
 springdoc:
   swagger-ui:
     operationsSorter: alpha
     tagsSorter: alpha
 
 app:
+  security:
+    clientId: ${ROLEMASTER_CORE_CLIENTID:rolemaster-core}
   openapi:
     version: 1.0-beta
