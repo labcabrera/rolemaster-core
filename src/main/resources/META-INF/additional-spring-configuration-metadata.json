@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "app.openapi.version",
+  "type": "java.lang.String",
+  "description": "Version API"
+}]}
