@@ -9,16 +9,16 @@ import lombok.Getter;
 @Getter
 public enum CriticalType implements CodeNameEnum {
 
-	S("s", "S"),
+	S("S", "S"),
 
-	P("p", "P"),
+	P("P", "P"),
 
-	K("k", "K"),
+	K("K", "K"),
 
-	B("b", "B"),
+	B("B", "B"),
 
 	/** Grapple. */
-	G("g", "G"),
+	G("G", "G"),
 
 	HEAT("heat", "Heat"),
 

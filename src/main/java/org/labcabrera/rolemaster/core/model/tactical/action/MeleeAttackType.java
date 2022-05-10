@@ -11,13 +11,13 @@ public enum MeleeAttackType implements CodeNameEnum {
 	FULL("full", "Full", "The attacker’s OB receives a +10 modification, but the target of the attack must be declared during "
 		+ "the Action Declaration Phase. Any movement must be declared as a separate action."),
 
-	PRESS_AND_MELEE("pressAndMelee", "Press and melee",
+	PRESS_AND_MELEE("press-and-melee", "Press and melee",
 		"The target of the attack must be declared during the Action Declaration Phase and the target "
 			+ "must be adjacent at that time. If the target attempts to move away before the attack is resolved, the attacker may "
 			+ "attempt to move after him. Such movement only results in half the normal OB modification for less than 100% activity "
 			+ "used to attack."),
 
-	REACT_AND_MELEE("reactAndMelee", "React and melee",
+	REACT_AND_MELEE("react-and-melee", "React and melee",	
 		"The attacker’s OB receives a -10 modification, but the target of the attack need not be "
 			+ "declared during the Action Declaration Phase. As an action in any of the three phases (snap, normal, or deliberate), "
 			+ "the attacker can attempt to move to and attack anyone within 50'. If he has not done so by the end of the round, "
