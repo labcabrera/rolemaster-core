@@ -5,12 +5,11 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.function.BiFunction;
 
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 
-class WeaponTable implements BiFunction<Integer, Integer, String> {
+class WeaponTable extends AbstractWeaponTable {
 
 	private Map<Integer, Map<Integer, String>> map = new HashMap<>();
 
@@ -59,10 +58,4 @@ class WeaponTable implements BiFunction<Integer, Integer, String> {
 		map.put(roll, tmp);
 	}
 
-	private void checkHeaderFormat(String weaponId, String header) {
-		String check = weaponId + ",20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1";
-		if (!check.equals(header)) {
-			throw new DataConsistenceException("Invalid header for weapon table " + weaponId);
-		}
-	}
 }
