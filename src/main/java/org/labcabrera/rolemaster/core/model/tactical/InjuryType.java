@@ -9,23 +9,23 @@ import lombok.Getter;
 public enum InjuryType implements CodeNameEnum {
 
 	RIGHT_ARM_USELESS("right-arm-useless", "Right arm useless"),
-	
+
 	LEFT_ARM_USELESS("left-arm-useless", "Left arm useless"),
 
 	RIGHT_HAND_USELESS("right-hand-useless", "Right hand useless"),
-	
+
 	LEFT_HAND_USELESS("left-hand-useless", "Left hand useless"),
 
 	WRIST_BROKEN("wrist-broken", "Wrist broken"),
-	
+
 	NECK_BROKEN("neck-broken", "Neck broken"),
-	
+
 	LEG_USELESS("leg-useless", "Leg useless"),
-	
+
 	SPRAIN_ANKLE("sprain-ankle", "Sprain ankle"),
-	
+
 	KNEE_TEAR_LIGAMENT("knee-tear-ligament", "Knee tear ligament"),
-	
+
 	SPINE_BROKEN("spine-broken", "Spine broken"),
 
 	EYES_DESTROYED("eyes-destroyed", "Eyes destroyed"),
@@ -38,9 +38,9 @@ public enum InjuryType implements CodeNameEnum {
 
 	PARALYZED_NECK_DOWN("paralyzed-neck-down", "Paralized neck down"),
 
-	COMA("coma", "Coma")
+	COMA("coma", "Coma"),
 
-	;
+	SHOULDER_BROKEN("shoulder-broken", "Shoulder broken");
 
 	private String code;
 

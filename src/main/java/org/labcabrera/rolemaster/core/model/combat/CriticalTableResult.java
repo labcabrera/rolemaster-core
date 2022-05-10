@@ -39,6 +39,9 @@ public class CriticalTableResult implements CharacterStatusModifier {
 	private Map<Debuff, Integer> debuffs = new LinkedHashMap<>();
 
 	@Builder.Default
+	private Map<Debuff, Integer> attackerDebuffs = new LinkedHashMap<>();
+
+	@Builder.Default
 	private Map<ConditionalCriticalEffect, CriticalTableResult> conditionalEffects = new LinkedHashMap<>();
 
 	@Builder.Default
