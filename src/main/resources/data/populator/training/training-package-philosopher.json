@@ -1,0 +1,77 @@
+[
+	{
+		"id": "philosopher",
+		"name": "Philosopher",
+		"type": "lifestyle",
+		"timeAcquisition": 130,
+		"fixedSkillCategories": {
+			"lore-general": 5,
+			"science-analytic-basic": 2,
+			"artistic-passive": 1,
+			"communications": 5
+		},
+		"fixedSkills": {
+			"alertness": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 5,
+				"skills": 4
+			},
+			{
+				"key": "science-analytic-basic",
+				"description": "Science analytic basic",
+				"categories": [
+					"science-analytic-basic"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "communications",
+				"description": "Communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 10,
+				"skills": 5
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+			"re"
+		],
+		"startingMoney": "0",
+		"costByProfession": {
+			"fighter": 32,
+			"thief": 32,
+			"rogue": 32,
+			"warrior-monk": 32,
+			"layman": 29,
+			"magician": 29,
+			"illusionist": 26,
+			"cleric": 29,
+			"animist": 29,
+			"mentalist": 29,
+			"lay-healer": 29,
+			"healer": 29,
+			"mystic": 25,
+			"sorcerer": 29,
+			"ranger": 32,
+			"paladin": 32,
+			"monk": 32,
+			"dabbler": 30,
+			"bard": 26,
+			"magent": 26
+		},
+		"description": "The Philosopher spends a great deal of time theorizing about the reasons things happen. He is not generally well-suited for adventuring, but occasions do arise when his knowledge and/or wisdom is needed."
+	}
+]
