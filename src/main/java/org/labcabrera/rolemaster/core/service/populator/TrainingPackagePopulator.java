@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Component
-public class TrainingPackagePopulator extends AbstractJsonPopulator<TrainingPackage> {
+class TrainingPackagePopulator extends AbstractJsonPopulator<TrainingPackage> {
 
 	@Override
 	protected List<String> getResources() {
@@ -43,6 +43,7 @@ public class TrainingPackagePopulator extends AbstractJsonPopulator<TrainingPack
 			"data/populator/training/training-package-philosopher.json",
 			"data/populator/training/training-package-sailor.json",
 			"data/populator/training/training-package-scout.json",
+			"data/populator/training/training-package-shaman-priest.json",
 			"data/populator/training/training-package-soldier.json",
 			"data/populator/training/training-package-spy.json",
 			"data/populator/training/training-package-traveler.json",

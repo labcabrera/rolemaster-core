@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Component
-public class SpellListPopulator extends AbstractJsonPopulator<SpellList> {
+class SpellListPopulator extends AbstractJsonPopulator<SpellList> {
 
 	@Override
 	protected List<String> getResources() {

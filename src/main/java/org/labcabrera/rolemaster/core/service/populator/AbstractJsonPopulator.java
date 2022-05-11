@@ -17,7 +17,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-public abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
+abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
 
 	@Autowired
 	private ReactiveMongoRepository<E, String> repository;

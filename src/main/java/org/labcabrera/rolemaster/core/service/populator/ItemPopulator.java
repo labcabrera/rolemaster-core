@@ -26,7 +26,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class ItemPopulator implements ApplicationRunner {
+class ItemPopulator implements ApplicationRunner {
 
 	@Autowired
 	private ItemRepository repository;

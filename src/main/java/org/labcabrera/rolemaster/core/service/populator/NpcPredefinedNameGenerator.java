@@ -20,7 +20,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Slf4j
-public class NpcPredefinedNameGenerator implements ApplicationRunner {
+class NpcPredefinedNameGenerator implements ApplicationRunner {
 
 	@Autowired
 	private NpcPredefinedNameRepository repository;

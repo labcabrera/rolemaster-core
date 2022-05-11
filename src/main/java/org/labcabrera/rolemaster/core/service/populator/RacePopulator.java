@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Component
-public class RacePopulator extends AbstractJsonPopulator<Race> {
+class RacePopulator extends AbstractJsonPopulator<Race> {
 
 	@Override
 	protected List<String> getResources() {
