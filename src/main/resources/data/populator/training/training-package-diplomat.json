@@ -19,10 +19,10 @@
 		],
 		"selectableSkillList": [
 			{
-				"key": "comunications",
-				"description": "Comunications",
+				"key": "communications",
+				"description": "Communications",
 				"categories": [
-					"comunications"
+					"communications"
 				],
 				"ranks": 6,
 				"skills": 6

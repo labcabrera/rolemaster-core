@@ -46,10 +46,10 @@
 				"skills": 3
 			},
 			{
-				"key": "outdoor-environment",
-				"description": "Outdoor environment",
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
 				"categories": [
-					"outdoor-environment"
+					"outdoor-environmental"
 				],
 				"ranks": 4,
 				"skills": 4

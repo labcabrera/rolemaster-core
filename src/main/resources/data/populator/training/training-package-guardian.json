@@ -50,7 +50,7 @@
 				"key": "athletic-endurance",
 				"description": "Athletic endurance",
 				"categories": [
-					"armor-light"
+					"athletic-endurance"
 				],
 				"ranks": 2,
 				"skills": 1
@@ -68,7 +68,7 @@
 				"key": "awareness-searching",
 				"description": "Awareness searching",
 				"categories": [
-					"awareness-Searching"
+					"awareness-searching"
 				],
 				"ranks": 2,
 				"skills": 2

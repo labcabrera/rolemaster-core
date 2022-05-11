@@ -65,10 +65,10 @@
 				"skills": 1
 			},
 			{
-				"key": "communication",
+				"key": "communications",
 				"description": "Choice of one spoken language",
 				"categories": [
-					"communication"
+					"communications"
 				],
 				"ranks": 2,
 				"skills": 1

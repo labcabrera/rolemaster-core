@@ -20,10 +20,10 @@
 		],
 		"selectableSkillList": [
 			{
-				"key": "artistic-pasive",
-				"description": "Artistic pasive",
+				"key": "artistic-passive",
+				"description": "Artistic passive",
 				"categories": [
-					"artistic-pasive"
+					"artistic-passive"
 				],
 				"ranks": 2,
 				"skills": 1
