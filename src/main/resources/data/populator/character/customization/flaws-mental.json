@@ -16,5 +16,608 @@
 		"costType": "lesser",
 		"cost": -5,
 		"description": "You are addicted to a common substance (e.g., alcohol, etc.) that has an Addiction Factor of 5 or less (see Gamemaster Law for more information on addiction & withdrawal). Your addiction starts as a level 1 addiction to the substance."
+	},
+	{
+		"id": "addiction-simple-rare",
+		"name": "Addiction/Simple (Rare)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "As Addiction/Simple (Common), except that the substance is not common or it is illegal."
+	},
+	{
+		"id": "addiction-mild-common",
+		"name": "Addiction/Mild (Common)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As Addiction/Simple (Common), except the Addiction Factor is 10 or less."
+	},
+	{
+		"id": "addiction-mild-rare",
+		"name": "Addiction/Mild (Rare)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "As Addiction/Mild (Common), except that the substance is not common or it is illegal."
+	},
+	{
+		"id": "addiction-serious-common",
+		"name": "Addiction/Serious (Common)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "As Addiction/Simple (Common), except the Addiction Factor is 20 or less."
+	},
+	{
+		"id": "addiction-serious-rare",
+		"name": "Addiction/Serious (Rare)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -25,
+		"description": "As Addiction/Serious (Common), except that the substance is not common or it is illegal."
+	},
+	{
+		"id": "addiction-harmful",
+		"name": "Addiction/Harmful",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "As Addiction/Simple (Common), except the Addiction Factor is 30 or less. [Greater, -20] If the substance is not common or it is illegal, this flaw will also count as a Minor flaw (or -10 points) for the purposes of taking other talents."
+	},
+	{
+		"id": "addiction-fatal",
+		"name": "Addiction/Fatal",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -30,
+		"description": "As Addiction/Simple (Common), except the Addiction Factor is 50 or less. [Greater, -30] If the substance is not common or it is illegal, this flaw will also count as a Minor flaw (or -10 points) for the purposes of taking other talents."
+	},
+	{
+		"id": "bad-temper",
+		"name": "Bad Temper",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have a great tendency towards violence when you are dealing with a stressful situation. Whenever you are insulted or offended, or under stress, you may respond with a violent attack. Roll d100 (open-ended), add 40, and subtract triple your SD bonus. If the result is greater than 100, you have lost your temper. You must respond to the situation in a violent, although not necessarily fatal, action. It takes approximately d10 rounds of quiet for you to calm down and regain your composure."
+	},
+	{
+		"id": "battle-confusion",
+		"name": "Battle Confusion",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "Whenever more than one foe is fighting you at a time, you must make an Observation maneuver each round. If you fail this roll, you may take no action that round."
+	},
+	{
+		"id": "blood-guilt",
+		"name": "Blood-Guilt",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You experience guilt and become depressed anytime you cause the death or injury of a human or humanoid race. You are reluctant to enter combat with them. If you harm or kill a humanoid, you will operate at a -25 for the next d10 days while you deal with your guilt."
+	},
+	{
+		"id": "bloodlust",
+		"name": "Bloodlust",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "Whenever you are in a fight, you want to see your foes die. You always use lethal force, even in a bar fight. You make sure a defeated foe is dead, even if they already seem to be. You do not necessarily have a short fuse–you could be a calm individual. When you enter combat, however, you go for the throat. If there comes a time when you must accept a foe’s surrender, you must roll d100 (open-ended) and add triple your SD bonus. If your total is greater than 100, you may prevent yourself from killing him."
+	},
+	{
+		"id": "chivalrous",
+		"name": "Chivalrous",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You must fight in an honorable and chivalrous manner. Your whole code of ethics is based on doing what is honorable and right. You will always fight fair. This includes returning a weapon to a foe if they lose it, dismounting if your foe is not mounted, and never attacking people from behind. You always maintain a high standard of courtesy."
+	},
+	{
+		"id": "code-of-honor",
+		"name": "Code of Honor",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have set rules that govern your actions. These rules are enforced only by yourself. It is a code you try to live up to. As there are many types of codes, you may choose what kind of code you follow (subject to GM approval). For example, you may always support the underdog even if you do not agree with them If there are any enemies of yours who know of your code, they could use it against you, forcing you into a situation that you would rather avoid. You cannot do something against your personal code. If you do, you will face a serious crisis of belief. Your code of honor must contain at least three situations, and your actions in those situations. For example, a thief might only steal from people who can afford to lose money, never betray an honorable foe, and always bestow rich gifts on a lady."
+	},
+	{
+		"id": "compulsive-behavior",
+		"name": "Compulsive Behavior",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have a behavior that you must indulge in as often as possible. You may choose your behavior, subject to the GM’s approval. You like to spend a lot of time on your behavior, and a considerable amount of your income. If a time comes when you want to avoid your compulsive behavior, you must roll d100 (open-ended) and add triple your SD bonus. If the result is greater than 100, you may avoid your Compulsive Behavior."
+	},
+	{
+		"id": "delusionary-lesser",
+		"name": "Delusionary (Lesser)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -3,
+		"description": "You suffer from delusions. This delusion is mostly minor (e.g., the planet is flat). The GM must approve any delusion, and you must role play it every time a moment becomes available."
+	},
+	{
+		"id": "delusionary-minor",
+		"name": "Delusionary (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As the lesser flaw, except the delusion is one that will affect your life quite dramatically, but does not prevent you from functioning in society."
+	},
+	{
+		"id": "delusionary-greater",
+		"name": "Delusionary (Greater)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -15,
+		"description": "As the lesser flaw, except that the delusion has potentially fatal repercussions."
+	},
+	{
+		"id": "disavowed-weapons",
+		"name": "Disavowed Weapons",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You have vowed not to use weapons. You receive a -15 penalty to all of your skill categories in the Weapons group."
+	},
+	{
+		"id": "easily-charmed",
+		"name": "Easily Charmed",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "You are particularly vulnerable to all mind affecting spells (spells with a sub-type of “m”). Whenever you are the target of those spells, your RR is modified by -50. This includes special attacks and spell devices that cause an effect similar to any spell that has a sub-type of “m.”"
+	},
+	{
+		"id": "easy-mark",
+		"name": "Easy Mark",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are easy to hit when being ambushed. Whenever someone uses Ambush against you, they receive a +25 to their Ambush skill maneuver (and are treated as if they have an extra five ranks in the Ambush skill when they are adjusting the critical result)."
+	},
+	{
+		"id": "fanatic",
+		"name": "Fanatic",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You believe very strongly in one ideal or person. This could be a ruler, a loved one, a country, or a religion. This faith is more important to you than anything else, even to fault. You will probably not notice any failings in what you believe in, and you may even be willing to die for it. You follow the code or commands of what you believe in faithfully and fanatically. You can see no greater way to serve what you believe in."
+	},
+	{
+		"id": "fear-of-armor",
+		"name": "Fear of Armor",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You have a severe dislike of armor. All skills in the Armor group are now classified as restricted skills."
+	},
+	{
+		"id": "fearlessness",
+		"name": "Fearlessness",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You fear nothing. In fact, you consider planning or waiting to be cowardly. You would rather pull out your weapon and charge headlong into battle. Whenever you find yourself in a combat situation, roll d100 (open-ended), add 40 and subtract triple your SD bonus. If the result is greater than 100, you will charge into combat without regard for either your or anyone else’s safety."
+	},
+	{
+		"id": "fear-of-magic",
+		"name": "Fear of Magic",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You fear magic. You either do not understand how it works, or you believe that it is something man was not meant to use. Consequently, you can have no base lists, and you cannot learn any spell lists except for Open spell lists of your realm. You may learn no spells higher than 5th level."
+	},
+	{
+		"id": "glutton",
+		"name": "Glutton",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -3,
+		"description": "You like to eat and drink. You will never willingly pass up a meal offered to you. If it is necessary for you not to eat, you must roll d100 (open-ended) and add triple your SD bonus. If your result is less than 101, your will breaks and you start eating and drinking as much as possible. If there is no food available, you may change your opinion of what is edible and tasty. You are also overweight. Some social circles may look down on your avarice for food."
+	},
+	{
+		"id": "greedy",
+		"name": "Greedy",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You lust after wealth; you can never have enough money. Anytime a chance to make more money becomes available to you, you must roll d100 (open-ended) and add triple your SD bonus. If the result is over 100, you can pass up the opportunity. You will probably not hesitate if the money-making activity presented to you is shady."
+	},
+	{
+		"id": "impulsive",
+		"name": "Impulsive",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -13,
+		"description": "You tend to act first and think later. You do not wait around for events to unfold themselves, you charge into the fray and see what happens around you. You almost never think your decisions through. You just take life as it is sent to you. You should try hard to accurately role play this flaw. If you charge into every combat, but carefully check each door or wall for traps, the GM may invalidate your impulsiveness."
+	},
+	{
+		"id": "indecision",
+		"name": "Indecision",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are indecisive. Your indecisiveness shows most when you are forced to make a snap decision. You suffer a -50 penalty to all of your snap actions due to your indecisiveness, instead of the standard -20."
+	},
+	{
+		"id": "intolerance-lesser",
+		"name": "Intolerance (Lesser)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have a deep irrational hatred for some type of person. The GM must approve what it is you are intolerant of. Whenever you see what you are intolerant of, you must try to show your distaste for whatever it is. You are intolerant of a small group of people (up to 100,000)."
+	},
+	{
+		"id": "intolerance-minor",
+		"name": "Intolerance (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As the lesser flaw, except you are intolerant of a large group of people (over 100,000)."
+	},
+	{
+		"id": "kleptomaniac",
+		"name": "Kleptomaniac",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "You have an irrational compulsion to steal whenever the opportunity presents itself. What you steal is irrelevant. It does not have to be of value, or interest to you. Whenever circumstances favor stealing, you must roll d100 (open-ended) and add triple your SD bonus. If the result is less than 101, you must steal the closest item that you can hide on your person. You can never return stolen items, nor may you discard them. You may, however, give them to another person, or even sell them."
+	},
+	{
+		"id": "lecherous",
+		"name": "Lecherous",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have a very strong desire to interact with the opposite sex. Anytime you see an attractive member (Appearance greater than 50) of the opposite sex, you must try to allure them to you, no matter what else is happening. This could lead to a serious breech of etiquette, but you cannot help yourself. If you feel the need to restrain yourself from seducing someone, you must roll d100 (open-ended), subtract their Appearance, add triple your SD bonus, and subtract 50. If the result is over 100, you may stop yourself from making a pass."
+	},
+	{
+		"id": "megalomaniac",
+		"name": "Megalomaniac",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You believe strongly that you will fulfill a certain goal. You believe that it has been predestined that you complete your goal. And your goal is no trivial task. You may choose whatever goal you wish (subject to the GM’s approval) but your goal must be grandiose. You will not let anything stand between you and your goal. People around you consider you to be much to concerned with yourself. After talking with you for even a few minutes, they should realize your megalomania."
+	},
+	{
+		"id": "memory-loss",
+		"name": "Memory Loss",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "You suffer from occasional memory loss. Once per month for a period of one week, you will experience a random memory loss. You will lose d10 hours of memories each day for the entire week. When the week is finished, your memories will gradually start coming back; d10 hours of memories every d10 days. Actions taken during the period of memory loss can gain no experience points. The GM should determine exactly what you forget and when in the month your memory starts to go away."
+	},
+	{
+		"id": "minor-fear-lesser",
+		"name": "Minor Fear (Lesser)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have a fear of one uncommon thing (dragons, ogres, etc.) subject to the GM approval. Whenever you encounter that which you fear, there is a 50% chance that you immediately turn and flee. If you do not flee, there is a 25% chance that you will fall unconscious for d10 hours. While you are unconscious, it is almost impossible to revive you."
+	},
+	{
+		"id": "minor-fear-minor",
+		"name": "Minor Fear (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As the lesser flaw, except the thing you fear is common (e.g., women)."
+	},
+	{
+		"id": "miser",
+		"name": "Miser",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You are extremely concerned with keeping your money. You are not necessarily greedy, although you could be; you undeniably want to keep the money you have. It is very difficult for you to spend money. If you must make a large purchase (GM’s discretion), roll d100 (open-ended) and add triple your SD bonus. If the result is less than 101, you cannot convince yourself the expenditure is worthwhile, and you keep your money."
+	},
+	{
+		"id": "muddled-mind",
+		"name": "Muddled Mind",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You tend to jumble things in your mind when you are casting spells. All spell casting static maneuvers suffer a special penalty of -20."
+	},
+	{
+		"id": "oblivious",
+		"name": "Oblivious",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "You have a hard time noticing things. You receive a -15 penalty to all skill categories in the Awareness group."
+	},
+	{
+		"id": "overconfident",
+		"name": "Overconfident",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You are very confident in your abilities. In fact, you believe that you are better than you actually are. You do not necessarily have to be loud and boastful to be overconfident. You might be quiet yet driven. If you wish to proceed cautiously into a new situation, you must roll d100 (open-ended) and add triple your SD bonus. If the result is greater than 100, you may proceed with caution. You can rally young and/or gullible people around you. They tend to think that you are as good as you say you are. Older or experienced people might look at you as being headstrong and impatient."
+	},
+	{
+		"id": "pacifist-minor",
+		"name": "Pacifist (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You do not believe in violence. You feel that it accomplishes nothing and use it only when needed. You believe in life preservation. You may fight freely. You may even start a fight. The only thing you cannot do is kill. You can neither kill your foe nor allow them to be killed. For instance, you cannot leave a bleeding foe, lure a foe into a lethal trap, allow a comrade to administer a killing blow for you, etc. If you accidentally kill someone or something, you will suffer from severe depression (-75 to all actions) for 3d10 days."
+	},
+	{
+		"id": "pacifist-major",
+		"name": "Pacifist (Major)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the minor flaw, except this is defensive pacifism. You may only fight if you need to defend yourself or those under your care. You cannot initiate combat (which includes goading someone into attack you). You also try to keep others around you from fighting."
+	},
+	{
+		"id": "pacifist-greater",
+		"name": "Pacifist (Greater)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -30,
+		"description": "As the minor flaw, except this is total nonviolence. You are completely against any sort of violence. You will not protect yourself or those under your care with any form of violence, even indirect. The only exception is that you can defend yourself from creatures with animal intelligence (as they are reacting on instinct rather than sentient thought)."
+	},
+	{
+		"id": "paranoid",
+		"name": "Paranoid",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You believe that everyone wants to cause you harm. You stay constantly alert, watching those who are plotting against you. You may have one or two true friends you can trust, but you are wary of everyone else. Although, how do you know you can trust them? Maybe they are trying to lead you into a false sense of security. People tend to react negatively to paranoid people, and you could suffer from delusions as well as being paranoid. You should try your best to role play your paranoia. Trust no one. Remember, just because you are paranoid does not mean that they are not out to get you."
+	},
+	{
+		"id": "passive",
+		"name": "Passive",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You are passive, especially concerning combat. Whenever you are involved in a fight, you receive a special penalty of -15 to your OB until you get “worked up.” At the end of every round, you may roll to see if you are worked up. Roll d100 (open-ended), add 20, and add triple your SD bonus. If the result is over 100, you have succeeded in working yourself up. You may not use the Frenzy skill while you are passive."
+	},
+	{
+		"id": "phobia-lesser",
+		"name": "Phobia (Lesser)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have a phobia, an irrational fear of something. Whenever you are confronted with your phobia, you must make an RR versus a 10th level Fear attack. If you fail, you become paralyzed with fear for one round per 10% failure. If you must interact with whatever is causing your phobia (e.g. fighting something you have a phobia of or swimming when you have a fear of water), all of your actions suffer a special penalty of -25. You may choose what you are afraid of (subject to GM approval). The thing you are afraid of will only be encountered occasionally (or will not require you to interact with it very much; e.g., fear of the number 13, or the fear of mechanical devices in a medieval setting)."
+	},
+	{
+		"id": "phobia-minor",
+		"name": "Phobia (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As the lesser flaw, except the thing you fear will be encountered more often (e.g., the fear of heights or the fear of enclosed spaces)."
+	},
+	{
+		"id": "phobia-major",
+		"name": "Phobia (Major)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the lesser flaw, except the thing you fear will be encountered almost daily (e.g., the fear of water, crowds, bladed objects, etc.)."
+	},
+	{
+		"id": "poor-concentration",
+		"name": "Poor Concentration",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "Due to your short attention span, anything you must concentrate on for more than half a minute (most uses of the Lore category, some spells, loading artillery, complex rituals, etc.) is penalized by -25."
+	},
+	{
+		"id": "pyromaniac",
+		"name": "Pyromaniac",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have an irrational attraction to fire. You like to watch it burn, smell the smoke, feel the heat. You will set fires whenever possible, and you will occa- sionally feel the urge to set a fire without reason. If you want to resist your urge for setting a fire, you must roll d100 (open-ended) and add triple your SD bonus. If the result is over 100, you may resist the urge to start a fire. You can become hypnotized by a fire, and will always stop to appreciate any fire that you come across. You receive a +50 bonus to starting a campfire."
+	},
+	{
+		"id": "queasy",
+		"name": "Queasy",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "Any time you see blood or gore, it makes you uneasy. Each time you even glance at something gory, you must roll d100 (open-ended) and add triple your SD bonus. If the result is less than 101, you will operate at a -30 until you can get away from the scene."
+	},
+	{
+		"id": "sadist",
+		"name": "Sadist",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "You enjoy causing pain, either mentally or physi- cally. Whenever you can you must indulge your sadistic habits. You may conceal your weakness from close friends for a little while, but eventually they start to notice the pain you inflict on those around you. People react negatively to a known sadist, many will want to see you burned at the stake. Please note that this is not a “good” or “heroic” flaw for you to possess. It is more suitable for a truly evil character. The GM may prohibit characters from choosing this option."
+	},
+	{
+		"id": "sense-of-duty-lesser",
+		"name": "Sense of Duty (Lesser)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You feel that you have a responsibility towards someone or something. This is an internal feeling, one you have placed upon yourself. You will never betray, harm, or mislead those to whom you have a Sense of Duty. Your Sense of Duty is towards a close friend or small group."
+	},
+	{
+		"id": "sense-of-duty-minor",
+		"name": "Sense of Duty (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As the lesser flaw, except you have a Sense of Duty towards a large group or organization (a town or city)."
+	},
+	{
+		"id": "sense-of-duty-major",
+		"name": "Sense of Duty (Major)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the lesser flaw, except you have a Sense of Duty towards a country or equally large group."
+	},
+	{
+		"id": "split-personality",
+		"name": "Split Personality",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You have from one to three additional personalities. Your physical attributes like height, weight, and hair color do not change. Your non-physical attributes can all be different, as well as each of their professions. The alignment, personality, and level can vary among personalities. Each of the personalities earns experience separately; you must keep track of which personality performed which actions so you can award the appropriate experience to each personality. You and the GM must decide what triggers the change in your personalities."
+	},
+	{
+		"id": "stubborn",
+		"name": "Stubborn",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You are very stubborn. You want results your way, and even if you do not get it, you will not change your mind. Your comrades may have to resort to duping you into doing what they need you to do."
+	},
+	{
+		"id": "superstitious",
+		"name": "Superstitious",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You are superstitious, often reading omens into anything you encounter. You always observe the various good luck and bad luck practices of your culture. Your mood and morale are often affected by these omens"
+	},
+	{
+		"id": "trauma-lesser",
+		"name": "Trauma (Lesser)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You suffer from flashbacks that completely immobilize you for d10 minutes. The trigger for these flashbacks is something uncommon. You may pick what triggers your flashbacks (subject to GM approval) but it should be at least loosely connected to the trauma that causes your flashbacks. If you are attacked while immobilized, any hit that delivers a critical to you will cause you to snap out of your trance."
+	},
+	{
+		"id": "trauma-minor",
+		"name": "Trauma (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As the lesser flaw, except what triggers your flashback is a common occurrence (e.g. a ringing bell)."
+	},
+	{
+		"id": "trauma-major",
+		"name": "Trauma (Major)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the lesser flaw, except what triggers your flashback is a very common occurrence (every time a horse rides by)."
+	},
+	{
+		"id": "truthful",
+		"name": "Truthful",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You cannot lie. Either there is some physical reason why you cannot lie, or you are so terrible at it that anyone instantly knows when you are lying. The Duping and Falsification skills are classified as restricted for you. You also cannot just refuse to tell the truth. If you are ever in a situation which you do not wish to speak, for fear of revealing some truth, you must roll d100 (open-ended) and add triple your SD bonus. If the result is greater than 100, you may prevent yourself from spilling out the truth. This is not a vow to always tell the truth, this is an actual inability to lie."
+	},
+	{
+		"id": "vow-lesser",
+		"name": "Vow (Lesser)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have taken a vow either to do or not do something. This is a vow that you believe in very strongly and has been sealed through some formal ritual. Your vow may end after a certain task is accomplished (avenge the death of your parents) or may be lifelong (vow of silence). You cannot take a Vow to accomplish some task and also take the same task as your Lifetime Goal (see the appropriate Talent). You must always follow your vow. If you do not, you will penalized by the GM. The vow you have made will not inconvenience you much in your daily activities (e.g., giving 10% tithe to the church, showing respect towards politicians, or never wearing black clothes, etc.). If you fail to fulfill a vow at any time, some calamity will fall on you. The severity of the calamity depends on the severity of the vow you took. The Gamemaster must give the final approval for any vow you wish to take."
+	},
+	{
+		"id": "vow-minor",
+		"name": "Vow (Minor)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "minor",
+		"cost": -7,
+		"description": "As the lesser flaw, except the vow will affect you on a daily basis, but not prohibit you from functioning fairly normally (e.g., chastity, eating no meat, never sleeping in a covered area, etc.)."
+	},
+	{
+		"id": "vow-major",
+		"name": "Vow (Major)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the lesser flaw, except the vow will affect you often during a typical day. Most people will become aware of your vow after only being with you a few hours. This vow also limits you in some significant way (e.g., never using edged weapons, never keeping more money than needed to clothe yourself, never speaking, etc.)."
+	},
+	{
+		"id": "vow-greater",
+		"name": "Vow (Greater)",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "greater",
+		"cost": -20,
+		"description": "As the lesser flaw, except the vow will affect almost every one of your decisions. People will become aware of your vow quickly, and can use it to manipulate you into performing or preventing a particular task (e.g., aiding those who ask, challenge all who wrong you, fight with a lesser weapon than your foe, etc.)."
+	},
+	{
+		"id": "weapon-bane",
+		"name": "Weapon Bane",
+		"type": "flaw",
+		"category": "mental",
+		"costType": "major",
+		"cost": -15,
+		"description": "All weapon skills (except skills in your primary weapon category) are now classified as restricted for you. Your primary weapon category is the one with the cheapest development point cost."
 	}
 ]

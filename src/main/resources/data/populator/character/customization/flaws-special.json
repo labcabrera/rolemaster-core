@@ -7,5 +7,59 @@
 		"costType": "greater",
 		"cost": -20,
 		"description": "You are cursed to randomly change shape into an animal. You are never sure what animal you will become with each transformation. Each week, there is a 5% (non-cumulative) chance that you will change shape into an animal. The change lasts for d10 days, and the animal you change into is determined by the GM (he could choose to use the table below). You can be assured that the animal you do change into will be small and nonthreatening."
+	},
+	{
+		"id": "dark-pact",
+		"name": "Dark Pact",
+		"type": "flaw",
+		"category": "special",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have made some kind of deal with a dark or demonic force (the deal resulted in your most powerful talent). You will be visited at random times by this force to be reminded of your deal. This force will never aid you in any way, and may even hinder you if an opportunity presents itself. The actual specifications of the deal are up to the GM to decide."
+	},
+	{
+		"id": "dark-temptation",
+		"name": "Dark Temptation",
+		"type": "flaw",
+		"category": "special",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have learned one evil spell list up to 50th level. To receive the knowledge of this list, you had to consort with dark and evil things. You have become tainted by this evil and are forever tempted to the “Dark Side.” The GM will control the details, but you are constantly in a spiritual battle between what you know is good and the evil inside of you. You begin the game with 10d10 corruption points, and all corruption points gained later are doubled."
+	},
+	{
+		"id": "dependent-lesser",
+		"name": "Dependent (Lesser)",
+		"type": "flaw",
+		"category": "special",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have a person in your life that you deeply care about. This dependent may be used against you in order to persuade you to do something you would normally be against. In addition, your dependent could inadvertently walk into a situation that requires you to rescue them. For instance, your child could follow you into a haunted house wanting to see what you are doing. Your dependent requires you to protect him in some way (to be a disadvantage). A family that stays at home in the country, free from harm is not a dependent. Nor is your brother who happens to be the greatest swordsman in the Northern plains. If they are able to protect themselves, they are not dependents. Your dependent is a single person of average ability."
+	},
+	{
+		"id": "dependent-minor",
+		"name": "Dependent (Minor)",
+		"type": "flaw",
+		"category": "special",
+		"costType": "lesser",
+		"cost": -10,
+		"description": "As the lesser flaw, except you have more than one dependent, or you have one person who has below average capabilities."
+	},
+	{
+		"id": "dependent-major",
+		"name": "Dependent (Major)",
+		"type": "flaw",
+		"category": "special",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the lesser flaw, except you have more than one dependent and they all have below average capabilities."
+	},
+	{
+		"id": "duty-lesser",
+		"name": "Duty (Lesser)",
+		"type": "flaw",
+		"category": "special",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have a responsibility to a particular individual or organization. Whenever they call upon you to do something, you are duty-bound to cease everything you are working on and take care of the situation. A duty is something imposed upon you from the outside, not something you feel you have to do (i.e., a Sense of Duty). You may determine exactly who or what you have a duty to, but the GM must approve it. Once per month, the GM will make a roll to determine if you are called to duty during that month. The percentage chance that you will be summoned is 25%."
 	}
 ]
