@@ -1,0 +1,88 @@
+[
+	{
+		"id": "scout",
+		"name": "Scout",
+		"type": "vocational",
+		"timeAcquisition": 33,
+		"fixedSkillCategories": {
+			"outdoor-environmental": 3,
+			"outdoor-animal": 2,
+			"awareness-searching": 4
+		},
+		"fixedSkills": {
+			"observation": 2,
+			"read-tracks": 1,
+			"tracking": 1
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "outdoor-animal",
+				"description": "Outdoor animal",
+				"categories": [
+					"outdoor-animal"
+				],
+				"ranks": 2,
+				"skills": 2
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 21,
+			"thief": 20,
+			"rogue": 19,
+			"warrior-monk": 25,
+			"layman": 25,
+			"magician": 31,
+			"illusionist": 31,
+			"cleric": 28,
+			"animist": 20,
+			"mentalist": 20,
+			"lay-healer": 30,
+			"healer": 30,
+			"mystic": 31,
+			"sorcerer": 31,
+			"ranger": 16,
+			"paladin": 24,
+			"monk": 26,
+			"dabbler": 25,
+			"bard": 25,
+			"magent": 21
+		}
+	}
+]

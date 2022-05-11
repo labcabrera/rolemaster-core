@@ -31,14 +31,6 @@
         "skillRanks": {}
     },
     {
-        "id": "scout",
-		"name": "Scout",
-        "type": "vocational",
-        "timeAcquisition": 33,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "soldier",
         "name": "Soldier",
         "type": "vocational",
