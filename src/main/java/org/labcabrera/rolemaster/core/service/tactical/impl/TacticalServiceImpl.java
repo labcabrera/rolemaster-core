@@ -25,8 +25,9 @@ import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalNpcCharacterService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalRoundService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalSessionService;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalSessionCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -38,7 +39,7 @@ import reactor.core.publisher.Mono;
 public class TacticalServiceImpl implements TacticalService {
 
 	@Autowired
-	private TacticalSessionService tacticalSessionService;
+	private TacticalSessionCreationService tacticalSessionService;
 
 	@Autowired
 	private TacticalNpcCharacterService npcCharacterService;
@@ -77,8 +78,8 @@ public class TacticalServiceImpl implements TacticalService {
 	private TacticalCharacterService tacticalCharacterService;
 
 	@Override
-	public Mono<TacticalSession> createSession(TacticalSessionCreation request) {
-		return tacticalSessionService.createSession(request);
+	public Mono<TacticalSession> createSession(JwtAuthenticationToken auth, TacticalSessionCreation request) {
+		return tacticalSessionService.createSession(auth, request);
 	}
 
 	@Override

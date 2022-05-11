@@ -16,8 +16,10 @@ import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
+import org.labcabrera.rolemaster.core.security.WriteAuthorizationFilter;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
@@ -28,6 +30,9 @@ public class CharacterAddSkillService {
 	private static final String CUSTOMIZATION_SEPARATOR = ":";
 
 	@Autowired
+	private CharacterInfoService characterInfoService;
+
+	@Autowired
 	private CharacterInfoRepository characterRepository;
 
 	@Autowired
@@ -36,8 +41,12 @@ public class CharacterAddSkillService {
 	@Autowired
 	private CharacterPostProcessorService postProcessor;
 
-	public Mono<CharacterInfo> addSkill(@NotEmpty String characterId, @Valid AddSkill request) {
-		return characterRepository.findById(characterId)
+	@Autowired
+	private WriteAuthorizationFilter writeAuthorizationFilter;
+
+	public Mono<CharacterInfo> addSkill(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid AddSkill request) {
+		return characterInfoService.findById(auth, characterId)
+			.map(c -> writeAuthorizationFilter.apply(auth, c))
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
 			.flatMap(character -> addSkill(character, request));
 	}

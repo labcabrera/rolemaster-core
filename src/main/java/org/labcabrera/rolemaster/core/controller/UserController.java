@@ -6,7 +6,9 @@ import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.UserFriendRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,5 +34,8 @@ public interface UserController {
 
 	@PostMapping("/friend-requests")
 	public Mono<UserFriendRequest> sendFriendRequest(@AuthenticationPrincipal JwtAuthenticationToken auth);
+
+	@DeleteMapping("/friends/{friendId}")
+	public Mono<Void> removeFriend(@AuthenticationPrincipal JwtAuthenticationToken auth, @PathVariable String friendId);
 
 }

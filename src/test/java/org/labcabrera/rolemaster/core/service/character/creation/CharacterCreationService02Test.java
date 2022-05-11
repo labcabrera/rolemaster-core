@@ -103,7 +103,7 @@ class CharacterCreationService02Test {
 			AddSkill.builder().skillId("fauna-lore").build(),
 			AddSkill.builder().skillId("survival").customizations(Arrays.asList("hills")).build());
 		for (AddSkill e : addSkills) {
-			character = addSkillService.addSkill(character.getId(), e).share().block();
+			character = addSkillService.addSkill(auth, character.getId(), e).share().block();
 		}
 
 		json = """

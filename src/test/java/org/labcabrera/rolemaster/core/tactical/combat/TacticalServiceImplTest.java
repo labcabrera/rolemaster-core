@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
+import org.labcabrera.rolemaster.core.MockAuthentication;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
@@ -26,9 +27,12 @@ import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 @SpringBootTest
 class TacticalServiceImplTest {
+
+	private JwtAuthenticationToken auth = MockAuthentication.mock();
 
 	@Autowired
 	private StrategicSessionService sessionService;
@@ -41,7 +45,7 @@ class TacticalServiceImplTest {
 
 	@Test
 	void simulateSession() {
-		StrategicSession session = sessionService.createSession(StrategicSessionCreation.builder()
+		StrategicSession session = sessionService.createSession(auth, StrategicSessionCreation.builder()
 			.name("Tactical session test " + LocalDateTime.now().toString())
 			.build()).share().block();
 
@@ -50,7 +54,7 @@ class TacticalServiceImplTest {
 			.name("Tactical session test " + LocalDateTime.now())
 			.build();
 
-		TacticalSession tacticalSession = tacticalService.createSession(tacticalSessionCreation).share().block();
+		TacticalSession tacticalSession = tacticalService.createSession(auth, tacticalSessionCreation).share().block();
 
 		String npcIdentifier = "orc-fighter-scimitar-ii";
 

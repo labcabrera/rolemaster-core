@@ -41,7 +41,9 @@ public interface CharacterController {
 	@Operation(summary = "Character search by id.")
 	@ApiResponse(responseCode = "200", description = "Success")
 	@ApiResponse(responseCode = "404", description = "Character not found", content = @Content(schema = @Schema(implementation = Void.class)))
-	Mono<CharacterInfo> findById(@PathVariable String id);
+	Mono<CharacterInfo> findById(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable String id);
 
 	@GetMapping
 	@Operation(summary = "Characters search.")
@@ -64,11 +66,15 @@ public interface CharacterController {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "Deleted character")
 	@Operation(summary = "Delete character.")
-	Mono<Void> deleteById(@PathVariable String id);
+	Mono<Void> deleteById(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable String id);
 
 	@PostMapping("/{id}/skills")
 	@Operation(summary = "Adds a skill to a character.")
-	Mono<CharacterInfo> addSkill(@PathVariable("id") String characterId,
+	Mono<CharacterInfo> addSkill(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody AddSkill request);
 
 	@PostMapping("/{id}/skills/upgrade")
@@ -80,17 +86,23 @@ public interface CharacterController {
 
 	@PostMapping("/{id}/training-packages")
 	@Operation(summary = "Applies a training package to a character.")
-	Mono<CharacterInfo> addTrainingPackage(@PathVariable("id") String characterId,
+	Mono<CharacterInfo> addTrainingPackage(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody TrainingPackageUpgrade request);
 
 	@PostMapping("/{id}/talents")
 	@Operation(summary = "Adds a talent to a character.")
-	Mono<CharacterInfo> addTalent(@PathVariable("id") String characterId,
+	Mono<CharacterInfo> addTalent(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody AddTalent request);
 
 	@PostMapping("/{id}/flaws")
 	@Operation(summary = "Adds a flaw to a character.")
-	Mono<CharacterInfo> addFlaw(@PathVariable("id") String characterId,
+	Mono<CharacterInfo> addFlaw(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody AddFlaw request);
 
 }

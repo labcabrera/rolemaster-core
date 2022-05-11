@@ -1,9 +1,8 @@
 package org.labcabrera.rolemaster.core.model.strategic;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.HasAuthorization;
+import org.labcabrera.rolemaster.core.model.HasMetadata;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class StrategicSession {
+public class StrategicSession implements HasAuthorization, HasMetadata {
 
 	@Schema(description = "Strategic session identifier.", required = true, example = "6242c18da7a9f7048331ca03")
 	private String id;
@@ -32,11 +31,10 @@ public class StrategicSession {
 	@Schema(description = "Universe", required = true, example = "middle-earth")
 	private String universeId;
 
-	@Schema(description = "Audit data.")
+	@Schema(description = "Audit data.", required = true)
 	private EntityMetadata metadata;
 
-	@Builder.Default
-	@Schema(description = "Authorization rules.")
-	private List<String> authorization = new ArrayList<>();
+	@Schema(description = "Owner.", required = true, example = "rolemaster")
+	private String owner;
 
 }

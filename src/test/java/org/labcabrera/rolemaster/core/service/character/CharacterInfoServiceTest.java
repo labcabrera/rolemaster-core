@@ -1,14 +1,15 @@
 package org.labcabrera.rolemaster.core.service.character;
 
+import static org.assertj.core.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.model.User;
@@ -150,7 +151,31 @@ class CharacterInfoServiceTest {
 		aliceC1.setAge(30);
 		try {
 			service.update(auth, aliceC1).share().block();
-			Assertions.fail("Expected access denied exception");
+			fail("Expected access denied exception");
+		}
+		catch (AccessDeniedException ex) {
+			//Success
+		}
+	}
+
+	@Test
+	void testDelete01() {
+		JwtAuthenticationToken auth = mock(JwtAuthenticationToken.class);
+		when(auth.getName()).thenReturn("alice");
+		CharacterInfo aliceC1 = characterInfoRepository.findByNameAndOwner("alice-c-2", "alice").share().block();
+		service.deleteById(auth, aliceC1.getId()).share().block();
+		CharacterInfo readed = characterInfoRepository.findByNameAndOwner("alice-c-2", "alice").share().block();
+		assertNull(readed);
+	}
+
+	@Test
+	void testDelete02() {
+		JwtAuthenticationToken auth = mock(JwtAuthenticationToken.class);
+		when(auth.getName()).thenReturn("bob");
+		CharacterInfo aliceC1 = characterInfoRepository.findByNameAndOwner("alice-c-2", "alice").share().block();
+		try {
+			service.deleteById(auth, aliceC1.getId()).share().block();
+			fail("Expected access denied exception");
 		}
 		catch (AccessDeniedException ex) {
 			//Success

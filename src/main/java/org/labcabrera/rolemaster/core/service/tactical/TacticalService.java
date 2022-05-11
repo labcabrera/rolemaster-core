@@ -6,13 +6,14 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface TacticalService {
 
-	Mono<TacticalSession> createSession(TacticalSessionCreation request);
+	Mono<TacticalSession> createSession(JwtAuthenticationToken auth, TacticalSessionCreation request);
 
 	Mono<Void> deleteSession(String tacticalSessionId);
 

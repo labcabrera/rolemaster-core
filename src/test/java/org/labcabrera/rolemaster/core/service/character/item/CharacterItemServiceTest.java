@@ -47,7 +47,8 @@ class CharacterItemServiceTest {
 		CharacterCreation request = readRequest();
 		CharacterInfo characterInfo = creationService.create(auth, request).share().block();
 
-		characterInfo = addSkillService.addSkill(characterInfo.getId(), AddSkill.builder().skillId("soft-leather").build()).share().block();
+		characterInfo = addSkillService.addSkill(auth, characterInfo.getId(), AddSkill.builder().skillId("soft-leather").build()).share()
+			.block();
 
 		AddCharacterItem addCoat = AddCharacterItem.builder()
 			.itemId("reinforced-full-length-leather-coat")

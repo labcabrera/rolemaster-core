@@ -1,9 +1,9 @@
 package org.labcabrera.rolemaster.core.service.character;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,7 +11,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.labcabrera.rolemaster.core.MockAuthentication;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterDevelopment;
@@ -20,6 +19,8 @@ import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.security.WriteAuthorizationFilter;
+import org.labcabrera.rolemaster.core.service.MetadataModificationUpdater;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -34,6 +35,18 @@ class CharacterUpdateSkillServiceTest {
 
 	@InjectMocks
 	private CharacterUpdateSkillService service;
+
+	@Mock
+	private JwtAuthenticationToken auth;
+
+	@Mock
+	private CharacterInfoService characterInfoService;
+
+	@Spy
+	private WriteAuthorizationFilter writeAuthorizationFilter;
+
+	@Spy
+	private MetadataModificationUpdater metadataModificationUpdater;
 
 	@Mock
 	private CharacterPostProcessorService postProcessorService;
@@ -68,14 +81,11 @@ class CharacterUpdateSkillServiceTest {
 		request.setCategoryRanks(Collections.singletonMap("cat-01", 2));
 		request.setSkillRanks(Collections.singletonMap("s-01", 3));
 
-		lenient().when(repository.findById(character.getId())).thenReturn(Mono.just(character));
-		lenient().when(repository.save(character)).thenReturn(Mono.just(character));
-		lenient().when(postProcessorService.apply(character)).thenReturn(character);
+		when(characterInfoService.findById(auth, character.getId())).thenReturn(Mono.just(character));
 	}
 
 	@Test
 	void testInvalidLevelCount() {
-		JwtAuthenticationToken auth = MockAuthentication.mock();
 		assertThrows(BadRequestException.class, () -> {
 			request.setCategoryRanks(Collections.singletonMap("cat-01", 3));
 			service.updateRanks(auth, character.getId(), request).share().block();
@@ -85,7 +95,6 @@ class CharacterUpdateSkillServiceTest {
 
 	@Test
 	void testInvalidCategoryId() {
-		JwtAuthenticationToken auth = MockAuthentication.mock();
 		assertThrows(BadRequestException.class, () -> {
 			request.setCategoryRanks(Collections.singletonMap("cat-02", 1));
 			service.updateRanks(auth, character.getId(), request).share().block();

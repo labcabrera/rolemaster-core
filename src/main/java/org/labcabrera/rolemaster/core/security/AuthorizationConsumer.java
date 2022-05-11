@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class AuthorizationConsumer {
 
 	public <E extends HasAuthorization> E accept(JwtAuthenticationToken auth, E resource) {
+		if (resource.getOwner() != null) {
+			throw new RuntimeException("Owner must be null.");
+		}
 		resource.setOwner(auth.getName());
-		resource.setAuthorization(auth.getAuthorities().stream()
-			.map(e -> e.getAuthority())
-			.toList());
 		return resource;
 	}
 

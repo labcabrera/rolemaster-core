@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.message.Messages.Errors;
 import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
@@ -45,14 +46,14 @@ public class CharacterInfoService {
 
 	public Mono<CharacterInfo> update(JwtAuthenticationToken auth, CharacterInfo character) {
 		return characterRepository.findById(character.getId())
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character not found.")))
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(character.getId()))))
 			.map(e -> writeAuthorizationFilter.apply(auth, e))
 			.then(characterRepository.save(character));
 	}
 
 	public Mono<CharacterInfo> findById(JwtAuthenticationToken auth, String id) {
 		return characterRepository.findById(id)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character not found.")))
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(id))))
 			.flatMap(e -> readAuthorizationFilter.apply(auth, e));
 	}
 
@@ -63,6 +64,13 @@ public class CharacterInfoService {
 		return userService.findOrCreate(auth.getName())
 			.map(this::filterOwners)
 			.flatMapMany(ids -> characterRepository.findByOwner(ids, pageable.getSort()));
+	}
+
+	public Mono<Void> deleteById(JwtAuthenticationToken auth, String id) {
+		return characterRepository.findById(id)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(id))))
+			.map(e -> writeAuthorizationFilter.apply(auth, e))
+			.then(characterRepository.deleteById(id));
 	}
 
 	private List<String> filterOwners(User user) {

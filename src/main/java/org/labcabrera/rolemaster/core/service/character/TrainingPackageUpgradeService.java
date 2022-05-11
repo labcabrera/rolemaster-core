@@ -18,10 +18,13 @@ import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.character.TrainingPackage;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
+import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.labcabrera.rolemaster.core.repository.TrainingPackageRepository;
+import org.labcabrera.rolemaster.core.security.WriteAuthorizationFilter;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -33,7 +36,10 @@ import reactor.util.function.Tuple2;
 public class TrainingPackageUpgradeService {
 
 	@Autowired
-	private CharacterService characterService;
+	private CharacterInfoService characterInfoService;
+
+	@Autowired
+	private CharacterInfoRepository characterInfoRepository;
 
 	@Autowired
 	private TrainingPackageRepository trainingPackageRepository;
@@ -44,8 +50,12 @@ public class TrainingPackageUpgradeService {
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
 
-	public Mono<CharacterInfo> upgrade(@NotEmpty String characterId, @Valid TrainingPackageUpgrade request) {
-		return characterService.findById(characterId)
+	@Autowired
+	private WriteAuthorizationFilter writeFilter;
+
+	public Mono<CharacterInfo> upgrade(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid TrainingPackageUpgrade request) {
+		return characterInfoService.findById(auth, characterId)
+			.map(c -> writeFilter.apply(auth, c))
 			.zipWith(trainingPackageRepository.findById(request.getTrainingPackageId()))
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.trainingPackageNotFound(request.getTrainingPackageId()))))
 			.map(this::validate)
@@ -55,7 +65,7 @@ public class TrainingPackageUpgradeService {
 			.map(this::applyPackage)
 			.map(Tuple2::getT1)
 			.map(postProcessorService)
-			.flatMap(characterService::update);
+			.flatMap(characterInfoRepository::save);
 	}
 
 	private Tuple2<CharacterInfo, TrainingPackage> validate(Tuple2<CharacterInfo, TrainingPackage> pair) {

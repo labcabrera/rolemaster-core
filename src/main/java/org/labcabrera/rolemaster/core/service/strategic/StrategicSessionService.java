@@ -11,9 +11,14 @@ import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.security.AuthorizationConsumer;
+import org.labcabrera.rolemaster.core.security.ReadAuthorizationFilter;
+import org.labcabrera.rolemaster.core.security.WriteAuthorizationFilter;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
@@ -34,15 +39,24 @@ public class StrategicSessionService {
 	@Autowired
 	private TacticalCharacterService characterStatusService;
 
-	public Mono<StrategicSession> findById(String id) {
-		return strategicSessionRepository.findById(id);
+	@Autowired
+	private ReadAuthorizationFilter readFilter;
+
+	@Autowired
+	private WriteAuthorizationFilter writeFilter;
+
+	@Autowired
+	private AuthorizationConsumer authorizationConsumer;
+
+	public Mono<StrategicSession> findById(JwtAuthenticationToken auth, String id) {
+		return strategicSessionRepository.findById(id).flatMap(s -> readFilter.apply(auth, s));
 	}
 
-	public Flux<StrategicSession> findAll() {
-		return strategicSessionRepository.findAll();
+	public Flux<StrategicSession> findAll(JwtAuthenticationToken auth, Pageable pageable) {
+		return strategicSessionRepository.findAll(pageable.getSort());
 	}
 
-	public Mono<StrategicSession> createSession(StrategicSessionCreation request) {
+	public Mono<StrategicSession> createSession(JwtAuthenticationToken auth, StrategicSessionCreation request) {
 		StrategicSession session = StrategicSession.builder()
 			.name(request.getName())
 			.description(request.getDescription())
@@ -51,6 +65,7 @@ public class StrategicSessionService {
 				.created(LocalDateTime.now())
 				.build())
 			.build();
+		authorizationConsumer.accept(auth, session);
 		return strategicSessionRepository.save(session);
 	}
 
@@ -58,9 +73,10 @@ public class StrategicSessionService {
 		return characterStatusService.create(sessionId, characterId);
 	}
 
-	public Mono<Void> deleteSession(String id) {
+	public Mono<Void> deleteById(JwtAuthenticationToken auth, String id) {
 		return strategicSessionRepository.findById(id)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Strategic session not found.")))
+			.map(s -> writeFilter.apply(auth, s))
 			.thenMany(tacticalSessionRepository.findAll())
 			.flatMap(session -> tacticalService.deleteSession(session.getId()))
 			.then(strategicSessionRepository.deleteById(id));

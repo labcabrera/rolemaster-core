@@ -3,6 +3,8 @@ package org.labcabrera.rolemaster.core.model.tactical;
 import java.math.BigDecimal;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.HasAuthorization;
+import org.labcabrera.rolemaster.core.model.HasMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TacticalSession {
+public class TacticalSession implements HasAuthorization, HasMetadata {
 
 	@Id
 	@Schema(description = "Tactical session identifier.", required = true, example = "6242c18da7a9f7048331ca03")
@@ -51,6 +53,8 @@ public class TacticalSession {
 
 	@Builder.Default
 	@Schema(description = "Audit data.", required = true)
-	private EntityMetadata entityMetadata = new EntityMetadata();
+	private EntityMetadata metadata = new EntityMetadata();
+
+	private String owner;
 
 }

@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.security;
 
 import org.labcabrera.rolemaster.core.model.HasAuthorization;
+import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -20,7 +21,7 @@ public class ReadAuthorizationFilter {
 			return Mono.just(resource);
 		}
 		return userRepository.findById(auth.getName())
-			.map(e -> e.getFriends())
+			.map(User::getFriends)
 			.map(friends -> {
 				if (!friends.contains(resource.getOwner())) {
 					throw new AccessDeniedException("Access denied.");

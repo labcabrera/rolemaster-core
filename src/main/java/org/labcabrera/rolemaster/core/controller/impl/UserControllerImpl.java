@@ -48,4 +48,10 @@ public class UserControllerImpl implements UserController {
 		throw new NotImplementedException();
 	}
 
+	@Override
+	public Mono<Void> removeFriend(JwtAuthenticationToken auth, String friendId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

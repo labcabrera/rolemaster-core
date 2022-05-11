@@ -12,7 +12,7 @@ import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
-import org.labcabrera.rolemaster.core.service.character.CharacterService;
+import org.labcabrera.rolemaster.core.service.character.CharacterInfoService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
 import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
@@ -28,7 +28,7 @@ import reactor.core.publisher.Mono;
 public class CharacterControllerImpl implements CharacterController {
 
 	@Autowired
-	private CharacterService characterService;
+	private CharacterInfoService characterService;
 
 	@Autowired
 	private CharacterCreationService creationService;
@@ -43,8 +43,8 @@ public class CharacterControllerImpl implements CharacterController {
 	private TrainingPackageUpgradeService trainingPackageUpgradeService;
 
 	@Override
-	public Mono<CharacterInfo> findById(String id) {
-		return characterService.findById(id);
+	public Mono<CharacterInfo> findById(JwtAuthenticationToken auth, String id) {
+		return characterService.findById(auth, id);
 	}
 
 	@Override
@@ -54,12 +54,12 @@ public class CharacterControllerImpl implements CharacterController {
 
 	@Override
 	public Flux<CharacterInfo> findAll(JwtAuthenticationToken auth, Pageable pageable) {
-		return characterService.findAll(pageable);
+		return characterService.findAll(auth, pageable);
 	}
 
 	@Override
-	public Mono<Void> deleteById(String id) {
-		return characterService.deleteById(id);
+	public Mono<Void> deleteById(JwtAuthenticationToken auth, String id) {
+		return characterService.deleteById(auth, id);
 	}
 
 	@Override
@@ -68,22 +68,22 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Mono<CharacterInfo> addSkill(String characterId, AddSkill request) {
-		return addSkillService.addSkill(characterId, request);
+	public Mono<CharacterInfo> addSkill(JwtAuthenticationToken auth, String characterId, AddSkill request) {
+		return addSkillService.addSkill(auth, characterId, request);
 	}
 
 	@Override
-	public Mono<CharacterInfo> addTrainingPackage(String characterId, TrainingPackageUpgrade request) {
-		return trainingPackageUpgradeService.upgrade(characterId, request);
+	public Mono<CharacterInfo> addTrainingPackage(JwtAuthenticationToken auth, String characterId, TrainingPackageUpgrade request) {
+		return trainingPackageUpgradeService.upgrade(auth, characterId, request);
 	}
 
 	@Override
-	public Mono<CharacterInfo> addTalent(String characterId, AddTalent request) {
+	public Mono<CharacterInfo> addTalent(JwtAuthenticationToken auth, String characterId, AddTalent request) {
 		throw new NotImplementedException("Not implemented.");
 	}
 
 	@Override
-	public Mono<CharacterInfo> addFlaw(String characterId, AddFlaw request) {
+	public Mono<CharacterInfo> addFlaw(JwtAuthenticationToken auth, String characterId, AddFlaw request) {
 		throw new NotImplementedException("Not implemented.");
 	}
 

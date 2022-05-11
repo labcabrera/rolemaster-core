@@ -58,7 +58,7 @@ class CharacterCreationService01Test {
 			.skillId("short-sword")
 			.build();
 
-		characterInfo = addSkillService.addSkill(characterInfo.getId(), addSkill).share().block();
+		characterInfo = addSkillService.addSkill(auth, characterInfo.getId(), addSkill).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertTrue(characterInfo.getSkill("short-sword").isPresent());
 		assertEquals(0, characterInfo.getSkill("short-sword").get().getTotalRanks());
@@ -115,7 +115,7 @@ class CharacterCreationService01Test {
 
 		String checkSkill = "two-weapon-combat:short-sword:short-sword";
 
-		characterInfo = addSkillService.addSkill(characterInfo.getId(), addSkill).share().block();
+		characterInfo = addSkillService.addSkill(auth, characterInfo.getId(), addSkill).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertTrue(characterInfo.getSkill(checkSkill).isPresent());
 		assertEquals(Arrays.asList("short-sword", "short-sword"), characterInfo.getSkill(checkSkill).get().getCustomization());

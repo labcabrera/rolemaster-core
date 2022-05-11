@@ -103,7 +103,7 @@ class TrainingPackageService01Test {
 
 		TrainingPackageUpgrade tpu = objectMapper.readerFor(TrainingPackageUpgrade.class).readValue(json);
 
-		character = traningPackageUpgradeService.upgrade(character.getId(), tpu).share().block();
+		character = traningPackageUpgradeService.upgrade(auth, character.getId(), tpu).share().block();
 
 		assertTrue(character.getTrainingPackages().containsKey(tpu.getTrainingPackageId()));
 		assertEquals(16, character.getDevelopmentPoints().getUsedPoints());

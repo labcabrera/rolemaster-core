@@ -45,7 +45,7 @@ class TrainingPackageUpgradeValidationTest {
 		TrainingPackageUpgrade tpu = TrainingPackageUpgrade.builder()
 			.build();
 		assertThrows(ConstraintViolationException.class, () -> {
-			traningPackageUpgradeService.upgrade(character.getId(), tpu).share().block();
+			traningPackageUpgradeService.upgrade(auth, character.getId(), tpu).share().block();
 		});
 	}
 
@@ -61,7 +61,7 @@ class TrainingPackageUpgradeValidationTest {
 			.trainingPackageId("error")
 			.build();
 		assertThrows(BadRequestException.class, () -> {
-			traningPackageUpgradeService.upgrade(character.getId(), tpu).share().block();
+			traningPackageUpgradeService.upgrade(auth, character.getId(), tpu).share().block();
 		});
 	}
 
