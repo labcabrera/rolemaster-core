@@ -1,0 +1,86 @@
+[
+	{
+		"id": "knight",
+		"name": "Knight",
+		"type": "lifestyle",
+		"timeAcquisition": 69,
+		"fixedSkillCategories": {
+			"armor-heavy": 2,
+			"lore-general": 2,
+			"outdoor-animal": 1
+		},
+		"fixedSkills": {
+			"armor-plate": 2,
+			"mounted-combat": 2
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 2
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-pole-arms"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "combat-maneuvers",
+				"description": "Combat maneuvers",
+				"categories": [
+					"combat-maneuvers"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "heraldry",
+				"ranks": 2
+			},
+			{
+				"skillId": "riding",
+				"ranks": 1
+			}
+		],
+		"statGains": [
+			"st",
+			"sd"
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 25,
+			"thief": 29,
+			"rogue": 28,
+			"warrior-monk": 34,
+			"layman": 31,
+			"magician": 46,
+			"illusionist": 46,
+			"cleric": 40,
+			"animist": 40,
+			"mentalist": 40,
+			"lay-healer": 38,
+			"healer": 40,
+			"mystic": 43,
+			"sorcerer": 46,
+			"ranger": 31,
+			"paladin": 28,
+			"monk": 36,
+			"dabbler": 36,
+			"bard": 32,
+			"magent": 32
+		},
+		"description": "A knight is a warrior dedicated to a cause or a lord (as opposed to a Paladin, who is dedicated to a greater power). A knight is known for his heavy armor and ability with weapons."
+	}
+]

@@ -1,13 +1,5 @@
 [
     {
-        "id": "knight",
-        "name": "Knight",
-        "type": "lifestyle",
-        "timeAcquisition": 69,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "loremaster",
         "name": "Loremaster",
         "type": "vocational",
