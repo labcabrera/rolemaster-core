@@ -16,5 +16,95 @@
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
         "description": "This is the skill of diving at a person in order to bring them to the ground in the intent of momentarily immobilizing them. This skill uses the Bash & Grapple Attack Table A-10.9.8 (p. 227) and may not exceed the damage done by a “small” attack."
+    },
+    {
+        "id": "striking-degree-1",
+        "name": "Striking Degree 1",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-strikes",
+        "progressionType": "standard",
+        "description": "This skill represents the basic and most simple forms of a formal “hard” martial art. These forms must be learned before an individual may progress to the higher degrees, as it represents the fundamentals of the art."
+    },
+    {
+        "id": "striking-degree-2",
+        "name": "Striking Degree 2",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-strikes",
+        "progressionType": "standard",
+        "description": "This skill represents the intermediate forms of a “hard” martial art. Note that this skill is more effective than the Striking Degree 1 skill. Because this skill builds on the previous Degree of this art, the ranks of this skill cannot exceed the ranks the character has in Striking Degree 1."
+    },
+    {
+        "id": "striking-degree-3",
+        "name": "Striking Degree 3",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-strikes",
+        "progressionType": "standard",
+        "description": "This skill represents the advanced forms of a “hard” martial art. Note that this skill is more effective than the Striking Degree 2 skill. Because this skill builds on the previous Degree of this art, the ranks of this skill cannot exceed the ranks the character has in Striking Degree 2."
+    },
+    {
+        "id": "striking-degree-4",
+        "name": "Striking Degree 4",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-strikes",
+        "progressionType": "standard",
+        "description": "This skill represents the most advanced forms of a “hard” martial art. Note that this skill is more effective than the Striking Degree 3 skill. Because this skill builds on the previous Degree of this art, the ranks of this skill cannot exceed the ranks the character has in Striking Degree 3."
+    },
+    {
+        "id": "blocking",
+        "name": "Blocking",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-sweeps",
+        "progressionType": "standard",
+        "description": "This skill is used to knock down or hold a person at bay without intent of injury. Note that it is merely to keep a person from crossing some line or location, not to immobilize them. The maximum result is “Degree 1” and the attack delivers Unbalancing Criticals."
+    },
+    {
+        "id": "sweeps-degree-1",
+        "name": "Sweeps Degree 1",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-sweeps",
+        "progressionType": "standard",
+        "description": "This skill represents the basic and most simple forms of a formal “soft” martial art. These forms must be learned before an individual may progress to the higher degrees, as it represents the fundamentals of the art."
+    },
+    {
+        "id": "sweeps-degree-2",
+        "name": "Sweeps Degree 2",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-sweeps",
+        "progressionType": "standard",
+        "description": "This skill represents the intermediate forms of a “soft” martial art. Note that this skill is more effective than the Sweeps Degree 1 skill. Because this skill builds on the previous Degree of this art, the rank of this skill cannot exceed the ranks the character has in Sweeps Degree 1."
+    },
+    {
+        "id": "sweeps-degree-3",
+        "name": "Sweeps Degree 3",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-sweeps",
+        "progressionType": "standard",
+        "description": "This skill represents the advanced forms of a “soft” martial art. Note that this skill is more effective than the Sweeps Degree 2 skill. Because this skill builds on the previous Degree of this art, the rank of this skill cannot exceed the ranks the character has in Sweeps Degree 2."
+    },
+    {
+        "id": "sweeps-degree-4",
+        "name": "Sweeps Degree 4",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-sweeps",
+        "progressionType": "standard",
+        "description": "This skill represents the most advanced forms of a “soft” martial art. Note that this skill is more effective than the Sweeps Degree 3 skill. Because this skill builds on the previous Degree of this art, the rank of this skill cannot exceed the ranks the character has in Sweeps Degree 3."
+    },
+    {
+        "id": "wrestling",
+        "name": "Wrestling",
+        "type": "special",
+        "loadOnNewCharacters": false,
+        "categoryId": "martial-arts-sweeps",
+        "progressionType": "standard",
+        "description": "This is the skill of using one’s arms and legs to grapple an opponent and immobilize him. This skill may be used to immobilize an opponent who does not wish to be held, but it assumed that injury is not the intent. The maximum result is “Degree 1” and the attack delivers Grappling criticals."
     }
 ]
