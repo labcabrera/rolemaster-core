@@ -7,13 +7,6 @@
         "skillRanks": {}
     },
     {
-        "id": "city-guard",
-        "name": "City Guard",
-        "type": "vocational",
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "doctor",
         "name": "Doctor",
         "type": "vocational",
