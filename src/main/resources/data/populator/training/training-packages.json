@@ -7,14 +7,6 @@
         "skillRanks": {}
     },
     {
-        "id": "doctor",
-        "name": "Doctor",
-        "type": "vocational",
-        "timeAcquisition": 18,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "hunter",
         "name": "Hunter",
         "type": "lifestyle",

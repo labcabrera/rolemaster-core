@@ -1,0 +1,45 @@
+[
+	{
+		"id": "doctor",
+		"name": "Doctor",
+		"type": "vocational",
+		"timeAcquisition": 18,
+		"fixedSkillCategories": {
+		},
+		"fixedSkills": {
+			"diagnostics": 3,
+			"second-aid": 3,
+			"first-aid": 1,
+			"using-prepared-herbs": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+		],
+		"selectableSkillCustomizations": [
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 23,
+			"thief": 23,
+			"rogue": 23,
+			"warrior-monk": 23,
+			"layman": 23,
+			"magician": 23,
+			"illusionist": 23,
+			"cleric": 23,
+			"animist": 23,
+			"mentalist": 23,
+			"lay-healer": 23,
+			"healer": 23,
+			"mystic": 23,
+			"sorcerer": 23,
+			"ranger": 23,
+			"paladin": 23,
+			"monk": 23,
+			"dabbler": 23,
+			"bard": 23,
+			"magent": 23
+		}
+	}
+]
