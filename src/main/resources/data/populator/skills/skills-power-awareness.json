@@ -2,7 +2,7 @@
     {
         "id": "attunement",
         "name": "Attunement",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "power-awareness",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "read-runes",
         "name": "Read Runes",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "power-awareness",
         "progressionType": "standard",

@@ -2,7 +2,7 @@
     {
         "id": "contacting",
         "name": "Contacting",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "urban",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "mingling",
         "name": "Mingling",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "urban",
         "progressionType": "standard",
@@ -20,7 +20,7 @@
     {
         "id": "scrounging",
         "name": "Scrounging",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "urban",
         "progressionType": "standard",
@@ -29,7 +29,7 @@
     {
         "id": "streetwise",
         "name": "Streetwise",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "urban",
         "progressionType": "standard",

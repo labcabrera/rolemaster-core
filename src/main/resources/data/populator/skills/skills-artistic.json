@@ -2,7 +2,7 @@
     {
         "id": "acting",
         "name": "Acting",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "dancing",
         "name": "Dancing",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -20,7 +20,7 @@
     {
         "id": "mimery",
         "name": "Mimery",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -29,7 +29,7 @@
     {
         "id": "mimicry",
         "name": "Mimicry",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -38,7 +38,7 @@
     {
         "id": "play-instrument",
         "name": "Play instrument †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -49,7 +49,7 @@
     {
         "id": "poetic-improvisation",
         "name": "Poetic improvisation",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -58,7 +58,7 @@
     {
         "id": "singing",
         "name": "Singing",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -67,7 +67,7 @@
     {
         "id": "tale-telling",
         "name": "Tale Telling",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -76,7 +76,7 @@
     {
         "id": "ventriloquism",
         "name": "Ventriloquism",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-active",
         "progressionType": "standard",
@@ -85,7 +85,7 @@
     {
         "id": "music",
         "name": "Music",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-passive",
         "progressionType": "standard",
@@ -94,7 +94,7 @@
     {
         "id": "painting",
         "name": "Painting",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-passive",
         "progressionType": "standard",
@@ -121,7 +121,7 @@
     {
         "id": "poetry",
         "name": "Poetry",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-passive",
         "progressionType": "standard",
@@ -130,7 +130,7 @@
     {
         "id": "sculpting",
         "name": "Sculpting",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "artistic-passive",
         "progressionType": "standard",

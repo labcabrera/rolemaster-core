@@ -3,270 +3,270 @@
         "id": "dagger",
         "name": "Dagger",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon ability."
+        "description": "offensive-bonus ability."
     },
     {
         "id": "falchion",
         "name": "Falchion",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "hand-axe",
         "name": "Hand Axe",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "maine-gauche",
         "name": "Maine Gauche",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "scimitar",
         "name": "Scimitar",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "rapier",
         "name": "Rapier",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "broadsword",
         "name": "Broadsword",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "short-sword",
         "name": "Short Sword",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-edged",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "armored-fist",
         "name": "Armored Fist",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-concussion",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "club",
         "name": "Club",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-concussion",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "war-hammer",
         "name": "War Hammer",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-concussion",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "mace",
         "name": "Mace",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-concussion",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "morning-star",
         "name": "Morning Star",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-concussion",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "whip",
         "name": "Whip",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-concussion",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "bola",
         "name": "Bola",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-1h-concussion",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "composite-bow",
         "name": "Composite Bow",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-missile",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-missile",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "heavy-crossbow",
         "name": "Heavy Crossbow",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-missile",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-missile",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "light-crossbow",
         "name": "Light Crossbow",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-missile",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-missile",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "long-bow",
         "name": "Long Bow",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-missile",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-missile",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "short-bow",
         "name": "Short Bow",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-missile",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-missile",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "sling",
         "name": "Sling",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-missile",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-missile",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "battle-axe",
         "name": "Battle Axe",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-2h",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-2h",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "flail",
         "name": "Flail",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-2h",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-2h",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "war-mattock",
         "name": "War Mattock",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-2h",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-2h",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "quarterstaff",
         "name": "Quarterstaff",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-2h",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-2h",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "two-hand-sword",
         "name": "Two Hand Sword",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-2h",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-2h",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "javelin",
         "name": "Javelin",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-pole-arms",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "lance",
         "name": "Lance",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-pole-arms",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "pole-arm",
         "name": "Pole Arm",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-pole-arms",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-        "description": "Weapon  ability."
+        "description": "offensive-bonus  ability."
     },
     {
         "id": "spear",
         "name": "Spear",
         "loadOnNewCharacters": false,
-        "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "categoryId": "offensive-bonus-pole-arms",
+        "type": "offensive-bonus",
         "progressionType": "standard",
-    	"description": "Weapon  ability."
+    	"description": "offensive-bonus  ability."
     }
 ]

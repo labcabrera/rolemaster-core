@@ -2,7 +2,7 @@
     {
         "id": "begging",
         "name": "Begging",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "first-aid",
         "name": "First Aid",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -20,7 +20,7 @@
     {
         "id": "gambling",
         "name": "Gambling",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -29,7 +29,7 @@
     {
         "id": "mapping",
         "name": "Mapping",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -38,7 +38,7 @@
     {
         "id": "operating-equipment",
         "name": "Operating Equipment",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -47,7 +47,7 @@
     {
         "id": "orienteering",
         "name": "Orienteering",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -56,7 +56,7 @@
     {
         "id": "sailing",
         "name": "Sailing",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -65,7 +65,7 @@
     {
         "id": "tactical-games",
         "name": "Tactical Games",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -74,7 +74,7 @@
     {
         "id": "using-prepared-herbs",
         "name": "Using Prepared Herbs",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -83,7 +83,7 @@
     {
         "id": "diagnostics",
         "name": "Diagnostics †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -92,7 +92,7 @@
     {
         "id": "engineering",
         "name": "Engineering",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -101,7 +101,7 @@
     {
         "id": "mechanition",
         "name": "Mechanition †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -110,7 +110,7 @@
     {
         "id": "mining",
         "name": "Mining †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -119,7 +119,7 @@
     {
         "id": "second-aid",
         "name": "Second Aid",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -128,7 +128,7 @@
     {
         "id": "military-organization",
         "name": "Military Organization",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -137,7 +137,7 @@
     {
         "id": "administration",
         "name": "Administration",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -146,7 +146,7 @@
     {
         "id": "appraisal",
         "name": "Appraisal",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -155,7 +155,7 @@
     {
         "id": "boat-pilot",
         "name": "Boat Pilot †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -164,7 +164,7 @@
     {
         "id": "evaluate-armor",
         "name": "Evaluate Armor",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -173,7 +173,7 @@
     {
         "id": "evaluate-metal",
         "name": "Evaluate Metal",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -182,7 +182,7 @@
     {
         "id": "evaluate-stone",
         "name": "Evaluate Stone",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -191,7 +191,7 @@
     {
         "id": "evaluate-weapon",
         "name": "Evaluate Weapon",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -200,7 +200,7 @@
     {
         "id": "navigation",
         "name": "Navigation",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -209,7 +209,7 @@
     {
         "id": "tactics",
         "name": "Tactics †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -218,7 +218,7 @@
     {
         "id": "siege-engineering",
         "name": "Siege Engineering",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",

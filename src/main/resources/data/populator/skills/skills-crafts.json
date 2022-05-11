@@ -2,7 +2,7 @@
 	{
 		"id": "cooking-baking",
 		"name": "Cooking Baking",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -11,7 +11,7 @@
 	{
 		"id": "cooking-baking",
 		"name": "Cooking Brewing",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -20,7 +20,7 @@
 	{
 		"id": "cooking-curing",
 		"name": "Cooking Curing",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -29,7 +29,7 @@
 	{
 		"id": "cooking-distilling",
 		"name": "Cooking Distilling",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -38,7 +38,7 @@
 	{
 		"id": "cooking-winery",
 		"name": "Cooking Winery",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -47,7 +47,7 @@
 	{
 		"id": "leather-crafts-cobbler",
 		"name": "Leather-crafts Cobbler",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -56,7 +56,7 @@
 	{
 		"id": "leather-crafts-saddler",
 		"name": "Leather-crafts Saddler",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -65,7 +65,7 @@
 	{
 		"id": "leather-crafts-tanner",
 		"name": "Leather-crafts Tanner",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -74,7 +74,7 @@
 	{
 		"id": "leather-crafts-tooler",
 		"name": "Leather-crafts Tooler",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -83,7 +83,7 @@
 	{
 		"id": "metal-crafts-armorer",
 		"name": "Metal-crafts Armorer",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -92,7 +92,7 @@
 	{
 		"id": "metal-crafts-blacksmith",
 		"name": "Metal-crafts Blacksmith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -101,7 +101,7 @@
 	{
 		"id": "metal-crafts-bronze-smith",
 		"name": "Metal-crafts Bronze Smith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -110,7 +110,7 @@
 	{
 		"id": "metal-crafts-copper-smith",
 		"name": "Metal-crafts Copper Smith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -119,7 +119,7 @@
 	{
 		"id": "metal-crafts-copper-etcher",
 		"name": "Metal-crafts Copper Etcher",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -128,7 +128,7 @@
 	{
 		"id": "metal-crafts-fire-starting",
 		"name": "Metal-crafts Fire Starting",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -137,7 +137,7 @@
 	{
 		"id": "metal-crafts-foundry",
 		"name": "Metal-crafts Fire Foundry",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -146,7 +146,7 @@
 	{
 		"id": "metal-crafts-gold-smith",
 		"name": "Metal-crafts Gold Smith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -155,7 +155,7 @@
 	{
 		"id": "metal-crafts-iron-smith",
 		"name": "Metal-crafts Iron Smith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -164,7 +164,7 @@
 	{
 		"id": "metal-crafts-silver-smith",
 		"name": "Metal-crafts Silver Smith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -173,7 +173,7 @@
 	{
 		"id": "metal-crafts-tin-smith",
 		"name": "Metal-crafts Tin Smith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -182,7 +182,7 @@
 	{
 		"id": "metal-crafts-tooler",
 		"name": "Metal-crafts Tooler",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -191,7 +191,7 @@
 	{
 		"id": "metal-crafts-weapon-smith",
 		"name": "Metal-crafts Weapon Smith",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -200,7 +200,7 @@
 	{
 		"id": "rope-mastery",
 		"name": "Rope Mastery",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -209,7 +209,7 @@
 	{
 		"id": "stone-crafts-brick-maker",
 		"name": "Stone-crafts Brick Maker",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -218,7 +218,7 @@
 	{
 		"id": "stone-crafts-gem-cutter",
 		"name": "Stone-crafts Gem Cutter",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -227,7 +227,7 @@
 	{
 		"id": "stone-crafts-masonry",
 		"name": "Stone-crafts Masonry",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -236,7 +236,7 @@
 	{
 		"id": "stone-crafts-stone-carving",
 		"name": "Stone-crafts Stone Carving",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -245,7 +245,7 @@
 	{
 		"id": "stone-crafts-stone-cutter",
 		"name": "Stone-crafts Stone Cutter",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -254,7 +254,7 @@
 	{
 		"id": "wood-crafts-carpentry",
 		"name": "Wood-crafts Carpentry",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -263,7 +263,7 @@
 	{
 		"id": "wood-crafts-cartwright",
 		"name": "Wood-crafts Cartwright",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -272,7 +272,7 @@
 	{
 		"id": "wood-crafts-building",
 		"name": "Wood-crafts Building",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -281,7 +281,7 @@
 	{
 		"id": "wood-crafts-lumbering",
 		"name": "Wood-crafts Lumbering",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -290,7 +290,7 @@
 	{
 		"id": "wood-crafts-shipwright",
 		"name": "Wood-crafts Shipwright",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -299,7 +299,7 @@
 	{
 		"id": "wood-crafts-wheelwright",
 		"name": "Wood-crafts Wheelwright",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -308,7 +308,7 @@
 	{
 		"id": "wood-crafts-wood-carving",
 		"name": "Wood-crafts Wood Carving",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",
@@ -317,7 +317,7 @@
 	{
 		"id": "horticulture",
 		"name": "Horticulture",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "crafts",
 		"progressionType": "combined",

@@ -4,6 +4,7 @@
         "name": "Body development",
         "loadOnNewCharacters": true,
         "categoryId": "body-development",
+        "type": "special",
         "attributeBonus": [
             "co",
             "sd",

@@ -2,7 +2,7 @@
     {
         "id": "athletic-games-brawn",
         "name": "Athletic Games Brawn †",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
@@ -13,7 +13,7 @@
 	{
         "id": "jumping",
         "name": "Jumping",
-        "type": "movingManeuver",
+        "type": "moving",
         "loadOnNewCharacters": true,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
@@ -22,7 +22,7 @@
     {
         "id": "weight-lifting",
         "name": "Weight-lifting",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
@@ -31,7 +31,7 @@
     {
         "id": "power-striking",
         "name": "Power-striking",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
@@ -40,7 +40,7 @@
     {
         "id": "power-throwing",
         "name": "Power-throwing",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-brawn",
         "progressionType": "standard",
@@ -49,7 +49,7 @@
     {
         "id": "athletic-games-endurance",
         "name": "Athletic Games - Endurance †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
@@ -60,7 +60,7 @@
     {
         "id": "distance-running",
         "name": "Distance Running",
-        "type": "movingManeuver",
+        "type": "moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
@@ -69,7 +69,7 @@
     {
         "id": "rowing",
         "name": "Rowing",
-        "type": "movingManeuver",
+        "type": "moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
@@ -78,7 +78,7 @@
     {
         "id": "scaling",
         "name": "Scaling",
-        "type": "movingManeuver",
+        "type": "moving",
         "loadOnNewCharacters": true,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
@@ -87,7 +87,7 @@
     {
         "id": "sprinting",
         "name": "Sprinting",
-        "type": "movingManeuver",
+        "type": "moving",
         "loadOnNewCharacters": true,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
@@ -96,7 +96,7 @@
     {
         "id": "swimming",
         "name": "Swimming",
-        "type": "movingManeuver",
+        "type": "moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-endurance",
         "progressionType": "standard",
@@ -105,7 +105,7 @@
     {
         "id": "acrobatics",
         "name": "Acrobatics",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -114,7 +114,7 @@
     {
         "id": "athletic-games-gymnastics",
         "name": "Athletic Games - Gymnastics †",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -125,7 +125,7 @@
     {
         "id": "climbing",
         "name": "Climbing",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -134,7 +134,7 @@
     {
         "id": "contortions",
         "name": "Contortions",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -143,7 +143,7 @@
     {
         "id": "diving",
         "name": "Diving",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -152,7 +152,7 @@
     {
         "id": "flying-gliding",
         "name": "Flying / Gliding",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -161,7 +161,7 @@
     {
         "id": "juggling",
         "name": "Juggling",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -170,7 +170,7 @@
     {
         "id": "tumbling",
         "name": "Tumbling",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -179,7 +179,7 @@
     {
         "id": "pole-vaulting",
         "name": "Pole-vaulting",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -188,7 +188,7 @@
     {
         "id": "rappelling",
         "name": "Rappelling",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -197,7 +197,7 @@
     {
         "id": "skating",
         "name": "Skating",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -206,7 +206,7 @@
     {
         "id": "skiing",
         "name": "Skiing",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -215,7 +215,7 @@
     {
         "id": "stilt-walking",
         "name": "Stilt-walking",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -224,7 +224,7 @@
     {
         "id": "surfing",
         "name": "Surfing",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",
@@ -233,7 +233,7 @@
     {
         "id": "tightrope-walking",
         "name": "Tightrope-walking",
-        "type": "staticOrMovingManeuver",
+        "type": "static-or-moving",
         "loadOnNewCharacters": false,
         "categoryId": "athletic-gymnastics",
         "progressionType": "standard",

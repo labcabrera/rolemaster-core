@@ -2,7 +2,7 @@
     {
         "id": "brawling",
         "name": "Brawling",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "special-attacks",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "disarm-foe-armed",
         "name": "Disarm Foe (Armed) †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "special-attacks",
         "progressionType": "standard",
@@ -22,7 +22,7 @@
     {
         "id": "disarm-foe-unarmed",
         "name": "Disarm Foe (Unarmed) †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "special-attacks",
         "progressionType": "standard",
@@ -33,7 +33,7 @@
     {
         "id": "jousting",
         "name": "Jousting",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "special-attacks",
         "progressionType": "standard",

@@ -2,7 +2,7 @@
     {
         "id": "boxing",
         "name": "Boxing",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "tackling",
         "name": "Tackling",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
@@ -20,7 +20,7 @@
     {
         "id": "striking-degree-1",
         "name": "Striking Degree 1",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
@@ -29,7 +29,7 @@
     {
         "id": "striking-degree-2",
         "name": "Striking Degree 2",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
@@ -38,7 +38,7 @@
     {
         "id": "striking-degree-3",
         "name": "Striking Degree 3",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
@@ -47,7 +47,7 @@
     {
         "id": "striking-degree-4",
         "name": "Striking Degree 4",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-strikes",
         "progressionType": "standard",
@@ -56,7 +56,7 @@
     {
         "id": "blocking",
         "name": "Blocking",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-sweeps",
         "progressionType": "standard",
@@ -65,7 +65,7 @@
     {
         "id": "sweeps-degree-1",
         "name": "Sweeps Degree 1",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-sweeps",
         "progressionType": "standard",
@@ -74,7 +74,7 @@
     {
         "id": "sweeps-degree-2",
         "name": "Sweeps Degree 2",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-sweeps",
         "progressionType": "standard",
@@ -83,7 +83,7 @@
     {
         "id": "sweeps-degree-3",
         "name": "Sweeps Degree 3",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-sweeps",
         "progressionType": "standard",
@@ -92,7 +92,7 @@
     {
         "id": "sweeps-degree-4",
         "name": "Sweeps Degree 4",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-sweeps",
         "progressionType": "standard",
@@ -101,7 +101,7 @@
     {
         "id": "wrestling",
         "name": "Wrestling",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "martial-arts-sweeps",
         "progressionType": "standard",

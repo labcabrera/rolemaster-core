@@ -2,7 +2,7 @@
     {
         "id": "caving-spelunking",
         "name": "Caving (Spelunking)",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-environmental",
         "progressionType": "standard",
@@ -17,7 +17,7 @@
     {
         "id": "foraging",
         "name": "Foraging",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-environmental",
         "progressionType": "standard",
@@ -26,7 +26,7 @@
     {
         "id": "hunting",
         "name": "Hunting",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-environmental",
         "progressionType": "standard",
@@ -35,7 +35,7 @@
     {
         "id": "star-gazing",
         "name": "Star-gazing",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-environmental",
         "progressionType": "standard",
@@ -44,7 +44,7 @@
     {
         "id": "survival",
         "name": "Survival †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-environmental",
         "progressionType": "standard",
@@ -55,7 +55,7 @@
     {
         "id": "weather-watching",
         "name": "Weather Watching",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-environmental",
         "progressionType": "standard",
