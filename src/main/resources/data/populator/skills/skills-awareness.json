@@ -132,6 +132,8 @@
         "loadOnNewCharacters": false,
         "categoryId": "awareness-senses",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus to the individual’s ability to notice and assimilate information from the environment in a specific type of situation. This is a combination of active and passive skills specifically trained for maximum effectiveness within a given situation. For example, Scouting Awareness is used by the point man in a squad of soldiers to be alert to possible enemy approaches, traps, Sleep Awareness might aid in sleeping lightly to prevent being taken unawares, etc. Urban Awareness might aid in staying alert for muggers, vehicles, etc. Skill with Situational Awareness must be developed for each situation, as determined by the GM."
     },
     {

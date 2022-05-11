@@ -87,6 +87,8 @@
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
+		"customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for determining the medical condition of a patient. Skill must be learned for a particular race or type of creature. One must pick the skill in either general diagnosis, or diagnosis of a specific race. General diagnostics skill of 6 ranks or higher allows certification of simple medical practice on all races (use of field equipment and healing drugs). Diagnostics skill for a specific race of 12 ranks or higher is required for surgical certification (and reasonable competence)."
     },
     {
@@ -105,6 +107,8 @@
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for building and using a machine that already exists. It will be necessary to have the appropriate tools to build the machine. Each type of machine is a potential specialization."
     },
     {
@@ -114,6 +118,8 @@
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for assessing the possibilities of mining in an area, and supervising the creation and running of the mine. The following is a partial listing of specialized mining processes: Dredging, Open Pit, Quarry. Tunneling."
     },
     {
@@ -159,6 +165,8 @@
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for knowledge of water courses such as the locations of sand bars, rapids, waterfalls, whirlpools, currents, reefs, icebergs, vegetation clogs (underwater snags and roots, overhead hanging branches and vines), etc. Each different water course is a potential specialization."
     },
     {
@@ -213,6 +221,8 @@
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "These skills provide bonuses for perceiving and planning appropriate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately. The following is a partial listing of types of tactics: Battle Field, Naval, Sabotage, Siege, Small Unit."
     },
     {
