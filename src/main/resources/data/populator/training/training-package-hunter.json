@@ -1,0 +1,85 @@
+[
+	{
+		"id": "hunter",
+		"name": "Hunter",
+		"type": "lifestyle",
+		"timeAcquisition": 18,
+		"fixedSkillCategories": {
+			"weapon-missile": 1,
+			"outdoor-environmental": 4,
+			"lore-general": 3,
+			"awareness-searching": 4,
+			"subterfuge-stealth": 2
+		},
+		"fixedSkills": {
+			"hunting": 2,
+			"skinning": 1,
+			"reading-tracks": 2,
+			"tracking": 2
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon missile skill selection",
+				"categories": [
+					"weapon-missile"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 2,
+				"skills": 2
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "fauna-lore",
+				"ranks": 2
+			},
+			{
+				"skillId": "flora-lore",
+				"ranks": 1
+			}
+		],
+		"statGains": [
+			"co"
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 29,
+			"thief": 27,
+			"rogue": 27,
+			"warrior-monk": 30,
+			"layman": 30,
+			"magician": 36,
+			"illusionist": 34,
+			"cleric": 32,
+			"animist": 29,
+			"mentalist": 35,
+			"lay-healer": 35,
+			"healer": 36,
+			"mystic": 33,
+			"sorcerer": 36,
+			"ranger": 25,
+			"paladin": 31,
+			"monk": 30,
+			"dabbler": 29,
+			"bard": 30,
+			"magent": 28
+		}
+	}
+]

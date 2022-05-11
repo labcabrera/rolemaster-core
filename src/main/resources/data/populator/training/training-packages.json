@@ -7,14 +7,6 @@
         "skillRanks": {}
     },
     {
-        "id": "hunter",
-        "name": "Hunter",
-        "type": "lifestyle",
-        "timeAcquisition": 18,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "knight",
         "name": "Knight",
         "type": "lifestyle",
