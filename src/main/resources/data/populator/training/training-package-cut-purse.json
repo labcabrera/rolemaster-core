@@ -1,0 +1,76 @@
+[
+	{
+		"id": "cut-purse",
+		"name": "Cut purse",
+		"type": "vocational",
+		"timeAcquisition": 37,
+		"fixedSkillCategories": {
+			"subterfuge-stealth": 4,
+			"urban": 3,
+			"athletic-gymnastics": 1,
+			"awareness-searching": 1
+		},
+		"fixedSkills": {
+			"picking-pockets": 2,
+			"alertness": 2,
+			"observation": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "subterfuge-stealth",
+				"description": "Subterfuge stealth",
+				"categories": [
+					"subterfuge-stealth"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "athletic-gymnastics",
+				"description": "Athletic gymnastics",
+				"categories": [
+					"athletic-gymnastics"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "urban",
+				"description": "Urban",
+				"categories": [
+					"urban"
+				],
+				"ranks": 3,
+				"skills": 2
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 24,
+			"thief": 15,
+			"rogue": 15,
+			"warrior-monk": 25,
+			"layman": 25,
+			"magician": 32,
+			"illusionist": 29,
+			"cleric": 32,
+			"animist": 30,
+			"mentalist": 32,
+			"lay-healer": 33,
+			"healer": 34,
+			"mystic": 26,
+			"sorcerer": 34,
+			"ranger": 34,
+			"paladin": 33,
+			"monk": 26,
+			"dabbler": 20,
+			"bard": 25,
+			"magent": 18
+		},
+		"description": "A specialized type of thief, the Cut Purse works the streets. He is particularly adept at watching crowds and determining who should have the heaviest pockets."
+	}
+]
