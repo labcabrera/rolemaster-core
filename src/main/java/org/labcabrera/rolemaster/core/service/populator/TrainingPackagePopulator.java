@@ -17,6 +17,7 @@ public class TrainingPackagePopulator extends AbstractJsonPopulator<TrainingPack
 			"data/populator/training/training-package-adventurer.json",
 			"data/populator/training/training-package-animal-friend.json",
 			"data/populator/training/training-package-assassin.json",
+			"data/populator/training/training-package-berserker.json",
 			"data/populator/training/training-package-burglar.json",
 			"data/populator/training/training-package-city-guard.json",
 			"data/populator/training/training-package-crafter.json",
