@@ -78,7 +78,7 @@
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
-        "description": "This skill provides a bonus for playing games which contain very little chance element, such as Chess or Go."
+        "description": "This skill allows the user to properly apply herbs that have already been prepared for use."
     },
     {
         "id": "diagnostics",

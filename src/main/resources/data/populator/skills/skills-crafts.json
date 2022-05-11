@@ -313,5 +313,14 @@
 		"categoryId": "crafts",
 		"progressionType": "combined",
 		"description": "Carving of wood."
+	},
+	{
+		"id": "horticulture",
+		"name": "Horticulture",
+		"type": "staticManeuver",
+		"loadOnNewCharacters": false,
+		"categoryId": "crafts",
+		"progressionType": "combined",
+		"description": "Horticulture."
 	}
 ]

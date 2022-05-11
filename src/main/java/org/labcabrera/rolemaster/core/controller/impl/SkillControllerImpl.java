@@ -1,12 +1,14 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
 import org.labcabrera.rolemaster.core.controller.SkillController;
+import org.labcabrera.rolemaster.core.message.Messages.Errors;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
+import org.webjars.NotFoundException;
 
 import io.micrometer.core.instrument.util.StringUtils;
 import reactor.core.publisher.Flux;
@@ -20,7 +22,8 @@ public class SkillControllerImpl implements SkillController {
 
 	@Override
 	public Mono<Skill> findById(String id) {
-		return repository.findById(id);
+		return repository.findById(id)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingSkill(id))));
 	}
 
 	@Override

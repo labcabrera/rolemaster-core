@@ -75,6 +75,10 @@ public class Messages {
 			return String.format(MISSING_CHARACTER_INITIATIVE_T, characterId);
 		}
 
+		public static final String missingSkill(String skillId) {
+			return String.format("Skill %s not found.", skillId);
+		}
+
 		public static final String missingStrategicSession(String strategicSessionId) {
 			return String.format("Strategic session %s not found.", strategicSessionId);
 		}

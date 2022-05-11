@@ -45,14 +45,6 @@
         "skillRanks": {}
     },
     {
-        "id": "herbalist",
-        "name": "herbalist",
-        "type": "vocational",
-        "timeAcquisition": 33,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "hunter",
         "name": "Hunter",
         "type": "lifestyle",
