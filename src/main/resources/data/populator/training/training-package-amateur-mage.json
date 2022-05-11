@@ -1,0 +1,75 @@
+[
+	{
+		"id": "amateur-mage",
+		"name": "Amateur mage",
+		"type": "lifestyle",
+		"timeAcquisition": 53,
+		"fixedSkillCategories": {
+			"lore-magical": 2,
+			"lore-technical": 1,
+			"power-awareness": 2
+		},
+		"fixedSkills": {
+			"attunement": 1,
+			"read-runes": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "spells",
+				"description": "Spell list",
+				"categories": [
+					"spells-own-realm-open-lists"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "lore-magical",
+				"description": "Lore magical",
+				"categories": [
+					"lore-magical"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "lore-technical",
+				"description": "Lore technical",
+				"categories": [
+					"lore-technical"
+				],
+				"ranks": 3,
+				"skills": 3
+			}
+		],
+		"statGains": [
+			"me"
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 43,
+			"thief": 37,
+			"rogue": 36,
+			"warrior-monk": 40,
+			"layman": 32,
+			"magician": 24,
+			"illusionist": 24,
+			"cleric": 26,
+			"animist": 26,
+			"mentalist": 26,
+			"lay-healer": 26,
+			"healer": 26,
+			"mystic": 26,
+			"sorcerer": 26,
+			"ranger": 31,
+			"paladin": 32,
+			"monk": 30,
+			"dabbler": 29,
+			"bard": 29,
+			"magent": 29
+		},
+		"description": "The Amateur Mage studies magic in his off-time. He is intrigued by the powers of magic and wants to know more."
+	}
+]

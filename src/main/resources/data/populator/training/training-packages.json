@@ -1,12 +1,5 @@
 [
     {
-        "id": "amateur-mage",
-        "name": "Amateur Mage",
-        "type": "lifestyle",
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "knight",
         "name": "Knight",
         "type": "lifestyle",

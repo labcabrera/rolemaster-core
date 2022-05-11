@@ -94,7 +94,7 @@
 	},
 	{
 		"id": "spell-lore",
-		"name": "Artifact Lore",
+		"name": "Spell Lore",
 		"loadOnNewCharacters": false,
 		"type": "staticManeuver",
 		"categoryId": "lore-magical",
@@ -153,7 +153,7 @@
 		"name": "Herb Lore",
 		"loadOnNewCharacters": false,
 		"type": "staticManeuver",
-		"categoryId": "lore-obscure",
+		"categoryId": "lore-technical",
 		"progressionType": "standard",
 		"description": "This skill provides a bonus for recognizing/identifying herbs. For these purposes, an herb is a plant or plant part valued for medicinal qualities."
 	},
@@ -162,7 +162,7 @@
 		"name": "Lock Lore",
 		"loadOnNewCharacters": false,
 		"type": "staticManeuver",
-		"categoryId": "lore-obscure",
+		"categoryId": "lore-technical",
 		"progressionType": "standard",
 		"description": "This skill provides a bonus for recognizing and identifying major forms of locks and similar devices."
 	},
@@ -171,7 +171,7 @@
 		"name": "Metal Lore",
 		"loadOnNewCharacters": false,
 		"type": "staticManeuver",
-		"categoryId": "lore-obscure",
+		"categoryId": "lore-technical",
 		"progressionType": "standard",
 		"description": "This skill provides a bonus for recognizing and identifying metals, alloys, metallic crystal structures, etc. Also will give information on famous, magical, historic, legendary, or cursed types of metals. Skill must be developed separately for each culture or region as applicable to the GM’s world scheme."
 	},
@@ -180,7 +180,7 @@
 		"name": "Poison Lore",
 		"loadOnNewCharacters": false,
 		"type": "staticManeuver",
-		"categoryId": "lore-obscure",
+		"categoryId": "lore-technical",
 		"progressionType": "standard",
 		"description": "This skill provides a bonus for recognizing and identifying poisons, as well as knowledge of proper application and usage techniques. (These may require a Using/Removing Poison maneuver roll to actually carry through.)"
 	},
@@ -189,7 +189,7 @@
 		"name": "Stone Lore",
 		"loadOnNewCharacters": false,
 		"type": "staticManeuver",
-		"categoryId": "lore-obscure",
+		"categoryId": "lore-technical",
 		"progressionType": "standard",
 		"description": "This skill provides a bonus for recognizing and identifying stones. Also will give information on famous, magical, powerful, historic, legendary or cursed types of stone. Skill lore is developed separately for each culture or region as applicable to GM’s world scheme."
 	},
@@ -198,7 +198,7 @@
 		"name": "Trading Lore",
 		"loadOnNewCharacters": false,
 		"type": "staticManeuver",
-		"categoryId": "lore-obscure",
+		"categoryId": "lore-technical",
 		"progressionType": "standard",
 		"description": "This skill provides knowledge of trade-related affairs. Trade routes, customs laws, exchange rates, traditions and rituals, etc. are all encompassed by this skill."
 	}

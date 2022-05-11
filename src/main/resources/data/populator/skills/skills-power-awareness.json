@@ -1,0 +1,20 @@
+[
+    {
+        "id": "attunement",
+        "name": "Attunement",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "power-awareness",
+        "progressionType": "standard",
+        "description": "This skill enables a character to use the spell abilities of a staff, wand, or any item with spell casting abilities. In order to cast spells from an item, the wielder of the item must have made an Attunement static maneuver. If an item has several spells or groups of spells that are widely separated in power or type, the GM may require separate attunement (staves & wands) static maneuvers for each spell or group of spells. “Teaching” someone else an item is not permitted because using an item is a personal experience between the individual and the item. Although you may tell someone what the item does and thus remove any penalty for not knowing the spell(s) in the item, you cannot aid them. Certain spells on items do not normally require Attunement rolls, subject to GM stipulation."
+    },
+    {
+        "id": "read-runes",
+        "name": "Read Runes",
+        "type": "staticManeuver",
+        "loadOnNewCharacters": false,
+        "categoryId": "power-awareness",
+        "progressionType": "standard",
+        "description": "Rune skill enables a character to decipher and use runes (spells inscribed in suitable media). If the level of the spell on the rune is less than or equal to the level of the character attempting to use it to cast a spell, deciphering the rune is sufficient to use it (subject to the normal chances of spell failure). If the rune is a level above the character, or of a realm of magic other than his specialty, a second roll, similar to the first, must be made to successfully cast the spell from the rune. Runes are generally not reusable, but the rune paper is. A character should be given one chance to decipher a rune. If he fails, he may not try again until he improves his skill rank with Read Runes."
+    }
+]
