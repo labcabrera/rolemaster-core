@@ -31,14 +31,6 @@
         "skillRanks": {}
     },
     {
-        "id": "soldier",
-        "name": "Soldier",
-        "type": "vocational",
-        "timeAcquisition": 26,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "traveler",
         "name": "Traveler",
         "type": "vocational",

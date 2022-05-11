@@ -1,0 +1,84 @@
+[
+	{
+		"id": "soldier",
+		"name": "Soldier",
+		"type": "vocational",
+		"timeAcquisition": 26,
+		"fixedSkillCategories": {
+			"armor-light": 2,
+			"lore-general": 1
+		},
+		"fixedSkills": {
+			"body-development": 2
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 2
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "armor-light",
+				"description": "Armor light",
+				"categories": [
+					"armor-light"
+				],
+				"ranks": 2,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "tactics",
+				"ranks": 1
+			},
+			{
+				"skillId": "heraldry",
+				"ranks": 1
+			}
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 15,
+			"thief": 22,
+			"rogue": 19,
+			"warrior-monk": 31,
+			"layman": 23,
+			"magician": 37,
+			"illusionist": 37,
+			"cleric": 29,
+			"animist": 29,
+			"mentalist": 31,
+			"lay-healer": 30,
+			"healer": 30,
+			"mystic": 34,
+			"sorcerer": 37,
+			"ranger": 23,
+			"paladin": 20,
+			"monk": 32,
+			"dabbler": 28,
+			"bard": 25,
+			"magent": 25
+		}
+	}
+]
