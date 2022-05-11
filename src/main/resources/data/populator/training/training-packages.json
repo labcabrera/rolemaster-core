@@ -23,14 +23,6 @@
         "skillRanks": {}
     },
     {
-        "id": "merchant",
-        "name": "Merchant",
-        "type": "vocational",
-        "timeAcquisition": 23,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
         "id": "performer",
         "name": "Performer",
         "type": "vocational",
