@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.HasAuthorization;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Schema(description = "Defines the generic information associated with a character that only changes with training or learning. Additionally there are other entities (e.g. the character's inventory). Combat specific information is defined at the tactical session level.")
-public class CharacterInfo {
+public class CharacterInfo implements HasAuthorization {
 
 	@Id
 	@Schema(description = "Character identifier.", required = true, example = "6242c18da7a9f7048331ca03")
@@ -127,8 +128,11 @@ public class CharacterInfo {
 	@Schema(description = "Audit data.", required = true)
 	private EntityMetadata metadata = EntityMetadata.builder().created(LocalDateTime.now()).build();
 
+	@Schema(description = "Owner.")
+	private String owner;
+
 	@Builder.Default
-	@Schema(description = "Authorization restrictions")
+	@Schema(description = "Authorization restrictions.")
 	private List<String> authorization = new ArrayList<>();
 
 	public Optional<CharacterSkillCategory> getSkillCategory(String categoryId) {

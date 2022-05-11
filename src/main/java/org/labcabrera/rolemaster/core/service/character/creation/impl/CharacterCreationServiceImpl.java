@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.character.creation;
+package org.labcabrera.rolemaster.core.service.character.creation.impl;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,14 +19,22 @@ import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
-import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
+import org.labcabrera.rolemaster.core.service.character.CharacterInfoService;
+import org.labcabrera.rolemaster.core.service.character.creation.AttributeCreationService;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationItemLoader;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationRaceProcessor;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationSkillCategoryProcessor;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationSkillProcessor;
+import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationSkillService;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,15 +42,15 @@ import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
-public class CharacterCreationServiceImpl implements CharacterCreationService {
+class CharacterCreationServiceImpl implements CharacterCreationService {
 
 	private static final String MSG_INVALID_WEAPON_SIZE = "Invalid request weapon category order count. Expected: %s, received: %s";
 
 	@Autowired
-	private AttributeCreationService attributeCreationService;
+	private CharacterInfoService characterInfoService;
 
 	@Autowired
-	private CharacterInfoRepository repository;
+	private AttributeCreationService attributeCreationService;
 
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
@@ -75,7 +83,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 	private CharacterCreationSkillProcessor characterCreationSkillProcessor;
 
 	@Override
-	public Mono<CharacterInfo> create(CharacterCreation request) {
+	public Mono<CharacterInfo> create(JwtAuthenticationToken auth, CharacterCreation request) {
 		log.info("Processing new character {}", request.getName());
 		CharacterInfo character = converter.convert(request);
 		CharacterModificationContext context = CharacterModificationContextImpl.builder()
@@ -107,7 +115,7 @@ public class CharacterCreationServiceImpl implements CharacterCreationService {
 			.map(this::loadResistances)
 			.map(CharacterModificationContext::getCharacter)
 			.map(postProcessorService)
-			.flatMap(repository::save)
+			.flatMap(c -> this.characterInfoService.insert(auth, character))
 			.flatMap(characterCreationItemLoader::addItems)
 			.doOnNext(e -> log.info("Created character {}", e))
 			.map(e -> e);

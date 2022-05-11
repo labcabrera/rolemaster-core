@@ -18,6 +18,7 @@ import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeSe
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
@@ -47,12 +48,12 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Mono<CharacterInfo> create(@Valid CharacterCreation request) {
-		return creationService.create(request);
+	public Mono<CharacterInfo> create(JwtAuthenticationToken auth, @Valid CharacterCreation request) {
+		return creationService.create(auth, request);
 	}
 
 	@Override
-	public Flux<CharacterInfo> findAll(Pageable pageable) {
+	public Flux<CharacterInfo> findAll(JwtAuthenticationToken auth, Pageable pageable) {
 		return characterService.findAll(pageable);
 	}
 
@@ -62,8 +63,8 @@ public class CharacterControllerImpl implements CharacterController {
 	}
 
 	@Override
-	public Mono<CharacterInfo> updateRanks(String characterId, SkillUpgrade request) {
-		return characterUpdateSkillService.updateRanks(characterId, request);
+	public Mono<CharacterInfo> updateRanks(JwtAuthenticationToken auth, String characterId, SkillUpgrade request) {
+		return characterUpdateSkillService.updateRanks(auth, characterId, request);
 	}
 
 	@Override

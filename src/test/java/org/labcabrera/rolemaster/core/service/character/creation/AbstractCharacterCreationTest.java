@@ -9,7 +9,9 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,7 +29,10 @@ public abstract class AbstractCharacterCreationTest {
 
 		CharacterCreation request = objectMapper.readerFor(CharacterCreation.class).readValue(json);
 
-		CharacterInfo characterInfo = service.create(request).share().block();
+		JwtAuthenticationToken auth = Mockito.mock(JwtAuthenticationToken.class);
+		Mockito.when(auth.getName()).thenReturn("test");
+
+		CharacterInfo characterInfo = service.create(auth, request).share().block();
 
 		for (CharacterSkillCategory category : characterInfo.getSkillCategories()) {
 			assertNotNull(category.getDevelopmentCost(), "Missing dev points for category " + category.getCategoryId());

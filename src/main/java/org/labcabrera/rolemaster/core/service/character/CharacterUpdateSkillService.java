@@ -16,6 +16,7 @@ import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -34,7 +35,7 @@ public class CharacterUpdateSkillService {
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
 
-	public Mono<CharacterInfo> updateRanks(@NotEmpty String characterId, @Valid SkillUpgrade request) {
+	public Mono<CharacterInfo> updateRanks(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid SkillUpgrade request) {
 		return repository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
 			.map(character -> upgradeSkillCategories(character, request))

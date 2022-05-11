@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +45,9 @@ public interface CharacterController {
 
 	@GetMapping
 	@Operation(summary = "Characters search.")
-	Flux<CharacterInfo> findAll(@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
+	Flux<CharacterInfo> findAll(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
 
 	@PostMapping
 	@Operation(summary = "Character creation.")
@@ -51,6 +55,7 @@ public interface CharacterController {
 	@ApiResponse(responseCode = "201", description = "Character created")
 	@ApiResponse(responseCode = "400", description = "Validation error", content = @Content(schema = @Schema(implementation = ApiError.class)))
 	Mono<CharacterInfo> create(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
 		@Parameter(description = "Character creation request", required = true) @RequestBody(content = @Content(examples = {
 			@ExampleObject(name = "Character creation example 01", ref = "#/components/examples/characterCreationExample01"),
 			@ExampleObject(name = "Character creation example 02", ref = "#/components/examples/characterCreationExample01")
@@ -68,7 +73,9 @@ public interface CharacterController {
 
 	@PostMapping("/{id}/skills/upgrade")
 	@Operation(summary = "Performs a rank up operation of skill categories and skills.")
-	Mono<CharacterInfo> updateRanks(@PathVariable("id") String characterId,
+	Mono<CharacterInfo> updateRanks(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable("id") String characterId,
 		@org.springframework.web.bind.annotation.RequestBody SkillUpgrade request);
 
 	@PostMapping("/{id}/training-packages")

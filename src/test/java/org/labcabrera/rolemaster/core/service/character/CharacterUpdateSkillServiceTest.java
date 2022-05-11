@@ -11,6 +11,7 @@ import java.util.Collections;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.labcabrera.rolemaster.core.MockAuthentication;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterDevelopment;
@@ -24,6 +25,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 import reactor.core.publisher.Mono;
 
@@ -73,18 +75,20 @@ class CharacterUpdateSkillServiceTest {
 
 	@Test
 	void testInvalidLevelCount() {
+		JwtAuthenticationToken auth = MockAuthentication.mock();
 		assertThrows(BadRequestException.class, () -> {
 			request.setCategoryRanks(Collections.singletonMap("cat-01", 3));
-			service.updateRanks(character.getId(), request).share().block();
+			service.updateRanks(auth, character.getId(), request).share().block();
 		});
 		verify(repository, times(0)).save(character);
 	}
 
 	@Test
 	void testInvalidCategoryId() {
+		JwtAuthenticationToken auth = MockAuthentication.mock();
 		assertThrows(BadRequestException.class, () -> {
 			request.setCategoryRanks(Collections.singletonMap("cat-02", 1));
-			service.updateRanks(character.getId(), request).share().block();
+			service.updateRanks(auth, character.getId(), request).share().block();
 		});
 		verify(repository, times(0)).save(character);
 	}
