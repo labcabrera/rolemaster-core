@@ -1,13 +1,5 @@
 [
 	{
-		"id": "cloistered-academic",
-		"name": "Cloistered Academic"
-	},
-	{
-		"id": "crusading-academic",
-		"name": "Crusading Academic"
-	},
-	{
 		"id": "cut-purse",
 		"name": "Cut Purse"
 	},
@@ -34,10 +26,6 @@
 	{
 		"id": "wanderer",
 		"name": "Wanderer"
-	},
-	{
-		"id": "weapon-master",
-		"name": "Weapon master"
 	},
 	{
 		"id": "zealot",

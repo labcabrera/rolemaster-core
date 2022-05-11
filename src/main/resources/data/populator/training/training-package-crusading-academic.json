@@ -1,0 +1,111 @@
+[
+	{
+		"id": "crusading-academic",
+		"name": "Crusading academic",
+		"type": "lifestyle",
+		"timeAcquisition": 110,
+		"fixedSkillCategories": {
+			"influence": 2,
+			"communications": 5,
+			"lore-general": 4,
+			"lore-technical": 2,
+			"outdoor-environmental": 1
+		},
+		"fixedSkills": {
+			"public-speaking": 2
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "lore-technical",
+				"description": "Lore technical",
+				"categories": [
+					"lore-technical"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "communications",
+				"description": "Communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 5,
+				"skills": 5
+			},
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "region-lore",
+				"ranks": 2
+			}
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 29,
+			"thief": 29,
+			"rogue": 29,
+			"warrior-monk": 29,
+			"layman": 26,
+			"magician": 24,
+			"illusionist": 23,
+			"cleric": 24,
+			"animist": 24,
+			"mentalist": 24,
+			"lay-healer": 24,
+			"healer": 24,
+			"mystic": 20,
+			"sorcerer": 24,
+			"ranger": 28,
+			"paladin": 28,
+			"monk": 28,
+			"dabbler": 25,
+			"bard": 22,
+			"magent": 24
+		},
+		"description": "Having spent years studying, the Crusading Academic now has a cause and is ready to tell the world about it. He is ready to travel the world, meet new people, and see strange places."
+	}
+]
