@@ -32,7 +32,8 @@ public class StrategicSession implements HasAuthorization, HasMetadata {
 	private String universeId;
 
 	@Schema(description = "Audit data.", required = true)
-	private EntityMetadata metadata;
+	@Builder.Default
+	private EntityMetadata metadata = new EntityMetadata();
 
 	@Schema(description = "Owner.", required = true, example = "rolemaster")
 	private String owner;

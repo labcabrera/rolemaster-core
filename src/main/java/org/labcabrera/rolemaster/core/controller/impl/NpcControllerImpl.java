@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.controller.impl;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.controller.NpcController;
+import org.labcabrera.rolemaster.core.dto.AddNpc;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
 import org.labcabrera.rolemaster.core.repository.NpcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class NpcControllerImpl implements NpcController {
 	}
 
 	@Override
-	public Mono<Npc> create(Npc npc) {
+	public Mono<Npc> create(AddNpc request) {
 		//TODO
 		throw new NotImplementedException();
 	}

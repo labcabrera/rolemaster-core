@@ -9,9 +9,12 @@ import javax.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import reactor.core.publisher.Mono;
 
 @SpringBootTest
 class CharacterItemServiceValidationTest {
@@ -25,7 +28,7 @@ class CharacterItemServiceValidationTest {
 			.itemId("reinforced-full-length-leather-coat")
 			.position(ItemPosition.EQUIPED)
 			.build();
-		assertThrows(ConstraintViolationException.class, () -> characterItemService.addItem(null, addCoat).share().block());
+		assertThrows(ConstraintViolationException.class, () -> characterItemService.addItem(null, addCoat));
 	}
 
 	@Test
@@ -34,7 +37,8 @@ class CharacterItemServiceValidationTest {
 			.itemId("reinforced-full-length-leather-coat")
 			.position(ItemPosition.EQUIPED)
 			.build();
-		assertThrows(NotFoundException.class, () -> characterItemService.addItem("invalid-id", addCoat).share().block());
+		Mono<CharacterItem> share = characterItemService.addItem("invalid-id", addCoat).share();
+		assertThrows(NotFoundException.class, () -> share.block());
 	}
 
 }

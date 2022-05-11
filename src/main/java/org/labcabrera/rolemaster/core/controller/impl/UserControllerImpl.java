@@ -4,9 +4,10 @@ import java.util.Map;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.controller.UserController;
+import org.labcabrera.rolemaster.core.dto.AddFriendRequest;
 import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.UserFriendRequest;
-import org.labcabrera.rolemaster.core.service.UserService;
+import org.labcabrera.rolemaster.core.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
@@ -43,7 +44,7 @@ public class UserControllerImpl implements UserController {
 	}
 
 	@Override
-	public Mono<UserFriendRequest> sendFriendRequest(@AuthenticationPrincipal JwtAuthenticationToken auth) {
+	public Mono<UserFriendRequest> sendFriendRequest(@AuthenticationPrincipal JwtAuthenticationToken auth, AddFriendRequest request) {
 		//TODO
 		throw new NotImplementedException();
 	}

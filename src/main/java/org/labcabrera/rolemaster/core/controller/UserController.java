@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.controller;
 
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.dto.AddFriendRequest;
 import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.UserFriendRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -33,7 +34,7 @@ public interface UserController {
 	public Flux<UserFriendRequest> getFriendRequests(@AuthenticationPrincipal JwtAuthenticationToken auth);
 
 	@PostMapping("/friend-requests")
-	public Mono<UserFriendRequest> sendFriendRequest(@AuthenticationPrincipal JwtAuthenticationToken auth);
+	public Mono<UserFriendRequest> sendFriendRequest(@AuthenticationPrincipal JwtAuthenticationToken auth, AddFriendRequest request);
 
 	@DeleteMapping("/friends/{friendId}")
 	public Mono<Void> removeFriend(@AuthenticationPrincipal JwtAuthenticationToken auth, @PathVariable String friendId);

@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.config.keycloak;
 
 import java.util.Collection;
 
+import org.labcabrera.rolemaster.core.exception.JwtDecodeException;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,9 +27,13 @@ public final class ReactiveKeycloakJwtAuthenticationConverter implements Convert
 
 	@Override
 	public Mono<AbstractAuthenticationToken> convert(Jwt jwt) {
-		return jwtGrantedAuthoritiesConverter.convert(jwt)
-			.collectList()
-			.map(authorities -> new JwtAuthenticationToken(jwt, authorities, extractUsername(jwt)));
+		Flux<GrantedAuthority> flux = jwtGrantedAuthoritiesConverter.convert(jwt);
+		if (flux != null) {
+			return flux.collectList().map(authorities -> new JwtAuthenticationToken(jwt, authorities, extractUsername(jwt)));
+		}
+		else {
+			throw new JwtDecodeException("JWT convertion error.");
+		}
 	}
 
 	protected String extractUsername(Jwt jwt) {

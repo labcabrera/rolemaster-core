@@ -86,18 +86,20 @@ class CharacterUpdateSkillServiceTest {
 
 	@Test
 	void testInvalidLevelCount() {
+		request.setCategoryRanks(Collections.singletonMap("cat-01", 3));
+		Mono<CharacterInfo> share = service.updateRanks(auth, character.getId(), request).share();
 		assertThrows(BadRequestException.class, () -> {
-			request.setCategoryRanks(Collections.singletonMap("cat-01", 3));
-			service.updateRanks(auth, character.getId(), request).share().block();
+			share.block();
 		});
 		verify(repository, times(0)).save(character);
 	}
 
 	@Test
 	void testInvalidCategoryId() {
+		request.setCategoryRanks(Collections.singletonMap("cat-02", 1));
+		Mono<CharacterInfo> share = service.updateRanks(auth, character.getId(), request).share();
 		assertThrows(BadRequestException.class, () -> {
-			request.setCategoryRanks(Collections.singletonMap("cat-02", 1));
-			service.updateRanks(auth, character.getId(), request).share().block();
+			share.block();
 		});
 		verify(repository, times(0)).save(character);
 	}

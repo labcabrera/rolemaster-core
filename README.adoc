@@ -24,5 +24,4 @@ It offers the following functionalities:
 * Spring Boot 2.x.
 * Reactor.
 * MongoDB.
-* OAuth 2.0.
-* Keycloak.
+* OAuth 2.0 (Keycloak).

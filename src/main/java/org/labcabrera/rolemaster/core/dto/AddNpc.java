@@ -15,4 +15,6 @@ public class AddNpc {
 
 	private String name;
 
+	//TODO complete attributes
+
 }

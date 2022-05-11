@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
+import org.labcabrera.rolemaster.core.dto.AddNpc;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +33,6 @@ public interface NpcController {
 	@PostMapping
 	@Operation(summary = "NPC creation.")
 	@PreAuthorize("hasAuthority('SCOPE_NPC:CREATION')")
-	Mono<Npc> create(@RequestBody Npc npc);
+	Mono<Npc> create(@RequestBody AddNpc request);
 
 }

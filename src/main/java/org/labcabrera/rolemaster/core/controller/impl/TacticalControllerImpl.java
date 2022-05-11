@@ -41,8 +41,9 @@ public class TacticalControllerImpl implements TacticalSessionController {
 
 	@Override
 	public Flux<TacticalSession> find(String strategicSessionId, Pageable pageable) {
-		Example<TacticalSession> example = Example.of(new TacticalSession());
-		//example.getProbe().setCurrentRound(null);
+		Example<TacticalSession> example = Example.of(TacticalSession.builder()
+			.metadata(null)
+			.build());
 		if (StringUtils.isNotBlank(strategicSessionId)) {
 			example.getProbe().setStrategicSessionId(strategicSessionId);
 		}

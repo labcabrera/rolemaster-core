@@ -12,9 +12,10 @@ import org.labcabrera.rolemaster.core.security.AuthorizationConsumer;
 import org.labcabrera.rolemaster.core.security.ReadAuthorizationFilter;
 import org.labcabrera.rolemaster.core.security.Role;
 import org.labcabrera.rolemaster.core.security.WriteAuthorizationFilter;
-import org.labcabrera.rolemaster.core.service.UserService;
+import org.labcabrera.rolemaster.core.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +59,7 @@ public class CharacterInfoService {
 	}
 
 	public Flux<CharacterInfo> findAll(JwtAuthenticationToken auth, Pageable pageable) {
-		if (auth.getAuthorities().stream().map(e -> e.getAuthority()).filter(e -> e.equals(Role.ADMIN.getCode())).count() > 0) {
+		if (auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).filter(e -> e.equals(Role.ADMIN.getCode())).count() > 0) {
 			return characterRepository.findAll(pageable.getSort());
 		}
 		return userService.findOrCreate(auth.getName())

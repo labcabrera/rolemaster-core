@@ -25,6 +25,9 @@ public class User {
 	@Builder.Default
 	private List<String> friends = new ArrayList<>();
 
+	@Builder.Default
+	private List<String> blockedUsers = new ArrayList<>();
+
 	private LocalDateTime created;
 
 }

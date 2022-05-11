@@ -29,6 +29,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
+import reactor.core.publisher.Mono;
+
 @SpringBootTest
 class TacticalServiceImplTest {
 
@@ -117,14 +119,15 @@ class TacticalServiceImplTest {
 
 		tacticalService.startExecutionPhase(round.getId());
 
+		TacticalActionDeclaration invalidSource = TacticalActionMovementDeclaration.builder()
+			.roundId(round.getId())
+			.priority(TacticalActionPhase.NORMAL)
+			.source("invalid source")
+			.actionPercent(50)
+			.build();
+		Mono<TacticalAction> share = tacticalActionService.delare(invalidSource).share();
 		assertThrows(BadRequestException.class, () -> {
-			TacticalActionDeclaration invalidSource = TacticalActionMovementDeclaration.builder()
-				.roundId(round.getId())
-				.priority(TacticalActionPhase.NORMAL)
-				.source("invalid source")
-				.actionPercent(50)
-				.build();
-			tacticalActionService.delare(invalidSource).share().block();
+			share.block();
 		});
 	}
 

@@ -1,9 +1,9 @@
 package org.labcabrera.rolemaster.core.service.character;
 
-import static org.assertj.core.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -24,6 +24,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+
+import reactor.core.publisher.Mono;
 
 @SpringBootTest
 class CharacterInfoServiceTest {
@@ -149,13 +151,8 @@ class CharacterInfoServiceTest {
 		when(auth.getName()).thenReturn("bob");
 		CharacterInfo aliceC1 = characterInfoRepository.findByNameAndOwner("alice-c-1", "alice").share().block();
 		aliceC1.setAge(30);
-		try {
-			service.update(auth, aliceC1).share().block();
-			fail("Expected access denied exception");
-		}
-		catch (AccessDeniedException ex) {
-			//Success
-		}
+		Mono<CharacterInfo> share = service.update(auth, aliceC1).share();
+		assertThrows(AccessDeniedException.class, () -> share.block());
 	}
 
 	@Test
@@ -173,13 +170,8 @@ class CharacterInfoServiceTest {
 		JwtAuthenticationToken auth = mock(JwtAuthenticationToken.class);
 		when(auth.getName()).thenReturn("bob");
 		CharacterInfo aliceC1 = characterInfoRepository.findByNameAndOwner("alice-c-2", "alice").share().block();
-		try {
-			service.deleteById(auth, aliceC1.getId()).share().block();
-			fail("Expected access denied exception");
-		}
-		catch (AccessDeniedException ex) {
-			//Success
-		}
+		Mono<Void> share = service.deleteById(auth, aliceC1.getId()).share();
+		assertThrows(AccessDeniedException.class, () -> share.block());
 	}
 
 }

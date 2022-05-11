@@ -38,9 +38,8 @@ public class TacticalSession implements HasAuthorization, HasMetadata {
 	@Schema(description = "Tactical session state (open|closed).", required = true, example = "open")
 	private TacticalSessionState state;
 
-	@Builder.Default
 	@Schema(description = "Type of terrain. If the value is not 'normal' it affects the fatigue point multiplier.", required = false, example = "normal")
-	private TerrainType terrain = TerrainType.NORMAL;
+	private TerrainType terrain;
 
 	@Schema(description = "Temperature in degrees Celsius. If the value is greater than 37 or less than -7 it affects the exhaustion point multiplier.", required = false, example = "24")
 	private TemperatureMultiplier temperature;

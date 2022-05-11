@@ -11,6 +11,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
@@ -91,13 +92,12 @@ public class OffensiveBonusProcessor implements AbstractAttackProcessor {
 
 	private AttackContext cleanUp(AttackContext context) {
 		boolean cleanUp = true;
-		if (context.getAction() instanceof TacticalActionMeleeAttack meleeAttack) {
-			if (meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
-				cleanUp = false;
-			}
+		TacticalActionAttack action = context.getAction();
+		if (action instanceof TacticalActionMeleeAttack meleeAttack && meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
+			cleanUp = false;
 		}
-		if (cleanUp && context.getAction().getOffensiveBonusMap().containsKey(AttackTargetType.OFF_HAND)) {
-			context.getAction().getOffensiveBonusMap().remove(AttackTargetType.OFF_HAND);
+		if (cleanUp && action.getOffensiveBonusMap().containsKey(AttackTargetType.OFF_HAND)) {
+			action.getOffensiveBonusMap().remove(AttackTargetType.OFF_HAND);
 		}
 		return context;
 	}
