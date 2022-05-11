@@ -1,0 +1,84 @@
+[
+	{
+		"id": "performer",
+		"name": "Performer",
+		"type": "vocational",
+		"timeAcquisition": 40,
+		"fixedSkillCategories": {
+			"artistic-active": 3,
+			"athletic-gymnastics": 1,
+			"communications": 5,
+			"influence": 2
+		},
+		"fixedSkills": {
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "artistic-active",
+				"description": "Artistic active",
+				"categories": [
+					"artistic-active"
+				],
+				"ranks": 3,
+				"skills": 1
+			},
+			{
+				"key": "athletic-gymnastics",
+				"description": "Athletic gymnastics",
+				"categories": [
+					"athletic-gymnastics"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "communications",
+				"description": "Communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 5,
+				"skills": 5
+			},
+			{
+				"key": "influence",
+				"description": "Influence",
+				"categories": [
+					"influence"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 28,
+			"thief": 28,
+			"rogue": 28,
+			"warrior-monk": 28,
+			"layman": 25,
+			"magician": 26,
+			"illusionist": 20,
+			"cleric": 26,
+			"animist": 26,
+			"mentalist": 26,
+			"lay-healer": 26,
+			"healer": 26,
+			"mystic": 18,
+			"sorcerer": 26,
+			"ranger": 24,
+			"paladin": 24,
+			"monk": 24,
+			"dabbler": 21,
+			"bard": 21,
+			"magent": 21
+		},
+		"description": "A performer is a character who makes it his business to entertain crowds, large or small. He will often be found in taverns or perhaps in organized theaters. He is a restless soul, however, and will seldom stay in one place for very long."
+	}
+]

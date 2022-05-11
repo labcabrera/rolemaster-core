@@ -21,21 +21,5 @@
         "timeAcquisition": 40,
         "skillCategoryRanks": {},
         "skillRanks": {}
-    },
-    {
-        "id": "performer",
-        "name": "Performer",
-        "type": "vocational",
-        "timeAcquisition": 40,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
-    },
-    {
-        "id": "traveler",
-        "name": "Traveler",
-        "type": "vocational",
-        "timeAcquisition": 18,
-        "skillCategoryRanks": {},
-        "skillRanks": {}
     }
 ]

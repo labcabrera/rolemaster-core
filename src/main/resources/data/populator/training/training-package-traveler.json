@@ -1,21 +1,19 @@
 [
 	{
-		"id": "adventurer",
-		"name": "Adventurer",
-		"type": "lifestyle",
-		"timeAcquisition": 24,
+		"id": "traveler",
+		"name": "Traveler",
+		"type": "vocational",
+		"timeAcquisition": 18,
 		"fixedSkillCategories": {
-			"athletic-gymnastics": 2,
-			"athletic-endurance": 2,
-			"awareness-searching": 2,
-			"power-awareness": 1,
-			"technical-trade-general": 1
+			"athletic-gymnastics": 1,
+			"athletic-endurance": 1,
+			"awareness-searching": 1,
+			"outdoor-environmental": 1,
+			"outdoor-animal": 1
 		},
 		"fixedSkills": {
-			"body-development": 1,
 			"climbing": 1,
 			"swimming": 1,
-			"alertness": 2,
 			"observation": 1
 		},
 		"selectableSkillCategoryList": [
@@ -28,19 +26,19 @@
 		],
 		"selectableSkillList": [
 			{
-				"key": "weapon-skill",
-				"description": "Weapon skill selection",
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
 				"categories": [
-					"weapon-1h-concussion",
-					"weapon-1h-edged",
-					"weapon-2h",
-					"weapon-missile-artillery",
-					"weapon-missile",
-					"weapon-pole-arms",
-					"weapon-thrown"
+					"outdoor-environmental"
 				],
 				"ranks": 1,
 				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "riding",
+				"ranks": 1
 			}
 		],
 		"startingMoney": "+d10g",
