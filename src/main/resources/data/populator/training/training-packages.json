@@ -7,29 +7,6 @@
         "skillRanks": {}
     },
     {
-        "id": "burglar",
-        "name": "Burglar",
-        "type": "vocational",
-        "timeAcquisition": 33,
-        "skillCategoryRanks": {
-            "subterfuge-mechanics": 2,
-            "athletic-gymnastics": 2,
-            "lore-general": 2,
-            "lore-technical": 2
-        },
-        "skillRanks": {
-            "climbing": 1,
-            "heraldry": 1,
-            "lock-lore": 2
-        },
-        "selectionSkillRanks": [
-            {
-                "category": "athletic-gymnastics",
-                "value": 1
-            }
-        ]
-    },
-    {
         "id": "city-guard",
         "name": "City Guard",
         "type": "vocational",
