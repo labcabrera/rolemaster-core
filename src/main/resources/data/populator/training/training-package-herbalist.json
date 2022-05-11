@@ -45,7 +45,7 @@
 			"animist": 20,
 			"mentalist": 23,
 			"lay-healer": 23,
-			"healer": -1,
+			"healer": 23,
 			"mystic": 23,
 			"sorcerer": 23,
 			"ranger": 20,
