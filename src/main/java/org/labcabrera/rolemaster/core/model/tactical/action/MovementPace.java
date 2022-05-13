@@ -11,15 +11,15 @@ public enum MovementPace implements CodeNameEnum {
 
 	WALK("walk", "Walk", 1.0, ManeuverDifficulty.NONE),
 
-	FAST_WALK("fastWalk", "Fast walk", 1.5, ManeuverDifficulty.NONE),
+	FAST_WALK("fast-walk", "Fast walk", 1.5, ManeuverDifficulty.NONE),
 
-	RUN("run", "Run", 1.0, ManeuverDifficulty.NONE),
+	RUN("run", "Run", 2.0, ManeuverDifficulty.NONE),
 
-	SPRINT("sprint", "Spring", 1.0, ManeuverDifficulty.EASY),
+	SPRINT("sprint", "Spring", 3.0, ManeuverDifficulty.EASY),
 
-	FAST_SPRINT("fastSprint", "Fast sprint", 1.0, ManeuverDifficulty.LIGHT),
+	FAST_SPRINT("fast-sprint", "Fast sprint", 4.0, ManeuverDifficulty.LIGHT),
 
-	DASH("dash", "Dash", 1.0, ManeuverDifficulty.MEDIUM);
+	DASH("dash", "Dash", 5.0, ManeuverDifficulty.MEDIUM);
 
 	private String code;
 

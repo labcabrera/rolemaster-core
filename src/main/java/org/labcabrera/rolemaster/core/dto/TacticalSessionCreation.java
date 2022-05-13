@@ -27,6 +27,10 @@ public class TacticalSessionCreation {
 	@Schema(description = "Tactical session name.", required = true, example = "Tactical session test")
 	private String name;
 
+	@Schema(description = "Scale factor for converting lengths (e.g. character movement) to board units such as centimeters or inches.", required = false, example = "1")
+	@Builder.Default
+	private Float scale = 1f;
+
 	@Builder.Default
 	@Schema(description = "Type of terrain. If the value is not 'normal' it affects the fatigue point multiplier.", required = false, example = "normal")
 	private TerrainType terrain = TerrainType.NORMAL;

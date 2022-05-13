@@ -18,9 +18,9 @@
 			}
 		],
 		"defensiveBonus": 30,
-		"_baseMove": 50,
-		"_mmBonus": 0,
-		"_maxPace": "fastSprint",
+		"baseMovementRate": 15,
+		"mmBonus": 10,
+		"maxPace": "dash",
 		"_movementSpeed": "SL",
 		"_attackQuickness": "MD",
 		"universeId": "generic",

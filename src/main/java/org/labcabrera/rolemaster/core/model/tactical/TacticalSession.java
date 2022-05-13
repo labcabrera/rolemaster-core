@@ -38,6 +38,10 @@ public class TacticalSession implements HasAuthorization, HasMetadata {
 	@Schema(description = "Tactical session state (open|closed).", required = true, example = "open")
 	private TacticalSessionState state;
 
+	@Schema(description = "Scale factor for converting lengths (e.g. character movement) to board units such as centimeters or inches.", required = false, example = "1")
+	@Builder.Default
+	private Float scale = 1f;
+
 	@Schema(description = "Type of terrain. If the value is not 'normal' it affects the fatigue point multiplier.", required = false, example = "normal")
 	private TerrainType terrain;
 

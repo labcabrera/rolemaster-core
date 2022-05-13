@@ -33,6 +33,8 @@
 			"ambush": 35,
 			"TODO": -1
 		},
+		"baseMovementRate": 15,
+		"mmBonus": 10,
 		"unique": true,
 		"universeId": "middle-earth"
 	}

@@ -62,10 +62,11 @@ public class TacticalControllerImpl implements TacticalSessionController {
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session not found.")))
 			.map(e -> {
 				e.setName(request.getName());
-				e.setDescription(request.getDescription());
+				e.setScale(request.getScale());
 				e.setTerrain(request.getTerrain());
 				e.setTemperature(request.getTemperature());
 				e.setExhaustionMultiplier(request.getExhaustionMultiplier());
+				e.setDescription(request.getDescription());
 				e.getMetadata().setUpdated(LocalDateTime.now());
 				return e;
 			})
