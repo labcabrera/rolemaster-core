@@ -52,9 +52,7 @@ class BasicCombatSpecialAttackTest extends AbstractBasicCombatTest {
 			.build()).share().block();
 
 		round01 = tacticalService.startInitiativeDeclaration(round01.getId()).share().block();
-
 		round01 = tacticalService.setInitiative(round01.getId(), taGollum.getId(), 15).share().block();
-
 		round01 = tacticalService.startExecutionPhase(round01.getId()).share().block();
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
@@ -70,11 +68,12 @@ class BasicCombatSpecialAttackTest extends AbstractBasicCombatTest {
 
 		assertEquals(125, bonusMap.get(OffensiveBonusModifier.SKILL));
 		assertEquals(-30, bonusMap.get(OffensiveBonusModifier.DEFENSIVE_BONUS));
+		assertEquals(10, bonusMap.get(OffensiveBonusModifier.PRIORITY));
 
 		assertEquals(1, meleeAttack.getAttackResults().size());
 		assertEquals(7, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
 		assertEquals(120, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getResult());
-		assertEquals(95, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getTotalBonus());
+		assertEquals(105, meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getTotalBonus());
 		assertEquals("grapple", meleeAttack.getAttackResults().get(AttackTargetType.MAIN_HAND).getWeaponTableId());
 
 		assertEquals(1, meleeAttack.getCriticalResults().size());
