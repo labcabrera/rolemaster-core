@@ -72,6 +72,7 @@ public abstract class AbstractTacticalTest {
 		ts = tacticalService.createSession(auth, TacticalSessionCreation.builder()
 			.strategicSessionId(sts.getId())
 			.name("Test tactical session")
+			.scale(0.5)
 			.description("Testing")
 			.temperature(TemperatureMultiplier.NORMAL)
 			.terrain(TerrainType.NORMAL)

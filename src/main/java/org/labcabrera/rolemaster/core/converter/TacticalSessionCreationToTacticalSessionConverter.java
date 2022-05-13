@@ -14,6 +14,7 @@ public class TacticalSessionCreationToTacticalSessionConverter implements Conver
 		return TacticalSession.builder()
 			.strategicSessionId(request.getStrategicSessionId())
 			.name(request.getName())
+			.scale(request.getScale())
 			.description(request.getDescription())
 			.state(TacticalSessionState.CREATED)
 			.temperature(request.getTemperature())

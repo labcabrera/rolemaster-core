@@ -22,7 +22,7 @@ public class TacticalSessionUpdate {
 
 	@Schema(description = "Scale factor for converting lengths (e.g. character movement) to board units such as centimeters or inches.", required = false, example = "1")
 	@Builder.Default
-	private Float scale = 1f;
+	private Double scale = 1.0;
 
 	@Builder.Default
 	@Schema(description = "Type of terrain. If the value is not 'normal' it affects the fatigue point multiplier.", required = false, example = "normal")

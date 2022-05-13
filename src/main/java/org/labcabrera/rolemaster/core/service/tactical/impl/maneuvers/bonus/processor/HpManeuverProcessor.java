@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers.processor;
+package org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers.bonus.processor;
 
 import org.springframework.stereotype.Component;
 
