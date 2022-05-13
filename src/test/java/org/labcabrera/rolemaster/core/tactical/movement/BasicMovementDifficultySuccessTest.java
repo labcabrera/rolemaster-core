@@ -46,7 +46,7 @@ class BasicMovementDifficultySuccessTest extends AbstractBasicCombatTest {
 
 		MovementExecution execution = MovementExecution.builder()
 			.difficulty(ManeuverDifficulty.MEDIUM)
-			.customModifier(15)
+			.customBonus(15)
 			.roll(25)
 			.build();
 

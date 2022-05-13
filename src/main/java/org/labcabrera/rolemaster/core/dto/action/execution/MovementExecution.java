@@ -20,7 +20,7 @@ public class MovementExecution extends TacticalActionExecution {
 	@NotNull
 	private ManeuverDifficulty difficulty;
 
-	private Integer customModifier;
+	private Integer customBonus;
 
 	private Integer roll;
 

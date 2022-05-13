@@ -48,8 +48,8 @@ public class MovementExecutionService {
 	private void load(TacticalActionMovement tacticalMovement, MovementExecution movementExecution) {
 		tacticalMovement.setRoll(movementExecution.getRoll());
 		tacticalMovement.setDifficulty(movementExecution.getDifficulty());
-		if (movementExecution.getCustomModifier() != null && movementExecution.getCustomModifier() != 0) {
-			tacticalMovement.getBonusMap().put("custom", movementExecution.getCustomModifier());
+		if (movementExecution.getCustomBonus() != null && movementExecution.getCustomBonus() != 0) {
+			tacticalMovement.getBonusMap().put("custom", movementExecution.getCustomBonus());
 		}
 	}
 
