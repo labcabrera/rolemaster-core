@@ -1,15 +1,16 @@
 package org.labcabrera.rolemaster.core.controller.impl;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 import org.labcabrera.rolemaster.core.controller.EnumController;
 import org.labcabrera.rolemaster.core.dto.NamedKey;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.combat.Cover;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
+import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverCombatSituation;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.model.tactical.TemperatureMultiplier;
 import org.labcabrera.rolemaster.core.model.tactical.TerrainType;
@@ -25,39 +26,30 @@ import reactor.core.publisher.Mono;
 @RestController
 public class EnumControllerImpl implements EnumController {
 
+	private Map<String, CodeNameEnum[]> map = new LinkedHashMap<>();
+
+	public EnumControllerImpl() {
+		map.put("cover", Cover.values());
+		map.put("item-position	", ItemPosition.values());
+		map.put("melee-attack-facing", MeleeAttackFacing.values());
+		map.put("melee-attack-mode", MeleeAttackMode.values());
+		map.put("melee-attack-type", MeleeAttackType.values());
+		map.put("maneuver-difficulty", ManeuverDifficulty.values());
+		map.put("movement-pace", MovementPace.values());
+		map.put("moving-maneuver-combat-situation", MovingManeuverCombatSituation.values());
+		map.put("realm", Realm.values());
+		map.put("terrain", TerrainType.values());
+		map.put("temperature-multiplier", TemperatureMultiplier.values());
+	}
+
 	@Override
-	public Mono<List<String>> getEnums() {
-		return Mono.just(
-			Arrays.asList("realm", "movement-pace", "melee-attack-type", "melee-attack-facing", "item-position", "terrain",
-				"temperature-multiplier", "melee-attack-mode", "cover-types", "maneuver-difficulties"));
+	public Mono<Set<String>> getEnums() {
+		return Mono.just(map.keySet());
 	}
 
 	@Override
 	public Flux<NamedKey> getEnumValues(String enumName) {
-		switch (enumName) {
-		case "cover-types":
-			return toFlux(Cover.values());
-		case "item-position":
-			return toFlux(ItemPosition.values());
-		case "maneuver-difficulties":
-			return toFlux(ManeuverDifficulty.values());
-		case "melee-attack-facing":
-			return toFlux(MeleeAttackFacing.values());
-		case "melee-attack-mode":
-			return toFlux(MeleeAttackMode.values());
-		case "melee-attack-type":
-			return toFlux(MeleeAttackType.values());
-		case "movement-pace":
-			return toFlux(MovementPace.values());
-		case "realm":
-			return toFlux(Realm.values());
-		case "temperature-multiplier":
-			return toFlux(TemperatureMultiplier.values());
-		case "terrain":
-			return toFlux(TerrainType.values());
-		default:
-			throw new BadRequestException("Invalid enum name");
-		}
+		return toFlux(map.get(enumName));
 	}
 
 	private Flux<NamedKey> toFlux(CodeNameEnum[] values) {

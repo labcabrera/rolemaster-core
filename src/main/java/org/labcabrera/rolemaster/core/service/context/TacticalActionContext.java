@@ -23,9 +23,5 @@ public class TacticalActionContext<E extends TacticalAction> {
 	private TacticalRound tacticalRound;
 
 	private TacticalCharacter source;
-	
-	
-
-	//private CharacterInfo sourceCharacterInfo;
 
 }

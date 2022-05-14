@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MovementExecution;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
+import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverCombatSituation;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -46,6 +47,7 @@ class BasicMovementDifficultyFailureTest extends AbstractBasicCombatTest {
 
 		MovementExecution execution = MovementExecution.builder()
 			.difficulty(ManeuverDifficulty.MEDIUM)
+			.combatSituation(MovingManeuverCombatSituation.MELEE_ENVIRONMENT)
 			.roll(-100)
 			.build();
 

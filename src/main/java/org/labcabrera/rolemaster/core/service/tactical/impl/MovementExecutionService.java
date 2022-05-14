@@ -12,7 +12,8 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMoveme
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.service.context.TacticalActionContext;
 import org.labcabrera.rolemaster.core.service.context.loader.TacticalActionContextLoader;
-import org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers.bonus.ManeuverBonusService;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
+import org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers.MovingManeuverBonusService;
 import org.labcabrera.rolemaster.core.table.maneuver.MovingManeuverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,26 +32,39 @@ public class MovementExecutionService {
 	private TacticalActionRepository tacticalActionRepository;
 
 	@Autowired
-	private ManeuverBonusService maneuverBonusService;
+	private MovingManeuverBonusService movingManeuverBonusService;
 
 	@Autowired
 	private MovingManeuverService movingManeuverService;
 
+	@Autowired
+	private TacticalSkillService tacticalSkillService;
+
 	public Mono<TacticalAction> execute(TacticalActionMovement tacticalMovement, MovementExecution movementExecution) {
 		load(tacticalMovement, movementExecution);
 		return contextLoader.apply(tacticalMovement)
+			.flatMap(this::loadSkill)
 			.map(this::processManeuver)
 			.map(this::processResult)
-			.map(ctx -> ctx.getAction())
+			.map(TacticalActionContext::getAction)
 			.flatMap(tacticalActionRepository::save);
 	}
 
 	private void load(TacticalActionMovement tacticalMovement, MovementExecution movementExecution) {
 		tacticalMovement.setRoll(movementExecution.getRoll());
 		tacticalMovement.setDifficulty(movementExecution.getDifficulty());
+		tacticalMovement.setCombatSituation(movementExecution.getCombatSituation());
 		if (movementExecution.getCustomBonus() != null && movementExecution.getCustomBonus() != 0) {
 			tacticalMovement.getBonusMap().put("custom", movementExecution.getCustomBonus());
 		}
+	}
+
+	private Mono<TacticalActionContext<TacticalActionMovement>> loadSkill(TacticalActionContext<TacticalActionMovement> context) {
+		return tacticalSkillService.getSkill(context.getSource(), SPRINTING)
+			.map(skillBonus -> {
+				context.getAction().getBonusMap().put("skill", skillBonus);
+				return context;
+			});
 	}
 
 	private TacticalActionContext<TacticalActionMovement> processManeuver(TacticalActionContext<TacticalActionMovement> context) {
@@ -60,7 +74,7 @@ public class MovementExecutionService {
 			movement.setManeuverResult(MovingManeuverResult.builder().result(100).build());
 		}
 		else {
-			maneuverBonusService.loadBonus(context, SPRINTING, movement.getBonusMap());
+			movingManeuverBonusService.loadBonus(context, movement.getBonusMap());
 			int totalBonus = movement.getBonusMap().values().stream().reduce(0, (a, b) -> a + b);
 			int roll = movement.getRoll();
 			int result = totalBonus + roll;
@@ -85,7 +99,7 @@ public class MovementExecutionService {
 			.multiply(new BigDecimal(percent))
 			.multiply(BigDecimal.valueOf(paceMultiplier))
 			.divide(new BigDecimal(10000), 1, RoundingMode.HALF_EVEN);
-		BigDecimal scaled = result.multiply(new BigDecimal(scale)).setScale(1, RoundingMode.HALF_EVEN);
+		BigDecimal scaled = result.multiply(BigDecimal.valueOf(scale)).setScale(1, RoundingMode.HALF_EVEN);
 		movement.setDistance(result.doubleValue());
 		movement.setDistanceScaled(scaled.doubleValue());
 		movement.setState(TacticalActionState.RESOLVED);
