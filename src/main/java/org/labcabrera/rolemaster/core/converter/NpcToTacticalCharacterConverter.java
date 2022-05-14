@@ -45,6 +45,7 @@ public class NpcToTacticalCharacterConverter {
 			.armor(npc.getArmorType())
 			.defensiveBonus(npc.getDefensiveBonus())
 			.baseMovementRate(npc.getBaseMovementRate())
+			.mmBonus(npc.getMmBonus())
 			.metadata(EntityMetadata.builder()
 				.created(LocalDateTime.now())
 				.build())

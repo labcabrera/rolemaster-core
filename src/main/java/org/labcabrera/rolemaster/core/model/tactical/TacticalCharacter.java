@@ -66,6 +66,8 @@ public class TacticalCharacter {
 
 	private Integer baseMovementRate;
 
+	private Integer mmBonus;
+
 	@Builder.Default
 	private TacticalCharacterState state = TacticalCharacterState.NORMAL;
 

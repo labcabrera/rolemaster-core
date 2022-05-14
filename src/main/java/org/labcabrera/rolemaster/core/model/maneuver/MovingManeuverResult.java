@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.model.maneuver;
 
+import java.util.EnumMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
@@ -22,9 +23,11 @@ public class MovingManeuverResult {
 
 	private Integer hp;
 
-	private Map<Debuff, Integer> debuffs;
+	@Builder.Default
+	private Map<Debuff, Integer> debuffs = new EnumMap<>(Debuff.class);
 
-	private Map<InjuryType, String> injuries;
+	@Builder.Default
+	private Map<InjuryType, String> injuries = new EnumMap<>(InjuryType.class);
 
 	private Penalty penalty;
 

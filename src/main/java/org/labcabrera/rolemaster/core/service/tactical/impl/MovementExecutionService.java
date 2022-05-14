@@ -4,12 +4,16 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MovementExecution;
+import org.labcabrera.rolemaster.core.model.combat.Penalty;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
+import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
+import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovement;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
+import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.context.TacticalActionContext;
 import org.labcabrera.rolemaster.core.service.context.loader.TacticalActionContextLoader;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
@@ -40,12 +44,16 @@ public class MovementExecutionService {
 	@Autowired
 	private TacticalSkillService tacticalSkillService;
 
+	@Autowired
+	private TacticalCharacterRepository tacticalCharacterRepository;
+
 	public Mono<TacticalAction> execute(TacticalActionMovement tacticalMovement, MovementExecution movementExecution) {
 		load(tacticalMovement, movementExecution);
 		return contextLoader.apply(tacticalMovement)
 			.flatMap(this::loadSkill)
 			.map(this::processManeuver)
 			.map(this::processResult)
+			.flatMap(this::processFailure)
 			.map(TacticalActionContext::getAction)
 			.flatMap(tacticalActionRepository::save);
 	}
@@ -85,8 +93,6 @@ public class MovementExecutionService {
 	}
 
 	private TacticalActionContext<TacticalActionMovement> processResult(TacticalActionContext<TacticalActionMovement> context) {
-		//TODO check !result
-
 		TacticalActionMovement movement = context.getAction();
 		int baseMovementRate = context.getSource().getBaseMovementRate();
 		int percent = context.getAction().getActionPercent();
@@ -104,6 +110,45 @@ public class MovementExecutionService {
 		movement.setDistanceScaled(scaled.doubleValue());
 		movement.setState(TacticalActionState.RESOLVED);
 		return context;
+	}
+
+	private Mono<TacticalActionContext<TacticalActionMovement>> processFailure(TacticalActionContext<TacticalActionMovement> context) {
+		boolean update = false;
+		MovingManeuverResult maneuverResult = context.getAction().getManeuverResult();
+		TacticalCharacter source = context.getSource();
+		CombatStatus combatStatus = source.getCombatStatus();
+		if (maneuverResult.getHp() != null) {
+			source.getHp().add(maneuverResult.getHp());
+			update = true;
+		}
+		if (maneuverResult.getBleeding() != null) {
+			combatStatus.getBleeding().add(maneuverResult.getBleeding());
+			update = true;
+		}
+		if (!maneuverResult.getDebuffs().isEmpty()) {
+			maneuverResult.getDebuffs().entrySet().stream().forEach(entry -> combatStatus.addDebuff(entry.getKey(), entry.getValue() + 1));
+			update = true;
+		}
+		if (!maneuverResult.getInjuries().isEmpty()) {
+			combatStatus.getInjuries().putAll(maneuverResult.getInjuries());
+			update = true;
+		}
+		if (maneuverResult.getPenalty() != null) {
+			Penalty penalty = Penalty.builder()
+				.penalty(maneuverResult.getPenalty().getPenalty())
+				.rounds(maneuverResult.getPenalty().getRounds())
+				.build();
+			if (penalty.getRounds() != null) {
+				penalty.setRounds(1 + penalty.getRounds());
+			}
+			combatStatus.getPenalties().add(penalty);
+		}
+		if (!update) {
+			return Mono.just(context);
+		}
+		else {
+			return tacticalCharacterRepository.save(source).thenReturn(context);
+		}
 	}
 
 }
