@@ -10,7 +10,8 @@ public class MovingManeuverPenaltyProcessor implements MovingManeuverProcessor {
 
 	@Override
 	public void loadBonus(TacticalActionContext<?> context, Map<String, Integer> bonusMap) {
-		//TODO
+		int bonus = context.getSource().getMmBonus();
+		bonusMap.put("mm-bonus", bonus);
 	}
 
 }
