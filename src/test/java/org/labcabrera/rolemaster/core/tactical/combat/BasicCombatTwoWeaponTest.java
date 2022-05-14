@@ -49,7 +49,7 @@ class BasicCombatTwoWeaponTest extends AbstractTacticalTest {
 			.build()).share().block();
 
 		String tsId = ts.getId();
-		String npcId = "orc-fighter-scimitar-ii";
+		String npcId = "orc-scimitar-ii";
 
 		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
 		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();

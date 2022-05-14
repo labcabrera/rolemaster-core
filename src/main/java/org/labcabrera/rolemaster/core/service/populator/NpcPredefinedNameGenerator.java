@@ -30,6 +30,7 @@ class NpcPredefinedNameGenerator implements ApplicationRunner {
 		Map<String, String> groups = new LinkedHashMap<>();
 		groups.put("orc", "data/populator/npcs/names/names-orcs.txt");
 		groups.put("norse", "data/populator/npcs/names/names-norse-gods.txt");
+		groups.put("sindar-male", "data/populator/npcs/names/names-sindar-male.txt");
 		List<NpcPredefinedName> entities = new ArrayList<>();
 		for (Entry<String, String> entry : groups.entrySet()) {
 			String group = entry.getKey();

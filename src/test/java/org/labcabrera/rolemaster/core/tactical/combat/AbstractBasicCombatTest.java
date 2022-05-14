@@ -17,19 +17,19 @@ public abstract class AbstractBasicCombatTest extends AbstractTacticalTest {
 	protected void prepare() {
 		super.prepare();
 
-		taMelee01 = tacticalService.addNpc(ts.getId(), "orc-fighter-scimitar-ii", NpcCustomization.builder()
+		taMelee01 = tacticalService.addNpc(ts.getId(), "orc-scimitar-ii", NpcCustomization.builder()
 			.name("orc-01").build())
 			.share().block();
 
-		taMelee02 = tacticalService.addNpc(ts.getId(), "orc-fighter-scimitar-ii", NpcCustomization.builder()
+		taMelee02 = tacticalService.addNpc(ts.getId(), "orc-scimitar-ii", NpcCustomization.builder()
 			.name("orc-02").build())
 			.share().block();
 
-		taMelee03 = tacticalService.addNpc(ts.getId(), "orc-fighter-scimitar-ii", NpcCustomization.builder()
+		taMelee03 = tacticalService.addNpc(ts.getId(), "orc-scimitar-ii", NpcCustomization.builder()
 			.name("orc-03").build())
 			.share().block();
 
-		taRanged01 = tacticalService.addNpc(ts.getId(), "orc-ranged-ii", NpcCustomization.builder()
+		taRanged01 = tacticalService.addNpc(ts.getId(), "orc-bow-ii", NpcCustomization.builder()
 			.name("orc-ranged-01").build())
 			.share().block();
 	}

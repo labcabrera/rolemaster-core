@@ -1,8 +1,8 @@
 [
 	{
-		"id": "orc-fighter-scimitar-ii",
-		"name": "Orc - Fighter Scimitar - II",
-		"shortDescription": "Orc Fighter - II",
+		"id": "orc-scimitar-ii",
+		"name": "Orc - Scimitar - II",
+		"shortDescription": "Orc II",
 		"level": 2,
 		"levelBaseModifier": "B",
 		"unique": false,
@@ -48,9 +48,9 @@
 		"npcNameGeneratorGroup": "orc"
 	},
 	{
-		"id": "orc-fighter-lance-ii",
-		"name": "Orc - Fighter Lance - II",
-		"shortDescription": "Orc Fighter - II",
+		"id": "orc-lance-ii",
+		"name": "Orc - Lance - II",
+		"shortDescription": "Orc II",
 		"level": 2,
 		"levelBaseModifier": "B",
 		"unique": false,
@@ -89,8 +89,8 @@
 		"npcNameGeneratorGroup": "orc"
 	},
 	{
-		"id": "orc-ranged-ii",
-		"name": "Orc - Ranged II",
+		"id": "orc-bow-ii",
+		"name": "Orc - Bow II",
 		"shortDescription": "Orc Ranged II",
 		"level": 2,
 		"levelBaseModifier": "B",
@@ -131,9 +131,9 @@
 		"npcNameGeneratorGroup": "orc"
 	},
 	{
-		"id": "orc-fighter-iv",
-		"shortDescription": "Orc Fighter IV",
-		"name": "Orc - Fighter IV",
+		"id": "orc-scimitar-iv",
+		"shortDescription": "Orc Scimitar - IV",
+		"name": "Orc - Scimitar IV",
 		"level": 4,
 		"levelBaseModifier": "D",
 		"unique": false,

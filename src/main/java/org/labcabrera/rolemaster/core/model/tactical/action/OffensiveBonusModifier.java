@@ -36,7 +36,9 @@ public enum OffensiveBonusModifier {
 
 	CUSTOM("custom"),
 
-	PRIORITY("priority");
+	PRIORITY("priority"),
+
+	MELEE_TYPE("melee-type");
 
 	private String name;
 

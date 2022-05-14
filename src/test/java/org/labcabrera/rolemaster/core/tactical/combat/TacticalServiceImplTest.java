@@ -58,7 +58,7 @@ class TacticalServiceImplTest {
 
 		TacticalSession tacticalSession = tacticalService.createSession(auth, tacticalSessionCreation).share().block();
 
-		String npcIdentifier = "orc-fighter-scimitar-ii";
+		String npcIdentifier = "orc-scimitar-ii";
 
 		TacticalCharacter tc1 = tacticalService.addNpc(tacticalSession.getId(), npcIdentifier).share().block();
 		TacticalCharacter tc2 = tacticalService.addNpc(tacticalSession.getId(), npcIdentifier).share().block();
