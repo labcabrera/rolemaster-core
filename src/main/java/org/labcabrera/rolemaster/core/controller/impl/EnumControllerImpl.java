@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.labcabrera.rolemaster.core.controller.EnumController;
 import org.labcabrera.rolemaster.core.dto.NamedKey;
+import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.combat.Cover;
@@ -30,7 +31,7 @@ public class EnumControllerImpl implements EnumController {
 
 	public EnumControllerImpl() {
 		map.put("cover", Cover.values());
-		map.put("item-position	", ItemPosition.values());
+		map.put("item-position", ItemPosition.values());
 		map.put("melee-attack-facing", MeleeAttackFacing.values());
 		map.put("melee-attack-mode", MeleeAttackMode.values());
 		map.put("melee-attack-type", MeleeAttackType.values());
@@ -49,6 +50,9 @@ public class EnumControllerImpl implements EnumController {
 
 	@Override
 	public Flux<NamedKey> getEnumValues(String enumName) {
+		if (!map.containsKey(enumName)) {
+			throw new BadRequestException(String.format("Invalid enum name %s.", enumName));
+		}
 		return toFlux(map.get(enumName));
 	}
 
