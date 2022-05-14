@@ -1,0 +1,81 @@
+[
+	{
+		"id": "detective",
+		"name": "Detective",
+		"type": "vocational",
+		"timeAcquisition": 33,
+		"fixedSkillCategories": {
+			"awareness-searching": 4,
+			"awareness-senses": 1,
+			"influence": 1,
+			"urban": 1
+		},
+		"fixedSkills": {
+			"alertness": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "influence",
+				"description": "Influence",
+				"categories": [
+					"influence"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "awareness-searching",
+				"description": "Awareness searching",
+				"categories": [
+					"awareness-searching"
+				],
+				"ranks": 4,
+				"skills": 2
+			},
+			{
+				"key": "awareness-senses",
+				"description": "Awareness senses",
+				"categories": [
+					"awareness-senses"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "urban",
+				"description": "Urban",
+				"categories": [
+					"urban"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 22,
+			"thief": 18,
+			"rogue": 18,
+			"warrior-monk": 23,
+			"layman": 24,
+			"magician": 30,
+			"illusionist": 28,
+			"cleric": 28,
+			"animist": 27,
+			"mentalist": 29,
+			"lay-healer": 29,
+			"healer": 30,
+			"mystic": 22,
+			"sorcerer": 30,
+			"ranger": 21,
+			"paladin": 28,
+			"monk": 26,
+			"dabbler": 25,
+			"bard": 25,
+			"magent": 19
+		},
+		"description": "A detective is the character who investigates a mysterious happening. This could be a member of the city guard or a specialist called upon when needed. A detective is rarely found outside an urban environment unless he is seeking clues to the current case."
+	}
+]

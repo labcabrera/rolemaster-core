@@ -1,0 +1,75 @@
+[
+	{
+		"id": "con-man",
+		"name": "Con man",
+		"type": "vocational",
+		"timeAcquisition": 32,
+		"fixedSkillCategories": {
+			"awareness-searching": 1,
+			"influence": 3,
+			"subterfuge-stealth": 2,
+			"technical-trade-general": 1,
+			"urban": 1
+		},
+		"fixedSkills": {
+			"lie-perception": 1,
+			"duping": 2,
+			"begging": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "influence",
+				"description": "Influence",
+				"categories": [
+					"influence"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "subterfuge-stealth",
+				"description": "Subterfuge stealth",
+				"categories": [
+					"subterfuge-stealth"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "urban",
+				"description": "Urban",
+				"categories": [
+					"urban"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 21,
+			"thief": 18,
+			"rogue": 18,
+			"warrior-monk": 22,
+			"layman": 21,
+			"magician": 27,
+			"illusionist": 25,
+			"cleric": 26,
+			"animist": 24,
+			"mentalist": 27,
+			"lay-healer": 28,
+			"healer": 28,
+			"mystic": 19,
+			"sorcerer": 28,
+			"ranger": 20,
+			"paladin": 25,
+			"monk": 22,
+			"dabbler": 19,
+			"bard": 19,
+			"magent": 14
+		},
+		"description": "The lure of quick money often draws street urchins into the realm of the Con Man. The Con Man is adept at setting people up to rip them off. He often has several identities that he can assume (and proper papers to back up the identities)."
+	}
+]

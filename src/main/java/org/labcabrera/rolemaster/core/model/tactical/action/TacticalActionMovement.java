@@ -1,5 +1,12 @@
 package org.labcabrera.rolemaster.core.model.tactical.action;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
+import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverCombatSituation;
+import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +23,20 @@ public class TacticalActionMovement extends TacticalAction {
 
 	@Builder.Default
 	private MovementPace pace = MovementPace.WALK;
+
+	private ManeuverDifficulty difficulty;
+
+	private MovingManeuverCombatSituation combatSituation;
+
+	@Builder.Default
+	private Map<String, Integer> bonusMap = new LinkedHashMap<>();
+
+	private MovingManeuverResult maneuverResult;
+
+	private Integer roll;
+
+	private Double distance;
+
+	private Double distanceScaled;
 
 }

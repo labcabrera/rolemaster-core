@@ -2,7 +2,7 @@
     {
         "id": "basic-math",
         "name": "Basic Math",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-basic",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "research",
         "name": "Research",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-basic",
         "progressionType": "standard",
@@ -20,7 +20,7 @@
     {
         "id": "advanced-math",
         "name": "Advanced Math",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-specialized",
         "progressionType": "combined",
@@ -29,7 +29,7 @@
     {
         "id": "anthropology",
         "name": "Anthropology",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-specialized",
         "progressionType": "combined",
@@ -38,7 +38,7 @@
     {
         "id": "alchemy",
         "name": "Alchemy",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "science-analytic-specialized",
         "progressionType": "combined",

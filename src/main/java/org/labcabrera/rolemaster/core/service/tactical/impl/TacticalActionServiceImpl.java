@@ -72,7 +72,6 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	@Override
 	public Mono<TacticalAction> delare(@Valid TacticalActionDeclaration actionDeclaration) {
 		TacticalAction ta = actionConverter.convert(actionDeclaration);
-
 		return tacticalCharacterRepository.findById(actionDeclaration.getSource())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(ValidationConstants.INVALID_ACTION_SOURCE_NOT_FOUND)))
 			.then(Mono.just(ta))

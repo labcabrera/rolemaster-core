@@ -53,7 +53,7 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(80)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(70)))
 			.build();
 
 		TacticalActionMeleeAttack resolved = (TacticalActionMeleeAttack) tacticalActionService.execute(a01.getId(), meleeAttackExecution)
@@ -65,12 +65,12 @@ class BasicCombatTest extends AbstractBasicCombatTest {
 		Map<OffensiveBonusModifier, Integer> bonusMap = resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
 
 		// Skill                   +40
-		// Action percent:         -20
+		// Action percent:         -10
 		// BD                      -30
 
-		assertEquals(-10, bonusMap.values().stream().filter(e -> e != 0).reduce(0, (a, b) -> a + b));
+		assertEquals(0, bonusMap.values().stream().filter(e -> e != 0).reduce(0, (a, b) -> a + b));
 		assertEquals(40, bonusMap.get(OffensiveBonusModifier.SKILL));
-		assertEquals(-20, bonusMap.get(OffensiveBonusModifier.ACTION_PERCENT));
+		assertEquals(-10, bonusMap.get(OffensiveBonusModifier.ACTION_PERCENT));
 		assertEquals(-30, bonusMap.get(OffensiveBonusModifier.DEFENSIVE_BONUS));
 
 		assertEquals(6, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());

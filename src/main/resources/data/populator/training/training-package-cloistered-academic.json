@@ -1,0 +1,95 @@
+[
+	{
+		"id": "cloistered-academic",
+		"name": "Cloistered academic",
+		"type": "lifestyle",
+		"timeAcquisition": 95,
+		"fixedSkillCategories": {
+			"lore-general": 4,
+			"lore-technical": 3,
+			"lore-magical": 1,
+			"science-analytic-basic": 2,
+			"communications": 3
+		},
+		"fixedSkills": {
+			"research": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 4,
+				"skills": 4
+			},
+			{
+				"key": "lore-technical",
+				"description": "Lore technical",
+				"categories": [
+					"lore-technical"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "lore-magical",
+				"description": "Lore magical",
+				"categories": [
+					"lore-magical"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "science-analytic-basic",
+				"description": "Science-analytic basic",
+				"categories": [
+					"science-analytic-basic"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "communications",
+				"description": "Communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 3,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 29,
+			"thief": 29,
+			"rogue": 29,
+			"warrior-monk": 29,
+			"layman": 26,
+			"magician": 24,
+			"illusionist": 23,
+			"cleric": 24,
+			"animist": 24,
+			"mentalist": 24,
+			"lay-healer": 24,
+			"healer": 24,
+			"mystic": 20,
+			"sorcerer": 24,
+			"ranger": 28,
+			"paladin": 28,
+			"monk": 28,
+			"dabbler": 25,
+			"bard": 22,
+			"magent": 24
+		},
+		"description": "The cloistered academic spends his days locked away from the rest of the world, embroiled in his learning. Books are his life. If he is close to anyone, it will usually only be a small pet. Even servants and others living in the same household are largely ignored."
+	}
+]

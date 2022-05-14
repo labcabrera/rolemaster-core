@@ -1,27 +1,38 @@
 package org.labcabrera.rolemaster.core.model.skill;
 
+import org.labcabrera.rolemaster.core.model.CodeNameEnum;
+
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum SkillType {
+import lombok.Getter;
 
-	MOVING_MANEUVER("movingManeuver"),
+@Getter
+public enum SkillType implements CodeNameEnum {
 
-	STATIC_MANEUVER("staticManeuver"),
+	MOVING_MANEUVER("moving", "Moving manevuer"),
 
-	SPECIAL("special"),
+	STATIC_MANEUVER("static", "Static maneuver"),
 
-	STATIC_OR_MOVING_MANEUVER("staticOrMovingManeuver"),
+	SPECIAL("special", "Special"),
 
-	WEAPON("weapon");
+	STATIC_OR_MOVING_MANEUVER("static-or-moving", "Static or moving maneuver"),
+
+	ARMOR("armor", "Armor"),
+
+	OFFENSIVE_BONUS("offensive-bonus", "Offensive bonus");
+
+	private String code;
 
 	private String name;
 
-	private SkillType(String name) {
+	private SkillType(String code, String name) {
+		this.code = code;
 		this.name = name;
 	}
 
 	@JsonValue
-	public String getName() {
-		return name;
+	@Override
+	public String getCode() {
+		return code;
 	}
 }

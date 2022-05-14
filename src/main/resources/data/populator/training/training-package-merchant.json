@@ -1,0 +1,65 @@
+[
+	{
+		"id": "merchant",
+		"name": "Merchant",
+		"type": "vocational",
+		"timeAcquisition": 23,
+		"fixedSkillCategories": {
+			"communications": 3,
+			"science-analytic-basic": 1
+		},
+		"fixedSkills": {
+			"basic-math": 1,
+			"appraisal": 2		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "communications",
+				"description": "Weapon missile skill selection",
+				"categories": [
+					"communications"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "technical-trade-vocational",
+				"description": "Technical trade vocational",
+				"categories": [
+					"technical-trade-vocational"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 25,
+			"thief": 25,
+			"rogue": 25,
+			"warrior-monk": 25,
+			"layman": 21,
+			"magician": 20,
+			"illusionist": 18,
+			"cleric": 20,
+			"animist": 20,
+			"mentalist": 20,
+			"lay-healer": 20,
+			"healer": 20,
+			"mystic": 18,
+			"sorcerer": 20,
+			"ranger": 24,
+			"paladin": 24,
+			"monk": 24,
+			"dabbler": 21,
+			"bard": 21,
+			"magent": 21
+		},
+		"description": "From the miserly old cloth-maker to the industrious, travelling silk merchant, everyone eventually deals with a seller of goods."
+	}
+]

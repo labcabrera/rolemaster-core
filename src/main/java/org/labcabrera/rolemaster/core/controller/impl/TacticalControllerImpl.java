@@ -15,6 +15,7 @@ import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.micrometer.core.instrument.util.StringUtils;
@@ -34,14 +35,15 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	private TacticalCharacterRepository characterContextRepository;
 
 	@Override
-	public Mono<TacticalSession> createTacticalSession(TacticalSessionCreation request) {
-		return tacticalService.createSession(request);
+	public Mono<TacticalSession> createTacticalSession(JwtAuthenticationToken auth, TacticalSessionCreation request) {
+		return tacticalService.createSession(auth, request);
 	}
 
 	@Override
 	public Flux<TacticalSession> find(String strategicSessionId, Pageable pageable) {
-		Example<TacticalSession> example = Example.of(new TacticalSession());
-		//example.getProbe().setCurrentRound(null);
+		Example<TacticalSession> example = Example.of(TacticalSession.builder()
+			.metadata(null)
+			.build());
 		if (StringUtils.isNotBlank(strategicSessionId)) {
 			example.getProbe().setStrategicSessionId(strategicSessionId);
 		}
@@ -60,11 +62,12 @@ public class TacticalControllerImpl implements TacticalSessionController {
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session not found.")))
 			.map(e -> {
 				e.setName(request.getName());
-				e.setDescription(request.getDescription());
+				e.setScale(request.getScale());
 				e.setTerrain(request.getTerrain());
 				e.setTemperature(request.getTemperature());
 				e.setExhaustionMultiplier(request.getExhaustionMultiplier());
-				e.getEntityMetadata().setUpdated(LocalDateTime.now());
+				e.setDescription(request.getDescription());
+				e.getMetadata().setUpdated(LocalDateTime.now());
 				return e;
 			})
 			.flatMap(tacticalSessionRepository::save);

@@ -15,6 +15,8 @@ public enum ConditionalCriticalEffect {
 	WITH_HELMET("with-helmet"),
 
 	WITHOUT_HELMET("without-helmet"),
+	
+	WITHOUT_NECK_ARMOR("without-neck-armor"),
 
 	WITH_WAIST_ARMOR("with-waist-armor"),
 

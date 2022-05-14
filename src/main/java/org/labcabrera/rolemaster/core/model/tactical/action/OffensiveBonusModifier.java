@@ -34,7 +34,11 @@ public enum OffensiveBonusModifier {
 
 	MISSILE_PREPARATION_ROUNDS("missile-preparation-rounds"),
 
-	CUSTOM("custom");
+	CUSTOM("custom"),
+
+	PRIORITY("priority"),
+
+	MELEE_TYPE("melee-type");
 
 	private String name;
 

@@ -1,0 +1,37 @@
+[
+	{
+		"id": "elf-sinda-bow-i",
+		"name": "Sinda - Bow I",
+		"shortDescription": "Sinda Bow I",
+		"level": 1,
+		"unique": false,
+		"hp": 60,
+		"armorType": 8,
+		"items": [
+			{
+				"itemId": "long-bow",
+				"skillId": "#missile",
+				"type": "weapon",
+				"position": "main-hand"
+			},
+			{
+				"itemId": "short-sword",
+				"skillId": "#melee",
+				"type": "weapon",
+				"position": "carried"
+			}
+		],
+		"skills": {
+			"#melee": 50,
+			"#missile": 60
+		},
+		"defensiveBonus": 40,
+		"baseMovementRate": 21,
+		"mmBonus": 15,
+		"maxPace": "dash",
+		"movementSpeed": "MD",
+		"attackQuickness": "MD",
+		"universeId": "generic",
+		"npcNameGeneratorGroup": "sindar-male"
+	}
+]

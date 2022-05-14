@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
+import org.labcabrera.rolemaster.core.MockAuthentication;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -19,6 +20,7 @@ import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -44,7 +46,9 @@ class CharacterCreationService01Test {
 	void testCreation() throws IOException {
 		CharacterCreation request = readRequest();
 
-		CharacterInfo characterInfo = service.create(request).share().block();
+		JwtAuthenticationToken auth = MockAuthentication.mock();
+
+		CharacterInfo characterInfo = service.create(auth, request).share().block();
 
 		assertEquals(61, characterInfo.getDevelopmentPoints().getTotalPoints());
 		assertEquals(0, characterInfo.getDevelopmentPoints().getUsedPoints());
@@ -54,7 +58,7 @@ class CharacterCreationService01Test {
 			.skillId("short-sword")
 			.build();
 
-		characterInfo = addSkillService.addSkill(characterInfo.getId(), addSkill).share().block();
+		characterInfo = addSkillService.addSkill(auth, characterInfo.getId(), addSkill).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertTrue(characterInfo.getSkill("short-sword").isPresent());
 		assertEquals(0, characterInfo.getSkill("short-sword").get().getTotalRanks());
@@ -79,7 +83,7 @@ class CharacterCreationService01Test {
 
 		SkillUpgrade updateSkillRequest = objectMapper.readerFor(SkillUpgrade.class).readValue(json);
 
-		characterInfo = skillUpdateService.updateRanks(characterInfo.getId(), updateSkillRequest).share().block();
+		characterInfo = skillUpdateService.updateRanks(auth, characterInfo.getId(), updateSkillRequest).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertEquals(22, characterInfo.getDevelopmentPoints().getUsedPoints());
 		assertEquals(2, characterInfo.getSkill("short-sword").get().getTotalRanks());
@@ -99,7 +103,7 @@ class CharacterCreationService01Test {
 
 		updateSkillRequest = objectMapper.readerFor(SkillUpgrade.class).readValue(json);
 
-		characterInfo = skillUpdateService.updateRanks(characterInfo.getId(), updateSkillRequest).share().block();
+		characterInfo = skillUpdateService.updateRanks(auth, characterInfo.getId(), updateSkillRequest).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertEquals(4, characterInfo.getSkill("body-development").get().getTotalRanks());
 		assertEquals(34, characterInfo.getDevelopmentPoints().getUsedPoints());
@@ -111,7 +115,7 @@ class CharacterCreationService01Test {
 
 		String checkSkill = "two-weapon-combat:short-sword:short-sword";
 
-		characterInfo = addSkillService.addSkill(characterInfo.getId(), addSkill).share().block();
+		characterInfo = addSkillService.addSkill(auth, characterInfo.getId(), addSkill).share().block();
 		characterInfo = characterRepository.findById(characterInfo.getId()).share().block();
 		assertTrue(characterInfo.getSkill(checkSkill).isPresent());
 		assertEquals(Arrays.asList("short-sword", "short-sword"), characterInfo.getSkill(checkSkill).get().getCustomization());

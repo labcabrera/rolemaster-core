@@ -21,6 +21,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackFacing;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
+import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
@@ -57,9 +58,7 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 		assertEquals(TacticalActionState.PENDING, a01.getState());
 
 		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
-
 		round01 = tacticalService.setInitiative(r01Id, taMelee01.getId(), 11).share().block();
-
 		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
 
 		List<TacticalAction> actionQueue = tacticalService.getActionQueue(r01Id).share().collectList().share().block();
@@ -67,7 +66,7 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(55)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(44)))
 			.facingMap(Collections.singletonMap(AttackTargetType.MAIN_HAND, MeleeAttackFacing.FLANK))
 			.build();
 
@@ -85,8 +84,12 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 		assertEquals(TacticalActionState.RESOLVED, resolved.getState());
 
 		assertEquals(7, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
-		assertEquals(80, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getResult());
-		assertEquals(25, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getTotalBonus());
+		assertEquals(79, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getResult());
+		assertEquals(35, resolved.getAttackResults().get(AttackTargetType.MAIN_HAND).getTotalBonus());
+
+		assertEquals(40, resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).get(OffensiveBonusModifier.SKILL));
+		assertEquals(-30, resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).get(OffensiveBonusModifier.DEFENSIVE_BONUS));
+		assertEquals(15, resolved.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).get(OffensiveBonusModifier.MELEE_FACING));
 
 		taMelee01 = tacticalCharacterRepository.findById(taMelee01.getId()).share().block();
 		CharacterItem item = itemResolver.getMainHandWeapon(taMelee01);

@@ -2,7 +2,7 @@
     {
         "id": "begging",
         "name": "Begging",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "first-aid",
         "name": "First Aid",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -20,7 +20,7 @@
     {
         "id": "gambling",
         "name": "Gambling",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -29,7 +29,7 @@
     {
         "id": "mapping",
         "name": "Mapping",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -38,7 +38,7 @@
     {
         "id": "operating-equipment",
         "name": "Operating Equipment",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -47,7 +47,7 @@
     {
         "id": "orienteering",
         "name": "Orienteering",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -56,7 +56,7 @@
     {
         "id": "sailing",
         "name": "Sailing",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -65,7 +65,7 @@
     {
         "id": "tactical-games",
         "name": "Tactical Games",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
@@ -74,25 +74,27 @@
     {
         "id": "using-prepared-herbs",
         "name": "Using Prepared Herbs",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-general",
         "progressionType": "standard",
-        "description": "This skill provides a bonus for playing games which contain very little chance element, such as Chess or Go."
+        "description": "This skill allows the user to properly apply herbs that have already been prepared for use."
     },
     {
         "id": "diagnostics",
         "name": "Diagnostics †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
+		"customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for determining the medical condition of a patient. Skill must be learned for a particular race or type of creature. One must pick the skill in either general diagnosis, or diagnosis of a specific race. General diagnostics skill of 6 ranks or higher allows certification of simple medical practice on all races (use of field equipment and healing drugs). Diagnostics skill for a specific race of 12 ranks or higher is required for surgical certification (and reasonable competence)."
     },
     {
         "id": "engineering",
         "name": "Engineering",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -101,25 +103,29 @@
     {
         "id": "mechanition",
         "name": "Mechanition †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for building and using a machine that already exists. It will be necessary to have the appropriate tools to build the machine. Each type of machine is a potential specialization."
     },
     {
         "id": "mining",
         "name": "Mining †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for assessing the possibilities of mining in an area, and supervising the creation and running of the mine. The following is a partial listing of specialized mining processes: Dredging, Open Pit, Quarry. Tunneling."
     },
     {
         "id": "second-aid",
         "name": "Second Aid",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -128,7 +134,7 @@
     {
         "id": "military-organization",
         "name": "Military Organization",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-professional",
         "progressionType": "standard",
@@ -137,7 +143,7 @@
     {
         "id": "administration",
         "name": "Administration",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -146,7 +152,7 @@
     {
         "id": "appraisal",
         "name": "Appraisal",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -155,16 +161,18 @@
     {
         "id": "boat-pilot",
         "name": "Boat Pilot †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "This skill provides a bonus for knowledge of water courses such as the locations of sand bars, rapids, waterfalls, whirlpools, currents, reefs, icebergs, vegetation clogs (underwater snags and roots, overhead hanging branches and vines), etc. Each different water course is a potential specialization."
     },
     {
         "id": "evaluate-armor",
         "name": "Evaluate Armor",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -173,7 +181,7 @@
     {
         "id": "evaluate-metal",
         "name": "Evaluate Metal",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -182,7 +190,7 @@
     {
         "id": "evaluate-stone",
         "name": "Evaluate Stone",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -191,7 +199,7 @@
     {
         "id": "evaluate-weapon",
         "name": "Evaluate Weapon",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -200,7 +208,7 @@
     {
         "id": "navigation",
         "name": "Navigation",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
@@ -209,16 +217,18 @@
     {
         "id": "tactics",
         "name": "Tactics †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
         "description": "These skills provide bonuses for perceiving and planning appropriate and effective strategy in tactical military situations. Skill with each tactical situation must be developed separately. The following is a partial listing of types of tactics: Battle Field, Naval, Sabotage, Siege, Small Unit."
     },
     {
         "id": "siege-engineering",
         "name": "Siege Engineering",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "technical-trade-vocational",
         "progressionType": "standard",

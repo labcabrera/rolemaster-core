@@ -55,8 +55,15 @@ public class AttackFumbleProcessor implements AbstractAttackProcessor {
 	}
 
 	private Mono<AttackContext> fumbleHandAttack(AttackContext context, AttackTargetType type) {
-		CharacterItem weapon = itemResolver.getWeapon(context.getSource(), type);
-		int weaponFumble = getFumble(weapon, context);
+		int weaponFumble;
+		CharacterItem weapon = null;
+		if (context.getAction().getSpecialAttack() != null) {
+			weaponFumble = NO_WEAPON_FUMBLE;
+		}
+		else {
+			weapon = itemResolver.getWeapon(context.getSource(), type);
+			weaponFumble = getFumble(weapon, context);
+		}
 		int roll = context.getAction().getRolls().get(type).getResult();
 		if (roll <= weaponFumble) {
 			log.debug("Adding fumble result for attack {}", context.getAction().getId());

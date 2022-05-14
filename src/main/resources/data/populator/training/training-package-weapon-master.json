@@ -1,0 +1,130 @@
+[
+	{
+		"id": "weapon-master",
+		"name": "Weapon master",
+		"type": "lifestyle",
+		"timeAcquisition": 95,
+		"fixedSkillCategories": {
+		},
+		"fixedSkills": {
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category-1",
+				"description": "Weapon group 1",
+				"group": "weapon",
+				"ranks": 5
+			},
+			{
+				"key": "weapon-category-2",
+				"description": "Weapon group 2",
+				"group": "weapon",
+				"ranks": 4
+			},
+			{
+				"key": "weapon-category-3",
+				"description": "Weapon group 3",
+				"group": "weapon",
+				"ranks": 3
+			},
+			{
+				"key": "weapon-category-4",
+				"description": "Weapon group 4",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill-1",
+				"description": "Weapon skill selection 1",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 5,
+				"skills": 5
+			},
+			{
+				"key": "weapon-skill-2",
+				"description": "Weapon skill selection 2",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 4,
+				"skills": 4
+			},
+			{
+				"key": "weapon-skill-3",
+				"description": "Weapon skill selection 3",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "weapon-skill-4",
+				"description": "Weapon skill selection 4",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+			"st",
+			"ag"
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 29,
+			"thief": 34,
+			"rogue": 32,
+			"warrior-monk": 45,
+			"layman": 36,
+			"magician": 84,
+			"illusionist": 84,
+			"cleric": 51,
+			"animist": 51,
+			"mentalist": 61,
+			"lay-healer": 61,
+			"healer": 84,
+			"mystic": 84,
+			"sorcerer": 84,
+			"ranger": 39,
+			"paladin": 34,
+			"monk": 49,
+			"dabbler": 43,
+			"bard": 43,
+			"magent": 39
+		},
+		"description": "A weapon master has made a life out of studying and perfecting the use of weapons. However, he seldom has learned much beyond the use of weapons."
+	}
+]

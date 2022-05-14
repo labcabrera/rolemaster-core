@@ -1,0 +1,84 @@
+[
+	{
+		"id": "loremaster",
+		"name": "Loremaster",
+		"type": "vocational",
+		"timeAcquisition": 40,
+		"fixedSkillCategories": {
+			"lore-general": 6,
+			"lore-technical": 1,
+			"lore-obscure": 1,
+			"lore-magical": 3
+		},
+		"fixedSkills": {
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 6,
+				"skills": 3
+			},
+			{
+				"key": "lore-technical",
+				"description": "Lore technical",
+				"categories": [
+					"lore-technical"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "lore-obscure",
+				"description": "Lore obscure",
+				"categories": [
+					"lore-obscure"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "lore-magical",
+				"description": "Lore magical",
+				"categories": [
+					"lore-magical"
+				],
+				"ranks": 3,
+				"skills": 2
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 29,
+			"thief": 28,
+			"rogue": 26,
+			"warrior-monk": 29,
+			"layman": 24,
+			"magician": 19,
+			"illusionist": 19,
+			"cleric": 20,
+			"animist": 20,
+			"mentalist": 20,
+			"lay-healer": 20,
+			"healer": 20,
+			"mystic": 20,
+			"sorcerer": 20,
+			"ranger": 24,
+			"paladin": 24,
+			"monk": 24,
+			"dabbler": 20,
+			"bard": 18,
+			"magent": 24
+		},
+		"description": "The perpetual scholar. The Loremaster studies, constantly striving to know all there is to know. Some Loremasters specialize in areas of knowledge; while others are diverse, knowing little bits about lots of things."
+	}
+]

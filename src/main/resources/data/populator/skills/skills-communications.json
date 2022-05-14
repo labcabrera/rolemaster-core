@@ -2,7 +2,7 @@
 	{
 		"id": "language-spoken",
 		"name": "Language Spoken †",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "communications",
 		"progressionType": "standard",
@@ -13,7 +13,7 @@
 	{
 		"id": "language-written",
 		"name": "Language Written †",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "communications",
 		"progressionType": "standard",
@@ -24,7 +24,7 @@
 	{
 		"id": "lip-reading",
 		"name": "Lip Reading",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "communications",
 		"progressionType": "standard",
@@ -33,7 +33,7 @@
 	{
 		"id": "signaling",
 		"name": "Signaling",
-		"type": "staticManeuver",
+		"type": "static",
 		"loadOnNewCharacters": false,
 		"categoryId": "communications",
 		"progressionType": "standard",

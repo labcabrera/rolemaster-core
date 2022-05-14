@@ -3,12 +3,15 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.character.SpecialAttack;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
+import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
@@ -53,11 +56,22 @@ public class OffensiveBonusProcessor implements AbstractAttackProcessor {
 
 	private Mono<AttackContext> loadSkillBonus(AttackContext context) {
 		TacticalCharacter source = context.getSource();
-		CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
-		String skillId = itemMainHand.getItemId();
-		if (itemMainHand.getSkillId() != null) {
-			skillId = itemMainHand.getSkillId();
+		String skillId;
+		if (context.getAction().getSpecialAttack() != null) {
+			String specialAttackName = context.getAction().getSpecialAttack();
+			SpecialAttack specialAttack = context.getSource().getSpecialAttacks().stream()
+				.filter(e -> e.getName().equals(specialAttackName))
+				.findFirst().orElseThrow(() -> new DataConsistenceException("Missing special attack " + specialAttackName + "."));
+			skillId = specialAttack.getSkillId();
 		}
+		else {
+			CharacterItem itemMainHand = characterItemResolver.getMainHandWeapon(source);
+			skillId = itemMainHand.getItemId();
+			if (itemMainHand.getSkillId() != null) {
+				skillId = itemMainHand.getSkillId();
+			}
+		}
+
 		if (context.getAction() instanceof TacticalActionMeleeAttack ma && ma.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
 			CharacterItem itemOffHand = characterItemResolver.getOffHandWeapon(source);
 			String offHandSkill = itemOffHand.getItemId();
@@ -78,13 +92,12 @@ public class OffensiveBonusProcessor implements AbstractAttackProcessor {
 
 	private AttackContext cleanUp(AttackContext context) {
 		boolean cleanUp = true;
-		if (context.getAction() instanceof TacticalActionMeleeAttack meleeAttack) {
-			if (meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
-				cleanUp = false;
-			}
+		TacticalActionAttack action = context.getAction();
+		if (action instanceof TacticalActionMeleeAttack meleeAttack && meleeAttack.getMeleeAttackMode() == MeleeAttackMode.TWO_WEAPONS) {
+			cleanUp = false;
 		}
-		if (cleanUp && context.getAction().getOffensiveBonusMap().containsKey(AttackTargetType.OFF_HAND)) {
-			context.getAction().getOffensiveBonusMap().remove(AttackTargetType.OFF_HAND);
+		if (cleanUp && action.getOffensiveBonusMap().containsKey(AttackTargetType.OFF_HAND)) {
+			action.getOffensiveBonusMap().remove(AttackTargetType.OFF_HAND);
 		}
 		return context;
 	}

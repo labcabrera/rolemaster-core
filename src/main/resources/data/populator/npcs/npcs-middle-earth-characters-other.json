@@ -13,23 +13,23 @@
 		"defensiveBonus": 60,
 		"specialAttacks": [
 			{
-				"name": "mgr",
+				"name": "Grapple",
 				"weaponTableId": "grapple",
 				"size": "medium",
-				"skillId": "#mgr"
+				"skillId": "#grapple"
 			},
 			{
-				"name": "mbi",
+				"name": "Bite",
 				"weaponTableId": "bite",
 				"size": "medium",
-				"skillId": "#mbi"
+				"skillId": "#bite"
 			}
 		],
 		"items": [
 		],
 		"skills": {
-			"#mgr": 125,
-			"#mbi": 85,
+			"#grapple": 125,
+			"#bite": 85,
 			"climbing": 110,
 			"swimming": 76,
 			"disarming-traps": 56,
@@ -46,7 +46,7 @@
 			"tracking": 106,
 			"trickery": 76
 		},
-		"baseMovement": 50,
+		"baseMovementRate": 15,
 		"unique": true,
 		"appearance": 10,
 		"universeId": "middle-earth"

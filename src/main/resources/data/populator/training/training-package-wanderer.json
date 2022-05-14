@@ -1,0 +1,86 @@
+[
+	{
+		"id": "wanderer",
+		"name": "Wanderer",
+		"type": "lifestyle",
+		"timeAcquisition": 95,
+		"fixedSkillCategories": {
+			"lore-general": 3,
+			"athletic-gymnastics": 1,
+			"athletic-endurance": 1,
+			"awareness-searching": 1,
+			"outdoor-environmental": 3,
+			"outdoor-animal": 1,
+			"communications": 3
+		},
+		"fixedSkills": {
+			"climbing": 1,
+			"swimming": 1,
+			"observation": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "communications",
+				"description": "Communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 3,
+				"skills": 3
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "riding",
+				"ranks": 1
+			}
+		],
+		"statGais": [
+			"co"
+		],
+		"startingMoney": "0",
+		"costByProfession": {
+			"fighter": 29,
+			"thief": 28,
+			"rogue": 28,
+			"warrior-monk": 29,
+			"layman": 28,
+			"magician": 30,
+			"illusionist": 29,
+			"cleric": 29,
+			"animist": 26,
+			"mentalist": 30,
+			"lay-healer": 30,
+			"healer": 30,
+			"mystic": 29,
+			"sorcerer": 30,
+			"ranger": 27,
+			"paladin": 29,
+			"monk": 29,
+			"dabbler": 28,
+			"bard": 26,
+			"magent": 29
+		},
+		"description": "The wanderer is similar to a traveller, except he has no “home” region. He has forsaken any roots and chooses instead to wander the world."
+	}
+]

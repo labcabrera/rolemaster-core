@@ -1,0 +1,95 @@
+[
+	{
+		"id": "burglar",
+		"name": "Burglar",
+		"type": "vocational",
+		"timeAcquisition": 33,
+		"fixedSkillCategories": {
+			"subterfuge-mechanics": 2,
+			"athletic-gymnastics": 2,
+			"lore-general": 2,
+			"lore-technical": 2
+		},
+		"fixedSkills": {
+			"climbing": 1,
+			"lock-lore": 2
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "subterfuge-mechanics",
+				"description": "Subterfuge mechanics",
+				"categories": [
+					"subterfuge-mechanics"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "athletic-gymnastics",
+				"description": "Athletic gymnastics",
+				"categories": [
+					"athletic-gymnastics"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "region-lore",
+				"ranks": 1
+			},
+			{
+				"skillId": "heraldry",
+				"ranks": 1
+			}
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 21,
+			"thief": 16,
+			"rogue": 19,
+			"warrior-monk": 20,
+			"layman": 23,
+			"magician": 31,
+			"illusionist": 31,
+			"cleric": 30,
+			"animist": 30,
+			"mentalist": 29,
+			"lay-healer": 29,
+			"healer": 30,
+			"mystic": 30,
+			"sorcerer": 31,
+			"ranger": 26,
+			"paladin": 28,
+			"monk": 22,
+			"dabbler": 22,
+			"bard": 25,
+			"magent": 21
+		},
+		"description": "A burglar makes his living stealing goods from peoples homes or businesses. They ply their trade around heavily populated areas and then move on to another area."
+	}
+]

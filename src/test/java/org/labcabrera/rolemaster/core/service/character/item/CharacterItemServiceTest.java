@@ -17,8 +17,10 @@ import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -39,10 +41,14 @@ class CharacterItemServiceTest {
 
 	@Test
 	void testCreation() throws IOException {
-		CharacterCreation request = readRequest();
-		CharacterInfo characterInfo = creationService.create(request).share().block();
+		JwtAuthenticationToken auth = Mockito.mock(JwtAuthenticationToken.class);
+		Mockito.when(auth.getName()).thenReturn("test");
 
-		characterInfo = addSkillService.addSkill(characterInfo.getId(), AddSkill.builder().skillId("soft-leather").build()).share().block();
+		CharacterCreation request = readRequest();
+		CharacterInfo characterInfo = creationService.create(auth, request).share().block();
+
+		characterInfo = addSkillService.addSkill(auth, characterInfo.getId(), AddSkill.builder().skillId("soft-leather").build()).share()
+			.block();
 
 		AddCharacterItem addCoat = AddCharacterItem.builder()
 			.itemId("reinforced-full-length-leather-coat")

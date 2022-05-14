@@ -44,7 +44,7 @@ public class AttackBreakageProcessor implements AbstractAttackProcessor {
 	}
 
 	private AttackContext apply(AttackContext context, AttackTargetType type) {
-		if (!context.getAction().getRolls().containsKey(type)) {
+		if (!context.getAction().getRolls().containsKey(type) || context.getAction().getSpecialAttack() != null) {
 			return context;
 		}
 		TacticalCharacter tc = context.getSource();

@@ -3,9 +3,531 @@
 		"id": "age",
 		"name": "Age",
 		"type": "flaw",
-		"category": "mental",
+		"category": "physical",
 		"costType": "minor",
 		"cost": -10,
 		"description": "You have reached at least middle age for your race. You must roll stat deterioration rolls each year. You are older, probably wiser, and a little slower."
+	},
+	{
+		"id": "albino",
+		"name": "Albino",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You were born an albino. You have pale-white hair and skin, and your eyes are pink. You can never blend into a crowd without a disguise, you are too conspicuous. You have no resistance to sunburn, and thus must take many precautions against the sun. If you are in the sun without protection, you take 5 hits of damage per hour until you find shelter."
+	},
+	{
+		"id": "animal-bane",
+		"name": "Animal Bane",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You produce an aroma that immediately drives one type of animal to attack you. You cannot mask this smell, no matter how you try. Your smell permeates everything that can mask it, even magic. It seems that the only creatures that can smell this particular odor are of one type of animal. You may pick the type of animal, subject to the GM’s approval. Whenever one such animal sees you, it will immediately attack ferociously. If you are near an animal’s territory, there is a 50% chance that it, or a pack of them, will hunt you down."
+	},
+	{
+		"id": "anosmia",
+		"name": "Anosmia",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -3,
+		"description": "You have no sense of taste or smell. You cannot make any Awareness maneuvers based on these two senses."
+	},
+	{
+		"id": "blind",
+		"name": "Blind",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -50,
+		"description": "You cannot see. Any action you take that would require vision is at a -100 to the maneuver. You can only move at half your normal base rate unless you are in an area that is familiar to you. As a side effect, you receive a +10 to any Awareness maneuver based on sound, touch or smell."
+	},
+	{
+		"id": "breaker",
+		"name": "Breaker",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You tend to break equipment more often than would seem to be normal. You either force it too much, or stress it to the point where it snaps. All breakage numbers for any equipment or weapons you use are automatically increased by one. Additionally, all strength checks you make for equipment or weapons are modified by a -20."
+	},
+	{
+		"id": "cold-sensitive",
+		"name": "Cold Sensitive",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You are abnormally sensitive to the cold. The colder it gets, the more you suffer from the cold’s effects. When the temperature is lower than 40º F, you suffer a penalty to all of your actions. You suffer a penalty of -1 for every 1º the temperature is below 40º F."
+	},
+	{
+		"id": "color-blind",
+		"name": "Color Blind",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You are completely color blind. Everything is white, black, or a shade of gray. This is more of a nuisance than a serious flaw, but it can cause problems."
+	},
+	{
+		"id": "common-allergy-minor",
+		"name": "Common Allergy (Minor)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have an allergy to a common substance (like pollen) that appears seasonally. You may choose what you are allergic to (subject to the GM’s approval). When you are exposed to what you are allergic to more than one minute, your eyes start to water and your nose runs. While this is happening, you are at -20 to all of your actions. This will last for d100 minutes after you have left the vicinity of the cause."
+	},
+	{
+		"id": "common-allergy-major",
+		"name": "Common Allergy (Major)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the minor flaw, except the allergy is to something that is common and is present year-round."
+	},
+	{
+		"id": "complete-klutz",
+		"name": "Complete Klutz",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are not coordinated enough to effectively use the martial arts. Your Martial Arts skill group suffer a -25 penalty."
+	},
+	{
+		"id": "crippled-minor",
+		"name": "Crippled (Minor)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have lost some mobility because you are crippled in one leg. Your movement is reduced by half. You receive a -10 to all melee OBs due to your impaired mobility. You suffer a penalty of -3 to your Qu bonus."
+	},
+	{
+		"id": "crippled-major",
+		"name": "Crippled (Major)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -20,
+		"description": "As the minor flaw, except you have actually lost a leg. You can only move at 25% of your normal Base Rate. You must use some form of support (e.g., either a false leg, a crutch, etc.). Your melee OB is reduced by -25. You suffer a penalty of -5 to your Qu bonus."
+	},
+	{
+		"id": "crippled-greater",
+		"name": "Crippled (Greater)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -30,
+		"description": "As the minor flaw, except you have lost both of your legs. Your movement is 10% of your normal base movement rate. You must find some other form of mobility to move around, a cart, a wheelchair, levitation, anti-gravity chair, etc. You cannot effectively fight in melee combat. You suffer a penalty of -7 to your Qu bonus."
+	},
+	{
+		"id": "deaf",
+		"name": "Deaf",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are completely deaf. You can hear nothing at all. You operate at -100 to all actions that require hearing. All of your starting spoken languages are reduced by 2 ranks. Spoken languages are now classified as restricted skills for you."
+	},
+	{
+		"id": "deep-sleeper",
+		"name": "Deep Sleeper",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You sleep very deeply, especially during the first hour of rest. You cannot be awakened during your first hour of sleep, no matter what occurs around you. In certain rare circumstances, the GM may allow a drastic action to awaken you from your deep slumber. After the first hour, you may awaken but suffer a -25 penalty to your Awareness maneuver to awaken."
+	},
+	{
+		"id": "epileptic",
+		"name": "Epileptic",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -30,
+		"description": "You have a severe case of epilepsy. Whenever you are subject to a very stressful situation (GM’s discretion), you must make an RR versus a Fear attack at 10th level. If you fail, you are subject to an epileptic fit. You lose your ability to think and speak clearly. Your body starts having violent shakes. Anything you are holding in your hand will fall to the ground. The seizure will last for 2d10 minutes. Once you stop convulsing, you will have spent 4d10 exhaustion points."
+	},
+	{
+		"id": "eunuch",
+		"name": "Eunuch",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You (male characters only) no longer have your manhood. This could be from an accident, or it could be a sign of status. You can neither be seduced by someone nor seduce them. In addition, you are not quite as quick to anger."
+	},
+	{
+		"id": "fragile-wrists",
+		"name": "Fragile Wrists",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "Your wrists are susceptible to sprains. When you leap, fall, climb, hang, throw an object, or attack with a melee weapon there is a 2% (non-cumulative) chance that you will sprain your wrists. If you sprain them, you will be stunned for d10 rounds, and operate at -50 for d10 days."
+	},
+	{
+		"id": "hard-of-hearing",
+		"name": "Hard of Hearing",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have a difficult time hearing things. Awareness maneuvers based on hearing are made at -20."
+	},
+	{
+		"id": "heat-sensitive",
+		"name": "Heat Sensitive",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You are abnormally sensitive to heat. The hotter it gets, the more you suffer from the heat’s effects. Whenever the temperature is more than 80º F, you suffer a penalty to all of your actions. You suffer a penalty of -1 for every 1º F the temperature is above 80º."
+	},
+	{
+		"id": "hemophilia",
+		"name": "Hemophilia",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You suffer greatly from any bleeding attacks. All of your bleeding results are doubled due to your hemophilia. Any critical that states you take a number of hits per round or states that you are bleeding should have the hits per round (as indicated in the critical doubled)."
+	},
+	{
+		"id": "inner-ear-problem",
+		"name": "Inner Ear Problem",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You suffer from a rare inner ear problem that makes you sensitive to water and pressure changes. Whenever it is raining or your head is underwater, you will be deafened. See the Deaf physical flaw for details on deafness. The deafness lasts for d10 minutes."
+	},
+	{
+		"id": "lack-of-range",
+		"name": "Lack of Range",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You have a difficult time targeting from a long range. All of your spell casting and missile fire ranges are halved."
+	},
+	{
+		"id": "locking-wrists",
+		"name": "Locking Wrists",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "Every time you strike someone or something, there is a 5% (non-cumulative) chance that your wrists will become immobile. While they are locked you are at -100 to any action that uses or requires wrist movement. Your wrists will return to normal after d100 minutes. There is nothing you can do to restore your wrists before they unlock themselves."
+	},
+	{
+		"id": "loss-of-vision",
+		"name": "Loss of Vision",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You may suffer temporary blindness whenever you are struck in the head. Any time you receive a blow to your head, there is a 5% chance that you will be blinded for d10 minutes, after which your vision will return to you normally. See the Blind physical flaw for more information on blindness."
+	},
+	{
+		"id": "mute",
+		"name": "Mute",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -25,
+		"description": "You cannot speak. Any communication you make with someone else must be non-verbal. You may write or use sign language for any communication you want with another person. It is strongly recommended that the player not speak to other players to simulate the character’s muteness."
+	},
+	{
+		"id": "nose-bleeds",
+		"name": "Nose Bleeds",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You suffer from nose bleeds caused by changes in altitude. For every 1000' above sea level, you operate at a -5 to all of your actions (from pressure in your head as well as a bleeding nose). If you remain above 1000' for more than an hour, you starting taking 1 hit of damage per minute from the constant bleeding. The bleeding and pressure subside when you go lower than 1000'."
+	},
+	{
+		"id": "not-graceful",
+		"name": "Not Graceful",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are relatively ungraceful in your movements. You receive a special penalty of -10 to all of your moving maneuvers."
+	},
+	{
+		"id": "not-subtle",
+		"name": "Not Subtle",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You are not very quiet or subtle. You receive a special penalty of -10 to all of your skills in the Subterfuge ( Stealth category. In addition, you receive a special penalty of -15 to any Stalking or Hiding maneuvers."
+	},
+	{
+		"id": "off-balance",
+		"name": "Off Balance",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You have a poor sense of balance. You have a special penalty of -30 to all of your Stalking maneuvers. You also receive a special penalty of -30 to all maneuvers that involve balance."
+	},
+	{
+		"id": "one-arm-major",
+		"name": "One arm (Major)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You have only one hand. You may choose which hand you have lost subject to GM’s approval. You are assumed to have developed proficiency in your one remaining hand, even if it was not your original hand preference. You cannot fight with two weapons at once, or with a shield. Climbing is very difficult, as is putting on armor."
+	},
+	{
+		"id": "one-arm-greater",
+		"name": "One arm (Major)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "As the major flaw, except you have lost the whole arm. The GM should rule on how this affects you."
+	},
+	{
+		"id": "one-eye",
+		"name": "One eye",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You have lost one of your eyes. You may cover the eye with a patch, have a glass eye, or some exotic alternative. You fire missile weapons with a special penalty of -25 (due to your loss of depth perception)."
+	},
+	{
+		"id": "pain-intolerant",
+		"name": "Pain Intolerant",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You have a low pain threshold. Every time you take damage, you must make an RR versus your own level, modified by triple SD bonus and by the number of concussion hits (as a negative modifier to the RR). If the RR fails, you fall unconscious."
+	},
+	{
+		"id": "physical-investment",
+		"name": "Physical Investment",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -7,
+		"description": "Every time you cast a spell that is 5th level or higher, you take a number of concussion hits of damage equal to twice the number of PPs spent. There is no way you can avoid this damage, but it does heal normally. Non-spell users may not select this flaw."
+	},
+	{
+		"id": "poor-eyesight-minor",
+		"name": "Poor Eyesight (Minor)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have poor eyesight, but you have some means of correcting it that is not permanent (e.g., glasses, etc.). You are either nearsighted or farsighted. You may choose which you are when you purchase this flaw. If you are nearsighted, you receive a -30 penalty to all of your missile attacks. If you are farsighted, you receive a -30 to all of your melee attacks."
+	},
+	{
+		"id": "poor-eyesight-greater",
+		"name": "Poor Eyesight (Greater)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "As the minor flaw, except that you do not have a means of correcting it."
+	},
+	{
+		"id": "power-burn",
+		"name": "Power Burn",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You receive damage for every spell you cast. For each power point you expend, you receive 1 concussion hit of damage."
+	},
+	{
+		"id": "rain-trauma",
+		"name": "Rain Trauma",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You are adversely effected by the rain. For each four hour period it rains and you are not in a completely enclosed area (no windows, covered up, etc.) you must check to see if you lose your voice. Roll d100 and add 25. If your total is greater than 100, you have lost your voice for d10 hours."
+	},
+	{
+		"id": "short-of-breath-lesser",
+		"name": "Short of Breath (Lesser)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have fewer exhaustion points than your stats would dictate. Calculate your Exhaustion Points normally, then reduce them by 10%."
+	},
+	{
+		"id": "short-of-breath-minor",
+		"name": "Short of Breath (Minor)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "As the lesser flaw, except reduce the normal amount by 25%."
+	},
+	{
+		"id": "short-of-breath-major",
+		"name": "Short of Breath (Major)",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "As the lesser flaw, except reduce the normal amount by 50%."
+	},
+	{
+		"id": "sloth",
+		"name": "Sloth",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are slow in combat. Your moves are obvious, awkward, and weak. You receive a special penalty of -5 to your OB, DB, and your initiative rolls."
+	},
+	{
+		"id": "slow",
+		"name": "Slow",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -7,
+		"description": "You are slower than normal. Your base movement rate is reduced by 25%."
+	},
+	{
+		"id": "slow-healer",
+		"name": "Slow healer",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You are a slow healer. All healing times for all kinds of wounds you receive are doubled."
+	},
+	{
+		"id": "spasm",
+		"name": "Spasm",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You suffer from uncontrollable spasms. Whenever you roll an unmodified 66, you experience a spasm. While you are having a spasm, you take d10 concussion hits of damage and are stunned for d10 rounds."
+	},
+	{
+		"id": "stutter",
+		"name": "Stutter",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have a speech impediment that makes it difficult for you to speak. Any skill that requires speech will suffer a special penalty of -50 (i.e., -50 to Duping, Public Speaking, Trading, etc.)."
+	},
+	{
+		"id": "tender-skin",
+		"name": "Tender Skin",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "Whenever you wear metal (including armor), your body breaks out in a rash. The rash is itchy and painful, causing a -10 penalty to all of your actions while you have the rash. The rash stays until you remove the metal and then lasts another d10 hours after you have removed the armor. There is nothing that can prevent your allergic reaction to metal armor."
+	},
+	{
+		"id": "tired-jegs",
+		"name": "Tired Legs",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -7,
+		"description": "Your legs are significantly weaker than a typical member of your race. You cannot walk more than 5 hours without resting for at least 2 hours. If you walk for more than 5 hours, there is a 25% chance that each of your legs will develop cramps (roll once for each leg). If they cramp, they will stay cramped for 2d10 hours, and be completely useless during that time."
+	},
+	{
+		"id": "uncommon-allergy",
+		"name": "Uncommon Allergy",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "lesser",
+		"cost": -5,
+		"description": "You have an allergy to an uncommon object (e.g., coniferous plants). You may choose what you are allergic to (subject to the GM’s approval). When you are exposed to the substance for more than one minute, your eyes start to water and your nose runs. While this is happening, you are at -20 to all of your actions. This will continue for d100 minutes after you are no longer exposed to the substance."
+	},
+	{
+		"id": "uncontrollable-strength",
+		"name": "Uncontrollable Strength",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You have great strength at times, but you have a very difficult time controlling it. Whenever you are in an extreme emotional state (love, happiness, hate, etc.) there is a 10% chance that you will receive triple your normal St bonus for one round. You use this strength whether you wish to or not. You could maul an enemy, or break the ribs of a friend while hugging him. You often crush or break things without meaning to. You cannot choose when to get this bonus."
+	},
+	{
+		"id": "uncoordinated",
+		"name": "Uncoordinated",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -7,
+		"description": "Whenever you fail a maneuver, no matter what it is, you receive an ‘A’ Unbalancing critical."
+	},
+	{
+		"id": "unhealthy",
+		"name": "Unhealthy",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "You are particularly susceptible to a certain disease that causes your body to swell up and you to feel ill. Every week there is a 2% chance that you will develop symptoms of this disease. While suffering from this discuss you will be at -20 to all your actions due to the swelling, and your Appearance and Presence temporary stats will be halved. After d10 days, the swelling and sickness go away (your stats will return to normal)."
+	},
+	{
+		"id": "unwakeable",
+		"name": "Unwakeable",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You are extremely difficult to wake up. You cannot be awakened while you are sleeping (or meditating). In addition, you have to sleep (or meditate) at least 6 hours every night. If you are somehow (perhaps magically) awakened before receiving a full 6 hours of sleep, you will be at -10 for every hour less than 6 you slept."
+	},
+	{
+		"id": "visible-aura",
+		"name": "Visible Aura",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "minor",
+		"cost": -10,
+		"description": "Whenever you are in an extreme state of emotion (love, happiness, anger, fear, etc.) your body starts to glow. The more extreme your emotional state, the brighter the glow. It starts as bright as a candle, but can get as luminous as a campfire."
+	},
+	{
+		"id": "weak-physique",
+		"name": "Visible Aura",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You do not have much body mass. Your progression for Body Development is reduced by 3 points at each stage. For example, if your normal progression was 0•6•5•4•3, your actual progression is -3•3•2•1•0."
+	},
+	{
+		"id": "weight-intolerant",
+		"name": "Weight Intolerant",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "major",
+		"cost": -15,
+		"description": "You are very intolerant of the weight that you carry. All of your encumbrance penalties are doubled."
+	},
+	{
+		"id": "wimp",
+		"name": "Wimp",
+		"type": "flaw",
+		"category": "physical",
+		"costType": "greater",
+		"cost": -20,
+		"description": "You are, quite frankly, a wimp. You suffer a special -20 penalty to all of the skill categories in the Athletic group, receive a -2 to your St bonus, and also have 25% fewer exhaustion points than normal."
 	}
 ]

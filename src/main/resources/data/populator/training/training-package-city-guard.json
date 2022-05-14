@@ -1,0 +1,75 @@
+[
+	{
+		"id": "city-guard",
+		"name": "City guard",
+		"type": "vocational",
+		"timeAcquisition": 25,
+		"fixedSkillCategories": {
+			"awareness-searching": 1,
+			"lore-general": 1,
+			"technical-trade-general": 1,
+			"urban": 1
+		},
+		"fixedSkills": {
+			"body-development": 1,
+			"first-aid": 1,
+			"observation": 1,
+			"streetwise": 1
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 2
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 2,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "heraldry",
+				"ranks": 1
+			}
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 15,
+			"thief": 17,
+			"rogue": 16,
+			"warrior-monk": 23,
+			"layman": 20,
+			"magician": 31,
+			"illusionist": 31,
+			"cleric": 28,
+			"animist": 27,
+			"mentalist": 29,
+			"lay-healer": 28,
+			"healer": 29,
+			"mystic": 30,
+			"sorcerer": 31,
+			"ranger": 20,
+			"paladin": 20,
+			"monk": 25,
+			"dabbler": 20,
+			"bard": 21,
+			"magent": 20
+		},
+		"description": "Almost every urban area has some sort of paid police force. These characters are in charge of making sure that the city remains free of bedlam in the streets. If a promotion is gained (in the Special section), the character has been promoted in the ranks (promotions equate to higher ranks)."
+	}
+]

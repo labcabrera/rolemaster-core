@@ -11,6 +11,7 @@ import org.labcabrera.rolemaster.core.model.ApiError;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -34,6 +35,14 @@ public class InternalErrorHandler {
 	public ResponseEntity<ApiError> serverExceptionHandler(Exception ex) {
 		log.debug("Handling exception {}", ex.getClass().getName());
 
+		if (ex instanceof AccessDeniedException) {
+			log.warn("Access denied", ex);
+			ApiError error = ApiError.builder()
+				.message(ex.getMessage())
+				.code("403")
+				.build();
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
+		}
 		if (ex instanceof BadRequestException) {
 			log.warn(INVALID_REQUEST, ex);
 			ApiError error = ApiError.builder()

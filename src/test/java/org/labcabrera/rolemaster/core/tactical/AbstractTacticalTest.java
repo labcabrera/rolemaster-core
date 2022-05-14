@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.tactical;
 
 import java.math.BigDecimal;
 
+import org.labcabrera.rolemaster.core.MockAuthentication;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
@@ -17,8 +18,11 @@ import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 public abstract class AbstractTacticalTest {
+
+	protected JwtAuthenticationToken auth = MockAuthentication.mock();
 
 	@Autowired
 	protected StrategicSessionService strategicSessionService;
@@ -58,15 +62,17 @@ public abstract class AbstractTacticalTest {
 	}
 
 	protected void prepare() {
-		sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
+
+		sts = strategicSessionService.createSession(auth, StrategicSessionCreation.builder()
 			.name("Test strategic session")
 			.universeId("middle-earth")
 			.description("Testing")
 			.build()).share().block();
 
-		ts = tacticalService.createSession(TacticalSessionCreation.builder()
+		ts = tacticalService.createSession(auth, TacticalSessionCreation.builder()
 			.strategicSessionId(sts.getId())
 			.name("Test tactical session")
+			.scale(0.5)
 			.description("Testing")
 			.temperature(TemperatureMultiplier.NORMAL)
 			.terrain(TerrainType.NORMAL)

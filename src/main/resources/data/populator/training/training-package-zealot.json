@@ -1,0 +1,92 @@
+[
+	{
+		"id": "zealot",
+		"name": "Zealot",
+		"type": "lifestyle",
+		"timeAcquisition": 73,
+		"fixedSkillCategories": {
+			"lore-general": 4,
+			"communications": 2,
+			"influence": 3
+		},
+		"fixedSkills": {
+			"public-speaking": 3
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill-1",
+				"description": "Weapon selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "communications",
+				"description": "Communications (native language)",
+				"categories": [
+					"communications"
+				],
+				"ranks": 2,
+				"skills": 2
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "religion-lore",
+				"ranks": 3
+			}
+		],
+		"statGains": [
+			"in"
+		],
+		"startingMoney": "0",
+		"costByProfession": {
+			"fighter": 25,
+			"thief": 25,
+			"rogue": 25,
+			"warrior-monk": 25,
+			"layman": 25,
+			"magician": 28,
+			"illusionist": 27,
+			"cleric": 26,
+			"animist": 26,
+			"mentalist": 25,
+			"lay-healer": 25,
+			"healer": 26,
+			"mystic": 23,
+			"sorcerer": 28,
+			"ranger": 26,
+			"paladin": 23,
+			"monk": 25,
+			"dabbler": 25,
+			"bard": 20,
+			"magent": 20
+		},
+		"description": "A zealot is a fanatic for a religion. They are generally enthusiastic, but not necessarily aggressive."
+	}
+]

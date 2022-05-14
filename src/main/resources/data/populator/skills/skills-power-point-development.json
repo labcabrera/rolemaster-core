@@ -4,6 +4,7 @@
         "name": "Power point development",
         "loadOnNewCharacters": false,
         "categoryId": "power-point-development",
+        "type": "special",
         "attributeBonus": [
         ],
         "progressionType": "race-power-points",

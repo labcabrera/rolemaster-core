@@ -2,7 +2,7 @@
     {
         "id": "animal-handling",
         "name": "Animal Handling †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
@@ -13,7 +13,7 @@
     {
         "id": "animal-training",
         "name": "Animal Training †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
@@ -24,7 +24,7 @@
     {
         "id": "driving",
         "name": "Driving †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",
@@ -35,7 +35,7 @@
     {
         "id": "riding",
         "name": "Riding †",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "outdoor-animal",
         "progressionType": "standard",

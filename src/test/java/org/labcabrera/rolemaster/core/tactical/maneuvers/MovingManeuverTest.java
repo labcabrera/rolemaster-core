@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.labcabrera.rolemaster.core.MockNpcIdentifier;
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovingManeuverDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MovingManeuverExecution;
@@ -32,7 +33,7 @@ class MovingManeuverTest extends AbstractTacticalTest {
 	void testMovement() {
 		TacticalRound round = tacticalService.startRound(ts.getId()).share().block();
 
-		TacticalCharacter tc = tacticalService.addNpc(ts.getId(), "orc-fighter-scimitar-ii", NpcCustomization.builder()
+		TacticalCharacter tc = tacticalService.addNpc(ts.getId(), MockNpcIdentifier.ORC_SCIMITAR_II, NpcCustomization.builder()
 			.name("orc-01").build())
 			.share().block();
 

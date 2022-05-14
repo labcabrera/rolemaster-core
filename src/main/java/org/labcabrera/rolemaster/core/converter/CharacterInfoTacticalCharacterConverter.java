@@ -52,6 +52,7 @@ public class CharacterInfoTacticalCharacterConverter {
 					.initiative(character.getAttributes().get(AttributeType.QUICKNESS).getCurrentValue())
 					.build())
 				.baseMovementRate(character.getBaseMovementRate())
+				.mmBonus(character.getArmor().getArmorPenalty())
 				.metadata(EntityMetadata.builder().created(LocalDateTime.now()).build())
 				.build());
 	}

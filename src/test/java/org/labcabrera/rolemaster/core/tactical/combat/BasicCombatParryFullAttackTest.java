@@ -78,7 +78,7 @@ class BasicCombatParryFullAttackTest extends AbstractBasicCombatTest {
 		Map<OffensiveBonusModifier, Integer> mainHandMap = meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
 
 		assertEquals(-5, mainHandMap.get(OffensiveBonusModifier.PARRY_ATTACK));
-		assertEquals(25, mainHandMap.get(OffensiveBonusModifier.PARRY_DEFENSE));
+		assertEquals(-25, mainHandMap.get(OffensiveBonusModifier.PARRY_DEFENSE));
 		assertEquals(20, mainHandMap.get(OffensiveBonusModifier.SHIELD));
 	}
 

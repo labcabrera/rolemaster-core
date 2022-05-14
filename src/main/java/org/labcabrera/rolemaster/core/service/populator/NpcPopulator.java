@@ -9,12 +9,14 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Component
-public class NpcPopulator extends AbstractJsonPopulator<Npc> {
+class NpcPopulator extends AbstractJsonPopulator<Npc> {
 
 	@Override
 	protected List<String> getResources() {
 		return Arrays.asList(
 			"data/populator/npcs/npcs-generic.json",
+			"data/populator/npcs/npcs-middle-earth-elves.json",
+			"data/populator/npcs/npcs-middle-earth-humans.json",
 			"data/populator/npcs/npcs-middle-earth-orcs.json",
 			"data/populator/npcs/npcs-middle-earth-characters-balrogs.json",
 			"data/populator/npcs/npcs-middle-earth-characters-dunedain.json",

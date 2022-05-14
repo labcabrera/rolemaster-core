@@ -1,0 +1,60 @@
+[
+	{
+		"id": "herbalist",
+		"name": "Herbalist",
+		"type": "vocational",
+		"timeAcquisition": 33,
+		"fixedSkillCategories": {
+			"lore-general": 2,
+			"outdoor-environmental": 4
+		},
+		"fixedSkills": {
+			"horticulture": 2,
+			"foraging": 3,
+			"using-prepared-herbs": 2
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "flora-lore",
+				"ranks": 2
+			}
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 23,
+			"thief": 23,
+			"rogue": 23,
+			"warrior-monk": 23,
+			"layman": 23,
+			"magician": 26,
+			"illusionist": 26,
+			"cleric": 23,
+			"animist": 20,
+			"mentalist": 23,
+			"lay-healer": 23,
+			"healer": 23,
+			"mystic": 23,
+			"sorcerer": 23,
+			"ranger": 20,
+			"paladin": 23,
+			"monk": 23,
+			"dabbler": 23,
+			"bard": 23,
+			"magent": 23
+		},
+		"description": "An herbalist is a person who specializes in growing, preparing, and cultivating herbs. Very often, herbalists are found near urban areas (where demand for herbs is higher), though they also like the secluded nature of a more rural environment."
+	}
+]

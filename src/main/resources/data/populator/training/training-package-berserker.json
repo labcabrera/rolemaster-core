@@ -1,0 +1,69 @@
+[
+	{
+		"id": "berserker",
+		"name": "Berserker",
+		"type": "lifestyle",
+		"timeAcquisition": 64,
+		"fixedSkillCategories": {
+			"self-control": 4
+		},
+		"fixedSkills": {
+			"body-development": 1,
+			"frenzy": 4
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group",
+				"group": "weapon",
+				"ranks": 4
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 4,
+				"skills": 3
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+			"st"
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 22,
+			"thief": 26,
+			"rogue": 26,
+			"warrior-monk": 28,
+			"layman": 28,
+			"magician": 45,
+			"illusionist": 45,
+			"cleric": 36,
+			"animist": 36,
+			"mentalist": 34,
+			"lay-healer": 34,
+			"healer": 42,
+			"mystic": 44,
+			"sorcerer": 44,
+			"ranger": 28,
+			"paladin": 26,
+			"monk": 31,
+			"dabbler": 29,
+			"bard": 29,
+			"magent": 28
+		},
+		"description": "A berserker is trained to lose control of his normal sensibilities in battle and become a fierce killing machine."
+	}
+]

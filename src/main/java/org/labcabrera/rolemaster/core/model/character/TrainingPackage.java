@@ -48,4 +48,6 @@ public class TrainingPackage {
 
 	@Builder.Default
 	private Map<String, Integer> costByProfession = new LinkedHashMap<>();
+
+	private String description;
 }

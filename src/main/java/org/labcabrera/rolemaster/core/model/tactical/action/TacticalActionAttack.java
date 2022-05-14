@@ -27,6 +27,8 @@ public abstract class TacticalActionAttack extends TacticalAction {
 
 	protected Map<AttackTargetType, OpenRoll> rolls;
 
+	protected String specialAttack;
+
 	protected Integer customBonus;
 
 	@Builder.Default

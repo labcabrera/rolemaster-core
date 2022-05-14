@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 @Component
-public class SkillPopulator extends AbstractJsonPopulator<Skill> {
+class SkillPopulator extends AbstractJsonPopulator<Skill> {
 
 	@Override
 	protected List<String> getResources() {
@@ -28,6 +28,7 @@ public class SkillPopulator extends AbstractJsonPopulator<Skill> {
 			"data/populator/skills/skills-outdoor-animal.json",
 			"data/populator/skills/skills-outdoor-environmental.json",
 			"data/populator/skills/skills-power-point-development.json",
+			"data/populator/skills/skills-power-awareness.json",
 			"data/populator/skills/skills-science.json",
 			"data/populator/skills/skills-self-control.json",
 			"data/populator/skills/skills-special-attacks.json",

@@ -48,23 +48,24 @@
 			"fighter": 29,
 			"thief": 29,
 			"rogue": 29,
-			"warrior-monk": -1,
-			"layman": -1,
+			"warrior-monk": 29,
+			"layman": 29,
 			"magician": 34,
-			"illusionist": -1,
+			"illusionist": 33,
 			"cleric": 32,
-			"animist": -1,
+			"animist": 31,
 			"mentalist": 31,
-			"lay-healer": -1,
-			"healer": -1,
-			"mystic": -1,
-			"sorcerer": -1,
+			"lay-healer": 31,
+			"healer": 31,
+			"mystic": 32,
+			"sorcerer": 34,
 			"ranger": 29,
-			"paladin": 34,
-			"monk": -1,
+			"paladin": 31,
+			"monk": 29,
 			"dabbler": 29,
 			"bard": 29,
-			"magent": -1
-		}
+			"magent": 29
+		},
+		"description": "This is the character who seeks his fame and fortune by exploration and taking risks with his own life. The adventurer is at home in most types of inhabited places as well as many kinds of wilderness locales."
 	}
 ]

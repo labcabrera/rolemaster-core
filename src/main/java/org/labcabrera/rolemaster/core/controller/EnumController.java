@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.controller;
 
-import java.util.List;
+import java.util.Set;
 
 import org.labcabrera.rolemaster.core.dto.NamedKey;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ public interface EnumController {
 
 	@GetMapping
 	@Operation(summary = "Gets the list of enumerated types.")
-	Mono<List<String>> getEnums();
+	Mono<Set<String>> getEnums();
 
 	@GetMapping("/{id}")
 	@Operation(summary = "Gets the list of pairs (code, name) associated with an enumerated type.")

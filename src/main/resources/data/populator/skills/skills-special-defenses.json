@@ -2,7 +2,7 @@
     {
         "id": "adrenal-defense",
         "name": "Adrenal Defense",
-        "type": "staticManeuver",
+        "type": "special",
         "loadOnNewCharacters": false,
         "categoryId": "special-defenses",
         "progressionType": "standard",
@@ -11,7 +11,7 @@
     {
         "id": "adrenal-toughness",
         "name": "Adrenal Toughness",
-        "type": "staticManeuver",
+        "type": "special",
         "loadOnNewCharacters": false,
         "categoryId": "special-defenses",
         "progressionType": "standard",

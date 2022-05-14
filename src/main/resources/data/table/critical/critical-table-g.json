@@ -1,0 +1,867 @@
+{
+	"type": "G",
+	"map": {
+		"A": {
+			"1-5": {
+				"text": "Foe escapes like the wind."
+			},
+			"6-10": {
+				"text": "Grab foe’s arm. Oops. Try again."
+			},
+			"11-15": {
+				"text": "You impede foe’s combat stance. You have the initiative.",
+				"buffs": {
+					"has-initiative": 1
+				}
+			},
+			"16-20": {
+				"text": "Foe breaks free of a weak grip. You have the initiative next round.",
+				"buffs": {
+					"has-initiative": 1
+				}
+			},
+			"21-35": {
+				"text": "Almost get a grip on foe's arm. He avoids his mistake. You gain the initiative next round.",
+				"hp": 3,
+				"buffs": {
+					"has-initiative": 1
+				}
+			},
+			"36-45": {
+				"text": "Grip to lower back. Foe wards off your attack and prepares for your next move.",
+				"debuffs": {
+					"must-parry": 1
+				}
+			},
+			"46-50": {
+				"text": "Hinder foe’s weapon arm. Foe violently frees himself and takes a defensive stance.",
+				"debuffs": {
+					"must-parry": 1
+				}
+			},
+			"51-55": {
+				"text": "You get in close and grab at foe's hair. He is daunted and steps back to escape your reach.",
+				"debuffs": {
+					"must-parry": 1
+				},
+				"penalty": {
+					"penalty": -20,
+					"rounds": 1
+				}
+			},
+			"56-60": {
+				"text": "Foe spins away and comes back to face you. He is unbalanced.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 1
+				}
+			},
+			"61-65": {
+				"text": "Grip to arm gives foe a bruised bicep. Foe shakes free and prepares for your assault.",
+				"hp": 3,
+				"debuffs": {
+					"must-parry": 1
+				},
+				"penalty": {
+					"penalty": -20,
+					"rounds": 1
+				}
+			},
+			"66-66": {
+				"text": "Strike foe’s weapon, disarming him. Foe fails to recover weapon. He has put himself in a bad spot.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 2
+				}
+			},
+			"67-70": {
+				"text": "Passing chest strike. Foe eludes grapple, keeps defensive stance.",
+				"debuffs": {
+					"must-parry": 2
+				},
+				"penalty": {
+					"penalty": -20,
+					"rounds": 2
+				}
+			},
+			"71-75": {
+				"text": "Grab an exposed garment. Uneasy grip impedes foe's actions.",
+				"hp": 5,
+				"penalty": {
+					"penalty": -50,
+					"rounds": 2
+				}
+			},
+			"76-80": {
+				"text": "Grapple foe's shield arm. If foe has a shield, you pull it down. If foe has no shield, you immobilize his arm.",
+				"hp": 2,
+				"penalty": {
+					"penalty": -50,
+					"rounds": 4
+				},
+				"conditionalEffects": {
+					"with-shield": {
+						"otherEffects": [
+							"Shield pull down."
+						]
+					},
+					"without-shield": {
+						"otherEffects": [
+							"Arm immobilized."
+						]
+					}
+				}
+			},
+			"81-85": {
+				"text": "Useful grip on foe's neck. Foe's face turns red. He cannot breath easily. Slowly he breaks your grip.",
+				"hp": 5,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -25,
+					"rounds": 2
+				}
+			},
+			"86-90": {
+				"text": "Grasp foe's leg, lifting it off the ground for a moment. You have the initiative for 6 rounds.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 3
+				},
+				"buffs": {
+					"has-initiative": 6
+				}
+			},
+			"91-95": {
+				"text": "Entangle foe’s leg. Foe is knocked down. Foe lands on his weapon arm. He kicks and breaks free.",
+				"hp": 4,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				}
+			},
+			"96-99": {
+				"text": "Ride foe down and immobilize him. He can do nothing for 12 rounds. You are prone also, while holding him down.",
+				"debuffs": {
+					"prone": 12
+				},
+				"attackerDebuffs": {
+					"prone": 12
+				}
+			},
+			"100-100": {
+				"text": "Foe’s legs are entangled long enough to make him fall. He is knocked out for 5 rounds.",
+				"hp": 9,
+				"debuffs": {
+					"downed": 5
+				},
+				"bonus": {
+					"bonus": 20,
+					"rounds": 1
+				}
+			}
+		},
+		"B": {
+			"1-5": {
+				"text": "Your attack falls short."
+			},
+			"6-10": {
+				"text": "Your grip fails.",
+				"hp": 2
+			},
+			"11-15": {
+				"text": "Foe collides with your attack before you get a grip. Small bruise.",
+				"hp": 2
+			},
+			"16-20": {
+				"text": "Grab foe and give him a weak punch. He thinks you are dangerous.",
+				"debuffs": {
+					"must-parry": 1
+				}
+			},
+			"21-35": {
+				"text": "You grip foe's shield arm. Foe's strike toward your head makes you let go of him. He keeps a distance.",
+				"debuffs": {
+					"must-parry": 1
+				},
+				"penalty": {
+					"penalty": -20,
+					"rounds": 1
+				}
+			},
+			"36-45": {
+				"text": "Grip fails, but bash does not. You unbalance your foe. You have the initiative.",
+				"hp": 4,
+				"debuffs": {
+					"must-parry": 1
+				},
+				"buffs": {
+					"has-initiative": 1
+				}
+			},
+			"46-50": {
+				"text": "Pull foe over, he breaks free. He is having trouble recovering. Your heart is broken.",
+				"hp": 5,
+				"debuffs": {
+					"stunned": 1
+				}
+			},
+			"51-55": {
+				"text": "Grip to foe's garments. They rip and you lose a hopeful hold. Foe is carried back by his break-away",
+				"hp": 7,
+				"debuffs": {
+					"stunned": 1
+				}
+			},
+			"56-60": {
+				"text": "Foe spins out of your grasp. However, spin nullifies his conterattack.",
+				"debuffs": {
+					"stunned": 1,
+					"must-parry": 1
+				}
+			},
+			"61-65": {
+				"text": "Slipping grasp around foe’s waist is weak. He breaks your grip and stumbles out of your way.",
+				"debuffs": {
+					"stunned": 2
+				}
+			},
+			"66-66": {
+				"text": "You grab foe’s weapon arm and make him drop it with a violent shake. Foe strains wrist trying to break free.",
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -25
+				}
+			},
+			"67-70": {
+				"text": "Grip foe's neck. Push foe's chin back steadily. He should act soon, or... TODO: 1(-10) – 1(-20) – 1(-30) instead of 3 -20",
+				"penalty": {
+					"penalty": -20,
+					"rounds": 3
+				}
+			},
+			"71-75": {
+				"text": "Weak hold around foe's waist. He brings his knee up and you lose your grip. Foe does not recover quickly.",
+				"hp": 4,
+				"penalty": {
+					"penalty": -50,
+					"rounds": 3
+				}
+			},
+			"76-80": {
+				"text": "Entangle foe's shield arm. If foe has shield, your grip makes it impossible o use. Until shield dropped: (-30). If no shield his arm is entangled."
+			},
+			"81-85": {
+				"text": "Grip around foe's waist unbalances him. You have the initiative. Foe shares much profanity with you.",
+				"penalty": {
+					"penalty": -50,
+					"rounds": 6
+				}
+			},
+			"86-90": {
+				"text": "Entangle foe's leg and send him down. He does not hit hard. He pulls a muscle in his leg struggling.",
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"91-95": {
+				"text": "Pull foe’s legs together. He goes down, hitting hard and dropping his weapon. He feebly attempts to crawl for it.",
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -25,
+					"rounds": 4
+				}
+			},
+			"96-99": {
+				"text": "Entangle foe’s arm and flip him to ground, fracturing his leg. You immobilize him completely. He is prone, face down and still conscious.",
+				"debuffs": {
+					"prone": 120
+				},
+				"penalty": {
+					"penalty": -40
+				},
+				"injuries": {
+					"leg-useless": "Critical effect."
+				}
+			},
+			"100-100": {
+				"text": "Grip foe’s neck in a vicious hold. If foe cannot break your grip in 4 rounds, he will begin to pass out from suffocation.",
+				"hp": 10,
+				"debuffs": {
+					"stunned": 1,
+					"prone": 4
+				},
+				"penalty": {
+					"penalty": -40
+				}
+			}
+		},
+		"C": {
+			"01-05": {
+				"text": "Your fingernails deal a vicious wound.",
+				"hp": 1
+			},
+			"06-10": {
+				"text": "Foe grabs, misses. You have initiative.",
+				"hp": 3,
+				"buffs": {
+					"has-initiative": 1
+				}
+			},
+			"11-15": {
+				"text": "You cannot get a good grip, foe hurts himself evading. You have initiative.",
+				"hp": 4,
+				"buffs": {
+					"has-initiative": 1
+				}
+			},
+			"16-20": {
+				"text": "Foe recovers, continues his defense by sweeping his weapon at your feet.",
+				"debuffs": {
+					"must-parry": 1
+				}
+			},
+			"21-35": {
+				"text": "Collide with foe. You push him away and he stumbles back 5 feet. It went better than you could have hoped.",
+				"hp": 2,
+				"debuffs": {
+					"stunned": 1
+				}
+			},
+			"36-45": {
+				"text": "Your attack is almost comical as you seek any little grip you can get. All the tiny tugs finally have an effect on foe.",
+				"debuffs": {
+					"stunned": 1,
+					"must-parry": 1
+				}
+			},
+			"46-50": {
+				"text": "Grab foe's waist. Your grip appeared to be strong, but now it is losing its advantage. Your foe is working free.",
+				"penalty": {
+					"penalty": -25,
+					"rounds": 3
+				}
+			},
+			"51-55": {
+				"text": "Grapple foe's leg and try to lift it up off the ground. Foe slips away, but is off balance while recovering.",
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				}
+			},
+			"56-60": {
+				"text": "Short fingers render thigh hold ineffectual. Try lower next time.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 1,
+					"must-parry": 1
+				}
+			},
+			"61-65": {
+				"text": "Grab foe around waist. Just when you think your grip is iron, he begins to break free. You might still prevail.",
+				"hp": 3,
+				"penalty": {
+					"penalty": -50,
+					"rounds": 3
+				}
+			},
+			"66-66": {
+				"text": "Grab foe, he falls down and you follow. You knock him prone to stand back up. He is down for 1 round.",
+				"hp": 5,
+				"debuffs": {
+					"downed": 3
+				}
+			},
+			"67-70": {
+				"text": "Grab foe's shield arm. If foe has shield you grapple it. Until dropped: (-50)",
+				"conditionalEffects": {
+					"without-shield": {
+						"penalty": {
+							"penalty": -40,
+							"rounds": 3
+						}
+					}
+				}
+			},
+			"71-75": {
+				"text": "Very strong grip around foe's waist. Foe is held at a great disadvanatge. He might get free.",
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -50,
+					"rounds": 1
+				}
+			},
+			"76-80": {
+				"text": "Entangle foe's weapon arm. His weapon is held immobile. He cannot use it, but he will not drop it. He tries to knee you to escape, this fails.",
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -50,
+					"rounds": 1
+				}
+			},
+			"81-85": {
+				"text": "Brutal grip around foe's chest, leaves bruises all over him. Your assault has created much confusion.",
+				"hp": 3,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+				},
+				"penalty": {
+					"penalty": -5
+				}
+			},
+			"86-90": {
+				"text": "Your assault is strong and lucky. As you grapple foe, you stomp his foot. He falls hard, breaking his shoulder.",
+				"hp": 10,
+				"debuffs": {
+					"stunned": 6
+				},
+				"penalty": {
+					"penalty": -40
+				},
+				"injuries": {
+					"shoulder-broken": "Critical effect."
+				}
+			},
+			"91-95": {
+				"text": "Painfully immobilize weapon arm. Foe cannot surrender quickly enough to avoid the damage and pain.",
+				"hp": 15,
+				"debuffs": {
+					"stunned": 4,
+					"cant-parry": 4
+				},
+				"penalty": {
+					"penalty": -95,
+					"rounds": 8
+				}
+			},
+			"96-99": {
+				"text": "Entangle foe's legs. Grapple weapon arm and break it on an available surface. You send foe to the ground. He falls very hard and is knocked out.",
+				"hp": 20,
+				"debuffs": {
+					"stunned": 10,
+					"cant-parry": 10
+				},
+				"penalty": {
+					"penalty": -30
+				}
+			},
+			"100-100": {
+				"text": "Grip foe’s head and jerk it around. If foe as no neck armor, he dies.",
+				"conditionalEffects": {
+					"without-neck-armor": {
+						"hp": 5,
+						"debuffs": {
+							"instant-death": 1
+						}
+					}
+				}
+			}
+		},
+		"D": {
+			"01-05": {
+				"text": "A little elbow before you lose your grip.",
+				"hp": 2
+			},
+			"06-10": {
+				"text": "This was not a special moment.",
+				"hp": 4
+			},
+			"11-15": {
+				"text": "Grab foe's head. If foe has helm, you twist it. Otherwise, you gain initiative.",
+				"conditionalEffects": {
+					"with-helmet": {
+						"debuffs": {
+							"stunned": 1
+						}
+					},
+					"without-helmet": {
+						"buffs": {
+							"has-initiative": 1
+						}
+					}
+				}
+			},
+			"16-20": {
+				"text": "Push foe, unbalancing him. You have initiative for 2 rounds.",
+				"buffs": {
+					"has-initiative": 2
+				}
+			},
+			"21-35": {
+				"text": "------------------------ todo --------------------------",
+				"hp": 4,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				}
+			},
+			"36-45": {
+				"text": "Light swing to foe's leg. Foe's calf is bruised. You have the initiative.",
+				"hp": 10,
+				"buffs": {
+					"has-initiative": 1
+				},
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"46-50": {
+				"text": "Catch foe in shoulder blade. Foe drops his guard and reels from your blow.",
+				"hp": 10,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				}
+			},
+			"51-55": {
+				"text": "Blow to foe's ribs. It hurts him to raise his arms. Foe cannot lean over.",
+				"hp": 10,
+				"penalty": {
+					"penalty": -15
+				}
+			},
+			"56-60": {
+				"text": "Miss foe's arm and strike his thigh. He stumbles and drops something.",
+				"hp": 6,
+				"debuffs": {
+					"stunned": 1
+				},
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"61-65": {
+				"text": "Blow to forearm. Blow tears clothing, but not skin. Arm is bruised.",
+				"hp": 10,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				},
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"66-66": {
+				"text": "Masterful strike to foe's head. If he has no helm, he is dead. If he has a helm is knocked out for 4 hours.",
+				"hp": 29,
+				"conditionalEffects": {
+					"with-helmet": {
+						"debuffs": {
+							"shock": 10000
+						}
+					},
+					"without-helmet": {
+						"debuffs": {
+							"instant-death": 1
+						}
+					}
+				}
+			},
+			"67-70": {
+				"text": "Blow to shoulder.",
+				"conditionalEffects": {
+					"with-shoulder-armor": {
+						"hp": 6,
+						"debuffs": {
+							"stunned": 1,
+							"cant-parry": 1
+						}
+					},
+					"without-shoulder-armor": {
+						"debuffs": {
+							"stunned": 2,
+							"cant-parry": 2
+						},
+						"penalty": {
+							"penalty": -20
+						}
+					}
+				}
+			},
+			"71-75": {
+				"text": "Blow lands with a crack. Leg bone is broken. Major cartilage damage.",
+				"hp": 12,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				},
+				"penalty": {
+					"penalty": -50
+				}
+			},
+			"76-80": {
+				"text": "Sling foe's weapon to the right 5 feet. Foe's arm is useless. Tendon damage.",
+				"hp": 8,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				},
+				"otherEffects": [
+					"Arm is useless."
+				]
+			},
+			"81-85": {
+				"text": "Blow lands on foe's side. He goes down hard. Victory is close.",
+				"hp": 15,
+				"debuffs": {
+					"stunned": 3,
+					"cant-parry": 3
+				},
+				"bonus": {
+					"bonus": 10,
+					"rounds": 1
+				}
+			},
+			"86-90": {
+				"text": "Blow to foe's neck. If foe has a throat protector, he is paralyzed from the neck down. If not, he dies in two rounds.",
+				"conditionalEffects": {
+					"with-throat-protector": {
+						"debuffs": {
+							"shock": 1000
+						},
+						"otherEffects": [
+							"Paralyzed from the neck down."
+						]
+					},
+					"without-throat-protector": {
+						"debuffs": {
+							"mortal-damage": 2,
+							"shock": 2
+						}
+					}
+				}
+			},
+			"91-95": {
+				"text": "Strike comes down on the shield shoulder of foe. Arm shatters. Foe dies from shock and blood loss in 9 rounds.",
+				"debuffs": {
+					"mortal-damage": 9,
+					"shock": 9
+				}
+			},
+			"96-99": {
+				"text": "Crush foe's chest cavity. He grips your arm, looks into your eyes, then drops and dies in 3 rounds.",
+				"debuffs": {
+					"mortal-damage": 3,
+					"shock": 3
+				}
+			},
+			"100-100": {
+				"text": "Blast to foe's heart. It stops. He dies. You consider yourself to be deadly. Fine work. You are ready to slay.",
+				"debuffs": {
+					"instant-death": 1
+				},
+				"hp": 25
+			}
+		},
+		"E": {
+			"01-05": {
+				"text": "Destroy one of foe's silly decorations.",
+				"hp": 3
+			},
+			"06-10": {
+				"text": "Blow is forceful, not hard. Foe is unbalanced. You have initiative.",
+				"hp": 6,
+				"buffs": {
+					"has-initiative": 1
+				}
+			},
+			"11-15": {
+				"text": "Foe raises an arm to block your strike. He does himself harm. You profit.",
+				"hp": 6,
+				"debuffs": {
+					"stunned": 1
+				},
+				"bonus": {
+					"bonus": 5,
+					"rounds": 1
+				}
+			},
+			"16-20": {
+				"text": "Strong blow breaks foe's guard. He is unbalanced.",
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				},
+				"bonus": {
+					"bonus": 10,
+					"rounds": 1
+				}
+			},
+			"21-35": {
+				"text": "Solid shot breaks foe's ribs. You have initiative next round.",
+				"buffs": {
+					"has-initiative": 1
+				},
+				"hp": 6,
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"36-45": {
+				"text": "Blow to upper leg. Minor fracture. You have initiative.",
+				"buffs": {
+					"has-initiative": 1
+				},
+				"hp": 12,
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"46-50": {
+				"text": "Glancing strike to lower back. Foe turns away to avoid the damage. Foe uses his weapon for balance.",
+				"hp": 15,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				}
+			},
+			"51-55": {
+				"text": "Blow to chest. He seeks to regain his wind and survive your onslaught.",
+				"hp": 15,
+				"debuffs": {
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -15
+				}
+			},
+			"56-60": {
+				"text": "Blow to foe's thigh causes his right leg to falter for a moment.",
+				"hp": 10,
+				"debuffs": {
+					"stunned": 1,
+					"cant-parry": 1
+				},
+				"penalty": {
+					"penalty": -10
+				}
+			},
+			"61-65": {
+				"text": "Strike foe's weapon arm with a titanic blow. Foe drops his weapon and reels.",
+				"hp": 10,
+				"debuffs": {
+					"stunned": 1
+				},
+				"penalty": {
+					"penalty": -15
+				}
+			},
+			"66-66": {
+				"text": "Crush what was once foe’s head; he dies instantly. If foe has a helm it is destroyed also. You are speckled with blood.",
+				"hp": 15,
+				"conditionalEffects": {
+					"with-helmet": {
+						"debuffs": {
+							"instant-death": 1
+						}
+					},
+					"without-helmet": {
+						"otherEffects": [
+							"Helm is destroyed."
+						]
+					}
+				},
+				"bonus": {
+					"bonus": 10,
+					"rounds": 1
+				}
+			},
+			"67-70": {
+				"text": "Blow to foe's shield arm. If foe has a shield, it is broken. If not, arm is broken.",
+				"conditionalEffects": {
+					"with-shield": {
+						"otherEffects": [
+							"Broken shield."
+						]
+					},
+					"without-shield": {
+						"otherEffects": [
+							"Arm is broken."
+						]
+					}
+				}
+			},
+			"71-75": {
+				"text": "Blow to foe's hip bonebreaks it. Help! Foe has fallen and cannot get up.",
+				"hp": 15,
+				"debuffs": {
+					"stunned": 3
+				},
+				"penalty": {
+					"penalty": -75
+				}
+			},
+			"76-80": {
+				"text": "Slap foe's arm and elbow around like string. Joint is shattered. Arm is useless. Foe should have stayed in bed.",
+				"hp": 9,
+				"debuffs": {
+					"stunned": 2,
+					"cant-parry": 2
+				}
+			},
+			"81-85": {
+				"text": "Blow to foe's armpit. Crush ribs and destroy organs. Foe dies in 3 rounds.",
+				"hp": 30,
+				"debuffs": {
+					"mortal-damage": 3
+				}
+			},
+			"86-90": {
+				"text": "Neck strike shatters bone and severs an artery. Foe cannot breath. Foe is inactive and suffocates in 12 rounds.",
+				"debuffs": {
+					"mortal-damage": 12,
+					"shock": 12
+				}
+			},
+			"91-95": {
+				"text": "Blast to foe's back. A bone is driven into vital organs. Foe is down and dies in six rounds.",
+				"hp": 25,
+				"debuffs": {
+					"mortal-damage": 6,
+					"shock": 6
+				}
+			},
+			"96-99": {
+				"text": "Blow to foe's face. If visored, the visor is driven into his face and foe dies in 10 rounds. Without a visor, he dies instantly. You have half the round left.",
+				"hp": 30,
+				"bonus": {
+					"bonus": 20,
+					"rounds": 1
+				},
+				"debuffs": {
+					"mortal-damage": 10,
+					"stunned": 10
+				}
+			},
+			"100-100": {
+				"text": "Blow turns hip to dust. Foe falls down. Attempts to stand. Falls again and dies in 6 rounds.",
+				"hp": 35,
+				"debuffs": {
+					"mortal-damage": 6,
+					"stunned": 2
+				},
+				"penalty": {
+					"penalty": -30,
+					"rounds": 6
+				}
+			}
+		}
+	}
+}

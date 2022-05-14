@@ -4,7 +4,7 @@
         "name": "Dagger",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon ability."
     },
@@ -13,7 +13,7 @@
         "name": "Falchion",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -22,7 +22,7 @@
         "name": "Hand Axe",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -31,7 +31,7 @@
         "name": "Maine Gauche",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -40,7 +40,7 @@
         "name": "Scimitar",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -49,7 +49,7 @@
         "name": "Rapier",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -58,7 +58,7 @@
         "name": "Broadsword",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -67,7 +67,7 @@
         "name": "Short Sword",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-edged",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -76,7 +76,7 @@
         "name": "Armored Fist",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -85,7 +85,7 @@
         "name": "Club",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -94,7 +94,7 @@
         "name": "War Hammer",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -103,7 +103,7 @@
         "name": "Mace",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -112,7 +112,7 @@
         "name": "Morning Star",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -121,7 +121,7 @@
         "name": "Whip",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -130,7 +130,7 @@
         "name": "Bola",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-1h-concussion",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -139,7 +139,7 @@
         "name": "Composite Bow",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-missile",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -148,7 +148,7 @@
         "name": "Heavy Crossbow",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-missile",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -157,7 +157,7 @@
         "name": "Light Crossbow",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-missile",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -166,7 +166,7 @@
         "name": "Long Bow",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-missile",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -175,7 +175,7 @@
         "name": "Short Bow",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-missile",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -184,7 +184,7 @@
         "name": "Sling",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-missile",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -193,7 +193,7 @@
         "name": "Battle Axe",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-2h",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -202,7 +202,7 @@
         "name": "Flail",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-2h",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -211,7 +211,7 @@
         "name": "War Mattock",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-2h",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -220,7 +220,7 @@
         "name": "Quarterstaff",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-2h",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -229,7 +229,7 @@
         "name": "Two Hand Sword",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-2h",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -238,7 +238,7 @@
         "name": "Javelin",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -247,7 +247,7 @@
         "name": "Lance",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -256,7 +256,7 @@
         "name": "Pole Arm",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
         "description": "Weapon  ability."
     },
@@ -265,7 +265,7 @@
         "name": "Spear",
         "loadOnNewCharacters": false,
         "categoryId": "weapon-pole-arms",
-        "type": "weapon",
+        "type":"offensive-bonus",
         "progressionType": "standard",
     	"description": "Weapon  ability."
     }

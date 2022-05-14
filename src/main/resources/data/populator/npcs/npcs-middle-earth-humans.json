@@ -1,0 +1,32 @@
+[
+	{
+		"id": "human-gondor-broadsword-i",
+		"name": "Gondor - Broadsword I",
+		"shortDescription": "Gondor Broadsword I",
+		"level": 1,
+		"unique": false,
+		"hp": 60,
+		"armorType": 8,
+		"items": [
+			{
+				"itemId": "broadsword",
+				"skillId": "#melee",
+				"type": "weapon",
+				"name": "Broadsword",
+				"position": "main-hand"
+			}
+		],
+		"skills": {
+			"#melee": 40,
+			"#missile": 25
+		},
+		"defensiveBonus": 30,
+		"baseMovementRate": 15,
+		"mmBonus": 10,
+		"maxPace": "dash",
+		"movementSpeed": "MD",
+		"attackQuickness": "MD",
+		"universeId": "generic",
+		"npcNameGeneratorGroup": "norse"
+	}
+]

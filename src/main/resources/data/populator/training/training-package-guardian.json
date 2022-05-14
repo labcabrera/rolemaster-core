@@ -1,0 +1,124 @@
+[
+	{
+		"id": "guardian",
+		"name": "Guardian",
+		"type": "lifestyle",
+		"timeAcquisition": 116,
+		"fixedSkillCategories": {
+			"armor-light": 2,
+			"athletic-endurance": 2,
+			"awareness-searching": 2,
+			"awareness-senses": 1,
+			"outdoor-environmental": 6
+		},
+		"fixedSkills": {
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 2
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "weapon-skill",
+				"description": "Weapon skill selection",
+				"categories": [
+					"weapon-1h-concussion",
+					"weapon-1h-edged",
+					"weapon-2h",
+					"weapon-missile-artillery",
+					"weapon-missile",
+					"weapon-pole-arms",
+					"weapon-thrown"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "armor-light",
+				"description": "Armor light",
+				"categories": [
+					"armor-light"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "athletic-endurance",
+				"description": "Athletic endurance",
+				"categories": [
+					"athletic-endurance"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "awareness-perceptions",
+				"description": "Awareness perceptions",
+				"categories": [
+					"awareness-perceptions"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "awareness-searching",
+				"description": "Awareness searching",
+				"categories": [
+					"awareness-searching"
+				],
+				"ranks": 2,
+				"skills": 2
+			},
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 6,
+				"skills": 3
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "tactics",
+				"ranks": 1
+			},
+			{
+				"skillId": "heraldry",
+				"ranks": 1
+			}
+		],
+		"statGains": [
+			"co"
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 27,
+			"thief": 28,
+			"rogue": 27,
+			"warrior-monk": 32,
+			"layman": 29,
+			"magician": 40,
+			"illusionist": 40,
+			"cleric": 33,
+			"animist": 31,
+			"mentalist": 35,
+			"lay-healer": 32,
+			"healer": 35,
+			"mystic": 34,
+			"sorcerer": 40,
+			"ranger": 28,
+			"paladin": 29,
+			"monk": 34,
+			"dabbler": 32,
+			"bard": 30,
+			"magent": 29
+		},
+		"description": "A guardian is a person who is given a specific area or region to guard and protect. Sometimes, guardians work together in larger organizations to protect large regions."
+	}
+]

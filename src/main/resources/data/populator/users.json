@@ -1,0 +1,35 @@
+[
+	{
+		"id": "rolemaster"
+	},
+	{
+		"id": "rolemaster-core"
+	},
+	{
+		"id": "rolemaster-client"
+	},
+	{
+		"id": "labcabrera"
+	},
+	{
+		"id": "set",
+		"friends": [
+			"cbcabrera",
+			"pieterman"
+		]
+	},
+	{
+		"id": "cbcabrera",
+		"friends": [
+			"set",
+			"pieterman"
+		]
+	},
+	{
+		"id": "pieterman",
+		"friends": [
+			"set",
+			"cbcabrera"
+		]
+	}
+]

@@ -37,19 +37,19 @@ class BasicCombatTwoWeaponTest extends AbstractTacticalTest {
 
 	@Test
 	void test() {
-		StrategicSession sts = strategicSessionService.createSession(StrategicSessionCreation.builder()
+		StrategicSession sts = strategicSessionService.createSession(auth, StrategicSessionCreation.builder()
 			.name("Test strategic session " + LocalDateTime.now())
 			.description("Testing")
 			.build()).share().block();
 
-		TacticalSession ts = tacticalService.createSession(TacticalSessionCreation.builder()
+		TacticalSession ts = tacticalService.createSession(auth, TacticalSessionCreation.builder()
 			.strategicSessionId(sts.getId())
 			.name("Test tactical session " + LocalDateTime.now())
 			.description("Testing")
 			.build()).share().block();
 
 		String tsId = ts.getId();
-		String npcId = "orc-fighter-scimitar-ii";
+		String npcId = "orc-scimitar-ii";
 
 		TacticalCharacter cc01 = tacticalService.addNpc(tsId, npcId).share().block();
 		TacticalCharacter cc02 = tacticalService.addNpc(tsId, npcId).share().block();

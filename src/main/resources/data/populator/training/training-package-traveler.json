@@ -1,0 +1,69 @@
+[
+	{
+		"id": "traveler",
+		"name": "Traveler",
+		"type": "vocational",
+		"timeAcquisition": 18,
+		"fixedSkillCategories": {
+			"athletic-gymnastics": 1,
+			"athletic-endurance": 1,
+			"awareness-searching": 1,
+			"outdoor-environmental": 1,
+			"outdoor-animal": 1
+		},
+		"fixedSkills": {
+			"climbing": 1,
+			"swimming": 1,
+			"observation": 1
+		},
+		"selectableSkillCategoryList": [
+			{
+				"key": "weapon-category",
+				"description": "Weapon group (choice one category)",
+				"group": "weapon",
+				"ranks": 1
+			}
+		],
+		"selectableSkillList": [
+			{
+				"key": "outdoor-environmental",
+				"description": "Outdoor environmental",
+				"categories": [
+					"outdoor-environmental"
+				],
+				"ranks": 1,
+				"skills": 1
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "riding",
+				"ranks": 1
+			}
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 13,
+			"thief": 12,
+			"rogue": 10,
+			"warrior-monk": 13,
+			"layman": 14,
+			"magician": 20,
+			"illusionist": 20,
+			"cleric": 18,
+			"animist": 13,
+			"mentalist": 20,
+			"lay-healer": 20,
+			"healer": 20,
+			"mystic": 19,
+			"sorcerer": 20,
+			"ranger": 10,
+			"paladin": 15,
+			"monk": 13,
+			"dabbler": 14,
+			"bard": 14,
+			"magent": 13
+		},
+		"description": "The traveller is simply that, a traveller. He is somewhat knowledgeable about his local region and knows the basics of the outdoors."
+	}
+]

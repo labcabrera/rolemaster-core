@@ -17,8 +17,10 @@ import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -76,8 +78,11 @@ class CharacterCreationService02Test {
 			}
 			""";
 
+		JwtAuthenticationToken auth = Mockito.mock(JwtAuthenticationToken.class);
+		Mockito.when(auth.getName()).thenReturn("test");
+
 		CharacterCreation request = objectMapper.readerFor(CharacterCreation.class).readValue(json);
-		CharacterInfo character = creationService.create(request).share().block();
+		CharacterInfo character = creationService.create(auth, request).share().block();
 
 		List<AddSkill> addSkills = Arrays.asList(
 			AddSkill.builder().skillId("short-sword").build(),
@@ -98,7 +103,7 @@ class CharacterCreationService02Test {
 			AddSkill.builder().skillId("fauna-lore").build(),
 			AddSkill.builder().skillId("survival").customizations(Arrays.asList("hills")).build());
 		for (AddSkill e : addSkills) {
-			character = addSkillService.addSkill(character.getId(), e).share().block();
+			character = addSkillService.addSkill(auth, character.getId(), e).share().block();
 		}
 
 		json = """
@@ -133,7 +138,7 @@ class CharacterCreationService02Test {
 			}""";
 
 		SkillUpgrade updateSkillRequest = objectMapper.readerFor(SkillUpgrade.class).readValue(json);
-		character = skillUpdateService.updateRanks(character.getId(), updateSkillRequest).share().block();
+		character = skillUpdateService.updateRanks(auth, character.getId(), updateSkillRequest).share().block();
 
 		assertEquals(2, character.getSkill("short-sword").get().getRanks().get(RankType.DEVELOPMENT));
 

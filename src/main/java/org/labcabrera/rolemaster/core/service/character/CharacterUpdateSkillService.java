@@ -8,14 +8,18 @@ import javax.validation.constraints.NotEmpty;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.message.Messages.Errors;
 import org.labcabrera.rolemaster.core.model.HasRanks;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
+import org.labcabrera.rolemaster.core.security.WriteAuthorizationFilter;
+import org.labcabrera.rolemaster.core.service.MetadataModificationUpdater;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -29,18 +33,29 @@ public class CharacterUpdateSkillService {
 	private static final String ERR_MISSING_SKILL_ID = "Missing skill %s";
 
 	@Autowired
+	private CharacterInfoService characterInfoService;
+
+	@Autowired
+	private MetadataModificationUpdater metadataModificationDateUpdater;
+
+	@Autowired
 	private CharacterInfoRepository repository;
 
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
 
-	public Mono<CharacterInfo> updateRanks(@NotEmpty String characterId, @Valid SkillUpgrade request) {
-		return repository.findById(characterId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Character " + characterId + " not found")))
+	@Autowired
+	private WriteAuthorizationFilter writeAuthorizationFilter;
+
+	public Mono<CharacterInfo> updateRanks(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid SkillUpgrade request) {
+		return characterInfoService.findById(auth, characterId)
+			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(characterId))))
+			.map(c -> writeAuthorizationFilter.apply(auth, c))
 			.map(character -> upgradeSkillCategories(character, request))
 			.map(character -> upgradeSkills(character, request))
 			.map(this::calculateDevelopmentCost)
 			.map(postProcessorService::apply)
+			.map(metadataModificationDateUpdater::apply)
 			.flatMap(repository::save);
 	}
 

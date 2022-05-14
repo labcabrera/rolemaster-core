@@ -1,0 +1,70 @@
+[
+	{
+		"id": "martial-artist",
+		"name": "Martial artist",
+		"type": "lifestyle",
+		"timeAcquisition": 73,
+		"fixedSkillCategories": {
+			"martial-arts-strikes": 3,
+			"martial-arts-sweeps": 3,
+			"artistic-passive": 2,
+			"lore-general": 2
+		},
+		"fixedSkills": {
+			"striking-degree-1": 2,
+			"striking-degree-2": 1,
+			"sweeps-degree-1": 2,
+			"sweeps-degree-2": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "artistic-passive",
+				"description": "Artistic passive",
+				"categories": [
+					"artistic-passive"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 2,
+				"skills": 2
+			}
+		],
+		"statGains": [
+			"st",
+			"ag"
+		],
+		"startingMoney": "+d10g",
+        "costByProfession": {
+			"fighter": 30,
+			"thief": 30,
+			"rogue": 30,
+			"warrior-monk": 24,
+			"layman": 30,
+			"magician": 40,
+			"illusionist": 40,
+			"cleric": 35,
+			"animist": 35,
+			"mentalist": 30,
+			"lay-healer": 30,
+			"healer": 35,
+			"mystic": 35,
+			"sorcerer": 40,
+			"ranger": 31,
+			"paladin": 35,
+			"monk": 28,
+			"dabbler": 31,
+			"bard": 29,
+			"magent": 30
+		},
+		"description": "A martial artist is a warrior trained in the ways of unarmed combat and maneuvering. However, a martial artist is also schooled in the areas of knowledge and arts."
+	}
+]

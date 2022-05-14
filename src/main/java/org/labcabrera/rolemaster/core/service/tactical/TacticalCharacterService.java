@@ -6,10 +6,10 @@ import java.util.Set;
 import org.labcabrera.rolemaster.core.converter.CharacterInfoTacticalCharacterConverter;
 import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
+import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalNpcInstanceRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
-import org.labcabrera.rolemaster.core.service.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class TacticalCharacterService {
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
-	private CharacterService characterService;
+	private CharacterInfoRepository characterInfoRepository;
 
 	@Autowired
 	private CharacterInfoTacticalCharacterConverter converter;
@@ -44,7 +44,7 @@ public class TacticalCharacterService {
 	}
 
 	public Mono<TacticalCharacter> create(String tacticalSessionId, String characterId) {
-		return Mono.zip(tacticalSessionRepository.findById(tacticalSessionId), characterService.findById(characterId))
+		return Mono.zip(tacticalSessionRepository.findById(tacticalSessionId), characterInfoRepository.findById(characterId))
 			.flatMap(tuple -> converter.convert(tuple.getT1(), tuple.getT2()))
 			.flatMap(repository::save);
 	}

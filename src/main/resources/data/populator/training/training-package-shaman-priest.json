@@ -1,0 +1,95 @@
+[
+	{
+		"id": "shaman-priest",
+		"name": "Shaman priest",
+		"type": "lifestyle",
+		"timeAcquisition": 69,
+		"fixedSkillCategories": {
+			"outdoor-animal": 3,
+			"communications": 2,
+			"influence": 1,
+			"lore-general": 2
+		},
+		"fixedSkills": {
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "spells",
+				"description": "Own realm open list",
+				"categories": [
+					"spells-own-realm-open-lists"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "outdoor-animal",
+				"description": "Outdoor animal",
+				"categories": [
+					"outdoor-animal"
+				],
+				"ranks": 3,
+				"skills": 3
+			},
+			{
+				"key": "communications",
+				"description": "Communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 2,
+				"skills": 1
+			},
+			{
+				"key": "influence",
+				"description": "Influence",
+				"categories": [
+					"influence"
+				],
+				"ranks": 1,
+				"skills": 1
+			},
+			{
+				"key": "lore-general",
+				"description": "Lore general",
+				"categories": [
+					"lore-general"
+				],
+				"ranks": 2,
+				"skills": 2
+			}
+		],
+		"selectableSkillCustomizations": [
+		],
+		"statGains": [
+			"in",
+			"pr"
+		],
+		"startingMoney": "0",
+		"costByProfession": {
+			"fighter": 34,
+			"thief": 33,
+			"rogue": 31,
+			"warrior-monk": 33,
+			"layman": 30,
+			"magician": 29,
+			"illusionist": 28,
+			"cleric": 20,
+			"animist": 26,
+			"mentalist": 29,
+			"lay-healer": 29,
+			"healer": 29,
+			"mystic": 28,
+			"sorcerer": 29,
+			"ranger": 29,
+			"paladin": 29,
+			"monk": 30,
+			"dabbler": 29,
+			"bard": 28,
+			"magent": 28
+		},
+		"description": "In tribal communities, there are seldom organized churches. Instead, the groups often lead by a single religious leader. This leader will often use animal totems and other forces of nature to assist him in his duties."
+	}
+]

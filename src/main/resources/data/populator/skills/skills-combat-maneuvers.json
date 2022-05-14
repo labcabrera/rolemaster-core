@@ -2,7 +2,7 @@
     {
         "id": "quickdraw",
         "name": "Quickdraw",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
         "progressionType": "combined",
@@ -11,7 +11,7 @@
 	{
         "id": "mounted-combat",
         "name": "Mounted Combat",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
         "progressionType": "combined",
@@ -20,7 +20,7 @@
 	{
         "id": "swashbuckling",
         "name": "Swashbuckling",
-        "type": "staticManeuver",
+        "type": "static",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
         "progressionType": "combined",
@@ -29,7 +29,7 @@
 	{
         "id": "two-weapon-combat",
         "name": "Two-weapon Combat †",
-        "type": "special",
+        "type": "offensive-bonus",
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
         "progressionType": "combined",
@@ -49,7 +49,7 @@
 	{
         "id": "reverse-stroke",
         "name": "Reverse Stroke †",
-        "type": "special",
+        "type": "offensive-bonus",
         "customizable": true,
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
@@ -61,12 +61,12 @@
 	{
         "id": "subdual",
         "name": "Subdual",
-        "type": "special",
+        "type": "offensive-bonus",
         "customizable": true,
         "loadOnNewCharacters": false,
         "categoryId": "combat-maneuvers",
         "progressionType": "combined",
-        "description": "This skill allows an individual to immobilize or render uncon- scious a target by applying a sharp blow to a precise point on the victim’s upper body. The foe is assumed to be “of kind” (usually humanoid) and not “Large” or “Super-large.” The OB of a subduing attack can not exceed the attacker’s Subdual skill bonus (e.g., a Fighter with an OB of +120 and a Subdual bonus of +70 would only be able to apply a +70 OB to his attack). Instead of rolling criticals on the Critical Table indicated by the Weapon Attack Table, the AL Subdual Critical Table 4.9 should be used."
+        "description": "This skill allows an individual to immobilize or render unconscious a target by applying a sharp blow to a precise point on the victim’s upper body. The foe is assumed to be “of kind” (usually humanoid) and not “Large” or “Super-large.” The OB of a subduing attack can not exceed the attacker’s Subdual skill bonus (e.g., a Fighter with an OB of +120 and a Subdual bonus of +70 would only be able to apply a +70 OB to his attack). Instead of rolling criticals on the Critical Table indicated by the Weapon Attack Table, the AL Subdual Critical Table 4.9 should be used."
     },
 	{
         "id": "tumbling-evasion",

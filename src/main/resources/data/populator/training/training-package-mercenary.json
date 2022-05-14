@@ -65,10 +65,10 @@
 				"skills": 1
 			},
 			{
-				"key": "communication",
+				"key": "communications",
 				"description": "Choice of one spoken language",
 				"categories": [
-					"communication"
+					"communications"
 				],
 				"ranks": 2,
 				"skills": 1
@@ -108,6 +108,7 @@
 			"dabbler": 32,
 			"bard": 32,
 			"magent": 31
-		}
+		},
+		"description": "A mercenary is an independent soldier who works for the highest paying employer. Most armies have at least a few mercenaries to fill out their ranks (and some are comprised mostly of mercenaries). Most mercenaries are well-versed in more than one culture and have a good working knowledge of warfare."
 	}
 ]

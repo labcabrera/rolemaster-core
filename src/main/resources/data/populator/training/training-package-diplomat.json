@@ -1,0 +1,76 @@
+[
+	{
+		"id": "diplomat",
+		"name": "Diplomat",
+		"type": "vocational",
+		"timeAcquisition": 48,
+		"fixedSkillCategories": {
+			"communications": 6,
+			"awareness-searching": 1,
+			"influence": 2,
+			"lore-general": 4
+		},
+		"fixedSkills": {
+			"lie-perception": 1,
+			"bribery": 1,
+			"diplomacy": 1
+		},
+		"selectableSkillCategoryList": [
+		],
+		"selectableSkillList": [
+			{
+				"key": "communications",
+				"description": "Communications",
+				"categories": [
+					"communications"
+				],
+				"ranks": 6,
+				"skills": 6
+			}
+		],
+		"selectableSkillCustomizations": [
+			{
+				"skillId": "region-lore",
+				"ranks": 1
+			},
+			{
+				"skillId": "region-lore",
+				"ranks": 1
+			},
+			{
+				"skillId": "region-lore",
+				"ranks": 1
+			},
+			{
+				"skillId": "region-lore",
+				"ranks": 1
+			}
+		],
+		"statGains": [
+		],
+		"startingMoney": "+d10g",
+		"costByProfession": {
+			"fighter": 28,
+			"thief": 27,
+			"rogue": 27,
+			"warrior-monk": 28,
+			"layman": 25,
+			"magician": 26,
+			"illusionist": 21,
+			"cleric": 25,
+			"animist": 25,
+			"mentalist": 26,
+			"lay-healer": 26,
+			"healer": 26,
+			"mystic": 19,
+			"sorcerer": 26,
+			"ranger": 28,
+			"paladin": 28,
+			"monk": 28,
+			"dabbler": 25,
+			"bard": 19,
+			"magent": 18
+		},
+		"description": "A diplomat is a person who has made it his job to negotiate and talk to various other people in positions of power and authority. He is usually well versed in more than one culture and has contacts in many cities."
+	}
+]
