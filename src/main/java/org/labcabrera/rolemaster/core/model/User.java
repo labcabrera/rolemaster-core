@@ -28,6 +28,10 @@ public class User {
 	@Builder.Default
 	private List<String> blockedUsers = new ArrayList<>();
 
+	private String defaultUniverseId;
+
+	private Double defaultScale;
+
 	private LocalDateTime created;
 
 }

@@ -13,8 +13,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.service.context.TacticalActionContext;
+import org.labcabrera.rolemaster.core.service.tactical.impl.processor.ExhaustionBonusProcessor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -22,6 +24,9 @@ class MovingManeuverExhaustionPointsProcessorTest {
 
 	@InjectMocks
 	private MovingManeuverExhaustionPointsProcessor processor;
+
+	@Spy
+	private ExhaustionBonusProcessor exhaustionBonusProcessor;
 
 	@Mock
 	private TacticalActionContext<?> context;

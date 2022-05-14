@@ -89,7 +89,7 @@ class BasicCombatParryPressAndMeleeTest extends AbstractBasicCombatTest {
 
 		Map<OffensiveBonusModifier, Integer> mainHandMap01 = meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
 		assertEquals(-5, mainHandMap01.get(OffensiveBonusModifier.PARRY_ATTACK));
-		assertEquals(25, mainHandMap01.get(OffensiveBonusModifier.PARRY_DEFENSE));
+		assertEquals(-25, mainHandMap01.get(OffensiveBonusModifier.PARRY_DEFENSE));
 		assertEquals(20, mainHandMap01.get(OffensiveBonusModifier.SHIELD));
 
 		TacticalActionMeleeAttack a02Check = (TacticalActionMeleeAttack) tacticalActionRepository.findById(a02.getId()).share().block();

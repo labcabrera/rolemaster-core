@@ -133,9 +133,9 @@ public class MeleeAttackDefensiveBonusProcessor implements AbstractAttackProcess
 		AttackTargetType type) {
 		int parry = 0;
 		if (statusService.canParry(target)) {
-			parry = attack.getParry();
+			parry = Math.abs(attack.getParry());
 		}
-		context.getAction().getOffensiveBonusMap().get(type).put(OffensiveBonusModifier.PARRY_DEFENSE, parry);
+		context.getAction().getOffensiveBonusMap().get(type).put(OffensiveBonusModifier.PARRY_DEFENSE, -parry);
 		return context;
 	}
 
