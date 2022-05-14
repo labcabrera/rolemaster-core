@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackType;
+import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -65,16 +67,19 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
-			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(105)))
+			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(95)))
 			.build();
 
-		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();
-		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
-		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
+		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) tacticalActionService
+			.execute(a01.getId(), meleeAttackExecution).share().block();
+
+		Map<OffensiveBonusModifier, Integer> mainHandBonusMap = meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
+		assertEquals(40, mainHandBonusMap.get(OffensiveBonusModifier.SKILL));
+		assertEquals(-10, mainHandBonusMap.get(OffensiveBonusModifier.ACTION_PERCENT));
+		assertEquals(-30, mainHandBonusMap.get(OffensiveBonusModifier.DEFENSIVE_BONUS));
+		assertEquals(0, mainHandBonusMap.values().stream().reduce(0, (a, b) -> a + b));
 
 		assertEquals(10, meleeResolved01.getAttackResults().get(AttackTargetType.MAIN_HAND).getHp());
-		assertEquals(-10,
-			meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND).values().stream().reduce(0, (a, b) -> a + b));
 		assertEquals(1, meleeResolved01.getCriticalResults().size());
 		assertEquals(CriticalSeverity.A, meleeResolved01.getCriticalResults().get(AttackTargetType.MAIN_HAND).get(0).getSeverity());
 		assertEquals(CriticalType.S, meleeResolved01.getCriticalResults().get(AttackTargetType.MAIN_HAND).get(0).getType());
@@ -85,7 +90,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 			.rolls(Collections.singletonMap("roll-1", 55))
 			.build();
 
-		TacticalAction taResolved02 = tacticalActionService.executeCritical(taResolved01.getId(), criticalExecution).share().block();
+		TacticalAction taResolved02 = tacticalActionService.executeCritical(meleeResolved01.getId(), criticalExecution).share().block();
 		assertTrue(taResolved02 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved02 = (TacticalActionMeleeAttack) taResolved02;
 
