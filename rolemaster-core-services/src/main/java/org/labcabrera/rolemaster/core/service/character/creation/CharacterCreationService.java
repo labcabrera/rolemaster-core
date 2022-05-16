@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character.creation;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
@@ -12,6 +13,6 @@ import reactor.core.publisher.Mono;
 @Validated
 public interface CharacterCreationService {
 
-	Mono<CharacterInfo> create(JwtAuthenticationToken auth, @Valid CharacterCreation request);
+	Mono<CharacterInfo> create(@NotNull JwtAuthenticationToken auth, @Valid @NotNull CharacterCreation request);
 
 }

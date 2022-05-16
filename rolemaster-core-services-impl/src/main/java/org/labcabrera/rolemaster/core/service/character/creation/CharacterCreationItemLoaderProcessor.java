@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class CharacterCreationItemLoader {
+class CharacterCreationItemLoaderProcessor {
 
 	@Autowired
 	private CharacterItemService itemService;

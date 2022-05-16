@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import reactor.util.function.Tuple2;
 
 @Component
-public class CharacterCreationRaceProcessor {
+class CharacterCreationRaceProcessor {
 
 	public CharacterModificationContext process(Tuple2<CharacterModificationContext, Race> tuple) {
 		CharacterModificationContext ctx = tuple.getT1();

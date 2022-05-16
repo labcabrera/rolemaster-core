@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.character.creation.impl;
+package org.labcabrera.rolemaster.core.service.character.creation;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,13 +23,6 @@ import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.service.Messages.Errors;
 import org.labcabrera.rolemaster.core.service.character.CharacterInfoService;
-import org.labcabrera.rolemaster.core.service.character.creation.AttributeCreationService;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationItemLoader;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationRaceProcessor;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationSkillCategoryProcessor;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationSkillProcessor;
-import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationSkillService;
 import org.labcabrera.rolemaster.core.service.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -71,7 +64,7 @@ class CharacterCreationServiceImpl implements CharacterCreationService {
 	private Converter<CharacterCreation, CharacterInfo> converter;
 
 	@Autowired
-	private CharacterCreationItemLoader characterCreationItemLoader;
+	private CharacterCreationItemLoaderProcessor characterCreationItemLoader;
 
 	@Autowired
 	private CharacterCreationRaceProcessor characterCreationRaceProcessor;
