@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-./gradlew clean jibDockerBuild -x test -x integrationTest
+./gradlew clean :rolemaster-core-api:jibDockerBuild -x test

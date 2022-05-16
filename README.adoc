@@ -2,7 +2,7 @@
 
 == Introduction
 
-This API provides a set of services for using the Rolemaster (v4) game system designed by https://ironcrown.com/[Iron Crown Enterprises].
+This API provides a set of services for using the Rolemaster RMSS game system designed by https://ironcrown.com/[Iron Crown Enterprises].
 
 A demo of the API can be consulted at: https://rolemaster-core.herokuapp.com (be patient while Heroku starting the instance as it will usually be stopped).
 
