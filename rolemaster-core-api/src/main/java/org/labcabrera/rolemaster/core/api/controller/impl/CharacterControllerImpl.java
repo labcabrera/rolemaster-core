@@ -12,9 +12,9 @@ import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
+import org.labcabrera.rolemaster.core.service.character.CharacterAddTrainingPackageService;
 import org.labcabrera.rolemaster.core.service.character.CharacterInfoService;
 import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
-import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -40,7 +40,7 @@ public class CharacterControllerImpl implements CharacterController {
 	private CharacterUpdateSkillService characterUpdateSkillService;
 
 	@Autowired
-	private TrainingPackageUpgradeService trainingPackageUpgradeService;
+	private CharacterAddTrainingPackageService trainingPackageUpgradeService;
 
 	@Override
 	public Mono<CharacterInfo> findById(JwtAuthenticationToken auth, String id) {

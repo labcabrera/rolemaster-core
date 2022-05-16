@@ -28,7 +28,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class StrategicSessionService {
+public class StrategicSessionServiceImpl implements StrategicSessionService {
 
 	@Autowired
 	private UserService userService;
@@ -63,16 +63,19 @@ public class StrategicSessionService {
 	@Autowired
 	private MetadataCreationUpdater metadataCreationUpdater;
 
+	@Override
 	public Mono<StrategicSession> findById(JwtAuthenticationToken auth, String id) {
 		return strategicSessionRepository.findById(id).flatMap(s -> readFilter.apply(auth, s));
 	}
 
+	@Override
 	public Flux<StrategicSession> findAll(JwtAuthenticationToken auth, Pageable pageable) {
 		return userService.findById(auth.getName())
 			.map(userFriendOwnerProcessor::filterOwners)
 			.flatMapMany(ids -> strategicSessionRepository.findByOwner(ids, pageable.getSort()));
 	}
 
+	@Override
 	public Mono<StrategicSession> createSession(JwtAuthenticationToken auth, StrategicSessionCreation request) {
 		return Mono.just(request)
 			.map(converter::convert)
@@ -81,10 +84,12 @@ public class StrategicSessionService {
 			.flatMap(strategicSessionRepository::save);
 	}
 
+	@Override
 	public Mono<TacticalCharacter> addCharacter(String sessionId, String characterId) {
 		return characterStatusService.create(sessionId, characterId);
 	}
 
+	@Override
 	public Mono<Void> deleteById(JwtAuthenticationToken auth, String id) {
 		return strategicSessionRepository.findById(id)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Strategic session not found.")))
@@ -94,6 +99,7 @@ public class StrategicSessionService {
 			.then(strategicSessionRepository.deleteById(id));
 	}
 
+	@Override
 	public Mono<StrategicSession> updateSession(String id, StrategicSessionUpdate request) {
 		return strategicSessionRepository.findById(id)
 			.switchIfEmpty(Mono.error(new SessionNotFoundException(id)))

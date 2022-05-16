@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class CharacterAddSkillService {
+public class CharacterAddSkillServiceImpl implements CharacterAddSkillService {
 
 	private static final String CUSTOMIZATION_SEPARATOR = ":";
 
@@ -44,6 +44,7 @@ public class CharacterAddSkillService {
 	@Autowired
 	private WriteAuthorizationFilter writeAuthorizationFilter;
 
+	@Override
 	public Mono<CharacterInfo> addSkill(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid AddSkill request) {
 		return characterInfoService.findById(auth, characterId)
 			.map(c -> writeAuthorizationFilter.apply(auth, c))
@@ -51,6 +52,7 @@ public class CharacterAddSkillService {
 			.flatMap(character -> addSkill(character, request));
 	}
 
+	@Override
 	public Mono<CharacterInfo> addSkill(CharacterInfo characterInfo, @Valid AddSkill request) {
 		return Mono.just(characterInfo)
 			.zipWith(skillRepository.findById(request.getSkillId()))

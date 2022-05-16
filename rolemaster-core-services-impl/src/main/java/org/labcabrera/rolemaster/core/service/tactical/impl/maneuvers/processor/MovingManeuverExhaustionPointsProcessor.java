@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers.processor
 
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.service.context.TacticalActionContext;
+import org.labcabrera.rolemaster.core.dto.context.TacticalActionContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.processor.ExhaustionBonusProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

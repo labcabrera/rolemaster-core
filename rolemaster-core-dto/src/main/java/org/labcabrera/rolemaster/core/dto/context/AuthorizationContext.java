@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.context;
+package org.labcabrera.rolemaster.core.dto.context;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackBreakageProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackExhaustionProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackFumbleProcessor;

@@ -28,7 +28,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import reactor.core.publisher.Mono;
 
 @SpringBootTest
-class CharacterInfoServiceTest {
+class CharacterInfoServiceImplTest {
 
 	@Autowired
 	private CharacterInfoService service;

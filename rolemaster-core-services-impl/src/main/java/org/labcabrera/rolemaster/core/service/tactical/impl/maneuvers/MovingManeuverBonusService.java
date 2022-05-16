@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers;
 import java.util.List;
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.service.context.TacticalActionContext;
+import org.labcabrera.rolemaster.core.dto.context.TacticalActionContext;
 import org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers.processor.MovingManeuverProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

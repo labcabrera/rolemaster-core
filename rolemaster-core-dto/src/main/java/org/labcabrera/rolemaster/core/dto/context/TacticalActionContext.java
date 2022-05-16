@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.context;
+package org.labcabrera.rolemaster.core.dto.context;
 
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;

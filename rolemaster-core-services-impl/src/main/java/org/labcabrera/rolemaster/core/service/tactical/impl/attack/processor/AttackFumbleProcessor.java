@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
+import org.labcabrera.rolemaster.core.dto.context.HasItemMap;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackFumbleResult;
@@ -7,8 +9,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
-import org.labcabrera.rolemaster.core.service.context.HasItemMap;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.AbstractAttackProcessor;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;

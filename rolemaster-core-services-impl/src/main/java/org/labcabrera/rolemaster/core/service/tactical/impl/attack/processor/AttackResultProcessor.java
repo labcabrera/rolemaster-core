@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 import org.labcabrera.rolemaster.core.model.combat.Bleeding;
 import org.labcabrera.rolemaster.core.model.tactical.CombatStatus;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
@@ -11,8 +12,8 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalCriticalResult;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalLogService;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.AbstractAttackProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

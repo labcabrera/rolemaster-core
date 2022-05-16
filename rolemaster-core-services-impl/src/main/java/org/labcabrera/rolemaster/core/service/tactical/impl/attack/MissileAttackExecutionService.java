@@ -3,10 +3,10 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 import java.util.EnumMap;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecution;
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.context.loader.AttackContextLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
@@ -16,8 +17,7 @@ import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
-import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AbstractAttackProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.AbstractAttackProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -3,10 +3,11 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.AbstractAttackProcessor;
 import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Mono;

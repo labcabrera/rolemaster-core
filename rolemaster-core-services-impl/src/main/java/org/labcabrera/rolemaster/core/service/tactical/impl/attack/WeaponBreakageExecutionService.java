@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack;
 import java.util.Map.Entry;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.WeaponBreakageExecution;
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemFeature;
@@ -15,7 +16,6 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack
 import org.labcabrera.rolemaster.core.repository.CharacterItemRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
 import org.labcabrera.rolemaster.core.service.context.loader.AttackContextLoader;
 import org.labcabrera.rolemaster.core.service.tactical.impl.TacticalCharacterItemResolver;
 import org.springframework.beans.factory.annotation.Autowired;

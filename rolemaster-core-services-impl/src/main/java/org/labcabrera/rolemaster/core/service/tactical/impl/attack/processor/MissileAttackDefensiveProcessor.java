@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor;
 
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.AbstractAttackProcessor;
 import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Mono;

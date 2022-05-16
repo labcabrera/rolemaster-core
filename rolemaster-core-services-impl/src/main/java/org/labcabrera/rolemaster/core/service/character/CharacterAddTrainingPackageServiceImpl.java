@@ -33,7 +33,7 @@ import reactor.util.function.Tuple2;
 
 @Service
 @Validated
-public class TrainingPackageUpgradeService {
+public class CharacterAddTrainingPackageServiceImpl implements CharacterAddTrainingPackageService {
 
 	@Autowired
 	private CharacterInfoService characterInfoService;
@@ -53,6 +53,7 @@ public class TrainingPackageUpgradeService {
 	@Autowired
 	private WriteAuthorizationFilter writeFilter;
 
+	@Override
 	public Mono<CharacterInfo> upgrade(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid TrainingPackageUpgrade request) {
 		return characterInfoService.findById(auth, characterId)
 			.map(c -> writeFilter.apply(auth, c))

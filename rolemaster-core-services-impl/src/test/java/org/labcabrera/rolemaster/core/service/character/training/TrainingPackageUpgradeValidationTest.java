@@ -14,7 +14,7 @@ import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
 import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
-import org.labcabrera.rolemaster.core.service.character.TrainingPackageUpgradeService;
+import org.labcabrera.rolemaster.core.service.character.CharacterAddTrainingPackageService;
 import org.labcabrera.rolemaster.core.service.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +31,7 @@ class TrainingPackageUpgradeValidationTest {
 	private CharacterCreationService service;
 
 	@Autowired
-	private TrainingPackageUpgradeService traningPackageUpgradeService;
+	private CharacterAddTrainingPackageService traningPackageUpgradeService;
 
 	@Autowired
 	private ObjectMapper objectMapper;

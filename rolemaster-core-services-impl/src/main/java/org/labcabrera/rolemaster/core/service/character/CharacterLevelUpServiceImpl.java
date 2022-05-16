@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class CharacterLevelUpService {
+public class CharacterLevelUpServiceImpl implements CharacterLevelUpService {
 
 	@Autowired
 	private CharacterInfoRepository characterRepository;
 
+	@Override
 	public Mono<CharacterInfo> levelUp(String characterId) {
 		return characterRepository.findById(characterId)
 			.switchIfEmpty(Mono.error(() -> null))

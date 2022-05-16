@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.ob
 
 import java.util.function.Consumer;
 
-import org.labcabrera.rolemaster.core.service.context.AttackContext;
+import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 
 /**
  * Offensive bonus processor.

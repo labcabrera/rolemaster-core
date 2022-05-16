@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.MovementExecution;
+import org.labcabrera.rolemaster.core.dto.context.TacticalActionContext;
 import org.labcabrera.rolemaster.core.model.combat.Penalty;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
@@ -14,7 +15,6 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovement;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.service.context.TacticalActionContext;
 import org.labcabrera.rolemaster.core.service.context.loader.TacticalActionContextLoader;
 import org.labcabrera.rolemaster.core.service.table.maneuver.MovingManeuverService;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;

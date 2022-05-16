@@ -23,7 +23,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class CharacterInfoService {
+public class CharacterInfoServiceImpl implements CharacterInfoService {
 
 	@Autowired
 	private UserService userService;
@@ -40,11 +40,13 @@ public class CharacterInfoService {
 	@Autowired
 	private WriteAuthorizationFilter writeAuthorizationFilter;
 
+	@Override
 	public Mono<CharacterInfo> insert(JwtAuthenticationToken auth, CharacterInfo character) {
 		authorizationConsumer.accept(auth, character);
 		return characterRepository.save(character);
 	}
 
+	@Override
 	public Mono<CharacterInfo> update(JwtAuthenticationToken auth, CharacterInfo character) {
 		return characterRepository.findById(character.getId())
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(character.getId()))))
@@ -52,12 +54,14 @@ public class CharacterInfoService {
 			.then(characterRepository.save(character));
 	}
 
+	@Override
 	public Mono<CharacterInfo> findById(JwtAuthenticationToken auth, String id) {
 		return characterRepository.findById(id)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(id))))
 			.flatMap(e -> readAuthorizationFilter.apply(auth, e));
 	}
 
+	@Override
 	public Flux<CharacterInfo> findAll(JwtAuthenticationToken auth, Pageable pageable) {
 		if (auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).filter(e -> e.equals(Role.ADMIN.getCode())).count() > 0) {
 			return characterRepository.findAll(pageable.getSort());
@@ -67,6 +71,7 @@ public class CharacterInfoService {
 			.flatMapMany(ids -> characterRepository.findByOwner(ids, pageable.getSort()));
 	}
 
+	@Override
 	public Mono<Void> deleteById(JwtAuthenticationToken auth, String id) {
 		return characterRepository.findById(id)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(id))))

@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.tactical.impl.maneuvers.processor
 
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.service.context.TacticalActionContext;
+import org.labcabrera.rolemaster.core.dto.context.TacticalActionContext;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.context;
+package org.labcabrera.rolemaster.core.dto.context;
 
 import java.util.Map;
 
