@@ -1,5 +1,8 @@
 package org.labcabrera.rolemaster.core.service.character;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
@@ -9,14 +12,14 @@ import reactor.core.publisher.Mono;
 
 public interface CharacterInfoService {
 
-	Mono<CharacterInfo> insert(JwtAuthenticationToken auth, CharacterInfo character);
+	Mono<CharacterInfo> insert(@NotNull JwtAuthenticationToken auth, @NotNull CharacterInfo character);
 
-	Mono<CharacterInfo> update(JwtAuthenticationToken auth, CharacterInfo character);
+	Mono<CharacterInfo> update(@NotNull JwtAuthenticationToken auth, @NotNull CharacterInfo character);
 
-	Mono<CharacterInfo> findById(JwtAuthenticationToken auth, String id);
+	Mono<CharacterInfo> findById(@NotNull JwtAuthenticationToken auth, @NotEmpty String id);
 
-	Flux<CharacterInfo> findAll(JwtAuthenticationToken auth, Pageable pageable);
+	Flux<CharacterInfo> findAll(@NotNull JwtAuthenticationToken auth, Pageable pageable);
 
-	Mono<Void> deleteById(JwtAuthenticationToken auth, String id);
+	Mono<Void> deleteById(@NotNull JwtAuthenticationToken auth, @NotEmpty String id);
 
 }

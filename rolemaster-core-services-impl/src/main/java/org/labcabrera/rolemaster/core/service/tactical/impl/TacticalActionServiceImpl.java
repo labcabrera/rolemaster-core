@@ -1,7 +1,5 @@
 package org.labcabrera.rolemaster.core.service.tactical.impl;
 
-import javax.validation.Valid;
-
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
@@ -70,7 +68,7 @@ public class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> delare(@Valid TacticalActionDeclaration actionDeclaration) {
+	public Mono<TacticalAction> delare(TacticalActionDeclaration actionDeclaration) {
 		TacticalAction ta = actionConverter.convert(actionDeclaration);
 		return tacticalCharacterRepository.findById(actionDeclaration.getSource())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(ValidationConstants.INVALID_ACTION_SOURCE_NOT_FOUND)))

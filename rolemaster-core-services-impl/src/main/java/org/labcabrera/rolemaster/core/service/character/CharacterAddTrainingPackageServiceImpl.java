@@ -3,9 +3,6 @@ package org.labcabrera.rolemaster.core.service.character;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-
 import org.labcabrera.rolemaster.core.dto.TrainingPackageCategorySelection;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageSkillSelection;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
@@ -54,7 +51,7 @@ public class CharacterAddTrainingPackageServiceImpl implements CharacterAddTrain
 	private WriteAuthorizationFilter writeFilter;
 
 	@Override
-	public Mono<CharacterInfo> upgrade(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid TrainingPackageUpgrade request) {
+	public Mono<CharacterInfo> upgrade(JwtAuthenticationToken auth, String characterId, TrainingPackageUpgrade request) {
 		return characterInfoService.findById(auth, characterId)
 			.map(c -> writeFilter.apply(auth, c))
 			.zipWith(trainingPackageRepository.findById(request.getTrainingPackageId()))

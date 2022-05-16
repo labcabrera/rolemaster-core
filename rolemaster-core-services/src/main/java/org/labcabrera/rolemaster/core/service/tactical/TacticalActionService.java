@@ -1,5 +1,9 @@
 package org.labcabrera.rolemaster.core.service.tactical;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
@@ -11,18 +15,18 @@ import reactor.core.publisher.Mono;
 
 public interface TacticalActionService {
 
-	Mono<TacticalAction> delare(TacticalActionDeclaration request);
+	Mono<TacticalAction> delare(@NotNull @Valid TacticalActionDeclaration request);
 
-	Mono<TacticalAction> getDeclaredAction(String actionId);
+	Mono<TacticalAction> getDeclaredAction(@NotEmpty String actionId);
 
-	Mono<Void> removeDeclaredAction(String actionId);
+	Mono<Void> removeDeclaredAction(@NotEmpty String actionId);
 
-	Mono<TacticalAction> execute(String actionId, TacticalActionExecution request);
+	Mono<TacticalAction> execute(@NotEmpty String actionId, @NotNull @Valid TacticalActionExecution request);
 
-	Mono<TacticalAction> executeCritical(String actionId, AttackCriticalExecution execution);
+	Mono<TacticalAction> executeCritical(@NotEmpty String actionId, @NotNull @Valid AttackCriticalExecution execution);
 
-	Mono<TacticalAction> executeFumble(String actionId, FumbleExecution execution);
+	Mono<TacticalAction> executeFumble(@NotEmpty String actionId, @NotNull @Valid FumbleExecution execution);
 
-	Mono<TacticalAction> executeBreakage(String actionId, WeaponBreakageExecution execution);
+	Mono<TacticalAction> executeBreakage(@NotEmpty String actionId, @NotNull @Valid WeaponBreakageExecution execution);
 
 }
