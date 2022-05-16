@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.service.security;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.HasAuthorization;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

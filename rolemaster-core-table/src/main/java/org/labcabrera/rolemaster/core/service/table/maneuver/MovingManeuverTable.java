@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
 import org.labcabrera.rolemaster.core.service.table.TableEntry;

@@ -5,9 +5,9 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 
 import org.apache.commons.lang3.StringUtils;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.ApiError;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

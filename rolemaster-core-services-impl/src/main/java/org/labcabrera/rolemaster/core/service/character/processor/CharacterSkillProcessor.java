@@ -1,9 +1,9 @@
 package org.labcabrera.rolemaster.core.service.character.processor;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.service.Messages.Errors;
 import org.labcabrera.rolemaster.core.service.table.skill.SkillRankBonusService;
 import org.springframework.beans.factory.annotation.Autowired;

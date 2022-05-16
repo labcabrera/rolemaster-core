@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.table.skill;
 
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.skill.SkillProgressionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

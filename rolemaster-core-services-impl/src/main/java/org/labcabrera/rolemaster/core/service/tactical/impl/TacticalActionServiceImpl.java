@@ -6,11 +6,12 @@ import org.labcabrera.rolemaster.core.dto.action.execution.FumbleExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.WeaponBreakageExecution;
 import org.labcabrera.rolemaster.core.dto.context.AttackContext;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
+import org.labcabrera.rolemaster.core.model.validation.ValidationConstants;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.Messages.Errors;
@@ -20,7 +21,6 @@ import org.labcabrera.rolemaster.core.service.tactical.impl.attack.CriticalAttac
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.FumbleAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.WeaponBreakageExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.impl.attack.processor.AttackResultProcessor;
-import org.labcabrera.rolemaster.core.validation.ValidationConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,7 +3,6 @@ package org.labcabrera.rolemaster.core.service.character.creation.impl;
 import java.util.Arrays;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
@@ -17,6 +16,7 @@ import org.labcabrera.rolemaster.core.model.character.ResistanceType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;

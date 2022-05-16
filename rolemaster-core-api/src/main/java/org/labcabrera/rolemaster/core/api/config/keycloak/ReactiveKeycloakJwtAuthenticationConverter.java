@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.api.config.keycloak;
 
 import java.util.Collection;
 
-import org.labcabrera.rolemaster.core.exception.JwtDecodeException;
+import org.labcabrera.rolemaster.core.model.exception.JwtDecodeException;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

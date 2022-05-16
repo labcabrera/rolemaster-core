@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.springframework.stereotype.Component;
 
 @Component

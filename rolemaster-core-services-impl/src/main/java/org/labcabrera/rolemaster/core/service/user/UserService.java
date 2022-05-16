@@ -2,8 +2,8 @@ package org.labcabrera.rolemaster.core.service.user;
 
 import java.time.LocalDateTime;
 
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.User;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

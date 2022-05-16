@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import org.labcabrera.rolemaster.core.api.controller.TacticalSessionController;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;

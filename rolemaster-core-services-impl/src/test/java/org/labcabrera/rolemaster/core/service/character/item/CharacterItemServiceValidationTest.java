@@ -8,9 +8,9 @@ import javax.validation.ConstraintViolationException;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

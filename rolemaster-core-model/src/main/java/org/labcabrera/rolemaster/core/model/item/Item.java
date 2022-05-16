@@ -5,9 +5,9 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.Range;
 import org.labcabrera.rolemaster.core.model.character.item.ItemFeature;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

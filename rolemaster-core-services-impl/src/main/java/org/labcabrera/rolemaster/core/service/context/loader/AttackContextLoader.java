@@ -7,9 +7,9 @@ import java.util.Objects;
 import java.util.Set;
 
 import org.labcabrera.rolemaster.core.dto.context.AttackContext;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;

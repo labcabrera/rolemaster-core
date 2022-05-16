@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.service.character.processor;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.service.table.armor.ArmorModifier;
 import org.labcabrera.rolemaster.core.service.table.armor.ArmorService;
 import org.springframework.beans.factory.annotation.Autowired;

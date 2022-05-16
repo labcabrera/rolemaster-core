@@ -7,12 +7,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 import org.labcabrera.rolemaster.core.dto.AddSkill;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.RankType;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
-import org.labcabrera.rolemaster.core.validation.ValidTacticalAction;
+import org.labcabrera.rolemaster.core.model.validation.ValidTacticalAction;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

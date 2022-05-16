@@ -1,9 +1,9 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import org.labcabrera.rolemaster.core.api.controller.CharacterCustomizationController;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.character.CharacterCustomization;
 import org.labcabrera.rolemaster.core.model.character.CharacterCustomizationType;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.repository.CharacterCustomizationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import javax.validation.constraints.NotNull;
 
-import org.labcabrera.rolemaster.core.validation.ValidTacticalActionMeleAttack;
+import org.labcabrera.rolemaster.core.model.validation.ValidTacticalActionMeleAttack;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

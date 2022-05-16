@@ -3,10 +3,10 @@ package org.labcabrera.rolemaster.core.service.table.critical;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

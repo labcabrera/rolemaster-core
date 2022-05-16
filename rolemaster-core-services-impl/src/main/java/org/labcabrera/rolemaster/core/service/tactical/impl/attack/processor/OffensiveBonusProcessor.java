@@ -4,9 +4,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.context.AttackContext;
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.SpecialAttack;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;

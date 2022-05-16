@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.service.table.weapon;
 
 import java.util.function.BiFunction;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 
 abstract class AbstractWeaponTable implements BiFunction<Integer, Integer, String> {
 

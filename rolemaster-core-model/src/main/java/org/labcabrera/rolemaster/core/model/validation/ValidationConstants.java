@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.validation;
+package org.labcabrera.rolemaster.core.model.validation;
 
 public final class ValidationConstants {
 

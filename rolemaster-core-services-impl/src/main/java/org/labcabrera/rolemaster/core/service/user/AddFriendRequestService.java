@@ -3,9 +3,9 @@ package org.labcabrera.rolemaster.core.service.user;
 import javax.validation.Valid;
 
 import org.labcabrera.rolemaster.core.dto.AddFriendRequest;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.UserFriendRequest;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.repository.UserFriendRequestRepository;
 import org.labcabrera.rolemaster.core.service.converter.UserFriendRequestConverter;
 import org.springframework.beans.factory.annotation.Autowired;

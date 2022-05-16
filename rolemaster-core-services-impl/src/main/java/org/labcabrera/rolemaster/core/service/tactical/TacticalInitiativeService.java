@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.service.tactical;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRoundState;
 import org.labcabrera.rolemaster.core.model.tactical.action.InitiativeModifier;

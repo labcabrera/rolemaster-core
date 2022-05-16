@@ -4,9 +4,10 @@ import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Scanner;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
+
+import java.util.Scanner;
 
 class SpecialWeaponTable extends AbstractWeaponTable {
 

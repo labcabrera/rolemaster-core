@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.service.tactical;
 import java.util.List;
 import java.util.Set;
 
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;

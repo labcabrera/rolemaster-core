@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.exception;
+package org.labcabrera.rolemaster.core.model.exception;
 
 import lombok.Getter;
 

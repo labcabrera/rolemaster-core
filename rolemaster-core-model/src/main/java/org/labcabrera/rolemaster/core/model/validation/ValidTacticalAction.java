@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.validation;
+package org.labcabrera.rolemaster.core.model.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,7 +11,7 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
-import org.labcabrera.rolemaster.core.validation.ValidTacticalAction.TacticalActionValidator;
+import org.labcabrera.rolemaster.core.model.validation.ValidTacticalAction.TacticalActionValidator;
 
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)

@@ -6,10 +6,10 @@ import java.util.Set;
 
 import org.labcabrera.rolemaster.core.api.controller.EnumController;
 import org.labcabrera.rolemaster.core.dto.NamedKey;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.combat.Cover;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverCombatSituation;
 import org.labcabrera.rolemaster.core.model.spell.Realm;

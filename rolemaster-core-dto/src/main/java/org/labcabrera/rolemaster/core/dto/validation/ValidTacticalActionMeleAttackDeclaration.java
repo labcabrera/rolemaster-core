@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.validation;
+package org.labcabrera.rolemaster.core.dto.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,8 +11,9 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
+import org.labcabrera.rolemaster.core.dto.validation.ValidTacticalActionMeleAttackDeclaration.TacticalActionMeleAttackValidator;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
-import org.labcabrera.rolemaster.core.validation.ValidTacticalActionMeleAttackDeclaration.TacticalActionMeleAttackValidator;
+import org.labcabrera.rolemaster.core.model.validation.ValidationConstants;
 
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)

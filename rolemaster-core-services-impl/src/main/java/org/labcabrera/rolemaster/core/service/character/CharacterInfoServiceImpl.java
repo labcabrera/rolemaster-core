@@ -3,9 +3,9 @@ package org.labcabrera.rolemaster.core.service.character;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.service.Messages.Errors;
 import org.labcabrera.rolemaster.core.service.security.AuthorizationConsumer;

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.validation.constraints.NotNull;
 
-import org.labcabrera.rolemaster.core.validation.ValidSkillUpgrade;
+import org.labcabrera.rolemaster.core.dto.validation.ValidSkillUpgrade;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.exception;
+package org.labcabrera.rolemaster.core.model.exception;
 
 @SuppressWarnings("serial")
 public class MissingWeaponData extends RuntimeException {

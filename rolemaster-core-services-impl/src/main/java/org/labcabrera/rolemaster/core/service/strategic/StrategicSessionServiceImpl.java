@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
-import org.labcabrera.rolemaster.core.exception.SessionNotFoundException;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.exception.SessionNotFoundException;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;

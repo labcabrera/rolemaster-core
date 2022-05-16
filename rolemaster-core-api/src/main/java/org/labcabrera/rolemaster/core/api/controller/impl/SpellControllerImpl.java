@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import org.labcabrera.rolemaster.core.api.controller.SpellController;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.spell.Spell;
 import org.labcabrera.rolemaster.core.repository.SpellRepository;
 import org.springframework.beans.factory.annotation.Autowired;

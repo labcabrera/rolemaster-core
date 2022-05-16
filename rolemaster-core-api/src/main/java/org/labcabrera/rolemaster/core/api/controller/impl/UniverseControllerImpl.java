@@ -1,8 +1,8 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import org.labcabrera.rolemaster.core.api.controller.UniverseController;
-import org.labcabrera.rolemaster.core.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.Universe;
+import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.repository.UniverseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

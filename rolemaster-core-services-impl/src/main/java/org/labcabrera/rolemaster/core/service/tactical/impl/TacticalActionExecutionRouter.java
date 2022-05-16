@@ -6,7 +6,7 @@ import org.labcabrera.rolemaster.core.dto.action.execution.MovementExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.MovingManeuverExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.StaticManeuverExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecution;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;

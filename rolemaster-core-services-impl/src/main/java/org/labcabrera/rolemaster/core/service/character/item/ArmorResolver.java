@@ -2,10 +2,10 @@ package org.labcabrera.rolemaster.core.service.character.item;
 
 import java.util.List;
 
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.item.ArmorItemType;
 import org.labcabrera.rolemaster.core.model.item.ArmorPiece;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;

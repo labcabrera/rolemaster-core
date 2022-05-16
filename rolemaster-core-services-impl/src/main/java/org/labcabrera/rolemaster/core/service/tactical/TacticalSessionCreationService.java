@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.service.tactical;
 
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;

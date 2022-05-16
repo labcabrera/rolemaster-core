@@ -1,7 +1,7 @@
 package org.labcabrera.rolemaster.core.service.context.loader;
 
 import org.labcabrera.rolemaster.core.dto.context.TacticalActionContext;
-import org.labcabrera.rolemaster.core.exception.BadRequestException;
+import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;

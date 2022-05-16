@@ -3,8 +3,8 @@ package org.labcabrera.rolemaster.core.service.table.fumble;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.labcabrera.rolemaster.core.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.combat.FumbleTableResult;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.tactical.action.FumbleType;
 
 import lombok.Data;
