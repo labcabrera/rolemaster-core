@@ -18,6 +18,9 @@ group = 'org.labcabrera.rolemaster'
 version = version
 sourceCompatibility = '16'
 
+repositories {
+	mavenCentral()
+}
 
 configurations {
 	compileOnly {
@@ -25,22 +28,9 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
-}
-
-sourceSets {
-	integrationTest {
-		java {
-			compileClasspath += main.output + test.output
-			runtimeClasspath += main.output + test.output
-			srcDir file('src/integration-test/java')
-		}
-	}
-}
-
 dependencies {
 	implementation project(':rolemaster-core-services')
+	implementation project(':rolemaster-core-model')
 
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
