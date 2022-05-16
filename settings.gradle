@@ -1,1 +1,8 @@
 rootProject.name = 'rolemaster-core'
+
+include 'rolemaster-core-model'
+include 'rolemaster-core-dto'
+include 'rolemaster-core-table'
+include 'rolemaster-core-services'
+include 'rolemaster-core-services-impl'
+include 'rolemaster-core-api'
