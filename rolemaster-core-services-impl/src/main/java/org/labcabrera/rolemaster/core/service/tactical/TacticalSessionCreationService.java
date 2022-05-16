@@ -7,10 +7,10 @@ import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.service.Messages.Errors;
 import org.labcabrera.rolemaster.core.service.MetadataCreationUpdater;
-import org.labcabrera.rolemaster.core.service.converter.TacticalSessionCreationToTacticalSessionConverter;
 import org.labcabrera.rolemaster.core.service.security.AuthorizationConsumer;
 import org.labcabrera.rolemaster.core.service.security.WriteAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +29,7 @@ public class TacticalSessionCreationService {
 	private WriteAuthorizationFilter writeFilter;
 
 	@Autowired
-	private TacticalSessionCreationToTacticalSessionConverter converter;
+	private Converter<TacticalSessionCreation, TacticalSession> converter;
 
 	@Autowired
 	private AuthorizationConsumer authConsumer;

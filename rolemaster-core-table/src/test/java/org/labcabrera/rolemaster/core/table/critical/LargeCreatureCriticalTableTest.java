@@ -13,7 +13,6 @@ import org.labcabrera.rolemaster.core.model.combat.CriticalTableResult;
 import org.labcabrera.rolemaster.core.model.combat.LargeCreatureCriticalType;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
-import org.labcabrera.rolemaster.core.service.table.critical.LargeCreatureCriticalTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

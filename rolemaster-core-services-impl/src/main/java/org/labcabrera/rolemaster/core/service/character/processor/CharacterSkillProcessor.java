@@ -5,7 +5,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.service.Messages.Errors;
-import org.labcabrera.rolemaster.core.service.table.skill.SkillRankBonusService;
+import org.labcabrera.rolemaster.core.table.skill.SkillRankBonusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

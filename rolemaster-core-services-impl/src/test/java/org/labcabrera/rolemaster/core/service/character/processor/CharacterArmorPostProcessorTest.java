@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.labcabrera.rolemaster.core.model.character.CharacterArmor;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
-import org.labcabrera.rolemaster.core.service.table.armor.ArmorService;
+import org.labcabrera.rolemaster.core.table.armor.ArmorService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;

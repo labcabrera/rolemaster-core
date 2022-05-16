@@ -3,7 +3,6 @@ package org.labcabrera.rolemaster.core.table.character;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.labcabrera.rolemaster.core.service.table.character.ExperienceLevelTable;
 
 class ExperienceLevelTableTest {
 

@@ -9,7 +9,6 @@ import java.io.InputStream;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
-import org.labcabrera.rolemaster.core.service.table.critical.CriticalTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

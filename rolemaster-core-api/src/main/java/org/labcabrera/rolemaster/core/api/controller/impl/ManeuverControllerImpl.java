@@ -5,8 +5,8 @@ import org.labcabrera.rolemaster.core.dto.MovingManeuverRequest;
 import org.labcabrera.rolemaster.core.dto.StaticManeuverRequest;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
 import org.labcabrera.rolemaster.core.model.maneuver.StaticManeuverResult;
-import org.labcabrera.rolemaster.core.service.table.maneuver.MovingManeuverService;
-import org.labcabrera.rolemaster.core.service.table.maneuver.StaticManeuverService;
+import org.labcabrera.rolemaster.core.table.maneuver.MovingManeuverServiceImpl;
+import org.labcabrera.rolemaster.core.table.maneuver.StaticManeuverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 public class ManeuverControllerImpl implements ManeuverController {
 
 	@Autowired
-	private MovingManeuverService movingManeuverService;
+	private MovingManeuverServiceImpl movingManeuverService;
 
 	@Autowired
 	private StaticManeuverService staticManeuverService;

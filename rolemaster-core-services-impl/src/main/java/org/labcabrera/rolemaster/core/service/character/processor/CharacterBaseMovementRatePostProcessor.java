@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.service.table.character.StrideChartTable;
+import org.labcabrera.rolemaster.core.table.character.StrideChartTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

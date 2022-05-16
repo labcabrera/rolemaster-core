@@ -4,13 +4,13 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterWeight;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
-import org.labcabrera.rolemaster.core.service.table.character.ExperienceLevelTable;
+import org.labcabrera.rolemaster.core.table.character.ExperienceLevelTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CharacterCreationToCharacterInfoConverter implements Converter<CharacterCreation, CharacterInfo> {
+class CharacterCreationToCharacterInfoConverter implements Converter<CharacterCreation, CharacterInfo> {
 
 	@Autowired
 	private ExperienceLevelTable experienceLevelTable;
