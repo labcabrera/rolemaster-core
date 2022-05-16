@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.model.strategic;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.HasAuthorization;
 import org.labcabrera.rolemaster.core.model.HasMetadata;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,6 +25,9 @@ public class StrategicSession implements HasAuthorization, HasMetadata {
 
 	@Schema(description = "Strategic session name.", required = true, example = "Destruction of the ring Vol. 2")
 	private String name;
+
+	@Schema(description = "Rolemaster version.", required = true, example = "rmss")
+	private RolemasterVersion version;
 
 	@Schema(description = "User description.", required = false, example = "Adventure played by Foo and Bar for the destruction of the One Ring.")
 	private String description;

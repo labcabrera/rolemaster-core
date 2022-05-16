@@ -7,7 +7,9 @@ import lombok.Getter;
 @Getter
 public enum RolemasterVersion implements CodeNameEnum {
 
-	RMSS("rmss", "Rolemaster Standard System");
+	RMSS("rmss", "Rolemaster Standard System"),
+
+	RMU("rmu", "Rolemaster Unified");
 
 	private String code;
 

@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import org.labcabrera.rolemaster.core.api.controller.RollController;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
-import org.labcabrera.rolemaster.core.service.RandomService;
+import org.labcabrera.rolemaster.core.services.commons.RandomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.labcabrera.rolemaster.core.api.controller.CharacterCreationController;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
-import org.labcabrera.rolemaster.core.service.character.creation.AttributeCreationService;
+import org.labcabrera.rolemaster.core.services.character.creation.AttributeCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

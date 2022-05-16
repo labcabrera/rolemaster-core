@@ -6,7 +6,7 @@ import org.labcabrera.rolemaster.core.api.controller.StrategicSessionController;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
-import org.labcabrera.rolemaster.core.service.strategic.StrategicSessionService;
+import org.labcabrera.rolemaster.core.services.strategic.StrategicSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;

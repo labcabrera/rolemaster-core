@@ -8,7 +8,7 @@ import org.labcabrera.rolemaster.core.dto.action.execution.TacticalActionExecuti
 import org.labcabrera.rolemaster.core.dto.action.execution.WeaponBreakageExecution;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalActionService;
+import org.labcabrera.rolemaster.core.services.tactical.TacticalActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

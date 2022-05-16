@@ -5,7 +5,7 @@ import org.labcabrera.rolemaster.core.dto.AddCharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.item.ItemType;
-import org.labcabrera.rolemaster.core.service.character.item.CharacterItemService;
+import org.labcabrera.rolemaster.core.services.character.item.CharacterItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 

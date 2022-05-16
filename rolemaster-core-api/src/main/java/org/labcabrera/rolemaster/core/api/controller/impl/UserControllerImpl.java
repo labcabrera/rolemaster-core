@@ -7,7 +7,7 @@ import org.labcabrera.rolemaster.core.api.controller.UserController;
 import org.labcabrera.rolemaster.core.dto.AddFriendRequest;
 import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.UserFriendRequest;
-import org.labcabrera.rolemaster.core.service.user.UserService;
+import org.labcabrera.rolemaster.core.services.commons.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
