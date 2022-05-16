@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple3;
 
 @Component
-public class CharacterItemChangedPostProcessor {
+class CharacterItemChangedPostProcessor {
 
 	@Autowired
 	private CharacterInfoRepository characterRepository;

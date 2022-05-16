@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical.attack.processor.ob;
+package org.labcabrera.rolemaster.core.service.tactical.attack.processor;
 
 import java.util.function.Consumer;
 

@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifi
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.OBProcessor;
 import org.springframework.stereotype.Component;
 
 @Component

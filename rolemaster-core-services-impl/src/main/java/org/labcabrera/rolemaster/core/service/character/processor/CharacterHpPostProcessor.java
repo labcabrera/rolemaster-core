@@ -2,15 +2,16 @@ package org.labcabrera.rolemaster.core.service.character.processor;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
+import org.labcabrera.rolemaster.core.service.character.CharacterUpdatePostProcessor;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Order(CharacterPostProcessor.Orders.HP)
+@Order(CharacterUpdatePostProcessor.Orders.HP)
 @Slf4j
-public class CharacterHpPostProcessor implements CharacterPostProcessor {
+public class CharacterHpPostProcessor implements CharacterUpdatePostProcessor {
 
 	@Override
 	public void accept(CharacterInfo character) {

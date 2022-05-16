@@ -28,7 +28,7 @@ import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
 @Service
-public class CharacterItemServiceImpl implements CharacterItemService {
+class CharacterItemServiceImpl implements CharacterItemService {
 
 	@Autowired
 	private CharacterItemRepository characterItemRepository;
@@ -105,7 +105,7 @@ public class CharacterItemServiceImpl implements CharacterItemService {
 				.characterId(characterId)
 				.itemId(request.getItemId())
 				.type(pair.getT2().getType())
-				.armorType((pair.getT2()instanceof ArmorPiece ap) ? ap.getArmorType() : null)
+				.armorType((pair.getT2() instanceof ArmorPiece ap) ? ap.getArmorType() : null)
 				.name(pair.getT2().getName())
 				.position(request.getPosition())
 				.count(request.getCount())

@@ -1,13 +1,17 @@
-package org.labcabrera.rolemaster.core.service.character;
+package org.labcabrera.rolemaster.core.service.character.creation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.labcabrera.rolemaster.core.service.character.creation.AttributeCreationService;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class AttributeCreationServiceTest {
 
-	private AttributeCreationService service = new AttributeCreationService();
+	@InjectMocks
+	private AttributeCreationServiceImpl service;
 
 	@Test
 	void test() {

@@ -4,6 +4,7 @@ import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
+import org.labcabrera.rolemaster.core.service.character.CharacterUpdatePostProcessor;
 import org.labcabrera.rolemaster.core.table.skill.SkillRankBonusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -12,9 +13,9 @@ import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Order(CharacterPostProcessor.Orders.SKILL_CATEGORY)
+@Order(CharacterUpdatePostProcessor.Orders.SKILL_CATEGORY)
 @Slf4j
-public class CharacterSkillCategoryPostprocessor implements CharacterPostProcessor {
+public class CharacterSkillCategoryPostprocessor implements CharacterUpdatePostProcessor {
 
 	@Autowired
 	private SkillRankBonusService rankBonusService;

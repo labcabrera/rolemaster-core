@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.service.character.CharacterUpdatePostProcessor;
 import org.labcabrera.rolemaster.core.table.character.StrideChartTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -13,9 +14,9 @@ import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-@Order(CharacterPostProcessor.Orders.BASE_MOVEMENT)
+@Order(CharacterUpdatePostProcessor.Orders.BASE_MOVEMENT)
 @Slf4j
-public class CharacterBaseMovementRatePostProcessor implements CharacterPostProcessor {
+class CharacterBaseMovementRatePostProcessor implements CharacterUpdatePostProcessor {
 
 	@Autowired
 	private StrideChartTable strideChartTable;

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.dto.context.TacticalActionContext;
-import org.labcabrera.rolemaster.core.service.tactical.maneuvers.processor.MovingManeuverProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -16,7 +16,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.RankType;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.service.character.CharacterAddSkillService;
-import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillService;
+import org.labcabrera.rolemaster.core.service.character.CharacterUpdateSkillServiceImpl;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +34,7 @@ class CharacterCreationService02Test {
 	private CharacterAddSkillService addSkillService;
 
 	@Autowired
-	private CharacterUpdateSkillService skillUpdateService;
+	private CharacterUpdateSkillServiceImpl skillUpdateService;
 
 	@Autowired
 	private ObjectMapper objectMapper;

@@ -5,6 +5,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifier;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.OBProcessor;
 import org.springframework.stereotype.Component;
 
 @Component

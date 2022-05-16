@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.service.tactical;
+package org.labcabrera.rolemaster.core.service.tactical.action;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -16,6 +16,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMoveme
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.service.context.loader.TacticalActionContextLoader;
+import org.labcabrera.rolemaster.core.service.tactical.TacticalSkillService;
 import org.labcabrera.rolemaster.core.service.tactical.maneuvers.MovingManeuverBonusService;
 import org.labcabrera.rolemaster.core.table.maneuver.MovingManeuverServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class MovementExecutionService {
+public class MovementExecutionServiceImpl implements MovementExecutionService {
 
 	private static final String SPRINTING = "sprinting";
 
@@ -46,6 +47,7 @@ public class MovementExecutionService {
 	@Autowired
 	private TacticalCharacterRepository tacticalCharacterRepository;
 
+	@Override
 	public Mono<TacticalAction> execute(TacticalActionMovement tacticalMovement, MovementExecution movementExecution) {
 		load(tacticalMovement, movementExecution);
 		return contextLoader.apply(tacticalMovement)

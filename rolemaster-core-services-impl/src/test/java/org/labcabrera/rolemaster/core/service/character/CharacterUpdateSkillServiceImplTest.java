@@ -31,10 +31,10 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import reactor.core.publisher.Mono;
 
 @ExtendWith(MockitoExtension.class)
-class CharacterUpdateSkillServiceTest {
+class CharacterUpdateSkillServiceImplTest {
 
 	@InjectMocks
-	private CharacterUpdateSkillService service;
+	private CharacterUpdateSkillServiceImpl service;
 
 	@Mock
 	private JwtAuthenticationToken auth;

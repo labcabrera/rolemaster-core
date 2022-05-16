@@ -14,7 +14,7 @@ import org.labcabrera.rolemaster.core.model.skill.SkillCategory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CharacterCreationSkillCategoryProcessor {
+class CharacterCreationSkillCategoryProcessor {
 
 	public CharacterModificationContext loadSkillCategories(CharacterModificationContext context) {
 		CharacterInfo character = context.getCharacter();

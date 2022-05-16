@@ -14,7 +14,7 @@ import org.labcabrera.rolemaster.core.service.Messages.Errors;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CharacterCreationSkillProcessor {
+class CharacterCreationSkillProcessor {
 
 	public CharacterModificationContext loadSkills(CharacterModificationContext context) {
 		Race race = context.getRace();

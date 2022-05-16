@@ -2,9 +2,6 @@ package org.labcabrera.rolemaster.core.service.character;
 
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.model.HasRanks;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -27,7 +24,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @Validated
-public class CharacterUpdateSkillService {
+public class CharacterUpdateSkillServiceImpl implements CharacterUpdateSkillService {
 
 	private static final String ERR_MISSING_CATEGORY_ID = "Missing skill category %s";
 	private static final String ERR_MISSING_SKILL_ID = "Missing skill %s";
@@ -47,7 +44,8 @@ public class CharacterUpdateSkillService {
 	@Autowired
 	private WriteAuthorizationFilter writeAuthorizationFilter;
 
-	public Mono<CharacterInfo> updateRanks(JwtAuthenticationToken auth, @NotEmpty String characterId, @Valid SkillUpgrade request) {
+	@Override
+	public Mono<CharacterInfo> updateRanks(JwtAuthenticationToken auth, String characterId, SkillUpgrade request) {
 		return characterInfoService.findById(auth, characterId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.characterNotFound(characterId))))
 			.map(c -> writeAuthorizationFilter.apply(auth, c))

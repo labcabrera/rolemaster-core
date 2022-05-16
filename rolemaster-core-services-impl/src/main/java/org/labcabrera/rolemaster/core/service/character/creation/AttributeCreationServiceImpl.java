@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AttributeCreationService {
+class AttributeCreationServiceImpl implements AttributeCreationService {
 
 	@Autowired
 	private RandomService randomService;
 
+	@Override
 	public Integer calculateCost(Map<AttributeType, Integer> values) {
 		int cost = 0;
 		for (int value : values.values()) {
@@ -21,6 +22,7 @@ public class AttributeCreationService {
 		return cost;
 	}
 
+	@Override
 	public Integer getCost(int value) {
 		if (value < 90) {
 			return value;
@@ -29,6 +31,7 @@ public class AttributeCreationService {
 		return (int) (90 + tmp);
 	}
 
+	@Override
 	public Integer getPotentialStat(int value) {
 		if (value == 100) {
 			return 99 + randomService.dX(2);

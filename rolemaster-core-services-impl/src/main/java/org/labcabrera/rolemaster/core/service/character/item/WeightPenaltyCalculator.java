@@ -8,7 +8,7 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WeightPenaltyCalculator {
+class WeightPenaltyCalculator {
 
 	private static final BigDecimal TEN = new BigDecimal(10);
 

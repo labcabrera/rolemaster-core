@@ -1,12 +1,13 @@
 package org.labcabrera.rolemaster.core.service.character.processor;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.service.character.CharacterUpdatePostProcessor;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(CharacterPostProcessor.Orders.SORT_SKILLS)
-public class CharacterSortSkillProcessor implements CharacterPostProcessor {
+@Order(CharacterUpdatePostProcessor.Orders.SORT_SKILLS)
+public class CharacterSortSkillProcessor implements CharacterUpdatePostProcessor {
 
 	@Override
 	public void accept(CharacterInfo character) {

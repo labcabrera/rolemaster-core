@@ -7,6 +7,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.OffensiveBonusModifi
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterItemResolver;
 import org.labcabrera.rolemaster.core.service.tactical.attack.processor.MissilePreparationServiceBonusProcessor;
+import org.labcabrera.rolemaster.core.service.tactical.attack.processor.OBProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

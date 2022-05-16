@@ -13,6 +13,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissil
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovement;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovingManeuver;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionStaticManeuver;
+import org.labcabrera.rolemaster.core.service.tactical.action.MovementExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.attack.MeleeAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.attack.MissileAttackExecutionService;
 import org.labcabrera.rolemaster.core.service.tactical.maneuvers.MovingManeuverExecutionService;
