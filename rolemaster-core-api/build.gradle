@@ -29,8 +29,10 @@ configurations {
 }
 
 dependencies {
-	implementation project(':rolemaster-core-services')
 	implementation project(':rolemaster-core-model')
+	implementation project(':rolemaster-core-dto')
+	implementation project(':rolemaster-core-services')
+	implementation project(':rolemaster-core-services-impl')
 
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'

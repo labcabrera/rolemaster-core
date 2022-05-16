@@ -1,9 +1,9 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import org.labcabrera.rolemaster.core.api.controller.SkillController;
-import org.labcabrera.rolemaster.core.message.Messages.Errors;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.labcabrera.rolemaster.core.repository.SkillRepository;
+import org.labcabrera.rolemaster.core.service.Messages.Errors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Pageable;
