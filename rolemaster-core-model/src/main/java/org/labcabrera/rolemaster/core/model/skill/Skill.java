@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.model.skill;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,6 +26,9 @@ public class Skill {
 	private String id;
 
 	private String name;
+
+	@Builder.Default
+	private RolemasterVersion version = RolemasterVersion.RMSS;
 
 	private String categoryId;
 

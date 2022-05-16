@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.api.controller.impl;
 import org.labcabrera.rolemaster.core.api.controller.TacticalCharacterContextController;
 import org.labcabrera.rolemaster.core.dto.CharacterTacticalContextModification;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalCharacterService;
+import org.labcabrera.rolemaster.core.services.tactical.TacticalCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;

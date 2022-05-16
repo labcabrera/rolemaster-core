@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.HasAuthorization;
 import org.labcabrera.rolemaster.core.model.HasMetadata;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -32,6 +33,9 @@ public class CharacterInfo implements HasAuthorization, HasMetadata {
 	@Id
 	@Schema(description = "Character identifier.", required = true, example = "6242c18da7a9f7048331ca03")
 	private String id;
+
+	@Schema(description = "Rolemaster version.", required = true, example = "6242c18da7a9f7048331ca03")
+	private RolemasterVersion version;
 
 	@Schema(description = "Character name.", required = true, example = "Bilbo Baggins")
 	private String name;

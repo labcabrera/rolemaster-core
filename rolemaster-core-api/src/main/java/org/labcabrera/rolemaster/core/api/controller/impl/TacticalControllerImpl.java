@@ -11,7 +11,7 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
-import org.labcabrera.rolemaster.core.service.tactical.TacticalService;
+import org.labcabrera.rolemaster.core.services.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Pageable;
