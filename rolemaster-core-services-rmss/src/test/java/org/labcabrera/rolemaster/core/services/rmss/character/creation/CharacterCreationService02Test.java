@@ -12,9 +12,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.RankType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.services.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.services.character.creation.CharacterCreationService;
 import org.labcabrera.rolemaster.core.services.rmss.character.CharacterUpdateSkillServiceImpl;
@@ -46,6 +46,7 @@ class CharacterCreationService02Test {
 		String json = """
 			{
 				"name": "Pieterman",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "hillman",

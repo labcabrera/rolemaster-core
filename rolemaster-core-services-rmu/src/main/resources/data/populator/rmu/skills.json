@@ -1,0 +1,26 @@
+[
+	{
+		"id": "animal-handling",
+		"name": "Animal Handling †",
+		"version": "rmu",
+		"type": "static-or-moving",
+		"loadOnNewCharacters": false,
+		"categoryId": "animal-rmu",
+		"progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
+		"description": ""
+	},
+	{
+		"id": "riding",
+		"name": "Riding †",
+		"version": "rmu",
+		"type": "static-or-moving",
+		"loadOnNewCharacters": false,
+		"categoryId": "animal-rmu",
+		"progressionType": "standard",
+        "customizableOptions": 1,
+        "customizationRestriction": "free-text",
+		"description": ""
+	}
+]

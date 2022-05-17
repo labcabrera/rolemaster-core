@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.model.character.creation;
+package org.labcabrera.rolemaster.core.dto.character;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 
@@ -26,6 +27,10 @@ public class CharacterCreation {
 	@NotEmpty
 	@Schema(description = "Character name.", example = "Kiove", required = true)
 	private String name;
+
+	@NotNull
+	@Schema(description = "Rolemaster version.", example = "rmss", required = true)
+	private RolemasterVersion version;
 
 	@NotEmpty
 	@Schema(description = "Universe identifier.", example = "middle-earth", required = true)

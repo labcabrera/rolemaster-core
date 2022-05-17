@@ -1,18 +1,31 @@
 package org.labcabrera.rolemaster.core.services.rmss.character.creation;
 
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreationAttributeModifier;
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreationAttributeModifiers;
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreationAttributes;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.services.character.creation.AttributeCreationService;
 import org.labcabrera.rolemaster.core.services.commons.RandomService;
+import org.labcabrera.rolemaster.core.table.rmss.attribute.AttributeBonusTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import reactor.core.publisher.Mono;
+
 @Service
-class AttributeCreationServiceImpl implements AttributeCreationService {
+class AttributeCreationServiceRmssImpl implements AttributeCreationService {
 
 	@Autowired
 	private RandomService randomService;
+
+	@Autowired
+	private AttributeBonusTable bonusTable;
 
 	@Override
 	public Integer calculateCost(Map<AttributeType, Integer> values) {
@@ -93,6 +106,34 @@ class AttributeCreationServiceImpl implements AttributeCreationService {
 			result += randomService.d10();
 		}
 		return result;
+	}
+
+	@Override
+	public List<RolemasterVersion> compatibleVersions() {
+		return Arrays.asList(RolemasterVersion.RMSS);
+	}
+
+	@Override
+	public Mono<CharacterCreationAttributeModifiers> getAttributeModifiers(CharacterCreationAttributes attributes) {
+		CharacterCreationAttributeModifiers modifiers = CharacterCreationAttributeModifiers.builder()
+			.attributes(new EnumMap<>(AttributeType.class))
+			.build();
+		for (AttributeType att : AttributeType.values()) {
+			int current = attributes.getAttributes().get(att);
+			int attributeBonus = bonusTable.getBonus(current);
+			int cost = getCost(current);
+			CharacterCreationAttributeModifier modifier = CharacterCreationAttributeModifier.builder()
+				.currentValue(current)
+				.attributeBonus(attributeBonus)
+				.cost(cost)
+				.build();
+			modifiers.getAttributes().put(att, modifier);
+		}
+		int totalCost = modifiers.getAttributes().values().stream()
+			.map(CharacterCreationAttributeModifier::getCost)
+			.reduce(0, (a, b) -> a + b);
+		modifiers.setTotalCost(totalCost);
+		return Mono.just(modifiers);
 	}
 
 }

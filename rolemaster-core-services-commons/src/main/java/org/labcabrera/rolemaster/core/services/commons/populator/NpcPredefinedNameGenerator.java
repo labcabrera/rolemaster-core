@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.populator;
+package org.labcabrera.rolemaster.core.services.commons.populator;
 
 import java.io.InputStream;
 import java.util.ArrayList;

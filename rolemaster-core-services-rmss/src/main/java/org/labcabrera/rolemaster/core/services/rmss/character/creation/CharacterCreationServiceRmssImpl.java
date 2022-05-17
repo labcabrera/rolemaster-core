@@ -3,6 +3,8 @@ package org.labcabrera.rolemaster.core.services.rmss.character.creation;
 import java.util.Arrays;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
@@ -13,7 +15,6 @@ import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.ResistanceBonusType;
 import org.labcabrera.rolemaster.core.model.character.ResistanceType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
@@ -22,7 +23,6 @@ import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.services.character.CharacterInfoService;
-import org.labcabrera.rolemaster.core.services.character.creation.AttributeCreationService;
 import org.labcabrera.rolemaster.core.services.character.creation.CharacterCreationService;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
 import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterPostProcessorService;
@@ -37,7 +37,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
-class CharacterCreationServiceImpl implements CharacterCreationService {
+class CharacterCreationServiceRmssImpl implements CharacterCreationService {
 
 	private static final String MSG_INVALID_WEAPON_SIZE = "Invalid request weapon category order count. Expected: %s, received: %s";
 
@@ -45,7 +45,7 @@ class CharacterCreationServiceImpl implements CharacterCreationService {
 	private CharacterInfoService characterInfoService;
 
 	@Autowired
-	private AttributeCreationService attributeCreationService;
+	private AttributeCreationServiceRmssImpl attributeCreationService;
 
 	@Autowired
 	private CharacterPostProcessorService postProcessorService;
@@ -171,6 +171,11 @@ class CharacterCreationServiceImpl implements CharacterCreationService {
 			throw new BadRequestException(Errors.invalidRealm(realm));
 		}
 		return context;
+	}
+
+	@Override
+	public List<RolemasterVersion> compatibleVersions() {
+		return Arrays.asList(RolemasterVersion.RMSS);
 	}
 
 }

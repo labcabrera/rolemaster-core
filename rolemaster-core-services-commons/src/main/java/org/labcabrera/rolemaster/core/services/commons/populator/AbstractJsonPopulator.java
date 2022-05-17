@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.populator;
+package org.labcabrera.rolemaster.core.services.commons.populator;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
+public abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
 
 	@Autowired
-	private ReactiveMongoRepository<E, String> repository;
+	protected ReactiveMongoRepository<E, String> repository;
 
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -29,8 +29,7 @@ abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		List<String> resources = getResources();
 		List<E> values = collectValues();
-		repository
-			.deleteAll()
+		delete()
 			.thenMany(Flux.fromIterable(values))
 			.flatMap(repository::save)
 			.then(Mono.just(String.format("Inserted %s entities from %s", values.size(), resources)))
@@ -50,6 +49,10 @@ abstract class AbstractJsonPopulator<E> implements ApplicationRunner {
 			}
 		});
 		return list;
+	}
+
+	protected Mono<Void> delete() {
+		return repository.deleteAll();
 	}
 
 	protected abstract List<String> getResources();

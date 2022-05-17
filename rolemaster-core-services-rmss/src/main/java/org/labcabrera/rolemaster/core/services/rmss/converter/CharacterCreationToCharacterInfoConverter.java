@@ -1,9 +1,9 @@
 package org.labcabrera.rolemaster.core.services.rmss.converter;
 
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterWeight;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.table.rmss.character.ExperienceLevelTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;

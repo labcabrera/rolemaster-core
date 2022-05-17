@@ -19,6 +19,7 @@ class CharacterCreationServiceWoodElvesHealerTest extends AbstractCharacterCreat
 		return """
 				{
 				"name": "Test Wood Elves Healer",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "wood-elf",

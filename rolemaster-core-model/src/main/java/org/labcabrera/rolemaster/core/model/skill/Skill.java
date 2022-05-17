@@ -27,8 +27,7 @@ public class Skill {
 
 	private String name;
 
-	@Builder.Default
-	private RolemasterVersion version = RolemasterVersion.RMSS;
+	private RolemasterVersion version;
 
 	private String categoryId;
 

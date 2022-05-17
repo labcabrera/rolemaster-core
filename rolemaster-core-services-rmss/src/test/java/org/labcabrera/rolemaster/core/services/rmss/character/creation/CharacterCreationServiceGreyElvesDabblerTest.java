@@ -19,6 +19,7 @@ class CharacterCreationServiceGreyElvesDabblerTest extends AbstractCharacterCrea
 		return """
 				{
 				"name": "Test Grey Elves Dabbler",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "grey-elf",

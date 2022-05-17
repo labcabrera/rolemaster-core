@@ -19,6 +19,7 @@ class CharacterCreationServiceHalflingsThiefTest extends AbstractCharacterCreati
 		return """
 				{
 				"name": "Test Halflings Thief",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "halfling",
