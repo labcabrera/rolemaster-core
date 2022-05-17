@@ -41,8 +41,11 @@ public class TacticalSessionCreationService {
 		return sessionRepository.findById(request.getStrategicSessionId())
 			.switchIfEmpty(Mono.error(new BadRequestException(Errors.missingStrategicSession(request.getStrategicSessionId()))))
 			.map(s -> writeFilter.apply(auth, s))
-			.thenReturn(request)
-			.map(converter::convert)
+			.map(strategic -> {
+				TacticalSession tactical = converter.convert(request);
+				tactical.setVersion(strategic.getVersion());
+				return tactical;
+			})
 			.map(s -> authConsumer.accept(auth, s))
 			.map(metadataCreationUpdater::apply)
 			.flatMap(tacticalSessionRepository::insert);
