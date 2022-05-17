@@ -81,6 +81,7 @@ class CharacterCreationServiceRmssImpl implements CharacterCreationService {
 	public Mono<CharacterInfo> create(JwtAuthenticationToken auth, CharacterCreation request) {
 		log.info("Processing new character {}", request.getName());
 		CharacterInfo character = converter.convert(request);
+		character.setVersion(RolemasterVersion.RMSS);
 		CharacterModificationContext context = CharacterModificationContextImpl.builder()
 			.character(character)
 			.build();

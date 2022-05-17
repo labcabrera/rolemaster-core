@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.converter;
+package org.labcabrera.rolemaster.core.services.commons.converter;
 
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
@@ -12,8 +12,9 @@ public class StrategicSessionCreationToStrategicSession implements Converter<Str
 	public StrategicSession convert(StrategicSessionCreation request) {
 		return StrategicSession.builder()
 			.name(request.getName())
-			.description(request.getDescription())
+			.version(request.getVersion())
 			.universeId(request.getUniverseId())
+			.description(request.getDescription())
 			.build();
 	}
 

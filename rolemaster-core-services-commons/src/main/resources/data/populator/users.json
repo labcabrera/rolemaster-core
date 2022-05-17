@@ -16,7 +16,11 @@
 		"friends": [
 			"cbcabrera",
 			"pieterman"
-		]
+		],
+		"defaultVersion": "rmss",
+		"defaultUnitSystem": "metric",
+		"defaultUniverseId": "middle-earth",
+		"defaultBoardScale": 0.5
 	},
 	{
 		"id": "cbcabrera",

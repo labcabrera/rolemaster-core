@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.strategic;
+package org.labcabrera.rolemaster.core.services.commons.strategic;
 
 import java.time.LocalDateTime;
 import java.util.logging.Level;
@@ -18,11 +18,11 @@ import org.labcabrera.rolemaster.core.services.commons.security.ReadAuthorizatio
 import org.labcabrera.rolemaster.core.services.commons.security.UserFriendOwnerProcessor;
 import org.labcabrera.rolemaster.core.services.commons.security.WriteAuthorizationFilter;
 import org.labcabrera.rolemaster.core.services.commons.user.UserService;
-import org.labcabrera.rolemaster.core.services.rmss.converter.StrategicSessionCreationToStrategicSession;
 import org.labcabrera.rolemaster.core.services.strategic.StrategicSessionService;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalCharacterService;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
@@ -61,7 +61,7 @@ public class StrategicSessionServiceImpl implements StrategicSessionService {
 	private UserFriendOwnerProcessor userFriendOwnerProcessor;
 
 	@Autowired
-	private StrategicSessionCreationToStrategicSession converter;
+	private Converter<StrategicSessionCreation, StrategicSession> converter;
 
 	@Autowired
 	private MetadataCreationUpdater metadataCreationUpdater;
