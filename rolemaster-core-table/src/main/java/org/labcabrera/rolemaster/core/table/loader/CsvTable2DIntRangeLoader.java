@@ -15,7 +15,7 @@ import com.mongodb.Function;
 @Component
 public class CsvTable2DIntRangeLoader {
 
-	public <E> Table2DIntRange<E> load(InputStream in, String separator, Function<String, E> converter) {
+	public <E> Table2DIntRange<E> load(InputStream in, String rangeSeparator, Function<String, E> converter) {
 		Map<Range<Integer>, E> map = new LinkedHashMap<>();
 		try (
 			Scanner scanner = new Scanner(in);) {
@@ -23,7 +23,7 @@ public class CsvTable2DIntRangeLoader {
 			while (scanner.hasNextLine()) {
 				String nextLine = scanner.nextLine();
 				String[] x = nextLine.split(",");
-				Range<Integer> range = parseRange(x[0], "-");
+				Range<Integer> range = parseRange(x[0], rangeSeparator);
 				for (int i = 1; i < x.length; i++) {
 					map.put(range, converter.apply(x[i]));
 				}

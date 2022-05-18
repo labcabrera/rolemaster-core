@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.converter;
+package org.labcabrera.rolemaster.core.services.commons.converter;
 
 import java.util.Collections;
 

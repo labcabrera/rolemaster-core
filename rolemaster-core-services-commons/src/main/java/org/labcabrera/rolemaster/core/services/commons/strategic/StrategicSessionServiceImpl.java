@@ -1,7 +1,6 @@
 package org.labcabrera.rolemaster.core.services.commons.strategic;
 
 import java.time.LocalDateTime;
-import java.util.logging.Level;
 
 import org.labcabrera.rolemaster.core.dto.StrategicSessionCreation;
 import org.labcabrera.rolemaster.core.dto.StrategicSessionUpdate;
@@ -62,9 +61,7 @@ public class StrategicSessionServiceImpl implements StrategicSessionService {
 	public Mono<StrategicSession> findById(JwtAuthenticationToken auth, String id) {
 		return strategicSessionRepository.findById(id)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingStrategicSession(id))))
-			.flatMap(s -> readFilter.apply(auth, s))
-			.doOnNext(e -> System.out.println(e))
-			.log("test", Level.INFO);
+			.flatMap(s -> readFilter.apply(auth, s));
 	}
 
 	@Override

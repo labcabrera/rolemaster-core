@@ -3,7 +3,6 @@ package org.labcabrera.rolemaster.core.services.rmu.character.creation;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 import org.labcabrera.rolemaster.core.dto.character.CharacterCreationAttributeModifier;
 import org.labcabrera.rolemaster.core.dto.character.CharacterCreationAttributeModifiers;
@@ -22,15 +21,6 @@ class AttributeCreationServiceRmuImpl implements AttributeCreationService {
 
 	@Autowired
 	private AttributeBonusRmuTable bonusTable;
-
-	@Override
-	public Integer calculateCost(Map<AttributeType, Integer> values) {
-		int cost = 0;
-		for (int value : values.values()) {
-			cost += getCost(value);
-		}
-		return cost;
-	}
 
 	@Override
 	public Integer getCost(int value) {
@@ -59,7 +49,9 @@ class AttributeCreationServiceRmuImpl implements AttributeCreationService {
 				.build();
 			modifiers.getAttributes().put(att, modifier);
 		}
-		int totalCost = modifiers.getAttributes().values().stream().map(e -> e.getCost()).reduce(0, (a, b) -> a + b);
+		int totalCost = modifiers.getAttributes().values().stream()
+			.map(CharacterCreationAttributeModifier::getCost)
+			.reduce(0, (a, b) -> a + b);
 		modifiers.setTotalCost(totalCost);
 		return Mono.just(modifiers);
 	}

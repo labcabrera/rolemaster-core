@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.converter;
+package org.labcabrera.rolemaster.core.services.commons.converter;
 
 import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -10,7 +10,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-class CharacterCreationToCharacterInfoConverter implements Converter<CharacterCreation, CharacterInfo> {
+public class CharacterCreationToCharacterInfoConverter implements Converter<CharacterCreation, CharacterInfo> {
 
 	@Autowired
 	private ExperienceLevelTable experienceLevelTable;

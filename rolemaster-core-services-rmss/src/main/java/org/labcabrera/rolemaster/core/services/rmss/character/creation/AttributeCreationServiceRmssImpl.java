@@ -3,7 +3,6 @@ package org.labcabrera.rolemaster.core.services.rmss.character.creation;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 import org.labcabrera.rolemaster.core.dto.character.CharacterCreationAttributeModifier;
 import org.labcabrera.rolemaster.core.dto.character.CharacterCreationAttributeModifiers;
@@ -26,15 +25,6 @@ class AttributeCreationServiceRmssImpl implements AttributeCreationService {
 
 	@Autowired
 	private AttributeBonusTable bonusTable;
-
-	@Override
-	public Integer calculateCost(Map<AttributeType, Integer> values) {
-		int cost = 0;
-		for (int value : values.values()) {
-			cost += getCost(value);
-		}
-		return cost;
-	}
 
 	@Override
 	public Integer getCost(int value) {

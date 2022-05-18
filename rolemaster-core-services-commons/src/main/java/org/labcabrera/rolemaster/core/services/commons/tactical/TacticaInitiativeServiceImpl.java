@@ -1,6 +1,6 @@
 package org.labcabrera.rolemaster.core.services.commons.tactical;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -40,7 +40,7 @@ public class TacticaInitiativeServiceImpl implements TacticalInitiativeService {
 			.map(this::loadInitiativeActions)
 			.flatMap(this::saveRound)
 			.flatMap(this::saveActions)
-			.map(ctx -> ctx.getTacticalRound());
+			.map(TacticalContext::getTacticalRound);
 	}
 
 	public TacticalContext loadInitiatives(TacticalContext context, InitiativeDeclaration initiativeDeclaration) {
@@ -49,7 +49,7 @@ public class TacticaInitiativeServiceImpl implements TacticalInitiativeService {
 			String tcId = character.getId();
 			int roll = 0;
 			int baseModifier = character.getModifiers().getInitiative();
-			Map<InitiativeModifier, Integer> customModifiers = new HashMap<>();
+			Map<InitiativeModifier, Integer> customModifiers = new EnumMap<>(InitiativeModifier.class);
 			if (round.getInitiatives().containsKey(tcId)) {
 				Map<InitiativeModifier, Integer> bonusMap = round.getInitiatives().get(tcId).getBonus();
 				roll = bonusMap.getOrDefault(InitiativeModifier.ROLL, 0);

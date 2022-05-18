@@ -25,9 +25,9 @@ import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.services.character.CharacterInfoService;
 import org.labcabrera.rolemaster.core.services.character.creation.CharacterCreationService;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
+import org.labcabrera.rolemaster.core.services.commons.converter.CharacterCreationToCharacterInfoConverter;
 import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
@@ -63,7 +63,7 @@ class CharacterCreationServiceRmssImpl implements CharacterCreationService {
 	private CharacterCreationSkillService characterCreationSkillService;
 
 	@Autowired
-	private Converter<CharacterCreation, CharacterInfo> converter;
+	private CharacterCreationToCharacterInfoConverter converter;
 
 	@Autowired
 	private CharacterCreationItemLoaderProcessor characterCreationItemLoader;

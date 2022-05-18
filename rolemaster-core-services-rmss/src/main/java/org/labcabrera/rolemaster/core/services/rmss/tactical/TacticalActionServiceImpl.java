@@ -15,7 +15,7 @@ import org.labcabrera.rolemaster.core.model.validation.ValidationConstants;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
-import org.labcabrera.rolemaster.core.services.rmss.converter.TacticalActionConverter;
+import org.labcabrera.rolemaster.core.services.commons.converter.TacticalActionConverter;
 import org.labcabrera.rolemaster.core.services.rmss.tactical.attack.CriticalAttackExecutionService;
 import org.labcabrera.rolemaster.core.services.rmss.tactical.attack.FumbleAttackExecutionService;
 import org.labcabrera.rolemaster.core.services.rmss.tactical.attack.WeaponBreakageExecutionService;

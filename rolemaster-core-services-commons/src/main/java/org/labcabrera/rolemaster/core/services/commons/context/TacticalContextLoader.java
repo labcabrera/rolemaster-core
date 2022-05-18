@@ -56,7 +56,7 @@ public class TacticalContextLoader {
 	}
 
 	protected <E extends TacticalContext> Mono<E> loadStrategicSession(JwtAuthenticationToken auth, E context, String strategicSessionId) {
-		return strategicSessionRepository.findById(context.getTacticalSession().getStrategicSessionId())
+		return strategicSessionRepository.findById(strategicSessionId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Strategic session not found.")))
 			.flatMap(strategicSession -> readFilter.apply(auth, strategicSession))
 			.map(strategicSession -> {
@@ -76,14 +76,8 @@ public class TacticalContextLoader {
 
 	protected <E extends TacticalContext> Mono<E> loadRoundByTacticalSessionId(E context, String tacticalSessionId) {
 		return tacticalRoundRepository.findFirstByTacticalSessionIdOrderByRoundDesc(tacticalSessionId)
-			.map(e -> {
-				if (e == null) {
-					System.out.println(tacticalSessionId);
-				}
-				return e;
-			})
-			.switchIfEmpty(Mono
-				.error(() -> new DataConsistenceException(String.format("No rounds found for tactical session %s.", tacticalSessionId))))
+			.switchIfEmpty(
+				Mono.error(() -> new DataConsistenceException(String.format("Tactical session %s has no rounds.", tacticalSessionId))))
 			.map(round -> {
 				context.setTacticalRound(round);
 				return context;

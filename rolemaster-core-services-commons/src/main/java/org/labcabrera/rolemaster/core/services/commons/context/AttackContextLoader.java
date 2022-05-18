@@ -30,17 +30,14 @@ public class AttackContextLoader {
 	public Mono<AttackContext> apply(JwtAuthenticationToken auth, TacticalActionAttack attack) {
 		AttackContext context = new AttackContext();
 		context.setAction(attack);
-		return apply(auth, context)
-			.map(e -> {
-				System.out.println(e);
-				return e;
-			});
+		return apply(auth, context);
 	}
 
 	public Mono<AttackContext> apply(JwtAuthenticationToken auth, AttackContext context) {
 		return Mono.just(context)
 			.flatMap(ctx -> contextLoader.loadRoundById(ctx, ctx.getAction().getRoundId()))
 			.flatMap(ctx -> contextLoader.loadTacticalSession(ctx, ctx.getTacticalRound().getTacticalSessionId()))
+			.flatMap(ctx -> contextLoader.loadStrategicSession(auth, ctx, ctx.getTacticalSession().getStrategicSessionId()))
 			.flatMap(ctx -> contextLoader.loadCharacters(ctx, ctx.getTacticalSession().getId(), true))
 			.flatMap(ctx -> contextLoader.loadActions(ctx, ctx.getTacticalRound().getId(), true))
 			.flatMap(this::loadSourceItems)
