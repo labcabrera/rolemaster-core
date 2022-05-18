@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.services.rmss.populator;
 import java.util.Arrays;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.TrainingPackage;
 import org.labcabrera.rolemaster.core.services.commons.populator.AbstractJsonPopulator;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,13 @@ class TrainingPackagePopulator extends AbstractJsonPopulator<TrainingPackage> {
 			"data/populator/training/training-package-wanderer.json",
 			"data/populator/training/training-package-weapon-master.json",
 			"data/populator/training/training-package-zealot.json");
+	}
+
+	@Override
+	protected List<TrainingPackage> collectValues() {
+		List<TrainingPackage> list = super.collectValues();
+		list.stream().forEach(e -> e.setVersion(RolemasterVersion.RMSS));
+		return list;
 	}
 
 	@Override
