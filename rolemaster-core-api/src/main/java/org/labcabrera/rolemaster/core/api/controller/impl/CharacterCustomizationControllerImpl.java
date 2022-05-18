@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import org.labcabrera.rolemaster.core.api.controller.CharacterCustomizationController;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.CharacterCustomization;
 import org.labcabrera.rolemaster.core.model.character.CharacterCustomizationType;
 import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
@@ -26,8 +27,9 @@ public class CharacterCustomizationControllerImpl implements CharacterCustomizat
 	}
 
 	@Override
-	public Flux<CharacterCustomization> getItem(CharacterCustomizationType type, Pageable pageable) {
+	public Flux<CharacterCustomization> getItem(RolemasterVersion version, CharacterCustomizationType type, Pageable pageable) {
 		CharacterCustomization probe = CharacterCustomization.builder()
+			.version(version)
 			.type(type)
 			.build();
 		Example<CharacterCustomization> example = Example.of(probe);

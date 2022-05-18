@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.api.controller;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.CharacterCustomization;
 import org.labcabrera.rolemaster.core.model.character.CharacterCustomizationType;
 import org.springdoc.api.annotations.ParameterObject;
@@ -28,6 +29,7 @@ public interface CharacterCustomizationController {
 	@GetMapping
 	@Operation(summary = "Character customization search.")
 	Flux<CharacterCustomization> getItem(
+		@Parameter(name = "version", required = false) @RequestParam(required = false) RolemasterVersion version,
 		@Parameter(name = "type", required = false) @RequestParam(required = false) CharacterCustomizationType type,
 		@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 100) Pageable pageable);
 }

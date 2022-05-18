@@ -1,9 +1,11 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import org.labcabrera.rolemaster.core.api.controller.ProfessionController;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +24,15 @@ public class ProfessionControllerImpl implements ProfessionController {
 	}
 
 	@Override
-	public Flux<Profession> findAll(Pageable pageable) {
-		return repository.findAll(pageable.getSort());
+	public Flux<Profession> findAll(RolemasterVersion version, Pageable pageable) {
+		Profession probe = Profession.builder()
+			.version(version)
+			.skillCategoryBonus(null)
+			.skillCategoryDevelopmentCost(null)
+			.skillCategoryWeaponDevelopmentCost(null)
+			.build();
+		Example<Profession> example = Example.of(probe);
+		return repository.findAll(example, pageable.getSort());
 	}
 
 }

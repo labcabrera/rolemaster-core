@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -30,6 +31,8 @@ public class Profession {
 
 	@Schema(description = "Profession name")
 	private String name;
+
+	private RolemasterVersion version;
 
 	@Schema(description = "Available realms")
 	private List<Realm> availableRealms;

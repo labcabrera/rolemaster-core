@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.services.rmss.populator;
 import java.util.Arrays;
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.Profession;
 import org.labcabrera.rolemaster.core.services.commons.populator.AbstractJsonPopulator;
 import org.springframework.stereotype.Component;
@@ -26,15 +27,14 @@ class ProfessionPopulator extends AbstractJsonPopulator<Profession> {
 			"data/populator/professions/professions-ranger.json",
 			"data/populator/professions/professions-rogue.json",
 			"data/populator/professions/professions-sorcerer.json",
-			"data/populator/professions/professions-thief.json"
+			"data/populator/professions/professions-thief.json");
+	}
 
-		//"data/populator/professions/professions.json",
-		//"data/populator/professions/professions-arcane.json",
-		//"data/populator/professions/professions-channeling.json",
-		//"data/populator/professions/professions-essence.json",
-		//"data/populator/professions/professions-mentalism.json",
-		//"data/populator/professions/professions-shared.json"
-		);
+	@Override
+	protected List<Profession> collectValues() {
+		List<Profession> list = super.collectValues();
+		list.stream().forEach(e -> e.setVersion(RolemasterVersion.RMSS));
+		return list;
 	}
 
 	@Override

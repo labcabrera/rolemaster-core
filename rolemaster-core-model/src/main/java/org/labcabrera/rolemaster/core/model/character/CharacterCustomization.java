@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.model.character;
 
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,6 +24,8 @@ public class CharacterCustomization {
 	private String id;
 
 	private String name;
+
+	private RolemasterVersion version;
 
 	private CharacterCustomizationType type;
 
