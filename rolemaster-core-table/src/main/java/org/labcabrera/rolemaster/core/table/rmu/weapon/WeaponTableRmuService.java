@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 import org.labcabrera.rolemaster.core.table.Table3DIntRange;
-import org.labcabrera.rolemaster.core.table.Table3DIntRangeLoader;
+import org.labcabrera.rolemaster.core.table.loader.CsvTable3DIntRangeLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class WeaponTableRmuService {
 	private final Map<String, Table3DIntRange<String>> map = new LinkedHashMap<>();
 
 	@Autowired
-	private Table3DIntRangeLoader tableLoader;
+	private CsvTable3DIntRangeLoader tableLoader;
 
 	@PostConstruct
 	public void load() {

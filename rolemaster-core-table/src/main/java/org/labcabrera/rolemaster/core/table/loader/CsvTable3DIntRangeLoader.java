@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.table;
+package org.labcabrera.rolemaster.core.table.loader;
 
 import java.io.InputStream;
 import java.util.LinkedHashMap;
@@ -7,12 +7,13 @@ import java.util.Scanner;
 
 import org.labcabrera.rolemaster.core.model.Range;
 import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
+import org.labcabrera.rolemaster.core.table.Table3DIntRange;
 import org.springframework.stereotype.Component;
 
 import com.mongodb.Function;
 
 @Component
-public class Table3DIntRangeLoader {
+public class CsvTable3DIntRangeLoader {
 
 	public <E> Table3DIntRange<E> load(InputStream in, String rangeSeparator, Function<String, E> converter) {
 		Map<Range<Integer>, Map<Integer, E>> map = new LinkedHashMap<>();

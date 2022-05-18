@@ -33,6 +33,7 @@ configurations {
 dependencies {
 	implementation project(':rolemaster-core-model')
 	implementation project(':rolemaster-core-dto')
+	implementation project(':rolemaster-core-repository')
 	implementation project(':rolemaster-core-services')
 	implementation project(':rolemaster-core-services-commons')
 	implementation project(':rolemaster-core-table')

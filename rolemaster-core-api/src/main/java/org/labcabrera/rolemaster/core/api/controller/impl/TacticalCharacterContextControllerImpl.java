@@ -1,18 +1,19 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
-import org.labcabrera.rolemaster.core.api.controller.TacticalCharacterContextController;
-import org.labcabrera.rolemaster.core.dto.CharacterTacticalContextModification;
+import org.labcabrera.rolemaster.core.api.controller.TacticalCharacterController;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterModification;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-public class TacticalCharacterContextControllerImpl implements TacticalCharacterContextController {
+public class TacticalCharacterContextControllerImpl implements TacticalCharacterController {
 
 	@Autowired
 	private TacticalCharacterService tacticalCharacterContextService;
@@ -28,9 +29,9 @@ public class TacticalCharacterContextControllerImpl implements TacticalCharacter
 	}
 
 	@Override
-	public Mono<TacticalCharacter> update(String id, CharacterTacticalContextModification request) {
-		// TODO Auto-generated method stub
-		return null;
+	public Mono<TacticalCharacter> update(JwtAuthenticationToken auth, String tacticalCharacterId,
+		TacticalCharacterModification modification) {
+		return tacticalCharacterContextService.update(auth, tacticalCharacterId, modification);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.converter;
+package org.labcabrera.rolemaster.core.services.commons.converter;
 
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;

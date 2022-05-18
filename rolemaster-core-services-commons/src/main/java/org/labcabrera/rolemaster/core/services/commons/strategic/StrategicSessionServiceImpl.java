@@ -10,7 +10,6 @@ import org.labcabrera.rolemaster.core.model.exception.SessionNotFoundException;
 import org.labcabrera.rolemaster.core.model.strategic.StrategicSession;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
-import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
 import org.labcabrera.rolemaster.core.services.commons.MetadataCreationUpdater;
 import org.labcabrera.rolemaster.core.services.commons.security.AuthorizationConsumer;
@@ -20,7 +19,6 @@ import org.labcabrera.rolemaster.core.services.commons.security.WriteAuthorizati
 import org.labcabrera.rolemaster.core.services.commons.user.UserService;
 import org.labcabrera.rolemaster.core.services.strategic.StrategicSessionService;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalCharacterService;
-import org.labcabrera.rolemaster.core.services.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Pageable;
@@ -38,12 +36,6 @@ public class StrategicSessionServiceImpl implements StrategicSessionService {
 
 	@Autowired
 	private StrategicSessionRepository strategicSessionRepository;
-
-	@Autowired
-	private TacticalSessionRepository tacticalSessionRepository;
-
-	@Autowired
-	private TacticalService tacticalService;
 
 	@Autowired
 	private TacticalCharacterService characterStatusService;
@@ -98,11 +90,10 @@ public class StrategicSessionServiceImpl implements StrategicSessionService {
 
 	@Override
 	public Mono<Void> deleteById(JwtAuthenticationToken auth, String id) {
+		//TODO remove tactical sessions and other data
 		return strategicSessionRepository.findById(id)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException("Strategic session not found.")))
 			.map(s -> writeFilter.apply(auth, s))
-			.thenMany(tacticalSessionRepository.findAll())
-			.flatMap(session -> tacticalService.deleteSession(session.getId()))
 			.then(strategicSessionRepository.deleteById(id));
 	}
 

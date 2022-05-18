@@ -5,7 +5,7 @@ import java.io.InputStream;
 import javax.annotation.PostConstruct;
 
 import org.labcabrera.rolemaster.core.table.Table2DIntRange;
-import org.labcabrera.rolemaster.core.table.Table2DIntRangeLoader;
+import org.labcabrera.rolemaster.core.table.loader.CsvTable2DIntRangeLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +17,12 @@ public class AttributeBonusRmuTable {
 	private Table2DIntRange<Integer> table;
 
 	@Autowired
-	private Table2DIntRangeLoader tableLoader;
+	private CsvTable2DIntRangeLoader tableLoader;
 
 	@PostConstruct
 	public void load() {
 		InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(RESOURCE);
-		table = tableLoader.load(in, "-", e -> Integer.parseInt(e));
+		table = tableLoader.load(in, "-", Integer::parseInt);
 	}
 
 	public Integer getBonus(Integer value) {
