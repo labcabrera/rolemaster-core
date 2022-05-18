@@ -9,7 +9,6 @@ import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalRoundState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.NpcRepository;
@@ -99,7 +98,6 @@ public class TacticalServiceImpl implements TacticalService {
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
 			.flatMap(session -> endTurnCharacterProcessor.process(session, tacticalSessionId))
 			.map(e -> TacticalRound.builder()
-				.state(TacticalRoundState.ACTION_DECLARATION)
 				.tacticalSessionId(tacticalSessionId)
 				.metadata(EntityMetadata.builder()
 					.created(LocalDateTime.now())

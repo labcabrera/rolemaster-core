@@ -3,6 +3,8 @@ package org.labcabrera.rolemaster.core.model.tactical;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.tactical.action.InitiativeModifier;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +17,6 @@ import lombok.NoArgsConstructor;
 public class TacticalRoundCharacterInitiative {
 
 	@Builder.Default
-	private Map<String, Integer> bonus = new LinkedHashMap<>();
+	private Map<InitiativeModifier, Integer> bonus = new LinkedHashMap<>();
 
 }

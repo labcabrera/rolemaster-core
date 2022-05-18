@@ -52,7 +52,7 @@ public class InternalErrorHandler {
 			return ResponseEntity.badRequest().body(error);
 		}
 		else if (ex instanceof ConstraintViolationException) {
-			log.warn(INVALID_REQUEST, ex.getMessage());
+			log.warn(INVALID_REQUEST, ex.getMessage(), ex);
 			ApiError error = ApiError.builder()
 				.message(ex.getMessage())
 				.code(INVALID_REQUEST_CODE)

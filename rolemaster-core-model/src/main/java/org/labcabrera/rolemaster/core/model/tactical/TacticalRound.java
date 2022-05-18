@@ -26,11 +26,6 @@ public class TacticalRound {
 
 	private Integer round;
 
-	private TacticalRoundState state;
-
-	@Builder.Default
-	private Boolean initiativeLoaded = false;
-
 	@Builder.Default
 	private Map<String, TacticalRoundCharacterInitiative> initiatives = new LinkedHashMap<>();
 
