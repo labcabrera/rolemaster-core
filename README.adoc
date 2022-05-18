@@ -4,8 +4,6 @@
 
 This API provides a set of services for using the Rolemaster RMSS game system designed by https://ironcrown.com/[Iron Crown Enterprises].
 
-A demo of the API can be consulted at: https://rolemaster-core.herokuapp.com (be patient while Heroku starting the instance as it will usually be stopped).
-
 To be able to use this API we also have a client developed in Angular in the repository https://github.com/labcabrera/rolemaster-client[rolemaster-client].
 
 It offers the following functionalities:
@@ -18,6 +16,37 @@ It offers the following functionalities:
 ** Spell casting.
 * NPC administration.
 * Item administration.
+
+== Local run
+
+
+
+----
+docker network create rolemaster-shared
+
+docker run -d -h rolemaster-mongo \
+  --name rolemaster-mongo \
+  --network rolemaster-shared \
+  -p 27017:27017 \
+  mongo:4
+
+docker run -d -h rolemaster-core \
+  --name rolemaster-core \
+  --network rolemaster-shared \
+  -p 8080:8080 \
+  -e ROLEMASTER_CORE_MONGODB_URI='mongodb://rolemaster-mongo/rolemaster?retryWrites=true&w=majority' \
+  labcabrera/rolemaster-core:{{ROLEMASTER_API_VERSION}}
+----
+
+To run the client execute:
+
+----
+sudo docker run -d -h rolemaster-client \
+  --name rolemaster-client \
+  --network rolemaster-shared \
+  -p 80:80 \
+  labcabrera/rolemaster-client
+----
 
 == Technologies
 
