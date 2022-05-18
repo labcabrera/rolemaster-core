@@ -181,6 +181,7 @@
 			"#melee": 160,
 			"#missile": 125
 		},
+		"universeId": "middle-earth",
 		"description": "Black Númenórean Bard. Seventh of the Nine."
 	},
 	{
@@ -197,6 +198,7 @@
 			"#melee": 125,
 			"#missile": 75
 		},
+		"universeId": "middle-earth",
 		"description": "Black Númenórean Mage/Sorcerer. The Fifth."
 	},
 	{
@@ -213,6 +215,7 @@
 			"#melee": 140,
 			"#missile": 100
 		},
+		"universeId": "middle-earth",
 		"description": "Wôlim Mage. Third of the Nine."
 	},
 	{
@@ -229,6 +232,7 @@
 			"#melee": 150,
 			"#missile": 80
 		},
+		"universeId": "middle-earth",
 		"description": "Urd Animist. Sixth of the Nine."
 	},
 	{
@@ -245,6 +249,7 @@
 			"#melee": 140,
 			"#missile": 95
 		},
+		"universeId": "middle-earth",
 		"description": "Kiarn Mage. Fourth of the Nine."
 	},
 	{
@@ -261,6 +266,7 @@
 			"#melee": 210,
 			"#missile": 180
 		},
+		"universeId": "middle-earth",
 		"description": "Womaw (Avaradan) Ranger. The Second."
 	},
 	{
@@ -277,6 +283,7 @@
 			"#melee": 125,
 			"#missile": 85
 		},
+		"universeId": "middle-earth",
 		"description": "Chey Mage/Illusionist. Eigth of the Nine."
 	},
 	{
@@ -293,6 +300,7 @@
 			"#melee": 180,
 			"#missile": 240
 		},
+		"universeId": "middle-earth",
 		"description": "Variag Figther. Messenger and Ninth."
 	}
 ]

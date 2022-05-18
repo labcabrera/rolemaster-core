@@ -34,7 +34,7 @@ public class Npc {
 
 	private String shortDescription;
 
-	private boolean unique;
+	private Boolean unique;
 
 	private Integer level;
 

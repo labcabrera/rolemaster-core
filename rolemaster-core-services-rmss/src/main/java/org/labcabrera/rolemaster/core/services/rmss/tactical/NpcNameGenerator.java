@@ -20,7 +20,7 @@ public class NpcNameGenerator {
 	private SecureRandom random = new SecureRandom();
 
 	public Mono<String> generateName(String tacticalSessionId, Npc npc) {
-		if (npc.isUnique()) {
+		if (Boolean.TRUE.equals(npc.getUnique())) {
 			return Mono.just(npc.getName());
 		}
 		if (npc.getNpcNameGeneratorGroup() != null) {
