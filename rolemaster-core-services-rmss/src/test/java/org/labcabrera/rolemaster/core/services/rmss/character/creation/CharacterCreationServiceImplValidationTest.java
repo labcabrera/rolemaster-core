@@ -6,7 +6,7 @@ import static org.mockito.Mockito.mock;
 import javax.validation.ConstraintViolationException;
 
 import org.junit.jupiter.api.Test;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
 import org.labcabrera.rolemaster.core.services.character.creation.CharacterCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

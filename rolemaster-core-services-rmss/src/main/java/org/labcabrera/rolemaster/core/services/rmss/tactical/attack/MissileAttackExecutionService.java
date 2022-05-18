@@ -7,8 +7,9 @@ import org.labcabrera.rolemaster.core.dto.context.AttackContext;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMissileAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.services.rmss.context.loader.AttackContextLoader;
+import org.labcabrera.rolemaster.core.services.commons.context.AttackContextLoader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
@@ -25,10 +26,10 @@ public class MissileAttackExecutionService {
 	@Autowired
 	private AttackContextLoader contextLoader;
 
-	public Mono<TacticalActionMissileAttack> execute(TacticalActionMissileAttack action, MissileAttackExecution execution) {
+	public Mono<TacticalActionMissileAttack> execute(JwtAuthenticationToken auth, TacticalActionMissileAttack action,
+		MissileAttackExecution execution) {
 		loadActionData(action, execution);
-		return Mono.just(AttackContext.builder().action(action).build())
-			.flatMap(contextLoader::apply)
+		return contextLoader.apply(auth, action)
 			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)

@@ -19,6 +19,7 @@ class CharacterCreationServiceNomadMagicianTest extends AbstractCharacterCreatio
 		return """
 				{
 				"name": "Test Nomads Magician",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "nomad",

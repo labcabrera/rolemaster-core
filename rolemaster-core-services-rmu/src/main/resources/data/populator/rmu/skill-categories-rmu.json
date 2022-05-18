@@ -1,0 +1,284 @@
+[
+	{
+		"id": "animal-rmu",
+		"name": "Animal",
+		"version": "rmu",
+		"group": "animal",
+		"attributeBonus": [
+			"ag",
+			"em",
+			"pr"
+		],
+		"progressionType": "none",
+		"description": "Animal skills are any skill that involves interaction with or control of animals or beasts. The maneuver may be an Absolute Maneuver (e.g., making a mount approach a larger beast, training a dog to roll over) or a Percentage Maneuver (most often used for movement while riding), flee, or in the direction away from what scared it if not)."
+	},
+	{
+		"id": "awareness-rmu",
+		"name": "Awareness",
+		"version": "rmu",
+		"group": "awareness",
+		"attributeBonus": [
+			"in",
+			"re",
+			"sd"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "body-discipline-rmu",
+		"name": "Body discipline",
+		"version": "rmu",
+		"group": "body-discipline",
+		"attributeBonus": [
+			"co",
+			"co",
+			"sd"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "brawn-rmu",
+		"name": "Brawn",
+		"version": "rmu",
+		"group": "brawn",
+		"attributeBonus": [
+			"co",
+			"co",
+			"sd"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "combat-expertise-rmu",
+		"name": "Combat expertise",
+		"version": "rmu",
+		"group": "combat-expertise",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "combat-training-rmu",
+		"name": "Combat training",
+		"version": "rmu",
+		"group": "combat-training",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "composition-rmu",
+		"name": "Composition",
+		"version": "rmu",
+		"group": "composition",
+		"attributeBonus": [
+			"em",
+			"in",
+			"re"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "crafting-rmu",
+		"name": "Crafting",
+		"version": "rmu",
+		"group": "crafting",
+		"attributeBonus": [
+			"ag",
+			"me",
+			"sd"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "delving-rmu",
+		"name": "Delving",
+		"version": "rmu",
+		"group": "delving",
+		"attributeBonus": [
+			"em",
+			"in",
+			"pr"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "environmental-rmu",
+		"name": "Environmental",
+		"version": "rmu",
+		"group": "environmental",
+		"attributeBonus": [
+			"in",
+			"me",
+			"re"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "gymnastic-rmu",
+		"name": "Gymnastic",
+		"version": "rmu",
+		"group": "gymnastic",
+		"attributeBonus": [
+			"ag",
+			"qu",
+			"st"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "lore-rmu",
+		"name": "Lore",
+		"version": "rmu",
+		"group": "lore",
+		"attributeBonus": [
+			"me",
+			"me",
+			"re"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "magical-expertise-rmu",
+		"name": "Magical Expertise",
+		"version": "rmu",
+		"group": "magical-expertise",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "medical-rmu",
+		"name": "Medical",
+		"version": "rmu",
+		"group": "medical",
+		"attributeBonus": [
+			"in",
+			"me",
+			"re"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "mental-discipline-rmu",
+		"name": "Mental discipline",
+		"version": "rmu",
+		"group": "mental-discipline",
+		"attributeBonus": [
+			"pr",
+			"sd",
+			"sd"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "movement-rmu",
+		"name": "Movement",
+		"version": "rmu",
+		"group": "movement",
+		"attributeBonus": [
+			"ag",
+			"co",
+			"st"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "performance-art-rmu",
+		"name": "Performance Art",
+		"version": "rmu",
+		"group": "performance-art",
+		"attributeBonus": [
+			"em",
+			"me",
+			"pr"
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "power-manipulation-rmu",
+		"name": "Power Manipulation",
+		"version": "rmu",
+		"group": "power-manipulation",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "science-rmu",
+		"name": "Science",
+		"version": "rmu",
+		"group": "science",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "social-rmu",
+		"name": "Social",
+		"version": "rmu",
+		"group": "social",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "spellcasting-rmu",
+		"name": "Spellcasting",
+		"version": "rmu",
+		"group": "spellcasting",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "subterfuge-rmu",
+		"name": "Subterfuge",
+		"version": "rmu",
+		"group": "subterfuge",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "technical-rmu",
+		"name": "Technical",
+		"version": "rmu",
+		"group": "technical",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	},
+	{
+		"id": "vocation-rmu",
+		"name": "Vocation",
+		"version": "rmu",
+		"group": "vocation",
+		"attributeBonus": [
+		],
+		"progressionType": "none",
+		"description": ""
+	}
+]

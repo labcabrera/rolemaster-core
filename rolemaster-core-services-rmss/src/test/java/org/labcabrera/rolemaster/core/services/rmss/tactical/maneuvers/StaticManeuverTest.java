@@ -57,7 +57,7 @@ class StaticManeuverTest extends AbstractTacticalTest {
 			.build();
 
 		TacticalActionStaticManeuver actionExecuted = (TacticalActionStaticManeuver) tacticalActionService
-			.execute(actionDeclared.getId(), execution).share().block();
+			.execute(auth, actionDeclared.getId(), execution).share().block();
 
 		assertNotNull(actionExecuted);
 		assertNotNull(actionExecuted.getModifiers());

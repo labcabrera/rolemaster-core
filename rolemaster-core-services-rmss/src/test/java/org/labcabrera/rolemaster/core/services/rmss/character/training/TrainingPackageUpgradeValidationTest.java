@@ -10,8 +10,8 @@ import javax.validation.ConstraintViolationException;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.services.character.CharacterAddTrainingPackageService;
 import org.labcabrera.rolemaster.core.services.character.creation.CharacterCreationService;

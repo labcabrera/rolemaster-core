@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.HasAuthorization;
 import org.labcabrera.rolemaster.core.model.HasMetadata;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,6 +29,8 @@ public class TacticalSession implements HasAuthorization, HasMetadata {
 
 	@Schema(description = "Strategic session identifier to which it belongs.", required = true, example = "6242c18da7a9f7048331ca08")
 	private String strategicSessionId;
+
+	private RolemasterVersion version;
 
 	@Schema(description = "Tactical session name.", required = true, example = "Combat in the meadows of Arnor")
 	private String name;

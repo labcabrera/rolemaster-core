@@ -2,11 +2,13 @@ package org.labcabrera.rolemaster.core.repository;
 
 import java.util.List;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface SkillRepository extends ReactiveMongoRepository<Skill, String> {
 
@@ -18,5 +20,7 @@ public interface SkillRepository extends ReactiveMongoRepository<Skill, String> 
 
 	@Query("{$or :[{'id': { $in: ?0 } },{'loadOnNewCharacters': true}]}")
 	Flux<Skill> findByIdsOnNewCharacter(List<String> ids);
+
+	Mono<Void> deleteByVersion(RolemasterVersion version);
 
 }

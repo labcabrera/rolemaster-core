@@ -5,8 +5,8 @@ import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
-import org.labcabrera.rolemaster.core.services.commons.MetadataCreationUpdater;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
+import org.labcabrera.rolemaster.core.services.commons.MetadataCreationUpdater;
 import org.labcabrera.rolemaster.core.services.commons.security.AuthorizationConsumer;
 import org.labcabrera.rolemaster.core.services.commons.security.WriteAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +41,11 @@ public class TacticalSessionCreationService {
 		return sessionRepository.findById(request.getStrategicSessionId())
 			.switchIfEmpty(Mono.error(new BadRequestException(Errors.missingStrategicSession(request.getStrategicSessionId()))))
 			.map(s -> writeFilter.apply(auth, s))
-			.thenReturn(request)
-			.map(converter::convert)
+			.map(strategic -> {
+				TacticalSession tactical = converter.convert(request);
+				tactical.setVersion(strategic.getVersion());
+				return tactical;
+			})
 			.map(s -> authConsumer.accept(auth, s))
 			.map(metadataCreationUpdater::apply)
 			.flatMap(tacticalSessionRepository::insert);

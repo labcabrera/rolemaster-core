@@ -8,6 +8,7 @@ import org.labcabrera.rolemaster.core.api.controller.EnumController;
 import org.labcabrera.rolemaster.core.dto.NamedKey;
 import org.labcabrera.rolemaster.core.model.CodeNameEnum;
 import org.labcabrera.rolemaster.core.model.RolemasterVersion;
+import org.labcabrera.rolemaster.core.model.UnitSystem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemPosition;
 import org.labcabrera.rolemaster.core.model.combat.Cover;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
@@ -43,6 +44,7 @@ public class EnumControllerImpl implements EnumController {
 		map.put("rolemaster-version", RolemasterVersion.values());
 		map.put("terrain", TerrainType.values());
 		map.put("temperature-multiplier", TemperatureMultiplier.values());
+		map.put("unit-system", UnitSystem.values());
 	}
 
 	@Override

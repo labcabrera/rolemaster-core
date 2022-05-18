@@ -1,5 +1,7 @@
 package org.labcabrera.rolemaster.core.api.controller.impl;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.NotImplementedException;
@@ -9,8 +11,9 @@ import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.AddTalent;
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
+import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterCreation;
+import org.labcabrera.rolemaster.core.model.exception.UnsupportedRolemasterVersionService;
 import org.labcabrera.rolemaster.core.services.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.services.character.CharacterAddTrainingPackageService;
 import org.labcabrera.rolemaster.core.services.character.CharacterInfoService;
@@ -31,7 +34,7 @@ public class CharacterControllerImpl implements CharacterController {
 	private CharacterInfoService characterService;
 
 	@Autowired
-	private CharacterCreationService creationService;
+	private List<CharacterCreationService> creationServices;
 
 	@Autowired
 	private CharacterAddSkillService addSkillService;
@@ -49,7 +52,10 @@ public class CharacterControllerImpl implements CharacterController {
 
 	@Override
 	public Mono<CharacterInfo> create(JwtAuthenticationToken auth, @Valid CharacterCreation request) {
-		return creationService.create(auth, request);
+		return creationServices.stream()
+			.filter(e -> e.compatibleVersions().contains(request.getVersion()))
+			.findFirst().orElseThrow(() -> new UnsupportedRolemasterVersionService(request.getVersion()))
+			.create(auth, request);
 	}
 
 	@Override

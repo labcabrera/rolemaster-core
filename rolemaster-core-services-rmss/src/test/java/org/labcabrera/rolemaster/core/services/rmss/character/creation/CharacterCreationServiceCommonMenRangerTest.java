@@ -19,6 +19,7 @@ class CharacterCreationServiceCommonMenRangerTest extends AbstractCharacterCreat
 		return """
 				{
 				"name": "Test Common Men Ranger",
+				"version": "rmss",
 				"level": 1,
 				"universeId": "generic",
 				"raceId": "common-man",

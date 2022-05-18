@@ -7,8 +7,9 @@ import org.labcabrera.rolemaster.core.model.tactical.TacticalActionState;
 import org.labcabrera.rolemaster.core.model.tactical.action.MeleeAttackMode;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMeleeAttack;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
-import org.labcabrera.rolemaster.core.services.rmss.context.loader.AttackContextLoader;
+import org.labcabrera.rolemaster.core.services.commons.context.AttackContextLoader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,15 +28,15 @@ public class MeleeAttackExecutionService {
 	@Autowired
 	private AttackProcessorService processorService;
 
-	public Mono<TacticalActionMeleeAttack> execute(TacticalActionMeleeAttack action, MeleeAttackExecution execution) {
+	public Mono<TacticalActionMeleeAttack> execute(JwtAuthenticationToken auth, TacticalActionMeleeAttack action,
+		MeleeAttackExecution execution) {
 		if (action.getState() != TacticalActionState.PENDING) {
 			return Mono.just(action);
 		}
 		log.debug("Processing melee attack");
 		loadAction(action, execution);
 		loadTargets(action, execution);
-		return Mono.just(AttackContext.builder().action(action).build())
-			.flatMap(contextLoader::apply)
+		return contextLoader.apply(auth, action)
 			.flatMap(processorService::apply)
 			.map(AttackContext::getAction)
 			.flatMap(actionRepository::save)

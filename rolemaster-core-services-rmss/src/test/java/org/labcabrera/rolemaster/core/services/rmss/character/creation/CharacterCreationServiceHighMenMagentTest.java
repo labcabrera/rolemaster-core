@@ -10,6 +10,7 @@ class CharacterCreationServiceHighMenMagentTest extends AbstractCharacterCreatio
 		return """
 				{
 				"name": "Test High Men Magent",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "high-man",

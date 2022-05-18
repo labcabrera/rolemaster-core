@@ -63,10 +63,10 @@ public abstract class TacticalAction {
 	private String notes;
 
 	@Builder.Default
-	private Map<InitiativeModifier, Integer> initiativeModifiers = new LinkedHashMap<>();
+	private Map<InitiativeModifier, Integer> initiativeMap = new LinkedHashMap<>();
 
 	public Integer getInitiative() {
-		return initiativeModifiers.values().stream().reduce(0, (a, b) -> a + b);
+		return initiativeMap.values().stream().reduce(0, (a, b) -> a + b);
 	}
 
 }

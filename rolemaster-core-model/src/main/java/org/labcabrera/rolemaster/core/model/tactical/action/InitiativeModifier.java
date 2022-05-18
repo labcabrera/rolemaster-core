@@ -8,7 +8,7 @@ public enum InitiativeModifier {
 
 	ATTRIBUTE("attribute"),
 
-	DECLARED_MOVEMENT("declaredMovement"),
+	DECLARED_MOVEMENT("declared-movement"),
 
 	HP("hp"),
 

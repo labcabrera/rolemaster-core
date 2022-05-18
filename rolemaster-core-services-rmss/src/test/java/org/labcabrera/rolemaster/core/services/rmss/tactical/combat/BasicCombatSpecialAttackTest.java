@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterInitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
@@ -51,15 +53,18 @@ class BasicCombatSpecialAttackTest extends AbstractBasicCombatTest {
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee01.getId()))
 			.build()).share().block();
 
-		round01 = tacticalService.startInitiativeDeclaration(round01.getId()).share().block();
-		round01 = tacticalService.setInitiative(round01.getId(), taGollum.getId(), 15).share().block();
-		round01 = tacticalService.startExecutionPhase(round01.getId()).share().block();
+		InitiativeDeclaration initiativeDeclaration = InitiativeDeclaration.builder().build();
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taGollum.getId())
+			.initiativeRoll(11)
+			.build());
+		round01 = tacticalInitiativeService.initiativeDeclaration(auth, ts.getId(), initiativeDeclaration).share().block();
 
 		MeleeAttackExecution meleeAttackExecution = MeleeAttackExecution.builder()
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(85)))
 			.build();
 
-		TacticalActionMeleeAttack meleeAttack = (TacticalActionMeleeAttack) tacticalActionService.execute(a01.getId(), meleeAttackExecution)
+		TacticalActionMeleeAttack meleeAttack = (TacticalActionMeleeAttack) tacticalActionService.execute(auth,a01.getId(), meleeAttackExecution)
 			.share().block();
 
 		assertNotNull(meleeAttack);

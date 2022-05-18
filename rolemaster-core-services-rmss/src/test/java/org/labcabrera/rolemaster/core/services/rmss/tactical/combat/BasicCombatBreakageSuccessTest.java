@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.WeaponBreakageExecution;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterInitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
 import org.labcabrera.rolemaster.core.model.character.item.ItemFeatureType;
@@ -57,9 +59,12 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 		assertNotNull(a01.getState());
 		assertEquals(TacticalActionState.PENDING, a01.getState());
 
-		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
-		round01 = tacticalService.setInitiative(r01Id, taMelee01.getId(), 11).share().block();
-		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
+		InitiativeDeclaration initiativeDeclaration = InitiativeDeclaration.builder().build();
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taMelee01.getId())
+			.initiativeRoll(11)
+			.build());
+		round01 = tacticalInitiativeService.initiativeDeclaration(auth, ts.getId(), initiativeDeclaration).share().block();
 
 		List<TacticalAction> actionQueue = tacticalService.getActionQueue(r01Id).share().collectList().share().block();
 		assertEquals(1, actionQueue.size());
@@ -70,7 +75,8 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 			.facingMap(Collections.singletonMap(AttackTargetType.MAIN_HAND, MeleeAttackFacing.FLANK))
 			.build();
 
-		TacticalActionMeleeAttack resolved = (TacticalActionMeleeAttack) tacticalActionService.execute(a01.getId(), meleeAttackExecution)
+		TacticalActionMeleeAttack resolved = (TacticalActionMeleeAttack) tacticalActionService
+			.execute(auth, a01.getId(), meleeAttackExecution)
 			.share().block();
 
 		assertEquals(TacticalActionState.PENDING_BREAKAGE_RESOLUTION, resolved.getState());
@@ -79,7 +85,7 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, 50))
 			.build();
 
-		resolved = (TacticalActionMeleeAttack) tacticalActionService.executeBreakage(a01.getId(), breakageExecution).share().block();
+		resolved = (TacticalActionMeleeAttack) tacticalActionService.executeBreakage(auth, a01.getId(), breakageExecution).share().block();
 
 		assertEquals(TacticalActionState.RESOLVED, resolved.getState());
 

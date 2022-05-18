@@ -28,9 +28,13 @@ public class User {
 	@Builder.Default
 	private List<String> blockedUsers = new ArrayList<>();
 
+	private RolemasterVersion defaultVersion;
+
+	private UnitSystem defaultUnitSystem;
+
 	private String defaultUniverseId;
 
-	private Double defaultScale;
+	private Double defaultBoardScale;
 
 	private LocalDateTime created;
 

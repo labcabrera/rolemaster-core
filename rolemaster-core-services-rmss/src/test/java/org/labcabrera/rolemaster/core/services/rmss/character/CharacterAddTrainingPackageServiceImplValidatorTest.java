@@ -22,7 +22,7 @@ class CharacterAddTrainingPackageServiceImplValidatorTest {
 		JwtAuthenticationToken auth = null;
 		String characterId = "test";
 		TrainingPackageUpgrade request = mock(TrainingPackageUpgrade.class);
-		assertThrows(ConstraintViolationException.class, () -> service.upgrade(auth, characterId, request).share());
+		assertThrows(ConstraintViolationException.class, () -> service.upgrade(auth, characterId, request));
 	}
 
 	@Test
@@ -30,7 +30,7 @@ class CharacterAddTrainingPackageServiceImplValidatorTest {
 		JwtAuthenticationToken auth = mock(JwtAuthenticationToken.class);
 		String characterId = null;
 		TrainingPackageUpgrade request = mock(TrainingPackageUpgrade.class);
-		assertThrows(ConstraintViolationException.class, () -> service.upgrade(auth, characterId, request).share());
+		assertThrows(ConstraintViolationException.class, () -> service.upgrade(auth, characterId, request));
 	}
 
 	@Test
@@ -38,7 +38,7 @@ class CharacterAddTrainingPackageServiceImplValidatorTest {
 		JwtAuthenticationToken auth = mock(JwtAuthenticationToken.class);
 		String characterId = "test";
 		TrainingPackageUpgrade request = null;
-		assertThrows(ConstraintViolationException.class, () -> service.upgrade(auth, characterId, request).share());
+		assertThrows(ConstraintViolationException.class, () -> service.upgrade(auth, characterId, request));
 	}
 
 }

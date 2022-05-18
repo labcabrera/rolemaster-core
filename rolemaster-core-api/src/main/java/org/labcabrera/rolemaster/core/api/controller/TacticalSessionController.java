@@ -2,6 +2,7 @@ package org.labcabrera.rolemaster.core.api.controller;
 
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
@@ -66,21 +67,6 @@ public interface TacticalSessionController {
 	@Operation(summary = "Start round.")
 	Mono<TacticalRound> startRound(@PathVariable("id") String tacticalSessionId);
 
-	@PostMapping("/{id}/round/initiative-declaration")
-	@Operation(summary = "Start initiative declaration phase.")
-	Mono<TacticalRound> startInitiativeDeclaration(@PathVariable("id") String tacticalSessionId);
-
-	@PostMapping("/{id}/round/initiative-declaration/{characterId}/{roll}")
-	@Operation(summary = "Start initiative declaration phase.")
-	Mono<TacticalRound> declareInitiative(
-		@PathVariable("id") String tacticalSessionId,
-		@PathVariable("characterId") String characterId,
-		@PathVariable("roll") Integer roll);
-
-	@PostMapping("/{id}/round/start-execution")
-	@Operation(summary = "Start execution phase.")
-	Mono<TacticalRound> startExecutionPhase(@PathVariable("id") String tacticalSessionId);
-
 	@GetMapping("/{id}/characters")
 	@Operation(summary = "Find tactical session character contexts.")
 	Flux<TacticalCharacter> findCharacters(@PathVariable("id") String id);
@@ -92,5 +78,12 @@ public interface TacticalSessionController {
 	@PostMapping("/{id}/characters/npc/{npcId}")
 	@Operation(summary = "Add a new character to current tactical session.")
 	Mono<TacticalCharacter> addNpcCharacter(@PathVariable("id") String id, @PathVariable("npcId") String npcId);
+
+	@PostMapping("/{id}/initiative")
+	@Operation(summary = "Add a new character to current tactical session.")
+	Mono<TacticalRound> declareInitiative(
+		@Parameter(hidden = true) @AuthenticationPrincipal JwtAuthenticationToken auth,
+		@PathVariable("id") String tacticalSessionId,
+		@RequestBody InitiativeDeclaration request);
 
 }

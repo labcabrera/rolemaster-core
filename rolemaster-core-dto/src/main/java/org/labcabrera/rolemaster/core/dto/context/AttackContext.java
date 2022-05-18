@@ -2,14 +2,13 @@ package org.labcabrera.rolemaster.core.dto.context;
 
 import java.util.EnumMap;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.item.Item;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
-import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack;
 
 import lombok.AllArgsConstructor;
@@ -28,8 +27,6 @@ public class AttackContext extends TacticalContext implements HasItemMap {
 
 	private TacticalActionAttack action;
 
-	private TacticalCharacter source;
-
 	private CharacterInfo sourceCharacterInfo;
 
 	@Builder.Default
@@ -38,6 +35,9 @@ public class AttackContext extends TacticalContext implements HasItemMap {
 	@Builder.Default
 	private Map<String, Item> itemMap = new HashMap<>();
 
-	private List<TacticalAction> roundActions;
+	public TacticalCharacter getSource() {
+		return this.characters.stream().filter(e -> e.getId().equals(action.getSource())).findFirst()
+			.orElseThrow(() -> new DataConsistenceException(""));
+	}
 
 }

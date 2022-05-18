@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.table.Table3DIntRange;
-import org.labcabrera.rolemaster.core.table.Table3DIntRangeLoader;
+import org.labcabrera.rolemaster.core.table.loader.CsvTable3DIntRangeLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class BroadswordRmuDataTest {
 
 	@Autowired
-	private Table3DIntRangeLoader tableLoader;
+	private CsvTable3DIntRangeLoader tableLoader;
 
 	private Table3DIntRange<String> table;
 

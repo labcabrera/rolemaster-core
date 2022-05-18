@@ -9,7 +9,6 @@ import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
-import org.labcabrera.rolemaster.core.model.tactical.TacticalRoundState;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.NpcRepository;
@@ -41,9 +40,6 @@ public class TacticalServiceImpl implements TacticalService {
 	private TacticalNpcCharacterService npcCharacterService;
 
 	@Autowired
-	private TacticalRoundService tacticalRoundService;
-
-	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
@@ -63,9 +59,6 @@ public class TacticalServiceImpl implements TacticalService {
 
 	@Autowired
 	private TacticalLogService logService;
-
-	@Autowired
-	private TacticalInitiativeService initiativeService;
 
 	@Autowired
 	private EndTurnCharacterProcessor endTurnCharacterProcessor;
@@ -105,7 +98,6 @@ public class TacticalServiceImpl implements TacticalService {
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.tacticalSessionNotFound(tacticalSessionId))))
 			.flatMap(session -> endTurnCharacterProcessor.process(session, tacticalSessionId))
 			.map(e -> TacticalRound.builder()
-				.state(TacticalRoundState.ACTION_DECLARATION)
 				.tacticalSessionId(tacticalSessionId)
 				.metadata(EntityMetadata.builder()
 					.created(LocalDateTime.now())
@@ -129,40 +121,10 @@ public class TacticalServiceImpl implements TacticalService {
 	}
 
 	@Override
-	public Mono<TacticalRound> generateRandomInitiatives(String tacticalSessionId) {
-		return getCurrentRound(tacticalSessionId)
-			.map(tacticalRoundService::generateRandomInitiatives)
-			.flatMap(tacticalRoundRepository::save);
-	}
-
-	@Override
 	public Flux<TacticalAction> getActionQueue(String roundId) {
 		return tacticalRoundRepository.findById(roundId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.roundNotFound(roundId))))
-			.map(round -> {
-				if (round.getState() != TacticalRoundState.ACTION_RESOLUTION) {
-					throw new BadRequestException(Errors.INVALID_ROUND_STATE);
-				}
-				return round;
-			})
 			.thenMany(actionRepository.findByRoundId(roundId));
-	}
-
-	@Override
-	public Mono<TacticalRound> startInitiativeDeclaration(String roundId) {
-		return initiativeService.startInitiativeDeclaration(roundId);
-	}
-
-	@Override
-	public Mono<TacticalRound> setInitiative(String roundId, String character, Integer initiativeRoll) {
-		return initiativeService.setInitiative(roundId, character, initiativeRoll);
-	}
-
-	@Override
-	public Mono<TacticalRound> startExecutionPhase(String roundId) {
-		return tacticalRoundRepository.findById(roundId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.roundNotFound(roundId))))
-			.flatMap(initiativeService::loadActionInitiatives);
 	}
 
 	//TODO delete actions

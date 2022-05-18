@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.services.rmss.tactical;
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
-import org.labcabrera.rolemaster.core.services.rmss.converter.NpcToTacticalCharacterConverter;
+import org.labcabrera.rolemaster.core.services.commons.converter.NpcToTacticalCharacterConverter;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalNpcCharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

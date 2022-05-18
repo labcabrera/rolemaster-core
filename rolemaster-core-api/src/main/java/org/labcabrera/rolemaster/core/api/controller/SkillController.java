@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.api.controller;
 
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.skill.Skill;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +28,7 @@ public interface SkillController {
 	@GetMapping
 	@Operation(summary = "Skill search.")
 	Flux<Skill> find(
+		@Parameter(name = "version", required = false) @RequestParam(required = false) RolemasterVersion version,
 		@Parameter(name = "categoryId", required = false) @RequestParam(required = false) String categoryId,
 		@ParameterObject @PageableDefault(sort = "name", direction = Direction.ASC, size = 10) Pageable pageable);
 

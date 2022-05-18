@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class AttributeCreationServiceTest {
 
 	@InjectMocks
-	private AttributeCreationServiceImpl service;
+	private AttributeCreationServiceRmssImpl service;
 
 	@Test
 	void test() {

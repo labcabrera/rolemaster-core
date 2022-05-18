@@ -12,6 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterInitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
@@ -72,18 +74,27 @@ class BasicCombatParryPressAndMeleeTest extends AbstractBasicCombatTest {
 		assertNotNull(a02);
 		assertNotNull(a03);
 
-		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
-		round01 = tacticalService.setInitiative(r01Id, taMelee01.getId(), 3).share().block();
-		round01 = tacticalService.setInitiative(r01Id, taMelee02.getId(), 1).share().block();
-		round01 = tacticalService.setInitiative(r01Id, taMelee03.getId(), 2).share().block();
-		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
+		InitiativeDeclaration initiativeDeclaration = InitiativeDeclaration.builder().build();
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taMelee01.getId())
+			.initiativeRoll(3)
+			.build());
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taMelee02.getId())
+			.initiativeRoll(1)
+			.build());
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taMelee03.getId())
+			.initiativeRoll(2)
+			.build());
+		round01 = tacticalInitiativeService.initiativeDeclaration(auth, ts.getId(), initiativeDeclaration).share().block();
 
 		MeleeAttackExecution meleeAttackExecution01 = MeleeAttackExecution.builder()
 			.targets(Collections.singletonMap(AttackTargetType.MAIN_HAND, taMelee02.getId()))
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(56)))
 			.build();
 
-		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution01).share().block();
+		TacticalAction taResolved01 = tacticalActionService.execute(auth, a01.getId(), meleeAttackExecution01).share().block();
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
@@ -100,7 +111,7 @@ class BasicCombatParryPressAndMeleeTest extends AbstractBasicCombatTest {
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(56)))
 			.build();
 		TacticalActionMeleeAttack meleeResolved03 = (TacticalActionMeleeAttack) tacticalActionService
-			.execute(a03.getId(), meleeAttackExecution03).share().block();
+			.execute(auth, a03.getId(), meleeAttackExecution03).share().block();
 
 		Map<OffensiveBonusModifier, Integer> mainHandMap03 = meleeResolved03.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
 		assertFalse(mainHandMap03.containsKey(OffensiveBonusModifier.PARRY_DEFENSE));

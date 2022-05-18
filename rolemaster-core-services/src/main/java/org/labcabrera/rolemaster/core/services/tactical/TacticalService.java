@@ -27,15 +27,6 @@ public interface TacticalService {
 
 	Mono<TacticalRound> getCurrentRound(String tacticalSessionId);
 
-	@Deprecated
-	Mono<TacticalRound> generateRandomInitiatives(String tacticalSessionId);
-
 	Flux<TacticalAction> getActionQueue(String roundId);
-
-	Mono<TacticalRound> startInitiativeDeclaration(String roundId);
-
-	Mono<TacticalRound> setInitiative(String roundId, String tacticalCharacterId, Integer initiativeRoll);
-
-	Mono<TacticalRound> startExecutionPhase(String roundId);
 
 }

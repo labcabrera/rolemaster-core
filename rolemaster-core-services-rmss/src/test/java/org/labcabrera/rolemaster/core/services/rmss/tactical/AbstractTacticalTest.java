@@ -16,6 +16,7 @@ import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
 import org.labcabrera.rolemaster.core.services.rmss.MockAuthentication;
 import org.labcabrera.rolemaster.core.services.strategic.StrategicSessionService;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalActionService;
+import org.labcabrera.rolemaster.core.services.tactical.TacticalInitiativeService;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
@@ -47,6 +48,9 @@ public abstract class AbstractTacticalTest {
 
 	@Autowired
 	protected TacticalCharacterRepository tacticalCharacterRepository;
+
+	@Autowired
+	protected TacticalInitiativeService tacticalInitiativeService;
 
 	protected StrategicSession sts;
 

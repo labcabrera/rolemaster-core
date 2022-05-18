@@ -1,0 +1,39 @@
+[
+	{
+		"id": "rolemaster"
+	},
+	{
+		"id": "rolemaster-core"
+	},
+	{
+		"id": "rolemaster-client"
+	},
+	{
+		"id": "labcabrera"
+	},
+	{
+		"id": "set",
+		"friends": [
+			"cbcabrera",
+			"pieterman"
+		],
+		"defaultVersion": "rmss",
+		"defaultUnitSystem": "metric",
+		"defaultUniverseId": "middle-earth",
+		"defaultBoardScale": 0.5
+	},
+	{
+		"id": "cbcabrera",
+		"friends": [
+			"set",
+			"pieterman"
+		]
+	},
+	{
+		"id": "pieterman",
+		"friends": [
+			"set",
+			"cbcabrera"
+		]
+	}
+]

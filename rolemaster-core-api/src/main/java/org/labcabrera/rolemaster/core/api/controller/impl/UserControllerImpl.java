@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.commons.lang3.NotImplementedException;
 import org.labcabrera.rolemaster.core.api.controller.UserController;
 import org.labcabrera.rolemaster.core.dto.AddFriendRequest;
+import org.labcabrera.rolemaster.core.dto.user.UserPreferenceModification;
 import org.labcabrera.rolemaster.core.model.User;
 import org.labcabrera.rolemaster.core.model.UserFriendRequest;
 import org.labcabrera.rolemaster.core.services.commons.user.UserService;
@@ -54,5 +55,12 @@ public class UserControllerImpl implements UserController {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Mono<User> updatePreferences(JwtAuthenticationToken auth, UserPreferenceModification request) {
+		return userService.updatePreferences(auth,request);
+	}
+
+
 
 }

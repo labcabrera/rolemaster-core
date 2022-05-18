@@ -17,6 +17,7 @@ class CharacterCreationServiceNomadsMixedClericTest extends AbstractCharacterCre
 		return """
 				{
 				"name": "Test Nomads Mixed Healer",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "nomad-mixed",

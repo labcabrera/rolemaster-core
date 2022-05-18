@@ -19,6 +19,7 @@ class CharacterCreationServiceGreaterOrkRogueTest extends AbstractCharacterCreat
 		return """
 				{
 				"name": "Test Greater Orcs Rogue",
+				"version": "rmss",
 				"universeId": "generic",
 				"level": 1,
 				"raceId": "greater-orc",

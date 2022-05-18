@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.character.CharacterCustomization;
+import org.labcabrera.rolemaster.core.services.commons.populator.AbstractJsonPopulator;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.type.TypeReference;

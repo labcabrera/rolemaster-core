@@ -16,9 +16,10 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionAttack
 import org.labcabrera.rolemaster.core.repository.CharacterItemRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.services.rmss.context.loader.AttackContextLoader;
+import org.labcabrera.rolemaster.core.services.commons.context.AttackContextLoader;
 import org.labcabrera.rolemaster.core.services.rmss.tactical.TacticalCharacterItemResolver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -46,14 +47,13 @@ public class WeaponBreakageExecutionService {
 	@Autowired
 	private TacticalCharacterRepository tacticalCharacterRepository;
 
-	public Mono<TacticalActionAttack> apply(TacticalActionAttack action, WeaponBreakageExecution execution) {
+	public Mono<TacticalActionAttack> apply(JwtAuthenticationToken auth, TacticalActionAttack action, WeaponBreakageExecution execution) {
 		if (action.getState() != TacticalActionState.PENDING_BREAKAGE_RESOLUTION) {
 			return Mono.just(action);
 		}
 		log.debug("Processing weapon breakage");
 		loadBreakageRolls(action, execution);
-		return Mono.just(AttackContext.builder().action(action).build())
-			.flatMap(contextLoader::apply)
+		return contextLoader.apply(auth, action)
 			.map(this::processBreakage)
 			.flatMap(this::processWeaponBreakage)
 			.map(this::processAttackState)

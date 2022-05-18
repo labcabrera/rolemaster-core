@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMovementDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MovementExecution;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterInitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverCombatSituation;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
@@ -41,16 +43,19 @@ class BasicMovementNoDifficultyTest extends AbstractBasicCombatTest {
 		TacticalActionMovement movementDeclared = (TacticalActionMovement) tacticalActionService.delare(declaration).share().block();
 		assertEquals(TacticalActionState.PENDING, movementDeclared.getState());
 
-		round01 = tacticalService.startInitiativeDeclaration(round01.getId()).share().block();
-		round01 = tacticalService.setInitiative(round01.getId(), taMelee01.getId(), 11).share().block();
-		round01 = tacticalService.startExecutionPhase(round01.getId()).share().block();
+		InitiativeDeclaration initiativeDeclaration = InitiativeDeclaration.builder().build();
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taMelee01.getId())
+			.initiativeRoll(11)
+			.build());
+		round01 = tacticalInitiativeService.initiativeDeclaration(auth, ts.getId(), initiativeDeclaration).share().block();
 
 		MovementExecution execution = MovementExecution.builder()
 			.difficulty(ManeuverDifficulty.NONE)
 			.combatSituation(MovingManeuverCombatSituation.MELEE_ENVIRONMENT)
 			.build();
 
-		TacticalActionMovement resolved = (TacticalActionMovement) tacticalActionService.execute(movementDeclared.getId(), execution)
+		TacticalActionMovement resolved = (TacticalActionMovement) tacticalActionService.execute(auth, movementDeclared.getId(), execution)
 			.share().block();
 
 		assertNotNull(resolved);
