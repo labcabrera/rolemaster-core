@@ -57,7 +57,7 @@ class BasicMovementDifficultySuccessTest extends AbstractBasicCombatTest {
 			.roll(45)
 			.build();
 
-		TacticalActionMovement resolved = (TacticalActionMovement) tacticalActionService.execute(movementDeclared.getId(), execution)
+		TacticalActionMovement resolved = (TacticalActionMovement) tacticalActionService.execute(auth, movementDeclared.getId(), execution)
 			.share().block();
 
 		assertNotNull(resolved);

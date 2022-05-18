@@ -74,7 +74,7 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 			.build();
 
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) tacticalActionService
-			.execute(a01.getId(), meleeAttackExecution).share().block();
+			.execute(auth, a01.getId(), meleeAttackExecution).share().block();
 
 		Map<OffensiveBonusModifier, Integer> mainHandBonusMap = meleeResolved01.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
 		assertEquals(40, mainHandBonusMap.get(OffensiveBonusModifier.SKILL));

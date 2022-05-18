@@ -19,6 +19,7 @@ import org.labcabrera.rolemaster.core.services.rmss.tactical.maneuvers.MovingMan
 import org.labcabrera.rolemaster.core.services.rmss.tactical.maneuvers.StaticManeuverExecutionService;
 import org.labcabrera.rolemaster.core.services.tactical.action.MovementExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
 
 import reactor.core.publisher.Mono;
@@ -41,7 +42,7 @@ public class TacticalActionExecutionRouter {
 	@Autowired
 	private StaticManeuverExecutionService staticManeuverExecutionService;
 
-	public Mono<TacticalAction> execute(TacticalAction action, TacticalActionExecution request) {
+	public Mono<TacticalAction> execute(JwtAuthenticationToken auth, TacticalAction action, TacticalActionExecution request) {
 		if (action instanceof TacticalActionMovement tacticalMovement) {
 			if (!(request instanceof MovementExecution movementExecution)) {
 				throw new BadRequestException("Expected movement execution.");
@@ -52,13 +53,13 @@ public class TacticalActionExecutionRouter {
 			if (!(request instanceof MeleeAttackExecution meleeAttackExecution)) {
 				throw new BadRequestException("Expected melee attack execution.");
 			}
-			return meleeExecutionService.execute(tacticalMeleeAction, meleeAttackExecution).map(TacticalAction.class::cast);
+			return meleeExecutionService.execute(auth, tacticalMeleeAction, meleeAttackExecution).map(TacticalAction.class::cast);
 		}
 		else if (action instanceof TacticalActionMissileAttack missileAttack) {
 			if (!(request instanceof MissileAttackExecution missileAttackExecution)) {
 				throw new BadRequestException("Expected missile attack execution.");
 			}
-			return missileExecutionService.execute(missileAttack, missileAttackExecution).map(TacticalAction.class::cast);
+			return missileExecutionService.execute(auth, missileAttack, missileAttackExecution).map(TacticalAction.class::cast);
 		}
 		else if (action instanceof TacticalActionMovingManeuver mManeuver) {
 			if (!(request instanceof MovingManeuverExecution mManeuverExecution)) {

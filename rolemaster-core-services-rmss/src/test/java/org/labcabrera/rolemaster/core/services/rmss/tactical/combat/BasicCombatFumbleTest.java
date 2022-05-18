@@ -89,7 +89,7 @@ class BasicCombatFumbleTest extends AbstractTacticalTest {
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(1)))
 			.build();
 
-		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution).share().block();
+		TacticalAction taResolved01 = tacticalActionService.execute(auth, a01.getId(), meleeAttackExecution).share().block();
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 

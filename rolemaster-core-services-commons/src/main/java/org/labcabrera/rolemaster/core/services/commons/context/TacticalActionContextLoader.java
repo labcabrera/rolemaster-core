@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.context.loader;
+package org.labcabrera.rolemaster.core.services.commons.context;
 
 import org.labcabrera.rolemaster.core.dto.context.TacticalActionContext;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;

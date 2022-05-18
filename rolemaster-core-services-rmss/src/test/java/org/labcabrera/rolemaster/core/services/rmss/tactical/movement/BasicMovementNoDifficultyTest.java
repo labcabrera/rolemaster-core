@@ -55,7 +55,7 @@ class BasicMovementNoDifficultyTest extends AbstractBasicCombatTest {
 			.combatSituation(MovingManeuverCombatSituation.MELEE_ENVIRONMENT)
 			.build();
 
-		TacticalActionMovement resolved = (TacticalActionMovement) tacticalActionService.execute(movementDeclared.getId(), execution)
+		TacticalActionMovement resolved = (TacticalActionMovement) tacticalActionService.execute(auth, movementDeclared.getId(), execution)
 			.share().block();
 
 		assertNotNull(resolved);

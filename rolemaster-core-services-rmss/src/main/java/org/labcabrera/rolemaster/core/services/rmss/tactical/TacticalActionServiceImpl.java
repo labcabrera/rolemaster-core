@@ -22,6 +22,7 @@ import org.labcabrera.rolemaster.core.services.rmss.tactical.attack.WeaponBreaka
 import org.labcabrera.rolemaster.core.services.rmss.tactical.attack.processor.AttackResultProcessor;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalActionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Mono;
@@ -86,10 +87,10 @@ class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> execute(String actionId, TacticalActionExecution request) {
+	public Mono<TacticalAction> execute(JwtAuthenticationToken auth, String actionId, TacticalActionExecution request) {
 		return actionRepository.findById(actionId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
-			.flatMap(action -> this.tacticalActionExecutionRouter.execute(action, request));
+			.flatMap(action -> this.tacticalActionExecutionRouter.execute(auth, action, request));
 	}
 
 	@Override
@@ -115,11 +116,11 @@ class TacticalActionServiceImpl implements TacticalActionService {
 	}
 
 	@Override
-	public Mono<TacticalAction> executeBreakage(String actionId, WeaponBreakageExecution execution) {
+	public Mono<TacticalAction> executeBreakage(JwtAuthenticationToken auth, String actionId, WeaponBreakageExecution execution) {
 		return actionRepository.findById(actionId)
 			.switchIfEmpty(Mono.error(() -> new NotFoundException(Errors.missingAction(actionId))))
 			.map(TacticalActionAttack.class::cast)
-			.flatMap(attack -> breakageExecutionService.apply(attack, execution));
+			.flatMap(attack -> breakageExecutionService.apply(auth, attack, execution));
 	}
 
 }

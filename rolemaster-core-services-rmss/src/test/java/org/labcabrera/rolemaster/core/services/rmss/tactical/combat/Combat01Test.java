@@ -81,7 +81,7 @@ class Combat01Test extends AbstractTacticalTest {
 			.build();
 
 		TacticalActionMeleeAttack attackResolved = (TacticalActionMeleeAttack) tacticalActionService
-			.execute(a01.getId(), meleeAttackExecution).share().block();
+			.execute(auth, a01.getId(), meleeAttackExecution).share().block();
 
 		assertEquals(TacticalActionState.PENDING_CRITICAL_RESOLUTION, attackResolved.getState());
 

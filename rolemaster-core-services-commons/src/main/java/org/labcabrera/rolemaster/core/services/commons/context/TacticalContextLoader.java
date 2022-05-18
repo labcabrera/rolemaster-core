@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.services.commons.context;
 
 import org.labcabrera.rolemaster.core.dto.context.TacticalContext;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
-import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
+import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.repository.StrategicSessionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
@@ -37,16 +37,25 @@ public class TacticalContextLoader {
 	private ReadAuthorizationFilter readFilter;
 
 	public Mono<TacticalContext> apply(JwtAuthenticationToken auth, String tacticalSessionId, boolean loadCharacters, boolean loadActions) {
-		return tacticalSessionRepository.findById(tacticalSessionId)
-			.switchIfEmpty(Mono.error(() -> new NotFoundException("Tactical session not found.")))
-			.map(tacticalSession -> TacticalContext.builder().tacticalSession(tacticalSession).build())
-			.flatMap(ctx -> loadStrategicSession(auth, ctx))
-			.flatMap(this::loadRound)
-			.flatMap(ctx -> loadCharacters(ctx, loadCharacters))
-			.flatMap(ctx -> loadActions(ctx, loadActions));
+		TacticalContext context = new TacticalContext();
+		return Mono.just(context)
+			.flatMap(ctx -> loadTacticalSession(ctx, tacticalSessionId))
+			.flatMap(ctx -> loadStrategicSession(auth, ctx, ctx.getTacticalSession().getStrategicSessionId()))
+			.flatMap(ctx -> loadRoundByTacticalSessionId(ctx, tacticalSessionId))
+			.flatMap(ctx -> loadCharacters(ctx, ctx.getTacticalSession().getId(), loadCharacters))
+			.flatMap(ctx -> loadActions(ctx, ctx.getTacticalRound().getId(), loadActions));
 	}
 
-	public Mono<TacticalContext> loadStrategicSession(JwtAuthenticationToken auth, TacticalContext context) {
+	protected <E extends TacticalContext> Mono<E> loadTacticalSession(E context, String tacticalSessionId) {
+		return tacticalSessionRepository.findById(tacticalSessionId)
+			.switchIfEmpty(Mono.error(() -> new BadRequestException("Tactical session not found.")))
+			.map(tacticalSession -> {
+				context.setTacticalSession(tacticalSession);
+				return context;
+			});
+	}
+
+	protected <E extends TacticalContext> Mono<E> loadStrategicSession(JwtAuthenticationToken auth, E context, String strategicSessionId) {
 		return strategicSessionRepository.findById(context.getTacticalSession().getStrategicSessionId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Strategic session not found.")))
 			.flatMap(strategicSession -> readFilter.apply(auth, strategicSession))
@@ -56,31 +65,47 @@ public class TacticalContextLoader {
 			});
 	}
 
-	public Mono<TacticalContext> loadRound(TacticalContext context) {
-		return tacticalRoundRepository.findFirstByTacticalSessionIdOrderByRoundDesc(context.getTacticalSession().getId())
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Round not found.")))
+	protected <E extends TacticalContext> Mono<E> loadRoundById(E context, String roundId) {
+		return tacticalRoundRepository.findById(roundId)
+			.switchIfEmpty(Mono.error(() -> new DataConsistenceException(String.format("Round %s not found.", roundId))))
 			.map(round -> {
 				context.setTacticalRound(round);
 				return context;
 			});
 	}
 
-	public <E extends TacticalContext> Mono<E> loadCharacters(E context, boolean loadCharacters) {
+	protected <E extends TacticalContext> Mono<E> loadRoundByTacticalSessionId(E context, String tacticalSessionId) {
+		return tacticalRoundRepository.findFirstByTacticalSessionIdOrderByRoundDesc(tacticalSessionId)
+			.map(e -> {
+				if (e == null) {
+					System.out.println(tacticalSessionId);
+				}
+				return e;
+			})
+			.switchIfEmpty(Mono
+				.error(() -> new DataConsistenceException(String.format("No rounds found for tactical session %s.", tacticalSessionId))))
+			.map(round -> {
+				context.setTacticalRound(round);
+				return context;
+			});
+	}
+
+	protected <E extends TacticalContext> Mono<E> loadCharacters(E context, String tacticalSessionId, boolean loadCharacters) {
 		if (!loadCharacters) {
 			return Mono.just(context);
 		}
-		return tacticalCharacterRepository.findByTacticalSessionId(context.getTacticalSession().getId()).collectList()
+		return tacticalCharacterRepository.findByTacticalSessionId(tacticalSessionId).collectList()
 			.map(list -> {
 				context.setCharacters(list);
 				return context;
 			});
 	}
 
-	public <E extends TacticalContext> Mono<E> loadActions(E context, boolean loadActions) {
+	protected <E extends TacticalContext> Mono<E> loadActions(E context, String tacticalRoundId, boolean loadActions) {
 		if (!loadActions) {
 			return Mono.just(context);
 		}
-		return tacticalActionRepository.findByRoundId(context.getTacticalRound().getId()).collectList()
+		return tacticalActionRepository.findByRoundId(tacticalRoundId).collectList()
 			.map(list -> {
 				context.setRoundActions(list);
 				return context;

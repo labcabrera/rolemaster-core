@@ -75,7 +75,8 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 			.facingMap(Collections.singletonMap(AttackTargetType.MAIN_HAND, MeleeAttackFacing.FLANK))
 			.build();
 
-		TacticalActionMeleeAttack resolved = (TacticalActionMeleeAttack) tacticalActionService.execute(a01.getId(), meleeAttackExecution)
+		TacticalActionMeleeAttack resolved = (TacticalActionMeleeAttack) tacticalActionService
+			.execute(auth, a01.getId(), meleeAttackExecution)
 			.share().block();
 
 		assertEquals(TacticalActionState.PENDING_BREAKAGE_RESOLUTION, resolved.getState());
@@ -84,7 +85,7 @@ class BasicCombatBreakageSuccessTest extends AbstractBasicCombatTest {
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, 50))
 			.build();
 
-		resolved = (TacticalActionMeleeAttack) tacticalActionService.executeBreakage(a01.getId(), breakageExecution).share().block();
+		resolved = (TacticalActionMeleeAttack) tacticalActionService.executeBreakage(auth, a01.getId(), breakageExecution).share().block();
 
 		assertEquals(TacticalActionState.RESOLVED, resolved.getState());
 

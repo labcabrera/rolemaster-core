@@ -94,7 +94,7 @@ class BasicCombatParryPressAndMeleeTest extends AbstractBasicCombatTest {
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(56)))
 			.build();
 
-		TacticalAction taResolved01 = tacticalActionService.execute(a01.getId(), meleeAttackExecution01).share().block();
+		TacticalAction taResolved01 = tacticalActionService.execute(auth, a01.getId(), meleeAttackExecution01).share().block();
 		assertTrue(taResolved01 instanceof TacticalActionMeleeAttack);
 		TacticalActionMeleeAttack meleeResolved01 = (TacticalActionMeleeAttack) taResolved01;
 
@@ -111,7 +111,7 @@ class BasicCombatParryPressAndMeleeTest extends AbstractBasicCombatTest {
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(56)))
 			.build();
 		TacticalActionMeleeAttack meleeResolved03 = (TacticalActionMeleeAttack) tacticalActionService
-			.execute(a03.getId(), meleeAttackExecution03).share().block();
+			.execute(auth, a03.getId(), meleeAttackExecution03).share().block();
 
 		Map<OffensiveBonusModifier, Integer> mainHandMap03 = meleeResolved03.getOffensiveBonusMap().get(AttackTargetType.MAIN_HAND);
 		assertFalse(mainHandMap03.containsKey(OffensiveBonusModifier.PARRY_DEFENSE));

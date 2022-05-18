@@ -10,6 +10,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalActionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
@@ -25,43 +26,43 @@ public class TacticalSessionActionControllerImpl implements TacticalSessionActio
 	private TacticalActionRepository tacticalActionsRepository;
 
 	@Override
-	public Mono<TacticalAction> getDeclaredAction(String actionId) {
+	public Mono<TacticalAction> getDeclaredAction(JwtAuthenticationToken auth, String actionId) {
 		return tacticalActionService.getDeclaredAction(actionId);
 	}
 
 	@Override
-	public Mono<Void> removeDeclaredAction(String actionId) {
+	public Mono<Void> removeDeclaredAction(JwtAuthenticationToken auth, String actionId) {
 		return tacticalActionService.removeDeclaredAction(actionId);
 	}
 
 	@Override
-	public Mono<TacticalAction> declare(TacticalActionDeclaration actionDeclaration) {
+	public Mono<TacticalAction> declare(JwtAuthenticationToken auth, TacticalActionDeclaration actionDeclaration) {
 		return tacticalActionService.delare(actionDeclaration);
 	}
 
 	@Override
-	public Flux<TacticalAction> findActionsByRound(String roundId) {
+	public Flux<TacticalAction> findActionsByRound(JwtAuthenticationToken auth, String roundId) {
 		return tacticalActionsRepository.findByRoundId(roundId);
 	}
 
 	@Override
-	public Mono<TacticalAction> execute(String actionId, TacticalActionExecution actionDeclaration) {
-		return tacticalActionService.execute(actionId, actionDeclaration);
+	public Mono<TacticalAction> execute(JwtAuthenticationToken auth, String actionId, TacticalActionExecution actionDeclaration) {
+		return tacticalActionService.execute(auth, actionId, actionDeclaration);
 	}
 
 	@Override
-	public Mono<TacticalAction> executeCritical(String actionId, AttackCriticalExecution request) {
+	public Mono<TacticalAction> executeCritical(JwtAuthenticationToken auth, String actionId, AttackCriticalExecution request) {
 		return tacticalActionService.executeCritical(actionId, request);
 	}
 
 	@Override
-	public Mono<TacticalAction> executeFumble(String actionId, FumbleExecution request) {
+	public Mono<TacticalAction> executeFumble(JwtAuthenticationToken auth, String actionId, FumbleExecution request) {
 		return tacticalActionService.executeFumble(actionId, request);
 	}
 
 	@Override
-	public Mono<TacticalAction> executeBreakage(String actionId, WeaponBreakageExecution request) {
-		return tacticalActionService.executeBreakage(actionId, request);
+	public Mono<TacticalAction> executeBreakage(JwtAuthenticationToken auth, String actionId, WeaponBreakageExecution request) {
+		return tacticalActionService.executeBreakage(auth, actionId, request);
 	}
 
 }

@@ -64,7 +64,7 @@ class BasicCombatSpecialAttackTest extends AbstractBasicCombatTest {
 			.rolls(Collections.singletonMap(AttackTargetType.MAIN_HAND, OpenRoll.of(85)))
 			.build();
 
-		TacticalActionMeleeAttack meleeAttack = (TacticalActionMeleeAttack) tacticalActionService.execute(a01.getId(), meleeAttackExecution)
+		TacticalActionMeleeAttack meleeAttack = (TacticalActionMeleeAttack) tacticalActionService.execute(auth,a01.getId(), meleeAttackExecution)
 			.share().block();
 
 		assertNotNull(meleeAttack);

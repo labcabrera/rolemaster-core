@@ -15,7 +15,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.TacticalAction;
 import org.labcabrera.rolemaster.core.model.tactical.action.TacticalActionMovement;
 import org.labcabrera.rolemaster.core.repository.TacticalActionRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
-import org.labcabrera.rolemaster.core.services.rmss.context.loader.TacticalActionContextLoader;
+import org.labcabrera.rolemaster.core.services.commons.context.TacticalActionContextLoader;
 import org.labcabrera.rolemaster.core.services.rmss.tactical.TacticalSkillService;
 import org.labcabrera.rolemaster.core.services.rmss.tactical.maneuvers.MovingManeuverBonusService;
 import org.labcabrera.rolemaster.core.services.tactical.action.MovementExecutionService;
