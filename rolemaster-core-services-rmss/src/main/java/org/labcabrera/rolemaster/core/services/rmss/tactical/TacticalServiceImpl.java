@@ -41,9 +41,6 @@ public class TacticalServiceImpl implements TacticalService {
 	private TacticalNpcCharacterService npcCharacterService;
 
 	@Autowired
-	private TacticalRoundService tacticalRoundService;
-
-	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
 
 	@Autowired
@@ -63,9 +60,6 @@ public class TacticalServiceImpl implements TacticalService {
 
 	@Autowired
 	private TacticalLogService logService;
-
-	@Autowired
-	private TacticalInitiativeService initiativeService;
 
 	@Autowired
 	private EndTurnCharacterProcessor endTurnCharacterProcessor;
@@ -129,40 +123,10 @@ public class TacticalServiceImpl implements TacticalService {
 	}
 
 	@Override
-	public Mono<TacticalRound> generateRandomInitiatives(String tacticalSessionId) {
-		return getCurrentRound(tacticalSessionId)
-			.map(tacticalRoundService::generateRandomInitiatives)
-			.flatMap(tacticalRoundRepository::save);
-	}
-
-	@Override
 	public Flux<TacticalAction> getActionQueue(String roundId) {
 		return tacticalRoundRepository.findById(roundId)
 			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.roundNotFound(roundId))))
-			.map(round -> {
-				if (round.getState() != TacticalRoundState.ACTION_RESOLUTION) {
-					throw new BadRequestException(Errors.INVALID_ROUND_STATE);
-				}
-				return round;
-			})
 			.thenMany(actionRepository.findByRoundId(roundId));
-	}
-
-	@Override
-	public Mono<TacticalRound> startInitiativeDeclaration(String roundId) {
-		return initiativeService.startInitiativeDeclaration(roundId);
-	}
-
-	@Override
-	public Mono<TacticalRound> setInitiative(String roundId, String character, Integer initiativeRoll) {
-		return initiativeService.setInitiative(roundId, character, initiativeRoll);
-	}
-
-	@Override
-	public Mono<TacticalRound> startExecutionPhase(String roundId) {
-		return tacticalRoundRepository.findById(roundId)
-			.switchIfEmpty(Mono.error(() -> new BadRequestException(Errors.roundNotFound(roundId))))
-			.flatMap(initiativeService::loadActionInitiatives);
 	}
 
 	//TODO delete actions

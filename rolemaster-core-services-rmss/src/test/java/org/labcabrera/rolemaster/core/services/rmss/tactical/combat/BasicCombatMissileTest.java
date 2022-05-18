@@ -11,6 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMissileAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.MissileAttackExecution;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterInitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.Cover;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
@@ -47,11 +49,11 @@ class BasicCombatMissileTest extends AbstractBasicCombatTest {
 		assertNotNull(a01.getState());
 		assertEquals(TacticalActionState.PENDING, a01.getState());
 
-		round01 = tacticalService.startInitiativeDeclaration(round01.getId()).share().block();
-
-		round01 = tacticalService.setInitiative(round01.getId(), taRanged01.getId(), 15).share().block();
-
-		round01 = tacticalService.startExecutionPhase(round01.getId()).share().block();
+		InitiativeDeclaration initiativeDeclaration = InitiativeDeclaration.builder().build();
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taRanged01.getId())
+			.initiativeRoll(11)
+			.build());
 
 		List<TacticalAction> actionQueue = tacticalService.getActionQueue(round01.getId()).share().collectList().share().block();
 		assertEquals(1, actionQueue.size());

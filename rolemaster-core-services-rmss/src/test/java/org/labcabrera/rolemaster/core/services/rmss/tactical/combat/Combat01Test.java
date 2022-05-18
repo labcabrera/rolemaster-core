@@ -11,6 +11,8 @@ import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterInitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.tactical.Debuff;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalActionPhase;
@@ -64,9 +66,12 @@ class Combat01Test extends AbstractTacticalTest {
 			.meleeAttackMode(MeleeAttackMode.TWO_WEAPONS)
 			.build()).share().block();
 
-		round01 = tacticalService.startInitiativeDeclaration(round01.getId()).share().block();
-		round01 = tacticalService.setInitiative(round01.getId(), witchKing.getId(), 10).share().block();
-		round01 = tacticalService.startExecutionPhase(round01.getId()).share().block();
+		InitiativeDeclaration initiativeDeclaration = InitiativeDeclaration.builder().build();
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(witchKing.getId())
+			.initiativeRoll(11)
+			.build());
+		round01 = tacticalInitiativeService.initiativeDeclaration(auth, ts.getId(), initiativeDeclaration).share().block();
 
 		Map<AttackTargetType, OpenRoll> rolls = new LinkedHashMap<>();
 		rolls.put(AttackTargetType.MAIN_HAND, OpenRoll.of(50));

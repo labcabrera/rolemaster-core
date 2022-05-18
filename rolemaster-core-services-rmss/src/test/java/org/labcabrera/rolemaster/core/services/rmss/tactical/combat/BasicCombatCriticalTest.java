@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.labcabrera.rolemaster.core.dto.action.declaration.TacticalActionMeleeAttackDeclaration;
 import org.labcabrera.rolemaster.core.dto.action.execution.AttackCriticalExecution;
 import org.labcabrera.rolemaster.core.dto.action.execution.MeleeAttackExecution;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
+import org.labcabrera.rolemaster.core.dto.tactical.TacticalCharacterInitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.OpenRoll;
 import org.labcabrera.rolemaster.core.model.combat.CriticalSeverity;
 import org.labcabrera.rolemaster.core.model.combat.CriticalType;
@@ -56,11 +58,12 @@ class BasicCombatCriticalTest extends AbstractBasicCombatTest {
 		assertNotNull(a01.getState());
 		assertEquals(TacticalActionState.PENDING, a01.getState());
 
-		round01 = tacticalService.startInitiativeDeclaration(r01Id).share().block();
-
-		round01 = tacticalService.setInitiative(r01Id, taMelee01.getId(), 11).share().block();
-
-		round01 = tacticalService.startExecutionPhase(r01Id).share().block();
+		InitiativeDeclaration initiativeDeclaration = InitiativeDeclaration.builder().build();
+		initiativeDeclaration.getCharacters().add(TacticalCharacterInitiativeDeclaration.builder()
+			.characterId(taMelee01.getId())
+			.initiativeRoll(11)
+			.build());
+		round01 = tacticalInitiativeService.initiativeDeclaration(auth, ts.getId(), initiativeDeclaration).share().block();
 
 		List<TacticalAction> actionQueue = tacticalService.getActionQueue(r01Id).share().collectList().share().block();
 		assertEquals(1, actionQueue.size());

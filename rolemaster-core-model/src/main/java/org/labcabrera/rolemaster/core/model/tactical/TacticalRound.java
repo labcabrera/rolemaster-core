@@ -1,10 +1,9 @@
 package org.labcabrera.rolemaster.core.model.tactical;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
-import org.labcabrera.rolemaster.core.model.tactical.action.InitiativeModifier;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -33,13 +32,7 @@ public class TacticalRound {
 	private Boolean initiativeLoaded = false;
 
 	@Builder.Default
-	private Map<String, Integer> initiativeRollMap = new HashMap<>();
-
-	@Builder.Default
-	private Map<String, Integer> initiativeModifiersMap = new HashMap<>();
-
-	@Builder.Default
-	private Map<String, Map<InitiativeModifier, Integer>> initiatives = new HashMap<>();
+	private Map<String, TacticalRoundCharacterInitiative> initiatives = new LinkedHashMap<>();
 
 	@Builder.Default
 	private EntityMetadata metadata = new EntityMetadata();

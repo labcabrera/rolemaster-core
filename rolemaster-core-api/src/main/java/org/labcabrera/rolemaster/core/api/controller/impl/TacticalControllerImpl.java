@@ -5,12 +5,14 @@ import java.time.LocalDateTime;
 import org.labcabrera.rolemaster.core.api.controller.TacticalSessionController;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionCreation;
 import org.labcabrera.rolemaster.core.dto.TacticalSessionUpdate;
+import org.labcabrera.rolemaster.core.dto.tactical.InitiativeDeclaration;
 import org.labcabrera.rolemaster.core.model.exception.NotFoundException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalRound;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalSession;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.services.tactical.TacticalInitiativeService;
 import org.labcabrera.rolemaster.core.services.tactical.TacticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -33,6 +35,9 @@ public class TacticalControllerImpl implements TacticalSessionController {
 
 	@Autowired
 	private TacticalCharacterRepository characterContextRepository;
+
+	@Autowired
+	private TacticalInitiativeService tacticalInitiativeService;
 
 	@Override
 	public Mono<TacticalSession> createTacticalSession(JwtAuthenticationToken auth, TacticalSessionCreation request) {
@@ -104,18 +109,8 @@ public class TacticalControllerImpl implements TacticalSessionController {
 	}
 
 	@Override
-	public Mono<TacticalRound> startInitiativeDeclaration(String tacticalSessionId) {
-		return this.findRound(tacticalSessionId).flatMap(e -> tacticalService.startInitiativeDeclaration(e.getId()));
-	}
-
-	@Override
-	public Mono<TacticalRound> declareInitiative(String tacticalSessionId, String characterId, Integer roll) {
-		return this.findRound(tacticalSessionId).flatMap(e -> tacticalService.setInitiative(e.getId(), characterId, roll));
-	}
-
-	@Override
-	public Mono<TacticalRound> startExecutionPhase(String tacticalSessionId) {
-		return this.findRound(tacticalSessionId).flatMap(e -> tacticalService.startExecutionPhase(e.getId()));
+	public Mono<TacticalRound> declareInitiative(JwtAuthenticationToken auth, String tacticalSessionId, InitiativeDeclaration request) {
+		return this.tacticalInitiativeService.initiativeDeclaration(auth, tacticalSessionId, request);
 	}
 
 }
