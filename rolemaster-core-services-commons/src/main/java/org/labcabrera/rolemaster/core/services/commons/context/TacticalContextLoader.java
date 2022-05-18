@@ -46,7 +46,7 @@ public class TacticalContextLoader {
 			.flatMap(ctx -> loadActions(ctx, loadActions));
 	}
 
-	private Mono<TacticalContext> loadStrategicSession(JwtAuthenticationToken auth, TacticalContext context) {
+	public Mono<TacticalContext> loadStrategicSession(JwtAuthenticationToken auth, TacticalContext context) {
 		return strategicSessionRepository.findById(context.getTacticalSession().getStrategicSessionId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Strategic session not found.")))
 			.flatMap(strategicSession -> readFilter.apply(auth, strategicSession))
@@ -56,7 +56,7 @@ public class TacticalContextLoader {
 			});
 	}
 
-	private Mono<TacticalContext> loadRound(TacticalContext context) {
+	public Mono<TacticalContext> loadRound(TacticalContext context) {
 		return tacticalRoundRepository.findFirstByTacticalSessionIdOrderByRoundDesc(context.getTacticalSession().getId())
 			.switchIfEmpty(Mono.error(() -> new BadRequestException("Round not found.")))
 			.map(round -> {
@@ -65,7 +65,7 @@ public class TacticalContextLoader {
 			});
 	}
 
-	private Mono<TacticalContext> loadCharacters(TacticalContext context, boolean loadCharacters) {
+	public <E extends TacticalContext> Mono<E> loadCharacters(E context, boolean loadCharacters) {
 		if (!loadCharacters) {
 			return Mono.just(context);
 		}
@@ -76,7 +76,7 @@ public class TacticalContextLoader {
 			});
 	}
 
-	private Mono<TacticalContext> loadActions(TacticalContext context, boolean loadActions) {
+	public <E extends TacticalContext> Mono<E> loadActions(E context, boolean loadActions) {
 		if (!loadActions) {
 			return Mono.just(context);
 		}

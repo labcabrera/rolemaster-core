@@ -12,11 +12,11 @@ import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.model.tactical.TacticalCharacter;
 import org.labcabrera.rolemaster.core.model.tactical.action.AttackTargetType;
-import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.repository.ItemRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalCharacterRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalRoundRepository;
 import org.labcabrera.rolemaster.core.repository.TacticalSessionRepository;
+import org.labcabrera.rolemaster.core.services.commons.context.TacticalContextLoader;
 import org.labcabrera.rolemaster.core.services.tactical.attack.processor.AbstractAttackProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,6 +25,9 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class AttackContextLoader implements AbstractAttackProcessor {
+
+	@Autowired
+	private TacticalContextLoader contextLoader;
 
 	@Autowired
 	private TacticalSessionRepository tacticalSessionRepository;
@@ -38,29 +41,34 @@ public class AttackContextLoader implements AbstractAttackProcessor {
 	@Autowired
 	private ItemRepository itemRepository;
 
-	@Autowired
-	private CharacterInfoRepository characterInfoRepository;
-
 	@Override
 	public Mono<AttackContext> apply(AttackContext context) {
 		return Mono.just(context)
-			.zipWith(tacticalCharacterRepository.findById(context.getAction().getSource()), (a, b) -> {
-				a.setSource(b);
-				return a;
-			})
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Character not found.")))
-			.zipWhen(ctx -> roundRepository.findById(ctx.getAction().getRoundId()), (a, b) -> {
-				a.setTacticalRound(b);
-				return a;
-			})
-			.switchIfEmpty(Mono.error(() -> new BadRequestException("Round not found.")))
-			.zipWhen(ctx -> tacticalSessionRepository.findById(ctx.getTacticalRound().getTacticalSessionId()), (a, b) -> {
-				a.setTacticalSession(b);
-				return a;
-			})
+			.flatMap(this::loadRound)
+			.flatMap(this::loadTacticalSession)
+			.flatMap(ctx -> contextLoader.loadCharacters(ctx, true))
+			.flatMap(ctx -> contextLoader.loadActions(ctx, true))
 			.flatMap(this::loadTargets)
-			.flatMap(this::loadSourceItems)
-			.flatMap(this::loadCharacterInfo);
+			.flatMap(this::loadSourceItems);
+	}
+
+	private Mono<AttackContext> loadRound(AttackContext context) {
+		return roundRepository.findById(context.getAction().getRoundId())
+			.switchIfEmpty(Mono.error(() -> new DataConsistenceException("Missing round id")))
+			.map(round -> {
+				context.setTacticalRound(round);
+				return context;
+			});
+	}
+
+	private Mono<AttackContext> loadTacticalSession(AttackContext context) {
+		return tacticalSessionRepository.findById(context.getTacticalRound().getTacticalSessionId())
+			.switchIfEmpty(Mono.error(() -> new DataConsistenceException("Missing round id")))
+			.map(tacticalSession -> {
+				context.setTacticalSession(tacticalSession);
+				return context;
+			});
+
 	}
 
 	private Mono<AttackContext> loadTargets(AttackContext context) {
@@ -99,15 +107,4 @@ public class AttackContextLoader implements AbstractAttackProcessor {
 			});
 	}
 
-	private Mono<AttackContext> loadCharacterInfo(AttackContext context) {
-		if (!context.getSource().isNpc()) {
-			return characterInfoRepository.findById(context.getSource().getCharacterId())
-				.switchIfEmpty(Mono.error(() -> new BadRequestException("Missing character info.")))
-				.map(e -> {
-					context.setSourceCharacterInfo(e);
-					return context;
-				});
-		}
-		return Mono.just(context);
-	}
 }
