@@ -5,13 +5,16 @@ import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.Profession;
+import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
 import org.labcabrera.rolemaster.core.services.commons.populator.AbstractJsonPopulator;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import reactor.core.publisher.Mono;
+
 @Component
-class ProfessionPopulator extends AbstractJsonPopulator<Profession> {
+class ProfessionRmssPopulator extends AbstractJsonPopulator<Profession> {
 
 	@Override
 	protected List<String> getResources() {
@@ -35,6 +38,11 @@ class ProfessionPopulator extends AbstractJsonPopulator<Profession> {
 		List<Profession> list = super.collectValues();
 		list.stream().forEach(e -> e.setVersion(RolemasterVersion.RMSS));
 		return list;
+	}
+
+	@Override
+	protected Mono<Void> delete() {
+		return ((ProfessionRepository) repository).deleteByVersion(RolemasterVersion.RMU);
 	}
 
 	@Override

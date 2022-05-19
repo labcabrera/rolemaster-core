@@ -25,16 +25,17 @@ import lombok.ToString;
 @ToString(of = "id")
 public class Profession {
 
-	@Schema(description = "Profession identifier")
+	@Schema(description = "Profession identifier.")
 	@Id
 	private String id;
 
-	@Schema(description = "Profession name")
+	@Schema(description = "Profession name.")
 	private String name;
 
+	@Schema(description = "Rolemaster version.")
 	private RolemasterVersion version;
 
-	@Schema(description = "Available realms")
+	@Schema(description = "Available realms.")
 	private List<Realm> availableRealms;
 
 	@Builder.Default

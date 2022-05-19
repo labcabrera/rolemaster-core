@@ -1,0 +1,252 @@
+[
+	{
+		"id": "no-profession-rmu",
+		"name": "No profession",
+		"version": "rmu",
+		"availableRealms": [
+			"channeling",
+			"essence",
+			"mentalism",
+			"arcane"
+		],
+		"skillCategoryBonus": {
+		},
+		"skillCategoryDevelopmentCost": {
+			"animal-rmu": [2,4],
+			"awareness-rmu": [2,4],
+			"body-discipline-rmu": [3,4],
+			"brawn-rmu": [3,4],
+			"combat-expertise-rmu": [3,5],
+			"composition-rmu": [2,4],
+			"crafting-rmu": [2,4],
+			"delving-rmu": [4,6],
+			"environmental-rmu": [3,4],
+			"gymnastic-rmu": [3,4],
+			"lore-rmu": [1,3],
+			"magical-expertise-rmu": [3,5],
+			"medical-rmu": [3,4],
+			"mental-discipline-rmu": [3,4],
+			"movement-rmu": [2,4],
+			"performance-art-rmu": [2,4],
+			"power-manipulation-rmu": [3,4],
+			"science-rmu": [3,5],
+			"social-rmu": [2,4],
+			"base-rmu": [4,6],
+			"open-rmu": [4,6],
+			"closed-rmu": [9,12],
+			"arcane-rmu": [20,24],
+			"restricted-rmu": [20,24],
+			"subterfuge-rmu": [3,5],
+			"techinical-rmu": [3,5],
+			"vocation-rmu": [2,4]
+			
+		},
+		"skillCategoryWeaponDevelopmentCost": [
+			[3,4],
+			[3,5],
+			[5,7],
+			[9,12],
+			[16,20]
+		]
+	},
+	{
+		"id": "fighter-rmu",
+		"name": "Fighter",
+		"version": "rmu",
+		"availableRealms": [
+			"channeling",
+			"essence",
+			"mentalism",
+			"arcane"
+		],
+		"skillCategoryBonus": {
+		},
+		"skillCategoryDevelopmentCost": {
+			"animal-rmu": [2,3],
+			"awareness-rmu": [2,4],
+			"body-discipline-rmu": [2,4],
+			"brawn-rmu": [1,3],
+			"combat-expertise-rmu": [1,2],
+			"composition-rmu": [3,4],
+			"crafting-rmu": [2,4],
+			"delving-rmu": [9,12],
+			"environmental-rmu": [2,4],
+			"gymnastic-rmu": [2,3],
+			"lore-rmu": [2,4],
+			"magical-expertise-rmu": [9,12],
+			"medical-rmu": [3,4],
+			"mental-discipline-rmu": [5,7],
+			"movement-rmu": [2,3],
+			"performance-art-rmu": [3,4],
+			"power-manipulation-rmu": [6,8],
+			"science-rmu": [5,7],
+			"social-rmu": [2,4],
+			"base-rmu": [9,12],
+			"open-rmu": [9,12],
+			"closed-rmu": [20,24],
+			"arcane-rmu": [20,24],
+			"restricted-rmu": [20,24],
+			"subterfuge-rmu": [3,4],
+			"techinical-rmu": [4,6],
+			"vocation-rmu": [2,4]
+			
+		},
+		"skillCategoryWeaponDevelopmentCost": [
+			[1,2],
+			[1,2],
+			[1,3],
+			[2,4],
+			[3,5]
+		]
+	},
+	{
+		"id": "warrior-monk-rmu",
+		"name": "Warrior Monk",
+		"version": "rmu",
+		"availableRealms": [
+			"channeling",
+			"essence",
+			"mentalism",
+			"arcane"
+		],
+		"skillCategoryBonus": {
+		},
+		"skillCategoryDevelopmentCost": {
+			"animal-rmu": [2,4],
+			"awareness-rmu": [3,4],
+			"body-discipline-rmu": [1,3],
+			"brawn-rmu": [2,4],
+			"combat-expertise-rmu": [1,2],
+			"composition-rmu": [3,4],
+			"crafting-rmu": [3,4],
+			"delving-rmu": [9,12],
+			"environmental-rmu": [3,4],
+			"gymnastic-rmu": [1,2],
+			"lore-rmu": [2,4],
+			"magical-expertise-rmu": [9,12],
+			"medical-rmu": [4,6],
+			"mental-discipline-rmu": [1,3],
+			"movement-rmu": [1,2],
+			"performance-art-rmu": [2,4],
+			"power-manipulation-rmu": [6,8],
+			"science-rmu": [5,7],
+			"social-rmu": [3,4],
+			"base-rmu": [9,12],
+			"open-rmu": [9,12],
+			"closed-rmu": [20,24],
+			"arcane-rmu": [20,24],
+			"restricted-rmu": [20,24],
+			"subterfuge-rmu": [2,4],
+			"techinical-rmu": [5,7],
+			"vocation-rmu": [3,4]
+			
+		},
+		"skillCategoryWeaponDevelopmentCost": [
+			[1,2],
+			[1,2],
+			[2,3],
+			[3,4],
+			[4,6]
+		]
+	},
+	{
+		"id": "thief-rmu",
+		"name": "Thief",
+		"version": "rmu",
+		"availableRealms": [
+			"channeling",
+			"essence",
+			"mentalism",
+			"arcane"
+		],
+		"skillCategoryBonus": {
+		},
+		"skillCategoryDevelopmentCost": {
+			"animal-rmu": [2,4],
+			"awareness-rmu": [1,2],
+			"body-discipline-rmu": [3,5],
+			"brawn-rmu": [3,5],
+			"combat-expertise-rmu": [3,4],
+			"composition-rmu": [2,4],
+			"crafting-rmu": [2,4],
+			"delving-rmu": [5,7],
+			"environmental-rmu": [2,4],
+			"gymnastic-rmu": [2,3],
+			"lore-rmu": [2,4],
+			"magical-expertise-rmu": [9,12],
+			"medical-rmu": [3,4],
+			"mental-discipline-rmu": [4,6],
+			"movement-rmu": [1,3],
+			"performance-art-rmu": [1,3],
+			"power-manipulation-rmu": [6,8],
+			"science-rmu": [4,6],
+			"social-rmu": [2,3],
+			"base-rmu": [9,12],
+			"open-rmu": [9,12],
+			"closed-rmu": [20,24],
+			"arcane-rmu": [20,24],
+			"restricted-rmu": [20,24],
+			"subterfuge-rmu": [1,2],
+			"techinical-rmu": [1,2],
+			"vocation-rmu": [2,4]
+			
+		},
+		"skillCategoryWeaponDevelopmentCost": [
+			[2,3],
+			[2,4],
+			[3,5],
+			[5,7],
+			[9,12]
+		]
+	},
+	{
+		"id": "rogue-rmu",
+		"name": "Rogue",
+		"version": "rmu",
+		"availableRealms": [
+			"channeling",
+			"essence",
+			"mentalism",
+			"arcane"
+		],
+		"skillCategoryBonus": {
+		},
+		"skillCategoryDevelopmentCost": {
+			"animal-rmu": [2,3],
+			"awareness-rmu": [2,3],
+			"body-discipline-rmu": [3,4],
+			"brawn-rmu": [2,4],
+			"combat-expertise-rmu": [2,3],
+			"composition-rmu": [3,4],
+			"crafting-rmu": [2,4],
+			"delving-rmu": [6,8],
+			"environmental-rmu": [2,3],
+			"gymnastic-rmu": [2,3],
+			"lore-rmu": [2,4],
+			"magical-expertise-rmu": [9,12],
+			"medical-rmu": [3,4],
+			"mental-discipline-rmu": [4,6],
+			"movement-rmu": [1,3],
+			"performance-art-rmu": [2,4],
+			"power-manipulation-rmu": [6,8],
+			"science-rmu": [5,7],
+			"social-rmu": [2,3],
+			"base-rmu": [9,12],
+			"open-rmu": [9,12],
+			"closed-rmu": [20,24],
+			"arcane-rmu": [20,24],
+			"restricted-rmu": [20,24],
+			"subterfuge-rmu": [1,3],
+			"techinical-rmu": [2,3],
+			"vocation-rmu": [2,4]
+			
+		},
+		"skillCategoryWeaponDevelopmentCost": [
+			[1,3],
+			[2,3],
+			[3,4],
+			[4,6],
+			[6,8]
+		]
+	}
+]
