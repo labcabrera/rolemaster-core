@@ -11,6 +11,8 @@ import reactor.core.publisher.Mono;
 
 public interface AttributeCreationService extends RolemasterVersionService {
 
+	Integer getBonus(int value);
+
 	Integer getCost(int value);
 
 	Integer getPotentialStat(int value);

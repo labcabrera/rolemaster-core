@@ -21,8 +21,8 @@ import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.repository.CharacterInfoRepository;
 import org.labcabrera.rolemaster.core.services.character.CharacterInfoService;
 import org.labcabrera.rolemaster.core.services.commons.MetadataModificationUpdater;
+import org.labcabrera.rolemaster.core.services.commons.context.CharacterModificationContextLoader;
 import org.labcabrera.rolemaster.core.services.commons.security.WriteAuthorizationFilter;
-import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterPostProcessorService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -50,10 +50,10 @@ class CharacterUpdateSkillServiceImplTest {
 	private MetadataModificationUpdater metadataModificationUpdater;
 
 	@Mock
-	private CharacterPostProcessorService postProcessorService;
+	private CharacterInfoRepository repository;
 
 	@Mock
-	private CharacterInfoRepository repository;
+	private CharacterModificationContextLoader contextLoader;
 
 	@Spy
 	private CharacterInfo character;

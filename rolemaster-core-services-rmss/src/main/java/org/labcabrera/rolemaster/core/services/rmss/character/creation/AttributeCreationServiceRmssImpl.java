@@ -27,6 +27,11 @@ class AttributeCreationServiceRmssImpl implements AttributeCreationService {
 	private AttributeBonusTable bonusTable;
 
 	@Override
+	public Integer getBonus(int value) {
+		return bonusTable.getBonus(value);
+	}
+
+	@Override
 	public Integer getCost(int value) {
 		if (value < 90) {
 			return value;

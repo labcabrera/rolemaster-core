@@ -4,31 +4,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.RolemasterVersion;
-import org.labcabrera.rolemaster.core.model.character.AttributeBonusType;
-import org.labcabrera.rolemaster.core.model.character.AttributeType;
-import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.model.character.CharacterResistance;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.Profession;
-import org.labcabrera.rolemaster.core.model.character.Race;
-import org.labcabrera.rolemaster.core.model.character.ResistanceBonusType;
-import org.labcabrera.rolemaster.core.model.character.ResistanceType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContextImpl;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
-import org.labcabrera.rolemaster.core.repository.ProfessionRepository;
-import org.labcabrera.rolemaster.core.repository.RaceRepository;
-import org.labcabrera.rolemaster.core.repository.SkillCategoryRepository;
 import org.labcabrera.rolemaster.core.services.character.CharacterInfoService;
+import org.labcabrera.rolemaster.core.services.character.CharacterUpdatePostProcessor;
 import org.labcabrera.rolemaster.core.services.character.creation.CharacterCreationService;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
+import org.labcabrera.rolemaster.core.services.commons.context.CharacterModificationContextLoader;
 import org.labcabrera.rolemaster.core.services.commons.converter.CharacterCreationToCharacterInfoConverter;
-import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
 
@@ -45,22 +34,7 @@ class CharacterCreationServiceRmssImpl implements CharacterCreationService {
 	private CharacterInfoService characterInfoService;
 
 	@Autowired
-	private AttributeCreationServiceRmssImpl attributeCreationService;
-
-	@Autowired
-	private CharacterPostProcessorService postProcessorService;
-
-	@Autowired
-	private RaceRepository raceRepository;
-
-	@Autowired
-	private ProfessionRepository professionRepository;
-
-	@Autowired
-	private SkillCategoryRepository skillCategoryRepository;
-
-	@Autowired
-	private CharacterCreationSkillService characterCreationSkillService;
+	private List<CharacterUpdatePostProcessor> postProcessors;
 
 	@Autowired
 	private CharacterCreationToCharacterInfoConverter converter;
@@ -69,67 +43,28 @@ class CharacterCreationServiceRmssImpl implements CharacterCreationService {
 	private CharacterCreationItemLoaderProcessor characterCreationItemLoader;
 
 	@Autowired
-	private CharacterCreationRaceProcessor characterCreationRaceProcessor;
-
-	@Autowired
 	private CharacterCreationSkillCategoryProcessor characterCreationSkillCategoryProcessor;
 
 	@Autowired
 	private CharacterCreationSkillProcessor characterCreationSkillProcessor;
+
+	@Autowired
+	private CharacterModificationContextLoader contextLoader;
 
 	@Override
 	public Mono<CharacterInfo> create(JwtAuthenticationToken auth, CharacterCreation request) {
 		log.info("Processing new character {}", request.getName());
 		CharacterInfo character = converter.convert(request);
 		character.setVersion(RolemasterVersion.RMSS);
-		CharacterModificationContext context = CharacterModificationContextImpl.builder()
-			.character(character)
-			.build();
-		return Mono.just(context)
-			.zipWith(raceRepository.findById(request.getRaceId()))
-			.switchIfEmpty(Mono.error(new BadRequestException(Errors.raceNotFound(request.getRaceId()))))
-			.map(characterCreationRaceProcessor::process)
-			.zipWith(professionRepository.findById(request.getProfessionId()))
-			.switchIfEmpty(Mono.error(new BadRequestException(Errors.professionNotFound(request.getProfessionId()))))
-			.map(tuple -> {
-				tuple.getT1().setProfession(tuple.getT2());
-				return tuple.getT1();
-			})
+		return contextLoader.apply(character)
 			.map(this::checkRealm)
-			.flatMap(ctx -> skillCategoryRepository.findAll(Sort.by("id"))
-				.collectList()
-				.doOnNext(ctx::setSkillCategories)
-				.map(e -> ctx))
-			.flatMap(ctx -> characterCreationSkillService.getSkills(ctx.getRace())
-				.collectList()
-				.doOnNext(ctx::setSkills)
-				.map(e -> ctx))
-			.map(ctx -> loadAttributes(ctx, request))
 			.map(characterCreationSkillCategoryProcessor::loadSkillCategories)
 			.map(ctx -> loadSkillCategoryWeapons(ctx, request))
 			.map(characterCreationSkillProcessor::loadSkills)
-			.map(this::loadResistances)
+			.map(this::applyPostProcessors)
 			.map(CharacterModificationContext::getCharacter)
-			.map(postProcessorService)
 			.flatMap(c -> this.characterInfoService.insert(auth, character))
-			.flatMap(characterCreationItemLoader::addItems)
-			.doOnNext(e -> log.info("Created character {}", e))
-			.map(e -> e);
-	}
-
-	private CharacterModificationContext loadAttributes(CharacterModificationContext context, CharacterCreation request) {
-		Arrays.asList(AttributeType.values()).stream().forEach(e -> {
-			int value = request.getBaseAttributes().containsKey(e) ? request.getBaseAttributes().get(e) : 1;
-			int potentialValue = attributeCreationService.getPotentialStat(value);
-			int bonusRace = context.getRace().getAttributeModifiers().getOrDefault(e, 0);
-			CharacterAttribute characterAttribute = CharacterAttribute.builder()
-				.currentValue(value)
-				.potentialValue(potentialValue)
-				.build();
-			characterAttribute.getBonus().put(AttributeBonusType.RACE, bonusRace);
-			context.getCharacter().getAttributes().put(e, characterAttribute);
-		});
-		return context;
+			.flatMap(characterCreationItemLoader::addItems);
 	}
 
 	private CharacterModificationContext loadSkillCategoryWeapons(CharacterModificationContext context, CharacterCreation request) {
@@ -151,26 +86,17 @@ class CharacterCreationServiceRmssImpl implements CharacterCreationService {
 		return context;
 	}
 
-	private CharacterModificationContext loadResistances(CharacterModificationContext context) {
-		CharacterInfo character = context.getCharacter();
-		Race race = context.getRace();
-		for (ResistanceType r : ResistanceType.values()) {
-			int raceBonus = race.getResistanceBonus().getOrDefault(r, 0);
-			CharacterResistance cr = CharacterResistance.builder()
-				.build();
-			cr.getBonus().put(ResistanceBonusType.RACE, raceBonus);
-			character.getResistances().put(r, cr);
-
-		}
-		return context;
-	}
-
 	private CharacterModificationContext checkRealm(CharacterModificationContext context) {
 		Realm realm = context.getCharacter().getRealm();
 		List<Realm> availableRealms = context.getProfession().getAvailableRealms();
 		if (!availableRealms.contains(realm)) {
 			throw new BadRequestException(Errors.invalidRealm(realm));
 		}
+		return context;
+	}
+
+	private CharacterModificationContext applyPostProcessors(CharacterModificationContext context) {
+		this.postProcessors.stream().forEach(processor -> processor.accept(context));
 		return context;
 	}
 

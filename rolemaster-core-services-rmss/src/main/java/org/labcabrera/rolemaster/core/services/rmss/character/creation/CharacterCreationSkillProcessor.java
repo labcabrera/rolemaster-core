@@ -3,12 +3,12 @@ package org.labcabrera.rolemaster.core.services.rmss.character.creation;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.model.character.RankType;
-import org.labcabrera.rolemaster.core.model.character.creation.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.exception.BadRequestException;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ class CharacterCreationSkillProcessor {
 
 	public CharacterModificationContext loadSkills(CharacterModificationContext context) {
 		Race race = context.getRace();
-		context.getSkills().stream().forEach(skill -> {
+		context.getSkills().stream().filter(e -> e.getLoadOnNewCharacters()).forEach(skill -> {
 			String categoryId = skill.getCategoryId();
 			String skillId = skill.getId();
 			Integer adolescenceRanks = race.getAdolescenceSkillRanks().getOrDefault(skill.getId(), 0);

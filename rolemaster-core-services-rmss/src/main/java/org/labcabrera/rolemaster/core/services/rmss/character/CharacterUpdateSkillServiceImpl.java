@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.services.rmss.character;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.dto.SkillUpgrade;
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.HasRanks;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
@@ -16,7 +17,6 @@ import org.labcabrera.rolemaster.core.services.character.CharacterUpdateSkillSer
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
 import org.labcabrera.rolemaster.core.services.commons.MetadataModificationUpdater;
 import org.labcabrera.rolemaster.core.services.commons.security.WriteAuthorizationFilter;
-import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @Validated
-public class CharacterUpdateSkillServiceImpl implements CharacterUpdateSkillService {
+public class CharacterUpdateSkillServiceImpl extends AbstractCharacterModificationService implements CharacterUpdateSkillService {
 
 	private static final String ERR_MISSING_CATEGORY_ID = "Missing skill category %s";
 	private static final String ERR_MISSING_SKILL_ID = "Missing skill %s";
@@ -41,9 +41,6 @@ public class CharacterUpdateSkillServiceImpl implements CharacterUpdateSkillServ
 	private CharacterInfoRepository repository;
 
 	@Autowired
-	private CharacterPostProcessorService postProcessorService;
-
-	@Autowired
 	private WriteAuthorizationFilter writeAuthorizationFilter;
 
 	@Override
@@ -54,7 +51,9 @@ public class CharacterUpdateSkillServiceImpl implements CharacterUpdateSkillServ
 			.map(character -> upgradeSkillCategories(character, request))
 			.map(character -> upgradeSkills(character, request))
 			.map(this::calculateDevelopmentCost)
-			.map(postProcessorService::apply)
+			.flatMap(contextLoader::apply)
+			.map(this::applyPostProcessors)
+			.map(CharacterModificationContext::getCharacter)
 			.map(metadataModificationDateUpdater::apply)
 			.flatMap(repository::save);
 	}

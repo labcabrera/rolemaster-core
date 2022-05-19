@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.services.rmss.character.processor;
 
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.services.character.CharacterUpdatePostProcessor;
 import org.springframework.core.annotation.Order;
@@ -10,7 +11,8 @@ import org.springframework.stereotype.Component;
 public class CharacterSortSkillProcessor implements CharacterUpdatePostProcessor {
 
 	@Override
-	public void accept(CharacterInfo character) {
+	public void accept(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
 		character.getSkills().sort((a, b) -> {
 			String ca = a.getCategoryId();
 			String cb = a.getCategoryId();

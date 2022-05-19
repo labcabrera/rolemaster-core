@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.services.rmss.character.processor;
 
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
@@ -22,7 +23,8 @@ public class CharacterSkillProcessor implements CharacterUpdatePostProcessor {
 	private SkillRankBonusService rankBonusService;
 
 	@Override
-	public void accept(CharacterInfo character) {
+	public void accept(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
 		log.debug("Processing character {}", character.getName());
 		character.getSkills().stream().forEach(characterSkill -> {
 			int rankBonus = rankBonusService.getBonus(characterSkill, character);

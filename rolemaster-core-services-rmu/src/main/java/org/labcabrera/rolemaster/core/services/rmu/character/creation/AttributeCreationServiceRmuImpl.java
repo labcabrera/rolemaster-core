@@ -23,8 +23,13 @@ class AttributeCreationServiceRmuImpl implements AttributeCreationService {
 	private AttributeBonusRmuTable bonusTable;
 
 	@Override
-	public Integer getCost(int value) {
+	public Integer getBonus(int value) {
 		return bonusTable.getBonus(value);
+	}
+
+	@Override
+	public Integer getCost(int value) {
+		return getBonus(value);
 	}
 
 	@Override
@@ -60,4 +65,5 @@ class AttributeCreationServiceRmuImpl implements AttributeCreationService {
 	public List<RolemasterVersion> compatibleVersions() {
 		return Arrays.asList(RolemasterVersion.RMU);
 	}
+
 }

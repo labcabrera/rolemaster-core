@@ -1,6 +1,7 @@
 package org.labcabrera.rolemaster.core.services.rmss.character.item;
 
 import org.labcabrera.rolemaster.core.dto.AddSkill;
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.services.character.CharacterAddSkillService;
 import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterArmorPostProcessor;
@@ -31,7 +32,8 @@ class ArmorCalculator {
 			return addSkillService.addSkill(character, AddSkill.builder().skillId(skillId).build())
 				.thenReturn(character)
 				.map(c -> {
-					armorProcessor.accept(c);
+					CharacterModificationContext ctx = CharacterModificationContext.builder().character(c).build();
+					armorProcessor.accept(ctx);
 					return c;
 				})
 				.thenReturn(data);
@@ -39,7 +41,8 @@ class ArmorCalculator {
 		else {
 			return Mono.just(character)
 				.map(c -> {
-					armorProcessor.accept(character);
+					CharacterModificationContext ctx = CharacterModificationContext.builder().character(c).build();
+					armorProcessor.accept(ctx);
 					return c;
 				})
 				.thenReturn(data);

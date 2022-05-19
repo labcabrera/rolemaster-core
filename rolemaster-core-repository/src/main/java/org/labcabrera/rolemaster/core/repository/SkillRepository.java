@@ -21,6 +21,8 @@ public interface SkillRepository extends ReactiveMongoRepository<Skill, String> 
 	@Query("{$or :[{'id': { $in: ?0 } },{'loadOnNewCharacters': true}]}")
 	Flux<Skill> findByIdsOnNewCharacter(List<String> ids);
 
+	Flux<Skill> findByVersion(RolemasterVersion version);
+
 	Mono<Void> deleteByVersion(RolemasterVersion version);
 
 }

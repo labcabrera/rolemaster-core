@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.services.rmss.character.processor;
 
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.services.character.CharacterUpdatePostProcessor;
@@ -14,7 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 public class CharacterHpPostProcessor implements CharacterUpdatePostProcessor {
 
 	@Override
-	public void accept(CharacterInfo character) {
+	public void accept(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
 		log.debug("Processing character {}", character.getName());
 
 		CharacterSkill skill = character.getSkills().stream()

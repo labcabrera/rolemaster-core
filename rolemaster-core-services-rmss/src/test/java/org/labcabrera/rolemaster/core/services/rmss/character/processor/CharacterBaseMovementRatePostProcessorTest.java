@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -22,8 +23,9 @@ class CharacterBaseMovementRatePostProcessorTest {
 		CharacterInfo character = CharacterInfo.builder()
 			.height(174)
 			.build();
+		CharacterModificationContext context = CharacterModificationContext.builder().character(character).build();
 		character.getAttributes().put(AttributeType.QUICKNESS, CharacterAttribute.builder().totalBonus(5).build());
-		adapter.accept(character);
+		adapter.accept(context);
 		assertEquals(18, character.getBaseMovementRate());
 	}
 
@@ -33,8 +35,9 @@ class CharacterBaseMovementRatePostProcessorTest {
 		CharacterInfo character = CharacterInfo.builder()
 			.height(184)
 			.build();
+		CharacterModificationContext context = CharacterModificationContext.builder().character(character).build();
 		character.getAttributes().put(AttributeType.QUICKNESS, CharacterAttribute.builder().totalBonus(10).build());
-		adapter.accept(character);
+		adapter.accept(context);
 		assertEquals(24, character.getBaseMovementRate());
 	}
 

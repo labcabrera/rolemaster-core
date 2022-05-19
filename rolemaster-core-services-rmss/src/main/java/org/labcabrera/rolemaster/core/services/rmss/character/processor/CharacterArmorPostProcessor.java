@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.services.rmss.character.processor;
 
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.exception.DataConsistenceException;
 import org.labcabrera.rolemaster.core.services.character.CharacterUpdatePostProcessor;
@@ -17,7 +18,8 @@ public class CharacterArmorPostProcessor implements CharacterUpdatePostProcessor
 	private ArmorService armorService;
 
 	@Override
-	public void accept(CharacterInfo character) {
+	public void accept(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
 		int equippedArmor = character.getArmor().getArmor();
 		ArmorModifier armorModifier = armorService.getArmorModifier(equippedArmor);
 

@@ -1,5 +1,6 @@
 package org.labcabrera.rolemaster.core.services.rmss.character.processor;
 
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.services.character.CharacterUpdatePostProcessor;
@@ -14,7 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 class CharacterDevelopmentPointsPostProcessor implements CharacterUpdatePostProcessor {
 
 	@Override
-	public void accept(CharacterInfo character) {
+	public void accept(CharacterModificationContext contex) {
+		CharacterInfo character = contex.getCharacter();
 		log.debug("Processing character {}", character.getName());
 		int tmp = 0;
 		tmp += character.getAttributes().get(AttributeType.AGILITY).getCurrentValue();

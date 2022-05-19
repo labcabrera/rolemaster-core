@@ -6,6 +6,7 @@ import java.util.List;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageCategorySelection;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageSkillSelection;
 import org.labcabrera.rolemaster.core.dto.TrainingPackageUpgrade;
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkillCategory;
@@ -21,7 +22,6 @@ import org.labcabrera.rolemaster.core.services.character.CharacterAddTrainingPac
 import org.labcabrera.rolemaster.core.services.character.CharacterInfoService;
 import org.labcabrera.rolemaster.core.services.commons.Messages.Errors;
 import org.labcabrera.rolemaster.core.services.commons.security.WriteAuthorizationFilter;
-import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterPostProcessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,8 @@ import reactor.util.function.Tuple2;
 
 @Service
 @Validated
-public class CharacterAddTrainingPackageServiceImpl implements CharacterAddTrainingPackageService {
+public class CharacterAddTrainingPackageServiceImpl extends AbstractCharacterModificationService
+	implements CharacterAddTrainingPackageService {
 
 	@Autowired
 	private CharacterInfoService characterInfoService;
@@ -45,9 +46,6 @@ public class CharacterAddTrainingPackageServiceImpl implements CharacterAddTrain
 
 	@Autowired
 	private SkillRepository skillRepository;
-
-	@Autowired
-	private CharacterPostProcessorService postProcessorService;
 
 	@Autowired
 	private WriteAuthorizationFilter writeFilter;
@@ -64,7 +62,9 @@ public class CharacterAddTrainingPackageServiceImpl implements CharacterAddTrain
 			.flatMap(pair -> upgradeSelectableSkills(pair, request))
 			.map(this::applyPackage)
 			.map(Tuple2::getT1)
-			.map(postProcessorService)
+			.flatMap(character -> contextLoader.apply(character))
+			.map(this::applyPostProcessors)
+			.map(CharacterModificationContext::getCharacter)
 			.flatMap(characterInfoRepository::save);
 	}
 

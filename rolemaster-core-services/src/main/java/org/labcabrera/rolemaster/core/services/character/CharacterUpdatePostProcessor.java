@@ -2,16 +2,20 @@ package org.labcabrera.rolemaster.core.services.character;
 
 import java.util.function.Consumer;
 
-import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 
 import lombok.experimental.UtilityClass;
 
-public interface CharacterUpdatePostProcessor extends Consumer<CharacterInfo> {
+public interface CharacterUpdatePostProcessor extends Consumer<CharacterModificationContext> {
 
 	@UtilityClass
 	public static final class Orders {
 
-		public static final int ATTRIBUTE = 200;
+		public static final int ATTRIBUTE = 100;
+		public static final int RACE = 110;
+		public static final int PROFESSION = 120;
+
+
 		public static final int SKILL_CATEGORY = 210;
 		public static final int SKILL = 220;
 		public static final int RESISTANCE = 227;

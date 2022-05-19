@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterArmor;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterSkill;
@@ -34,6 +35,9 @@ class CharacterArmorPostProcessorTest {
 	private ObjectMapper objectMapper;
 
 	@Mock
+	private CharacterModificationContext context;
+
+	@Mock
 	private CharacterInfo characterInfo;
 
 	@Mock
@@ -46,12 +50,13 @@ class CharacterArmorPostProcessorTest {
 	void test() throws IOException {
 		armorService.loadData();
 
+		when(context.getCharacter()).thenReturn(characterInfo);
 		when(characterInfo.getArmor()).thenReturn(armor);
 		when(characterInfo.getSkill("armor-plate")).thenReturn(Optional.of(characterSkill));
 		when(armor.getArmor()).thenReturn(20);
 		when(characterSkill.getTotalBonus()).thenReturn(50);
 
-		processor.accept(characterInfo);
+		processor.accept(context);
 
 		verify(armor, times(1)).setArmorPenalty(-115);
 		verify(armor, times(1)).setArmorQuPenalty(30);

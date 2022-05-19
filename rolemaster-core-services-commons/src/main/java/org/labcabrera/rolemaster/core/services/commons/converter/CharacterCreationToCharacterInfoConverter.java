@@ -1,6 +1,11 @@
 package org.labcabrera.rolemaster.core.services.commons.converter;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.labcabrera.rolemaster.core.dto.character.CharacterCreation;
+import org.labcabrera.rolemaster.core.model.character.AttributeType;
+import org.labcabrera.rolemaster.core.model.character.CharacterAttribute;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.model.character.CharacterStatus;
 import org.labcabrera.rolemaster.core.model.character.CharacterWeight;
@@ -19,6 +24,7 @@ public class CharacterCreationToCharacterInfoConverter implements Converter<Char
 	public CharacterInfo convert(CharacterCreation request) {
 		return CharacterInfo.builder()
 			.universeId(request.getUniverseId())
+			.version(request.getVersion())
 			.realm(request.getRealm())
 			.level(0)
 			.maxLevel(request.getLevel())
@@ -32,8 +38,20 @@ public class CharacterCreationToCharacterInfoConverter implements Converter<Char
 			.weight(CharacterWeight.builder()
 				.weight(request.getWeight())
 				.build())
+			.attributes(getAttributeMap(request))
 			.status(CharacterStatus.PARTIALLY_CREATED)
 			.build();
+	}
+
+	private Map<AttributeType, CharacterAttribute> getAttributeMap(CharacterCreation request) {
+		Map<AttributeType, CharacterAttribute> map = new LinkedHashMap<>();
+		for (AttributeType att : AttributeType.values()) {
+			CharacterAttribute ca = CharacterAttribute.builder()
+				.currentValue(request.getBaseAttributes().get(att))
+				.build();
+			map.put(att, ca);
+		}
+		return map;
 	}
 
 }

@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.services.rmss.character.processor;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.services.character.CharacterUpdatePostProcessor;
@@ -22,7 +23,8 @@ class CharacterBaseMovementRatePostProcessor implements CharacterUpdatePostProce
 	private StrideChartTable strideChartTable;
 
 	@Override
-	public void accept(CharacterInfo character) {
+	public void accept(CharacterModificationContext context) {
+		CharacterInfo character = context.getCharacter();
 		log.debug("Processing character {}", character.getName());
 		int qu = character.getAttributes().get(AttributeType.QUICKNESS).getTotalBonus();
 
