@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.character.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
 
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.Race;
@@ -18,6 +18,7 @@ class CharacterCreationRaceProcessor implements CharacterUpdatePostProcessor {
 		ctx.getCharacter().getDevelopmentPoints().setBackgroundOptions(race.getBackgroundOptions());
 		ctx.getCharacter().getNotes().addAll(race.getSpecialAbilities());
 		ctx.getCharacter().setSize(race.getSize());
+		//TODO convert RMSS <> RMU
 		ctx.getCharacter().getArmor().setSkillAT(race.getSkinAT());
 	}
 }

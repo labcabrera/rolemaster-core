@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.character.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
 
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
@@ -17,7 +17,6 @@ public class CharacterDefensiveBonusPostProcessor implements CharacterUpdatePost
 		int quBonus = 3 * character.getAttributes().get(AttributeType.QUICKNESS).getTotalBonus();
 		int armorPenalty = character.getArmor().getArmorQuPenalty();
 		int armorBonus = character.getArmor().getArmorDefensiveBonus();
-
 		int db = quBonus - armorPenalty + armorBonus;
 		character.setDefensiveBonus(db);
 	}

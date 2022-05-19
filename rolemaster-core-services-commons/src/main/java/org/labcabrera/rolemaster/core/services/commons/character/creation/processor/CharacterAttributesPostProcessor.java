@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.character.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
 
 import java.util.List;
 
@@ -11,12 +11,14 @@ import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.services.character.CharacterUpdatePostProcessor;
 import org.labcabrera.rolemaster.core.services.character.creation.AttributeCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Component
+@ConditionalOnBean(AttributeCreationService.class)
 @Order(CharacterUpdatePostProcessor.Orders.ATTRIBUTE)
 @Slf4j
 class CharacterAttributesPostProcessor implements CharacterUpdatePostProcessor {

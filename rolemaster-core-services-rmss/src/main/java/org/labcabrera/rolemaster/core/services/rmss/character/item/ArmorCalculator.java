@@ -4,7 +4,7 @@ import org.labcabrera.rolemaster.core.dto.AddSkill;
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
 import org.labcabrera.rolemaster.core.services.character.CharacterAddSkillService;
-import org.labcabrera.rolemaster.core.services.rmss.character.processor.CharacterArmorPostProcessor;
+import org.labcabrera.rolemaster.core.services.commons.character.creation.processor.CharacterArmorPostProcessor;
 import org.labcabrera.rolemaster.core.table.rmss.armor.ArmorModifier;
 import org.labcabrera.rolemaster.core.table.rmss.armor.ArmorService;
 import org.springframework.beans.factory.annotation.Autowired;

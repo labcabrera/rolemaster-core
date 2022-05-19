@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.character.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -24,6 +24,8 @@ class CharacterBaseMovementRatePostProcessor implements CharacterUpdatePostProce
 
 	@Override
 	public void accept(CharacterModificationContext context) {
+		//TODO RMU integration
+		
 		CharacterInfo character = context.getCharacter();
 		log.debug("Processing character {}", character.getName());
 		int qu = character.getAttributes().get(AttributeType.QUICKNESS).getTotalBonus();

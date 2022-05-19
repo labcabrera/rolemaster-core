@@ -1,6 +1,7 @@
-package org.labcabrera.rolemaster.core.services.rmss.character.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
 
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.AttributeType;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -11,11 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Component
 @Order(CharacterUpdatePostProcessor.Orders.SKILL_CATEGORY)
-@Slf4j
 public class CharacterSkillCategoryPostprocessor implements CharacterUpdatePostProcessor {
 
 	@Autowired
@@ -24,7 +22,10 @@ public class CharacterSkillCategoryPostprocessor implements CharacterUpdatePostP
 	@Override
 	public void accept(CharacterModificationContext context) {
 		CharacterInfo character = context.getCharacter();
-		log.debug("Processing character {}", character.getName());
+		if (character.getVersion() != RolemasterVersion.RMSS) {
+			return;
+		}
+
 		character.getSkillCategories().stream().forEach(category -> {
 			int rankBonus = rankBonusService.getBonus(category);
 			category.getBonus().put(BonusType.ATTRIBUTE, getCategoryBonus(category, character));

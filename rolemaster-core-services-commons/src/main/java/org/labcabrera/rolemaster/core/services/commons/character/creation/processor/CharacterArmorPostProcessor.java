@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.character.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
 
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
@@ -19,6 +19,8 @@ public class CharacterArmorPostProcessor implements CharacterUpdatePostProcessor
 
 	@Override
 	public void accept(CharacterModificationContext context) {
+		//TODO RMU integration
+
 		CharacterInfo character = context.getCharacter();
 		int equippedArmor = character.getArmor().getArmor();
 		ArmorModifier armorModifier = armorService.getArmorModifier(equippedArmor);

@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.rmss.character.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
 
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.BonusType;
@@ -24,6 +24,8 @@ public class CharacterSkillProcessor implements CharacterUpdatePostProcessor {
 
 	@Override
 	public void accept(CharacterModificationContext context) {
+		//TODO RMU integration
+
 		CharacterInfo character = context.getCharacter();
 		log.debug("Processing character {}", character.getName());
 		character.getSkills().stream().forEach(characterSkill -> {
