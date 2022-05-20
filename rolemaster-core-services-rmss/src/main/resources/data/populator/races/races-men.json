@@ -42,7 +42,7 @@
 		],
 		"specialAbilities": [
 		],
-		"universes": [ "generic" ]
+		"universes": [ "generic", "realistic" ]
 	},
 	{
 		"id": "high-man",
