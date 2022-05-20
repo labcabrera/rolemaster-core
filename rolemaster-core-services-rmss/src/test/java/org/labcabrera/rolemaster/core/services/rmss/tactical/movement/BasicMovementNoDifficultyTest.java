@@ -61,10 +61,10 @@ class BasicMovementNoDifficultyTest extends AbstractBasicCombatTest {
 		assertNotNull(resolved);
 		assertEquals(TacticalActionState.RESOLVED, resolved.getState());
 
-		assertEquals(15, taMelee01.getBaseMovementRate());
+		assertEquals(50, taMelee01.getBaseMovementRate().getBmr());
 		assertEquals(0.5, ts.getScale());
-		assertEquals(15, resolved.getDistance());
-		assertEquals(7.5, resolved.getDistanceScaled());
+		assertEquals(50, resolved.getDistance());
+		assertEquals(25, resolved.getDistanceScaled());
 	}
 
 }

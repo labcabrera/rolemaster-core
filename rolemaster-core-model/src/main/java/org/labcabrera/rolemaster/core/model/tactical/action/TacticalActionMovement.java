@@ -3,6 +3,7 @@ package org.labcabrera.rolemaster.core.model.tactical.action;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.labcabrera.rolemaster.core.model.conversion.FeetToMeterConverter;
 import org.labcabrera.rolemaster.core.model.maneuver.ManeuverDifficulty;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverCombatSituation;
 import org.labcabrera.rolemaster.core.model.maneuver.MovingManeuverResult;
@@ -38,5 +39,9 @@ public class TacticalActionMovement extends TacticalAction {
 	private Double distance;
 
 	private Double distanceScaled;
+
+	public Double distanceInMeters() {
+		return FeetToMeterConverter.feetsToMeters(distance, 1);
+	}
 
 }

@@ -54,7 +54,7 @@
 			}
 		],
 		"defensiveBonus": 180,
-		"_baseMove": 50,
+		"baseMovementRate": 70,
 		"_mmBonus": 0,
 		"_maxPace": "fastSprint",
 		"_movementSpeed": "SL",
@@ -131,6 +131,7 @@
 			}
 		],
 		"defensiveBonus": 70,
+		"baseMovementRate": 70,
 		"mmBonus": 45,
 		"universeId": "middle-earth"
 	}

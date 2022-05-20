@@ -43,11 +43,11 @@ class Combat01Test extends AbstractTacticalTest {
 	@Test
 	void test() {
 		witchKing = tacticalService.addNpc(ts.getId(), "the-witch-king").share().block();
-		human01 = tacticalService.addNpc(ts.getId(), "human-fighter-i", NpcCustomization.builder()
-			.name("human-01").build())
+		human01 = tacticalService.addNpc(ts.getId(), "human-broadsword-i", NpcCustomization.builder()
+			.name("broadsword-01").build())
 			.share().block();
-		human02 = tacticalService.addNpc(ts.getId(), "human-fighter-i", NpcCustomization.builder()
-			.name("human-02").build())
+		human02 = tacticalService.addNpc(ts.getId(), "human-broadsword-i", NpcCustomization.builder()
+			.name("broadsword-02").build())
 			.share().block();
 
 		TacticalRound round01 = tacticalService.startRound(ts.getId()).share().block();

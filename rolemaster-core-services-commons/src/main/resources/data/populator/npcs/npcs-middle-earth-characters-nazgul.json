@@ -149,7 +149,7 @@
 				"description": "Black Sea-Drake skin plate armor with encumbers wearer like normal clothes (i.e. no armor/AT1)."
 			}
 		],
-		"_baseMove": 30,
+		"baseMovementRate": 50,
 		"_mmBonus": 0,
 		"_maxPace": "fastSprint",
 		"_movementSpeed": "SL",

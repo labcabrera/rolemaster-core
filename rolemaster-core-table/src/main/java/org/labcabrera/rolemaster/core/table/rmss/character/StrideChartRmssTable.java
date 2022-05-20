@@ -3,7 +3,7 @@ package org.labcabrera.rolemaster.core.table.rmss.character;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StrideChartTable {
+public class StrideChartRmssTable {
 
 	public Integer getValue(Integer value) {
 		if (value > 237) {

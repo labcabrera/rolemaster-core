@@ -12,6 +12,7 @@ import org.labcabrera.rolemaster.core.model.tactical.action.MovementPace;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,6 +27,8 @@ public class Npc {
 
 	@Id
 	private String id;
+
+	private String parentId;
 
 	private String name;
 
@@ -62,6 +65,7 @@ public class Npc {
 	@Builder.Default
 	private List<SpecialAttack> specialAttacks = new ArrayList<>();
 
+	@Schema(description = "Value in feets per round.")
 	private Integer baseMovementRate;
 
 	private Integer mmBonus;

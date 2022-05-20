@@ -46,7 +46,7 @@
 			"tracking": 106,
 			"trickery": 76
 		},
-		"baseMovementRate": 15,
+		"baseMovementRate": 50,
 		"unique": true,
 		"appearance": 10,
 		"universeId": "middle-earth"

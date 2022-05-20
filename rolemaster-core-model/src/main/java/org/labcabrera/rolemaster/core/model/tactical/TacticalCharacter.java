@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
 import org.labcabrera.rolemaster.core.model.HasAuthorization;
+import org.labcabrera.rolemaster.core.model.character.BaseMovementRate;
 import org.labcabrera.rolemaster.core.model.character.ContextCharacterModifiers;
 import org.labcabrera.rolemaster.core.model.character.SpecialAttack;
 import org.labcabrera.rolemaster.core.model.character.item.CharacterItem;
@@ -65,7 +66,7 @@ public class TacticalCharacter implements HasAuthorization {
 
 	private Integer defensiveBonus;
 
-	private Integer baseMovementRate;
+	private BaseMovementRate baseMovementRate;
 
 	private Integer mmBonus;
 

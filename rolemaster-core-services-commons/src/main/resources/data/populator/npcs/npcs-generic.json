@@ -1,0 +1,32 @@
+[
+	{
+		"id": "human-broadsword-i",
+		"name": "Human - Broadsword I",
+		"shortDescription": "Human Broadsword I",
+		"level": 1,
+		"unique": false,
+		"hp": 56,
+		"armorType": 8,
+		"items": [
+			{
+				"itemId": "broadsword",
+				"skillId": "#melee",
+				"type": "weapon",
+				"name": "Broadsword",
+				"position": "main-hand"
+			}
+		],
+		"skills": {
+			"#melee": 40,
+			"#missile": 25
+		},
+		"defensiveBonus": 30,
+		"baseMovementRate": 50,
+		"mmBonus": 10,
+		"maxPace": "dash",
+		"_movementSpeed": "SL",
+		"_attackQuickness": "MD",
+		"universeId": "generic",
+		"npcNameGeneratorGroup": "norse"
+	}
+]

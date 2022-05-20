@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.labcabrera.rolemaster.core.dto.NpcCustomization;
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.character.BaseMovementRate;
 import org.labcabrera.rolemaster.core.model.npc.Npc;
 import org.labcabrera.rolemaster.core.model.tactical.ExhaustionPoints;
 import org.labcabrera.rolemaster.core.model.tactical.Hp;
@@ -44,7 +45,9 @@ public class NpcToTacticalCharacterConverter {
 			.specialAttacks(npc.getSpecialAttacks())
 			.armor(npc.getArmorType())
 			.defensiveBonus(npc.getDefensiveBonus())
-			.baseMovementRate(npc.getBaseMovementRate())
+			.baseMovementRate(BaseMovementRate.builder()
+				.bmr((double) npc.getBaseMovementRate())
+				.build())
 			.mmBonus(npc.getMmBonus())
 			.metadata(EntityMetadata.builder()
 				.created(LocalDateTime.now())

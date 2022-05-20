@@ -26,7 +26,7 @@
 			"#missile": 60
 		},
 		"defensiveBonus": 40,
-		"baseMovementRate": 21,
+		"baseMovementRate": 70,
 		"mmBonus": 15,
 		"maxPace": "dash",
 		"movementSpeed": "MD",

@@ -2,7 +2,7 @@ package org.labcabrera.rolemaster.core.services.rmss.character.item;
 
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.character.CharacterInfo;
-import org.labcabrera.rolemaster.core.services.commons.character.creation.processor.CharacterDefensiveBonusPostProcessor;
+import org.labcabrera.rolemaster.core.services.commons.character.processor.CharacterDefensiveBonusPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

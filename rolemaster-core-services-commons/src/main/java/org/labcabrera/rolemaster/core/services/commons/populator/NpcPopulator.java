@@ -1,10 +1,9 @@
-package org.labcabrera.rolemaster.core.services.rmss.populator;
+package org.labcabrera.rolemaster.core.services.commons.populator;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.labcabrera.rolemaster.core.model.npc.Npc;
-import org.labcabrera.rolemaster.core.services.commons.populator.AbstractJsonPopulator;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -26,6 +25,17 @@ class NpcPopulator extends AbstractJsonPopulator<Npc> {
 			"data/populator/npcs/npcs-middle-earth-characters-hobbits.json",
 			"data/populator/npcs/npcs-middle-earth-characters-nazgul.json",
 			"data/populator/npcs/npcs-middle-earth-characters-other.json");
+	}
+
+	@Override
+	protected List<Npc> collectValues() {
+		List<Npc> list = super.collectValues();
+		list.stream().forEach(e -> {
+			if (e.getBaseMovementRate() == null) {
+				e.setBaseMovementRate(50);
+			}
+		});
+		return list;
 	}
 
 	@Override

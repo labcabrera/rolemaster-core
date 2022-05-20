@@ -107,8 +107,8 @@ public class CharacterInfo implements HasAuthorization, HasMetadata {
 	@Schema(description = "Experience ponints", required = true, example = "7632")
 	private Long xp;
 
-	@Schema(description = "Value in meters.", required = true, example = "15")
-	private Integer baseMovementRate;
+	@Schema(description = "Base movement rate.")
+	private BaseMovementRate baseMovementRate;
 
 	@Builder.Default
 	private CharacterArmor armor = new CharacterArmor();

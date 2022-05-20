@@ -96,7 +96,7 @@ public class MovementExecutionServiceImpl implements MovementExecutionService {
 
 	private TacticalActionContext<TacticalActionMovement> processResult(TacticalActionContext<TacticalActionMovement> context) {
 		TacticalActionMovement movement = context.getAction();
-		int baseMovementRate = context.getSource().getBaseMovementRate();
+		double baseMovementRate = context.getSource().getBaseMovementRate().getBmr();
 		int percent = context.getAction().getActionPercent();
 		double paceMultiplier = movement.getPace().getMultiplier();
 		double scale = context.getTacticalSession().getScale();

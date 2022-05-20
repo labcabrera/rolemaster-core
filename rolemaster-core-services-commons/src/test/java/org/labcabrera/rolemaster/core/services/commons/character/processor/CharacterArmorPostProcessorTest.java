@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.processor;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

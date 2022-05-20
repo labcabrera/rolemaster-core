@@ -1,4 +1,4 @@
-package org.labcabrera.rolemaster.core.services.commons.character.creation.processor;
+package org.labcabrera.rolemaster.core.services.commons.character.processor;
 
 import org.labcabrera.rolemaster.core.dto.context.CharacterModificationContext;
 import org.labcabrera.rolemaster.core.model.RolemasterVersion;
