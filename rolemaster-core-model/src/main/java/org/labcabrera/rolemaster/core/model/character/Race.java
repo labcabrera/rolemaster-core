@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.labcabrera.rolemaster.core.model.EntityMetadata;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.spell.Realm;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -28,6 +29,8 @@ public class Race {
 	private String id;
 
 	private String name;
+
+	private RolemasterVersion version;
 
 	@Builder.Default
 	private List<String> keywords = new ArrayList<>();
