@@ -2,7 +2,9 @@ package org.labcabrera.rolemaster.core.api.controller.impl;
 
 import java.util.Arrays;
 
+import org.apache.commons.lang3.StringUtils;
 import org.labcabrera.rolemaster.core.api.controller.RaceController;
+import org.labcabrera.rolemaster.core.model.RolemasterVersion;
 import org.labcabrera.rolemaster.core.model.character.Race;
 import org.labcabrera.rolemaster.core.repository.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ public class RaceControllerImpl implements RaceController {
 		return repository.findById(id);
 	}
 
-	public Flux<Race> findAll(String universeId, Pageable pageable) {
+	public Flux<Race> findAll(RolemasterVersion version, String universeId, Pageable pageable) {
 		Race probe = Race.builder()
 			.keywords(null)
 			.attributeModifiers(null)
@@ -40,9 +42,10 @@ public class RaceControllerImpl implements RaceController {
 			.exhaustionPointsBonus(null)
 			.size(null)
 			.skinAT(null)
+			.version(version)
 			.universes(null)
 			.build();
-		if (universeId != null) {
+		if (StringUtils.isNotBlank(universeId)) {
 			probe.setUniverses(Arrays.asList(universeId));
 		}
 		Example<Race> example = Example.of(probe);
