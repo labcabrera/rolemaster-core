@@ -43,6 +43,7 @@ public abstract class TacticalActionAttack extends TacticalAction {
 	@Builder.Default
 	protected Map<AttackTargetType, AttackResult> attackResults = new EnumMap<>(AttackTargetType.class);
 
+	@Builder.Default
 	private Map<AttackTargetType, List<TacticalCriticalResult>> criticalResults = new EnumMap<>(AttackTargetType.class);
 
 	protected BigDecimal exhaustionPoints;
